@@ -1,0 +1,10 @@
+fact,value,read_from
+claim_boundary_status,DRAFT / AWAITING HUMAN AND SCIENTIFIC REVIEW,pgx/domain/claims.py
+claim_boundary_version,0.1.0-draft,pgx/domain/claims.py
+phase,P0,pgx/domain/claims.py
+enabled_modes,DEMO; VALIDATION,pgx/domain/claims.py
+permitted_input_kinds,MEDICATION_NAME_LIST; PROTOCOL_DEFINED_PHENOTYPE_PROFILE; PUBLIC_DEMO_PROFILE; SYNTHETIC_PHENOTYPE_PROFILE; VERSIONED_VALIDATION_CASE,pgx/domain/claims.py
+prohibited_claim_categories,CANDIDATE_PREFERENCE; CLINICAL_DECISION_SUBSTITUTION; DIAGNOSIS; DOSING; FALSE_REASSURANCE; MEDICATION_CHANGE; PRESCRIPTION; REAL_PATIENT_DATA; SAFETY_ASSURANCE; TREATMENT_SELECTION; VALIDATION_OVERCLAIM,pgx/domain/claims.py
+warning_languages,en; tr,pgx/domain/claims.py
+blocking_gate_code_reporting,REPORT_CLAIM_BOUNDARY_NOT_APPROVED,pgx/reporting/errors.py
+blocking_gate_code_security,SECURITY_CLAIM_BOUNDARY_NOT_APPROVED,pgx/security/gate_status.py

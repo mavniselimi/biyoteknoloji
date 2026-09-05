@@ -1,0 +1,308 @@
+{
+  "approvals_recorded": 0,
+  "artifacts": [
+    {
+      "bytes": 2245,
+      "path": "data/api/wp16-runtime-verification.json",
+      "present": true,
+      "sha256": "sha256:392ceb2f9908396e7a42f4c0e9695ff2cc9aa7903ca4a1c5245c3c2bc11324b5",
+      "what_it_does_not_say": "host-bound by design; it is rejected on any other machine",
+      "what_it_is": "a recorded execution of the ASGI runtime checks",
+      "work_package": "WP-C01"
+    },
+    {
+      "bytes": 92946,
+      "path": "data/closure/wp-c00-legacy-candidate-dispositions.json",
+      "present": true,
+      "sha256": "sha256:83a7126091811a01820f9c0e14866b7a53739c5a3570967d70717ae453199ce2",
+      "what_it_does_not_say": "creates no link, no rule and no scientific judgement",
+      "what_it_is": "one disposition for each unlinked legacy rule candidate",
+      "work_package": "WP-C00"
+    },
+    {
+      "bytes": 5539,
+      "path": "data/closure/wp-c01-database-verification.json",
+      "present": true,
+      "sha256": "sha256:297c55e9f44229a78ec05eae43d7c34984f7ba4106fff1e79827281bb780bc76",
+      "what_it_does_not_say": "the application never connected; no driver could be installed",
+      "what_it_is": "migrations executed against a real PostgreSQL server, and the schema compared with the ORM metadata",
+      "work_package": "WP-C01"
+    },
+    {
+      "bytes": 19516,
+      "path": "data/verification/wp19-real-gate-status.json",
+      "present": true,
+      "sha256": "sha256:d569bd96603cd2e50ae9588129e56e58c14874d77d40e541e29a509d7772e638",
+      "what_it_does_not_say": "a document about a run is not a run",
+      "what_it_is": "what WP-19 may say, field by field, after that run",
+      "work_package": "WP-C00"
+    },
+    {
+      "bytes": 219452,
+      "path": "data/verification/wp19-test-inventory.json",
+      "present": true,
+      "sha256": "sha256:11b738cf99284b24be98718a342a8f7d3c85443c723de299a5ec0a6af2e74b56",
+      "what_it_does_not_say": "discovering a test is not running it",
+      "what_it_is": "the suite as discovered and categorised",
+      "work_package": "WP-C00"
+    },
+    {
+      "bytes": 4389,
+      "path": "data/verification/wp19-verification-run.json",
+      "present": true,
+      "sha256": "sha256:d0c8d2152a13b5da1fc088a85d2e16d97316dd0dd48a00bc126c4e876fda4d09",
+      "what_it_does_not_say": "PostgreSQL integration was blocked for want of a driver",
+      "what_it_is": "one execution of the full verification profile",
+      "work_package": "WP-C00"
+    },
+    {
+      "bytes": 5012,
+      "path": "data/web/wp17-real-gate-status.json",
+      "present": true,
+      "sha256": "sha256:22cc917ba5e8e7f872cd9d0e12f24af6752e17332f367e6263380e8a29aba2ba",
+      "what_it_does_not_say": "the screenshots are real captures; the gate is still blocked",
+      "what_it_is": "WP-17's gate status, now satisfying its own schema",
+      "work_package": "WP-C00"
+    },
+    {
+      "bytes": 1676,
+      "path": "docs/closure/checkpoints/README.md",
+      "present": true,
+      "sha256": "sha256:094ba683794f88919c6792175a6d53ee0d0e494d33c002b295c9d1ec1bfe1c03",
+      "what_it_does_not_say": "nothing in any checkpoint is approved",
+      "what_it_is": "the index of the four human decision checkpoints",
+      "work_package": "WP-C03"
+    },
+    {
+      "bytes": 10688,
+      "path": "docs/closure/wp-c00-legacy-candidate-dispositions.md",
+      "present": true,
+      "sha256": "sha256:717257072511ac1f80e46c92a75075131ff33de50c5b040847a340541e883e1b",
+      "what_it_does_not_say": "rendered from the JSON; it adds nothing the JSON does not hold",
+      "what_it_is": "the same dispositions, for a reader",
+      "work_package": "WP-C00"
+    }
+  ],
+  "baseline": {
+    "commit": "f95b467320b9dcab787b4abed76544ffc7ef3641",
+    "note": "the Wave 1 commit is not recorded here: a file cannot carry the hash of the commit that will contain it",
+    "tag": "baseline/pre-closure-v0.2.0.dev0"
+  },
+  "checkpoints": [
+    {
+      "approval_form_blank": true,
+      "approved": false,
+      "checkpoint": "H00-repository-identity",
+      "files": [
+        {
+          "path": "docs/closure/checkpoints/H00-repository-identity/README.md",
+          "present": true,
+          "sha256": "sha256:a2c2fce61f17340726d1fdc497d7f881a695413f1e7e6c7bee5bb8cc5399dca9"
+        },
+        {
+          "path": "docs/closure/checkpoints/H00-repository-identity/decision-context.md",
+          "present": true,
+          "sha256": "sha256:172d159cde8379b876ebc8d78bfca5958a9337ac98e363ecb4c1a865aac086f2"
+        },
+        {
+          "path": "docs/closure/checkpoints/H00-repository-identity/evidence-table.csv",
+          "present": true,
+          "sha256": "sha256:7d222901be627c64b1d976cd93bf42b55c28359123319bc8b7f6e6566f967c25"
+        },
+        {
+          "path": "docs/closure/checkpoints/H00-repository-identity/proposed-decisions.csv",
+          "present": true,
+          "sha256": "sha256:6d628fb852e28ca44990aa2b9da0328ed487f6390206fe51cb3756a95144d357"
+        },
+        {
+          "path": "docs/closure/checkpoints/H00-repository-identity/unresolved-questions.md",
+          "present": true,
+          "sha256": "sha256:d7596a13fa5a5c1e9b5f3343b2a0e48fdf6790c9ed006c85ecf6dc5090ee22e4"
+        },
+        {
+          "path": "docs/closure/checkpoints/H00-repository-identity/risk-summary.md",
+          "present": true,
+          "sha256": "sha256:b9534b5df13ace91355b19e6a45c60a556ecc836b282e7417d66c11edbdb8f00"
+        },
+        {
+          "path": "docs/closure/checkpoints/H00-repository-identity/approval-form.md",
+          "present": true,
+          "sha256": "sha256:0a0141b9ac55079d0aa9372813aa6d3bc9cfc7a925d906c9537277f7f91fd095"
+        }
+      ],
+      "note": "every proposed decision is PENDING_REVIEW and the approval form carries no name, date or verdict"
+    },
+    {
+      "approval_form_blank": true,
+      "approved": false,
+      "checkpoint": "H01-source-policy",
+      "files": [
+        {
+          "path": "docs/closure/checkpoints/H01-source-policy/README.md",
+          "present": true,
+          "sha256": "sha256:13dd286020ca77e0cade9f8616adfe077f1e15a408018ba8bbe192fd1c0b6398"
+        },
+        {
+          "path": "docs/closure/checkpoints/H01-source-policy/decision-context.md",
+          "present": true,
+          "sha256": "sha256:6301a248f6d4f498df54b4347b0c353a7ce150629e916dd3cd633e239456d39c"
+        },
+        {
+          "path": "docs/closure/checkpoints/H01-source-policy/evidence-table.csv",
+          "present": true,
+          "sha256": "sha256:7a87b5e9fe488d53abc7afaa1b77ea3b6ff013b3db5db60a6ebc28abae87c7c8"
+        },
+        {
+          "path": "docs/closure/checkpoints/H01-source-policy/proposed-decisions.csv",
+          "present": true,
+          "sha256": "sha256:4be498a25e819822343c85d9b8433abda2b26842b31d5e36481aa917ee23e0b2"
+        },
+        {
+          "path": "docs/closure/checkpoints/H01-source-policy/unresolved-questions.md",
+          "present": true,
+          "sha256": "sha256:be31d352758d9a322c586b1fe7acaeb8ceb8a3b7f900ab1f433dbf7038ab8dcc"
+        },
+        {
+          "path": "docs/closure/checkpoints/H01-source-policy/risk-summary.md",
+          "present": true,
+          "sha256": "sha256:1356061cdeb9cf0e1e64af3fb914aa61551aa055d926422a0d460d5ee308a7d2"
+        },
+        {
+          "path": "docs/closure/checkpoints/H01-source-policy/approval-form.md",
+          "present": true,
+          "sha256": "sha256:6d9b4c150c45385d1efee971693b83e4d02a79d3de0ac4766ce898821cfb01f1"
+        }
+      ],
+      "note": "every proposed decision is PENDING_REVIEW and the approval form carries no name, date or verdict"
+    },
+    {
+      "approval_form_blank": true,
+      "approved": false,
+      "checkpoint": "H02-curation-protocol",
+      "files": [
+        {
+          "path": "docs/closure/checkpoints/H02-curation-protocol/README.md",
+          "present": true,
+          "sha256": "sha256:c52c78111bc4efebad1a0234673a0e46f60ee6ed790656b866e756c10188092f"
+        },
+        {
+          "path": "docs/closure/checkpoints/H02-curation-protocol/decision-context.md",
+          "present": true,
+          "sha256": "sha256:dd2b6ec88441cd2e662d2226021cfa9e9413fcaa2504b5a1ec40377b4e76eb97"
+        },
+        {
+          "path": "docs/closure/checkpoints/H02-curation-protocol/evidence-table.csv",
+          "present": true,
+          "sha256": "sha256:ae9229da958c62c8eb1e5c70bb2e6023d5b13c1d65f8f7e389050847ee92b456"
+        },
+        {
+          "path": "docs/closure/checkpoints/H02-curation-protocol/proposed-decisions.csv",
+          "present": true,
+          "sha256": "sha256:d8bfe180ac9301af087eb636625c89ab33cca25b4931b30e05aa1df97b7626ae"
+        },
+        {
+          "path": "docs/closure/checkpoints/H02-curation-protocol/unresolved-questions.md",
+          "present": true,
+          "sha256": "sha256:339f16334fa166a3199f7b7bacdf69bfb51daf856a72d7b63b9c16ce7ca03bbc"
+        },
+        {
+          "path": "docs/closure/checkpoints/H02-curation-protocol/risk-summary.md",
+          "present": true,
+          "sha256": "sha256:b4682f45dbf1b4e33ef49c3bb92cf16e5cae895997eef2a740ea9497b1b842ce"
+        },
+        {
+          "path": "docs/closure/checkpoints/H02-curation-protocol/approval-form.md",
+          "present": true,
+          "sha256": "sha256:c589e879a58899021749a13e0e7970c2c69647110eabd45edeaed8f2d22787a7"
+        }
+      ],
+      "note": "every proposed decision is PENDING_REVIEW and the approval form carries no name, date or verdict"
+    },
+    {
+      "approval_form_blank": true,
+      "approved": false,
+      "checkpoint": "H03-claims-boundary",
+      "files": [
+        {
+          "path": "docs/closure/checkpoints/H03-claims-boundary/README.md",
+          "present": true,
+          "sha256": "sha256:ce196f3dbaa72980bcb397166e0971ffab6b11cd4a3778144d1722069049b9a1"
+        },
+        {
+          "path": "docs/closure/checkpoints/H03-claims-boundary/decision-context.md",
+          "present": true,
+          "sha256": "sha256:436f6f2a76cee59da1922559dc909f08e921d822fb24433bea04a3653496fe7b"
+        },
+        {
+          "path": "docs/closure/checkpoints/H03-claims-boundary/evidence-table.csv",
+          "present": true,
+          "sha256": "sha256:f0db93dd0e8e0999330eade7495a0c92281ca47b4cfa31e3423c5d44f593e800"
+        },
+        {
+          "path": "docs/closure/checkpoints/H03-claims-boundary/proposed-decisions.csv",
+          "present": true,
+          "sha256": "sha256:199fe9bafea768be078d10030b2db8518c58304a7a2277b867528d4b810fe70d"
+        },
+        {
+          "path": "docs/closure/checkpoints/H03-claims-boundary/unresolved-questions.md",
+          "present": true,
+          "sha256": "sha256:c1b03fd94585fa36e1286dd3377057245df9cdacaeec8b5ac412e6a7655e0ce3"
+        },
+        {
+          "path": "docs/closure/checkpoints/H03-claims-boundary/risk-summary.md",
+          "present": true,
+          "sha256": "sha256:f61b8dd63a9abb9acc65888d7447b3f2c0ed67eae9f1179f8f31d5bf471e81a6"
+        },
+        {
+          "path": "docs/closure/checkpoints/H03-claims-boundary/approval-form.md",
+          "present": true,
+          "sha256": "sha256:3d366d90867977b416cc681097cdb3981425ef6207808150fa6c356ac76522cd"
+        }
+      ],
+      "note": "every proposed decision is PENDING_REVIEW and the approval form carries no name, date or verdict"
+    }
+  ],
+  "content_hash": "sha256:72a7fabc31de07321c430be2b7bf0b42a4bced2bdc19c59d97652e7b0b4d9c5f",
+  "manifest_version": "pgx-closure-wave-01-manifest/1",
+  "note": "An intact manifest describing a blocked programme is what this wave was supposed to produce. Nothing here approves a source, a protocol, a claim or a release.",
+  "ths6_achieved": false,
+  "verification_run": {
+    "environment": {
+      "implementation": "CPython",
+      "machine": "x86_64",
+      "packages": {
+        "coverage": null,
+        "fastapi": "0.141.1",
+        "httpx": "0.28.1",
+        "jinja2": "3.1.6",
+        "lxml": "6.1.0",
+        "playwright": "present",
+        "psycopg": null,
+        "pydantic": "2.13.3",
+        "sqlalchemy": "2.0.52",
+        "starlette": "1.6.0",
+        "uvicorn": "0.46.0"
+      },
+      "python": "3.11.15",
+      "system": "Linux"
+    },
+    "outcome": "PASS",
+    "summary": {
+      "discovered": 7390,
+      "errored": 0,
+      "executed": 7390,
+      "failed": 0,
+      "not_executed": 0,
+      "passed": 7294,
+      "skipped": 96,
+      "unexplained_skips": 0
+    }
+  },
+  "wave": "EXECUTION WAVE 1",
+  "work_packages": [
+    "WP-C00",
+    "WP-C01",
+    "WP-C03",
+    "WP-C04"
+  ]
+}

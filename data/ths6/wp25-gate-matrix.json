@@ -22,7 +22,7 @@
     "GATE-E",
     "GATE-F"
   ],
-  "disagreement_count": 4,
+  "disagreement_count": 3,
   "failing_gate_ids": [],
   "gate_count": 6,
   "gate_matrix_version": "pgx-wp25-gate-matrix/1",
@@ -1105,7 +1105,7 @@
         {
           "blocking": true,
           "code": "THS6_EVIDENCE_STALE",
-          "detail": "F5: the verification suite's recorded run is not stale (observed 'STALE_EVIDENCE_REJECTED', required == 'FRESH')",
+          "detail": "F5: the verification suite's recorded run is not stale (observed 'VERIFIED', required == 'FRESH')",
           "gate_id": "GATE-F",
           "owner": "verification owner"
         }
@@ -1180,7 +1180,7 @@
           "blocker": {
             "blocking": true,
             "code": "THS6_EVIDENCE_STALE",
-            "detail": "F5: the verification suite's recorded run is not stale (observed 'STALE_EVIDENCE_REJECTED', required == 'FRESH')",
+            "detail": "F5: the verification suite's recorded run is not stale (observed 'VERIFIED', required == 'FRESH')",
             "gate_id": "GATE-F",
             "owner": "verification owner"
           },
@@ -1188,7 +1188,7 @@
           "description": "the verification suite's recorded run is not stale",
           "expected": "== 'FRESH'",
           "met": false,
-          "observed": "'STALE_EVIDENCE_REJECTED'",
+          "observed": "'VERIFIED'",
           "source_field": "run_evidence_status",
           "source_path": "data/verification/wp19-real-gate-status.json"
         }
@@ -1264,18 +1264,6 @@
       "right_field": "wp24_started",
       "right_path": "data/verification/wp19-real-gate-status.json",
       "right_value": true
-    },
-    {
-      "explanation": "WP-19's recorded discovery count is lower than the number of test functions the tree now defines, so the recorded count predates later work packages. A recorded count can legitimately be lower than the defined count only through skips, which reduce execution rather than discovery.",
-      "fact": "how many tests this repository has",
-      "left_field": "discovered_test_count",
-      "left_path": "data/verification/wp19-real-gate-status.json",
-      "left_value": 6374,
-      "owner": "verification owner",
-      "resolution": "recorded; WP-25 does not regenerate another work package's artifact",
-      "right_field": "test functions defined (counted by parsing)",
-      "right_path": "tests/",
-      "right_value": 7323
     }
   ],
   "total_blocker_count": 45

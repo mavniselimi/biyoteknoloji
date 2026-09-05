@@ -71,6 +71,17 @@ söyler; okuyucu dosyayı açıp itiraz edebilir.
    onarmıyor — başka bir çalışma paketinin belgesini düzeltmek bu paketin işi
    değil — ama kaydediyor.
 
+   > **WP-C00 (Yürütme Dalgası 1, bölüm A.6) ile giderildi.** Yukarıdaki
+   > kayıt, WP-25 paketi üretildiği andaki durumu anlatır ve bu nedenle
+   > değiştirilmeden bırakılmıştır. Üretici artık şemanın baştan beri
+   > bildirdiği `"BROWSER_CAPTURED"` değerini yazıyor. Onarım tek bir
+   > örneği değil sınıfı hedefliyor: sözcük dağarcığının tek bir yeri var,
+   > `apps.web.gate_status.SCREENSHOT_EVIDENCE_STATUSES`; üretici, yayımlanan
+   > şema ve testler aynı yerden okuyor. Ayrıca `tests/unit/web/test_snapshots.py`
+   > her koşuda belgeyi kendi şemasına karşı doğruluyor — kimsenin yapmadığı
+   > karşılaştırma buydu. `pgx-ths6 inventory` artık `0` ile çıkıyor ve
+   > `THS6_EVIDENCE_INVALID` bulgusu kapatıldı.
+
 2. **Tanım-tamamlandı madde sayısı uyuşmazlığı.** WP-25'in kendi metni 14
    madde olduğunu söylüyor; `architecture.md` §21 on beş madde sayıyor. Hiçbir
    madde birleştirilmedi, yeniden numaralandırılmadı veya atılmadı: on beşi de

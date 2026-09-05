@@ -63,7 +63,7 @@ token. The static mount checked for directory listing and for path traversal.
 The combined application's served OpenAPI document compared against the
 committed artifact and identical, with no page path in it.
 
-## Browser evidence: CAPTURED
+## Browser evidence: BROWSER_CAPTURED
 
 Seven captures, in `tests/fixtures/wp17/browser/`:
 
@@ -108,12 +108,19 @@ Behaviour the browser established, which nothing else could:
 browser_runtime_available:    true
 managed_browser_launchable:   true
 managed_browser_version:      "141.0.7390.37"
-screenshot_evidence_status:   "CAPTURED"
+screenshot_evidence_status:   "BROWSER_CAPTURED"
 screenshot_evidence_count:    7
 ```
 
 Those are measurements of the host that produced them and change on another
 machine. Regenerating is `python -m apps.web.artifacts`.
+
+The status value read `"CAPTURED"` from WP-17 until WP-C00 section A.6. That
+word was never in the schema this artifact publishes, which admitted only
+`"NONE"` and `"BROWSER_CAPTURED"`, and nothing compared the two until WP-25
+validated the artifact. The measurement is unchanged - seven captures, from a
+real browser, on this host. Only the word changed, and it now has one home:
+`apps.web.gate_status.SCREENSHOT_EVIDENCE_STATUSES`.
 
 ### How availability is decided, and why it needed fixing
 

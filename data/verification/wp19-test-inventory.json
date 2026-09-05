@@ -1,7 +1,7 @@
 {
-  "category_rule_count": 140,
-  "discovered_test_count": 7324,
-  "inventoried_test_count": 7324,
+  "category_rule_count": 142,
+  "discovered_test_count": 7390,
+  "inventoried_test_count": 7390,
   "known_stdout_markers": [
     "CONFIGURATION_FAILURE"
   ],
@@ -12,7 +12,7 @@
   "requirement_registry_version": "pgx-wp19-requirements/1",
   "start_directory": "tests",
   "stdout_note": "Test outcomes come from the test runner's recorded result, never from words found in stdout. Several negative tests print CONFIGURATION_FAILURE on purpose while passing; a CI job that grepped for it would fail a green suite.",
-  "suite_count": 270,
+  "suite_count": 272,
   "suites": [
     {
       "assigned_by": "package-adversarial",
@@ -1507,6 +1507,51 @@
       "test_count": 20,
       "test_id_sha256": "ce3b0760531aa9cf703263a55d7ff487efba821b6691c3f97a0d668444194bf5",
       "work_package": "WP-21"
+    },
+    {
+      "assigned_by": "package-closure",
+      "category": "UNIT",
+      "command": "python -m unittest tests.unit.closure.test_wp_c00_dispositions -v",
+      "criticality": "IMPORTANT",
+      "dependencies": [],
+      "evidence": [
+        "docs/closure/wp-c00-legacy-candidate-dispositions.md",
+        "docs/closure/checkpoints/README.md"
+      ],
+      "module": "tests.unit.closure.test_wp_c00_dispositions",
+      "offline": true,
+      "permitted_skip_reasons": [],
+      "requirements": [],
+      "safety_invariants": [],
+      "skip_policy": "NEVER",
+      "suite_id": "tests.unit.closure.test_wp_c00_dispositions",
+      "synthetic_fixtures": false,
+      "test_count": 35,
+      "test_id_sha256": "439e40148ed9780db3af0813b933a2f4b97592ce20c33a8f165eb1b85be3d99c",
+      "work_package": "WP-C00/WP-C03"
+    },
+    {
+      "assigned_by": "closure-checkpoints",
+      "category": "UNIT",
+      "command": "python -m unittest tests.unit.closure.test_wp_c03_checkpoints -v",
+      "criticality": "IMPORTANT",
+      "dependencies": [
+        "git"
+      ],
+      "evidence": [],
+      "module": "tests.unit.closure.test_wp_c03_checkpoints",
+      "offline": true,
+      "permitted_skip_reasons": [
+        "git metadata"
+      ],
+      "requirements": [],
+      "safety_invariants": [],
+      "skip_policy": "ENVIRONMENT_DEPENDENCY",
+      "suite_id": "tests.unit.closure.test_wp_c03_checkpoints",
+      "synthetic_fixtures": false,
+      "test_count": 27,
+      "test_id_sha256": "5a53917d315454e564395b94ae4c5faf14108af7d2ea5448575ed2852a2ea4a5",
+      "work_package": "WP-C03"
     },
     {
       "assigned_by": "package-curation",
@@ -5714,7 +5759,7 @@
       "suite_id": "tests.unit.ths6.test_cli_and_schemas",
       "synthetic_fixtures": false,
       "test_count": 47,
-      "test_id_sha256": "db6ba328752cb6edd2e760774a762a2ddd76d33828362e82db8c84549bc3aab8",
+      "test_id_sha256": "f2f8a5d0fbe4a31163e32b788a9444d5216e40b73223324d5084d1a8748034e0",
       "work_package": "WP-25"
     },
     {
@@ -5768,7 +5813,7 @@
       "suite_id": "tests.unit.ths6.test_gates_and_dod",
       "synthetic_fixtures": false,
       "test_count": 49,
-      "test_id_sha256": "c181861d629be95c511dba8694ee54864bc7107d80e7e97c34dae8bcfed4376f",
+      "test_id_sha256": "9637df16b07a4f35b11eb3c4c94833c620a7cf7dd3c86847bb0a6449cd6ab118",
       "work_package": "WP-25"
     },
     {
@@ -5821,7 +5866,7 @@
       "suite_id": "tests.unit.ths6.test_registries",
       "synthetic_fixtures": false,
       "test_count": 50,
-      "test_id_sha256": "cb47abb5de366fd8b218513ed34dc2d66ac418e4f3771eb7d0cc7073dd71f348",
+      "test_id_sha256": "427855a33ae63ad0d8538aa09bd00fcaf8ea82d0d09e8f6fb6d4fe10d3bd6a34",
       "work_package": "WP-25"
     },
     {
@@ -6519,8 +6564,8 @@
       "skip_policy": "NEVER",
       "suite_id": "tests.unit.web.test_snapshots",
       "synthetic_fixtures": false,
-      "test_count": 18,
-      "test_id_sha256": "d845b6b53e9ce929b6aae7f31f56069838bd4db2aef4dba84a3fb4625913c965",
+      "test_count": 22,
+      "test_id_sha256": "b722cea6febc7a56a295d54f2d50b3eecbf3e38b6011fd5d2e1f5fe06e17be0d",
       "work_package": "WP-17"
     },
     {

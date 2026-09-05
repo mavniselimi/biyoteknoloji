@@ -2,7 +2,7 @@
   "categories": [
     {
       "category": "UNIT",
-      "module_count": 108,
+      "module_count": 110,
       "modules": [
         "tests.unit.api.test_wp16_documentation",
         "tests.unit.application.test_assessment_cli",
@@ -18,6 +18,8 @@
         "tests.unit.application.test_report_cli",
         "tests.unit.application.test_rollback",
         "tests.unit.benchmark.test_cli",
+        "tests.unit.closure.test_wp_c00_dispositions",
+        "tests.unit.closure.test_wp_c03_checkpoints",
         "tests.unit.curation.test_conflict_and_insufficiency",
         "tests.unit.curation.test_curation_boundaries",
         "tests.unit.curation.test_curation_protocol_cli",
@@ -114,8 +116,8 @@
         "tests.unit.web.test_wp17_boundaries"
       ],
       "static_outcome": "BLOCKED",
-      "test_count": 3101,
-      "test_id_sha256": "7452aa6a5c7b1248ebb95612fd0061e940239a4b234d18761d7c81529ebf9ecc"
+      "test_count": 3163,
+      "test_id_sha256": "88540f9ec2bf34ca4e6c4cf63e252e822ba7b221e784aeb0cc1773b625003d7c"
     },
     {
       "category": "DOMAIN_INVARIANT",
@@ -285,8 +287,8 @@
         "tests.unit.web.test_snapshots"
       ],
       "static_outcome": "BLOCKED",
-      "test_count": 248,
-      "test_id_sha256": "2d94874cf47e0ae10261e28d1c7402b7fc1d6241a1ff0d166ab6cf4ae9aa31a3"
+      "test_count": 252,
+      "test_id_sha256": "3920afa2b5744cc4a26ad93c7d7463031a642769df61bfb116dcbbe1de991ccd"
     },
     {
       "category": "ARTIFACT_SCHEMA",
@@ -314,7 +316,7 @@
       ],
       "static_outcome": "BLOCKED",
       "test_count": 575,
-      "test_id_sha256": "6d0caac7cd730a5e641cea82c08f43fe07791a4f7fe3536799426bbe27460b64"
+      "test_id_sha256": "cc2f2c02b7789e23a96f1dd5f87d47d6448176f38fcae04c9e4dc9de5a2c2b44"
     },
     {
       "category": "REPRODUCIBILITY",
@@ -400,7 +402,7 @@
       ],
       "static_outcome": "BLOCKED",
       "test_count": 751,
-      "test_id_sha256": "b061febd0e5ff0ad2e0f4c579e8583b9922bbe80d6c76be8bfbdebc410e5ef60"
+      "test_id_sha256": "8e0e0bc3b88f7bbaaaaaa4f9bbf7d036603ddfa884217ac209ec6a7f1b5d025c"
     },
     {
       "category": "OFFLINE_INDEPENDENCE",
@@ -894,8 +896,8 @@
         "tests.integration.web"
       ],
       "source": "docs/architecture/wp17-server-rendered-web.md",
-      "test_count": 328,
-      "test_id_sha256": "a26011f3b4eb5646b89e5157011eee616a33496496c5b3095447909df65bd4f0",
+      "test_count": 332,
+      "test_id_sha256": "70d527ad8ca2844604d637871c49ed76943398634e322b2e6204aa57d71498e7",
       "title": "Every rendered page carries the clinical warning, and access is refused where it must be",
       "work_packages": [
         "WP-17"
@@ -1510,7 +1512,7 @@
       ],
       "source": "architecture.md sections 20 and 21; docs/ths6/final/README.md; docs/ths6/final/vocabulary.md",
       "test_count": 325,
-      "test_id_sha256": "6a85f8d3273995273bc682b456dc6206c1fe5be8a0edec9fd97c6f226abfacb6",
+      "test_id_sha256": "0282f49880bd4173733eed23b04b8eece96080c94600504c04335729940606b3",
       "title": "The evidence pack reports what this programme has, and no output can be read as a standard it has not achieved",
       "work_packages": [
         "WP-25"
@@ -1603,6 +1605,8 @@
   "unmapped_critical_modules": [],
   "unmapped_safety_invariants": [],
   "unmapped_supporting_modules": [
+    "tests.unit.closure.test_wp_c00_dispositions",
+    "tests.unit.closure.test_wp_c03_checkpoints",
     "tests.unit.engine.test_wp12_documentation",
     "tests.unit.engine.test_wp13_documentation",
     "tests.unit.engine.test_wp14_documentation"

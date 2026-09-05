@@ -1,0 +1,43 @@
+source_key,registry_role,registry_status,researched,scientific_authority,licence_identifier_found,verification_level,read_from,verification_gap,conflict_code,reuse_dimensions_supported,reuse_dimensions_unknown,current_acquisition_mode
+aha.publications,PRIMARY_GUIDELINE,PENDING_REVIEW,NOT_RESEARCHED_THIS_WAVE,NOT_ASSESSED,UNKNOWN,NOT_ATTEMPTED,,,,0,10,NOT_DETERMINED
+ausnz.publications,PRIMARY_GUIDELINE,PENDING_REVIEW,NOT_RESEARCHED_THIS_WAVE,NOT_ASSESSED,UNKNOWN,NOT_ATTEMPTED,,,,0,10,NOT_DETERMINED
+clinpgx.api,SUPPORTING_ANNOTATION,PENDING_REVIEW,RESEARCHED,SUPPORTING_ANNOTATION_RESOURCE,UNKNOWN,NOT_ESTABLISHED,"no API-specific terms document was located; the site statement addresses data, not the service","the API terms are a separate document from the website terms and were not found. The evidence build already in this repository was acquired through this API, which makes the question retrospective as well as prospective.",MATERIAL_ALREADY_ACQUIRED_UNDER_UNDETERMINED_TERMS,0,10,NOT_DETERMINED
+clinpgx.website,SUPPORTING_ANNOTATION,PENDING_REVIEW,RESEARCHED,SUPPORTING_ANNOTATION_RESOURCE,CC-BY-SA-4.0 WITH AN INCOMPATIBLE OVERLAY,READ_FROM_THE_PROVIDERS_OWN_PAGE,"the site's own data-usage statement, which names CC-BY-SA-4.0 and, in the same statement, restricts use to research purposes and forbids sale",,LICENCE_CONTRADICTS_ITS_OWN_USE_RESTRICTION,2,8,NOT_DETERMINED
+cpic.api,PRIMARY_GUIDELINE,PENDING_REVIEW,RESEARCHED,PRIMARY_GUIDELINE_BODY,CC0-1.0,INHERITED_FROM_THE_DATABASE_LICENCE,the same CPIC data licence; the API serves the database this licence covers,"the API's own terms of use, as distinct from the data licence, were not located. Terms for an interface and terms for its content are different documents and are not assumed to agree.",,3,7,NOT_DETERMINED
+cpic.database,PRIMARY_GUIDELINE,PENDING_REVIEW,RESEARCHED,PRIMARY_GUIDELINE_BODY,CC0-1.0,READ_FROM_DISTRIBUTION_NOT_FROM_THE_LIVE_POLICY_PAGE,"the LICENSE.md file in the cpicpgx/cpic-data repository, which is the distribution CPIC publishes its database from","the live data-usage policy page is a client-rendered application and did not render to readable text, so the CC0 declaration is confirmed from the distribution CPIC publishes rather than from the policy page itself. A human should confirm the policy page agrees.",,9,1,NOT_DETERMINED
+cpic.publications,PRIMARY_GUIDELINE,PENDING_REVIEW,RESEARCHED,PRIMARY_GUIDELINE_BODY,UNKNOWN,NOT_ESTABLISHED,"CPIC guidelines are published in journals whose terms are the publisher's, not CPIC's; no single licence covers the set","each guideline would have to be checked against its own publisher. The project does not need the publication text if it uses the database, which is why this is proposed for deferral rather than research.",,0,10,NOT_DETERMINED
+cpnds.publications,PRIMARY_GUIDELINE,PENDING_REVIEW,NOT_RESEARCHED_THIS_WAVE,NOT_ASSESSED,UNKNOWN,NOT_ATTEMPTED,,,,0,10,NOT_DETERMINED
+dpwg.knmp,PRIMARY_GUIDELINE,PENDING_REVIEW,RESEARCHED,PRIMARY_GUIDELINE_BODY,UNKNOWN,SEARCHED_AND_NOT_FOUND,no licence or reuse statement is published for the DPWG recommendations by KNMP,"absence of a statement is not permission. The machine-readable form of these recommendations reaches most consumers through the G-Standaard, which is licensed commercially by Z-Index and whose terms prohibit reproduction.",AUTHORITATIVE_BUT_NO_STATED_TERMS,0,10,NOT_DETERMINED
+druglabel.ema,PRIMARY_GUIDELINE,PENDING_REVIEW,NOT_RESEARCHED_THIS_WAVE,NOT_ASSESSED,UNKNOWN,NOT_ATTEMPTED,,,,0,10,NOT_DETERMINED
+druglabel.fda,PRIMARY_GUIDELINE,PENDING_REVIEW,RESEARCHED,REGULATOR,"CC0-1.0 FOR THE API, UNKNOWN FOR THE LABEL TEXT",READ_FROM_THE_PROVIDERS_OWN_TERMS,"openFDA publishes its data under CC0; the label text it serves is written by the manufacturer, and NLM's own guidance warns that third-party copyright may subsist in it",17 U.S.C. 105 removes copyright from works of the United States government. A label authored by a sponsor and filed with the agency is not obviously such a work. The API terms and the content status are different questions and only the first is answered.,OPEN_API_TERMS_OVER_POSSIBLY_COPYRIGHTED_CONTENT,4,6,NOT_DETERMINED
+druglabel.hcsc,PRIMARY_GUIDELINE,PENDING_REVIEW,NOT_RESEARCHED_THIS_WAVE,NOT_ASSESSED,UNKNOWN,NOT_ATTEMPTED,,,,0,10,NOT_DETERMINED
+druglabel.pmda,PRIMARY_GUIDELINE,PENDING_REVIEW,NOT_RESEARCHED_THIS_WAVE,NOT_ASSESSED,UNKNOWN,NOT_ATTEMPTED,,,,0,10,NOT_DETERMINED
+druglabel.swissmedic,PRIMARY_GUIDELINE,PENDING_REVIEW,NOT_RESEARCHED_THIS_WAVE,NOT_ASSESSED,UNKNOWN,NOT_ATTEMPTED,,,,0,10,NOT_DETERMINED
+druglabel.titck,PRIMARY_GUIDELINE,PENDING_REVIEW,RESEARCHED,REGULATOR,UNKNOWN,RETRIEVAL_FAILED,none retrieved,"every attempt to reach the site failed before any document was read: the robots policy itself returned a server error or timed out. With no readable robots policy there is no robots-compliant automated route, and no terms document was seen at all.",REQUIRED_FOR_JURISDICTION_BUT_UNREACHABLE,0,10,NOT_DETERMINED
+internal.legacy_mvp_seed,INTERNAL_SYSTEM,PENDING_REVIEW,NOT_RESEARCHED_THIS_WAVE,NOT_ASSESSED,UNKNOWN,NOT_ATTEMPTED,,,,0,10,INTERNAL_DERIVATION
+internal.legacy_probe_outputs,INTERNAL_SYSTEM,PENDING_REVIEW,NOT_RESEARCHED_THIS_WAVE,NOT_ASSESSED,UNKNOWN,NOT_ATTEMPTED,,,,0,10,INTERNAL_DERIVATION
+internal.manual_normalization,INTERNAL_SYSTEM,PENDING_REVIEW,NOT_RESEARCHED_THIS_WAVE,NOT_ASSESSED,UNKNOWN,NOT_ATTEMPTED,,,,0,10,INTERNAL_DERIVATION
+pubmed.literature,REFERENCE_ONLY,PENDING_REVIEW,NOT_RESEARCHED_THIS_WAVE,NOT_ASSESSED,UNKNOWN,NOT_ATTEMPTED,,,,0,10,NOT_DETERMINED
+rnpgx.publications,PRIMARY_GUIDELINE,PENDING_REVIEW,NOT_RESEARCHED_THIS_WAVE,NOT_ASSESSED,UNKNOWN,NOT_ATTEMPTED,,,,0,10,NOT_DETERMINED
+
+source_key,first_release_axis,coverage
+cpic.database,CYP2C19::amitriptyline,STATED
+cpic.database,CYP2C19::clopidogrel,STATED
+cpic.database,CYP2C19::omeprazole,STATED
+cpic.database,CYP2D6::amitriptyline,STATED
+cpic.database,CYP2D6::codeine,STATED
+dpwg.knmp,CYP2C19::amitriptyline,STATED
+dpwg.knmp,CYP2C19::clopidogrel,STATED
+dpwg.knmp,CYP2C19::omeprazole,STATED
+dpwg.knmp,CYP2D6::amitriptyline,STATED
+dpwg.knmp,CYP2D6::codeine,STATED
+druglabel.fda,CYP2C19::amitriptyline,ABSENT
+druglabel.fda,CYP2C19::clopidogrel,STATED_BOXED_WARNING
+druglabel.fda,CYP2C19::omeprazole,STATED
+druglabel.fda,CYP2D6::amitriptyline,STATED
+druglabel.fda,CYP2D6::codeine,STATED_BOXED_WARNING
+druglabel.titck,CYP2C19::amitriptyline,UNKNOWN
+druglabel.titck,CYP2C19::clopidogrel,UNKNOWN
+druglabel.titck,CYP2C19::omeprazole,UNKNOWN
+druglabel.titck,CYP2D6::amitriptyline,UNKNOWN
+druglabel.titck,CYP2D6::codeine,UNKNOWN

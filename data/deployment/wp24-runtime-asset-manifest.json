@@ -23,7 +23,7 @@
       "present": true,
       "reason": "the API gate status the system page reports",
       "required": true,
-      "sha256": "sha256:c55c7c5fc82f8e44efdf8fa77164180d1ea37dc776eed02a8428e2a83dd3d961"
+      "sha256": "sha256:05a171a81ba2c5175263ab5e4c31e7e3276c98b3d3094a4fe0d65702bec5efaf"
     },
     {
       "matches_pinned": null,
@@ -31,15 +31,15 @@
       "present": true,
       "reason": "the interface gate status the system page reports",
       "required": true,
-      "sha256": "sha256:9bec2dee39fba051eea4c478d0aeef818823e4d45eef02adeb7db09369c17b44"
+      "sha256": "sha256:22cc917ba5e8e7f872cd9d0e12f24af6752e17332f367e6263380e8a29aba2ba"
     },
     {
       "matches_pinned": null,
       "path": "data/api/wp16-runtime-verification.json",
-      "present": false,
+      "present": true,
       "reason": "the recorded ASGI runtime evidence the OpenAPI document reflects. Optional because it is written only when the runtime suite actually runs; its absence makes the served document report itself unverified, which is the truthful answer and not a broken image",
       "required": false,
-      "sha256": null
+      "sha256": "sha256:392ceb2f9908396e7a42f4c0e9695ff2cc9aa7903ca4a1c5245c3c2bc11324b5"
     },
     {
       "matches_pinned": null,
@@ -128,7 +128,7 @@
     ".sql.gz",
     ".dump"
   ],
-  "manifest_hash": "sha256:239801e551794f74a9928a8d20fb317def6c66175ef90af66dd1f52b36de0ba0",
+  "manifest_hash": "sha256:2662e9eba2835a2dfc87d2bd0c75bea2b92b57db3d844d188f78d262c5d626b9",
   "missing_required": [],
   "note": "An allowlist of files, never a directory. A directory is a promise about what somebody will remember not to put in it.",
   "runtime_asset_manifest_version": "pgx-wp24-runtime-asset-manifest/1",

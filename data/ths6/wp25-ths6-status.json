@@ -1,5 +1,5 @@
 {
-  "admissible_evidence_count": 17,
+  "admissible_evidence_count": 18,
   "blocker_owners": [
     "clinical safety authority",
     "curation lead",
@@ -44,7 +44,7 @@
   "release_may_proceed": false,
   "signed_signoff_count": 0,
   "signoff_role_count": 9,
-  "source_artifact_disagreement_count": 4,
+  "source_artifact_disagreement_count": 3,
   "supported_claim_count": 0,
   "ths6_achieved": false,
   "ths6_achievement_conditions": {

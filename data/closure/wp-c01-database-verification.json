@@ -1,0 +1,123 @@
+{
+  "content_hash": "sha256:898da6b497f6bbabac81291e76ee14ace02466dcfbe40d14fb4427b8b0bbe3a6",
+  "environment": {
+    "connection": "local unix socket, trust authentication, dedicated development database; no password exists and none is recorded",
+    "host_class": "EPHEMERAL_CLOUD_DEVELOPMENT_CONTAINER",
+    "implementation": "CPython",
+    "machine": "x86_64",
+    "python": "3.11.15",
+    "server": "PostgreSQL 16.13 (Ubuntu 16.13-0ubuntu0.24.04.1) on x86_64-pc-linux-gnu",
+    "server_kind": "REAL_POSTGRESQL",
+    "system": "Linux"
+  },
+  "execution": {
+    "alembic_version_head": "0011_wp23_auth_audit",
+    "method": "ALEMBIC_OFFLINE_SQL_APPLIED_BY_PSQL",
+    "method_note": "No Python PostgreSQL driver could be installed in this environment - the configuration requires postgresql+psycopg and neither the package index nor the distribution archive is reachable - so the migrations were rendered with `alembic upgrade head --sql` and executed by psql against the real server. The DDL is Alembic's own and every statement ran; what this does not exercise is the application connecting through SQLAlchemy, which stays unverified and is reported as such.",
+    "migration_count": 11,
+    "migrations_applied": [
+      "0001_wp02_foundation",
+      "0002_wp03_release_registry",
+      "0003_wp05_source_policy",
+      "0004_wp06_raw_snapshots",
+      "0005_wp07_canonicalization",
+      "0006_wp08_evidence_store",
+      "0007_wp10_curation_workflow",
+      "0008_wp11_rules_and_rulesets",
+      "0009_wp14_assessments",
+      "0010_wp22_expert_reviews",
+      "0011_wp23_auth_audit"
+    ],
+    "psql_exit_code": 0,
+    "rendered_sql_lines": 2689,
+    "rendered_sql_sha256": "sha256:8b14b9dfca7358e0bdc363e4b9bd589b516d559d1b49d2fc594d2247d00e54dc"
+  },
+  "not_verified": [
+    "the application connecting to PostgreSQL through SQLAlchemy - no psycopg driver is installable here",
+    "audit-chain persistence and verification against a real database - needs the application connection",
+    "transaction paths through the unit of work - needs the application connection",
+    "any behaviour of the running API against this database"
+  ],
+  "note": "What ran, ran: a real PostgreSQL server, the project's own migrations, all eleven, to head. What did not run is listed rather than omitted. This artifact records a development container's database, not a deployment.",
+  "orm_metadata_drift": {
+    "column_drift_count": 22,
+    "columns_in_database_without_orm_declaration": {
+      "drug_aliases": [
+        "review_note",
+        "reviewed_at",
+        "reviewed_by",
+        "status"
+      ],
+      "evidence_records": [
+        "evidence_build_id",
+        "evidence_content_hash",
+        "finalized_at",
+        "natural_key",
+        "origin_source_id",
+        "origin_source_status",
+        "production_eligible",
+        "raw_origin_value",
+        "record_type",
+        "record_type_mapping_status",
+        "source_object_class",
+        "source_payload_hash",
+        "source_record_id_raw_type",
+        "source_record_version_status"
+      ],
+      "gene_aliases": [
+        "review_note",
+        "reviewed_at",
+        "reviewed_by",
+        "status"
+      ]
+    },
+    "finding": "`migrations/env.py` declares target_metadata from three modules, which between them map 44 tables. The database the same migrations build has 64 tables plus alembic_version. The 20 undeclared ones are WP-05 through WP-08 - source policy, raw snapshots, canonicalization and the evidence store - which were written as hand-authored migrations with no ORM module anywhere in pgx/infrastructure/db/. The 22 undeclared columns were added to three mapped tables by later migrations without updating the model. `alembic revision --autogenerate` run against this database would therefore propose dropping 20 tables and 22 columns. env.py's own comment names this hazard and says WP-22's and WP-23's tables were added to the list for exactly this reason; WP-05 through WP-08 were not.",
+    "resolution": "Reported, not repaired. Writing 20 table definitions is new architecture and is outside Execution Wave 1. Until it is done, autogenerate must not be trusted against this schema.",
+    "table_drift_count": 20,
+    "tables_in_database_without_orm_declaration": [
+      "canonical_build_entities",
+      "canonical_builds",
+      "dataset_publication_evaluations",
+      "duplicate_group_members",
+      "duplicate_groups",
+      "evidence_builds",
+      "evidence_drugs",
+      "evidence_genes",
+      "evidence_import_issues",
+      "evidence_provenance",
+      "evidence_publications",
+      "evidence_text_fragments",
+      "publication_references",
+      "raw_artifacts",
+      "raw_snapshots",
+      "resolution_queue_items",
+      "source_conflicts",
+      "source_policies",
+      "source_policy_evidence",
+      "source_policy_reviews"
+    ]
+  },
+  "schema": {
+    "constraints_by_type": {
+      "check": 344,
+      "foreign_key": 82,
+      "primary_key": 65,
+      "trigger": 1,
+      "unique": 69
+    },
+    "declared_column_count": 537,
+    "declared_columns_missing_from_database": {},
+    "declared_columns_present": 537,
+    "declared_table_count": 44,
+    "declared_tables_missing_from_database": [],
+    "declared_tables_present": 44,
+    "live_column_count": 816,
+    "live_index_count": 225,
+    "live_table_count": 65,
+    "live_table_count_excluding_alembic": 64
+  },
+  "schema_version": "pgx-wpc01-database-verification/1",
+  "verified": true,
+  "verified_at": "2026-09-05T22:25:32Z",
+  "work_package": "WP-C01"
+}

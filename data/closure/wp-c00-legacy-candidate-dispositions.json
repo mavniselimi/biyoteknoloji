@@ -1,0 +1,2223 @@
+{
+  "candidates": [
+    {
+      "axis": "CYP2C19::amitriptyline",
+      "blocker_codes": [
+        "CURATION_NOT_CURATED",
+        "DATASET_NOT_PUBLISHED",
+        "EVIDENCE_BUILD_QUARANTINED",
+        "LEGACY_SEVERITY_IS_NOT_AN_OUTCOME",
+        "NO_APPROVAL_ENVELOPE",
+        "NO_APPROVED_REVISION",
+        "NO_EVIDENCE_LINK",
+        "PROTOCOL_NOT_APPROVED"
+      ],
+      "candidate_id": "LRC-CWI-LEGACY-000835a2ce3e2726",
+      "curation_status": "RAW",
+      "disposition": "MISSING_EVIDENCE_REQUIRES_CURATOR",
+      "disposition_basis": [
+        "origin resolves in clinpgx_mvp_seed/phenotype_effect_rules.csv and its content hash still matches the migration",
+        "names no upstream record identifier, so no exact lookup is possible and no link may be guessed",
+        "gene-drug axis is in the first release, so the candidate stays open and blocked on a curator"
+      ],
+      "drug_canonical_key": "DRUG:amitriptyline",
+      "duplicate_of_proposal_id": null,
+      "eligible_for_rule_creation": false,
+      "gene_canonical_key": "GENE:CYP2C19",
+      "human_action_required": "A curator sources evidence for this axis under an approved source policy and writes a revision citing it. No machine can supply the missing citation.",
+      "in_first_release_scope": true,
+      "legacy_proposal_id": "MIGRATION-PROPOSAL-17017304dde650fe",
+      "legacy_values_present": [
+        "demo_risk_level",
+        "drug_behavior_hint",
+        "effect_direction",
+        "evidence_strength",
+        "normalized_phenotype_group",
+        "plain_language_mvp",
+        "risk_meaning",
+        "usable_for_mvp"
+      ],
+      "migration_issue": {
+        "detail": "no evidence record in this build carries the source record id this legacy row names, so the proposal is left unlinked rather than attached to a plausible neighbour",
+        "issue": "UNLINKED_LEGACY_PROPOSAL"
+      },
+      "origin": {
+        "ast_path": null,
+        "line_number": null,
+        "origin_file_present": true,
+        "origin_file_sha256_matches_migration": true,
+        "origin_row_annotation_id": "",
+        "origin_row_source_container": "manual_normalization_from_clinpgx_outputs",
+        "pointer_kind": "CSV_ROW",
+        "pointer_resolves": true,
+        "relative_path": "clinpgx_mvp_seed/phenotype_effect_rules.csv",
+        "resolved_subject": "CYP2C19::amitriptyline",
+        "row_number": 2045
+      },
+      "subject": "CYP2C19::amitriptyline",
+      "upstream_record": {
+        "declared_record_uuids": [],
+        "exact_evidence_record_uuids": [],
+        "exact_match_count": 0,
+        "lookup_performed": false,
+        "names_upstream_record": false,
+        "upstream_record_id": null,
+        "upstream_record_id_source": null
+      },
+      "work_item_id": "CWI-LEGACY-000835a2ce3e2726"
+    },
+    {
+      "axis": "CYP2D6::tamoxifen",
+      "blocker_codes": [
+        "CURATION_NOT_CURATED",
+        "DATASET_NOT_PUBLISHED",
+        "EVIDENCE_BUILD_QUARANTINED",
+        "NO_APPROVAL_ENVELOPE",
+        "NO_APPROVED_REVISION",
+        "NO_EVIDENCE_LINK",
+        "PROTOCOL_NOT_APPROVED"
+      ],
+      "candidate_id": "LRC-CWI-LEGACY-02d3178dfca393e4",
+      "curation_status": "RAW",
+      "disposition": "OUTSIDE_FIRST_RELEASE_SCOPE",
+      "disposition_basis": [
+        "origin resolves in clean_mvp_seed_dataset.py and its content hash still matches the migration",
+        "names no upstream record identifier, so no exact lookup is possible and no link may be guessed",
+        "gene-drug axis is not one of the five in the first release"
+      ],
+      "drug_canonical_key": "DRUG:tamoxifen",
+      "duplicate_of_proposal_id": null,
+      "eligible_for_rule_creation": false,
+      "gene_canonical_key": "GENE:CYP2D6",
+      "human_action_required": "None in this release. The item is carried forward untouched and is reconsidered when its axis enters scope.",
+      "in_first_release_scope": false,
+      "legacy_proposal_id": "MIGRATION-PROPOSAL-c0c7b61b2fc3bcba",
+      "legacy_values_present": [
+        "manual_drug_behavior",
+        "manual_effect_direction",
+        "manual_phenotypes",
+        "manual_plain_language",
+        "manual_risk_level",
+        "manual_risk_meaning"
+      ],
+      "migration_issue": {
+        "detail": "no evidence record in this build carries the source record id this legacy row names, so the proposal is left unlinked rather than attached to a plausible neighbour",
+        "issue": "UNLINKED_LEGACY_PROPOSAL"
+      },
+      "origin": {
+        "ast_path": "MANUAL_EFFECT_HINTS",
+        "line_number": 64,
+        "origin_file_present": true,
+        "origin_file_sha256_matches_migration": true,
+        "origin_line_text_contains_ast_path": true,
+        "pointer_kind": "PYTHON_AST",
+        "pointer_resolves": true,
+        "relative_path": "clean_mvp_seed_dataset.py",
+        "resolved_subject": null,
+        "row_number": null
+      },
+      "subject": "CYP2D6::tamoxifen",
+      "upstream_record": {
+        "declared_record_uuids": [],
+        "exact_evidence_record_uuids": [],
+        "exact_match_count": 0,
+        "lookup_performed": false,
+        "names_upstream_record": false,
+        "upstream_record_id": null,
+        "upstream_record_id_source": null
+      },
+      "work_item_id": "CWI-LEGACY-02d3178dfca393e4"
+    },
+    {
+      "axis": "CYP2C19::clopidogrel",
+      "blocker_codes": [
+        "CURATION_NOT_CURATED",
+        "DATASET_NOT_PUBLISHED",
+        "EVIDENCE_BUILD_QUARANTINED",
+        "LEGACY_SEVERITY_IS_NOT_AN_OUTCOME",
+        "NO_APPROVAL_ENVELOPE",
+        "NO_APPROVED_REVISION",
+        "NO_EVIDENCE_LINK",
+        "PROTOCOL_NOT_APPROVED"
+      ],
+      "candidate_id": "LRC-CWI-LEGACY-1158c02e4f60b55e",
+      "curation_status": "RAW",
+      "disposition": "MISSING_EVIDENCE_REQUIRES_CURATOR",
+      "disposition_basis": [
+        "origin resolves in clinpgx_mvp_seed/phenotype_effect_rules.csv and its content hash still matches the migration",
+        "names no upstream record identifier, so no exact lookup is possible and no link may be guessed",
+        "gene-drug axis is in the first release, so the candidate stays open and blocked on a curator"
+      ],
+      "drug_canonical_key": "DRUG:clopidogrel",
+      "duplicate_of_proposal_id": null,
+      "eligible_for_rule_creation": false,
+      "gene_canonical_key": "GENE:CYP2C19",
+      "human_action_required": "A curator sources evidence for this axis under an approved source policy and writes a revision citing it. No machine can supply the missing citation.",
+      "in_first_release_scope": true,
+      "legacy_proposal_id": "MIGRATION-PROPOSAL-fe54be4e79e5be45",
+      "legacy_values_present": [
+        "demo_risk_level",
+        "drug_behavior_hint",
+        "effect_direction",
+        "evidence_strength",
+        "normalized_phenotype_group",
+        "plain_language_mvp",
+        "risk_meaning",
+        "usable_for_mvp"
+      ],
+      "migration_issue": {
+        "detail": "no evidence record in this build carries the source record id this legacy row names, so the proposal is left unlinked rather than attached to a plausible neighbour",
+        "issue": "UNLINKED_LEGACY_PROPOSAL"
+      },
+      "origin": {
+        "ast_path": null,
+        "line_number": null,
+        "origin_file_present": true,
+        "origin_file_sha256_matches_migration": true,
+        "origin_row_annotation_id": "",
+        "origin_row_source_container": "manual_normalization_from_clinpgx_outputs",
+        "pointer_kind": "CSV_ROW",
+        "pointer_resolves": true,
+        "relative_path": "clinpgx_mvp_seed/phenotype_effect_rules.csv",
+        "resolved_subject": "CYP2C19::clopidogrel",
+        "row_number": 2136
+      },
+      "subject": "CYP2C19::clopidogrel",
+      "upstream_record": {
+        "declared_record_uuids": [],
+        "exact_evidence_record_uuids": [],
+        "exact_match_count": 0,
+        "lookup_performed": false,
+        "names_upstream_record": false,
+        "upstream_record_id": null,
+        "upstream_record_id_source": null
+      },
+      "work_item_id": "CWI-LEGACY-1158c02e4f60b55e"
+    },
+    {
+      "axis": "CYP2C9::warfarin",
+      "blocker_codes": [
+        "CURATION_NOT_CURATED",
+        "DATASET_NOT_PUBLISHED",
+        "EVIDENCE_BUILD_QUARANTINED",
+        "LEGACY_SEVERITY_IS_NOT_AN_OUTCOME",
+        "NO_APPROVAL_ENVELOPE",
+        "NO_APPROVED_REVISION",
+        "NO_EVIDENCE_LINK",
+        "PROTOCOL_NOT_APPROVED"
+      ],
+      "candidate_id": "LRC-CWI-LEGACY-117307209b246a75",
+      "curation_status": "RAW",
+      "disposition": "OUTSIDE_FIRST_RELEASE_SCOPE",
+      "disposition_basis": [
+        "origin resolves in clinpgx_mvp_seed/phenotype_effect_rules.csv and its content hash still matches the migration",
+        "names no upstream record identifier, so no exact lookup is possible and no link may be guessed",
+        "gene-drug axis is not one of the five in the first release"
+      ],
+      "drug_canonical_key": "DRUG:warfarin",
+      "duplicate_of_proposal_id": null,
+      "eligible_for_rule_creation": false,
+      "gene_canonical_key": "GENE:CYP2C9",
+      "human_action_required": "None in this release. The item is carried forward untouched and is reconsidered when its axis enters scope.",
+      "in_first_release_scope": false,
+      "legacy_proposal_id": "MIGRATION-PROPOSAL-f8503b565983290a",
+      "legacy_values_present": [
+        "demo_risk_level",
+        "drug_behavior_hint",
+        "effect_direction",
+        "evidence_strength",
+        "normalized_phenotype_group",
+        "plain_language_mvp",
+        "risk_meaning",
+        "usable_for_mvp"
+      ],
+      "migration_issue": {
+        "detail": "no evidence record in this build carries the source record id this legacy row names, so the proposal is left unlinked rather than attached to a plausible neighbour",
+        "issue": "UNLINKED_LEGACY_PROPOSAL"
+      },
+      "origin": {
+        "ast_path": null,
+        "line_number": null,
+        "origin_file_present": true,
+        "origin_file_sha256_matches_migration": true,
+        "origin_row_annotation_id": "",
+        "origin_row_source_container": "manual_normalization_from_clinpgx_outputs",
+        "pointer_kind": "CSV_ROW",
+        "pointer_resolves": true,
+        "relative_path": "clinpgx_mvp_seed/phenotype_effect_rules.csv",
+        "resolved_subject": "CYP2C9::warfarin",
+        "row_number": 2356
+      },
+      "subject": "CYP2C9::warfarin",
+      "upstream_record": {
+        "declared_record_uuids": [],
+        "exact_evidence_record_uuids": [],
+        "exact_match_count": 0,
+        "lookup_performed": false,
+        "names_upstream_record": false,
+        "upstream_record_id": null,
+        "upstream_record_id_source": null
+      },
+      "work_item_id": "CWI-LEGACY-117307209b246a75"
+    },
+    {
+      "axis": "CYP2C19::sertraline",
+      "blocker_codes": [
+        "CURATION_NOT_CURATED",
+        "DATASET_NOT_PUBLISHED",
+        "EVIDENCE_BUILD_QUARANTINED",
+        "LEGACY_SEVERITY_IS_NOT_AN_OUTCOME",
+        "NO_APPROVAL_ENVELOPE",
+        "NO_APPROVED_REVISION",
+        "NO_EVIDENCE_LINK",
+        "PROTOCOL_NOT_APPROVED"
+      ],
+      "candidate_id": "LRC-CWI-LEGACY-180614f7d9a24844",
+      "curation_status": "RAW",
+      "disposition": "OUTSIDE_FIRST_RELEASE_SCOPE",
+      "disposition_basis": [
+        "origin resolves in clinpgx_mvp_seed/phenotype_effect_rules.csv and its content hash still matches the migration",
+        "names no upstream record identifier, so no exact lookup is possible and no link may be guessed",
+        "gene-drug axis is not one of the five in the first release"
+      ],
+      "drug_canonical_key": "DRUG:sertraline",
+      "duplicate_of_proposal_id": null,
+      "eligible_for_rule_creation": false,
+      "gene_canonical_key": "GENE:CYP2C19",
+      "human_action_required": "None in this release. The item is carried forward untouched and is reconsidered when its axis enters scope.",
+      "in_first_release_scope": false,
+      "legacy_proposal_id": "MIGRATION-PROPOSAL-354cc53daf69da5b",
+      "legacy_values_present": [
+        "demo_risk_level",
+        "drug_behavior_hint",
+        "effect_direction",
+        "evidence_strength",
+        "normalized_phenotype_group",
+        "plain_language_mvp",
+        "risk_meaning",
+        "usable_for_mvp"
+      ],
+      "migration_issue": {
+        "detail": "no evidence record in this build carries the source record id this legacy row names, so the proposal is left unlinked rather than attached to a plausible neighbour",
+        "issue": "UNLINKED_LEGACY_PROPOSAL"
+      },
+      "origin": {
+        "ast_path": null,
+        "line_number": null,
+        "origin_file_present": true,
+        "origin_file_sha256_matches_migration": true,
+        "origin_row_annotation_id": "",
+        "origin_row_source_container": "manual_normalization_from_clinpgx_outputs",
+        "pointer_kind": "CSV_ROW",
+        "pointer_resolves": true,
+        "relative_path": "clinpgx_mvp_seed/phenotype_effect_rules.csv",
+        "resolved_subject": "CYP2C19::sertraline",
+        "row_number": 2162
+      },
+      "subject": "CYP2C19::sertraline",
+      "upstream_record": {
+        "declared_record_uuids": [],
+        "exact_evidence_record_uuids": [],
+        "exact_match_count": 0,
+        "lookup_performed": false,
+        "names_upstream_record": false,
+        "upstream_record_id": null,
+        "upstream_record_id_source": null
+      },
+      "work_item_id": "CWI-LEGACY-180614f7d9a24844"
+    },
+    {
+      "axis": "CYP2D6::amitriptyline",
+      "blocker_codes": [
+        "CURATION_NOT_CURATED",
+        "DATASET_NOT_PUBLISHED",
+        "EVIDENCE_BUILD_QUARANTINED",
+        "NO_APPROVAL_ENVELOPE",
+        "NO_APPROVED_REVISION",
+        "NO_EVIDENCE_LINK",
+        "PROTOCOL_NOT_APPROVED"
+      ],
+      "candidate_id": "LRC-CWI-LEGACY-183f51ceb9eb09b3",
+      "curation_status": "RAW",
+      "disposition": "MISSING_EVIDENCE_REQUIRES_CURATOR",
+      "disposition_basis": [
+        "origin resolves in clean_mvp_seed_dataset.py and its content hash still matches the migration",
+        "names no upstream record identifier, so no exact lookup is possible and no link may be guessed",
+        "gene-drug axis is in the first release, so the candidate stays open and blocked on a curator"
+      ],
+      "drug_canonical_key": "DRUG:amitriptyline",
+      "duplicate_of_proposal_id": null,
+      "eligible_for_rule_creation": false,
+      "gene_canonical_key": "GENE:CYP2D6",
+      "human_action_required": "A curator sources evidence for this axis under an approved source policy and writes a revision citing it. No machine can supply the missing citation.",
+      "in_first_release_scope": true,
+      "legacy_proposal_id": "MIGRATION-PROPOSAL-2dcc2082e74af61e",
+      "legacy_values_present": [
+        "manual_drug_behavior",
+        "manual_effect_direction",
+        "manual_phenotypes",
+        "manual_plain_language",
+        "manual_risk_level",
+        "manual_risk_meaning"
+      ],
+      "migration_issue": {
+        "detail": "no evidence record in this build carries the source record id this legacy row names, so the proposal is left unlinked rather than attached to a plausible neighbour",
+        "issue": "UNLINKED_LEGACY_PROPOSAL"
+      },
+      "origin": {
+        "ast_path": "MANUAL_EFFECT_HINTS",
+        "line_number": 64,
+        "origin_file_present": true,
+        "origin_file_sha256_matches_migration": true,
+        "origin_line_text_contains_ast_path": true,
+        "pointer_kind": "PYTHON_AST",
+        "pointer_resolves": true,
+        "relative_path": "clean_mvp_seed_dataset.py",
+        "resolved_subject": null,
+        "row_number": null
+      },
+      "subject": "CYP2D6::amitriptyline",
+      "upstream_record": {
+        "declared_record_uuids": [],
+        "exact_evidence_record_uuids": [],
+        "exact_match_count": 0,
+        "lookup_performed": false,
+        "names_upstream_record": false,
+        "upstream_record_id": null,
+        "upstream_record_id_source": null
+      },
+      "work_item_id": "CWI-LEGACY-183f51ceb9eb09b3"
+    },
+    {
+      "axis": "CYP2C19::voriconazole",
+      "blocker_codes": [
+        "CURATION_NOT_CURATED",
+        "DATASET_NOT_PUBLISHED",
+        "EVIDENCE_BUILD_QUARANTINED",
+        "LEGACY_SEVERITY_IS_NOT_AN_OUTCOME",
+        "NO_APPROVAL_ENVELOPE",
+        "NO_APPROVED_REVISION",
+        "NO_EVIDENCE_LINK",
+        "PROTOCOL_NOT_APPROVED"
+      ],
+      "candidate_id": "LRC-CWI-LEGACY-1b87da618984e714",
+      "curation_status": "RAW",
+      "disposition": "OUTSIDE_FIRST_RELEASE_SCOPE",
+      "disposition_basis": [
+        "origin resolves in clinpgx_mvp_seed/phenotype_effect_rules.csv and its content hash still matches the migration",
+        "names no upstream record identifier, so no exact lookup is possible and no link may be guessed",
+        "gene-drug axis is not one of the five in the first release"
+      ],
+      "drug_canonical_key": "DRUG:voriconazole",
+      "duplicate_of_proposal_id": null,
+      "eligible_for_rule_creation": false,
+      "gene_canonical_key": "GENE:CYP2C19",
+      "human_action_required": "None in this release. The item is carried forward untouched and is reconsidered when its axis enters scope.",
+      "in_first_release_scope": false,
+      "legacy_proposal_id": "MIGRATION-PROPOSAL-4437fdfbc7e3df69",
+      "legacy_values_present": [
+        "demo_risk_level",
+        "drug_behavior_hint",
+        "effect_direction",
+        "evidence_strength",
+        "normalized_phenotype_group",
+        "plain_language_mvp",
+        "risk_meaning",
+        "usable_for_mvp"
+      ],
+      "migration_issue": {
+        "detail": "no evidence record in this build carries the source record id this legacy row names, so the proposal is left unlinked rather than attached to a plausible neighbour",
+        "issue": "UNLINKED_LEGACY_PROPOSAL"
+      },
+      "origin": {
+        "ast_path": null,
+        "line_number": null,
+        "origin_file_present": true,
+        "origin_file_sha256_matches_migration": true,
+        "origin_row_annotation_id": "",
+        "origin_row_source_container": "manual_normalization_from_clinpgx_outputs",
+        "pointer_kind": "CSV_ROW",
+        "pointer_resolves": true,
+        "relative_path": "clinpgx_mvp_seed/phenotype_effect_rules.csv",
+        "resolved_subject": "CYP2C19::voriconazole",
+        "row_number": 2208
+      },
+      "subject": "CYP2C19::voriconazole",
+      "upstream_record": {
+        "declared_record_uuids": [],
+        "exact_evidence_record_uuids": [],
+        "exact_match_count": 0,
+        "lookup_performed": false,
+        "names_upstream_record": false,
+        "upstream_record_id": null,
+        "upstream_record_id_source": null
+      },
+      "work_item_id": "CWI-LEGACY-1b87da618984e714"
+    },
+    {
+      "axis": "CYP2C9::warfarin",
+      "blocker_codes": [
+        "CURATION_NOT_CURATED",
+        "DATASET_NOT_PUBLISHED",
+        "EVIDENCE_BUILD_QUARANTINED",
+        "NO_APPROVAL_ENVELOPE",
+        "NO_APPROVED_REVISION",
+        "NO_EVIDENCE_LINK",
+        "PROTOCOL_NOT_APPROVED"
+      ],
+      "candidate_id": "LRC-CWI-LEGACY-1c0241cb2a407414",
+      "curation_status": "RAW",
+      "disposition": "OUTSIDE_FIRST_RELEASE_SCOPE",
+      "disposition_basis": [
+        "origin resolves in clean_mvp_seed_dataset.py and its content hash still matches the migration",
+        "names no upstream record identifier, so no exact lookup is possible and no link may be guessed",
+        "gene-drug axis is not one of the five in the first release"
+      ],
+      "drug_canonical_key": "DRUG:warfarin",
+      "duplicate_of_proposal_id": null,
+      "eligible_for_rule_creation": false,
+      "gene_canonical_key": "GENE:CYP2C9",
+      "human_action_required": "None in this release. The item is carried forward untouched and is reconsidered when its axis enters scope.",
+      "in_first_release_scope": false,
+      "legacy_proposal_id": "MIGRATION-PROPOSAL-57ccc30017394713",
+      "legacy_values_present": [
+        "manual_drug_behavior",
+        "manual_effect_direction",
+        "manual_phenotypes",
+        "manual_plain_language",
+        "manual_risk_level",
+        "manual_risk_meaning"
+      ],
+      "migration_issue": {
+        "detail": "no evidence record in this build carries the source record id this legacy row names, so the proposal is left unlinked rather than attached to a plausible neighbour",
+        "issue": "UNLINKED_LEGACY_PROPOSAL"
+      },
+      "origin": {
+        "ast_path": "MANUAL_EFFECT_HINTS",
+        "line_number": 64,
+        "origin_file_present": true,
+        "origin_file_sha256_matches_migration": true,
+        "origin_line_text_contains_ast_path": true,
+        "pointer_kind": "PYTHON_AST",
+        "pointer_resolves": true,
+        "relative_path": "clean_mvp_seed_dataset.py",
+        "resolved_subject": null,
+        "row_number": null
+      },
+      "subject": "CYP2C9::warfarin",
+      "upstream_record": {
+        "declared_record_uuids": [],
+        "exact_evidence_record_uuids": [],
+        "exact_match_count": 0,
+        "lookup_performed": false,
+        "names_upstream_record": false,
+        "upstream_record_id": null,
+        "upstream_record_id_source": null
+      },
+      "work_item_id": "CWI-LEGACY-1c0241cb2a407414"
+    },
+    {
+      "axis": "CYP2C19::amitriptyline",
+      "blocker_codes": [
+        "CURATION_NOT_CURATED",
+        "DATASET_NOT_PUBLISHED",
+        "EVIDENCE_BUILD_QUARANTINED",
+        "LEGACY_SEVERITY_IS_NOT_AN_OUTCOME",
+        "NO_APPROVAL_ENVELOPE",
+        "NO_APPROVED_REVISION",
+        "NO_EVIDENCE_LINK",
+        "PROTOCOL_NOT_APPROVED"
+      ],
+      "candidate_id": "LRC-CWI-LEGACY-235edfafd922052d",
+      "curation_status": "RAW",
+      "disposition": "MISSING_EVIDENCE_REQUIRES_CURATOR",
+      "disposition_basis": [
+        "origin resolves in clinpgx_mvp_seed/phenotype_effect_rules.csv and its content hash still matches the migration",
+        "names no upstream record identifier, so no exact lookup is possible and no link may be guessed",
+        "gene-drug axis is in the first release, so the candidate stays open and blocked on a curator"
+      ],
+      "drug_canonical_key": "DRUG:amitriptyline",
+      "duplicate_of_proposal_id": null,
+      "eligible_for_rule_creation": false,
+      "gene_canonical_key": "GENE:CYP2C19",
+      "human_action_required": "A curator sources evidence for this axis under an approved source policy and writes a revision citing it. No machine can supply the missing citation.",
+      "in_first_release_scope": true,
+      "legacy_proposal_id": "MIGRATION-PROPOSAL-00aeb99ab0170f47",
+      "legacy_values_present": [
+        "demo_risk_level",
+        "drug_behavior_hint",
+        "effect_direction",
+        "evidence_strength",
+        "normalized_phenotype_group",
+        "plain_language_mvp",
+        "risk_meaning",
+        "usable_for_mvp"
+      ],
+      "migration_issue": {
+        "detail": "no evidence record in this build carries the source record id this legacy row names, so the proposal is left unlinked rather than attached to a plausible neighbour",
+        "issue": "UNLINKED_LEGACY_PROPOSAL"
+      },
+      "origin": {
+        "ast_path": null,
+        "line_number": null,
+        "origin_file_present": true,
+        "origin_file_sha256_matches_migration": true,
+        "origin_row_annotation_id": "",
+        "origin_row_source_container": "manual_normalization_from_clinpgx_outputs",
+        "pointer_kind": "CSV_ROW",
+        "pointer_resolves": true,
+        "relative_path": "clinpgx_mvp_seed/phenotype_effect_rules.csv",
+        "resolved_subject": "CYP2C19::amitriptyline",
+        "row_number": 2046
+      },
+      "subject": "CYP2C19::amitriptyline",
+      "upstream_record": {
+        "declared_record_uuids": [],
+        "exact_evidence_record_uuids": [],
+        "exact_match_count": 0,
+        "lookup_performed": false,
+        "names_upstream_record": false,
+        "upstream_record_id": null,
+        "upstream_record_id_source": null
+      },
+      "work_item_id": "CWI-LEGACY-235edfafd922052d"
+    },
+    {
+      "axis": "CYP2D6::tamoxifen",
+      "blocker_codes": [
+        "CURATION_NOT_CURATED",
+        "DATASET_NOT_PUBLISHED",
+        "EVIDENCE_BUILD_QUARANTINED",
+        "LEGACY_SEVERITY_IS_NOT_AN_OUTCOME",
+        "NO_APPROVAL_ENVELOPE",
+        "NO_APPROVED_REVISION",
+        "NO_EVIDENCE_LINK",
+        "PROTOCOL_NOT_APPROVED"
+      ],
+      "candidate_id": "LRC-CWI-LEGACY-26d64135ec256744",
+      "curation_status": "RAW",
+      "disposition": "OUTSIDE_FIRST_RELEASE_SCOPE",
+      "disposition_basis": [
+        "origin resolves in clinpgx_mvp_seed/phenotype_effect_rules.csv and its content hash still matches the migration",
+        "names no upstream record identifier, so no exact lookup is possible and no link may be guessed",
+        "gene-drug axis is not one of the five in the first release"
+      ],
+      "drug_canonical_key": "DRUG:tamoxifen",
+      "duplicate_of_proposal_id": null,
+      "eligible_for_rule_creation": false,
+      "gene_canonical_key": "GENE:CYP2D6",
+      "human_action_required": "None in this release. The item is carried forward untouched and is reconsidered when its axis enters scope.",
+      "in_first_release_scope": false,
+      "legacy_proposal_id": "MIGRATION-PROPOSAL-bfbb9496b377e379",
+      "legacy_values_present": [
+        "demo_risk_level",
+        "drug_behavior_hint",
+        "effect_direction",
+        "evidence_strength",
+        "normalized_phenotype_group",
+        "plain_language_mvp",
+        "risk_meaning",
+        "usable_for_mvp"
+      ],
+      "migration_issue": {
+        "detail": "no evidence record in this build carries the source record id this legacy row names, so the proposal is left unlinked rather than attached to a plausible neighbour",
+        "issue": "UNLINKED_LEGACY_PROPOSAL"
+      },
+      "origin": {
+        "ast_path": null,
+        "line_number": null,
+        "origin_file_present": true,
+        "origin_file_sha256_matches_migration": true,
+        "origin_row_annotation_id": "",
+        "origin_row_source_container": "manual_normalization_from_clinpgx_outputs",
+        "pointer_kind": "CSV_ROW",
+        "pointer_resolves": true,
+        "relative_path": "clinpgx_mvp_seed/phenotype_effect_rules.csv",
+        "resolved_subject": "CYP2D6::tamoxifen",
+        "row_number": 2443
+      },
+      "subject": "CYP2D6::tamoxifen",
+      "upstream_record": {
+        "declared_record_uuids": [],
+        "exact_evidence_record_uuids": [],
+        "exact_match_count": 0,
+        "lookup_performed": false,
+        "names_upstream_record": false,
+        "upstream_record_id": null,
+        "upstream_record_id_source": null
+      },
+      "work_item_id": "CWI-LEGACY-26d64135ec256744"
+    },
+    {
+      "axis": "CYP1A2::amitriptyline",
+      "blocker_codes": [
+        "CURATION_NOT_CURATED",
+        "DATASET_NOT_PUBLISHED",
+        "EVIDENCE_BUILD_QUARANTINED",
+        "LEGACY_SEVERITY_IS_NOT_AN_OUTCOME",
+        "NO_APPROVAL_ENVELOPE",
+        "NO_APPROVED_REVISION",
+        "NO_EVIDENCE_LINK",
+        "PROTOCOL_NOT_APPROVED"
+      ],
+      "candidate_id": "LRC-CWI-LEGACY-28a768448f84499c",
+      "curation_status": "RAW",
+      "disposition": "OUTSIDE_FIRST_RELEASE_SCOPE",
+      "disposition_basis": [
+        "origin resolves in clinpgx_mvp_seed/phenotype_effect_rules.csv and its content hash still matches the migration",
+        "names no upstream record identifier, so no exact lookup is possible and no link may be guessed",
+        "gene-drug axis is not one of the five in the first release"
+      ],
+      "drug_canonical_key": "DRUG:amitriptyline",
+      "duplicate_of_proposal_id": null,
+      "eligible_for_rule_creation": false,
+      "gene_canonical_key": "GENE:CYP1A2",
+      "human_action_required": "None in this release. The item is carried forward untouched and is reconsidered when its axis enters scope.",
+      "in_first_release_scope": false,
+      "legacy_proposal_id": "MIGRATION-PROPOSAL-cd9b08bf6b37cf1b",
+      "legacy_values_present": [
+        "demo_risk_level",
+        "drug_behavior_hint",
+        "effect_direction",
+        "evidence_strength",
+        "normalized_phenotype_group",
+        "plain_language_mvp",
+        "risk_meaning",
+        "usable_for_mvp"
+      ],
+      "migration_issue": {
+        "detail": "no evidence record in this build carries the source record id this legacy row names, so the proposal is left unlinked rather than attached to a plausible neighbour",
+        "issue": "UNLINKED_LEGACY_PROPOSAL"
+      },
+      "origin": {
+        "ast_path": null,
+        "line_number": null,
+        "origin_file_present": true,
+        "origin_file_sha256_matches_migration": true,
+        "origin_row_annotation_id": "",
+        "origin_row_source_container": "manual_normalization_from_clinpgx_outputs",
+        "pointer_kind": "CSV_ROW",
+        "pointer_resolves": true,
+        "relative_path": "clinpgx_mvp_seed/phenotype_effect_rules.csv",
+        "resolved_subject": "CYP1A2::amitriptyline",
+        "row_number": 3077
+      },
+      "subject": "CYP1A2::amitriptyline",
+      "upstream_record": {
+        "declared_record_uuids": [],
+        "exact_evidence_record_uuids": [],
+        "exact_match_count": 0,
+        "lookup_performed": false,
+        "names_upstream_record": false,
+        "upstream_record_id": null,
+        "upstream_record_id_source": null
+      },
+      "work_item_id": "CWI-LEGACY-28a768448f84499c"
+    },
+    {
+      "axis": "CYP2C19::clopidogrel",
+      "blocker_codes": [
+        "CURATION_NOT_CURATED",
+        "DATASET_NOT_PUBLISHED",
+        "EVIDENCE_BUILD_QUARANTINED",
+        "LEGACY_SEVERITY_IS_NOT_AN_OUTCOME",
+        "NO_APPROVAL_ENVELOPE",
+        "NO_APPROVED_REVISION",
+        "NO_EVIDENCE_LINK",
+        "PROTOCOL_NOT_APPROVED"
+      ],
+      "candidate_id": "LRC-CWI-LEGACY-388fd5b013a76dce",
+      "curation_status": "RAW",
+      "disposition": "MISSING_EVIDENCE_REQUIRES_CURATOR",
+      "disposition_basis": [
+        "origin resolves in clinpgx_mvp_seed/phenotype_effect_rules.csv and its content hash still matches the migration",
+        "names no upstream record identifier, so no exact lookup is possible and no link may be guessed",
+        "gene-drug axis is in the first release, so the candidate stays open and blocked on a curator"
+      ],
+      "drug_canonical_key": "DRUG:clopidogrel",
+      "duplicate_of_proposal_id": null,
+      "eligible_for_rule_creation": false,
+      "gene_canonical_key": "GENE:CYP2C19",
+      "human_action_required": "A curator sources evidence for this axis under an approved source policy and writes a revision citing it. No machine can supply the missing citation.",
+      "in_first_release_scope": true,
+      "legacy_proposal_id": "MIGRATION-PROPOSAL-a444953611d60446",
+      "legacy_values_present": [
+        "demo_risk_level",
+        "drug_behavior_hint",
+        "effect_direction",
+        "evidence_strength",
+        "normalized_phenotype_group",
+        "plain_language_mvp",
+        "risk_meaning",
+        "usable_for_mvp"
+      ],
+      "migration_issue": {
+        "detail": "no evidence record in this build carries the source record id this legacy row names, so the proposal is left unlinked rather than attached to a plausible neighbour",
+        "issue": "UNLINKED_LEGACY_PROPOSAL"
+      },
+      "origin": {
+        "ast_path": null,
+        "line_number": null,
+        "origin_file_present": true,
+        "origin_file_sha256_matches_migration": true,
+        "origin_row_annotation_id": "",
+        "origin_row_source_container": "manual_normalization_from_clinpgx_outputs",
+        "pointer_kind": "CSV_ROW",
+        "pointer_resolves": true,
+        "relative_path": "clinpgx_mvp_seed/phenotype_effect_rules.csv",
+        "resolved_subject": "CYP2C19::clopidogrel",
+        "row_number": 2135
+      },
+      "subject": "CYP2C19::clopidogrel",
+      "upstream_record": {
+        "declared_record_uuids": [],
+        "exact_evidence_record_uuids": [],
+        "exact_match_count": 0,
+        "lookup_performed": false,
+        "names_upstream_record": false,
+        "upstream_record_id": null,
+        "upstream_record_id_source": null
+      },
+      "work_item_id": "CWI-LEGACY-388fd5b013a76dce"
+    },
+    {
+      "axis": "CYP2C19::citalopram",
+      "blocker_codes": [
+        "CURATION_NOT_CURATED",
+        "DATASET_NOT_PUBLISHED",
+        "EVIDENCE_BUILD_QUARANTINED",
+        "NO_APPROVAL_ENVELOPE",
+        "NO_APPROVED_REVISION",
+        "NO_EVIDENCE_LINK",
+        "PROTOCOL_NOT_APPROVED"
+      ],
+      "candidate_id": "LRC-CWI-LEGACY-4246051c2c4e48f8",
+      "curation_status": "RAW",
+      "disposition": "OUTSIDE_FIRST_RELEASE_SCOPE",
+      "disposition_basis": [
+        "origin resolves in clean_mvp_seed_dataset.py and its content hash still matches the migration",
+        "names no upstream record identifier, so no exact lookup is possible and no link may be guessed",
+        "gene-drug axis is not one of the five in the first release"
+      ],
+      "drug_canonical_key": "DRUG:citalopram",
+      "duplicate_of_proposal_id": null,
+      "eligible_for_rule_creation": false,
+      "gene_canonical_key": "GENE:CYP2C19",
+      "human_action_required": "None in this release. The item is carried forward untouched and is reconsidered when its axis enters scope.",
+      "in_first_release_scope": false,
+      "legacy_proposal_id": "MIGRATION-PROPOSAL-be9f77fc57e1e48d",
+      "legacy_values_present": [
+        "manual_drug_behavior",
+        "manual_effect_direction",
+        "manual_phenotypes",
+        "manual_plain_language",
+        "manual_risk_level",
+        "manual_risk_meaning"
+      ],
+      "migration_issue": {
+        "detail": "no evidence record in this build carries the source record id this legacy row names, so the proposal is left unlinked rather than attached to a plausible neighbour",
+        "issue": "UNLINKED_LEGACY_PROPOSAL"
+      },
+      "origin": {
+        "ast_path": "MANUAL_EFFECT_HINTS",
+        "line_number": 64,
+        "origin_file_present": true,
+        "origin_file_sha256_matches_migration": true,
+        "origin_line_text_contains_ast_path": true,
+        "pointer_kind": "PYTHON_AST",
+        "pointer_resolves": true,
+        "relative_path": "clean_mvp_seed_dataset.py",
+        "resolved_subject": null,
+        "row_number": null
+      },
+      "subject": "CYP2C19::citalopram",
+      "upstream_record": {
+        "declared_record_uuids": [],
+        "exact_evidence_record_uuids": [],
+        "exact_match_count": 0,
+        "lookup_performed": false,
+        "names_upstream_record": false,
+        "upstream_record_id": null,
+        "upstream_record_id_source": null
+      },
+      "work_item_id": "CWI-LEGACY-4246051c2c4e48f8"
+    },
+    {
+      "axis": "CYP3A4::voriconazole",
+      "blocker_codes": [
+        "CURATION_NOT_CURATED",
+        "DATASET_NOT_PUBLISHED",
+        "EVIDENCE_BUILD_QUARANTINED",
+        "NO_APPROVAL_ENVELOPE",
+        "NO_APPROVED_REVISION",
+        "NO_EVIDENCE_LINK",
+        "PROTOCOL_NOT_APPROVED"
+      ],
+      "candidate_id": "LRC-CWI-LEGACY-4fce0d749a96dbec",
+      "curation_status": "RAW",
+      "disposition": "OUTSIDE_FIRST_RELEASE_SCOPE",
+      "disposition_basis": [
+        "origin resolves in clean_mvp_seed_dataset.py and its content hash still matches the migration",
+        "names no upstream record identifier, so no exact lookup is possible and no link may be guessed",
+        "gene-drug axis is not one of the five in the first release"
+      ],
+      "drug_canonical_key": "DRUG:voriconazole",
+      "duplicate_of_proposal_id": null,
+      "eligible_for_rule_creation": false,
+      "gene_canonical_key": "GENE:CYP3A4",
+      "human_action_required": "None in this release. The item is carried forward untouched and is reconsidered when its axis enters scope.",
+      "in_first_release_scope": false,
+      "legacy_proposal_id": "MIGRATION-PROPOSAL-472656bce1d353b6",
+      "legacy_values_present": [
+        "manual_drug_behavior",
+        "manual_effect_direction",
+        "manual_phenotypes",
+        "manual_plain_language",
+        "manual_risk_level",
+        "manual_risk_meaning"
+      ],
+      "migration_issue": {
+        "detail": "no evidence record in this build carries the source record id this legacy row names, so the proposal is left unlinked rather than attached to a plausible neighbour",
+        "issue": "UNLINKED_LEGACY_PROPOSAL"
+      },
+      "origin": {
+        "ast_path": "MANUAL_EFFECT_HINTS",
+        "line_number": 64,
+        "origin_file_present": true,
+        "origin_file_sha256_matches_migration": true,
+        "origin_line_text_contains_ast_path": true,
+        "pointer_kind": "PYTHON_AST",
+        "pointer_resolves": true,
+        "relative_path": "clean_mvp_seed_dataset.py",
+        "resolved_subject": null,
+        "row_number": null
+      },
+      "subject": "CYP3A4::voriconazole",
+      "upstream_record": {
+        "declared_record_uuids": [],
+        "exact_evidence_record_uuids": [],
+        "exact_match_count": 0,
+        "lookup_performed": false,
+        "names_upstream_record": false,
+        "upstream_record_id": null,
+        "upstream_record_id_source": null
+      },
+      "work_item_id": "CWI-LEGACY-4fce0d749a96dbec"
+    },
+    {
+      "axis": "CYP2D6::tamoxifen",
+      "blocker_codes": [
+        "CURATION_NOT_CURATED",
+        "DATASET_NOT_PUBLISHED",
+        "EVIDENCE_BUILD_QUARANTINED",
+        "LEGACY_SEVERITY_IS_NOT_AN_OUTCOME",
+        "NO_APPROVAL_ENVELOPE",
+        "NO_APPROVED_REVISION",
+        "NO_EVIDENCE_LINK",
+        "PROTOCOL_NOT_APPROVED"
+      ],
+      "candidate_id": "LRC-CWI-LEGACY-52bf446f284122e6",
+      "curation_status": "RAW",
+      "disposition": "OUTSIDE_FIRST_RELEASE_SCOPE",
+      "disposition_basis": [
+        "origin resolves in clinpgx_mvp_seed/phenotype_effect_rules.csv and its content hash still matches the migration",
+        "names no upstream record identifier, so no exact lookup is possible and no link may be guessed",
+        "gene-drug axis is not one of the five in the first release"
+      ],
+      "drug_canonical_key": "DRUG:tamoxifen",
+      "duplicate_of_proposal_id": null,
+      "eligible_for_rule_creation": false,
+      "gene_canonical_key": "GENE:CYP2D6",
+      "human_action_required": "None in this release. The item is carried forward untouched and is reconsidered when its axis enters scope.",
+      "in_first_release_scope": false,
+      "legacy_proposal_id": "MIGRATION-PROPOSAL-6a8a33acbbb9f0ec",
+      "legacy_values_present": [
+        "demo_risk_level",
+        "drug_behavior_hint",
+        "effect_direction",
+        "evidence_strength",
+        "normalized_phenotype_group",
+        "plain_language_mvp",
+        "risk_meaning",
+        "usable_for_mvp"
+      ],
+      "migration_issue": {
+        "detail": "no evidence record in this build carries the source record id this legacy row names, so the proposal is left unlinked rather than attached to a plausible neighbour",
+        "issue": "UNLINKED_LEGACY_PROPOSAL"
+      },
+      "origin": {
+        "ast_path": null,
+        "line_number": null,
+        "origin_file_present": true,
+        "origin_file_sha256_matches_migration": true,
+        "origin_row_annotation_id": "",
+        "origin_row_source_container": "manual_normalization_from_clinpgx_outputs",
+        "pointer_kind": "CSV_ROW",
+        "pointer_resolves": true,
+        "relative_path": "clinpgx_mvp_seed/phenotype_effect_rules.csv",
+        "resolved_subject": "CYP2D6::tamoxifen",
+        "row_number": 2444
+      },
+      "subject": "CYP2D6::tamoxifen",
+      "upstream_record": {
+        "declared_record_uuids": [],
+        "exact_evidence_record_uuids": [],
+        "exact_match_count": 0,
+        "lookup_performed": false,
+        "names_upstream_record": false,
+        "upstream_record_id": null,
+        "upstream_record_id_source": null
+      },
+      "work_item_id": "CWI-LEGACY-52bf446f284122e6"
+    },
+    {
+      "axis": "CYP2C19::clopidogrel",
+      "blocker_codes": [
+        "CURATION_NOT_CURATED",
+        "DATASET_NOT_PUBLISHED",
+        "EVIDENCE_BUILD_QUARANTINED",
+        "NO_APPROVAL_ENVELOPE",
+        "NO_APPROVED_REVISION",
+        "NO_EVIDENCE_LINK",
+        "PROTOCOL_NOT_APPROVED"
+      ],
+      "candidate_id": "LRC-CWI-LEGACY-597fe67f88ed7e1c",
+      "curation_status": "RAW",
+      "disposition": "MISSING_EVIDENCE_REQUIRES_CURATOR",
+      "disposition_basis": [
+        "origin resolves in clean_mvp_seed_dataset.py and its content hash still matches the migration",
+        "names no upstream record identifier, so no exact lookup is possible and no link may be guessed",
+        "gene-drug axis is in the first release, so the candidate stays open and blocked on a curator"
+      ],
+      "drug_canonical_key": "DRUG:clopidogrel",
+      "duplicate_of_proposal_id": null,
+      "eligible_for_rule_creation": false,
+      "gene_canonical_key": "GENE:CYP2C19",
+      "human_action_required": "A curator sources evidence for this axis under an approved source policy and writes a revision citing it. No machine can supply the missing citation.",
+      "in_first_release_scope": true,
+      "legacy_proposal_id": "MIGRATION-PROPOSAL-c2a73906eb625175",
+      "legacy_values_present": [
+        "manual_drug_behavior",
+        "manual_effect_direction",
+        "manual_phenotypes",
+        "manual_plain_language",
+        "manual_risk_level",
+        "manual_risk_meaning"
+      ],
+      "migration_issue": {
+        "detail": "no evidence record in this build carries the source record id this legacy row names, so the proposal is left unlinked rather than attached to a plausible neighbour",
+        "issue": "UNLINKED_LEGACY_PROPOSAL"
+      },
+      "origin": {
+        "ast_path": "MANUAL_EFFECT_HINTS",
+        "line_number": 64,
+        "origin_file_present": true,
+        "origin_file_sha256_matches_migration": true,
+        "origin_line_text_contains_ast_path": true,
+        "pointer_kind": "PYTHON_AST",
+        "pointer_resolves": true,
+        "relative_path": "clean_mvp_seed_dataset.py",
+        "resolved_subject": null,
+        "row_number": null
+      },
+      "subject": "CYP2C19::clopidogrel",
+      "upstream_record": {
+        "declared_record_uuids": [],
+        "exact_evidence_record_uuids": [],
+        "exact_match_count": 0,
+        "lookup_performed": false,
+        "names_upstream_record": false,
+        "upstream_record_id": null,
+        "upstream_record_id_source": null
+      },
+      "work_item_id": "CWI-LEGACY-597fe67f88ed7e1c"
+    },
+    {
+      "axis": "CYP3A4::voriconazole",
+      "blocker_codes": [
+        "CURATION_NOT_CURATED",
+        "DATASET_NOT_PUBLISHED",
+        "EVIDENCE_BUILD_QUARANTINED",
+        "LEGACY_SEVERITY_IS_NOT_AN_OUTCOME",
+        "NO_APPROVAL_ENVELOPE",
+        "NO_APPROVED_REVISION",
+        "NO_EVIDENCE_LINK",
+        "PROTOCOL_NOT_APPROVED"
+      ],
+      "candidate_id": "LRC-CWI-LEGACY-5a619b5dce51ac88",
+      "curation_status": "RAW",
+      "disposition": "OUTSIDE_FIRST_RELEASE_SCOPE",
+      "disposition_basis": [
+        "origin resolves in clinpgx_mvp_seed/phenotype_effect_rules.csv and its content hash still matches the migration",
+        "names no upstream record identifier, so no exact lookup is possible and no link may be guessed",
+        "gene-drug axis is not one of the five in the first release"
+      ],
+      "drug_canonical_key": "DRUG:voriconazole",
+      "duplicate_of_proposal_id": null,
+      "eligible_for_rule_creation": false,
+      "gene_canonical_key": "GENE:CYP3A4",
+      "human_action_required": "None in this release. The item is carried forward untouched and is reconsidered when its axis enters scope.",
+      "in_first_release_scope": false,
+      "legacy_proposal_id": "MIGRATION-PROPOSAL-fa0e881c321084df",
+      "legacy_values_present": [
+        "demo_risk_level",
+        "drug_behavior_hint",
+        "effect_direction",
+        "evidence_strength",
+        "normalized_phenotype_group",
+        "plain_language_mvp",
+        "risk_meaning",
+        "usable_for_mvp"
+      ],
+      "migration_issue": {
+        "detail": "no evidence record in this build carries the source record id this legacy row names, so the proposal is left unlinked rather than attached to a plausible neighbour",
+        "issue": "UNLINKED_LEGACY_PROPOSAL"
+      },
+      "origin": {
+        "ast_path": null,
+        "line_number": null,
+        "origin_file_present": true,
+        "origin_file_sha256_matches_migration": true,
+        "origin_row_annotation_id": "",
+        "origin_row_source_container": "manual_normalization_from_clinpgx_outputs",
+        "pointer_kind": "CSV_ROW",
+        "pointer_resolves": true,
+        "relative_path": "clinpgx_mvp_seed/phenotype_effect_rules.csv",
+        "resolved_subject": "CYP3A4::voriconazole",
+        "row_number": 3078
+      },
+      "subject": "CYP3A4::voriconazole",
+      "upstream_record": {
+        "declared_record_uuids": [],
+        "exact_evidence_record_uuids": [],
+        "exact_match_count": 0,
+        "lookup_performed": false,
+        "names_upstream_record": false,
+        "upstream_record_id": null,
+        "upstream_record_id_source": null
+      },
+      "work_item_id": "CWI-LEGACY-5a619b5dce51ac88"
+    },
+    {
+      "axis": "CYP2C9::warfarin",
+      "blocker_codes": [
+        "CURATION_NOT_CURATED",
+        "DATASET_NOT_PUBLISHED",
+        "EVIDENCE_BUILD_QUARANTINED",
+        "LEGACY_SEVERITY_IS_NOT_AN_OUTCOME",
+        "NO_APPROVAL_ENVELOPE",
+        "NO_APPROVED_REVISION",
+        "NO_EVIDENCE_LINK",
+        "PROTOCOL_NOT_APPROVED"
+      ],
+      "candidate_id": "LRC-CWI-LEGACY-68c19ac1c05a41a1",
+      "curation_status": "RAW",
+      "disposition": "OUTSIDE_FIRST_RELEASE_SCOPE",
+      "disposition_basis": [
+        "origin resolves in clinpgx_mvp_seed/phenotype_effect_rules.csv and its content hash still matches the migration",
+        "names no upstream record identifier, so no exact lookup is possible and no link may be guessed",
+        "gene-drug axis is not one of the five in the first release"
+      ],
+      "drug_canonical_key": "DRUG:warfarin",
+      "duplicate_of_proposal_id": null,
+      "eligible_for_rule_creation": false,
+      "gene_canonical_key": "GENE:CYP2C9",
+      "human_action_required": "None in this release. The item is carried forward untouched and is reconsidered when its axis enters scope.",
+      "in_first_release_scope": false,
+      "legacy_proposal_id": "MIGRATION-PROPOSAL-a64da0571ea9248a",
+      "legacy_values_present": [
+        "demo_risk_level",
+        "drug_behavior_hint",
+        "effect_direction",
+        "evidence_strength",
+        "normalized_phenotype_group",
+        "plain_language_mvp",
+        "risk_meaning",
+        "usable_for_mvp"
+      ],
+      "migration_issue": {
+        "detail": "no evidence record in this build carries the source record id this legacy row names, so the proposal is left unlinked rather than attached to a plausible neighbour",
+        "issue": "UNLINKED_LEGACY_PROPOSAL"
+      },
+      "origin": {
+        "ast_path": null,
+        "line_number": null,
+        "origin_file_present": true,
+        "origin_file_sha256_matches_migration": true,
+        "origin_row_annotation_id": "",
+        "origin_row_source_container": "manual_normalization_from_clinpgx_outputs",
+        "pointer_kind": "CSV_ROW",
+        "pointer_resolves": true,
+        "relative_path": "clinpgx_mvp_seed/phenotype_effect_rules.csv",
+        "resolved_subject": "CYP2C9::warfarin",
+        "row_number": 2355
+      },
+      "subject": "CYP2C9::warfarin",
+      "upstream_record": {
+        "declared_record_uuids": [],
+        "exact_evidence_record_uuids": [],
+        "exact_match_count": 0,
+        "lookup_performed": false,
+        "names_upstream_record": false,
+        "upstream_record_id": null,
+        "upstream_record_id_source": null
+      },
+      "work_item_id": "CWI-LEGACY-68c19ac1c05a41a1"
+    },
+    {
+      "axis": "CYP2D6::codeine",
+      "blocker_codes": [
+        "CURATION_NOT_CURATED",
+        "DATASET_NOT_PUBLISHED",
+        "EVIDENCE_BUILD_QUARANTINED",
+        "LEGACY_SEVERITY_IS_NOT_AN_OUTCOME",
+        "NO_APPROVAL_ENVELOPE",
+        "NO_APPROVED_REVISION",
+        "NO_EVIDENCE_LINK",
+        "PROTOCOL_NOT_APPROVED"
+      ],
+      "candidate_id": "LRC-CWI-LEGACY-7712a7c77533f859",
+      "curation_status": "RAW",
+      "disposition": "MISSING_EVIDENCE_REQUIRES_CURATOR",
+      "disposition_basis": [
+        "origin resolves in clinpgx_mvp_seed/phenotype_effect_rules.csv and its content hash still matches the migration",
+        "names no upstream record identifier, so no exact lookup is possible and no link may be guessed",
+        "gene-drug axis is in the first release, so the candidate stays open and blocked on a curator"
+      ],
+      "drug_canonical_key": "DRUG:codeine",
+      "duplicate_of_proposal_id": null,
+      "eligible_for_rule_creation": false,
+      "gene_canonical_key": "GENE:CYP2D6",
+      "human_action_required": "A curator sources evidence for this axis under an approved source policy and writes a revision citing it. No machine can supply the missing citation.",
+      "in_first_release_scope": true,
+      "legacy_proposal_id": "MIGRATION-PROPOSAL-8804891c862dcc68",
+      "legacy_values_present": [
+        "demo_risk_level",
+        "drug_behavior_hint",
+        "effect_direction",
+        "evidence_strength",
+        "normalized_phenotype_group",
+        "plain_language_mvp",
+        "risk_meaning",
+        "usable_for_mvp"
+      ],
+      "migration_issue": {
+        "detail": "no evidence record in this build carries the source record id this legacy row names, so the proposal is left unlinked rather than attached to a plausible neighbour",
+        "issue": "UNLINKED_LEGACY_PROPOSAL"
+      },
+      "origin": {
+        "ast_path": null,
+        "line_number": null,
+        "origin_file_present": true,
+        "origin_file_sha256_matches_migration": true,
+        "origin_row_annotation_id": "",
+        "origin_row_source_container": "manual_normalization_from_clinpgx_outputs",
+        "pointer_kind": "CSV_ROW",
+        "pointer_resolves": true,
+        "relative_path": "clinpgx_mvp_seed/phenotype_effect_rules.csv",
+        "resolved_subject": "CYP2D6::codeine",
+        "row_number": 2411
+      },
+      "subject": "CYP2D6::codeine",
+      "upstream_record": {
+        "declared_record_uuids": [],
+        "exact_evidence_record_uuids": [],
+        "exact_match_count": 0,
+        "lookup_performed": false,
+        "names_upstream_record": false,
+        "upstream_record_id": null,
+        "upstream_record_id_source": null
+      },
+      "work_item_id": "CWI-LEGACY-7712a7c77533f859"
+    },
+    {
+      "axis": "CYP2D6::codeine",
+      "blocker_codes": [
+        "CURATION_NOT_CURATED",
+        "DATASET_NOT_PUBLISHED",
+        "EVIDENCE_BUILD_QUARANTINED",
+        "LEGACY_SEVERITY_IS_NOT_AN_OUTCOME",
+        "NO_APPROVAL_ENVELOPE",
+        "NO_APPROVED_REVISION",
+        "NO_EVIDENCE_LINK",
+        "PROTOCOL_NOT_APPROVED"
+      ],
+      "candidate_id": "LRC-CWI-LEGACY-7b4c601a82097a68",
+      "curation_status": "RAW",
+      "disposition": "MISSING_EVIDENCE_REQUIRES_CURATOR",
+      "disposition_basis": [
+        "origin resolves in clinpgx_mvp_seed/phenotype_effect_rules.csv and its content hash still matches the migration",
+        "names no upstream record identifier, so no exact lookup is possible and no link may be guessed",
+        "gene-drug axis is in the first release, so the candidate stays open and blocked on a curator"
+      ],
+      "drug_canonical_key": "DRUG:codeine",
+      "duplicate_of_proposal_id": null,
+      "eligible_for_rule_creation": false,
+      "gene_canonical_key": "GENE:CYP2D6",
+      "human_action_required": "A curator sources evidence for this axis under an approved source policy and writes a revision citing it. No machine can supply the missing citation.",
+      "in_first_release_scope": true,
+      "legacy_proposal_id": "MIGRATION-PROPOSAL-c2837a58b66bf9f4",
+      "legacy_values_present": [
+        "demo_risk_level",
+        "drug_behavior_hint",
+        "effect_direction",
+        "evidence_strength",
+        "normalized_phenotype_group",
+        "plain_language_mvp",
+        "risk_meaning",
+        "usable_for_mvp"
+      ],
+      "migration_issue": {
+        "detail": "no evidence record in this build carries the source record id this legacy row names, so the proposal is left unlinked rather than attached to a plausible neighbour",
+        "issue": "UNLINKED_LEGACY_PROPOSAL"
+      },
+      "origin": {
+        "ast_path": null,
+        "line_number": null,
+        "origin_file_present": true,
+        "origin_file_sha256_matches_migration": true,
+        "origin_row_annotation_id": "",
+        "origin_row_source_container": "manual_normalization_from_clinpgx_outputs",
+        "pointer_kind": "CSV_ROW",
+        "pointer_resolves": true,
+        "relative_path": "clinpgx_mvp_seed/phenotype_effect_rules.csv",
+        "resolved_subject": "CYP2D6::codeine",
+        "row_number": 2412
+      },
+      "subject": "CYP2D6::codeine",
+      "upstream_record": {
+        "declared_record_uuids": [],
+        "exact_evidence_record_uuids": [],
+        "exact_match_count": 0,
+        "lookup_performed": false,
+        "names_upstream_record": false,
+        "upstream_record_id": null,
+        "upstream_record_id_source": null
+      },
+      "work_item_id": "CWI-LEGACY-7b4c601a82097a68"
+    },
+    {
+      "axis": "CYP1A2::amitriptyline",
+      "blocker_codes": [
+        "CURATION_NOT_CURATED",
+        "DATASET_NOT_PUBLISHED",
+        "EVIDENCE_BUILD_QUARANTINED",
+        "NO_APPROVAL_ENVELOPE",
+        "NO_APPROVED_REVISION",
+        "NO_EVIDENCE_LINK",
+        "PROTOCOL_NOT_APPROVED"
+      ],
+      "candidate_id": "LRC-CWI-LEGACY-7cc81f5ab758e967",
+      "curation_status": "RAW",
+      "disposition": "OUTSIDE_FIRST_RELEASE_SCOPE",
+      "disposition_basis": [
+        "origin resolves in clean_mvp_seed_dataset.py and its content hash still matches the migration",
+        "names no upstream record identifier, so no exact lookup is possible and no link may be guessed",
+        "gene-drug axis is not one of the five in the first release"
+      ],
+      "drug_canonical_key": "DRUG:amitriptyline",
+      "duplicate_of_proposal_id": null,
+      "eligible_for_rule_creation": false,
+      "gene_canonical_key": "GENE:CYP1A2",
+      "human_action_required": "None in this release. The item is carried forward untouched and is reconsidered when its axis enters scope.",
+      "in_first_release_scope": false,
+      "legacy_proposal_id": "MIGRATION-PROPOSAL-40d9142f906bdc07",
+      "legacy_values_present": [
+        "manual_drug_behavior",
+        "manual_effect_direction",
+        "manual_phenotypes",
+        "manual_plain_language",
+        "manual_risk_level",
+        "manual_risk_meaning"
+      ],
+      "migration_issue": {
+        "detail": "no evidence record in this build carries the source record id this legacy row names, so the proposal is left unlinked rather than attached to a plausible neighbour",
+        "issue": "UNLINKED_LEGACY_PROPOSAL"
+      },
+      "origin": {
+        "ast_path": "MANUAL_EFFECT_HINTS",
+        "line_number": 64,
+        "origin_file_present": true,
+        "origin_file_sha256_matches_migration": true,
+        "origin_line_text_contains_ast_path": true,
+        "pointer_kind": "PYTHON_AST",
+        "pointer_resolves": true,
+        "relative_path": "clean_mvp_seed_dataset.py",
+        "resolved_subject": null,
+        "row_number": null
+      },
+      "subject": "CYP1A2::amitriptyline",
+      "upstream_record": {
+        "declared_record_uuids": [],
+        "exact_evidence_record_uuids": [],
+        "exact_match_count": 0,
+        "lookup_performed": false,
+        "names_upstream_record": false,
+        "upstream_record_id": null,
+        "upstream_record_id_source": null
+      },
+      "work_item_id": "CWI-LEGACY-7cc81f5ab758e967"
+    },
+    {
+      "axis": "CYP2C9::warfarin",
+      "blocker_codes": [
+        "CURATION_NOT_CURATED",
+        "DATASET_NOT_PUBLISHED",
+        "EVIDENCE_BUILD_QUARANTINED",
+        "LEGACY_SEVERITY_IS_NOT_AN_OUTCOME",
+        "NO_APPROVAL_ENVELOPE",
+        "NO_APPROVED_REVISION",
+        "NO_EVIDENCE_LINK",
+        "PROTOCOL_NOT_APPROVED"
+      ],
+      "candidate_id": "LRC-CWI-LEGACY-7f1ce0f6d56293db",
+      "curation_status": "RAW",
+      "disposition": "OUTSIDE_FIRST_RELEASE_SCOPE",
+      "disposition_basis": [
+        "origin resolves in clinpgx_mvp_seed/phenotype_effect_rules.csv and its content hash still matches the migration",
+        "names no upstream record identifier, so no exact lookup is possible and no link may be guessed",
+        "gene-drug axis is not one of the five in the first release"
+      ],
+      "drug_canonical_key": "DRUG:warfarin",
+      "duplicate_of_proposal_id": null,
+      "eligible_for_rule_creation": false,
+      "gene_canonical_key": "GENE:CYP2C9",
+      "human_action_required": "None in this release. The item is carried forward untouched and is reconsidered when its axis enters scope.",
+      "in_first_release_scope": false,
+      "legacy_proposal_id": "MIGRATION-PROPOSAL-f9b4302234a8e4cc",
+      "legacy_values_present": [
+        "demo_risk_level",
+        "drug_behavior_hint",
+        "effect_direction",
+        "evidence_strength",
+        "normalized_phenotype_group",
+        "plain_language_mvp",
+        "risk_meaning",
+        "usable_for_mvp"
+      ],
+      "migration_issue": {
+        "detail": "no evidence record in this build carries the source record id this legacy row names, so the proposal is left unlinked rather than attached to a plausible neighbour",
+        "issue": "UNLINKED_LEGACY_PROPOSAL"
+      },
+      "origin": {
+        "ast_path": null,
+        "line_number": null,
+        "origin_file_present": true,
+        "origin_file_sha256_matches_migration": true,
+        "origin_row_annotation_id": "",
+        "origin_row_source_container": "manual_normalization_from_clinpgx_outputs",
+        "pointer_kind": "CSV_ROW",
+        "pointer_resolves": true,
+        "relative_path": "clinpgx_mvp_seed/phenotype_effect_rules.csv",
+        "resolved_subject": "CYP2C9::warfarin",
+        "row_number": 2357
+      },
+      "subject": "CYP2C9::warfarin",
+      "upstream_record": {
+        "declared_record_uuids": [],
+        "exact_evidence_record_uuids": [],
+        "exact_match_count": 0,
+        "lookup_performed": false,
+        "names_upstream_record": false,
+        "upstream_record_id": null,
+        "upstream_record_id_source": null
+      },
+      "work_item_id": "CWI-LEGACY-7f1ce0f6d56293db"
+    },
+    {
+      "axis": "CYP2C19::citalopram",
+      "blocker_codes": [
+        "CURATION_NOT_CURATED",
+        "DATASET_NOT_PUBLISHED",
+        "EVIDENCE_BUILD_QUARANTINED",
+        "LEGACY_SEVERITY_IS_NOT_AN_OUTCOME",
+        "NO_APPROVAL_ENVELOPE",
+        "NO_APPROVED_REVISION",
+        "NO_EVIDENCE_LINK",
+        "PROTOCOL_NOT_APPROVED"
+      ],
+      "candidate_id": "LRC-CWI-LEGACY-8e6c917db05b5b54",
+      "curation_status": "RAW",
+      "disposition": "OUTSIDE_FIRST_RELEASE_SCOPE",
+      "disposition_basis": [
+        "origin resolves in clinpgx_mvp_seed/phenotype_effect_rules.csv and its content hash still matches the migration",
+        "names no upstream record identifier, so no exact lookup is possible and no link may be guessed",
+        "gene-drug axis is not one of the five in the first release"
+      ],
+      "drug_canonical_key": "DRUG:citalopram",
+      "duplicate_of_proposal_id": null,
+      "eligible_for_rule_creation": false,
+      "gene_canonical_key": "GENE:CYP2C19",
+      "human_action_required": "None in this release. The item is carried forward untouched and is reconsidered when its axis enters scope.",
+      "in_first_release_scope": false,
+      "legacy_proposal_id": "MIGRATION-PROPOSAL-50abf7fbbb7931e1",
+      "legacy_values_present": [
+        "demo_risk_level",
+        "drug_behavior_hint",
+        "effect_direction",
+        "evidence_strength",
+        "normalized_phenotype_group",
+        "plain_language_mvp",
+        "risk_meaning",
+        "usable_for_mvp"
+      ],
+      "migration_issue": {
+        "detail": "no evidence record in this build carries the source record id this legacy row names, so the proposal is left unlinked rather than attached to a plausible neighbour",
+        "issue": "UNLINKED_LEGACY_PROPOSAL"
+      },
+      "origin": {
+        "ast_path": null,
+        "line_number": null,
+        "origin_file_present": true,
+        "origin_file_sha256_matches_migration": true,
+        "origin_row_annotation_id": "",
+        "origin_row_source_container": "manual_normalization_from_clinpgx_outputs",
+        "pointer_kind": "CSV_ROW",
+        "pointer_resolves": true,
+        "relative_path": "clinpgx_mvp_seed/phenotype_effect_rules.csv",
+        "resolved_subject": "CYP2C19::citalopram",
+        "row_number": 2055
+      },
+      "subject": "CYP2C19::citalopram",
+      "upstream_record": {
+        "declared_record_uuids": [],
+        "exact_evidence_record_uuids": [],
+        "exact_match_count": 0,
+        "lookup_performed": false,
+        "names_upstream_record": false,
+        "upstream_record_id": null,
+        "upstream_record_id_source": null
+      },
+      "work_item_id": "CWI-LEGACY-8e6c917db05b5b54"
+    },
+    {
+      "axis": "CYP2C19::sertraline",
+      "blocker_codes": [
+        "CURATION_NOT_CURATED",
+        "DATASET_NOT_PUBLISHED",
+        "EVIDENCE_BUILD_QUARANTINED",
+        "LEGACY_SEVERITY_IS_NOT_AN_OUTCOME",
+        "NO_APPROVAL_ENVELOPE",
+        "NO_APPROVED_REVISION",
+        "NO_EVIDENCE_LINK",
+        "PROTOCOL_NOT_APPROVED"
+      ],
+      "candidate_id": "LRC-CWI-LEGACY-8f2a0f21d3bec5d9",
+      "curation_status": "RAW",
+      "disposition": "OUTSIDE_FIRST_RELEASE_SCOPE",
+      "disposition_basis": [
+        "origin resolves in clinpgx_mvp_seed/phenotype_effect_rules.csv and its content hash still matches the migration",
+        "names no upstream record identifier, so no exact lookup is possible and no link may be guessed",
+        "gene-drug axis is not one of the five in the first release"
+      ],
+      "drug_canonical_key": "DRUG:sertraline",
+      "duplicate_of_proposal_id": null,
+      "eligible_for_rule_creation": false,
+      "gene_canonical_key": "GENE:CYP2C19",
+      "human_action_required": "None in this release. The item is carried forward untouched and is reconsidered when its axis enters scope.",
+      "in_first_release_scope": false,
+      "legacy_proposal_id": "MIGRATION-PROPOSAL-c86d6af6bf2ec6e3",
+      "legacy_values_present": [
+        "demo_risk_level",
+        "drug_behavior_hint",
+        "effect_direction",
+        "evidence_strength",
+        "normalized_phenotype_group",
+        "plain_language_mvp",
+        "risk_meaning",
+        "usable_for_mvp"
+      ],
+      "migration_issue": {
+        "detail": "no evidence record in this build carries the source record id this legacy row names, so the proposal is left unlinked rather than attached to a plausible neighbour",
+        "issue": "UNLINKED_LEGACY_PROPOSAL"
+      },
+      "origin": {
+        "ast_path": null,
+        "line_number": null,
+        "origin_file_present": true,
+        "origin_file_sha256_matches_migration": true,
+        "origin_row_annotation_id": "",
+        "origin_row_source_container": "manual_normalization_from_clinpgx_outputs",
+        "pointer_kind": "CSV_ROW",
+        "pointer_resolves": true,
+        "relative_path": "clinpgx_mvp_seed/phenotype_effect_rules.csv",
+        "resolved_subject": "CYP2C19::sertraline",
+        "row_number": 2161
+      },
+      "subject": "CYP2C19::sertraline",
+      "upstream_record": {
+        "declared_record_uuids": [],
+        "exact_evidence_record_uuids": [],
+        "exact_match_count": 0,
+        "lookup_performed": false,
+        "names_upstream_record": false,
+        "upstream_record_id": null,
+        "upstream_record_id_source": null
+      },
+      "work_item_id": "CWI-LEGACY-8f2a0f21d3bec5d9"
+    },
+    {
+      "axis": "CYP2D6::amitriptyline",
+      "blocker_codes": [
+        "CURATION_NOT_CURATED",
+        "DATASET_NOT_PUBLISHED",
+        "EVIDENCE_BUILD_QUARANTINED",
+        "LEGACY_SEVERITY_IS_NOT_AN_OUTCOME",
+        "NO_APPROVAL_ENVELOPE",
+        "NO_APPROVED_REVISION",
+        "NO_EVIDENCE_LINK",
+        "PROTOCOL_NOT_APPROVED"
+      ],
+      "candidate_id": "LRC-CWI-LEGACY-91ff880ebf344c77",
+      "curation_status": "RAW",
+      "disposition": "MISSING_EVIDENCE_REQUIRES_CURATOR",
+      "disposition_basis": [
+        "origin resolves in clinpgx_mvp_seed/phenotype_effect_rules.csv and its content hash still matches the migration",
+        "names no upstream record identifier, so no exact lookup is possible and no link may be guessed",
+        "gene-drug axis is in the first release, so the candidate stays open and blocked on a curator"
+      ],
+      "drug_canonical_key": "DRUG:amitriptyline",
+      "duplicate_of_proposal_id": null,
+      "eligible_for_rule_creation": false,
+      "gene_canonical_key": "GENE:CYP2D6",
+      "human_action_required": "A curator sources evidence for this axis under an approved source policy and writes a revision citing it. No machine can supply the missing citation.",
+      "in_first_release_scope": true,
+      "legacy_proposal_id": "MIGRATION-PROPOSAL-0b5b4974b1fa86ca",
+      "legacy_values_present": [
+        "demo_risk_level",
+        "drug_behavior_hint",
+        "effect_direction",
+        "evidence_strength",
+        "normalized_phenotype_group",
+        "plain_language_mvp",
+        "risk_meaning",
+        "usable_for_mvp"
+      ],
+      "migration_issue": {
+        "detail": "no evidence record in this build carries the source record id this legacy row names, so the proposal is left unlinked rather than attached to a plausible neighbour",
+        "issue": "UNLINKED_LEGACY_PROPOSAL"
+      },
+      "origin": {
+        "ast_path": null,
+        "line_number": null,
+        "origin_file_present": true,
+        "origin_file_sha256_matches_migration": true,
+        "origin_row_annotation_id": "",
+        "origin_row_source_container": "manual_normalization_from_clinpgx_outputs",
+        "pointer_kind": "CSV_ROW",
+        "pointer_resolves": true,
+        "relative_path": "clinpgx_mvp_seed/phenotype_effect_rules.csv",
+        "resolved_subject": "CYP2D6::amitriptyline",
+        "row_number": 2362
+      },
+      "subject": "CYP2D6::amitriptyline",
+      "upstream_record": {
+        "declared_record_uuids": [],
+        "exact_evidence_record_uuids": [],
+        "exact_match_count": 0,
+        "lookup_performed": false,
+        "names_upstream_record": false,
+        "upstream_record_id": null,
+        "upstream_record_id_source": null
+      },
+      "work_item_id": "CWI-LEGACY-91ff880ebf344c77"
+    },
+    {
+      "axis": "CYP2C19::amitriptyline",
+      "blocker_codes": [
+        "CURATION_NOT_CURATED",
+        "DATASET_NOT_PUBLISHED",
+        "EVIDENCE_BUILD_QUARANTINED",
+        "NO_APPROVAL_ENVELOPE",
+        "NO_APPROVED_REVISION",
+        "NO_EVIDENCE_LINK",
+        "PROTOCOL_NOT_APPROVED"
+      ],
+      "candidate_id": "LRC-CWI-LEGACY-a5585aa6837692dc",
+      "curation_status": "RAW",
+      "disposition": "MISSING_EVIDENCE_REQUIRES_CURATOR",
+      "disposition_basis": [
+        "origin resolves in clean_mvp_seed_dataset.py and its content hash still matches the migration",
+        "names no upstream record identifier, so no exact lookup is possible and no link may be guessed",
+        "gene-drug axis is in the first release, so the candidate stays open and blocked on a curator"
+      ],
+      "drug_canonical_key": "DRUG:amitriptyline",
+      "duplicate_of_proposal_id": null,
+      "eligible_for_rule_creation": false,
+      "gene_canonical_key": "GENE:CYP2C19",
+      "human_action_required": "A curator sources evidence for this axis under an approved source policy and writes a revision citing it. No machine can supply the missing citation.",
+      "in_first_release_scope": true,
+      "legacy_proposal_id": "MIGRATION-PROPOSAL-8efe81c80aa531dd",
+      "legacy_values_present": [
+        "manual_drug_behavior",
+        "manual_effect_direction",
+        "manual_phenotypes",
+        "manual_plain_language",
+        "manual_risk_level",
+        "manual_risk_meaning"
+      ],
+      "migration_issue": {
+        "detail": "no evidence record in this build carries the source record id this legacy row names, so the proposal is left unlinked rather than attached to a plausible neighbour",
+        "issue": "UNLINKED_LEGACY_PROPOSAL"
+      },
+      "origin": {
+        "ast_path": "MANUAL_EFFECT_HINTS",
+        "line_number": 64,
+        "origin_file_present": true,
+        "origin_file_sha256_matches_migration": true,
+        "origin_line_text_contains_ast_path": true,
+        "pointer_kind": "PYTHON_AST",
+        "pointer_resolves": true,
+        "relative_path": "clean_mvp_seed_dataset.py",
+        "resolved_subject": null,
+        "row_number": null
+      },
+      "subject": "CYP2C19::amitriptyline",
+      "upstream_record": {
+        "declared_record_uuids": [],
+        "exact_evidence_record_uuids": [],
+        "exact_match_count": 0,
+        "lookup_performed": false,
+        "names_upstream_record": false,
+        "upstream_record_id": null,
+        "upstream_record_id_source": null
+      },
+      "work_item_id": "CWI-LEGACY-a5585aa6837692dc"
+    },
+    {
+      "axis": "CYP2C19::citalopram",
+      "blocker_codes": [
+        "CURATION_NOT_CURATED",
+        "DATASET_NOT_PUBLISHED",
+        "EVIDENCE_BUILD_QUARANTINED",
+        "LEGACY_SEVERITY_IS_NOT_AN_OUTCOME",
+        "NO_APPROVAL_ENVELOPE",
+        "NO_APPROVED_REVISION",
+        "NO_EVIDENCE_LINK",
+        "PROTOCOL_NOT_APPROVED"
+      ],
+      "candidate_id": "LRC-CWI-LEGACY-a8ee39408700d39c",
+      "curation_status": "RAW",
+      "disposition": "OUTSIDE_FIRST_RELEASE_SCOPE",
+      "disposition_basis": [
+        "origin resolves in clinpgx_mvp_seed/phenotype_effect_rules.csv and its content hash still matches the migration",
+        "names no upstream record identifier, so no exact lookup is possible and no link may be guessed",
+        "gene-drug axis is not one of the five in the first release"
+      ],
+      "drug_canonical_key": "DRUG:citalopram",
+      "duplicate_of_proposal_id": null,
+      "eligible_for_rule_creation": false,
+      "gene_canonical_key": "GENE:CYP2C19",
+      "human_action_required": "None in this release. The item is carried forward untouched and is reconsidered when its axis enters scope.",
+      "in_first_release_scope": false,
+      "legacy_proposal_id": "MIGRATION-PROPOSAL-4a73201010b24ac7",
+      "legacy_values_present": [
+        "demo_risk_level",
+        "drug_behavior_hint",
+        "effect_direction",
+        "evidence_strength",
+        "normalized_phenotype_group",
+        "plain_language_mvp",
+        "risk_meaning",
+        "usable_for_mvp"
+      ],
+      "migration_issue": {
+        "detail": "no evidence record in this build carries the source record id this legacy row names, so the proposal is left unlinked rather than attached to a plausible neighbour",
+        "issue": "UNLINKED_LEGACY_PROPOSAL"
+      },
+      "origin": {
+        "ast_path": null,
+        "line_number": null,
+        "origin_file_present": true,
+        "origin_file_sha256_matches_migration": true,
+        "origin_row_annotation_id": "",
+        "origin_row_source_container": "manual_normalization_from_clinpgx_outputs",
+        "pointer_kind": "CSV_ROW",
+        "pointer_resolves": true,
+        "relative_path": "clinpgx_mvp_seed/phenotype_effect_rules.csv",
+        "resolved_subject": "CYP2C19::citalopram",
+        "row_number": 2056
+      },
+      "subject": "CYP2C19::citalopram",
+      "upstream_record": {
+        "declared_record_uuids": [],
+        "exact_evidence_record_uuids": [],
+        "exact_match_count": 0,
+        "lookup_performed": false,
+        "names_upstream_record": false,
+        "upstream_record_id": null,
+        "upstream_record_id_source": null
+      },
+      "work_item_id": "CWI-LEGACY-a8ee39408700d39c"
+    },
+    {
+      "axis": "CYP2C19::voriconazole",
+      "blocker_codes": [
+        "CURATION_NOT_CURATED",
+        "DATASET_NOT_PUBLISHED",
+        "EVIDENCE_BUILD_QUARANTINED",
+        "NO_APPROVAL_ENVELOPE",
+        "NO_APPROVED_REVISION",
+        "NO_EVIDENCE_LINK",
+        "PROTOCOL_NOT_APPROVED"
+      ],
+      "candidate_id": "LRC-CWI-LEGACY-ae0114eb7b3b44df",
+      "curation_status": "RAW",
+      "disposition": "OUTSIDE_FIRST_RELEASE_SCOPE",
+      "disposition_basis": [
+        "origin resolves in clean_mvp_seed_dataset.py and its content hash still matches the migration",
+        "names no upstream record identifier, so no exact lookup is possible and no link may be guessed",
+        "gene-drug axis is not one of the five in the first release"
+      ],
+      "drug_canonical_key": "DRUG:voriconazole",
+      "duplicate_of_proposal_id": null,
+      "eligible_for_rule_creation": false,
+      "gene_canonical_key": "GENE:CYP2C19",
+      "human_action_required": "None in this release. The item is carried forward untouched and is reconsidered when its axis enters scope.",
+      "in_first_release_scope": false,
+      "legacy_proposal_id": "MIGRATION-PROPOSAL-74f8d0813ab9347b",
+      "legacy_values_present": [
+        "manual_drug_behavior",
+        "manual_effect_direction",
+        "manual_phenotypes",
+        "manual_plain_language",
+        "manual_risk_level",
+        "manual_risk_meaning"
+      ],
+      "migration_issue": {
+        "detail": "no evidence record in this build carries the source record id this legacy row names, so the proposal is left unlinked rather than attached to a plausible neighbour",
+        "issue": "UNLINKED_LEGACY_PROPOSAL"
+      },
+      "origin": {
+        "ast_path": "MANUAL_EFFECT_HINTS",
+        "line_number": 64,
+        "origin_file_present": true,
+        "origin_file_sha256_matches_migration": true,
+        "origin_line_text_contains_ast_path": true,
+        "pointer_kind": "PYTHON_AST",
+        "pointer_resolves": true,
+        "relative_path": "clean_mvp_seed_dataset.py",
+        "resolved_subject": null,
+        "row_number": null
+      },
+      "subject": "CYP2C19::voriconazole",
+      "upstream_record": {
+        "declared_record_uuids": [],
+        "exact_evidence_record_uuids": [],
+        "exact_match_count": 0,
+        "lookup_performed": false,
+        "names_upstream_record": false,
+        "upstream_record_id": null,
+        "upstream_record_id_source": null
+      },
+      "work_item_id": "CWI-LEGACY-ae0114eb7b3b44df"
+    },
+    {
+      "axis": "CYP2C19::voriconazole",
+      "blocker_codes": [
+        "CURATION_NOT_CURATED",
+        "DATASET_NOT_PUBLISHED",
+        "EVIDENCE_BUILD_QUARANTINED",
+        "LEGACY_SEVERITY_IS_NOT_AN_OUTCOME",
+        "NO_APPROVAL_ENVELOPE",
+        "NO_APPROVED_REVISION",
+        "NO_EVIDENCE_LINK",
+        "PROTOCOL_NOT_APPROVED"
+      ],
+      "candidate_id": "LRC-CWI-LEGACY-ae6460e46e14ab35",
+      "curation_status": "RAW",
+      "disposition": "OUTSIDE_FIRST_RELEASE_SCOPE",
+      "disposition_basis": [
+        "origin resolves in clinpgx_mvp_seed/phenotype_effect_rules.csv and its content hash still matches the migration",
+        "names no upstream record identifier, so no exact lookup is possible and no link may be guessed",
+        "gene-drug axis is not one of the five in the first release"
+      ],
+      "drug_canonical_key": "DRUG:voriconazole",
+      "duplicate_of_proposal_id": null,
+      "eligible_for_rule_creation": false,
+      "gene_canonical_key": "GENE:CYP2C19",
+      "human_action_required": "None in this release. The item is carried forward untouched and is reconsidered when its axis enters scope.",
+      "in_first_release_scope": false,
+      "legacy_proposal_id": "MIGRATION-PROPOSAL-6221c26ff2796325",
+      "legacy_values_present": [
+        "demo_risk_level",
+        "drug_behavior_hint",
+        "effect_direction",
+        "evidence_strength",
+        "normalized_phenotype_group",
+        "plain_language_mvp",
+        "risk_meaning",
+        "usable_for_mvp"
+      ],
+      "migration_issue": {
+        "detail": "no evidence record in this build carries the source record id this legacy row names, so the proposal is left unlinked rather than attached to a plausible neighbour",
+        "issue": "UNLINKED_LEGACY_PROPOSAL"
+      },
+      "origin": {
+        "ast_path": null,
+        "line_number": null,
+        "origin_file_present": true,
+        "origin_file_sha256_matches_migration": true,
+        "origin_row_annotation_id": "",
+        "origin_row_source_container": "manual_normalization_from_clinpgx_outputs",
+        "pointer_kind": "CSV_ROW",
+        "pointer_resolves": true,
+        "relative_path": "clinpgx_mvp_seed/phenotype_effect_rules.csv",
+        "resolved_subject": "CYP2C19::voriconazole",
+        "row_number": 2207
+      },
+      "subject": "CYP2C19::voriconazole",
+      "upstream_record": {
+        "declared_record_uuids": [],
+        "exact_evidence_record_uuids": [],
+        "exact_match_count": 0,
+        "lookup_performed": false,
+        "names_upstream_record": false,
+        "upstream_record_id": null,
+        "upstream_record_id_source": null
+      },
+      "work_item_id": "CWI-LEGACY-ae6460e46e14ab35"
+    },
+    {
+      "axis": "CYP2D6::codeine",
+      "blocker_codes": [
+        "CURATION_NOT_CURATED",
+        "DATASET_NOT_PUBLISHED",
+        "EVIDENCE_BUILD_QUARANTINED",
+        "NO_APPROVAL_ENVELOPE",
+        "NO_APPROVED_REVISION",
+        "NO_EVIDENCE_LINK",
+        "PROTOCOL_NOT_APPROVED"
+      ],
+      "candidate_id": "LRC-CWI-LEGACY-b2748b1cf2495491",
+      "curation_status": "RAW",
+      "disposition": "MISSING_EVIDENCE_REQUIRES_CURATOR",
+      "disposition_basis": [
+        "origin resolves in clean_mvp_seed_dataset.py and its content hash still matches the migration",
+        "names no upstream record identifier, so no exact lookup is possible and no link may be guessed",
+        "gene-drug axis is in the first release, so the candidate stays open and blocked on a curator"
+      ],
+      "drug_canonical_key": "DRUG:codeine",
+      "duplicate_of_proposal_id": null,
+      "eligible_for_rule_creation": false,
+      "gene_canonical_key": "GENE:CYP2D6",
+      "human_action_required": "A curator sources evidence for this axis under an approved source policy and writes a revision citing it. No machine can supply the missing citation.",
+      "in_first_release_scope": true,
+      "legacy_proposal_id": "MIGRATION-PROPOSAL-61d648836a067f3d",
+      "legacy_values_present": [
+        "manual_drug_behavior",
+        "manual_effect_direction",
+        "manual_phenotypes",
+        "manual_plain_language",
+        "manual_risk_level",
+        "manual_risk_meaning"
+      ],
+      "migration_issue": {
+        "detail": "no evidence record in this build carries the source record id this legacy row names, so the proposal is left unlinked rather than attached to a plausible neighbour",
+        "issue": "UNLINKED_LEGACY_PROPOSAL"
+      },
+      "origin": {
+        "ast_path": "MANUAL_EFFECT_HINTS",
+        "line_number": 64,
+        "origin_file_present": true,
+        "origin_file_sha256_matches_migration": true,
+        "origin_line_text_contains_ast_path": true,
+        "pointer_kind": "PYTHON_AST",
+        "pointer_resolves": true,
+        "relative_path": "clean_mvp_seed_dataset.py",
+        "resolved_subject": null,
+        "row_number": null
+      },
+      "subject": "CYP2D6::codeine",
+      "upstream_record": {
+        "declared_record_uuids": [],
+        "exact_evidence_record_uuids": [],
+        "exact_match_count": 0,
+        "lookup_performed": false,
+        "names_upstream_record": false,
+        "upstream_record_id": null,
+        "upstream_record_id_source": null
+      },
+      "work_item_id": "CWI-LEGACY-b2748b1cf2495491"
+    },
+    {
+      "axis": "CYP2C19::sertraline",
+      "blocker_codes": [
+        "CURATION_NOT_CURATED",
+        "DATASET_NOT_PUBLISHED",
+        "EVIDENCE_BUILD_QUARANTINED",
+        "NO_APPROVAL_ENVELOPE",
+        "NO_APPROVED_REVISION",
+        "NO_EVIDENCE_LINK",
+        "PROTOCOL_NOT_APPROVED"
+      ],
+      "candidate_id": "LRC-CWI-LEGACY-c0f347ad5ca065ca",
+      "curation_status": "RAW",
+      "disposition": "OUTSIDE_FIRST_RELEASE_SCOPE",
+      "disposition_basis": [
+        "origin resolves in clean_mvp_seed_dataset.py and its content hash still matches the migration",
+        "names no upstream record identifier, so no exact lookup is possible and no link may be guessed",
+        "gene-drug axis is not one of the five in the first release"
+      ],
+      "drug_canonical_key": "DRUG:sertraline",
+      "duplicate_of_proposal_id": null,
+      "eligible_for_rule_creation": false,
+      "gene_canonical_key": "GENE:CYP2C19",
+      "human_action_required": "None in this release. The item is carried forward untouched and is reconsidered when its axis enters scope.",
+      "in_first_release_scope": false,
+      "legacy_proposal_id": "MIGRATION-PROPOSAL-1d35669c4ca75640",
+      "legacy_values_present": [
+        "manual_drug_behavior",
+        "manual_effect_direction",
+        "manual_phenotypes",
+        "manual_plain_language",
+        "manual_risk_level",
+        "manual_risk_meaning"
+      ],
+      "migration_issue": {
+        "detail": "no evidence record in this build carries the source record id this legacy row names, so the proposal is left unlinked rather than attached to a plausible neighbour",
+        "issue": "UNLINKED_LEGACY_PROPOSAL"
+      },
+      "origin": {
+        "ast_path": "MANUAL_EFFECT_HINTS",
+        "line_number": 64,
+        "origin_file_present": true,
+        "origin_file_sha256_matches_migration": true,
+        "origin_line_text_contains_ast_path": true,
+        "pointer_kind": "PYTHON_AST",
+        "pointer_resolves": true,
+        "relative_path": "clean_mvp_seed_dataset.py",
+        "resolved_subject": null,
+        "row_number": null
+      },
+      "subject": "CYP2C19::sertraline",
+      "upstream_record": {
+        "declared_record_uuids": [],
+        "exact_evidence_record_uuids": [],
+        "exact_match_count": 0,
+        "lookup_performed": false,
+        "names_upstream_record": false,
+        "upstream_record_id": null,
+        "upstream_record_id_source": null
+      },
+      "work_item_id": "CWI-LEGACY-c0f347ad5ca065ca"
+    },
+    {
+      "axis": "CYP2D6::amitriptyline",
+      "blocker_codes": [
+        "CURATION_NOT_CURATED",
+        "DATASET_NOT_PUBLISHED",
+        "EVIDENCE_BUILD_QUARANTINED",
+        "LEGACY_SEVERITY_IS_NOT_AN_OUTCOME",
+        "NO_APPROVAL_ENVELOPE",
+        "NO_APPROVED_REVISION",
+        "NO_EVIDENCE_LINK",
+        "PROTOCOL_NOT_APPROVED"
+      ],
+      "candidate_id": "LRC-CWI-LEGACY-cd0547e1f24e5be0",
+      "curation_status": "RAW",
+      "disposition": "MISSING_EVIDENCE_REQUIRES_CURATOR",
+      "disposition_basis": [
+        "origin resolves in clinpgx_mvp_seed/phenotype_effect_rules.csv and its content hash still matches the migration",
+        "names no upstream record identifier, so no exact lookup is possible and no link may be guessed",
+        "gene-drug axis is in the first release, so the candidate stays open and blocked on a curator"
+      ],
+      "drug_canonical_key": "DRUG:amitriptyline",
+      "duplicate_of_proposal_id": null,
+      "eligible_for_rule_creation": false,
+      "gene_canonical_key": "GENE:CYP2D6",
+      "human_action_required": "A curator sources evidence for this axis under an approved source policy and writes a revision citing it. No machine can supply the missing citation.",
+      "in_first_release_scope": true,
+      "legacy_proposal_id": "MIGRATION-PROPOSAL-ca6770505f6f48fe",
+      "legacy_values_present": [
+        "demo_risk_level",
+        "drug_behavior_hint",
+        "effect_direction",
+        "evidence_strength",
+        "normalized_phenotype_group",
+        "plain_language_mvp",
+        "risk_meaning",
+        "usable_for_mvp"
+      ],
+      "migration_issue": {
+        "detail": "no evidence record in this build carries the source record id this legacy row names, so the proposal is left unlinked rather than attached to a plausible neighbour",
+        "issue": "UNLINKED_LEGACY_PROPOSAL"
+      },
+      "origin": {
+        "ast_path": null,
+        "line_number": null,
+        "origin_file_present": true,
+        "origin_file_sha256_matches_migration": true,
+        "origin_row_annotation_id": "",
+        "origin_row_source_container": "manual_normalization_from_clinpgx_outputs",
+        "pointer_kind": "CSV_ROW",
+        "pointer_resolves": true,
+        "relative_path": "clinpgx_mvp_seed/phenotype_effect_rules.csv",
+        "resolved_subject": "CYP2D6::amitriptyline",
+        "row_number": 2363
+      },
+      "subject": "CYP2D6::amitriptyline",
+      "upstream_record": {
+        "declared_record_uuids": [],
+        "exact_evidence_record_uuids": [],
+        "exact_match_count": 0,
+        "lookup_performed": false,
+        "names_upstream_record": false,
+        "upstream_record_id": null,
+        "upstream_record_id_source": null
+      },
+      "work_item_id": "CWI-LEGACY-cd0547e1f24e5be0"
+    },
+    {
+      "axis": "CYP2D6::amitriptyline",
+      "blocker_codes": [
+        "CURATION_NOT_CURATED",
+        "DATASET_NOT_PUBLISHED",
+        "EVIDENCE_BUILD_QUARANTINED",
+        "LEGACY_SEVERITY_IS_NOT_AN_OUTCOME",
+        "NO_APPROVAL_ENVELOPE",
+        "NO_APPROVED_REVISION",
+        "NO_EVIDENCE_LINK",
+        "PROTOCOL_NOT_APPROVED"
+      ],
+      "candidate_id": "LRC-CWI-LEGACY-d61eaa8dd24a0f2a",
+      "curation_status": "RAW",
+      "disposition": "MISSING_EVIDENCE_REQUIRES_CURATOR",
+      "disposition_basis": [
+        "origin resolves in clinpgx_mvp_seed/phenotype_effect_rules.csv and its content hash still matches the migration",
+        "names no upstream record identifier, so no exact lookup is possible and no link may be guessed",
+        "gene-drug axis is in the first release, so the candidate stays open and blocked on a curator"
+      ],
+      "drug_canonical_key": "DRUG:amitriptyline",
+      "duplicate_of_proposal_id": null,
+      "eligible_for_rule_creation": false,
+      "gene_canonical_key": "GENE:CYP2D6",
+      "human_action_required": "A curator sources evidence for this axis under an approved source policy and writes a revision citing it. No machine can supply the missing citation.",
+      "in_first_release_scope": true,
+      "legacy_proposal_id": "MIGRATION-PROPOSAL-4d3ac453e8dc8334",
+      "legacy_values_present": [
+        "demo_risk_level",
+        "drug_behavior_hint",
+        "effect_direction",
+        "evidence_strength",
+        "normalized_phenotype_group",
+        "plain_language_mvp",
+        "risk_meaning",
+        "usable_for_mvp"
+      ],
+      "migration_issue": {
+        "detail": "no evidence record in this build carries the source record id this legacy row names, so the proposal is left unlinked rather than attached to a plausible neighbour",
+        "issue": "UNLINKED_LEGACY_PROPOSAL"
+      },
+      "origin": {
+        "ast_path": null,
+        "line_number": null,
+        "origin_file_present": true,
+        "origin_file_sha256_matches_migration": true,
+        "origin_row_annotation_id": "",
+        "origin_row_source_container": "manual_normalization_from_clinpgx_outputs",
+        "pointer_kind": "CSV_ROW",
+        "pointer_resolves": true,
+        "relative_path": "clinpgx_mvp_seed/phenotype_effect_rules.csv",
+        "resolved_subject": "CYP2D6::amitriptyline",
+        "row_number": 2364
+      },
+      "subject": "CYP2D6::amitriptyline",
+      "upstream_record": {
+        "declared_record_uuids": [],
+        "exact_evidence_record_uuids": [],
+        "exact_match_count": 0,
+        "lookup_performed": false,
+        "names_upstream_record": false,
+        "upstream_record_id": null,
+        "upstream_record_id_source": null
+      },
+      "work_item_id": "CWI-LEGACY-d61eaa8dd24a0f2a"
+    }
+  ],
+  "content_hash": "sha256:2368207942c23d6c3cf44ba242cde1b0bdc547268495a3af03f2f76f2efcaff2",
+  "counts": {
+    "by_axis": {
+      "CYP1A2::amitriptyline": 2,
+      "CYP2C19::amitriptyline": 3,
+      "CYP2C19::citalopram": 3,
+      "CYP2C19::clopidogrel": 3,
+      "CYP2C19::sertraline": 3,
+      "CYP2C19::voriconazole": 3,
+      "CYP2C9::warfarin": 4,
+      "CYP2D6::amitriptyline": 4,
+      "CYP2D6::codeine": 3,
+      "CYP2D6::tamoxifen": 3,
+      "CYP3A4::voriconazole": 2
+    },
+    "by_disposition": {
+      "DUPLICATE_OR_SUPERSEDED_MIGRATION_ITEM": 0,
+      "MALFORMED_OR_UNRESOLVABLE_MIGRATION_RECORD": 0,
+      "MECHANICALLY_LINKABLE": 0,
+      "MISSING_EVIDENCE_REQUIRES_CURATOR": 13,
+      "OUTSIDE_FIRST_RELEASE_SCOPE": 20
+    },
+    "by_origin_file": {
+      "clean_mvp_seed_dataset.py": 11,
+      "clinpgx_mvp_seed/phenotype_effect_rules.csv": 22
+    },
+    "in_first_release_scope": 13,
+    "naming_an_upstream_record": 0,
+    "origins_resolving": 33,
+    "outside_first_release_scope": 20,
+    "unlinked_candidates": 33
+  },
+  "decision_procedure": [
+    "1. MECHANICALLY_LINKABLE if the candidate names an exact upstream record identifier that resolves to exactly one evidence record with agreeing gene and drug.",
+    "2. MALFORMED_OR_UNRESOLVABLE_MIGRATION_RECORD if the origin file is absent, its hash no longer matches the migration, or the row or line it names does not exist.",
+    "3. DUPLICATE_OR_SUPERSEDED_MIGRATION_ITEM if another proposal carries the same subject and the same legacy values.",
+    "4. OUTSIDE_FIRST_RELEASE_SCOPE if the gene-drug axis is not one of the five the first release covers.",
+    "5. MISSING_EVIDENCE_REQUIRES_CURATOR otherwise."
+  ],
+  "disposition_meanings": {
+    "DUPLICATE_OR_SUPERSEDED_MIGRATION_ITEM": "another proposal carries the same subject and the same legacy values, so this one adds no question. If the twin is linked, this item is superseded by it.",
+    "MALFORMED_OR_UNRESOLVABLE_MIGRATION_RECORD": "the migration record cannot be read back to its origin: the origin file is missing, its content hash no longer matches what the migration recorded, or the row or line the origin names does not exist. Nothing can be decided about a record whose source cannot be found.",
+    "MECHANICALLY_LINKABLE": "the candidate names an exact upstream record identifier, that identifier resolves to exactly one evidence record in this build, and the record's gene and drug entity links agree with the candidate's own. No similarity is used. A candidate reaching this disposition is a mechanical repair, not a scientific finding, and the link is still written by a curator rather than by this report.",
+    "MISSING_EVIDENCE_REQUIRES_CURATOR": "the candidate is in first-release scope and its origin resolves, but it names no upstream record, so no machine can supply the evidence it lacks. A curator selects evidence when they write a revision. Until then the candidate stays visibly blocked on human scientific judgement.",
+    "OUTSIDE_FIRST_RELEASE_SCOPE": "the candidate's gene-drug axis is not one of the five the first release covers. This is a closure-scope disposition about what this project plans to publish, not a scientific rejection: the candidate keeps every blocker it had and remains available to a later release."
+  },
+  "disposition_report_version": "pgx-closure-legacy-candidate-disposition/1",
+  "first_release_scope": {
+    "axes": [
+      "CYP2C19::amitriptyline",
+      "CYP2C19::clopidogrel",
+      "CYP2C19::omeprazole",
+      "CYP2D6::amitriptyline",
+      "CYP2D6::codeine"
+    ],
+    "drugs": [
+      "amitriptyline",
+      "clopidogrel",
+      "codeine",
+      "omeprazole"
+    ],
+    "genes": [
+      "CYP2C19",
+      "CYP2D6"
+    ]
+  },
+  "note": "Every unlinked candidate appears exactly once. A candidate whose disposition is OUTSIDE_FIRST_RELEASE_SCOPE has not been judged scientifically invalid and keeps every blocker it had.",
+  "promotion_policy": "This report creates no link, no rule and no interpretation. It assigns a disposition and names what a person would have to do next. A legacy severity, risk level, phenotype string or plain language hint is never read as evidence here; only the presence of such a field is recorded.",
+  "upstream_state": {
+    "evidence_build_lifecycle_labels": [
+      "QUARANTINED",
+      "LEGACY_MIGRATION",
+      "NOT_CURATED",
+      "NOT_EXECUTABLE",
+      "NOT_PUBLICATION_ELIGIBLE"
+    ],
+    "evidence_record_count": 1794,
+    "inventory_content_hash": "sha256:e2d89363197e26afbf5bcde3601c1400f1a95c2ea2d5c3025e38a83939d8d9ea",
+    "inventory_version": "pgx-legacy-rule-candidate-inventory/1",
+    "linked_candidates": 1526,
+    "linked_proposals_naming_an_upstream_accession": 1526,
+    "total_candidates": 1559,
+    "unlinked_proposals_naming_an_upstream_accession": 0
+  },
+  "work_package": "WP-C00"
+}

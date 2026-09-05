@@ -1,5 +1,5 @@
 {
-  "blocking_finding_count": 1,
+  "blocking_finding_count": 0,
   "dangling_traceability_references": {
     "missing_paths": [],
     "unknown_claim_ids": [],
@@ -7,8 +7,8 @@
     "unknown_evidence_ids": [],
     "unknown_gate_ids": []
   },
-  "disagreement_count": 4,
-  "finding_count": 6,
+  "disagreement_count": 3,
+  "finding_count": 3,
   "findings": [
     {
       "blocking": false,
@@ -19,38 +19,6 @@
         "architecture.md"
       ],
       "resolution": "all 15 enumerated bullets are implemented as P0-DOD-001 through P0-DOD-015 and evaluated separately. No bullet was merged, renumbered or discarded to reach the declared count. The discrepancy is visible and it permits no item to be ignored."
-    },
-    {
-      "blocking": true,
-      "code": "THS6_EVIDENCE_INVALID",
-      "detail": "1 artifact(s) failed schema validation, resolved through a symlink, or contained credential-shaped content: EV-WP17-001 (data/web/wp17-real-gate-status.json) INVALID: 1 error(s)",
-      "owner": "platform owner",
-      "references": [
-        "EV-WP17-001"
-      ],
-      "resolution": "typed INVALID and excluded from supporting any claim. WP-25 does not repair another work package's artifact or its schema. Where a gate reads a different, well-formed field of such an artifact, it still reads it, and this finding is why a reader should treat that gate's evidence as provisional."
-    },
-    {
-      "blocking": false,
-      "code": "THS6_EVIDENCE_STALE",
-      "detail": "3 artifact(s) record values their own source has since changed: EV-WP19-001, EV-WP19-002, EV-WP19-003",
-      "owner": "verification owner",
-      "references": [
-        "EV-WP19-001",
-        "EV-WP19-002",
-        "EV-WP19-003"
-      ],
-      "resolution": "typed STALE; a stale artifact supports no claim"
-    },
-    {
-      "blocking": false,
-      "code": "THS6_EVIDENCE_UNAVAILABLE",
-      "detail": "1 declared artifact(s) are not present in the working tree: EV-WP16-005",
-      "owner": "repository maintainer",
-      "references": [
-        "EV-WP16-005"
-      ],
-      "resolution": "recorded as UNAVAILABLE; no digest is invented and no gate treats an absent artifact as satisfied"
     },
     {
       "blocking": false,
@@ -113,18 +81,6 @@
       "right_field": "wp24_started",
       "right_path": "data/verification/wp19-real-gate-status.json",
       "right_value": true
-    },
-    {
-      "explanation": "WP-19's recorded discovery count is lower than the number of test functions the tree now defines, so the recorded count predates later work packages. A recorded count can legitimately be lower than the defined count only through skips, which reduce execution rather than discovery.",
-      "fact": "how many tests this repository has",
-      "left_field": "discovered_test_count",
-      "left_path": "data/verification/wp19-real-gate-status.json",
-      "left_value": 6374,
-      "owner": "verification owner",
-      "resolution": "recorded; WP-25 does not regenerate another work package's artifact",
-      "right_field": "test functions defined (counted by parsing)",
-      "right_path": "tests/",
-      "right_value": 7323
     }
   ]
 }

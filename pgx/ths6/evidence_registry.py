@@ -561,27 +561,38 @@ DECLARED_EVIDENCE: Tuple[EvidenceItem, ...] = (
        claims=("THS6-CLAIM-007",)),
 
     # -- WP-19: verification --------------------------------------------------
+    # These three were declared STALE by WP-25, which found the committed
+    # inventory counting a suite from before WP-20 and a recorded run WP-19
+    # itself rejected. WP-C00 section A.7 regenerated all three from a single
+    # full-profile execution, so the declarations now say what they are. The
+    # gate status and the inventory keep a type that supports no THS-6 claim,
+    # matching how WP-16 and WP-17 declare theirs: a document about a run is
+    # not the run. Only the run itself is typed REAL_EXECUTED, and it carries
+    # no claims, so nothing here moves a gate.
     _e("EV-WP19-001", "WP-19 real gate status", "WP-19",
-       _T.STALE, "data/verification/wp19-real-gate-status.json",
+       _T.CONFIGURED_NOT_EXECUTED,
+       "data/verification/wp19-real-gate-status.json",
        "pgx-verify gate-status",
        schema_path="schemas/wp19/wp19-gate-status.schema.json",
        gates=("GATE-C", "GATE-E"), numeric=True,
        freshness="data/verification/wp19-test-inventory.json",
-       limitations=("records a discovered test count from before WP-20 "
-                    "through WP-25 added tests; the count no longer matches "
-                    "the suite",),
+       limitations=("reports what the suite did on the host that ran it; a "
+                    "gate status is a document about a run rather than a "
+                    "run",),
        gap_owner="verification owner"),
-    _e("EV-WP19-002", "WP-19 test inventory", "WP-19", _T.STALE,
+    _e("EV-WP19-002", "WP-19 test inventory", "WP-19",
+       _T.CONFIGURED_NOT_EXECUTED,
        "data/verification/wp19-test-inventory.json", "pgx-verify inventory",
        numeric=True,
-       limitations=("an inventory of the suite as it was when last "
-                    "generated",),
+       limitations=("counts and categorises the suite; discovering a test is "
+                    "not running it",),
        gap_owner="verification owner"),
-    _e("EV-WP19-003", "WP-19 verification run", "WP-19", _T.STALE,
+    _e("EV-WP19-003", "WP-19 verification run", "WP-19", _T.REAL_EXECUTED,
        "data/verification/wp19-verification-run.json", "pgx-verify run",
-       numeric=True,
-       limitations=("a recorded run whose evidence WP-19 itself rejects as "
-                    "stale",),
+       observed=True, numeric=True,
+       limitations=("one execution of the full profile on one host, with "
+                    "PostgreSQL integration blocked for want of a driver; it "
+                    "says what the suite did, not that the science is right",),
        gap_owner="verification owner"),
     _e("EV-WP19-004", "WP-19 reproducibility report", "WP-19",
        _T.REAL_EXECUTED, "data/verification/wp19-reproducibility-report.json",

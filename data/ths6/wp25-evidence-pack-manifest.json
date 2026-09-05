@@ -43,24 +43,24 @@
       "state": "PRESENT"
     },
     {
-      "bytes": 128735,
+      "bytes": 127442,
       "path": "data/ths6/wp25-evidence-registry.json",
       "present": true,
-      "sha256": "sha256:8e84e6b69877ab10fe1f8b8bcdd2b7ecdc2223f8f760904100b8f2e3ac01f5e0",
+      "sha256": "sha256:b7ab0f0d886de89db0a54810b3c014dc5ddc30310354231002f2e6001fceaef8",
       "state": "PRESENT"
     },
     {
-      "bytes": 6450,
+      "bytes": 4225,
       "path": "data/ths6/wp25-findings.json",
       "present": true,
-      "sha256": "sha256:bdd11f0816275f8a58448b8858587eb70d0519b22b08d62e591dd27cd56aef53",
+      "sha256": "sha256:e657d86a052c34192c74c9c0a3c13edb05d3df3b5613bd90b76cf8ddf0553b96",
       "state": "PRESENT"
     },
     {
-      "bytes": 48314,
+      "bytes": 47508,
       "path": "data/ths6/wp25-gate-matrix.json",
       "present": true,
-      "sha256": "sha256:27f805a427efd2c83377d05b05e0a50062cb2ce2adb58233e8fa34c038449ac4",
+      "sha256": "sha256:3e085545fba3edf8788354c075cbe7ec7ff0e5bac2803ca822c7f4c2b9a1af4d",
       "state": "PRESENT"
     },
     {
@@ -74,7 +74,7 @@
       "bytes": 2935,
       "path": "data/ths6/wp25-ths6-status.json",
       "present": true,
-      "sha256": "sha256:2be60abdf6c70253b6e1b52abe647df564760e0ad4af0455aa254a7891a30921",
+      "sha256": "sha256:8a03561f47132776b461514a599f1f1b193d732c63896ca3f1d1ba46cd850b1b",
       "state": "PRESENT"
     },
     {
@@ -127,17 +127,17 @@
       "state": "PRESENT"
     },
     {
-      "bytes": 5065,
+      "bytes": 5849,
       "path": "docs/ths6/final/executive-summary.md",
       "present": true,
-      "sha256": "sha256:9c826eaac1705552379e4d412f7a67bc7222f8d03ee9ad1c54c54a77dadd43d5",
+      "sha256": "sha256:499b3526e49220630b0909e4104107979da4408ae1be14bad8ac85f1c3510e65",
       "state": "PRESENT"
     },
     {
-      "bytes": 4901,
+      "bytes": 5648,
       "path": "docs/ths6/final/findings-and-discrepancies.md",
       "present": true,
-      "sha256": "sha256:b5c41b2807e516330f3c1eede605ad0e052f1e58b0dce4b8f1c177361e18bb9a",
+      "sha256": "sha256:2b61bef354d39f4619321d2866b757adc4e00e3f2239aeb45a28acb9f83c9a1a",
       "state": "PRESENT"
     },
     {
@@ -232,10 +232,10 @@
       "state": "PRESENT"
     },
     {
-      "bytes": 5428,
+      "bytes": 5698,
       "path": "docs/ths6/final/what-remains.md",
       "present": true,
-      "sha256": "sha256:a7e66e7b0707a7ea03b75258ade643f76212e378cd49d291b959c7f9d8a79543",
+      "sha256": "sha256:e335be77b6a6c20e14f4b6c86c2d2c4c556c26a7cbc7e9d642ce1126c82d3144",
       "state": "PRESENT"
     },
     {
@@ -380,7 +380,7 @@
     }
   ],
   "pack_integrity_version": "pgx-wp25-pack-integrity/1",
-  "pack_sha256": "sha256:e51a1bf63a7c79c09815d709560dd61edf0ec9f84c0ed8dfcad61bc52064893a",
+  "pack_sha256": "sha256:31d842807d75ab2cf85b8ae7badca3ea9532ec07f09d42510c4e3a1409744879",
   "pack_version": "pgx-wp25-evidence-pack/1",
   "present_member_count": 53,
   "refused_member_paths": []

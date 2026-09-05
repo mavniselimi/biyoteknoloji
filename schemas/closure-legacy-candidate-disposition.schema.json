@@ -1,0 +1,312 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pgx-platform.invalid/schemas/closure-legacy-candidate-disposition.schema.json",
+  "title": "PGx closure legacy candidate disposition report",
+  "description": "One disposition for every legacy rule candidate the WP-11 inventory reports as unlinked. The schema enforces that the report decides rather than describes: each candidate carries exactly one disposition drawn from a closed list, the basis for it, and the human action it implies. It also enforces that the report promotes nothing - a candidate may name resolved evidence record uuids only when its disposition is MECHANICALLY_LINKABLE, and there is deliberately no field into which a legacy severity, risk level or phenotype string could be copied as an outcome.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "disposition_report_version",
+    "work_package",
+    "first_release_scope",
+    "disposition_meanings",
+    "decision_procedure",
+    "upstream_state",
+    "counts",
+    "candidates",
+    "promotion_policy",
+    "note",
+    "content_hash"
+  ],
+  "properties": {
+    "disposition_report_version": {
+      "const": "pgx-closure-legacy-candidate-disposition/1"
+    },
+    "work_package": {
+      "const": "WP-C00"
+    },
+    "first_release_scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["genes", "drugs", "axes"],
+      "properties": {
+        "genes": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"type": "string", "minLength": 1}
+        },
+        "drugs": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"type": "string", "minLength": 1}
+        },
+        "axes": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"type": "string", "pattern": "^[A-Za-z0-9]+::[a-z]+$"}
+        }
+      }
+    },
+    "disposition_meanings": {
+      "type": "object",
+      "minProperties": 5,
+      "additionalProperties": {"type": "string", "minLength": 40}
+    },
+    "decision_procedure": {
+      "description": "The rules in the order they are applied. The order is part of the result, so it is published rather than left to be read out of the code.",
+      "type": "array",
+      "minItems": 5,
+      "items": {"type": "string", "minLength": 20}
+    },
+    "upstream_state": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "inventory_version",
+        "inventory_content_hash",
+        "total_candidates",
+        "linked_candidates",
+        "evidence_build_lifecycle_labels",
+        "evidence_record_count",
+        "linked_proposals_naming_an_upstream_accession",
+        "unlinked_proposals_naming_an_upstream_accession"
+      ],
+      "properties": {
+        "inventory_version": {"type": "string", "minLength": 1},
+        "inventory_content_hash": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+        "total_candidates": {"type": "integer", "minimum": 0},
+        "linked_candidates": {"type": "integer", "minimum": 0},
+        "evidence_build_lifecycle_labels": {
+          "type": "array",
+          "items": {"type": "string", "minLength": 1}
+        },
+        "evidence_record_count": {"type": "integer", "minimum": 0},
+        "linked_proposals_naming_an_upstream_accession": {"type": "integer", "minimum": 0},
+        "unlinked_proposals_naming_an_upstream_accession": {"type": "integer", "minimum": 0}
+      }
+    },
+    "counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "unlinked_candidates",
+        "in_first_release_scope",
+        "outside_first_release_scope",
+        "origins_resolving",
+        "naming_an_upstream_record",
+        "by_disposition",
+        "by_axis",
+        "by_origin_file"
+      ],
+      "properties": {
+        "unlinked_candidates": {"type": "integer", "minimum": 0},
+        "in_first_release_scope": {"type": "integer", "minimum": 0},
+        "outside_first_release_scope": {"type": "integer", "minimum": 0},
+        "origins_resolving": {"type": "integer", "minimum": 0},
+        "naming_an_upstream_record": {"type": "integer", "minimum": 0},
+        "by_disposition": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "MECHANICALLY_LINKABLE",
+            "MALFORMED_OR_UNRESOLVABLE_MIGRATION_RECORD",
+            "DUPLICATE_OR_SUPERSEDED_MIGRATION_ITEM",
+            "OUTSIDE_FIRST_RELEASE_SCOPE",
+            "MISSING_EVIDENCE_REQUIRES_CURATOR"
+          ],
+          "properties": {
+            "MECHANICALLY_LINKABLE": {"type": "integer", "minimum": 0},
+            "MALFORMED_OR_UNRESOLVABLE_MIGRATION_RECORD": {"type": "integer", "minimum": 0},
+            "DUPLICATE_OR_SUPERSEDED_MIGRATION_ITEM": {"type": "integer", "minimum": 0},
+            "OUTSIDE_FIRST_RELEASE_SCOPE": {"type": "integer", "minimum": 0},
+            "MISSING_EVIDENCE_REQUIRES_CURATOR": {"type": "integer", "minimum": 0}
+          }
+        },
+        "by_axis": {
+          "type": "object",
+          "additionalProperties": {"type": "integer", "minimum": 1}
+        },
+        "by_origin_file": {
+          "type": "object",
+          "additionalProperties": {"type": "integer", "minimum": 1}
+        }
+      }
+    },
+    "candidates": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "candidate_id",
+          "work_item_id",
+          "legacy_proposal_id",
+          "subject",
+          "gene_canonical_key",
+          "drug_canonical_key",
+          "axis",
+          "in_first_release_scope",
+          "disposition",
+          "disposition_basis",
+          "origin",
+          "upstream_record",
+          "duplicate_of_proposal_id",
+          "blocker_codes",
+          "curation_status",
+          "eligible_for_rule_creation",
+          "legacy_values_present",
+          "migration_issue",
+          "human_action_required"
+        ],
+        "properties": {
+          "candidate_id": {"type": "string", "minLength": 1},
+          "work_item_id": {"type": "string", "minLength": 1},
+          "legacy_proposal_id": {"type": "string", "minLength": 1},
+          "subject": {"type": "string", "minLength": 1},
+          "gene_canonical_key": {"type": "string", "pattern": "^GENE:"},
+          "drug_canonical_key": {"type": "string", "pattern": "^DRUG:"},
+          "axis": {"type": "string", "pattern": "^[A-Za-z0-9]+::[a-z]+$"},
+          "in_first_release_scope": {"type": "boolean"},
+          "disposition": {
+            "enum": [
+              "MECHANICALLY_LINKABLE",
+              "MALFORMED_OR_UNRESOLVABLE_MIGRATION_RECORD",
+              "DUPLICATE_OR_SUPERSEDED_MIGRATION_ITEM",
+              "OUTSIDE_FIRST_RELEASE_SCOPE",
+              "MISSING_EVIDENCE_REQUIRES_CURATOR"
+            ]
+          },
+          "disposition_basis": {
+            "type": "array",
+            "minItems": 1,
+            "items": {"type": "string", "minLength": 10}
+          },
+          "origin": {
+            "type": "object",
+            "required": [
+              "relative_path",
+              "origin_file_present",
+              "origin_file_sha256_matches_migration",
+              "pointer_resolves",
+              "pointer_kind"
+            ],
+            "properties": {
+              "relative_path": {"type": "string"},
+              "origin_file_present": {"type": "boolean"},
+              "origin_file_sha256_matches_migration": {"type": "boolean"},
+              "pointer_resolves": {"type": "boolean"},
+              "pointer_kind": {"enum": ["NONE", "CSV_ROW", "PYTHON_AST"]}
+            }
+          },
+          "upstream_record": {
+            "type": "object",
+            "required": [
+              "names_upstream_record",
+              "upstream_record_id",
+              "upstream_record_id_source",
+              "declared_record_uuids",
+              "exact_evidence_record_uuids",
+              "exact_match_count",
+              "lookup_performed"
+            ],
+            "properties": {
+              "names_upstream_record": {"type": "boolean"},
+              "exact_match_count": {"type": "integer", "minimum": 0},
+              "lookup_performed": {"type": "boolean"},
+              "declared_record_uuids": {"type": "array", "items": {"type": "string"}},
+              "exact_evidence_record_uuids": {"type": "array", "items": {"type": "string"}}
+            }
+          },
+          "blocker_codes": {
+            "description": "Carried through from the inventory unchanged. A disposition never clears a blocker; only a person does.",
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {"type": "string", "minLength": 1}
+          },
+          "curation_status": {"type": "string", "minLength": 1},
+          "eligible_for_rule_creation": {
+            "description": "This report grants no eligibility. A true value here would mean the file had done something it is defined not to do.",
+            "const": false
+          },
+          "legacy_values_present": {
+            "description": "The names of the legacy fields the record carries. Only the names: a legacy severity or phenotype string is the previous project's unreviewed opinion and is never copied into this report as a value.",
+            "type": "array",
+            "uniqueItems": true,
+            "items": {"type": "string", "minLength": 1}
+          },
+          "migration_issue": {
+            "type": "object",
+            "required": ["issue", "detail"],
+            "properties": {
+              "issue": {"type": "string"},
+              "detail": {"type": "string"}
+            }
+          },
+          "duplicate_of_proposal_id": {"type": ["string", "null"]},
+          "human_action_required": {"type": "string", "minLength": 20}
+        },
+        "allOf": [
+          {
+            "description": "Resolved evidence uuids may only accompany a mechanical link. Anything else would be this report attaching a citation nobody reviewed.",
+            "if": {
+              "properties": {
+                "disposition": {"not": {"const": "MECHANICALLY_LINKABLE"}}
+              },
+              "required": ["disposition"]
+            },
+            "then": {
+              "properties": {
+                "upstream_record": {
+                  "properties": {
+                    "exact_evidence_record_uuids": {"maxItems": 0},
+                    "exact_match_count": {"maximum": 0}
+                  }
+                }
+              }
+            }
+          },
+          {
+            "description": "A mechanical link must rest on exactly one resolved record.",
+            "if": {
+              "properties": {"disposition": {"const": "MECHANICALLY_LINKABLE"}},
+              "required": ["disposition"]
+            },
+            "then": {
+              "properties": {
+                "upstream_record": {
+                  "properties": {
+                    "names_upstream_record": {"const": true},
+                    "exact_match_count": {"minimum": 1, "maximum": 1},
+                    "exact_evidence_record_uuids": {"minItems": 1, "maxItems": 1}
+                  }
+                }
+              }
+            }
+          },
+          {
+            "description": "A duplicate disposition must name the item it duplicates.",
+            "if": {
+              "properties": {
+                "disposition": {"const": "DUPLICATE_OR_SUPERSEDED_MIGRATION_ITEM"}
+              },
+              "required": ["disposition"]
+            },
+            "then": {
+              "properties": {
+                "duplicate_of_proposal_id": {"type": "string", "minLength": 1}
+              }
+            }
+          }
+        ]
+      }
+    },
+    "promotion_policy": {"type": "string", "minLength": 80},
+    "note": {"type": "string", "minLength": 40},
+    "content_hash": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"}
+  }
+}

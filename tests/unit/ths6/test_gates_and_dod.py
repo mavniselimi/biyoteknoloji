@@ -258,7 +258,14 @@ class TestDisagreementDetection(unittest.TestCase):
         self.found = detect_disagreements(_ROOT)
 
     def test_disagreements_are_detected_rather_than_resolved(self):
-        self.assertGreaterEqual(len(self.found), 4)
+        """Three remain. WP-25 found four; A.7 closed one by measuring it.
+
+        The floor moved down because a disagreement was resolved, not because
+        the detector stopped looking: WP-19's recorded test count now matches
+        the suite, so there is nothing left to disagree about. The three that
+        remain are real and are still reported rather than reconciled.
+        """
+        self.assertGreaterEqual(len(self.found), 3)
         for entry in self.found:
             with self.subTest(fact=entry["fact"]):
                 self.assertIn("recorded", entry["resolution"])
@@ -280,11 +287,37 @@ class TestDisagreementDetection(unittest.TestCase):
         self.assertIn("whether the expert review workflow is implemented",
                       facts)
 
-    def test_the_stale_test_count_is_reported(self):
-        """WP-19's recorded count predates WP-20 through WP-25."""
-        facts = {entry["fact"]: entry for entry in self.found}
-        entry = facts["how many tests this repository has"]
-        self.assertLess(entry["left_value"], entry["right_value"])
+    def test_the_stale_test_count_disagreement_is_resolved(self):
+        """It was real, and A.7 fixed it by running the suite.
+
+        WP-25 found WP-19's recorded count predating the tests WP-20 through
+        WP-25 added, and reported the disagreement rather than picking a
+        number. WP-C00 section A.7 ran the full profile once and regenerated
+        the inventory from it, so the two sources now agree and the detector
+        reports nothing. This test is the retirement: it asserts the fact is
+        absent *and* that the underlying counts really do match, because an
+        absent disagreement proves nothing on its own - a detector that had
+        simply stopped looking would also produce one.
+        """
+        facts = {entry["fact"] for entry in self.found}
+        self.assertNotIn("how many tests this repository has", facts)
+
+        import io as _io
+        import json as _json
+        import os as _os
+        with _io.open(_os.path.join(_ROOT, "data", "verification",
+                                    "wp19-test-inventory.json"),
+                      encoding="utf-8") as handle:
+            inventory = _json.load(handle)
+        with _io.open(_os.path.join(_ROOT, "data", "verification",
+                                    "wp19-verification-run.json"),
+                      encoding="utf-8") as handle:
+            run = _json.load(handle)
+        self.assertEqual(inventory["discovered_test_count"],
+                         inventory["inventoried_test_count"])
+        self.assertEqual(run["summary"]["discovered"],
+                         inventory["discovered_test_count"])
+        self.assertEqual(inventory["load_failures"], [])
 
     def test_no_disagreement_prefers_the_more_favourable_value(self):
         """No resolution says a value was chosen over another.

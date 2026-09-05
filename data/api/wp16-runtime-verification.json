@@ -1,0 +1,68 @@
+{
+  "checks": [
+    {
+      "detail": "the application was built with a fail-closed provider",
+      "name": "application_composes",
+      "passed": true,
+      "route_count": 9
+    },
+    {
+      "detail": "28 test(s) executed, 1 skipped, 0 failure(s), 0 error(s)",
+      "errors": 0,
+      "failures": 0,
+      "name": "asgi_runtime_suite",
+      "passed": true,
+      "tests_executed": 28,
+      "tests_run": 29,
+      "tests_skipped": 1
+    },
+    {
+      "detail": "every package the runtime checks need is importable",
+      "name": "framework_imports",
+      "passed": true
+    },
+    {
+      "detail": "the liveness probe answered 200",
+      "name": "health_live_answers",
+      "passed": true
+    },
+    {
+      "detail": "the running application served a document identical to the committed artifact",
+      "difference_count": 0,
+      "name": "openapi_served_matches_committed",
+      "passed": true
+    }
+  ],
+  "checks_not_run": [],
+  "environment": {
+    "implementation": "CPython",
+    "machine": "x86_64",
+    "packages": {
+      "fastapi": "0.141.1",
+      "httpx": "0.28.1",
+      "pydantic": "2.13.3",
+      "starlette": "1.6.0",
+      "uvicorn": "0.46.0"
+    },
+    "python": "3.11.15",
+    "system": "Linux"
+  },
+  "inputs": {
+    "api_source_file_count": 36,
+    "api_source_sha256": "sha256:323b1756b1c09849c1a53196384bc9b82c68df69dece8f0443f7b3b52d94e81d",
+    "committed_openapi_sha256": "sha256:1d9e9d72d52eacd8a99de1d3836b2c04e5b3069679beacc3972a24779b9e336e",
+    "openapi_document_sha256": "sha256:1d9e9d72d52eacd8a99de1d3836b2c04e5b3069679beacc3972a24779b9e336e"
+  },
+  "note": "Written by `python -m apps.api.runtime_verification`. It records what executed, not what is installed: an importable framework is not a test that ran. The gate status reads this file and reports BLOCKED when it is absent, when it says verified false, or when the input fingerprints no longer match the repository.",
+  "required_checks": [
+    "framework_imports",
+    "application_composes",
+    "openapi_served_matches_committed",
+    "health_live_answers",
+    "asgi_runtime_suite"
+  ],
+  "schema_version": "pgx-wp16-runtime-verification/1",
+  "verified": true,
+  "verified_at": "2026-09-05T22:07:33Z",
+  "work_package": "WP-16"
+}

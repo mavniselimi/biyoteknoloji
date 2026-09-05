@@ -38,6 +38,8 @@ A unit test pins the exception by name. If somebody fixes WP-17, that test
 fails and tells them to retire this finding rather than leaving a stale one in
 the pack.
 
+> **Resolved in WP-C00 (Execution Wave 1, section A.6).** The finding above records what was true when WP-25 built this pack, and is kept unchanged for that reason. The producer now emits `"BROWSER_CAPTURED"`, the value the published schema always declared. The repair is at the level of the class rather than the instance: the vocabulary has one home, `apps.web.gate_status.SCREENSHOT_EVIDENCE_STATUSES`, which the producer, the published schema and the tests all read, and `tests/unit/web/test_snapshots.py` now validates the committed artifact against the committed schema on every run - the comparison nobody had been making. `pgx-ths6 inventory` exits `0`, no artifact is typed `INVALID`, and the `THS6_EVIDENCE_INVALID` finding is retired.
+
 ## 2. The Definition of Done count discrepancy
 
 WP-25's prose says fourteen items; `architecture.md` §21 enumerates fifteen.

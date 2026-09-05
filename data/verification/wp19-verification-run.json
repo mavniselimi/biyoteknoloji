@@ -2,19 +2,19 @@
   "categories": {
     "API_CONTRACT": {
       "errored": 0,
-      "executed": 340,
+      "executed": 347,
       "failed": 0,
       "outcome": "PASS",
-      "passed": 340,
+      "passed": 347,
       "reason": "",
       "skipped": 0
     },
     "ARTIFACT_SCHEMA": {
       "errored": 0,
-      "executed": 398,
+      "executed": 575,
       "failed": 0,
       "outcome": "PASS",
-      "passed": 398,
+      "passed": 575,
       "reason": "",
       "skipped": 0
     },
@@ -38,19 +38,19 @@
     },
     "DOMAIN_INVARIANT": {
       "errored": 0,
-      "executed": 497,
+      "executed": 1031,
       "failed": 0,
       "outcome": "PASS",
-      "passed": 497,
+      "passed": 1023,
       "reason": "",
-      "skipped": 0
+      "skipped": 8
     },
     "FAILURE_NEGATIVE": {
       "errored": 0,
-      "executed": 79,
+      "executed": 97,
       "failed": 0,
       "outcome": "PASS",
-      "passed": 79,
+      "passed": 97,
       "reason": "",
       "skipped": 0
     },
@@ -74,12 +74,12 @@
     },
     "MIGRATION": {
       "errored": 0,
-      "executed": 67,
+      "executed": 140,
       "failed": 0,
       "outcome": "PASS",
-      "passed": 62,
+      "passed": 131,
       "reason": "",
-      "skipped": 5
+      "skipped": 9
     },
     "OFFLINE_INDEPENDENCE": {
       "errored": 0,
@@ -110,37 +110,37 @@
     },
     "SECURITY_BOUNDARY": {
       "errored": 0,
-      "executed": 286,
+      "executed": 751,
       "failed": 0,
       "outcome": "PASS",
-      "passed": 286,
+      "passed": 751,
       "reason": "",
       "skipped": 0
     },
     "SNAPSHOT": {
       "errored": 0,
-      "executed": 211,
+      "executed": 252,
       "failed": 0,
       "outcome": "PASS",
-      "passed": 210,
+      "passed": 251,
       "reason": "",
       "skipped": 1
     },
     "UNIT": {
       "errored": 0,
-      "executed": 3076,
+      "executed": 3163,
       "failed": 0,
       "outcome": "PASS",
-      "passed": 3074,
+      "passed": 3159,
       "reason": "",
-      "skipped": 2
+      "skipped": 4
     },
     "VALIDATION_PARTITION": {
       "errored": 0,
-      "executed": 180,
+      "executed": 204,
       "failed": 0,
       "outcome": "PASS",
-      "passed": 180,
+      "passed": 204,
       "reason": "",
       "skipped": 0
     }
@@ -166,10 +166,10 @@
   },
   "hash_seed": "20260904",
   "inputs": {
-    "apps_sha256": "8a925ac49e3ede351740c599cd070d00e35874a3361baf05bdac4982448c9397",
-    "combined_sha256": "7710578007aea315336053817787e22c5c39724168886915c2d8d043a2c0cba1",
-    "pgx_sha256": "cff54daee591e422cac5c98f5c6415fedcb5f31cf31b2c45cbd809250cc6b4a5",
-    "tests_sha256": "e92b81875d6533295500ca939b4016ef3aa9cb1f38634ae9ac58b954b21a4ab2"
+    "apps_sha256": "a4d6b41be3d1c5bdb5208d5fb980318f6f3aea8ebe22375684333567d382fa13",
+    "combined_sha256": "d00ffc6bc781e344deecf07146d0da0eabc15c83a2559b53f4dd21282a305965",
+    "pgx_sha256": "c29be142329b8d60459c86336a19bd33a0445ab2c886aa09d0f9b7dee352df56",
+    "tests_sha256": "24871a1f5d7ba9a264d60f80b283a81e12fc5d355dfc8b6632181d2635160723"
   },
   "issue_codes": [
     "VERIFY_CATEGORY_BLOCKED"
@@ -179,13 +179,13 @@
   "profile": "full",
   "schema_version": "pgx-wp19-verification-run/1",
   "summary": {
-    "discovered": 5964,
+    "discovered": 7390,
     "errored": 0,
-    "executed": 5964,
+    "executed": 7390,
     "failed": 0,
     "not_executed": 0,
-    "passed": 5882,
-    "skipped": 82,
+    "passed": 7294,
+    "skipped": 96,
     "unexplained_skips": 0
   }
 }

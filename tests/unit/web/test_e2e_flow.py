@@ -359,7 +359,9 @@ class TestTheGateStatusAgreesWithTheHost(unittest.TestCase):
     def test_the_screenshot_status_matches_what_is_on_disk(self):
         import os
 
-        from apps.web.gate_status import SCREENSHOT_DIR
+        from apps.web.gate_status import (
+            SCREENSHOT_EVIDENCE_BROWSER_CAPTURED, SCREENSHOT_EVIDENCE_NONE,
+            SCREENSHOT_DIR)
 
         on_disk = sorted(
             name for name in (os.listdir(SCREENSHOT_DIR)
@@ -370,7 +372,8 @@ class TestTheGateStatusAgreesWithTheHost(unittest.TestCase):
         self.assertEqual(self.status["screenshot_evidence_count"],
                          len(on_disk))
         self.assertEqual(self.status["screenshot_evidence_status"],
-                         "CAPTURED" if on_disk else "NONE")
+                         SCREENSHOT_EVIDENCE_BROWSER_CAPTURED if on_disk
+                         else SCREENSHOT_EVIDENCE_NONE)
 
     def test_the_browser_claim_is_a_launch_not_an_installed_package(self):
         """A package on the path is not a browser, and never counts as one."""

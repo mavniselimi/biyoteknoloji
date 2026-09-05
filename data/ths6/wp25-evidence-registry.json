@@ -1,6 +1,6 @@
 {
-  "absent_count": 1,
-  "admissible_count": 17,
+  "absent_count": 0,
+  "admissible_count": 18,
   "admissible_evidence_ids": [
     "EV-WP01-001",
     "EV-WP01-002",
@@ -16,21 +16,20 @@
     "EV-WP14-004",
     "EV-WP17-002",
     "EV-WP18-002",
+    "EV-WP19-003",
     "EV-WP19-004",
     "EV-WP23-005",
     "EV-WP24-008"
   ],
   "counts_by_type": {
-    "CONFIGURED_NOT_EXECUTED": 19,
+    "CONFIGURED_NOT_EXECUTED": 22,
     "DOCUMENT_ONLY": 53,
     "HUMAN_PENDING": 7,
     "IMPLEMENTATION_TEST": 23,
-    "INVALID": 1,
     "OPERATIONAL_PENDING": 6,
-    "REAL_EXECUTED": 16,
+    "REAL_EXECUTED": 17,
     "REAL_OBSERVED": 1,
     "SCIENTIFIC_PENDING": 12,
-    "STALE": 3,
     "TEST_ONLY_REHEARSAL": 3,
     "UNAVAILABLE": 1
   },
@@ -38,38 +37,6 @@
   "evidence_registry_version": "pgx-wp25-evidence-registry/1",
   "final_pack_document_prefix": "docs/ths6/final/",
   "findings": [
-    {
-      "blocking": false,
-      "code": "THS6_EVIDENCE_UNAVAILABLE",
-      "detail": "1 declared artifact(s) are not present in the working tree: EV-WP16-005",
-      "owner": "repository maintainer",
-      "references": [
-        "EV-WP16-005"
-      ],
-      "resolution": "recorded as UNAVAILABLE; no digest is invented and no gate treats an absent artifact as satisfied"
-    },
-    {
-      "blocking": true,
-      "code": "THS6_EVIDENCE_INVALID",
-      "detail": "1 artifact(s) failed schema validation, resolved through a symlink, or contained credential-shaped content: EV-WP17-001 (data/web/wp17-real-gate-status.json) INVALID: 1 error(s)",
-      "owner": "platform owner",
-      "references": [
-        "EV-WP17-001"
-      ],
-      "resolution": "typed INVALID and excluded from supporting any claim. WP-25 does not repair another work package's artifact or its schema. Where a gate reads a different, well-formed field of such an artifact, it still reads it, and this finding is why a reader should treat that gate's evidence as provisional."
-    },
-    {
-      "blocking": false,
-      "code": "THS6_EVIDENCE_STALE",
-      "detail": "3 artifact(s) record values their own source has since changed: EV-WP19-001, EV-WP19-002, EV-WP19-003",
-      "owner": "verification owner",
-      "references": [
-        "EV-WP19-001",
-        "EV-WP19-002",
-        "EV-WP19-003"
-      ],
-      "resolution": "typed STALE; a stale artifact supports no claim"
-    },
     {
       "blocking": false,
       "code": "THS6_PROSE_INVENTORY_DISCREPANCY",
@@ -93,7 +60,7 @@
       "resolution": "requirements were taken from architecture.md, which is in the repository and is hashed as EV-WP00-001; nothing was inferred about the unread documents"
     }
   ],
-  "invalid_count": 1,
+  "invalid_count": 0,
   "items": [
     {
       "contains_numeric_claim": false,
@@ -1846,7 +1813,7 @@
       "path": "data/api/wp16-real-gate-status.json",
       "present": true,
       "schema_path": "schemas/wp16/gate-status.schema.json",
-      "sha256": "sha256:c55c7c5fc82f8e44efdf8fa77164180d1ea37dc776eed02a8428e2a83dd3d961",
+      "sha256": "sha256:05a171a81ba2c5175263ab5e4c31e7e3276c98b3d3094a4fe0d65702bec5efaf",
       "supported_claim_ids": [
         "THS6-CLAIM-001"
       ],
@@ -1940,26 +1907,25 @@
       ],
       "generator": "pgx-api runtime-verify",
       "limitations": [
-        "written only when the runtime suite runs; it has not run, so the artifact is absent and the served document reports itself unverified",
-        "declared by this registry but not present in the working tree"
+        "written only when the runtime suite runs; it has not run, so the artifact is absent and the served document reports itself unverified"
       ],
       "may_support_a_ths6_claim": false,
       "media_type": "application/json",
       "observed_or_executed": false,
       "path": "data/api/wp16-runtime-verification.json",
-      "present": false,
+      "present": true,
       "schema_path": null,
-      "sha256": null,
+      "sha256": "sha256:392ceb2f9908396e7a42f4c0e9695ff2cc9aa7903ca4a1c5245c3c2bc11324b5",
       "supported_claim_ids": [],
       "test_only": false,
       "title": "WP-16 ASGI runtime verification",
-      "validation_result": "ABSENT",
+      "validation_result": null,
       "work_package": "WP-16"
     },
     {
       "contains_numeric_claim": true,
       "evidence_id": "EV-WP17-001",
-      "evidence_type": "INVALID",
+      "evidence_type": "CONFIGURED_NOT_EXECUTED",
       "freshness_source": null,
       "gap_owner": "platform owner",
       "gate_ids": [
@@ -1967,8 +1933,7 @@
       ],
       "generator": "pgx-web gate-status",
       "limitations": [
-        "declares the expert review workflow NOT_IMPLEMENTED, which WP-22 contradicts; validation dashboard is empty state only",
-        "does not satisfy the schema it declares"
+        "declares the expert review workflow NOT_IMPLEMENTED, which WP-22 contradicts; validation dashboard is empty state only"
       ],
       "may_support_a_ths6_claim": false,
       "media_type": "application/json",
@@ -1976,14 +1941,14 @@
       "path": "data/web/wp17-real-gate-status.json",
       "present": true,
       "schema_path": "schemas/wp17/ui-gate-status.schema.json",
-      "sha256": null,
+      "sha256": "sha256:22cc917ba5e8e7f872cd9d0e12f24af6752e17332f367e6263380e8a29aba2ba",
       "supported_claim_ids": [
         "THS6-CLAIM-001",
         "THS6-CLAIM-011"
       ],
       "test_only": false,
       "title": "WP-17 real gate status",
-      "validation_result": "INVALID: 1 error(s)",
+      "validation_result": "VALID_ANNOTATIONS_SKIPPED",
       "work_package": "WP-17"
     },
     {
@@ -2003,7 +1968,7 @@
       "path": "docs/evidence/wp17-ui-verification.md",
       "present": true,
       "schema_path": null,
-      "sha256": "sha256:7cc7995b45275066458c1b21b08de0651aef2ed045f2bbc70d0752221b640e5a",
+      "sha256": "sha256:66340c7738db82ecf554c08d6bde37837ea74753101fe69361d848a4cf541dc4",
       "supported_claim_ids": [
         "THS6-CLAIM-001"
       ],
@@ -2298,7 +2263,7 @@
     {
       "contains_numeric_claim": true,
       "evidence_id": "EV-WP19-001",
-      "evidence_type": "STALE",
+      "evidence_type": "CONFIGURED_NOT_EXECUTED",
       "freshness_source": "data/verification/wp19-test-inventory.json",
       "gap_owner": "verification owner",
       "gate_ids": [
@@ -2307,7 +2272,7 @@
       ],
       "generator": "pgx-verify gate-status",
       "limitations": [
-        "records a discovered test count from before WP-20 through WP-25 added tests; the count no longer matches the suite"
+        "reports what the suite did on the host that ran it; a gate status is a document about a run rather than a run"
       ],
       "may_support_a_ths6_claim": false,
       "media_type": "application/json",
@@ -2315,7 +2280,7 @@
       "path": "data/verification/wp19-real-gate-status.json",
       "present": true,
       "schema_path": "schemas/wp19/wp19-gate-status.schema.json",
-      "sha256": "sha256:148f518171ffd717fd5a632b23b21822098ea15adf3fed4126782883dc6e8a78",
+      "sha256": "sha256:d569bd96603cd2e50ae9588129e56e58c14874d77d40e541e29a509d7772e638",
       "supported_claim_ids": [],
       "test_only": false,
       "title": "WP-19 real gate status",
@@ -2325,13 +2290,13 @@
     {
       "contains_numeric_claim": true,
       "evidence_id": "EV-WP19-002",
-      "evidence_type": "STALE",
+      "evidence_type": "CONFIGURED_NOT_EXECUTED",
       "freshness_source": null,
       "gap_owner": "verification owner",
       "gate_ids": [],
       "generator": "pgx-verify inventory",
       "limitations": [
-        "an inventory of the suite as it was when last generated"
+        "counts and categorises the suite; discovering a test is not running it"
       ],
       "may_support_a_ths6_claim": false,
       "media_type": "application/json",
@@ -2339,7 +2304,7 @@
       "path": "data/verification/wp19-test-inventory.json",
       "present": true,
       "schema_path": null,
-      "sha256": "sha256:5255f91c585a0f09e164766bf933753d14272768e971b182e0eca0578a758294",
+      "sha256": "sha256:11b738cf99284b24be98718a342a8f7d3c85443c723de299a5ec0a6af2e74b56",
       "supported_claim_ids": [],
       "test_only": false,
       "title": "WP-19 test inventory",
@@ -2349,21 +2314,21 @@
     {
       "contains_numeric_claim": true,
       "evidence_id": "EV-WP19-003",
-      "evidence_type": "STALE",
+      "evidence_type": "REAL_EXECUTED",
       "freshness_source": null,
       "gap_owner": "verification owner",
       "gate_ids": [],
       "generator": "pgx-verify run",
       "limitations": [
-        "a recorded run whose evidence WP-19 itself rejects as stale"
+        "one execution of the full profile on one host, with PostgreSQL integration blocked for want of a driver; it says what the suite did, not that the science is right"
       ],
-      "may_support_a_ths6_claim": false,
+      "may_support_a_ths6_claim": true,
       "media_type": "application/json",
-      "observed_or_executed": false,
+      "observed_or_executed": true,
       "path": "data/verification/wp19-verification-run.json",
       "present": true,
       "schema_path": null,
-      "sha256": "sha256:7f0d6434a8539c4aec61953d6937a6953b9d0f33a314fec8916d0e9dcef57715",
+      "sha256": "sha256:d0c8d2152a13b5da1fc088a85d2e16d97316dd0dd48a00bc126c4e876fda4d09",
       "supported_claim_ids": [],
       "test_only": false,
       "title": "WP-19 verification run",
@@ -2411,7 +2376,7 @@
       "path": "data/verification/wp19-requirement-matrix.json",
       "present": true,
       "schema_path": "schemas/wp19/requirement-matrix.schema.json",
-      "sha256": "sha256:db7247dd2314a4461b8a9759115ddf6b74480fd10e41374aae5c6cea8f3ca7a6",
+      "sha256": "sha256:ab27335b4e017df0b36e162de1a671fbc1ac53e15a8722b7840dec4b9eeaf7d9",
       "supported_claim_ids": [
         "THS6-CLAIM-016"
       ],
@@ -3506,7 +3471,7 @@
       "path": "data/deployment/wp24-runtime-asset-manifest.json",
       "present": true,
       "schema_path": "schemas/wp24/runtime-asset-manifest.schema.json",
-      "sha256": "sha256:b2f3ab8c7681a1fd17e1ff71e5a47c0c24955bba3d831a443d85d74044892dab",
+      "sha256": "sha256:9310a4e9e60640751cdf12dc3064bde75eab29fdba2606e9d6a6d3c3c9c64f5b",
       "supported_claim_ids": [],
       "test_only": false,
       "title": "Runtime asset manifest",
@@ -3784,6 +3749,6 @@
     "docs/ths6/wp03-release-evidence.md",
     "docs/ths6/wp04-ingestion-evidence.md"
   ],
-  "present_count": 144,
+  "present_count": 145,
   "resolved_count": 145
 }

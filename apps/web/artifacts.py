@@ -27,7 +27,8 @@ from apps.web.claim_gate import gate_contract
 from apps.web.config import WebSettings
 from apps.web.demo_cases import CASE_CATALOG_SCHEMA_VERSION, FORBIDDEN_CASE_FIELDS
 from apps.web.demo_migration import MIGRATION_VERSION, build_catalog, build_manifest
-from apps.web.gate_status import (UI_GATE_STATUS_SCHEMA_VERSION,
+from apps.web.gate_status import (SCREENSHOT_EVIDENCE_STATUSES,
+                                  UI_GATE_STATUS_SCHEMA_VERSION,
                                   build_ui_gate_status)
 from apps.web.render import TEMPLATE_NAMES
 from apps.web.routes import NAVIGATION, WEB_ROUTES
@@ -202,7 +203,7 @@ def _ui_gate_status_schema() -> Dict[str, Any]:
             "implementation_status": {"enum": ["IMPLEMENTED", "PARTIAL",
                                                "NOT_STARTED"]},
             "screenshot_evidence_status": {
-                "enum": ["NONE", "BROWSER_CAPTURED"],
+                "enum": list(SCREENSHOT_EVIDENCE_STATUSES),
                 "description": (
                     "NONE means no screenshot exists. A rendered HTML "
                     "snapshot is never BROWSER_CAPTURED.")},

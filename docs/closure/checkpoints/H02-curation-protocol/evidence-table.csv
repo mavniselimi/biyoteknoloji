@@ -1,0 +1,14 @@
+fact,value,read_from
+protocol_status,AWAITING_EXPERT_REVIEW,config/curation/protocol-v1.json
+protocol_version,pgx-curation-protocol/1,config/curation/protocol-v1.json
+expert_approved,False,config/curation/protocol-v1.json
+vocabulary_status,DRAFT_AWAITING_EXPERT_REVIEW,config/curation/protocol-v1.json
+approval_record,,config/curation/protocol-v1.json
+declared_roles,6,config/curation/protocol-v1.json
+declared_requirements,25,config/curation/protocol-v1.json
+legacy_candidates_total,1559,data/migration/wp11/legacy-rule-candidate-inventory.json
+legacy_candidates_eligible_for_rule_creation,0,data/migration/wp11/legacy-rule-candidate-inventory.json
+unlinked_candidates_needing_a_curator,13,data/closure/wp-c00-legacy-candidate-dispositions.json
+first_release_axes,5,the declared scientific scope
+phenotype_values_in_scope,5,the declared scientific scope
+scope_contradictions_found,5,WP-C04 source research

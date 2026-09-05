@@ -10,6 +10,7 @@ and they must never be describable, or mistakable, as browser captures.
 from __future__ import annotations
 
 import io
+import json
 import os
 import unittest
 
@@ -19,6 +20,9 @@ from tests.fixtures.wp17.snapshots import (BANNER, EXCLUDED_PAGES,
                                            SNAPSHOT_DIR, build_all_pages,
                                            build_snapshots)
 from tests.unit.web._support import inspect
+
+REPO_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(
+    os.path.dirname(os.path.abspath(__file__)))))
 
 
 def _on_disk():
@@ -133,7 +137,8 @@ class TestTheSnapshotsDoNotClaimToBeScreenshots(unittest.TestCase):
         reader would conclude from a note that mentioned only "screenshots
         under tests/fixtures/wp17/".
         """
-        from apps.web.gate_status import build_ui_gate_status
+        from apps.web.gate_status import (SCREENSHOT_EVIDENCE_STATUSES,
+                                          build_ui_gate_status)
 
         status = build_ui_gate_status()
         note = status["screenshot_evidence_note"]
@@ -141,7 +146,7 @@ class TestTheSnapshotsDoNotClaimToBeScreenshots(unittest.TestCase):
         self.assertTrue("not browser captures" in note
                         or "not captures" in note, note)
         self.assertIn(status["screenshot_evidence_status"],
-                      ("NONE", "CAPTURED"))
+                      SCREENSHOT_EVIDENCE_STATUSES)
         if status["screenshot_evidence_status"] == "NONE":
             self.assertEqual(status["screenshot_evidence_count"], 0)
 
@@ -290,3 +295,82 @@ class TestTheWordingMatchesWhatTheArtifactsContain(unittest.TestCase):
                 for token in ("mrn", "patient_name", "date_of_birth",
                               "national_id", "tckn"):
                     self.assertNotIn(token, lowered)
+
+
+class TestTheGateStatusSatisfiesItsOwnPublishedSchema(unittest.TestCase):
+    """The check nobody ran, which is why the defect survived seven WPs.
+
+    ``apps/web/artifacts.py`` writes both the gate status and the schema that
+    describes it. Each was tested against expectations written beside it, and
+    neither was ever tested against the other, so the producer could emit
+    ``screenshot_evidence_status: "CAPTURED"`` while the schema it published
+    in the same run admitted only ``"NONE"`` and ``"BROWSER_CAPTURED"``.
+    WP-25 found it by validating the committed artifact; this validates it
+    every run, so the class of defect - producer and its own contract
+    disagreeing - cannot come back quietly.
+    """
+
+    ARTIFACT = os.path.join(REPO_ROOT, "data", "web",
+                            "wp17-real-gate-status.json")
+    SCHEMA = os.path.join(REPO_ROOT, "schemas", "wp17",
+                          "ui-gate-status.schema.json")
+
+    @staticmethod
+    def _read(path):
+        with io.open(path, encoding="utf-8") as handle:
+            return json.load(handle)
+
+    @classmethod
+    def _checkable_schema(cls):
+        """The published schema minus its vendor annotations.
+
+        The project's validator refuses any keyword it does not implement,
+        and WP-17 publishes ``x-pgx-`` annotations beside its constraints.
+        WP-25 already solved this once; its stripper is reused rather than
+        copied, because two implementations of "which keys are annotations"
+        would be one more thing that can drift. What is skipped is skipped
+        knowingly: the annotations describe constraints that the schema's own
+        ``properties`` and ``additionalProperties`` enforce, and those are
+        checked here.
+        """
+        from pgx.ths6.evidence_registry import _without_vendor_annotations
+
+        schema, stripped = _without_vendor_annotations(cls._read(cls.SCHEMA))
+        return schema, stripped
+
+    def test_the_committed_artifact_validates_against_the_committed_schema(self):
+        from pgx.application.snapshot_schema import validate_against_schema
+
+        schema, _ = self._checkable_schema()
+        errors = validate_against_schema(self._read(self.ARTIFACT), schema)
+        self.assertEqual(list(errors), [])
+
+    def test_a_freshly_built_status_validates_against_the_published_schema(self):
+        from apps.web.gate_status import build_ui_gate_status
+        from pgx.application.snapshot_schema import validate_against_schema
+
+        schema, _ = self._checkable_schema()
+        errors = validate_against_schema(build_ui_gate_status(), schema)
+        self.assertEqual(list(errors), [])
+
+    def test_the_schema_enum_is_the_producers_own_vocabulary(self):
+        """One tuple, read by both, so a rename cannot desynchronise them."""
+        from apps.web.gate_status import SCREENSHOT_EVIDENCE_STATUSES
+
+        schema = self._read(self.SCHEMA)
+        enum = schema["properties"]["screenshot_evidence_status"]["enum"]
+        self.assertEqual(list(enum), list(SCREENSHOT_EVIDENCE_STATUSES))
+
+    def test_captures_on_disk_are_reported_with_the_schema_word(self):
+        from apps.web.gate_status import (
+            SCREENSHOT_DIR, SCREENSHOT_EVIDENCE_BROWSER_CAPTURED,
+            SCREENSHOT_EVIDENCE_NONE, build_ui_gate_status)
+
+        present = [name for name in (os.listdir(SCREENSHOT_DIR)
+                                     if os.path.isdir(SCREENSHOT_DIR) else [])
+                   if name.lower().endswith((".png", ".jpg", ".jpeg",
+                                             ".webp"))]
+        expected = (SCREENSHOT_EVIDENCE_BROWSER_CAPTURED if present
+                    else SCREENSHOT_EVIDENCE_NONE)
+        self.assertEqual(build_ui_gate_status()["screenshot_evidence_status"],
+                         expected)

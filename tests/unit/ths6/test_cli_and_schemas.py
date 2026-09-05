@@ -92,10 +92,23 @@ class TestExitCodes(_Quiet):
         code, _ = self.run_command("traceability")
         self.assertEqual(code, 2)
 
-    def test_inventory_exits_failure_while_an_artifact_is_invalid(self):
-        """WP-17's gate status does not satisfy its own published schema."""
+    def test_inventory_exits_zero_while_no_artifact_is_invalid(self):
+        """The exit code follows the artifacts, and they were repaired.
+
+        When WP-25 built the pack this returned 1: ``data/web/
+        wp17-real-gate-status.json`` recorded ``screenshot_evidence_status:
+        "CAPTURED"`` while the schema WP-17 published in the same run admitted
+        only ``"NONE"`` and ``"BROWSER_CAPTURED"``. WP-C00 gave the producer,
+        the schema and the tests one spelling of that vocabulary, so the
+        artifact now satisfies its own contract and there is nothing left for
+        this command to fail on.
+
+        The assertion is inverted rather than deleted. ``inventory`` must
+        still exit 1 the moment any declared artifact stops validating, and a
+        test that no longer looked would not notice.
+        """
         code, _ = self.run_command("inventory")
-        self.assertEqual(code, 1)
+        self.assertEqual(code, 0)
 
     def test_verify_pack_exits_zero_for_an_intact_pack(self):
         manifest = os.path.join(_ROOT, "data", "ths6",

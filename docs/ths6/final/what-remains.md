@@ -94,6 +94,10 @@ be.
 - WP-17's gate status must be reconciled with its own published schema:
   either the producer stops emitting `"CAPTURED"` or the schema admits it.
   Whichever way, the tests must be updated with it.
+  **Done in WP-C00 A.6:** the producer stopped emitting `"CAPTURED"`. The two
+  spellings were replaced by one constant that the producer, the schema and the
+  tests all read, and the committed artifact is now validated against the
+  committed schema on every test run.
 - `architecture.md`'s Definition of Done count and the WP-25 prose must agree
   on fifteen.
 

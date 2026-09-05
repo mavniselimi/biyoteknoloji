@@ -198,36 +198,45 @@ class TestResolution(unittest.TestCase):
                 self.assertNotEqual(item["validation_result"],
                                     "VALIDATOR_ERROR: SchemaSupportError")
 
-    def test_the_one_invalid_artifact_is_the_known_wp17_defect(self):
-        """WP-25 found a real defect and this test pins it.
+    def test_the_known_wp17_defect_is_repaired_and_the_finding_retired(self):
+        """WP-25 found a real defect; WP-C00 fixed it, so it is gone.
 
-        ``data/web/wp17-real-gate-status.json`` records
-        ``screenshot_evidence_status: "CAPTURED"``. Its own published schema,
-        built by ``apps/web/artifacts.py``, permits only ``"NONE"`` and
-        ``"BROWSER_CAPTURED"``. The producer, the tests and the schema were
-        never compared with each other, so the disagreement survived WP-17
-        through WP-24 unseen.
+        What WP-25 found, and what was true at that time:
+        ``data/web/wp17-real-gate-status.json`` recorded
+        ``screenshot_evidence_status: "CAPTURED"``, while its own published
+        schema, built by ``apps/web/artifacts.py`` in the same run, permitted
+        only ``"NONE"`` and ``"BROWSER_CAPTURED"``. The producer, the tests
+        and the schema were never compared with each other, so the
+        disagreement survived WP-17 through WP-24 unseen. WP-25 recorded it
+        rather than repairing another work package's artifact, and said that
+        whoever fixed it should retire the finding rather than leave a stale
+        one in the pack.
 
-        WP-25 does not fix it: repairing another work package's artifact or
-        schema is outside this work package, and the brief forbids
-        overwriting historical artifacts with successor results. If somebody
-        does fix it, this test fails and tells them to retire the finding
-        rather than leaving a stale one in the pack.
+        WP-C00 section A.6 fixed it, at the level of the class rather than
+        the instance: the vocabulary now has one home,
+        ``apps.web.gate_status.SCREENSHOT_EVIDENCE_STATUSES``, which the
+        producer, the published schema and the tests all read, and
+        ``tests/unit/web/test_snapshots.py`` now validates the committed
+        artifact against the committed schema on every run - the comparison
+        nobody had been making. This test is the retirement: it asserts the
+        repaired state, so a regression re-fails it.
         """
         invalid = [item for item in self.document["items"]
                    if item["evidence_type"] == "INVALID"]
-        self.assertEqual([item["evidence_id"] for item in invalid],
-                         ["EV-WP17-001"])
-        self.assertIn("INVALID", str(invalid[0]["validation_result"]))
+        self.assertEqual([item["evidence_id"] for item in invalid], [])
+        wp17 = [item for item in self.document["items"]
+                if item["evidence_id"] == "EV-WP17-001"]
+        self.assertEqual(len(wp17), 1)
+        self.assertNotIn("INVALID", str(wp17[0]["validation_result"]))
 
-    def test_the_invalid_artifact_is_reported_as_a_blocking_finding(self):
+    def test_no_invalid_artifact_finding_remains(self):
+        """A retired finding is absent, not present-and-empty."""
         findings = {item["code"]: item
                     for item in self.document["findings"]}
-        self.assertIn("THS6_EVIDENCE_INVALID", findings)
-        finding = findings["THS6_EVIDENCE_INVALID"]
-        self.assertIs(finding["blocking"], True)
-        self.assertTrue(finding["owner"].strip())
-        self.assertIn("EV-WP17-001", finding["references"])
+        self.assertNotIn("THS6_EVIDENCE_INVALID", findings)
+        for finding in self.document["findings"]:
+            if finding["blocking"]:
+                self.assertTrue(finding["references"], finding["code"])
 
     def test_an_invalid_artifact_supports_nothing(self):
         for item in self.document["items"]:

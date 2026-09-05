@@ -32,6 +32,9 @@ from apps.web.render import TEMPLATE_DIR, TEMPLATE_NAMES, jinja2_available
 from apps.web.routes import STATE_CHANGING_ROUTES, WEB_ROUTES
 
 __all__ = [
+    "SCREENSHOT_EVIDENCE_BROWSER_CAPTURED",
+    "SCREENSHOT_EVIDENCE_NONE",
+    "SCREENSHOT_EVIDENCE_STATUSES",
     "UI_GATE_STATUS_SCHEMA_VERSION",
     "build_ui_gate_status",
     "validation_blockers",
@@ -39,6 +42,22 @@ __all__ = [
 ]
 
 UI_GATE_STATUS_SCHEMA_VERSION = "pgx-wp17-ui-gate-status/1"
+
+#: The two values ``screenshot_evidence_status`` may take, named once.
+#:
+#: They used to be spelled twice. The producer emitted ``"CAPTURED"`` and the
+#: schema it publishes admitted only ``"NONE"`` and ``"BROWSER_CAPTURED"``,
+#: so every artifact this module wrote with captures on disk failed its own
+#: contract - a disagreement that survived from WP-17 to WP-24 because
+#: nothing ever compared the two spellings. ``BROWSER_CAPTURED`` is the
+#: surviving word: it is the one the published schema always declared, and it
+#: says the thing that matters, which is that a rendered HTML snapshot is not
+#: a capture. The constant exists so that the producer, the schema and the
+#: tests cannot drift apart again; a literal here is now a defect.
+SCREENSHOT_EVIDENCE_NONE = "NONE"
+SCREENSHOT_EVIDENCE_BROWSER_CAPTURED = "BROWSER_CAPTURED"
+SCREENSHOT_EVIDENCE_STATUSES: Tuple[str, ...] = (
+    SCREENSHOT_EVIDENCE_NONE, SCREENSHOT_EVIDENCE_BROWSER_CAPTURED)
 
 _REPO_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__),
                                           "..", ".."))
@@ -218,9 +237,9 @@ def _screenshot_status() -> Dict[str, Any]:
 
     Three states, and the middle one is the whole reason this is measured:
 
-    - ``NONE``     - no capture directory, or nothing in it.
-    - ``CAPTURED`` - real PNGs written by ``test_browser_e2e.py`` while a
-      real browser was running.
+    - ``NONE``             - no capture directory, or nothing in it.
+    - ``BROWSER_CAPTURED`` - real PNGs written by ``test_browser_e2e.py``
+      while a real browser was running.
 
     A capture is only ever written by a test that has a launched browser, so
     the presence of a file here is itself evidence a browser ran. The count
@@ -232,7 +251,7 @@ def _screenshot_status() -> Dict[str, Any]:
                        if name.lower().endswith(_IMAGE_SUFFIXES))
     if not names:
         return {
-            "screenshot_evidence_status": "NONE",
+            "screenshot_evidence_status": SCREENSHOT_EVIDENCE_NONE,
             "screenshot_evidence_count": 0,
             "screenshot_evidence_files": [],
             "screenshot_evidence_note": (
@@ -241,7 +260,8 @@ def _screenshot_status() -> Dict[str, Any]:
                 "output, are labelled as such, and are not browser captures."),
         }
     return {
-        "screenshot_evidence_status": "CAPTURED",
+        "screenshot_evidence_status":
+            SCREENSHOT_EVIDENCE_BROWSER_CAPTURED,
         "screenshot_evidence_count": len(names),
         "screenshot_evidence_files": names,
         "screenshot_evidence_note": (

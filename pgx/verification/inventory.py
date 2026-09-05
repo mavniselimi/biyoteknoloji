@@ -155,6 +155,18 @@ _MODULE_RULES: Tuple[CategoryRule, ...] = (
         dependencies=("coverage",),
         skip_policy=SkipPolicy.INVERTED,
         permitted_skip_reasons=("coverage.py",)),
+    # WP-C00's H00 package records what Git said about the baseline commit,
+    # and two tests re-ask Git rather than trusting the record. A tree with
+    # no Git metadata - an export, a build context, a container that copied
+    # the files but not the history - can answer neither, so those two skip.
+    # Declaring the reason is what keeps that skip from being counted as
+    # unexplained; declaring it too widely would hide a real one.
+    CategoryRule(
+        "closure-checkpoints", "tests.unit.closure.test_wp_c03_checkpoints",
+        Category.UNIT, "WP-C03", Criticality.IMPORTANT,
+        dependencies=("git",),
+        skip_policy=SkipPolicy.ENVIRONMENT_DEPENDENCY,
+        permitted_skip_reasons=("git metadata",)),
 
     # -- reproducibility -----------------------------------------------------
     CategoryRule(
@@ -738,6 +750,16 @@ _PACKAGE_RULES: Tuple[CategoryRule, ...] = (
     CategoryRule(
         "package-infrastructure", "tests.unit.infrastructure",
         Category.UNIT, "WP-02", Criticality.IMPORTANT),
+    # Closure-wave reports. IMPORTANT rather than P0_CRITICAL: these tests
+    # guard what the closure packages may claim - that nothing is approved,
+    # that no legacy value is copied forward, that every candidate is
+    # dispositioned once - which is a governance property of the reports
+    # themselves rather than of the platform the P0 gates are about.
+    CategoryRule(
+        "package-closure", "tests.unit.closure",
+        Category.UNIT, "WP-C00/WP-C03", Criticality.IMPORTANT,
+        evidence=("docs/closure/wp-c00-legacy-candidate-dispositions.md",
+                  "docs/closure/checkpoints/README.md")),
 )
 
 #: Module rules first. The order is the semantics; see the module docstring.

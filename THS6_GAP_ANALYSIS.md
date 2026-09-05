@@ -268,6 +268,12 @@ of them is on the critical path.**
   `pgx-ths6 inventory` exits 1 because of it.
 - **Existing infrastructure:** all three files.
 - **Missing artifact:** none — a one-token decision plus test update.
+- **Status: CLOSED in WP-C00 (Execution Wave 1, section A.6).** The state above
+  is what the audit measured and is left as written. The producer now emits
+  `BROWSER_CAPTURED`; producer, published schema and tests read one constant,
+  `apps.web.gate_status.SCREENSHOT_EVIDENCE_STATUSES`; and the committed
+  artifact is validated against the committed schema on every test run.
+  `pgx-ths6 inventory` exits 0.
 - **Can an AI agent complete it alone?** **YES.**
 - **Human role required:** none (a maintainer decides which side moves).
 - **External dependency:** none.
