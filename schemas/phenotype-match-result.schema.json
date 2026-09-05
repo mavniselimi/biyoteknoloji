@@ -1,0 +1,130 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pgx-platform.invalid/schemas/phenotype-match-result.schema.json",
+  "title": "PGx phenotype match result",
+  "description": "One normalised phenotype compared with one WP-11 phenotype condition. It records what was compared and what came of it, and deliberately nothing about what the answer should cause: additionalProperties is false, so an attention level, a coverage status, a dose, a recommendation, a risk score, a safety statement or a paragraph of report prose cannot be attached to it by anything downstream. Those belong to WP-13, WP-14 and WP-15. The three input statuses are first-class results rather than kinds of NO_MATCH, because 'this rule does not apply' and 'we could not tell whether it applies' are different answers and only the first is a statement about the input.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "match_result_schema_version",
+    "status",
+    "gene_id",
+    "operator",
+    "declared_phenotypes",
+    "observed_phenotype",
+    "observation_status",
+    "reason_code",
+    "condition_hash"
+  ],
+  "properties": {
+    "match_result_schema_version": {
+      "const": "pgx-phenotype-match-result/1"
+    },
+    "status": {
+      "enum": [
+        "MATCH",
+        "NO_MATCH",
+        "INPUT_MISSING",
+        "INPUT_INDETERMINATE",
+        "INPUT_UNSUPPORTED"
+      ]
+    },
+    "gene_id": {
+      "type": "string",
+      "pattern": "^GENE:[A-Z0-9][A-Z0-9\\-.@_]*$"
+    },
+    "operator": {
+      "description": "The two WP-11 operators. There is no third, and in particular none that widens a declared set.",
+      "enum": [
+        "EXACT",
+        "ONE_OF"
+      ]
+    },
+    "declared_phenotypes": {
+      "description": "Exactly what the condition listed. A reader can check the verdict against it without loading the rule.",
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "POOR",
+          "INTERMEDIATE",
+          "NORMAL",
+          "RAPID",
+          "ULTRARAPID"
+        ]
+      }
+    },
+    "observed_phenotype": {
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "enum": [
+            "POOR",
+            "INTERMEDIATE",
+            "NORMAL",
+            "RAPID",
+            "ULTRARAPID"
+          ]
+        }
+      ]
+    },
+    "observation_status": {
+      "enum": [
+        "NORMALIZED",
+        "MISSING",
+        "INDETERMINATE",
+        "UNSUPPORTED",
+        "ABSENT"
+      ]
+    },
+    "reason_code": {
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "string",
+          "pattern": "^[A-Z][A-Z0-9_]*$"
+        }
+      ]
+    },
+    "condition_hash": {
+      "description": "The exact condition evaluated, so a stored decision can be checked against the rule that produced it rather than against a rule sharing its identity and carrying different content.",
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "MATCH"
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "then": {
+        "properties": {
+          "observed_phenotype": {
+            "enum": [
+              "POOR",
+              "INTERMEDIATE",
+              "NORMAL",
+              "RAPID",
+              "ULTRARAPID"
+            ]
+          },
+          "observation_status": {
+            "const": "NORMALIZED"
+          }
+        }
+      }
+    }
+  ]
+}

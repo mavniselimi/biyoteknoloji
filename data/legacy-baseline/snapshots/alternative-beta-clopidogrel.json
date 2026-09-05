@@ -1,0 +1,50 @@
+{
+  "artifacts": {
+    "alternative_candidates.csv": {
+      "sha256": "6623e50ea8224dda84b36e0c1ca5b36a0b9b0dbf61235a332a19d4ded40eff7e",
+      "size_bytes": 593
+    },
+    "alternative_report.md": {
+      "sha256": "e8214ec67c90df79e907b070c72cb9506931e6a5db9700d129d7079d5c17fa12",
+      "size_bytes": 4692
+    },
+    "alternative_result_full.json": {
+      "sha256": "aefd724c02a93a0966d0ccf49bbca372ad8c23946245f7c1469a03adf670e3b4",
+      "size_bytes": 4835
+    }
+  },
+  "candidate_results": [
+    {
+      "candidate_drug": "prasugrel",
+      "candidate_specific_risk_level": "unknown",
+      "legacy_score_unprotected": 59,
+      "mvp_data_status": "insufficient_pgx_rule_data"
+    },
+    {
+      "candidate_drug": "ticagrelor",
+      "candidate_specific_risk_level": "unknown",
+      "legacy_score_unprotected": 59,
+      "mvp_data_status": "insufficient_pgx_rule_data"
+    }
+  ],
+  "contains_known_legacy_defects": true,
+  "description": "Offline rerun of the MVP-2 beta candidate comparison for clopidogrel under the P2 CYP2C19-poor profile. Recorded as legacy behaviour only.",
+  "graph_disposition": {
+    "bug_id": "LEGACY-BUG-008",
+    "explanation": "The 'graph' is a flat CSV lookup, not a traversal.",
+    "protected_as_correct": false
+  },
+  "legacy_safety_notice_text": "Bu bölümde listelenen alternatifler tedavi önerisi değildir. Aday ilaçlar yalnızca aynı terapötik bağlam veya ilaç sınıfı üzerinden farmakogenetik risk açısından ön sıralama yapmak amacıyla gösterilmiştir. Doz, ilaç değişimi veya tedavi kararı yalnızca hekim tarafından klinik tablo, endikasyon, laboratuvar değerleri ve güncel kılavuzlar dikkate alınarak verilmelidir.",
+  "legacy_score_name": "MVP alternatif uygunluk ön skoru",
+  "no_candidate_preference_claim": "This snapshot records data availability only. It asserts nothing about which candidate is safer, preferred, or suitable (SAFETY-INV-005).",
+  "not_clinical_validation": true,
+  "profile_id": "P2_cyp2c19_poor",
+  "score_disposition": {
+    "bug_id": "LEGACY-BUG-009",
+    "explanation": "Both candidates report mvp_data_status='insufficient_pgx_rule_data' yet still receive a numeric score. The score is a known defect that V2 removes; it is NOT a protected expected scientific result and no safety or preference conclusion may be drawn from it.",
+    "protected_as_correct": false
+  },
+  "snapshot_id": "alternative-beta-clopidogrel",
+  "snapshot_kind": "historical_regression_seed",
+  "source_drug": "clopidogrel"
+}

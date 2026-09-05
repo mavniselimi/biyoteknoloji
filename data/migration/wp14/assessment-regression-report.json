@@ -1,0 +1,172 @@
+{
+  "approved_comparable_real_cases": 0,
+  "case_count": 7,
+  "cases": [
+    {
+      "case_id": "BEHAVIOUR-mutable-csv",
+      "expected_difference_id": "MUTABLE-CSV-DEPENDENCY-REMOVED",
+      "legacy_rendered_as_reassuring": false,
+      "legacy_value": "reads seed CSV at run time",
+      "source": "risk_engine.py",
+      "subject": "load_seed_data",
+      "v2_attention": "PINNED_ARTIFACTS_ONLY",
+      "v2_coverage_is_full": false,
+      "v2_emits_low": false,
+      "v2_emits_no_active_attention": false,
+      "v2_explanation": "the V2 calculation path reads only pinned immutable release artifacts; 0 of its 7 modules import csv or name a .csv file"
+    },
+    {
+      "case_id": "BEHAVIOUR-phenotype-matching",
+      "expected_difference_id": "LEGACY-BUG-001-BROAD-PHENOTYPE-MATCH-REMOVED",
+      "legacy_rendered_as_reassuring": false,
+      "legacy_value": "group-normalised substring match",
+      "source": "risk_engine.py",
+      "subject": "phenotype_matches",
+      "v2_attention": "NO_IMPLICIT_MATCH",
+      "v2_coverage_is_full": false,
+      "v2_emits_low": false,
+      "v2_emits_no_active_attention": false,
+      "v2_explanation": "WP-12 matches a phenotype by equality with a declared value or membership in an explicitly listed ONE_OF. RAPID reaches an ULTRARAPID rule only when a curator listed both, so no implicit cross-match can create a finding (SAFETY-INV-004)"
+    },
+    {
+      "case_id": "P2-amitriptyline",
+      "expected_difference_id": null,
+      "legacy_rendered_as_reassuring": false,
+      "legacy_value": "medium",
+      "source": "risk-p2-cyp2c19-poor.json",
+      "subject": "amitriptyline",
+      "v2_attention": "NOT_ASSESSED",
+      "v2_coverage_is_full": false,
+      "v2_emits_low": false,
+      "v2_emits_no_active_attention": false,
+      "v2_explanation": "no approved coverage manifest declares what a complete assessment of this drug requires, so no axis is FULL, no rule executes, and attention is NOT_ASSESSED. NO_ACTIVE_ATTENTION is reachable only from FULL coverage"
+    },
+    {
+      "case_id": "P2-clopidogrel",
+      "expected_difference_id": null,
+      "legacy_rendered_as_reassuring": false,
+      "legacy_value": "high",
+      "source": "risk-p2-cyp2c19-poor.json",
+      "subject": "clopidogrel",
+      "v2_attention": "NOT_ASSESSED",
+      "v2_coverage_is_full": false,
+      "v2_emits_low": false,
+      "v2_emits_no_active_attention": false,
+      "v2_explanation": "no approved coverage manifest declares what a complete assessment of this drug requires, so no axis is FULL, no rule executes, and attention is NOT_ASSESSED. NO_ACTIVE_ATTENTION is reachable only from FULL coverage"
+    },
+    {
+      "case_id": "P2-codeine",
+      "expected_difference_id": "LEGACY-BUG-002-CODEINE-NONE-TO-NOT-ASSESSED",
+      "legacy_rendered_as_reassuring": true,
+      "legacy_value": "none",
+      "source": "risk-p2-cyp2c19-poor.json",
+      "subject": "codeine",
+      "v2_attention": "NOT_ASSESSED",
+      "v2_coverage_is_full": false,
+      "v2_emits_low": false,
+      "v2_emits_no_active_attention": false,
+      "v2_explanation": "no approved coverage manifest declares what a complete assessment of this drug requires, so no axis is FULL, no rule executes, and attention is NOT_ASSESSED. NO_ACTIVE_ATTENTION is reachable only from FULL coverage"
+    },
+    {
+      "case_id": "P2-voriconazole",
+      "expected_difference_id": null,
+      "legacy_rendered_as_reassuring": false,
+      "legacy_value": "high",
+      "source": "risk-p2-cyp2c19-poor.json",
+      "subject": "voriconazole",
+      "v2_attention": "NOT_ASSESSED",
+      "v2_coverage_is_full": false,
+      "v2_emits_low": false,
+      "v2_emits_no_active_attention": false,
+      "v2_explanation": "no approved coverage manifest declares what a complete assessment of this drug requires, so no axis is FULL, no rule executes, and attention is NOT_ASSESSED. NO_ACTIVE_ATTENTION is reachable only from FULL coverage"
+    },
+    {
+      "case_id": "P2-warfarin",
+      "expected_difference_id": "LEGACY-BUG-002-WARFARIN-NONE-TO-NOT-ASSESSED",
+      "legacy_rendered_as_reassuring": true,
+      "legacy_value": "none",
+      "source": "risk-p2-cyp2c19-poor.json",
+      "subject": "warfarin",
+      "v2_attention": "NOT_ASSESSED",
+      "v2_coverage_is_full": false,
+      "v2_emits_low": false,
+      "v2_emits_no_active_attention": false,
+      "v2_explanation": "no approved coverage manifest declares what a complete assessment of this drug requires, so no axis is FULL, no rule executes, and attention is NOT_ASSESSED. NO_ACTIVE_ATTENTION is reachable only from FULL coverage"
+    }
+  ],
+  "content_hash": "sha256:d6fa35bae5a56408c36d3f6c67f040515b49f05b38c8c682e0aaa6efc73e82aa",
+  "expected_difference_hits": {
+    "LEGACY-BUG-001-BROAD-PHENOTYPE-MATCH-REMOVED": 1,
+    "LEGACY-BUG-002-CODEINE-NONE-TO-NOT-ASSESSED": 1,
+    "LEGACY-BUG-002-WARFARIN-NONE-TO-NOT-ASSESSED": 1,
+    "MUTABLE-CSV-DEPENDENCY-REMOVED": 1
+  },
+  "expected_differences": [
+    {
+      "comparison_selector": {
+        "artifact_id": "risk-p2-cyp2c19-poor.json",
+        "drug": "codeine",
+        "legacy_field": "overall_risk_level"
+      },
+      "difference_id": "LEGACY-BUG-002-CODEINE-NONE-TO-NOT-ASSESSED",
+      "expected_v2_attention": "NOT_ASSESSED",
+      "expected_v2_coverage": "NOT_FULL",
+      "legacy_bug_id": "LEGACY-BUG-002",
+      "observed_legacy_behavior": "codeine returns overall_risk_level 'none', which RISK_LABEL_TR renders as 'Dusuk / uyari yok' - low, no warning - although no rule was evaluated for it",
+      "reference": "SAFETY-INV-001; architecture.md 9.3",
+      "required_v2_behavior": "attention NOT_ASSESSED with non-FULL coverage. No approved coverage scope declares what a complete assessment of codeine requires, so nothing was evaluated, and the honest answer names the absence rather than reporting it as an absence of concern",
+      "safety_rationale": "'we did not look' rendered as 'nothing to worry about' is the highest-consequence failure mode of a pharmacogenomic tool; NO_ACTIVE_ATTENTION is reachable only from FULL coverage and no absence path reaches LOW"
+    },
+    {
+      "comparison_selector": {
+        "artifact_id": "risk-p2-cyp2c19-poor.json",
+        "drug": "warfarin",
+        "legacy_field": "overall_risk_level"
+      },
+      "difference_id": "LEGACY-BUG-002-WARFARIN-NONE-TO-NOT-ASSESSED",
+      "expected_v2_attention": "NOT_ASSESSED",
+      "expected_v2_coverage": "NOT_FULL",
+      "legacy_bug_id": "LEGACY-BUG-002",
+      "observed_legacy_behavior": "warfarin returns overall_risk_level 'none' under the same label, with finding status 'gene_drug_known_no_profile_match'",
+      "reference": "SAFETY-INV-001; architecture.md 9.3",
+      "required_v2_behavior": "attention NOT_ASSESSED with non-FULL coverage, for codeine's reason. Recorded separately because the snapshot records it separately and a fix covering one drug would satisfy a single-entry allowlist",
+      "safety_rationale": "the same defect on a second drug; both must change or a reader still sees 'low, no warning' where nothing was assessed"
+    },
+    {
+      "comparison_selector": {
+        "artifact_id": "risk_engine.py",
+        "behaviour": "phenotype_matches",
+        "legacy_field": "normalize_rule_group"
+      },
+      "difference_id": "LEGACY-BUG-001-BROAD-PHENOTYPE-MATCH-REMOVED",
+      "expected_v2_attention": "NO_IMPLICIT_MATCH",
+      "expected_v2_coverage": "EXACT_ONLY",
+      "legacy_bug_id": "LEGACY-BUG-001",
+      "observed_legacy_behavior": "the legacy matcher normalises a rule's phenotype group and accepts a profile value by substring and group membership, so a RAPID profile can satisfy a rule written about ULTRARAPID",
+      "reference": "SAFETY-INV-004; architecture.md 9.1",
+      "required_v2_behavior": "no implicit cross-match. WP-12's exact matcher requires equality with a declared value or membership in an explicitly listed ONE_OF, so RAPID reaches an ULTRARAPID rule only when a curator wrote both into the list",
+      "safety_rationale": "RAPID and ULTRARAPID are different metabolic phenotypes with different consequences; treating them as one is a scientific claim no curator made (SAFETY-INV-004)"
+    },
+    {
+      "comparison_selector": {
+        "artifact_id": "risk_engine.py",
+        "behaviour": "read_csv",
+        "legacy_field": "load_seed_data"
+      },
+      "difference_id": "MUTABLE-CSV-DEPENDENCY-REMOVED",
+      "expected_v2_attention": "PINNED_ARTIFACTS_ONLY",
+      "expected_v2_coverage": "PINNED_ARTIFACTS_ONLY",
+      "legacy_bug_id": "LEGACY-BUG-007",
+      "observed_legacy_behavior": "the legacy engine reads its seed rule table and sibling seed files from disk at run time, so the same input can produce a different answer after an unversioned file edit",
+      "reference": "SAFETY-INV-007; architecture.md 9.6",
+      "required_v2_behavior": "the V2 calculation path consumes only pinned immutable release artifacts. No module on that path imports csv or names a .csv file, and a test asserts it",
+      "safety_rationale": "a result that can change without any version changing cannot be reproduced, audited or retracted (SAFETY-INV-007)"
+    }
+  ],
+  "expected_differences_not_observed": [],
+  "note": "Migration evidence, not clinical validation. No legacy clinical result is promoted here as an approved expected answer: this repository has no approved ruleset, so there are zero comparable real cases and zero real V2 assessments. What is compared is behaviour - given the situations the legacy snapshots record, what V2 emits instead. Every legacy answer that read as reassurance becomes NOT_ASSESSED, and no coverage or attention value in this report asserts safety, preference or suitability for any medicine.",
+  "real_findings_persisted": 0,
+  "real_v2_assessments_executed": 0,
+  "report_schema_version": "pgx-assessment-regression-report/1",
+  "unexpected_differences": []
+}

@@ -1,0 +1,122 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "result": {
+            "enum": [
+              "PARTIALLY_SUPPORTED",
+              "UNSUPPORTED",
+              "NOT_EVALUATED",
+              "CONTRADICTED"
+            ]
+          }
+        },
+        "required": [
+          "result"
+        ]
+      },
+      "then": {
+        "properties": {
+          "gap": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "gap_owner": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "gap",
+          "gap_owner"
+        ]
+      }
+    }
+  ],
+  "description": "One requirement traced to its result. Anything short of SUPPORTED must name the gap and its owner.",
+  "properties": {
+    "claim_ids": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "dod_ids": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "evidence_ids": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "gap": {
+      "type": "string"
+    },
+    "gap_owner": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "gate_ids": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "implementation_paths": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "requirement": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "requirement_source": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "result": {
+      "enum": [
+        "SUPPORTED",
+        "PARTIALLY_SUPPORTED",
+        "UNSUPPORTED",
+        "NOT_EVALUATED",
+        "CONTRADICTED"
+      ],
+      "type": "string"
+    },
+    "row_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "test_paths": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "row_id",
+    "requirement",
+    "requirement_source",
+    "implementation_paths",
+    "test_paths",
+    "evidence_ids",
+    "claim_ids",
+    "gate_ids",
+    "dod_ids",
+    "result"
+  ],
+  "title": "WP-25 traceability row",
+  "type": "object"
+}

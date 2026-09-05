@@ -1,0 +1,79 @@
+{
+  "$id": "https://pgx-platform.invalid/schemas/validation-access-event.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "One who-has-seen record, appended and never edited. `actor_authenticated` is pinned false: WP-18 records the actor a caller supplied and does not verify it, and a schema that allowed true would let an unverified name later read as a verified one. WP-23 owns identity.",
+  "properties": {
+    "action": {
+      "enum": [
+        "LIST_METADATA",
+        "READ_METADATA",
+        "READ_PAYLOAD",
+        "IMPORT_PAYLOAD",
+        "AUDIT_PARTITION"
+      ]
+    },
+    "actor": {
+      "minLength": 2,
+      "type": "string"
+    },
+    "actor_authenticated": {
+      "const": false
+    },
+    "allowed": {
+      "type": "boolean"
+    },
+    "case_id": {
+      "type": "string"
+    },
+    "case_role": {
+      "enum": [
+        "DEVELOPMENT",
+        "INTERNAL_HOLDOUT",
+        "EXPERT_HOLDOUT"
+      ]
+    },
+    "context_kind": {
+      "enum": [
+        "RULE_AUTHORING",
+        "DEVELOPMENT_WORKFLOW",
+        "DATASET_CURATION",
+        "EXPERT_REVIEW",
+        "VALIDATION_RUN",
+        "AUDIT"
+      ]
+    },
+    "manifest_hash": {
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "occurred_at": {
+      "minLength": 20,
+      "type": "string"
+    },
+    "purpose": {
+      "type": "string"
+    },
+    "reason_code": {
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "pgx-wp18-access-event/1"
+    }
+  },
+  "required": [
+    "schema_version",
+    "case_id",
+    "case_role",
+    "actor",
+    "actor_authenticated",
+    "context_kind",
+    "action",
+    "allowed",
+    "reason_code",
+    "occurred_at",
+    "manifest_hash"
+  ],
+  "title": "WP-18 validation access event",
+  "type": "object"
+}

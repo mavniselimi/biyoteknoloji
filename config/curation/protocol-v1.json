@@ -1,0 +1,415 @@
+{
+  "approval": null,
+  "case_rules": {
+    "derived_cases_are_not_external": "A case built from the current evidence set is not independent external validation, whatever it is labelled.",
+    "development_and_holdout_disjoint": "DEVELOPMENT, INTERNAL_HOLDOUT and EXPERT_HOLDOUT are mutually exclusive (SAFETY-INV-009).",
+    "legacy_and_demo_are_development": "Legacy manual hints and demo profiles are DEVELOPMENT or TRAINING only. They shaped the code that would be measured against them.",
+    "no_expected_answers_in_blind_packets": "An exercise packet carries no expected answer, and no response may be generated from one.",
+    "no_machine_curator": "A language model cannot serve as an independent scientific curator. There is no such role in CurationRole and none may be added without changing this protocol in the open.",
+    "one_role_per_case": "A case holds exactly one role. Holding two would let a holdout result be reported as independent after informing development."
+  },
+  "content_hash": "sha256:e0a76f45b0f606e4fd76d4c31829fcd61825278b01e407b71c13fc38298b56d6",
+  "expert_approved": false,
+  "field_dictionary_version": "pgx-curation-field-dictionary/1",
+  "generated_at": null,
+  "note": "This protocol is not scientifically approved. Every vocabulary and definition in it is DRAFT / AWAITING EXPERT REVIEW until a named scientist records an approval against this content hash.",
+  "protocol_version": "pgx-curation-protocol/1",
+  "requirements": [
+    {
+      "checklist_item": "Does the record keep the source's own reported values apart from the curator's conclusion?",
+      "implementation": "pgx.curation.models.SourceReportedValues; pgx.curation.models.CurationRecordDraft",
+      "requirement_id": "CUR-PROT-001",
+      "schema_field": "source_reported",
+      "statement": "A curation record never writes into an evidence record, and never copies a source's reported value into its own conclusion field. Source-reported values are held in SourceReportedValues for comparison only.",
+      "test_reference": "tests/unit/curation/test_curation_records.py::TestSourceAndConclusionStaySeparate",
+      "title": "Source facts and curator conclusions are separate objects",
+      "validation_code": "CUR_SOURCE_CONCLUSION_MERGED"
+    },
+    {
+      "checklist_item": "Does the rationale explain the conclusion rather than repeat the source's significance flag?",
+      "implementation": "pgx.curation.models.Rationale part 'significance_explanation'",
+      "requirement_id": "CUR-PROT-002",
+      "schema_field": "rationale.parts.significance_explanation",
+      "statement": "significance=yes, a numeric score, a polarity or a recommendation flag reported by a source is never mapped directly to SUPPORTED, to confidence, to importance or to risk. The curator explains how the selected evidence supports the conclusion.",
+      "test_reference": "tests/unit/curation/test_curation_records.py::TestSourceSignificanceIsNotAConclusion",
+      "title": "Source significance does not become a conclusion",
+      "validation_code": "CUR_SIGNIFICANCE_MAPPED_DIRECTLY"
+    },
+    {
+      "checklist_item": "Is the exact question stated, including phenotype scope and effect dimension?",
+      "implementation": "pgx.curation.models.CurationQuestion",
+      "requirement_id": "CUR-PROT-003",
+      "schema_field": "question",
+      "statement": "The unit of curation is a question: gene, drug, phenotype scope, effect dimension and population context. A pair-level conclusion is not applied to every annotation sharing that gene and drug.",
+      "test_reference": "tests/unit/curation/test_curation_records.py::TestCurationGranularity",
+      "title": "A conclusion is recorded against an explicit question",
+      "validation_code": "CUR_GRANULARITY_UNDEFINED"
+    },
+    {
+      "checklist_item": "Does every conclusion cite real evidence record identifiers?",
+      "implementation": "pgx.curation.models.CurationRecordDraft.__post_init__",
+      "requirement_id": "CUR-PROT-004",
+      "schema_field": "evidence",
+      "statement": "A conclusion with no evidence has nothing to interpret and is refused at construction.",
+      "test_reference": "tests/unit/curation/test_curation_records.py::TestEvidenceIsRequired",
+      "title": "Every conclusion cites at least one evidence record",
+      "validation_code": "CUR_EVIDENCE_MISSING"
+    },
+    {
+      "checklist_item": "Is every exclusion given a controlled reason and a written rationale?",
+      "implementation": "pgx.curation.models.EvidenceSelection",
+      "requirement_id": "CUR-PROT-005",
+      "schema_field": "evidence[].exclusion_reason",
+      "statement": "Each cited record carries a relationship and a written rationale. An exclusion additionally carries a controlled ExclusionReason.",
+      "test_reference": "tests/unit/curation/test_curation_records.py::TestExclusionsAreReasoned",
+      "title": "Evidence inclusions and exclusions are both reasoned",
+      "validation_code": "CUR_EXCLUSION_UNREASONED"
+    },
+    {
+      "checklist_item": "Is contradicting evidence still present and assessed?",
+      "implementation": "pgx.curation.models.CurationRecordDraft._check_conclusion_consistency",
+      "requirement_id": "CUR-PROT-006",
+      "schema_field": "evidence[].relationship",
+      "statement": "Evidence that contradicts the conclusion stays in the record with relationship CONTRADICTS, and the conflict analysis must say something about it.",
+      "test_reference": "tests/unit/curation/test_conflict_and_insufficiency.py::TestContradictoryEvidenceIsRetained",
+      "title": "Contradictory evidence is retained, never dropped",
+      "validation_code": "CUR_CONTRADICTION_HIDDEN"
+    },
+    {
+      "checklist_item": "Has any source been preferred by rule rather than by argument?",
+      "implementation": "pgx.curation.models.ConflictAnalysis (no precedence field exists)",
+      "requirement_id": "CUR-PROT-007",
+      "schema_field": "conflict",
+      "statement": "There is no rule that CPIC, DPWG, a regulator label, a newer record or a higher source score wins. Which statement prevails is decided per disagreement by a named human.",
+      "test_reference": "tests/unit/curation/test_conflict_and_insufficiency.py::TestNoSourcePrecedence",
+      "title": "No source has precedence",
+      "validation_code": "CUR_SOURCE_PRECEDENCE_ENCODED"
+    },
+    {
+      "checklist_item": "Does an unresolved material conflict stop this conclusion reaching a rule?",
+      "implementation": "pgx.curation.models.ConflictAnalysis.blocks_rule_construction",
+      "requirement_id": "CUR-PROT-008",
+      "schema_field": "conflict.blocks_rule_construction",
+      "statement": "A conclusion whose conflict is UNRESOLVED, ADJUDICATION_REQUIRED, or PRESENT and material is not rule-eligible, and cannot be SUPPORTED.",
+      "test_reference": "tests/unit/curation/test_conflict_and_insufficiency.py::TestUnresolvedConflictBlocksRules",
+      "title": "Unresolved material conflict blocks rule construction",
+      "validation_code": "CUR_CONFLICT_NOT_BLOCKING"
+    },
+    {
+      "checklist_item": "Does the insufficient conclusion read as absence of knowledge rather than absence of risk?",
+      "implementation": "pgx.curation.models.InsufficiencyStatement; pgx.curation.models.find_reassuring_language",
+      "requirement_id": "CUR-PROT-009",
+      "schema_field": "insufficiency",
+      "statement": "An INSUFFICIENT conclusion states what is missing, what was reviewed, why nothing stronger holds and what remains unresolved. It may not read as low risk, no risk, no effect, safe, normal or negative evidence (SAFETY-INV-001).",
+      "test_reference": "tests/unit/curation/test_conflict_and_insufficiency.py::TestInsufficientIsNotLowRisk",
+      "title": "INSUFFICIENT is never reassurance",
+      "validation_code": "CUR_INSUFFICIENT_AS_REASSURANCE"
+    },
+    {
+      "checklist_item": "Does the rationale explain the reasoning rather than restate the answer?",
+      "implementation": "pgx.curation.models.Rationale",
+      "requirement_id": "CUR-PROT-010",
+      "schema_field": "rationale.parts",
+      "statement": "Eleven named parts, each substantive. 'Copied from legacy', 'MANUAL_EFFECT_HINTS says so', 'the score is high', 'the AI selected it', 'clinically known' and blank text are refused, and a rationale that restates the conclusion is refused as circular.",
+      "test_reference": "tests/unit/curation/test_curation_records.py::TestRationaleContract",
+      "title": "A CURATED conclusion requires a structured, non-placeholder rationale",
+      "validation_code": "CUR_RATIONALE_PLACEHOLDER"
+    },
+    {
+      "checklist_item": "Are the author and the independent reviewer different named people?",
+      "implementation": "pgx.curation.models.Rationale.__post_init__",
+      "requirement_id": "CUR-PROT-011",
+      "schema_field": "rationale.reviewed_by",
+      "statement": "The default protocol rule. One person checking their own conclusion is not an independent review, and CURATED requires both signatures.",
+      "test_reference": "tests/unit/curation/test_roles_and_cases.py::TestAuthorReviewerSeparation",
+      "title": "Author and independent reviewer are different people",
+      "validation_code": "CUR_ROLE_SEPARATION_MISSING"
+    },
+    {
+      "checklist_item": "Did a scientific role, held by a named person, approve this?",
+      "implementation": "pgx.curation.vocabulary.SCIENTIFIC_APPROVAL_ROLES; pgx.curation.protocol.ROLE_DEFINITIONS",
+      "requirement_id": "CUR-PROT-012",
+      "schema_field": "roles[].may_approve_science",
+      "statement": "Only SCIENTIFIC_CURATOR, INDEPENDENT_SCIENTIFIC_REVIEWER and ADJUDICATOR may approve science. There is no machine curator role.",
+      "test_reference": "tests/unit/curation/test_roles_and_cases.py::TestOnlyScientificRolesApprove",
+      "title": "An engineering role cannot approve scientific meaning",
+      "validation_code": "CUR_ENGINEERING_APPROVAL"
+    },
+    {
+      "checklist_item": "Are both original responses still readable after adjudication?",
+      "implementation": "pgx.curation.exercises.AdjudicationTemplate",
+      "requirement_id": "CUR-PROT-013",
+      "schema_field": "adjudication.preserved_responses",
+      "statement": "An adjudicator resolves a disagreement with written reasons and does not replace the two responses that disagreed.",
+      "test_reference": "tests/unit/curation/test_roles_and_cases.py::TestAdjudicationPreservesResponses",
+      "title": "Adjudication preserves both original responses",
+      "validation_code": "CUR_ADJUDICATION_REPLACES_RESPONSES"
+    },
+    {
+      "checklist_item": "Does any case appear under two roles?",
+      "implementation": "pgx.curation.protocol.check_case_separation; CASE_ROLE_RULES",
+      "requirement_id": "CUR-PROT-014",
+      "schema_field": "cases[].role",
+      "statement": "DEVELOPMENT, INTERNAL_HOLDOUT and EXPERT_HOLDOUT are disjoint. Legacy hints and demo profiles are development or training only. A case derived from the current evidence set is not external validation (SAFETY-INV-009).",
+      "test_reference": "tests/unit/curation/test_roles_and_cases.py::TestCaseSeparation",
+      "title": "One case holds exactly one role",
+      "validation_code": "CUR_CASE_ROLE_OVERLAP"
+    },
+    {
+      "checklist_item": "Has any legacy hint been accepted or rejected without a human?",
+      "implementation": "pgx.curation.legacy_review.build_review_inventory",
+      "requirement_id": "CUR-PROT-015",
+      "schema_field": "proposals[].review_state",
+      "statement": "All 1,559 WP-08 proposals are accounted for and start at NOT_REVIEWED. Nothing in this package may set any other state, and no legacy project value may enter a completed conclusion.",
+      "test_reference": "tests/unit/curation/test_legacy_review.py::TestLegacyHintsStayUnreviewed",
+      "title": "Legacy manual hints stay unreviewed until a human reviews them",
+      "validation_code": "CUR_LEGACY_AUTO_REVIEWED"
+    },
+    {
+      "checklist_item": "Could a curator see the legacy answer before forming their own?",
+      "implementation": "pgx.curation.exercises.build_exercise_packet",
+      "requirement_id": "CUR-PROT-016",
+      "schema_field": "cases[].legacy_hint_blinded",
+      "statement": "An exercise case does not carry the legacy conclusion. It is revealed only afterwards, for migration comparison.",
+      "test_reference": "tests/unit/curation/test_exercise.py::TestLegacyHintsAreBlinded",
+      "title": "Legacy hints are blinded during initial evidence review",
+      "validation_code": "CUR_LEGACY_HINT_NOT_BLINDED"
+    },
+    {
+      "checklist_item": "Does the comparison state differences without choosing a winner?",
+      "implementation": "pgx.curation.exercises.compare_responses",
+      "requirement_id": "CUR-PROT-017",
+      "schema_field": "comparison.fields",
+      "statement": "It reports field-level agreement and disagreement between two independently completed responses. It does not decide who is right, merge answers, generate consensus, or treat agreement as validity.",
+      "test_reference": "tests/unit/curation/test_exercise.py::TestComparisonDoesNotAdjudicate",
+      "title": "The inter-curator comparison does not adjudicate",
+      "validation_code": "CUR_COMPARISON_ADJUDICATES"
+    },
+    {
+      "checklist_item": "Were both responses completed independently by named people?",
+      "implementation": "pgx.curation.exercises.CuratorResponse.is_complete; pgx.curation.exercises.compare_responses",
+      "requirement_id": "CUR-PROT-018",
+      "schema_field": "responses[].completed",
+      "statement": "A blank template is not a response. Two responses from one person, or a response generated from an expected answer, are not independent.",
+      "test_reference": "tests/unit/curation/test_exercise.py::TestComparisonRequiresCompletedResponses",
+      "title": "A comparison requires two genuinely completed responses",
+      "validation_code": "CUR_COMPARISON_INCOMPLETE_INPUT"
+    },
+    {
+      "checklist_item": "Does any field score, rank or weight a scientific judgement?",
+      "implementation": "pgx.curation.models.PROHIBITED_CURATION_FIELDS",
+      "requirement_id": "CUR-PROT-019",
+      "schema_field": "-",
+      "statement": "No vocabulary carries a number and no curation field may hold one. Arithmetic over scientific judgement produces a result nobody reviewed.",
+      "test_reference": "tests/unit/curation/test_curation_records.py::TestNoNumericJudgement",
+      "title": "No numeric risk, confidence or safety score exists",
+      "validation_code": "CUR_NUMERIC_SCORE_PRESENT"
+    },
+    {
+      "checklist_item": "Could anything in this record be executed or read as advice?",
+      "implementation": "pgx.curation.models.PROHIBITED_CURATION_FIELDS",
+      "requirement_id": "CUR-PROT-020",
+      "schema_field": "-",
+      "statement": "A curation record carries no rule condition, matcher, dose, recommendation, contraindication or alternative drug. Those belong to WP-11 and WP-14 and have their own approval.",
+      "test_reference": "tests/unit/curation/test_curation_records.py::TestNoExecutableOrPrescriptiveFields",
+      "title": "No executable rule or treatment field exists",
+      "validation_code": "CUR_EXECUTABLE_FIELD_PRESENT"
+    },
+    {
+      "checklist_item": "Does any scope treat RAPID and ULTRARAPID as one?",
+      "implementation": "pgx.domain.enums.Phenotype; pgx.curation.models.CurationQuestion.phenotype_scope",
+      "requirement_id": "CUR-PROT-021",
+      "schema_field": "question.phenotype_scope",
+      "statement": "The existing Phenotype enum is reused unchanged. No alias, synonym or grouping may join them (SAFETY-INV-004).",
+      "test_reference": "tests/unit/curation/test_curation_records.py::TestRapidAndUltrarapidStayDistinct",
+      "title": "RAPID and ULTRARAPID stay distinct",
+      "validation_code": "CUR_PHENOTYPE_COLLAPSED"
+    },
+    {
+      "checklist_item": "Does every field say who owns it and what its absence means?",
+      "implementation": "pgx.curation.fields.FIELD_DICTIONARY",
+      "requirement_id": "CUR-PROT-022",
+      "schema_field": "fields[]",
+      "statement": "The field dictionary states, for every field: owner, type, requiredness, allowed values, what null means, validation, provenance requirement, whether human judgement is required, whether it may enter a future rule, and prohibited interpretations.",
+      "test_reference": "tests/unit/curation/test_protocol_structure.py::TestFieldDictionaryIsComplete",
+      "title": "Every controlled field has an owner and a null meaning",
+      "validation_code": "CUR_FIELD_DEFINITION_MISSING"
+    },
+    {
+      "checklist_item": "Is there a real named scientist behind this approval?",
+      "implementation": "pgx.curation.protocol.ApprovalRecord",
+      "requirement_id": "CUR-PROT-023",
+      "schema_field": "approval",
+      "statement": "APPROVED requires version, content hash, named owner, a different named scientific approver, role, timestamp, rationale, evidence reference, effective date and review date. Placeholders are treated as absence.",
+      "test_reference": "tests/unit/curation/test_protocol_structure.py::TestApprovalMetadataIsGenuine",
+      "title": "Protocol approval requires genuine named metadata",
+      "validation_code": "CUR_APPROVAL_METADATA_INCOMPLETE"
+    },
+    {
+      "checklist_item": "Is the protocol both structurally complete and actually approved?",
+      "implementation": "pgx.curation.validation.validate_protocol",
+      "requirement_id": "CUR-PROT-024",
+      "schema_field": "report.expert_approval",
+      "statement": "A structurally complete protocol that nobody approved reports completeness PASS and approval BLOCKED. One boolean would let the first stand in for the second.",
+      "test_reference": "tests/unit/curation/test_protocol_structure.py::TestCompletenessAndApprovalAreSeparate",
+      "title": "Technical completeness and expert approval are reported apart",
+      "validation_code": "CUR_APPROVAL_ABSENT"
+    },
+    {
+      "checklist_item": "Do the exercise cases point at evidence that actually exists?",
+      "implementation": "pgx.curation.exercises.build_exercise_packet",
+      "requirement_id": "CUR-PROT-025",
+      "schema_field": "cases[].evidence_record_uuids",
+      "statement": "Every case names evidence record identifiers that exist in the sealed build, and the packet is regenerated byte-identically from the same build.",
+      "test_reference": "tests/unit/curation/test_exercise.py::TestExerciseReferencesRealEvidence",
+      "title": "Exercise cases reference real, traceable evidence",
+      "validation_code": "CUR_EXERCISE_EVIDENCE_MISSING"
+    }
+  ],
+  "roles": [
+    {
+      "may_adjudicate": false,
+      "may_approve_science": false,
+      "may_author_conclusion": false,
+      "may_review_conclusion": false,
+      "notes": "Owning the protocol is not approving the science it governs. The owner may not sign off a conclusion made under it.",
+      "responsibility": "Owns this document and its versioning; proposes changes and records who approved them.",
+      "role": "PROTOCOL_OWNER"
+    },
+    {
+      "may_adjudicate": false,
+      "may_approve_science": true,
+      "may_author_conclusion": true,
+      "may_review_conclusion": false,
+      "notes": "May not review their own conclusion; the independent reviewer must be a different person.",
+      "responsibility": "Selects evidence, records the normalized conclusion and writes the structured rationale.",
+      "role": "SCIENTIFIC_CURATOR"
+    },
+    {
+      "may_adjudicate": false,
+      "may_approve_science": true,
+      "may_author_conclusion": false,
+      "may_review_conclusion": true,
+      "notes": "Independence means a different person, not a second pass by the author.",
+      "responsibility": "Independently checks the evidence selection, the conclusion and the rationale.",
+      "role": "INDEPENDENT_SCIENTIFIC_REVIEWER"
+    },
+    {
+      "may_adjudicate": true,
+      "may_approve_science": true,
+      "may_author_conclusion": false,
+      "may_review_conclusion": true,
+      "notes": "Must preserve both original responses. An adjudication that replaced them would erase the disagreement it settled.",
+      "responsibility": "Resolves a disagreement between curator and reviewer, or a material source conflict, with written reasons.",
+      "role": "ADJUDICATOR"
+    },
+    {
+      "may_adjudicate": false,
+      "may_approve_science": false,
+      "may_author_conclusion": false,
+      "may_review_conclusion": false,
+      "notes": "Confirms the chain is intact, which is not a statement that the scientific conclusion is correct.",
+      "responsibility": "Confirms evidence identity, versions, locators and trace verification.",
+      "role": "DATA_PROVENANCE_STEWARD"
+    },
+    {
+      "may_adjudicate": false,
+      "may_approve_science": false,
+      "may_author_conclusion": false,
+      "may_review_conclusion": false,
+      "notes": "An engineering role alone can never approve scientific meaning. Neither can an automated system or a language model, which have no role in this vocabulary at all.",
+      "responsibility": "Maintains the tooling, schemas and validators; observes exercises without answering them.",
+      "role": "ENGINEERING_OBSERVER"
+    }
+  ],
+  "status": "AWAITING_EXPERT_REVIEW",
+  "supersedes": null,
+  "vocabularies": {
+    "Applicability": [
+      "APPLICABLE",
+      "PARTIALLY_APPLICABLE",
+      "NOT_APPLICABLE",
+      "UNCLEAR"
+    ],
+    "CaseRole": [
+      "TRAINING",
+      "CALIBRATION",
+      "DEVELOPMENT",
+      "INTER_CURATOR_EXERCISE",
+      "INTERNAL_HOLDOUT",
+      "EXPERT_HOLDOUT"
+    ],
+    "ConclusionState": [
+      "SUPPORTED",
+      "CONFLICTING",
+      "INSUFFICIENT",
+      "NOT_INTERPRETABLE",
+      "OUT_OF_SCOPE",
+      "NOT_APPLICABLE"
+    ],
+    "ConflictState": [
+      "NONE_IDENTIFIED",
+      "PRESENT",
+      "UNRESOLVED",
+      "ADJUDICATION_REQUIRED"
+    ],
+    "CurationRole": [
+      "PROTOCOL_OWNER",
+      "SCIENTIFIC_CURATOR",
+      "INDEPENDENT_SCIENTIFIC_REVIEWER",
+      "ADJUDICATOR",
+      "DATA_PROVENANCE_STEWARD",
+      "ENGINEERING_OBSERVER"
+    ],
+    "EffectDimension": [
+      "EXPOSURE",
+      "CLEARANCE",
+      "ACTIVATION",
+      "RESPONSE_ASSOCIATION",
+      "ADVERSE_EVENT_ASSOCIATION",
+      "FUNCTIONAL_ACTIVITY",
+      "OTHER",
+      "INSUFFICIENT_TO_CLASSIFY"
+    ],
+    "EvidenceRelationship": [
+      "SUPPORTS",
+      "CONTRADICTS",
+      "CONTEXT_ONLY",
+      "EXCLUDED"
+    ],
+    "ExclusionReason": [
+      "WRONG_ENTITY",
+      "WRONG_PHENOTYPE_SCOPE",
+      "WRONG_POPULATION",
+      "DUPLICATE_SOURCE_RECORD",
+      "SUPERSEDED_SOURCE_VERSION",
+      "INSUFFICIENT_DETAIL",
+      "OUT_OF_SCOPE",
+      "UNRESOLVED_PROVENANCE",
+      "OTHER_WITH_RATIONALE"
+    ],
+    "InterpretationStatus": [
+      "DRAFT",
+      "UNDER_REVIEW",
+      "CURATED",
+      "REJECTED"
+    ],
+    "LegacyReviewState": [
+      "NOT_REVIEWED",
+      "SELECTED_FOR_EXERCISE",
+      "UNDER_REVIEW",
+      "ACCEPTED_AS_DRAFT_INPUT",
+      "REJECTED_AS_DRAFT_INPUT",
+      "NEEDS_MORE_EVIDENCE"
+    ],
+    "ProtocolStatus": [
+      "DRAFT",
+      "AWAITING_EXPERT_REVIEW",
+      "APPROVED",
+      "REJECTED",
+      "SUPERSEDED"
+    ]
+  },
+  "vocabulary_status": "DRAFT_AWAITING_EXPERT_REVIEW",
+  "vocabulary_version": "pgx-curation-vocabulary/1"
+}

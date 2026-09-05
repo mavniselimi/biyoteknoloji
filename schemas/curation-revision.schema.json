@@ -1,0 +1,191 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pgx-platform.invalid/schemas/curation-revision.schema.json",
+  "title": "PGx curation revision",
+  "description": "One immutable version of a curation payload (WP-10). A revision pins the protocol it was written under, the evidence build it cites and the curator who wrote it, and hashes all of them, so an altered revision is a different revision and every review that pinned the old hash is visibly about something else. A revision is a claim, not a conclusion: it becomes one only when an independent reviewer approves it and every gate is open.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "workflow_model_version",
+    "work_item_id",
+    "revision_number",
+    "parent_revision_id",
+    "payload",
+    "protocol_version",
+    "protocol_content_hash",
+    "evidence",
+    "authored_by",
+    "authored_by_role",
+    "authored_at",
+    "content_hash"
+  ],
+  "properties": {
+    "workflow_model_version": {
+      "const": "pgx-curation-workflow/1"
+    },
+    "work_item_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "revision_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "revision_number": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "parent_revision_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "payload": {
+      "type": "object"
+    },
+    "protocol_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "protocol_content_hash": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "evidence_record_uuids"
+      ],
+      "properties": {
+        "evidence_record_uuids": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          },
+          "description": "At least one. A conclusion citing nothing has nothing to interpret."
+        },
+        "excluded_record_uuids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "evidence_build_key": {
+          "type": "string"
+        },
+        "evidence_build_content_hash": {
+          "type": "string"
+        },
+        "dataset_public_id": {
+          "type": "string"
+        }
+      }
+    },
+    "authored_by": {
+      "type": "string",
+      "minLength": 2
+    },
+    "authored_by_role": {
+      "const": "SCIENTIFIC_CURATOR",
+      "description": "A revision is authored by a scientific curator. No other role may write one, asserted here as well as in the database."
+    },
+    "authored_at": {
+      "type": "string",
+      "minLength": 1
+    },
+    "content_hash": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "revision_number": {
+            "const": 1
+          }
+        },
+        "required": [
+          "revision_number"
+        ]
+      },
+      "then": {
+        "properties": {
+          "parent_revision_id": {
+            "type": "null"
+          }
+        },
+        "description": "The first revision has no parent; one here would claim a lineage that does not exist."
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "revision_number": {
+            "minimum": 2
+          }
+        },
+        "required": [
+          "revision_number"
+        ]
+      },
+      "then": {
+        "properties": {
+          "parent_revision_id": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "parent_revision_id"
+        ],
+        "description": "Every later revision names what it was derived from, or the lineage is unreconstructible."
+      }
+    }
+  ],
+  "not": {
+    "anyOf": [
+      {
+        "required": [
+          "risk_level"
+        ]
+      },
+      {
+        "required": [
+          "attention_level"
+        ]
+      },
+      {
+        "required": [
+          "confidence_score"
+        ]
+      },
+      {
+        "required": [
+          "dose"
+        ]
+      },
+      {
+        "required": [
+          "recommendation"
+        ]
+      },
+      {
+        "required": [
+          "approved_by"
+        ]
+      },
+      {
+        "required": [
+          "reviewed_by"
+        ]
+      }
+    ]
+  }
+}

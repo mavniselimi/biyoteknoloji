@@ -1,0 +1,135 @@
+{
+  "active_release_available": false,
+  "assigned_review_count": null,
+  "authentication_boundary_note": "WP-22 consumes the existing Principal, Role.EXPERT_REVIEWER and PrincipalResolver. It implements no passwords, sessions, tokens, login, signup or authentication tables, and it does not mark WP-18's access-ledger actor as authenticated. Until WP-23 supplies real authentication, an actor string identifies a configured principal and not a person.",
+  "blockers": [
+    {
+      "blocking": true,
+      "code": "EXPERT_REVIEW_CLAIM_BOUNDARY_NOT_APPROVED",
+      "detail": "claim boundary status is DRAFT / AWAITING HUMAN AND SCIENTIFIC REVIEW",
+      "owner": "named human and scientific reviewers"
+    },
+    {
+      "blocking": true,
+      "code": "EXPERT_REVIEW_NONE_COMPLETED",
+      "detail": "no review store was inspected, so no completed review count was taken",
+      "owner": "named experts under the approved protocol"
+    },
+    {
+      "blocking": true,
+      "code": "EXPERT_REVIEW_NO_ACTIVE_RELEASE",
+      "detail": "no release resolver is wired and no release is active",
+      "owner": "WP-03 operation"
+    },
+    {
+      "blocking": true,
+      "code": "EXPERT_REVIEW_NO_EXPERT_HOLDOUT_CASES",
+      "detail": "expert holdout: 0; 7 development case(s) exist and none may be substituted",
+      "owner": "scientific curators; a holdout case cannot be generated"
+    },
+    {
+      "blocking": true,
+      "code": "EXPERT_REVIEW_NO_NAMED_REVIEWERS",
+      "detail": "no review store was inspected, so no reviewer was counted",
+      "owner": "whoever recruits reviewers under the approved protocol"
+    },
+    {
+      "blocking": true,
+      "code": "EXPERT_REVIEW_NO_PRODUCTION_AUTHENTICATION",
+      "detail": "WP-22 consumes the existing static principal and implements no authentication; WP-23 owns that work",
+      "owner": "WP-23"
+    },
+    {
+      "blocking": true,
+      "code": "EXPERT_REVIEW_PROTOCOL_NOT_APPROVED",
+      "detail": "protocol status is DRAFT / AWAITING HUMAN AND SCIENTIFIC REVIEW; missing signatory roles: PRODUCT_TECHNICAL_OWNER, SCIENTIFIC_ADVISOR, RISK_MANAGEMENT_OWNER, INDEPENDENT_REVIEWER",
+      "owner": "named human and scientific reviewers"
+    },
+    {
+      "blocking": true,
+      "code": "EXPERT_REVIEW_RESTRICTED_STORAGE_NOT_CONFIGURED",
+      "detail": "PGX_VALIDATION_RESTRICTED_ROOT is unset or does not name a directory",
+      "owner": "deployment"
+    }
+  ],
+  "blocking_count": 8,
+  "claim_boundary_approved": false,
+  "claim_boundary_status": "DRAFT / AWAITING HUMAN AND SCIENTIFIC REVIEW",
+  "clinical_validation_performed": false,
+  "completed_review_count": null,
+  "development_case_count": 7,
+  "development_is_not_review_material": "The 7 development cases shaped the software. Assigning one to an expert would produce a review of the material the system was built on, which is not evidence about anything else.",
+  "expert_holdout_case_count": 0,
+  "expert_review_gate_status": "BLOCKED",
+  "expert_review_module_implemented": true,
+  "expert_review_performed": false,
+  "expert_review_performed_note": "False, and not a placeholder. Six preconditions are missing and five of them are owned by people: an approved protocol, an expert-holdout case, a named reviewer, an active release, restricted storage and production authentication. No change to this repository alone can make this true.",
+  "gate_status_schema_version": "pgx-wp22-gate-status/1",
+  "implementation_note": "The protocol document, the review state machine, the blinding structure, the append-only records, the audit chain, the persistence layer, the API and the reviewer pages are implemented. That is a statement about software. Whether any expert reviewed anything is the separate question below, and the answer is no.",
+  "implementation_status": "IMPLEMENTED",
+  "likert_dimension_count": 4,
+  "missing_signatory_roles": [
+    "PRODUCT_TECHNICAL_OWNER",
+    "SCIENTIFIC_ADVISOR",
+    "RISK_MANAGEMENT_OWNER",
+    "INDEPENDENT_REVIEWER"
+  ],
+  "module_marker_paths": [
+    "pgx/expert_review/protocol.py",
+    "pgx/expert_review/service.py",
+    "pgx/expert_review/models.py",
+    "pgx/expert_review/audit.py",
+    "pgx/expert_review/permits.py",
+    "pgx/expert_review/ports.py",
+    "pgx/infrastructure/db/expert_reviews.py",
+    "apps/api/routers/expert_review.py",
+    "apps/web/templates/expert_review.html",
+    "docs/validation/expert-protocol.md"
+  ],
+  "module_marker_present_count": 10,
+  "named_reviewer_count": 0,
+  "not_clinical_validation": "This document describes review machinery and its current empty state. It is not clinical validation, scientific validation or evidence of either. A correctly recorded review is a record that software worked, not a finding about a patient.",
+  "production_authentication_available": false,
+  "protocol": {
+    "approved": false,
+    "document_digest": "sha256:11d719033e8fcdbbc7e5719eab6f4a671631399efbf8d06f4163fa7143a7f84f",
+    "document_path": "docs/validation/expert-protocol.md",
+    "documented": true,
+    "missing_signatory_roles": [
+      "PRODUCT_TECHNICAL_OWNER",
+      "SCIENTIFIC_ADVISOR",
+      "RISK_MANAGEMENT_OWNER",
+      "INDEPENDENT_REVIEWER"
+    ],
+    "note": "The protocol document exists and is not approved. Approval requires four named people signing the exact document digest; no code path in this repository can supply them.",
+    "protocol_hash": "sha256:28fb2222679bd6a18c21bbd2f55ef534720ee80454637356f97fdd9ef447c919",
+    "protocol_version": "pgx-wp22-expert-protocol/1",
+    "required_signatory_roles": [
+      "PRODUCT_TECHNICAL_OWNER",
+      "SCIENTIFIC_ADVISOR",
+      "RISK_MANAGEMENT_OWNER",
+      "INDEPENDENT_REVIEWER"
+    ],
+    "signatories": [],
+    "signatory_count": 0,
+    "status": "DRAFT / AWAITING HUMAN AND SCIENTIFIC REVIEW"
+  },
+  "protocol_approved": false,
+  "protocol_documented": true,
+  "protocol_signatory_count": 0,
+  "protocol_status": "DRAFT / AWAITING HUMAN AND SCIENTIFIC REVIEW",
+  "release_may_proceed": false,
+  "required_signatory_roles": [
+    "PRODUCT_TECHNICAL_OWNER",
+    "SCIENTIFIC_ADVISOR",
+    "RISK_MANAGEMENT_OWNER",
+    "INDEPENDENT_REVIEWER"
+  ],
+  "restricted_storage_configured": false,
+  "review_count_source": "null rather than zero: no review store was inspected, so no count was taken",
+  "review_error_code_count": 18,
+  "review_state_count": 5,
+  "review_vocabulary_version": "pgx-wp22-expert-review-vocabulary/1",
+  "scientific_validation_performed": false,
+  "work_package": "WP-22"
+}

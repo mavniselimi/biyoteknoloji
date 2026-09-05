@@ -1,0 +1,243 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pgx-platform.invalid/schemas/coverage-regression-report.schema.json",
+  "title": "PGx coverage legacy regression report",
+  "description": "The deterministic comparison between legacy risk reporting and V2 coverage over the WP-01 legacy snapshots. Migration evidence, not clinical validation: no approved coverage manifest exists, so every V2 answer here is a form of 'not assessed, and here is the reason', which is precisely the correction - the legacy engine reported the same situation as low with no warning. Every case must carry a v2_score of null, which the schema pins rather than trusting: the removal of the 0-100 candidate score is the whole of LEGACY-BUG-009 and a report that could carry one would be reintroducing it. additionalProperties is false throughout, which is where the separation of coverage from attention is actually enforced: an attention level, an overall_attention, a risk level, a risk score, a severity, a dose, a recommendation, a preferred or safer flag, a suitability score or a treatment cannot be attached to any of these documents by anything downstream, because the schema refuses every property it does not name. WP-13 computes coverage; WP-14 computes attention; a document that could carry both would let one be read as the other.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "report_schema_version",
+    "canonical_build",
+    "canonical_drug_count",
+    "case_count",
+    "cases",
+    "expected_differences",
+    "expected_difference_hits",
+    "expected_differences_not_observed",
+    "unexpected_differences",
+    "real_coverage_manifests",
+    "note",
+    "content_hash"
+  ],
+  "properties": {
+    "report_schema_version": {
+      "const": "pgx-coverage-regression-report/1"
+    },
+    "canonical_build": {
+      "type": "object",
+      "minProperties": 1
+    },
+    "canonical_drug_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "case_count": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "cases": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "case_id",
+          "source",
+          "drug_id",
+          "legacy_overall_risk_level",
+          "legacy_rendered_as_reassuring",
+          "legacy_score",
+          "v2_recognized",
+          "v2_coverage_status",
+          "v2_reason_codes",
+          "v2_explanation",
+          "v2_score",
+          "expected_difference_id"
+        ],
+        "properties": {
+          "case_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "source": {
+            "type": "string",
+            "minLength": 1
+          },
+          "drug_id": {
+            "type": "string",
+            "pattern": "^DRUG:[^A-Z\\s]+( [^A-Z\\s]+)*$"
+          },
+          "legacy_overall_risk_level": {
+            "anyOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "string"
+              }
+            ]
+          },
+          "legacy_rendered_as_reassuring": {
+            "type": "boolean"
+          },
+          "legacy_score": {
+            "anyOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "integer"
+              }
+            ]
+          },
+          "v2_recognized": {
+            "type": "boolean"
+          },
+          "v2_coverage_status": {
+            "enum": [
+              "FULL",
+              "PARTIAL",
+              "INSUFFICIENT",
+              "UNSUPPORTED_DRUG",
+              "UNSUPPORTED_PHENOTYPE",
+              "SOURCE_CONFLICT"
+            ]
+          },
+          "v2_reason_codes": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "enum": [
+                "DRUG_NOT_IN_CANONICAL_DATASET",
+                "PHENOTYPE_NOT_PROVIDED",
+                "PHENOTYPE_NOT_SUPPORTED",
+                "NO_VALIDATED_RULE_FOR_AXIS",
+                "SOME_AXES_NOT_COVERED",
+                "VALIDATED_RULES_CONFLICT",
+                "DATASET_RULESET_MISMATCH",
+                "EVIDENCE_REFERENCE_MISSING"
+              ]
+            }
+          },
+          "v2_explanation": {
+            "type": "string",
+            "minLength": 20
+          },
+          "v2_score": {
+            "type": "null"
+          },
+          "expected_difference_id": {
+            "anyOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "string",
+                "minLength": 1
+              }
+            ]
+          }
+        }
+      }
+    },
+    "expected_differences": {
+      "type": "array",
+      "minItems": 4,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "difference_id",
+          "legacy_bug_id",
+          "observed_legacy_behavior",
+          "required_v2_behavior",
+          "safety_rationale",
+          "reference",
+          "comparison_selector",
+          "expected_coverage_status",
+          "expected_reason_code"
+        ],
+        "properties": {
+          "difference_id": {
+            "type": "string",
+            "pattern": "^[A-Z][A-Z0-9-]*$"
+          },
+          "legacy_bug_id": {
+            "type": "string",
+            "pattern": "^LEGACY-BUG-[0-9]{3}$"
+          },
+          "observed_legacy_behavior": {
+            "type": "string",
+            "minLength": 40
+          },
+          "required_v2_behavior": {
+            "type": "string",
+            "minLength": 30
+          },
+          "safety_rationale": {
+            "type": "string",
+            "minLength": 40
+          },
+          "reference": {
+            "type": "string",
+            "minLength": 5
+          },
+          "comparison_selector": {
+            "type": "object",
+            "minProperties": 1
+          },
+          "expected_coverage_status": {
+            "enum": [
+              "FULL",
+              "PARTIAL",
+              "INSUFFICIENT",
+              "UNSUPPORTED_DRUG",
+              "UNSUPPORTED_PHENOTYPE",
+              "SOURCE_CONFLICT"
+            ]
+          },
+          "expected_reason_code": {
+            "enum": [
+              "DRUG_NOT_IN_CANONICAL_DATASET",
+              "PHENOTYPE_NOT_PROVIDED",
+              "PHENOTYPE_NOT_SUPPORTED",
+              "NO_VALIDATED_RULE_FOR_AXIS",
+              "SOME_AXES_NOT_COVERED",
+              "VALIDATED_RULES_CONFLICT",
+              "DATASET_RULESET_MISMATCH",
+              "EVIDENCE_REFERENCE_MISSING"
+            ]
+          }
+        }
+      }
+    },
+    "expected_difference_hits": {
+      "type": "object",
+      "minProperties": 1
+    },
+    "expected_differences_not_observed": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "unexpected_differences": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "real_coverage_manifests": {
+      "const": 0
+    },
+    "note": {
+      "type": "string",
+      "minLength": 100
+    },
+    "content_hash": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    }
+  }
+}

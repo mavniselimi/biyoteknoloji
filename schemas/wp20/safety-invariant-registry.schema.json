@@ -1,0 +1,234 @@
+{
+  "$id": "https://pgx.local/schemas/wp20/safety-invariant-registry.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "The twelve invariants of docs/risk-management/safety-contract.md section 2, in machine-readable form. Exactly twelve: the identifier pattern admits 001 through 012 and nothing else, so a thirteenth invariant requires this published schema to change where somebody will see it.",
+  "properties": {
+    "control_catalogue_version": {
+      "const": "pgx-wp20-negative-controls/1"
+    },
+    "control_count": {
+      "minimum": 12,
+      "type": "integer"
+    },
+    "invariant_count": {
+      "const": 12
+    },
+    "invariant_ids": {
+      "items": {
+        "pattern": "^SAFETY-INV-0(0[1-9]|1[0-2])$",
+        "type": "string"
+      },
+      "maxItems": 12,
+      "minItems": 12,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "invariants": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "absence_markers": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "blockers": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "code": {
+                  "pattern": "^SAFETY_[A-Z0-9_]+$",
+                  "type": "string"
+                },
+                "detail": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "owner": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "code",
+                "owner",
+                "detail"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "current_surfaces": {
+            "items": {
+              "enum": [
+                "DOMAIN_VALUES",
+                "PHENOTYPE_NORMALIZATION",
+                "COVERAGE_ENGINE",
+                "ASSESSMENT_ENGINE",
+                "EVIDENCE_RESOLUTION",
+                "RULESET_PINNING",
+                "RELEASE_PINNING",
+                "PERSISTENCE_BOUNDARY",
+                "DETERMINISTIC_REPORT",
+                "CLAIM_SCANNER",
+                "API_SERIALIZATION",
+                "WEB_RENDERING",
+                "VALIDATION_PARTITION",
+                "CANDIDATE_ABSENCE",
+                "LLM_ABSENCE",
+                "INPUT_BOUNDARY"
+              ]
+            },
+            "type": "array"
+          },
+          "implementation_state": {
+            "enum": [
+              "COMPLIANT",
+              "VIOLATED",
+              "NOT_PRESENT",
+              "DEFERRED_TO_LATER_WP",
+              "UNKNOWN"
+            ]
+          },
+          "invariant_id": {
+            "pattern": "^SAFETY-INV-0(0[1-9]|1[0-2])$",
+            "type": "string"
+          },
+          "legacy_bugs": {
+            "items": {
+              "pattern": "^LEGACY-BUG-[0-9]{3}$",
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "negative_controls": {
+            "items": {
+              "pattern": "^(NC|SC)-.+$",
+              "type": "string"
+            },
+            "minItems": 1,
+            "type": "array"
+          },
+          "note": {
+            "type": "string"
+          },
+          "owning_work_packages": {
+            "items": {
+              "type": "string"
+            },
+            "minItems": 1,
+            "type": "array"
+          },
+          "refusal_code": {
+            "pattern": "^SAFETY_[A-Z0-9_]+$",
+            "type": "string"
+          },
+          "required_surfaces": {
+            "items": {
+              "enum": [
+                "DOMAIN_VALUES",
+                "PHENOTYPE_NORMALIZATION",
+                "COVERAGE_ENGINE",
+                "ASSESSMENT_ENGINE",
+                "EVIDENCE_RESOLUTION",
+                "RULESET_PINNING",
+                "RELEASE_PINNING",
+                "PERSISTENCE_BOUNDARY",
+                "DETERMINISTIC_REPORT",
+                "CLAIM_SCANNER",
+                "API_SERIALIZATION",
+                "WEB_RENDERING",
+                "VALIDATION_PARTITION",
+                "CANDIDATE_ABSENCE",
+                "LLM_ABSENCE",
+                "INPUT_BOUNDARY"
+              ]
+            },
+            "minItems": 1,
+            "type": "array"
+          },
+          "requirement_reference": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "severity": {
+            "enum": [
+              "CRITICAL_PATIENT_FACING",
+              "CRITICAL_EVIDENTIAL",
+              "CRITICAL_SCOPE"
+            ]
+          },
+          "test_selectors": {
+            "items": {
+              "type": "string"
+            },
+            "minItems": 1,
+            "type": "array"
+          },
+          "title": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "invariant_id",
+          "title",
+          "requirement_reference",
+          "severity",
+          "required_surfaces",
+          "current_surfaces",
+          "owning_work_packages",
+          "test_selectors",
+          "negative_controls",
+          "legacy_bugs",
+          "refusal_code",
+          "implementation_state",
+          "blockers",
+          "absence_markers",
+          "note"
+        ],
+        "type": "object"
+      },
+      "maxItems": 12,
+      "minItems": 12,
+      "type": "array"
+    },
+    "negative_controls": {
+      "minItems": 12,
+      "type": "array"
+    },
+    "note": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "registry_version": {
+      "const": "pgx-wp20-safety-registry/1"
+    },
+    "resolved_modules": {
+      "additionalProperties": {
+        "items": {
+          "type": "string"
+        },
+        "type": "array"
+      },
+      "propertyNames": {
+        "pattern": "^SAFETY-INV-0(0[1-9]|1[0-2])$"
+      },
+      "type": "object"
+    }
+  },
+  "required": [
+    "registry_version",
+    "invariant_count",
+    "invariant_ids",
+    "invariants",
+    "negative_controls",
+    "control_count",
+    "resolved_modules",
+    "note"
+  ],
+  "title": "WP-20 safety invariant registry",
+  "type": "object"
+}

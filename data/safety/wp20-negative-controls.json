@@ -1,0 +1,340 @@
+{
+  "control_catalogue_version": "pgx-wp20-negative-controls/1",
+  "control_count": 37,
+  "controls": [
+    {
+      "control_id": "NC-INV-001-ABSENCE-MAPPED-TO-LOW",
+      "description": "an aggregation that maps an unassessed axis to LOW, exactly as the legacy engine's 'Dusuk / uyari yok' did",
+      "expected_refusal_code": "SAFETY_FALSE_REASSURANCE",
+      "fixture": "tests.fixtures.wp20.unsafe_engine",
+      "invariant_id": "SAFETY-INV-001",
+      "kind": "NEGATIVE",
+      "legacy_bug": "LEGACY-BUG-002"
+    },
+    {
+      "control_id": "NC-INV-001-NOT-ASSESSED-IN-MAXIMUM",
+      "description": "an aggregation that treats NOT_ASSESSED as a level and includes it in the attention maximum, making absence comparable to LOW",
+      "expected_refusal_code": "SAFETY_FALSE_REASSURANCE",
+      "fixture": "tests.fixtures.wp20.unsafe_engine",
+      "invariant_id": "SAFETY-INV-001",
+      "kind": "NEGATIVE",
+      "legacy_bug": ""
+    },
+    {
+      "control_id": "NC-INV-002-RENDERER-CHANGES-ATTENTION",
+      "description": "a test-only renderer whose narration reports a different attention level than the structured report it was given",
+      "expected_refusal_code": "SAFETY_LLM_ALTERED_FACT",
+      "fixture": "tests.fixtures.wp20.unsafe_renderer",
+      "invariant_id": "SAFETY-INV-002",
+      "kind": "NEGATIVE",
+      "legacy_bug": ""
+    },
+    {
+      "control_id": "NC-INV-002-RENDERER-INVENTS-DOSE",
+      "description": "a renderer that introduces a dose the deterministic report never contained",
+      "expected_refusal_code": "SAFETY_LLM_ALTERED_FACT",
+      "fixture": "tests.fixtures.wp20.unsafe_renderer",
+      "invariant_id": "SAFETY-INV-002",
+      "kind": "NEGATIVE",
+      "legacy_bug": ""
+    },
+    {
+      "control_id": "NC-INV-002-RENDERER-DROPS-VERSION",
+      "description": "a renderer that omits the release/version metadata, breaking the traceability the report exists to carry",
+      "expected_refusal_code": "SAFETY_LLM_ALTERED_FACT",
+      "fixture": "tests.fixtures.wp20.unsafe_renderer",
+      "invariant_id": "SAFETY-INV-002",
+      "kind": "NEGATIVE",
+      "legacy_bug": ""
+    },
+    {
+      "control_id": "NC-INV-003-DRAFT-RULE-FIRES",
+      "description": "a ruleset containing a DRAFT rule that participates in a calculation",
+      "expected_refusal_code": "SAFETY_UNVALIDATED_RULE_EXECUTED",
+      "fixture": "tests.fixtures.wp20.unsafe_ruleset",
+      "invariant_id": "SAFETY-INV-003",
+      "kind": "NEGATIVE",
+      "legacy_bug": "LEGACY-BUG-006"
+    },
+    {
+      "control_id": "NC-INV-003-DEPRECATED-RULE-FIRES",
+      "description": "a DEPRECATED rule that still produces a finding",
+      "expected_refusal_code": "SAFETY_UNVALIDATED_RULE_EXECUTED",
+      "fixture": "tests.fixtures.wp20.unsafe_ruleset",
+      "invariant_id": "SAFETY-INV-003",
+      "kind": "NEGATIVE",
+      "legacy_bug": ""
+    },
+    {
+      "control_id": "NC-INV-003-UNPINNED-RULESET-ACCEPTED",
+      "description": "a ruleset that is not the pinned active one being accepted for assessment",
+      "expected_refusal_code": "SAFETY_UNVALIDATED_RULE_EXECUTED",
+      "fixture": "tests.fixtures.wp20.unsafe_ruleset",
+      "invariant_id": "SAFETY-INV-003",
+      "kind": "NEGATIVE",
+      "legacy_bug": ""
+    },
+    {
+      "control_id": "NC-INV-004-PREFIX-MATCHER",
+      "description": "a matcher that accepts RAPID for a rule declaring ULTRARAPID because one string is a prefix of the other",
+      "expected_refusal_code": "SAFETY_PHENOTYPE_CROSS_MATCH",
+      "fixture": "tests.fixtures.wp20.unsafe_matcher",
+      "invariant_id": "SAFETY-INV-004",
+      "kind": "NEGATIVE",
+      "legacy_bug": "LEGACY-BUG-001"
+    },
+    {
+      "control_id": "NC-INV-004-SYNONYM-TABLE",
+      "description": "a synonym table that treats RAPID and ULTRARAPID as equivalent",
+      "expected_refusal_code": "SAFETY_PHENOTYPE_CROSS_MATCH",
+      "fixture": "tests.fixtures.wp20.unsafe_matcher",
+      "invariant_id": "SAFETY-INV-004",
+      "kind": "NEGATIVE",
+      "legacy_bug": ""
+    },
+    {
+      "control_id": "NC-INV-004-ORDINAL-PROXIMITY",
+      "description": "a matcher that accepts an adjacent phenotype by ordinal distance",
+      "expected_refusal_code": "SAFETY_PHENOTYPE_CROSS_MATCH",
+      "fixture": "tests.fixtures.wp20.unsafe_matcher",
+      "invariant_id": "SAFETY-INV-004",
+      "kind": "NEGATIVE",
+      "legacy_bug": ""
+    },
+    {
+      "control_id": "NC-INV-005-SAFETY-SCORE",
+      "description": "a candidate list carrying a 0-100 clinical suitability score, the legacy ranking that mixed data availability with preferability",
+      "expected_refusal_code": "SAFETY_CANDIDATE_PREFERENCE",
+      "fixture": "tests.fixtures.wp20.unsafe_candidates",
+      "invariant_id": "SAFETY-INV-005",
+      "kind": "NEGATIVE",
+      "legacy_bug": "LEGACY-BUG-009"
+    },
+    {
+      "control_id": "NC-INV-005-ORDERED-BY-ATTENTION",
+      "description": "a candidate list ordered by attention level, which reads as a ranking whatever the disclaimer says",
+      "expected_refusal_code": "SAFETY_CANDIDATE_PREFERENCE",
+      "fixture": "tests.fixtures.wp20.unsafe_candidates",
+      "invariant_id": "SAFETY-INV-005",
+      "kind": "NEGATIVE",
+      "legacy_bug": ""
+    },
+    {
+      "control_id": "NC-INV-005-PREFERRED-LABEL",
+      "description": "output labelling a candidate safer, preferred, suitable or recommended, in Turkish or English",
+      "expected_refusal_code": "SAFETY_CANDIDATE_PREFERENCE",
+      "fixture": "tests.fixtures.wp20.unsafe_candidates",
+      "invariant_id": "SAFETY-INV-005",
+      "kind": "NEGATIVE",
+      "legacy_bug": ""
+    },
+    {
+      "control_id": "NC-INV-006-DANGLING-EVIDENCE-REFERENCE",
+      "description": "a finding citing an evidence identifier that resolves to nothing",
+      "expected_refusal_code": "SAFETY_EVIDENCE_NOT_RESOLVABLE",
+      "fixture": "tests.fixtures.wp20.unsafe_evidence",
+      "invariant_id": "SAFETY-INV-006",
+      "kind": "NEGATIVE",
+      "legacy_bug": "LEGACY-BUG-005"
+    },
+    {
+      "control_id": "NC-INV-006-FINDING-WITHOUT-EVIDENCE",
+      "description": "a finding emitted with an empty evidence reference list",
+      "expected_refusal_code": "SAFETY_EVIDENCE_NOT_RESOLVABLE",
+      "fixture": "tests.fixtures.wp20.unsafe_evidence",
+      "invariant_id": "SAFETY-INV-006",
+      "kind": "NEGATIVE",
+      "legacy_bug": ""
+    },
+    {
+      "control_id": "NC-INV-006-EVIDENCE-OUTSIDE-PINNED-DATASET",
+      "description": "a finding whose evidence exists, but in a dataset version other than the pinned one",
+      "expected_refusal_code": "SAFETY_EVIDENCE_NOT_RESOLVABLE",
+      "fixture": "tests.fixtures.wp20.unsafe_evidence",
+      "invariant_id": "SAFETY-INV-006",
+      "kind": "NEGATIVE",
+      "legacy_bug": ""
+    },
+    {
+      "control_id": "NC-INV-007-MISSING-RELEASE-FIELD",
+      "description": "persistence attempted with each release/version field omitted in turn, rather than as a set",
+      "expected_refusal_code": "SAFETY_RELEASE_BUNDLE_INCOMPLETE",
+      "fixture": "tests.fixtures.wp20.unsafe_persistence",
+      "invariant_id": "SAFETY-INV-007",
+      "kind": "NEGATIVE",
+      "legacy_bug": "LEGACY-BUG-007"
+    },
+    {
+      "control_id": "NC-INV-007-MISSING-INPUT-HASH",
+      "description": "persistence attempted without the canonical input hash",
+      "expected_refusal_code": "SAFETY_RELEASE_BUNDLE_INCOMPLETE",
+      "fixture": "tests.fixtures.wp20.unsafe_persistence",
+      "invariant_id": "SAFETY-INV-007",
+      "kind": "NEGATIVE",
+      "legacy_bug": ""
+    },
+    {
+      "control_id": "NC-INV-007-MISSING-OUTPUT-HASH",
+      "description": "persistence attempted without the output hash",
+      "expected_refusal_code": "SAFETY_RELEASE_BUNDLE_INCOMPLETE",
+      "fixture": "tests.fixtures.wp20.unsafe_persistence",
+      "invariant_id": "SAFETY-INV-007",
+      "kind": "NEGATIVE",
+      "legacy_bug": ""
+    },
+    {
+      "control_id": "NC-INV-007-PARTIAL-PERSISTENCE",
+      "description": "a store that commits the assessment row and abandons its findings, leaving a result whose trustworthy half cannot be told from the rest",
+      "expected_refusal_code": "SAFETY_RELEASE_BUNDLE_INCOMPLETE",
+      "fixture": "tests.fixtures.wp20.unsafe_persistence",
+      "invariant_id": "SAFETY-INV-007",
+      "kind": "NEGATIVE",
+      "legacy_bug": ""
+    },
+    {
+      "control_id": "NC-INV-008-CONFLICT-TAKES-LOWER-LEVEL",
+      "description": "conflicting validated rules resolved by taking the lower attention level, the most reassuring possible answer",
+      "expected_refusal_code": "SAFETY_CONFLICT_COLLAPSED",
+      "fixture": "tests.fixtures.wp20.unsafe_conflict",
+      "invariant_id": "SAFETY-INV-008",
+      "kind": "NEGATIVE",
+      "legacy_bug": ""
+    },
+    {
+      "control_id": "NC-INV-008-CONFLICT-AVERAGED",
+      "description": "conflicting levels averaged into a middle value that neither rule supports",
+      "expected_refusal_code": "SAFETY_CONFLICT_COLLAPSED",
+      "fixture": "tests.fixtures.wp20.unsafe_conflict",
+      "invariant_id": "SAFETY-INV-008",
+      "kind": "NEGATIVE",
+      "legacy_bug": ""
+    },
+    {
+      "control_id": "NC-INV-008-CONFLICTING-RULE-DROPPED",
+      "description": "the disagreeing rule silently discarded to produce a clean answer",
+      "expected_refusal_code": "SAFETY_CONFLICT_COLLAPSED",
+      "fixture": "tests.fixtures.wp20.unsafe_conflict",
+      "invariant_id": "SAFETY-INV-008",
+      "kind": "NEGATIVE",
+      "legacy_bug": ""
+    },
+    {
+      "control_id": "NC-INV-009-ID-IN-TWO-ROLES",
+      "description": "one case identifier appearing as both DEVELOPMENT and EXPERT_HOLDOUT",
+      "expected_refusal_code": "SAFETY_PARTITION_OVERLAP",
+      "fixture": "tests.fixtures.wp20.unsafe_partition",
+      "invariant_id": "SAFETY-INV-009",
+      "kind": "NEGATIVE",
+      "legacy_bug": ""
+    },
+    {
+      "control_id": "NC-INV-009-CONTENT-DUPLICATE-ACROSS-PARTITIONS",
+      "description": "two different identifiers carrying identical content across the development/holdout line",
+      "expected_refusal_code": "SAFETY_PARTITION_OVERLAP",
+      "fixture": "tests.fixtures.wp20.unsafe_partition",
+      "invariant_id": "SAFETY-INV-009",
+      "kind": "NEGATIVE",
+      "legacy_bug": ""
+    },
+    {
+      "control_id": "NC-INV-009-DERIVATION-FAMILY-SPLIT",
+      "description": "one derivation family split across development and holdout - which neither an identifier nor a content check would catch",
+      "expected_refusal_code": "SAFETY_PARTITION_OVERLAP",
+      "fixture": "tests.fixtures.wp20.unsafe_partition",
+      "invariant_id": "SAFETY-INV-009",
+      "kind": "NEGATIVE",
+      "legacy_bug": ""
+    },
+    {
+      "control_id": "NC-INV-010-REPORT-CARRIES-RECOMMENDATION",
+      "description": "a deterministic report body carrying a treatment recommendation",
+      "expected_refusal_code": "SAFETY_PROHIBITED_CLAIM",
+      "fixture": "tests.fixtures.wp20.unsafe_text",
+      "invariant_id": "SAFETY-INV-010",
+      "kind": "NEGATIVE",
+      "legacy_bug": "LEGACY-BUG-012"
+    },
+    {
+      "control_id": "NC-INV-010-API-STRING-CARRIES-DOSE",
+      "description": "an API user-facing string carrying dosing language",
+      "expected_refusal_code": "SAFETY_PROHIBITED_CLAIM",
+      "fixture": "tests.fixtures.wp20.unsafe_text",
+      "invariant_id": "SAFETY-INV-010",
+      "kind": "NEGATIVE",
+      "legacy_bug": ""
+    },
+    {
+      "control_id": "NC-INV-010-TEMPLATE-CARRIES-REASSURANCE",
+      "description": "a rendered template asserting that no finding means the medication is safe",
+      "expected_refusal_code": "SAFETY_PROHIBITED_CLAIM",
+      "fixture": "tests.fixtures.wp20.unsafe_text",
+      "invariant_id": "SAFETY-INV-010",
+      "kind": "NEGATIVE",
+      "legacy_bug": ""
+    },
+    {
+      "control_id": "NC-INV-011-NESTED-GENOTYPE-FIELD",
+      "description": "a genotype field buried several levels deep in a request, where a top-level-only check would miss it",
+      "expected_refusal_code": "SAFETY_REAL_PATIENT_DATA",
+      "fixture": "tests.fixtures.wp20.unsafe_input",
+      "invariant_id": "SAFETY-INV-011",
+      "kind": "NEGATIVE",
+      "legacy_bug": ""
+    },
+    {
+      "control_id": "NC-INV-011-PATIENT-IDENTIFIER",
+      "description": "a direct patient identifier - name, MRN, date of birth",
+      "expected_refusal_code": "SAFETY_REAL_PATIENT_DATA",
+      "fixture": "tests.fixtures.wp20.unsafe_input",
+      "invariant_id": "SAFETY-INV-011",
+      "kind": "NEGATIVE",
+      "legacy_bug": ""
+    },
+    {
+      "control_id": "NC-INV-011-RAW-SEQUENCING-PAYLOAD",
+      "description": "a VCF/FASTQ/BAM payload or a star-allele diplotype",
+      "expected_refusal_code": "SAFETY_REAL_PATIENT_DATA",
+      "fixture": "tests.fixtures.wp20.unsafe_input",
+      "invariant_id": "SAFETY-INV-011",
+      "kind": "NEGATIVE",
+      "legacy_bug": ""
+    },
+    {
+      "control_id": "NC-INV-011-PILOT-MODE-REQUESTED",
+      "description": "an operation requesting PILOT mode, which is disabled in P0",
+      "expected_refusal_code": "SAFETY_REAL_PATIENT_DATA",
+      "fixture": "tests.fixtures.wp20.unsafe_input",
+      "invariant_id": "SAFETY-INV-011",
+      "kind": "NEGATIVE",
+      "legacy_bug": ""
+    },
+    {
+      "control_id": "NC-INV-012-SHUFFLED-INPUT-CHANGES-OUTPUT",
+      "description": "an engine whose output hash depends on the order the medications arrived in",
+      "expected_refusal_code": "SAFETY_NON_DETERMINISTIC_RESULT",
+      "fixture": "tests.fixtures.wp20.unsafe_determinism",
+      "invariant_id": "SAFETY-INV-012",
+      "kind": "NEGATIVE",
+      "legacy_bug": "LEGACY-BUG-007"
+    },
+    {
+      "control_id": "NC-INV-012-MID-RUN-RELEASE-CHANGE",
+      "description": "a release bundle that changes between two calculations of the same input, so neither result can be attributed",
+      "expected_refusal_code": "SAFETY_NON_DETERMINISTIC_RESULT",
+      "fixture": "tests.fixtures.wp20.unsafe_determinism",
+      "invariant_id": "SAFETY-INV-012",
+      "kind": "NEGATIVE",
+      "legacy_bug": ""
+    },
+    {
+      "control_id": "NC-INV-012-WALL-CLOCK-IN-OUTPUT",
+      "description": "wall-clock time inside the hashed output, which makes two identical runs disagree",
+      "expected_refusal_code": "SAFETY_NON_DETERMINISTIC_RESULT",
+      "fixture": "tests.fixtures.wp20.unsafe_determinism",
+      "invariant_id": "SAFETY-INV-012",
+      "kind": "NEGATIVE",
+      "legacy_bug": ""
+    }
+  ],
+  "note": "Each control is a deliberately unsafe case that the same evaluator judging the real system must reject with the named code. Asserting that a fixture contains unsafe text proves something about the fixture and nothing about the detector. Every fixture is in-memory; none modifies production source."
+}

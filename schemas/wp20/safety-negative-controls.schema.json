@@ -1,0 +1,75 @@
+{
+  "$id": "https://pgx.local/schemas/wp20/safety-negative-controls.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Every deliberately unsafe case, the invariant it belongs to, and the stable code its evaluator must return. The fixture pattern requires tests.fixtures.*: a control realised in production code would be a mutation of the shipped system rather than a double.",
+  "properties": {
+    "control_catalogue_version": {
+      "const": "pgx-wp20-negative-controls/1"
+    },
+    "control_count": {
+      "minimum": 12,
+      "type": "integer"
+    },
+    "controls": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "control_id": {
+            "pattern": "^(NC|SC)-.+$",
+            "type": "string"
+          },
+          "description": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "expected_refusal_code": {
+            "pattern": "^SAFETY_[A-Z0-9_]+$",
+            "type": "string"
+          },
+          "fixture": {
+            "pattern": "^tests\\.fixtures\\.",
+            "type": "string"
+          },
+          "invariant_id": {
+            "pattern": "^SAFETY-INV-0(0[1-9]|1[0-2])$",
+            "type": "string"
+          },
+          "kind": {
+            "enum": [
+              "SAFE",
+              "NEGATIVE"
+            ]
+          },
+          "legacy_bug": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "control_id",
+          "invariant_id",
+          "description",
+          "expected_refusal_code",
+          "fixture",
+          "kind",
+          "legacy_bug"
+        ],
+        "type": "object"
+      },
+      "minItems": 12,
+      "type": "array"
+    },
+    "note": {
+      "minLength": 1,
+      "type": "string"
+    }
+  },
+  "required": [
+    "control_catalogue_version",
+    "control_count",
+    "controls",
+    "note"
+  ],
+  "title": "WP-20 negative control catalogue",
+  "type": "object"
+}

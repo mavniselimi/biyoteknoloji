@@ -1,0 +1,94 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pgx-platform.invalid/schemas/draft-curation-proposal.schema.json",
+  "title": "PGx draft curation proposal (unreviewed legacy migration candidate)",
+  "description": "One conclusion this project reached about the science before WP-08, recovered from its legacy files so it is not lost, and written down as a candidate for review (WP-08). A proposal is NOT evidence, NOT a curation, NOT scientifically reviewed and NOT executable. It lives outside the evidence store on purpose. Nothing in this document may be used to assess a person. Its status and warnings are fixed by the schema, so a file that merely edited them into something friendlier does not validate.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "draft_curation_version",
+    "proposal_id",
+    "subject",
+    "status",
+    "warnings",
+    "legacy_values",
+    "origins",
+    "content_hash",
+    "note"
+  ],
+  "properties": {
+    "draft_curation_version": {"const": "pgx-draft-curation/1"},
+    "proposal_id": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Stable across runs over the same legacy files, so two extractions can be compared."
+    },
+    "subject": {
+      "type": "string",
+      "minLength": 1,
+      "description": "What the legacy row was about, in the legacy file's own terms."
+    },
+    "status": {
+      "const": "UNREVIEWED_LEGACY_MIGRATION_CANDIDATE",
+      "description": "The only status this document may carry. There is no APPROVED, no ACCEPTED and no PENDING: a proposal becomes a curation through a review protocol that WP-08 does not implement."
+    },
+    "warnings": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "items": {
+        "enum": ["NOT_EVIDENCE", "NOT_SCIENTIFICALLY_REVIEWED",
+                 "NOT_EXECUTABLE", "DO_NOT_USE_FOR_ASSESSMENT"]
+      },
+      "uniqueItems": true,
+      "description": "All four, always. Fixed in the schema rather than only in code so a hand-edited file that dropped one is invalid."
+    },
+    "legacy_values": {
+      "type": "object",
+      "minProperties": 1,
+      "description": "The project's own former conclusions, copied verbatim from the legacy files. These are exactly the fields that are prohibited inside an evidence record: they are kept here, labelled, rather than deleted."
+    },
+    "origins": {
+      "type": "array",
+      "minItems": 1,
+      "description": "Where each value was read from. A proposal that cannot say which file and row it came from is an assertion with no provenance.",
+      "items": {
+        "type": "object",
+        "required": ["relative_path", "file_sha256"],
+        "properties": {
+          "relative_path": {
+            "type": "string",
+            "pattern": "^(?!/)(?![A-Za-z]:)",
+            "description": "Relative to the repository root."
+          },
+          "file_sha256": {
+            "type": "string",
+            "pattern": "^sha256:[0-9a-f]{64}$",
+            "description": "So a later reader can tell whether the legacy file has changed since the proposal was written."
+          },
+          "row_number": {"type": ["integer", "null"], "minimum": 1},
+          "line_number": {"type": ["integer", "null"], "minimum": 1},
+          "ast_path": {
+            "type": ["string", "null"],
+            "description": "For values recovered from legacy Python by parsing rather than executing it."
+          }
+        }
+      }
+    },
+    "linked_evidence": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1},
+      "description": "Natural keys of evidence records this proposal would be about, matched on an identifier the source itself published. Never matched on a plausible neighbour."
+    },
+    "linked_record_uuids": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1}
+    },
+    "linkage_note": {
+      "type": ["string", "null"],
+      "description": "Why a proposal is unlinked. An unlinked proposal states that rather than being attached to something nearby."
+    },
+    "content_hash": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "note": {"type": "string", "minLength": 1}
+  }
+}

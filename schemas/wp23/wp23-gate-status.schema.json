@@ -1,0 +1,258 @@
+{
+  "$id": "https://pgx.local/schemas/wp23/wp23-gate-status.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "security_gate_status": {
+            "const": "PASS"
+          }
+        },
+        "required": [
+          "security_gate_status"
+        ]
+      },
+      "then": {
+        "properties": {
+          "argon2_available": {
+            "const": true
+          },
+          "audit_chain_verified": {
+            "const": true
+          },
+          "authentication_configured": {
+            "const": true
+          },
+          "database_available": {
+            "const": true
+          },
+          "https_termination_observed": {
+            "const": true
+          },
+          "migration_0011_executed": {
+            "const": true
+          },
+          "real_users_configured": {
+            "minimum": 1,
+            "type": "integer"
+          },
+          "restore_verified": {
+            "const": true
+          }
+        }
+      }
+    }
+  ],
+  "description": "Three separate answers: the security software is implemented, this deployment has configured none of it, and nothing is operating. PASS demands every operational precondition at once.",
+  "properties": {
+    "argon2_available": {
+      "type": "boolean"
+    },
+    "argon2_dependency_declared": {
+      "const": true
+    },
+    "audit_chain_verified": {
+      "anyOf": [
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "authentication_configured": {
+      "type": "boolean"
+    },
+    "authentication_software_implemented": {
+      "type": "boolean"
+    },
+    "backup_executed": {
+      "const": false
+    },
+    "backup_procedure_documented": {
+      "type": "boolean"
+    },
+    "blockers": {
+      "items": {
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "blocking_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "canonical_audit_implemented": {
+      "type": "boolean"
+    },
+    "claim_boundary_approved": {
+      "type": "boolean"
+    },
+    "clinical_validation_performed": {
+      "const": false
+    },
+    "csrf_implemented": {
+      "type": "boolean"
+    },
+    "csrf_operational": {
+      "type": "boolean"
+    },
+    "database_available": {
+      "type": "boolean"
+    },
+    "expert_review_performed": {
+      "const": false
+    },
+    "gate_status_schema_version": {
+      "const": "pgx-wp23-gate-status/1"
+    },
+    "governed_audit_event_count": {
+      "anyOf": [
+        {
+          "minimum": 0,
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "https_termination_observed": {
+      "type": "boolean"
+    },
+    "implementation_status": {
+      "enum": [
+        "IMPLEMENTED",
+        "NOT_IMPLEMENTED"
+      ],
+      "type": "string"
+    },
+    "implemented_is_not_operational": {
+      "minLength": 40,
+      "type": "string"
+    },
+    "migration_0011_executed": {
+      "const": false
+    },
+    "migration_0011_present": {
+      "type": "boolean"
+    },
+    "not_a_security_certification": {
+      "minLength": 40,
+      "type": "string"
+    },
+    "password_policy": {
+      "type": "object"
+    },
+    "rate_limiting_implemented": {
+      "type": "boolean"
+    },
+    "rate_limiting_operational": {
+      "type": "boolean"
+    },
+    "real_users_configured": {
+      "anyOf": [
+        {
+          "minimum": 0,
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "release_may_proceed": {
+      "type": "boolean"
+    },
+    "restore_executed": {
+      "const": false
+    },
+    "restore_verified": {
+      "const": false
+    },
+    "role_hierarchy": {
+      "type": "null"
+    },
+    "secret_scan_finding_count": {
+      "anyOf": [
+        {
+          "minimum": 0,
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "secret_scan_status": {
+      "enum": [
+        "CLEAN",
+        "FINDINGS",
+        "NOT_RUN"
+      ],
+      "type": "string"
+    },
+    "security_gate_status": {
+      "enum": [
+        "PASS",
+        "BLOCKED",
+        "FAILED"
+      ],
+      "type": "string"
+    },
+    "security_software_implemented": {
+      "type": "boolean"
+    },
+    "session_authentication_exercised_operationally": {
+      "type": "boolean"
+    },
+    "session_management_implemented": {
+      "type": "boolean"
+    },
+    "session_policy": {
+      "type": "object"
+    },
+    "work_package": {
+      "const": "WP-23"
+    }
+  },
+  "required": [
+    "gate_status_schema_version",
+    "work_package",
+    "implementation_status",
+    "security_gate_status",
+    "release_may_proceed",
+    "security_software_implemented",
+    "authentication_software_implemented",
+    "session_management_implemented",
+    "csrf_implemented",
+    "rate_limiting_implemented",
+    "canonical_audit_implemented",
+    "argon2_dependency_declared",
+    "argon2_available",
+    "database_available",
+    "authentication_configured",
+    "csrf_operational",
+    "rate_limiting_operational",
+    "https_termination_observed",
+    "real_users_configured",
+    "audit_chain_verified",
+    "secret_scan_status",
+    "backup_procedure_documented",
+    "backup_executed",
+    "restore_executed",
+    "restore_verified",
+    "expert_review_performed",
+    "clinical_validation_performed",
+    "role_hierarchy",
+    "blockers",
+    "blocking_count",
+    "implemented_is_not_operational",
+    "not_a_security_certification"
+  ],
+  "title": "WP-23 gate status",
+  "type": "object"
+}

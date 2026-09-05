@@ -1,0 +1,91 @@
+{
+  "$id": "https://pgx.local/schemas/wp22/review-correction.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "An appended amendment. The corrected record is never touched, and a correction appended after a reveal carries after_reveal true so it can never be read as the original prediction.",
+  "properties": {
+    "actor": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "actor_role": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "after_reveal": {
+      "type": "boolean"
+    },
+    "correction_hash": {
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "correction_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "kind": {
+      "enum": [
+        "TYPOGRAPHIC",
+        "RATIONALE_AMENDED",
+        "EXPECTATION_AMENDED",
+        "DECISION_ANNOTATED",
+        "RATING_ANNOTATED",
+        "WITHDRAWN_BY_REVIEWER"
+      ],
+      "type": "string"
+    },
+    "previous_hash": {
+      "anyOf": [
+        {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "reason_code": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "recorded_at": {
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9:.]+Z$",
+      "type": "string"
+    },
+    "replacement": {
+      "anyOf": [
+        {
+          "type": "object"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "review_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "target_hash": {
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "type": "string"
+    }
+  },
+  "required": [
+    "correction_id",
+    "review_id",
+    "target_hash",
+    "kind",
+    "reason_code",
+    "actor",
+    "actor_role",
+    "recorded_at",
+    "replacement",
+    "after_reveal",
+    "correction_hash",
+    "previous_hash"
+  ],
+  "title": "WP-22 review correction",
+  "type": "object"
+}

@@ -1,0 +1,112 @@
+{
+  "$id": "https://pgx.local/schemas/wp22/expectation-revision.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "What the reviewer expected, recorded before anything was revealed. There is no field for a system result: a revision that could carry one would not be a blinded record.",
+  "properties": {
+    "content_hash": {
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "expected_attention_level": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "expected_coverage_reason": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "expected_coverage_status": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "expected_rule_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "previous_hash": {
+      "anyOf": [
+        {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "rationale_codes": {
+      "items": {
+        "enum": [
+          "GUIDELINE_DIRECT",
+          "GUIDELINE_EXTRAPOLATED",
+          "PHENOTYPE_DETERMINATIVE",
+          "INSUFFICIENT_INPUT",
+          "NO_APPLICABLE_RULE",
+          "SOURCE_CONFLICT",
+          "EVIDENCE_INSUFFICIENT",
+          "OUT_OF_SCOPE"
+        ],
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "recorded_at": {
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9:.]+Z$",
+      "type": "string"
+    },
+    "requires_traceable_evidence": {
+      "type": "boolean"
+    },
+    "review_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "reviewer_note": {
+      "maxLength": 1000,
+      "type": "string"
+    },
+    "revision": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "revision_hash": {
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "revision_id": {
+      "minLength": 1,
+      "type": "string"
+    }
+  },
+  "required": [
+    "revision_id",
+    "review_id",
+    "revision",
+    "recorded_at",
+    "content_hash",
+    "revision_hash",
+    "previous_hash",
+    "expected_attention_level",
+    "expected_coverage_status",
+    "expected_coverage_reason",
+    "expected_rule_id",
+    "requires_traceable_evidence",
+    "rationale_codes",
+    "reviewer_note"
+  ],
+  "title": "WP-22 expected response revision",
+  "type": "object"
+}

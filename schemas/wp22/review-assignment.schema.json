@@ -1,0 +1,110 @@
+{
+  "$id": "https://pgx.local/schemas/wp22/review-assignment.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "description": "One expert-holdout case assigned to one reviewer under one pinned release. Every pin is required: an assignment that could omit one would not identify what was reviewed.",
+  "properties": {
+    "assigned_at": {
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9:.]+Z$",
+      "type": "string"
+    },
+    "assignment_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "case_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "case_manifest_hash": {
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "case_role": {
+      "const": "EXPERT_HOLDOUT"
+    },
+    "dataset_content_hash": {
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "dataset_public_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "protocol_hash": {
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "protocol_version": {
+      "const": "pgx-wp22-expert-protocol/1"
+    },
+    "release_manifest_hash": {
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "release_public_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "review_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "reviewer_actor": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "reviewer_role": {
+      "const": "EXPERT_REVIEWER"
+    },
+    "ruleset_content_hash": {
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "ruleset_public_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "software_hash": {
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "software_version": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "state": {
+      "enum": [
+        "ASSIGNED",
+        "EXPECTATION_RECORDED",
+        "RESULT_REVEALED",
+        "COMPLETED",
+        "INVALIDATED"
+      ],
+      "type": "string"
+    }
+  },
+  "required": [
+    "assigned_at",
+    "assignment_id",
+    "case_id",
+    "case_manifest_hash",
+    "case_role",
+    "dataset_content_hash",
+    "dataset_public_id",
+    "protocol_hash",
+    "protocol_version",
+    "release_manifest_hash",
+    "release_public_id",
+    "review_id",
+    "reviewer_actor",
+    "reviewer_role",
+    "ruleset_content_hash",
+    "ruleset_public_id",
+    "software_hash",
+    "software_version",
+    "state"
+  ],
+  "title": "WP-22 review assignment",
+  "type": "object"
+}

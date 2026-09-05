@@ -1,0 +1,97 @@
+{
+  "backup_executed": false,
+  "backup_plan_version": "pgx-wp23-backup-restore/1",
+  "backup_procedure_documented": true,
+  "encrypted_storage_required": true,
+  "encryption_note": "Every item whose kind is POSTGRESQL or RESTRICTED is encrypted at rest. The artifact manifests are not, because they are published documents containing no credential and no payload - encrypting them would imply they were sensitive and invite somebody to treat an unencrypted copy as a leak.",
+  "not_executed_note": "backup_executed, restore_executed and restore_verified are all false. They are not placeholders awaiting a flag: there is no code path in this module that sets any of them true, because setting them would require observing an execution and this module observes configuration.",
+  "operational_status": "BLOCKED",
+  "owner_split": "WP-23 owns this plan, the scope, the retention policy, the restore-verification procedure and the preflight command. WP-24 owns executing them and reporting what happened. Nothing in this repository has executed a backup or a restore, and no document here may be read as saying otherwise.",
+  "preflight": {
+    "backup_plan_version": "pgx-wp23-backup-restore/1",
+    "checks": [
+      {
+        "check_id": "DATABASE_CONFIGURED",
+        "detail": "DATABASE_URL is unset, so there is nothing to dump",
+        "satisfied": false,
+        "title": "A database connection is configured"
+      },
+      {
+        "check_id": "BACKUP_DESTINATION_CONFIGURED",
+        "detail": "PGX_BACKUP_DESTINATION is unset; no destination means no backup, and a local file beside the database is not one",
+        "satisfied": false,
+        "title": "An encrypted backup destination is configured"
+      },
+      {
+        "check_id": "ARTIFACT_MANIFESTS_PRESENT",
+        "detail": "the data directory is readable",
+        "satisfied": true,
+        "title": "The immutable artifact manifests are readable"
+      },
+      {
+        "check_id": "RESTRICTED_STORAGE_CONFIGURED",
+        "detail": "PGX_VALIDATION_RESTRICTED_ROOT is unset; there is no holdout storage to capture",
+        "satisfied": false,
+        "title": "Restricted holdout storage is configured"
+      },
+      {
+        "check_id": "RESTORE_TARGET_CONFIGURED",
+        "detail": "PGX_RESTORE_TARGET_URL is unset; a restore verified into the production database is not a verification, it is an outage",
+        "satisfied": false,
+        "title": "A separate restore-verification target is configured"
+      }
+    ],
+    "operational_status": "BLOCKED",
+    "preflight_is_not_a_backup": "This command reads configuration and the filesystem. It runs no pg_dump, writes no archive, restores nothing and contacts no database. A preflight that reported PASS would be reporting that a backup could be taken, to readers who will read it as a backup having been taken.",
+    "ready_to_execute": false,
+    "unmet_check_ids": [
+      "DATABASE_CONFIGURED",
+      "BACKUP_DESTINATION_CONFIGURED",
+      "RESTRICTED_STORAGE_CONFIGURED",
+      "RESTORE_TARGET_CONFIGURED"
+    ]
+  },
+  "restore_executed": false,
+  "restore_verification_procedure": "A restore is verified by restoring the dump into a separate target, running the migration head check, verifying the governed audit chain end to end against its exported head sequence, and confirming that every release manifest hash referenced by a restored audit row resolves. A restore that only checked the database started is a restore that would pass with an empty audit table.",
+  "restore_verified": false,
+  "runbook": "docs/operations/backup-restore-runbook.md",
+  "scope": [
+    {
+      "encrypted_at_rest_required": true,
+      "item_id": "POSTGRESQL_LOGICAL_DUMP",
+      "kind": "POSTGRESQL",
+      "loss_consequence": "Every governed record is lost together: accounts, sessions, the audit chain, assessments, curation state and the release pointer. The audit chain in particular cannot be reconstructed from anywhere else, because reconstructing it is exactly what it exists to make impossible.",
+      "retention_days": 90,
+      "rotation": "daily, 90 daily + 12 monthly retained",
+      "title": "Logical dump of the application database"
+    },
+    {
+      "encrypted_at_rest_required": true,
+      "item_id": "GOVERNED_AUDIT_STREAM",
+      "kind": "POSTGRESQL",
+      "loss_consequence": "A restore that silently dropped audit rows would produce a chain that verifies - because the remaining links are internally consistent - while being incomplete. Exporting the stream separately, with its head sequence, makes a truncated restore detectable.",
+      "retention_days": 3650,
+      "rotation": "daily, retained for ten years independently of the database dump",
+      "title": "The canonical audit stream, exported and verified separately"
+    },
+    {
+      "encrypted_at_rest_required": false,
+      "item_id": "IMMUTABLE_ARTIFACT_MANIFESTS",
+      "kind": "ARTIFACT",
+      "loss_consequence": "Audit rows and assessments pin release, dataset and ruleset hashes. Without the manifests those hashes reference nothing, so every historical result becomes unverifiable even though the rows survive.",
+      "retention_days": 3650,
+      "rotation": "on release, retained indefinitely",
+      "title": "Released dataset, ruleset and evidence manifests"
+    },
+    {
+      "encrypted_at_rest_required": true,
+      "item_id": "RESTRICTED_HOLDOUT_STORAGE",
+      "kind": "RESTRICTED",
+      "loss_consequence": "The holdout set cannot be regenerated: a regenerated case is a case the software has now seen. Losing it ends the validation programme rather than delaying it.",
+      "retention_days": 3650,
+      "rotation": "on change, retained for the life of the validation programme",
+      "title": "Restricted expert-holdout payload storage"
+    }
+  ],
+  "scope_item_count": 4
+}

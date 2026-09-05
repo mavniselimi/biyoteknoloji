@@ -1,0 +1,45 @@
+{#
+  Attention and coverage, as one component, at every level.
+
+  This partial is the only way either value is rendered anywhere in the
+  interface. There is no attention-only partial and no coverage-only partial,
+  so "show attention without coverage" is not something a template can
+  express - which is the structural half of SAFETY-INV-001.
+
+  Both are the same heading level, adjacent in the DOM, in this order, and
+  each carries its governed code beside its label. Read with no stylesheet at
+  all they are two consecutive definition pairs; read with one they are two
+  halves of one bordered box. Neither reading loses the pair.
+
+  Colour never carries the meaning on its own: every status renders its code
+  as text, its label as text, and a data-status attribute the stylesheet uses
+  for a border pattern as well as a hue.
+#}
+<div class="status-pair" data-attention="{{ status.attention_code }}" data-coverage="{{ status.coverage_code }}">
+  <dl class="status-pair-grid">
+    <div class="status-cell status-attention">
+      <dt>{{ field['attention'] }}</dt>
+      <dd>
+        <span class="status-label">{{ status.attention_label }}</span>
+        <code class="status-code">{{ status.attention_code }}</code>
+      </dd>
+    </div>
+    <div class="status-cell status-coverage">
+      <dt>{{ field['coverage'] }}</dt>
+      <dd>
+        <span class="status-label">{{ status.coverage_label }}</span>
+        <code class="status-code">{{ status.coverage_code }}</code>
+      </dd>
+    </div>
+  </dl>
+  {% if status.reason_codes %}
+  <div class="status-reasons">
+    <p class="status-reasons-heading">{{ field['reason_code'] }}</p>
+    <ul>
+      {% for code in status.reason_codes %}
+      <li><code>{{ code }}</code> <span>{{ status.reason_labels[loop.index0] }}</span></li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+</div>

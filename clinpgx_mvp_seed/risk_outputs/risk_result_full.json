@@ -1,0 +1,612 @@
+{
+  "clinical_warning": "Bu çıktı klinik karar, doz önerisi veya tedavi önerisi değildir. ClinPGx kaynaklı veriler ve sentetik CYP profilleri kullanılarak oluşturulmuş açıklanabilir farmakogenetik ön değerlendirme / MVP dikkat bayrağıdır.",
+  "profile": {
+    "profile_name": "CYP2C19 poor metabolizer profili",
+    "phenotypes": {
+      "CYP2C19": "poor",
+      "CYP2D6": "normal",
+      "CYP2C9": "normal",
+      "CYP3A4": "normal",
+      "CYP1A2": "normal"
+    },
+    "demo_use": "Clopidogrel veya voriconazole gibi CYP2C19 ilişkili ilaçlarda farmakogenetik uyarı göstermek için."
+  },
+  "selected_drugs": [
+    "clopidogrel",
+    "voriconazole",
+    "codeine",
+    "warfarin",
+    "amitriptyline"
+  ],
+  "overall_risk_level": "high",
+  "overall_risk_label_tr": "Yüksek dikkat",
+  "overall_risk_score": 3,
+  "risk_flag_count": 3,
+  "drug_results": [
+    {
+      "drug": "clopidogrel",
+      "drug_id": "PA449053",
+      "drug_behavior_hint": "prodrug_activation",
+      "status": "analyzed",
+      "overall_risk_level": "high",
+      "overall_risk_label_tr": "Yüksek dikkat",
+      "overall_risk_score": 3,
+      "findings": [
+        {
+          "gene": "CYP2C19",
+          "gene_id": "PA124",
+          "drug": "clopidogrel",
+          "drug_id": "PA449053",
+          "status": "risk_flag",
+          "risk_level": "high",
+          "risk_label_tr": "Yüksek dikkat",
+          "risk_score": 3,
+          "user_phenotype": "poor",
+          "matched_rule_group": "poor",
+          "phenotype_or_genotype_source": "poor metabolizer",
+          "drug_behavior_hint": "prodrug_activation",
+          "effect_direction": "decreased_activation",
+          "risk_meaning": "reduced_response_attention",
+          "plain_language": "CYP2C19 aktivitesi düşük olduğunda clopidogrel aktif metabolite daha az dönüşebilir; bu durum antiplatelet yanıtın azalması açısından dikkat gerektirir.",
+          "guideline": {
+            "has_guideline": true,
+            "sources": [
+              "AHA",
+              "CPIC",
+              "DPWG"
+            ],
+            "annotation_ids": [
+              "PA166104948",
+              "PA166342701",
+              "PA166104956"
+            ],
+            "guideline_summaries": [
+              "The CPIC Dosing Guideline for clopidogrel recommends an alternative antiplatelet therapy for CYP2C19 poor or intermediate metabolizers (cardiovascular indications: prasugrel or ticagrelor if no contraindication; neurovascular indications: alternative P2Y12 inhibitor if clinically indicated and no contraindication.)",
+              "The American Heart Association has a statement of CYP2C19 and clopidogrel and testing before oral P2Y12 inhibitors are prescribed in patients with acute coronary syndromes or percutaneous coronary intervention.",
+              "Avoid clopidogrel use in patients who are CYP2C19 poor metabolizers and are undergoing percutaneous coronary intervention, stroke or TIA. For CYP2C19 intermediate metabolizers who are undergoing percutaneous coronary intervention, stroke, or TIA, choose an alternative drug or double the dose to 150 mg/day (600 mg loading dose). No action is required for patients who are CYP2C19 ultra-rapid metabolizers."
+            ],
+            "pmids": [
+              "35034351",
+              "23698643",
+              "21716271",
+              "38899464",
+              "21412232"
+            ],
+            "dois": [
+              "10.1002/cpt.2526",
+              "10.1038/clpt.2013.105",
+              "10.1038/clpt.2011.132",
+              "10.1161/CIR.0000000000001257",
+              "10.1038/clpt.2011.34"
+            ]
+          },
+          "evidence_strength": "high_guideline_supported",
+          "evidence_count": 5,
+          "evidence_examples": [
+            {
+              "annotation_id": "PA166309981",
+              "source_container": "report/pair:variantAnnotation",
+              "objCls": "Variant Phenotype Annotation",
+              "phenotype_or_genotype": "poor metabolizer",
+              "normalized_phenotype_group": "poor",
+              "effect_direction": "decreased_activation",
+              "risk_meaning": "reduced_response_attention",
+              "evidence_strength": "high_guideline_supported",
+              "significance": "yes",
+              "score": "3.0",
+              "sentence": "CYP2C19 *2 + *3 + *8 (assigned as intermediate metabolizer and poor metabolizer phenotype) is associated with increased likelihood of adverse cardiovascular events when treated with clopidogrel in people with Coronary Artery Disease as compared to CYP2C19 *1/*1 + *1/*17 + *17/*17 (assigned as normal metabolizer and ultrarapid metabolizer and rapid metabolizer phenotype) .",
+              "pmids": "37551775",
+              "dois": "10.1111/cts.13608"
+            },
+            {
+              "annotation_id": "PA166299341",
+              "source_container": "report/pair:variantAnnotation",
+              "objCls": "Variant Phenotype Annotation",
+              "phenotype_or_genotype": "poor metabolizers and intermediate metabolizers",
+              "normalized_phenotype_group": "poor",
+              "effect_direction": "decreased_activation",
+              "risk_meaning": "reduced_response_attention",
+              "evidence_strength": "high_guideline_supported",
+              "significance": "yes",
+              "score": "2.5",
+              "sentence": "CYP2C19 *1/*2 + *1/*3 + *2/*2 + *2/*3 + *3/*3 + *2/*17 + *3/*17 (assigned as poor metabolizers and intermediate metabolizers phenotype) is associated with increased likelihood of Thrombosis, Death, Sudden, Cardiac or Myocardial Infarction when treated with aspirin and clopidogrel in people with Acute coronary syndrome as compared to CYP2C19 *1/*1 + *1/*17 (assigned as normal metabolizers and rapid metabolizers phenotype) .",
+              "pmids": "37045504",
+              "dois": "10.1016/j.jcin.2023.01.363"
+            },
+            {
+              "annotation_id": "PA166418641",
+              "source_container": "report/pair:variantAnnotation",
+              "objCls": "Variant Phenotype Annotation",
+              "phenotype_or_genotype": "poor metabolizer",
+              "normalized_phenotype_group": "poor",
+              "effect_direction": "decreased_activation",
+              "risk_meaning": "reduced_response_attention",
+              "evidence_strength": "high_guideline_supported",
+              "significance": "yes",
+              "score": "2.5",
+              "sentence": "CYP2C19 *2/*2 + *2/*3 + *3/*3 (assigned as poor metabolizer phenotype) is associated with increased likelihood of Major Adverse Cardiac Events (MACE) when treated with clopidogrel in people with Acute coronary syndrome as compared to CYP2C19 *1/*1.",
+              "pmids": "40917024",
+              "dois": "10.2174/011871529X384209250812065418"
+            },
+            {
+              "annotation_id": "PA166418642",
+              "source_container": "report/pair:variantAnnotation",
+              "objCls": "Variant Drug Annotation",
+              "phenotype_or_genotype": "poor metabolizer",
+              "normalized_phenotype_group": "poor",
+              "effect_direction": "decreased_activation",
+              "risk_meaning": "reduced_response_attention",
+              "evidence_strength": "high_guideline_supported",
+              "significance": "yes",
+              "score": "2.5",
+              "sentence": "CYP2C19 *2/*2 + *2/*3 + *3/*3 (assigned as poor metabolizer phenotype) is associated with increased resistance to clopidogrel in people with Acute coronary syndrome as compared to CYP2C19 *1/*1.",
+              "pmids": "40917024",
+              "dois": "10.2174/011871529X384209250812065418"
+            },
+            {
+              "annotation_id": "PA166149113",
+              "source_container": "report/pair:variantAnnotation",
+              "objCls": "Variant Phenotype Annotation",
+              "phenotype_or_genotype": "poor metabolizers",
+              "normalized_phenotype_group": "poor",
+              "effect_direction": "decreased_activation",
+              "risk_meaning": "reduced_response_attention",
+              "evidence_strength": "high_guideline_supported",
+              "significance": "yes",
+              "score": "2.0",
+              "sentence": "CYP2C19 *2/*2 + *3/*3 + *2/*3 (assigned as poor metabolizer phenotype) are associated with increased risk of Cardiovascular Diseases when treated with clopidogrel as compared to CYP2C19 *1/*1 (assigned as normal metabolizer phenotype) .",
+              "pmids": "24440142",
+              "dois": "10.1016/j.thromres.2014.01.003"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "drug": "voriconazole",
+      "drug_id": "PA10233",
+      "drug_behavior_hint": "active_drug_or_general_drug",
+      "status": "analyzed",
+      "overall_risk_level": "high",
+      "overall_risk_label_tr": "Yüksek dikkat",
+      "overall_risk_score": 3,
+      "findings": [
+        {
+          "gene": "CYP2C19",
+          "gene_id": "PA124",
+          "drug": "voriconazole",
+          "drug_id": "PA10233",
+          "status": "risk_flag",
+          "risk_level": "high",
+          "risk_label_tr": "Yüksek dikkat",
+          "risk_score": 3,
+          "user_phenotype": "poor",
+          "matched_rule_group": "poor",
+          "phenotype_or_genotype_source": "poor metabolizer",
+          "drug_behavior_hint": "active_drug_or_general_drug",
+          "effect_direction": "decreased_clearance",
+          "risk_meaning": "increased_exposure_attention",
+          "plain_language": "CYP2C19 aktivitesi düşük olduğunda voriconazole metabolizması azalabilir; maruziyet artışı açısından dikkat gerekir.",
+          "guideline": {
+            "has_guideline": true,
+            "sources": [
+              "AusNZ",
+              "CPIC",
+              "DPWG"
+            ],
+            "annotation_ids": [
+              "PA166161537",
+              "PA166257241",
+              "PA166104990"
+            ],
+            "guideline_summaries": [
+              "The CPIC dosing guideline for voriconazole recommends selecting an alternative agent that is not dependent on CYP2C19 metabolism in adults who are CYP2C19 ultrarapid metabolizers, rapid metabolizers or poor metabolizers. In pediatric patients, an alternative agent should be used in patients who are ultrarapid metabolizers or poor metabolizers. In pediatric rapid metabolizers, therapy should be initiated at recommended standard case dosing, then therapeutic dosing monitoring should be used to tit...",
+              "An alternative antifungal agent should be considered instead of voriconazole in patients who are known to be CYP2C19 ultrarapid metabolizers. CYP2C19 genotyping and use of an alternative antifungal agent is also recommended in patients with subtherapeutic voriconazole serum concentrations despite two dose adjustments.",
+              "Patients who are CYP2C19 poor metabolizers should receive 50% of the standard dose, and CYP2C19 ultrarapid metabolizers should receive a 1.5 times higher initial dose. Monitor voriconazole plasma concentrations for CYP2C19 poor, intermediate and ultrarapid metabolizers."
+            ],
+            "pmids": [
+              "27981572",
+              "34937141",
+              "21412232"
+            ],
+            "dois": [
+              "10.1002/cpt.583",
+              "10.1111/imj.15587",
+              "10.1038/clpt.2011.34"
+            ]
+          },
+          "evidence_strength": "high_guideline_supported",
+          "evidence_count": 5,
+          "evidence_examples": [
+            {
+              "annotation_id": "PA166308021",
+              "source_container": "report/pair:variantAnnotation",
+              "objCls": "Variant Drug Annotation",
+              "phenotype_or_genotype": "poor metabolizer",
+              "normalized_phenotype_group": "poor",
+              "effect_direction": "decreased_clearance",
+              "risk_meaning": "increased_exposure_attention",
+              "evidence_strength": "high_guideline_supported",
+              "significance": "yes",
+              "score": "2.0",
+              "sentence": "CYP2C19 *2/*2 + *2/*3 + *3/*3 (assigned as poor metabolizer phenotype) is associated with increased dose-adjusted trough concentrations of voriconazole in children with Acute lymphoblastic leukemia, Lymphoma or Leukemia, Myeloid, Acute as compared to CYP2C19 *1/*2 + *1/*3 (assigned as intermediate metabolizer phenotype) .",
+              "pmids": "37458772",
+              "dois": "10.1007/s00228-023-03538-9"
+            },
+            {
+              "annotation_id": "PA166338781",
+              "source_container": "report/pair:variantAnnotation",
+              "objCls": "Variant Drug Annotation",
+              "phenotype_or_genotype": "poor metabolizer",
+              "normalized_phenotype_group": "poor",
+              "effect_direction": "decreased_clearance",
+              "risk_meaning": "increased_exposure_attention",
+              "evidence_strength": "high_guideline_supported",
+              "significance": "yes",
+              "score": "1.75",
+              "sentence": "CYP2C19 *2/*2 + *2/*3 + *3/*3 (assigned as poor metabolizer phenotype) is associated with increased concentrations of voriconazole in people with therapeutic drug monitoring analyses as compared to CYP2C19 *1/*1 (assigned as normal metabolizer phenotype) .",
+              "pmids": "38747453",
+              "dois": "10.1097/FPC.0000000000000536"
+            },
+            {
+              "annotation_id": "PA166171180",
+              "source_container": "report/pair:variantAnnotation",
+              "objCls": "Variant Drug Annotation",
+              "phenotype_or_genotype": "poor metabolizers and intermediate metabolizers",
+              "normalized_phenotype_group": "poor",
+              "effect_direction": "decreased_clearance",
+              "risk_meaning": "increased_exposure_attention",
+              "evidence_strength": "high_guideline_supported",
+              "significance": "yes",
+              "score": "1.125",
+              "sentence": "CYP2C19 poor metabolizers and intermediate metabolizers are associated with increased trough concentration of voriconazole in people with Mycoses as compared to CYP2C19 normal metabolizer.",
+              "pmids": "28923870",
+              "dois": "10.1128/AAC.01211-17"
+            },
+            {
+              "annotation_id": "PA166336321",
+              "source_container": "report/pair:variantAnnotation",
+              "objCls": "Variant Drug Annotation",
+              "phenotype_or_genotype": "poor metabolizer",
+              "normalized_phenotype_group": "poor",
+              "effect_direction": "decreased_clearance",
+              "risk_meaning": "increased_exposure_attention",
+              "evidence_strength": "high_guideline_supported",
+              "significance": "yes",
+              "score": "1.0",
+              "sentence": "CYP2C19 poor metabolizer is associated with increased dose-adjusted trough concentrations of voriconazole in healthy individuals as compared to CYP2C19 normal metabolizer.",
+              "pmids": "38654529",
+              "dois": "10.1002/jcph.2440"
+            },
+            {
+              "annotation_id": "PA166149792",
+              "source_container": "report/pair:variantAnnotation",
+              "objCls": "Variant Drug Annotation",
+              "phenotype_or_genotype": "poor metabolizer",
+              "normalized_phenotype_group": "poor",
+              "effect_direction": "decreased_clearance",
+              "risk_meaning": "increased_exposure_attention",
+              "evidence_strength": "high_guideline_supported",
+              "significance": "yes",
+              "score": "0.75",
+              "sentence": "Genotypes *2/*2 + *2/*3 (assigned as poor metabolizer phenotype) is associated with increased trough concentration of voriconazole in people with Mycoses as compared to genotype *1/*1 (assigned as normal metabolizer phenotype) .",
+              "pmids": "25239277",
+              "dois": "10.1016/j.ijantimicag.2014.07.013"
+            }
+          ]
+        },
+        {
+          "gene": "CYP3A4",
+          "gene_id": "PA130",
+          "drug": "voriconazole",
+          "drug_id": "PA10233",
+          "status": "gene_drug_known_no_profile_match",
+          "risk_level": "none",
+          "risk_score": 0,
+          "user_phenotype": "normal",
+          "matched_rule_group": "",
+          "effect_direction": "",
+          "risk_meaning": "",
+          "plain_language": "voriconazole için CYP3A4 ilişkisi veri setinde var; ancak normal fenotipi için MVP kuralı uyarı üretmedi.",
+          "guideline": {
+            "has_guideline": false,
+            "sources": [],
+            "guideline_summaries": [],
+            "pmids": [],
+            "dois": []
+          },
+          "evidence_count": 0,
+          "evidence_examples": []
+        }
+      ]
+    },
+    {
+      "drug": "codeine",
+      "drug_id": "PA449088",
+      "drug_behavior_hint": "prodrug_activation",
+      "status": "analyzed",
+      "overall_risk_level": "none",
+      "overall_risk_label_tr": "Düşük / uyarı yok",
+      "overall_risk_score": 0,
+      "findings": [
+        {
+          "gene": "CYP2D6",
+          "gene_id": "PA128",
+          "drug": "codeine",
+          "drug_id": "PA449088",
+          "status": "gene_drug_known_no_profile_match",
+          "risk_level": "none",
+          "risk_score": 0,
+          "user_phenotype": "normal",
+          "matched_rule_group": "",
+          "effect_direction": "",
+          "risk_meaning": "",
+          "plain_language": "codeine için CYP2D6 ilişkisi veri setinde var; ancak normal fenotipi için MVP kuralı uyarı üretmedi.",
+          "guideline": {
+            "has_guideline": true,
+            "sources": [
+              "CPIC",
+              "CPNDS",
+              "DPWG"
+            ],
+            "annotation_ids": [
+              "PA166104996",
+              "PA166122666",
+              "PA166104970"
+            ],
+            "guideline_summaries": [
+              "In the CPIC Dosing Guideline, alternate non-tramadol analgesics are recommended for CYP2D6 ultrarapid and poor metabolizers. A label recommended age- or weight-specific dose of codeine is warranted for CYP2D6 normal and intermediate metabolizers.",
+              "The Canadian Pharmacogenomics Network for Drug Safety (CPNDS) clinical recommendation group has published guidelines for the use of CYP2D6 genotype when prescribing codeine. They recommend that poor metabolizers of CYP2D6 should not receive codeine for pain relief, and ultrametabolizers of CYP2D6 should avoid codeine for pain relief.",
+              "The Pharmacogenetics Working Group Guideline for codeine includes individual recommendations for cough or pain for CYP2D6 poor, intermediate, and ultrarapid metabolizer. In addition, for ultrarapid metabolizer, higher or lower doses and additional risk factors are taken into consideration."
+            ],
+            "pmids": [
+              "33387367",
+              "24458010",
+              "22205192",
+              "24214521",
+              "34267337",
+              "21412232"
+            ],
+            "dois": [
+              "10.1002/cpt.2149",
+              "10.1038/clpt.2013.254",
+              "10.1038/clpt.2011.287",
+              "10.1038/s41431-021-00920-y",
+              "10.1038/clpt.2011.34"
+            ]
+          },
+          "evidence_count": 0,
+          "evidence_examples": []
+        }
+      ]
+    },
+    {
+      "drug": "warfarin",
+      "drug_id": "PA451906",
+      "drug_behavior_hint": "active_drug_or_general_drug",
+      "status": "analyzed",
+      "overall_risk_level": "none",
+      "overall_risk_label_tr": "Düşük / uyarı yok",
+      "overall_risk_score": 0,
+      "findings": [
+        {
+          "gene": "CYP2C9",
+          "gene_id": "PA126",
+          "drug": "warfarin",
+          "drug_id": "PA451906",
+          "status": "gene_drug_known_no_profile_match",
+          "risk_level": "none",
+          "risk_score": 0,
+          "user_phenotype": "normal",
+          "matched_rule_group": "",
+          "effect_direction": "",
+          "risk_meaning": "",
+          "plain_language": "warfarin için CYP2C9 ilişkisi veri setinde var; ancak normal fenotipi için MVP kuralı uyarı üretmedi.",
+          "guideline": {
+            "has_guideline": true,
+            "sources": [
+              "CPIC",
+              "CPNDS",
+              "DPWG"
+            ],
+            "annotation_ids": [
+              "PA166104949",
+              "PA166170752",
+              "PA166182842"
+            ],
+            "guideline_summaries": [
+              "The updated guideline for pharmacogenetics-guided warfarin dosing is published by the Clinical Pharmacogenetics Implementation Consortium. The recommendations for dosing are for adult and pediatric patients that are specific to continental ancestry, and are based on genotypes from CYP2C9, VKORC1, CYP4F2, and rs12777823.",
+              "The Canadian Pharmacogenomics Network for Drug Safety (CPNDS) clinical recommendation group has published guidelines for the use of pharmacogenetic testing for variants in VKORC1 and CYP2C9 in adult and pediatric patients with an indication for warfarin. They recommend testing for the VKORC1 SNP -1639G>A (rs9923231) and the CYP2C9 alleles *2 and *3 in order to better guide warfarin dosage.",
+              "Reduce warfarin dose in CYP2C9 poor and intermediate metabolizers (PM and IM) and patients with CYP2C9*1/*3, *2/*3, *2/*2 or *3/*3 genotype. The genotype-specific initial dose and maintenance dose can be calculated using an algorithm, as used in EU-PACT."
+            ],
+            "pmids": [
+              "28198005",
+              "21900891",
+              "26186657"
+            ],
+            "dois": [
+              "10.1002/cpt.668",
+              "10.1038/clpt.2011.185",
+              "10.1097/FTD.0000000000000192"
+            ]
+          },
+          "evidence_count": 0,
+          "evidence_examples": []
+        }
+      ]
+    },
+    {
+      "drug": "amitriptyline",
+      "drug_id": "PA448385",
+      "drug_behavior_hint": "active_drug_or_general_drug",
+      "status": "analyzed",
+      "overall_risk_level": "medium",
+      "overall_risk_label_tr": "Orta dikkat",
+      "overall_risk_score": 2,
+      "findings": [
+        {
+          "gene": "CYP1A2",
+          "gene_id": "PA27093",
+          "drug": "amitriptyline",
+          "drug_id": "PA448385",
+          "status": "gene_drug_known_no_profile_match",
+          "risk_level": "none",
+          "risk_score": 0,
+          "user_phenotype": "normal",
+          "matched_rule_group": "",
+          "effect_direction": "",
+          "risk_meaning": "",
+          "plain_language": "amitriptyline için CYP1A2 ilişkisi veri setinde var; ancak normal fenotipi için MVP kuralı uyarı üretmedi.",
+          "guideline": {
+            "has_guideline": false,
+            "sources": [],
+            "guideline_summaries": [],
+            "pmids": [],
+            "dois": []
+          },
+          "evidence_count": 0,
+          "evidence_examples": []
+        },
+        {
+          "gene": "CYP2C19",
+          "gene_id": "PA124",
+          "drug": "amitriptyline",
+          "drug_id": "PA448385",
+          "status": "risk_flag",
+          "risk_level": "medium",
+          "risk_label_tr": "Orta dikkat",
+          "risk_score": 2,
+          "user_phenotype": "poor",
+          "matched_rule_group": "poor",
+          "phenotype_or_genotype_source": "poor metabolizers and intermediate metabolizers",
+          "drug_behavior_hint": "active_drug_or_general_drug",
+          "effect_direction": "altered_metabolism",
+          "risk_meaning": "exposure_change_attention",
+          "plain_language": "CYP2C19 fenotipi amitriptyline metabolizmasını etkileyebilir; maruziyet değişimi açısından farmakogenetik dikkat bayrağı üretilebilir.",
+          "guideline": {
+            "has_guideline": true,
+            "sources": [
+              "CPIC",
+              "DPWG"
+            ],
+            "annotation_ids": [
+              "PA166105006",
+              "PA166184526"
+            ],
+            "guideline_summaries": [
+              "The CPIC Dosing Guideline update for amitriptyline recommends an alternative drug for CYP2D6 ultrarapid or poor metabolizers and CYP2C19 ultrarapid, rapid or poor metabolizers. If amitriptyline is warranted, consider a 50% dose reduction in CYP2D6 or CYP2C19 poor metabolizers. For CYP2D6 intermediate metabolizers, a 25% dose reduction should be considered. CPIC has updated the CYP2D6 genotype-phenotype translation in all supplemental files since the guideline was published.",
+              "There are currently no dosing recommendations for amitriptyline based on CYP2C19 genotype."
+            ],
+            "pmids": [
+              "27997040",
+              "23486447",
+              "41526670"
+            ],
+            "dois": [
+              "10.1002/cpt.597",
+              "10.1038/clpt.2013.2",
+              "10.1038/s41431-025-02008-3"
+            ]
+          },
+          "evidence_strength": "high_guideline_supported",
+          "evidence_count": 2,
+          "evidence_examples": [
+            {
+              "annotation_id": "PA166290201",
+              "source_container": "report/pair:variantAnnotation",
+              "objCls": "Variant Phenotype Annotation",
+              "phenotype_or_genotype": "poor metabolizers and intermediate metabolizers",
+              "normalized_phenotype_group": "poor",
+              "effect_direction": "altered_metabolism",
+              "risk_meaning": "exposure_change_attention",
+              "evidence_strength": "high_guideline_supported",
+              "significance": "yes",
+              "score": "2.5",
+              "sentence": "CYP2C19 *2/*2 + *2/*1 + *2/*17 (assigned as poor metabolizers and intermediate metabolizers phenotype) are associated with increased risk of treatment emergent mania when treated with amitriptyline or clomipramine in people with Bipolar Disorder as compared to CYP2C19 *1/*17 + *17/*17 (assigned as rapid and ultrarapid metabolizers phenotype) .",
+              "pmids": "36333412",
+              "dois": "10.1038/s41397-022-00294-4"
+            },
+            {
+              "annotation_id": "",
+              "source_container": "manual_normalization_from_clinpgx_outputs",
+              "objCls": "MVP Rule",
+              "phenotype_or_genotype": "poor metabolizer",
+              "normalized_phenotype_group": "poor",
+              "effect_direction": "altered_metabolism",
+              "risk_meaning": "exposure_change_attention",
+              "evidence_strength": "high_guideline_supported",
+              "significance": "",
+              "score": "",
+              "sentence": "",
+              "pmids": "",
+              "dois": ""
+            }
+          ]
+        },
+        {
+          "gene": "CYP2D6",
+          "gene_id": "PA128",
+          "drug": "amitriptyline",
+          "drug_id": "PA448385",
+          "status": "gene_drug_known_no_profile_match",
+          "risk_level": "none",
+          "risk_score": 0,
+          "user_phenotype": "normal",
+          "matched_rule_group": "",
+          "effect_direction": "",
+          "risk_meaning": "",
+          "plain_language": "amitriptyline için CYP2D6 ilişkisi veri setinde var; ancak normal fenotipi için MVP kuralı uyarı üretmedi.",
+          "guideline": {
+            "has_guideline": true,
+            "sources": [
+              "CPIC",
+              "DPWG"
+            ],
+            "annotation_ids": [
+              "PA166105006",
+              "PA166104982"
+            ],
+            "guideline_summaries": [
+              "The CPIC Dosing Guideline update for amitriptyline recommends an alternative drug for CYP2D6 ultrarapid or poor metabolizers and CYP2C19 ultrarapid, rapid or poor metabolizers. If amitriptyline is warranted, consider a 50% dose reduction in CYP2D6 or CYP2C19 poor metabolizers. For CYP2D6 intermediate metabolizers, a 25% dose reduction should be considered. CPIC has updated the CYP2D6 genotype-phenotype translation in all supplemental files since the guideline was published.",
+              "The Dutch Pharmacogenetics Working Group Guideline for amitriptyline recommends decreasing the dose for CYP2D6 intermediate and CYP2D6 poor metabolizers and increasing the dose or using an alternative drug for CYP2D6 ultra-rapid metabolizers."
+            ],
+            "pmids": [
+              "27997040",
+              "23486447",
+              "41526670",
+              "21412232"
+            ],
+            "dois": [
+              "10.1002/cpt.597",
+              "10.1038/clpt.2013.2",
+              "10.1038/s41431-025-02008-3",
+              "10.1038/clpt.2011.34"
+            ]
+          },
+          "evidence_count": 0,
+          "evidence_examples": []
+        }
+      ]
+    }
+  ],
+  "same_gene_attention": [
+    {
+      "gene": "CYP2C19",
+      "drugs": [
+        "clopidogrel",
+        "voriconazole",
+        "amitriptyline"
+      ],
+      "message": "Seçilen ilaçlardan clopidogrel, voriconazole, amitriptyline aynı CYP2C19 farmakogenetik ekseniyle ilişkilidir. Bu bulgu doğrudan ilaç-ilaç etkileşimi iddiası değildir; MVP içinde aynı gen üzerinden birden fazla dikkat noktasını görünür kılar."
+    },
+    {
+      "gene": "CYP2D6",
+      "drugs": [
+        "codeine",
+        "amitriptyline"
+      ],
+      "message": "Seçilen ilaçlardan codeine, amitriptyline aynı CYP2D6 farmakogenetik ekseniyle ilişkilidir. Bu bulgu doğrudan ilaç-ilaç etkileşimi iddiası değildir; MVP içinde aynı gen üzerinden birden fazla dikkat noktasını görünür kılar."
+    }
+  ],
+  "gemini_prompt_hint": "Bu JSON'u klinik karar, doz veya tedavi önerisi üretmeden; farmakogenetik dikkat noktalarını açıklayan kısa, anlaşılır bir ön değerlendirme raporuna çevir."
+}

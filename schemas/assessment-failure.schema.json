@@ -1,0 +1,56 @@
+{
+  "$id": "https://pgx-platform.invalid/schemas/assessment-failure.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "A refused assessment. Deliberately not a completed assessment with empty fields: different causes must not collapse into one generic empty result, so the code is a closed enumeration and every refusal names one. The document carries no input values and no case content - a refusal is logged, and a log holding a phenotype profile or a clinical sentence is a disclosure waiting to happen. additionalProperties is false throughout, which is where the boundary is actually enforced: a dose, a recommendation, a preferred or safer flag, a suitability score, a ranking, a treatment or a rendered sentence cannot be attached to any of these documents by anything downstream, because the schema refuses every property it does not name. WP-14 calculates structured facts; WP-15 renders them.",
+  "properties": {
+    "code": {
+      "enum": [
+        "ASSESSMENT_CLAIM_BOUNDARY_NOT_APPROVED",
+        "ASSESSMENT_MODE_NOT_PERMITTED",
+        "ASSESSMENT_INPUT_KIND_NOT_PERMITTED",
+        "ASSESSMENT_INPUT_INVALID",
+        "ASSESSMENT_ACTIVE_RELEASE_MISSING",
+        "ASSESSMENT_RELEASE_NOT_ACTIVE",
+        "ASSESSMENT_RELEASE_MANIFEST_INVALID",
+        "ASSESSMENT_DATASET_NOT_PUBLISHED",
+        "ASSESSMENT_RULESET_NOT_FROZEN",
+        "ASSESSMENT_RULESET_ARTIFACT_INVALID",
+        "ASSESSMENT_COVERAGE_MANIFEST_MISSING",
+        "ASSESSMENT_COVERAGE_MANIFEST_INVALID",
+        "ASSESSMENT_VERSION_MISMATCH",
+        "ASSESSMENT_RULE_NOT_EXECUTABLE",
+        "ASSESSMENT_RULE_HASH_MISMATCH",
+        "ASSESSMENT_RULE_DID_NOT_MATCH",
+        "ASSESSMENT_EVIDENCE_MISSING",
+        "ASSESSMENT_CONFLICT_UNRESOLVED",
+        "ASSESSMENT_ENTITY_NOT_RESOLVABLE",
+        "ASSESSMENT_INPUT_SNAPSHOT_INVALID",
+        "ASSESSMENT_PERSISTENCE_REFUSED",
+        "ASSESSMENT_CONCURRENT_STATE_ERROR"
+      ]
+    },
+    "detail": {
+      "type": "object"
+    },
+    "location": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "meaning": {
+      "type": "string"
+    },
+    "refused": {
+      "const": true
+    }
+  },
+  "required": [
+    "code",
+    "detail",
+    "location",
+    "meaning",
+    "refused"
+  ],
+  "title": "PGx assessment failure",
+  "type": "object"
+}

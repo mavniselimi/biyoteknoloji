@@ -1,0 +1,22 @@
+{#
+  The pinned release table.
+
+  Every declared field, including the empty ones. A provenance table that
+  hid a blank row would make a missing hash look like a field nobody chose to
+  display, and the difference matters: one is an incomplete release and the
+  other is a layout decision.
+#}
+<table class="data-table provenance-table">
+  <caption>{{ caption }}</caption>
+  <thead>
+    <tr><th scope="col">{{ field['field'] }}</th><th scope="col">{{ field['value'] }}</th></tr>
+  </thead>
+  <tbody>
+    {% for name, value in rows %}
+    <tr>
+      <th scope="row"><code>{{ name }}</code></th>
+      <td class="value-cell">{% if value %}<code>{{ value }}</code>{% else %}<span class="absent" aria-label="{{ text['app.none_recorded'] }}">&#8212;</span>{% endif %}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>

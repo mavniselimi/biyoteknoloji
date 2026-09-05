@@ -1,0 +1,79 @@
+{
+  "$id": "https://pgx.local/schemas/wp23/user-safe-projection.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "What may be shown, logged or returned about a local account. The password hash has no property to occupy, and neither does any personal detail - this system stores no name, email address or telephone number.",
+  "properties": {
+    "auth_generation": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "created_at": {
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9:.]+Z$",
+      "type": "string"
+    },
+    "created_by": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "is_bootstrap_admin": {
+      "type": "boolean"
+    },
+    "locked": {
+      "type": "boolean"
+    },
+    "password_changed_at": {
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9:.]+Z$",
+      "type": "string"
+    },
+    "role": {
+      "enum": [
+        "ADMIN",
+        "DEMO_USER",
+        "EXPERT_REVIEWER"
+      ],
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "ACTIVE",
+        "DISABLED",
+        "LOCKED"
+      ],
+      "type": "string"
+    },
+    "updated_at": {
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9:.]+Z$",
+      "type": "string"
+    },
+    "user_id": {
+      "maxLength": 128,
+      "minLength": 1,
+      "type": "string"
+    },
+    "username": {
+      "pattern": "^[a-z0-9][a-z0-9._-]{2,63}$",
+      "type": "string"
+    }
+  },
+  "required": [
+    "user_id",
+    "username",
+    "role",
+    "status",
+    "auth_generation",
+    "locked",
+    "created_at",
+    "updated_at",
+    "password_changed_at",
+    "is_bootstrap_admin"
+  ],
+  "title": "WP-23 user safe projection",
+  "type": "object"
+}

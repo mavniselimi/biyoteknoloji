@@ -1,0 +1,109 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pgx-platform.invalid/schemas/curation-field-dictionary.schema.json",
+  "title": "PGx curation field dictionary",
+  "description": "Every field a curation record carries, with who owns it, what its absence means, and what it may never be read as. Null is a distinct fact and never a value: a missing origin and an origin of 'none' are different, and a dictionary that could not say which is which would let a later stage read absence as a finding.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "field_dictionary_version",
+    "status",
+    "field_count",
+    "fields",
+    "note"
+  ],
+  "properties": {
+    "field_dictionary_version": {
+      "const": "pgx-curation-field-dictionary/1"
+    },
+    "status": {
+      "const": "DRAFT_AWAITING_EXPERT_REVIEW"
+    },
+    "field_count": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "note": {
+      "type": "string",
+      "minLength": 1
+    },
+    "fields": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "owner",
+          "type",
+          "required",
+          "allowed_values",
+          "null_meaning",
+          "validation",
+          "provenance_requirement",
+          "human_judgement_required",
+          "may_enter_rule",
+          "prohibited_interpretations"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "owner": {
+            "enum": [
+              "SOURCE",
+              "CURATOR",
+              "SYSTEM"
+            ]
+          },
+          "type": {
+            "type": "string",
+            "minLength": 1
+          },
+          "required": {
+            "type": "boolean"
+          },
+          "allowed_values": {
+            "type": [
+              "array",
+              "null"
+            ],
+            "items": {
+              "type": "string"
+            }
+          },
+          "null_meaning": {
+            "type": "string",
+            "minLength": 10,
+            "description": "What absence means. Required for every field."
+          },
+          "validation": {
+            "type": "string",
+            "minLength": 1
+          },
+          "provenance_requirement": {
+            "type": "string",
+            "minLength": 1
+          },
+          "human_judgement_required": {
+            "type": "boolean"
+          },
+          "may_enter_rule": {
+            "type": "boolean"
+          },
+          "prohibited_interpretations": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "description": "How this field is most likely to be misread. Naming the misuse is what lets a reviewer check for it."
+          }
+        }
+      }
+    }
+  }
+}

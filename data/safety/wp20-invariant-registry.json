@@ -1,0 +1,950 @@
+{
+  "control_catalogue_version": "pgx-wp20-negative-controls/1",
+  "control_count": 37,
+  "invariant_count": 12,
+  "invariant_ids": [
+    "SAFETY-INV-001",
+    "SAFETY-INV-002",
+    "SAFETY-INV-003",
+    "SAFETY-INV-004",
+    "SAFETY-INV-005",
+    "SAFETY-INV-006",
+    "SAFETY-INV-007",
+    "SAFETY-INV-008",
+    "SAFETY-INV-009",
+    "SAFETY-INV-010",
+    "SAFETY-INV-011",
+    "SAFETY-INV-012"
+  ],
+  "invariants": [
+    {
+      "absence_markers": [],
+      "blockers": [],
+      "current_surfaces": [
+        "DOMAIN_VALUES",
+        "COVERAGE_ENGINE",
+        "ASSESSMENT_ENGINE",
+        "DETERMINISTIC_REPORT",
+        "API_SERIALIZATION",
+        "WEB_RENDERING"
+      ],
+      "implementation_state": "COMPLIANT",
+      "invariant_id": "SAFETY-INV-001",
+      "legacy_bugs": [
+        "LEGACY-BUG-002"
+      ],
+      "negative_controls": [
+        "NC-INV-001-ABSENCE-MAPPED-TO-LOW",
+        "NC-INV-001-NOT-ASSESSED-IN-MAXIMUM"
+      ],
+      "note": "The highest-consequence failure mode of a PGx tool is false reassurance: a clinician reading 'no risk' where the correct reading is 'we did not look'. Measured as a corpus with a target of exactly zero unsafe outputs - a software count, never a clinical false-negative rate.",
+      "owning_work_packages": [
+        "WP-13",
+        "WP-14",
+        "WP-15"
+      ],
+      "refusal_code": "SAFETY_FALSE_REASSURANCE",
+      "required_surfaces": [
+        "DOMAIN_VALUES",
+        "COVERAGE_ENGINE",
+        "ASSESSMENT_ENGINE",
+        "DETERMINISTIC_REPORT",
+        "API_SERIALIZATION",
+        "WEB_RENDERING"
+      ],
+      "requirement_reference": "docs/risk-management/safety-contract.md section 2, SAFETY-INV-001; section 4",
+      "severity": "CRITICAL_PATIENT_FACING",
+      "test_selectors": [
+        "tests.safety.test_coverage_safety",
+        "tests.safety.test_assessment_safety",
+        "tests.unit.engine.test_coverage_aggregation",
+        "tests.unit.safety.test_invariant_001"
+      ],
+      "title": "Missing data must never produce LOW or NO_ACTIVE_ATTENTION"
+    },
+    {
+      "absence_markers": [
+        "pgx/reporting/llm_gateway.py",
+        "pgx/reporting/narration_provider.py",
+        "apps/api/routers/narration.py"
+      ],
+      "blockers": [
+        {
+          "code": "SAFETY_LLM_RENDERER_IS_A_P1_FEATURE",
+          "detail": "P1-06 owns the optional narration renderer. P0 ships none, the default is disabled, and the deterministic report needs no model at all. The adversarial fixtures here are test-only doubles.",
+          "owner": "P1"
+        }
+      ],
+      "current_surfaces": [
+        "LLM_ABSENCE",
+        "DETERMINISTIC_REPORT",
+        "CLAIM_SCANNER"
+      ],
+      "implementation_state": "NOT_PRESENT",
+      "invariant_id": "SAFETY-INV-002",
+      "legacy_bugs": [],
+      "negative_controls": [
+        "NC-INV-002-RENDERER-CHANGES-ATTENTION",
+        "NC-INV-002-RENDERER-INVENTS-DOSE",
+        "NC-INV-002-RENDERER-DROPS-VERSION"
+      ],
+      "note": "Enforced structurally: no LLM is required for deterministic output and the default is off. The negative controls drive test-only adversarial renderer outputs through the same fact post-check, so the detector is proven before the feature exists.",
+      "owning_work_packages": [
+        "WP-15",
+        "P1-06"
+      ],
+      "refusal_code": "SAFETY_LLM_ALTERED_FACT",
+      "required_surfaces": [
+        "LLM_ABSENCE",
+        "DETERMINISTIC_REPORT",
+        "CLAIM_SCANNER"
+      ],
+      "requirement_reference": "docs/risk-management/safety-contract.md section 2, SAFETY-INV-002; section 6",
+      "severity": "CRITICAL_PATIENT_FACING",
+      "test_selectors": [
+        "tests.unit.reporting.test_fact_preservation",
+        "tests.unit.reporting.test_injection",
+        "tests.unit.safety.test_invariant_002"
+      ],
+      "title": "An optional LLM must never alter calculated facts"
+    },
+    {
+      "absence_markers": [],
+      "blockers": [],
+      "current_surfaces": [
+        "RULESET_PINNING",
+        "ASSESSMENT_ENGINE",
+        "COVERAGE_ENGINE"
+      ],
+      "implementation_state": "COMPLIANT",
+      "invariant_id": "SAFETY-INV-003",
+      "legacy_bugs": [
+        "LEGACY-BUG-006"
+      ],
+      "negative_controls": [
+        "NC-INV-003-DRAFT-RULE-FIRES",
+        "NC-INV-003-DEPRECATED-RULE-FIRES",
+        "NC-INV-003-UNPINNED-RULESET-ACCEPTED"
+      ],
+      "note": "An invalid ruleset must fail closed. Silently filtering the unsafe rules and returning a reassuring answer would be the worst of both: the governance is bypassed and nobody is told.",
+      "owning_work_packages": [
+        "WP-11",
+        "WP-14"
+      ],
+      "refusal_code": "SAFETY_UNVALIDATED_RULE_EXECUTED",
+      "required_surfaces": [
+        "RULESET_PINNING",
+        "ASSESSMENT_ENGINE",
+        "COVERAGE_ENGINE"
+      ],
+      "requirement_reference": "docs/risk-management/safety-contract.md section 2, SAFETY-INV-003",
+      "severity": "CRITICAL_EVIDENTIAL",
+      "test_selectors": [
+        "tests.unit.rules.test_rule_lifecycle",
+        "tests.unit.rules.test_ruleset_lifecycle",
+        "tests.safety.test_coverage_safety",
+        "tests.unit.safety.test_invariant_003"
+      ],
+      "title": "Draft, rejected, superseded or deprecated rules must never execute; only VALIDATED rules from the pinned ruleset may participate"
+    },
+    {
+      "absence_markers": [],
+      "blockers": [],
+      "current_surfaces": [
+        "DOMAIN_VALUES",
+        "PHENOTYPE_NORMALIZATION",
+        "ASSESSMENT_ENGINE"
+      ],
+      "implementation_state": "COMPLIANT",
+      "invariant_id": "SAFETY-INV-004",
+      "legacy_bugs": [
+        "LEGACY-BUG-001"
+      ],
+      "negative_controls": [
+        "NC-INV-004-PREFIX-MATCHER",
+        "NC-INV-004-SYNONYM-TABLE",
+        "NC-INV-004-ORDINAL-PROXIMITY"
+      ],
+      "note": "The legacy matcher let RAPID and ULTRARAPID match each other, applying a rule outside its evidence. Implicit equivalence is an unreviewed scientific claim. The whole 6x6 matrix is exercised.",
+      "owning_work_packages": [
+        "WP-07",
+        "WP-12"
+      ],
+      "refusal_code": "SAFETY_PHENOTYPE_CROSS_MATCH",
+      "required_surfaces": [
+        "DOMAIN_VALUES",
+        "PHENOTYPE_NORMALIZATION",
+        "ASSESSMENT_ENGINE"
+      ],
+      "requirement_reference": "docs/risk-management/safety-contract.md section 2, SAFETY-INV-004",
+      "severity": "CRITICAL_PATIENT_FACING",
+      "test_selectors": [
+        "tests.unit.engine.test_truth_matrix",
+        "tests.unit.engine.test_profile",
+        "tests.unit.rules.test_exact_semantics",
+        "tests.unit.safety.test_invariant_004"
+      ],
+      "title": "RAPID must not implicitly match ULTRARAPID"
+    },
+    {
+      "absence_markers": [
+        "pgx/engine/candidates.py",
+        "pgx/engine/alternatives.py",
+        "apps/api/routers/candidates.py",
+        "apps/web/routers/candidates.py"
+      ],
+      "blockers": [
+        {
+          "code": "SAFETY_CANDIDATE_EXPLORATION_IS_A_P1_FEATURE",
+          "detail": "P1-02 owns candidate exploration. P0 ships none. The legacy 0-100 suitability score is removed and must not return.",
+          "owner": "P1"
+        }
+      ],
+      "current_surfaces": [
+        "CANDIDATE_ABSENCE",
+        "CLAIM_SCANNER",
+        "DETERMINISTIC_REPORT",
+        "API_SERIALIZATION",
+        "WEB_RENDERING"
+      ],
+      "implementation_state": "NOT_PRESENT",
+      "invariant_id": "SAFETY-INV-005",
+      "legacy_bugs": [
+        "LEGACY-BUG-009"
+      ],
+      "negative_controls": [
+        "NC-INV-005-SAFETY-SCORE",
+        "NC-INV-005-ORDERED-BY-ATTENTION",
+        "NC-INV-005-PREFERRED-LABEL"
+      ],
+      "note": "A ranked list is read as a recommendation regardless of disclaimers. The legacy score mixed 'we have data' with 'this is a good option', which is precisely the confusion that harms patients.",
+      "owning_work_packages": [
+        "WP-00",
+        "WP-15",
+        "P1-02"
+      ],
+      "refusal_code": "SAFETY_CANDIDATE_PREFERENCE",
+      "required_surfaces": [
+        "CANDIDATE_ABSENCE",
+        "CLAIM_SCANNER",
+        "DETERMINISTIC_REPORT",
+        "API_SERIALIZATION",
+        "WEB_RENDERING"
+      ],
+      "requirement_reference": "docs/risk-management/safety-contract.md section 2, SAFETY-INV-005; section 7",
+      "severity": "CRITICAL_PATIENT_FACING",
+      "test_selectors": [
+        "tests.safety.test_coverage_safety",
+        "tests.adversarial.test_report_claims",
+        "tests.unit.test_claims",
+        "tests.unit.safety.test_invariant_005"
+      ],
+      "title": "A candidate must not be labelled safer, preferred, suitable or recommended, and must not receive a clinical suitability score"
+    },
+    {
+      "absence_markers": [],
+      "blockers": [],
+      "current_surfaces": [
+        "EVIDENCE_RESOLUTION",
+        "ASSESSMENT_ENGINE",
+        "COVERAGE_ENGINE",
+        "DETERMINISTIC_REPORT"
+      ],
+      "implementation_state": "COMPLIANT",
+      "invariant_id": "SAFETY-INV-006",
+      "legacy_bugs": [
+        "LEGACY-BUG-005"
+      ],
+      "negative_controls": [
+        "NC-INV-006-DANGLING-EVIDENCE-REFERENCE",
+        "NC-INV-006-FINDING-WITHOUT-EVIDENCE",
+        "NC-INV-006-EVIDENCE-OUTSIDE-PINNED-DATASET"
+      ],
+      "note": "Without a resolvable citation an 'explainable' output is an assertion. A missing reference must remove the finding and degrade coverage with EVIDENCE_REFERENCE_MISSING - never leave the finding standing with a broken chain.",
+      "owning_work_packages": [
+        "WP-08",
+        "WP-14",
+        "WP-15"
+      ],
+      "refusal_code": "SAFETY_EVIDENCE_NOT_RESOLVABLE",
+      "required_surfaces": [
+        "EVIDENCE_RESOLUTION",
+        "ASSESSMENT_ENGINE",
+        "COVERAGE_ENGINE",
+        "DETERMINISTIC_REPORT"
+      ],
+      "requirement_reference": "docs/risk-management/safety-contract.md section 2, SAFETY-INV-006",
+      "severity": "CRITICAL_EVIDENTIAL",
+      "test_selectors": [
+        "tests.safety.test_assessment_safety",
+        "tests.unit.evidence.test_traceability",
+        "tests.unit.safety.test_invariant_006"
+      ],
+      "title": "Every calculated finding must carry resolvable, pinned evidence"
+    },
+    {
+      "absence_markers": [],
+      "blockers": [
+        {
+          "code": "SAFETY_AUDIT_IDENTITY_NOT_OPERATIONAL",
+          "detail": "The canonical audit record enforces actor, role, session reference, authentication assurance and correlation id. WP-24 has now built the composition that would run it: a request-scoped session, an audit sink backed by it, and one transaction in which a governed change and its record either both commit or neither does. What is still absent is an environment - no PostgreSQL server, no image and no deployment exist here, so no row has ever been written. The mechanism is implemented, composed and unexercised, which is a narrower blocker than it was and is still a blocker.",
+          "owner": "WP-24"
+        }
+      ],
+      "current_surfaces": [
+        "RELEASE_PINNING",
+        "PERSISTENCE_BOUNDARY",
+        "ASSESSMENT_ENGINE"
+      ],
+      "implementation_state": "COMPLIANT",
+      "invariant_id": "SAFETY-INV-007",
+      "legacy_bugs": [
+        "LEGACY-BUG-007"
+      ],
+      "negative_controls": [
+        "NC-INV-007-MISSING-RELEASE-FIELD",
+        "NC-INV-007-MISSING-INPUT-HASH",
+        "NC-INV-007-MISSING-OUTPUT-HASH",
+        "NC-INV-007-PARTIAL-PERSISTENCE"
+      ],
+      "note": "Each required field is omitted individually rather than as a set, so a single missing hash cannot slip through a check that only counts.",
+      "owning_work_packages": [
+        "WP-03",
+        "WP-14",
+        "WP-23"
+      ],
+      "refusal_code": "SAFETY_RELEASE_BUNDLE_INCOMPLETE",
+      "required_surfaces": [
+        "RELEASE_PINNING",
+        "PERSISTENCE_BOUNDARY",
+        "ASSESSMENT_ENGINE"
+      ],
+      "requirement_reference": "docs/risk-management/safety-contract.md section 2, SAFETY-INV-007; section 9",
+      "severity": "CRITICAL_EVIDENTIAL",
+      "test_selectors": [
+        "tests.unit.application.test_release_pinning",
+        "tests.unit.infrastructure.test_assessment_persistence",
+        "tests.unit.safety.test_invariant_007",
+        "tests.unit.audit.test_governed_audit"
+      ],
+      "title": "Assessment persistence requires the complete pinned release bundle plus input and output hashes"
+    },
+    {
+      "absence_markers": [],
+      "blockers": [],
+      "current_surfaces": [
+        "COVERAGE_ENGINE",
+        "ASSESSMENT_ENGINE",
+        "DETERMINISTIC_REPORT"
+      ],
+      "implementation_state": "COMPLIANT",
+      "invariant_id": "SAFETY-INV-008",
+      "legacy_bugs": [],
+      "negative_controls": [
+        "NC-INV-008-CONFLICT-TAKES-LOWER-LEVEL",
+        "NC-INV-008-CONFLICT-AVERAGED",
+        "NC-INV-008-CONFLICTING-RULE-DROPPED"
+      ],
+      "note": "Conflict is information. Silent resolution manufactures a false consensus and hides exactly the case a clinician most needs to see. A conflict with no independent valid finding must not manufacture attention either.",
+      "owning_work_packages": [
+        "WP-13",
+        "WP-14",
+        "P1-03"
+      ],
+      "refusal_code": "SAFETY_CONFLICT_COLLAPSED",
+      "required_surfaces": [
+        "COVERAGE_ENGINE",
+        "ASSESSMENT_ENGINE",
+        "DETERMINISTIC_REPORT"
+      ],
+      "requirement_reference": "docs/risk-management/safety-contract.md section 2, SAFETY-INV-008",
+      "severity": "CRITICAL_PATIENT_FACING",
+      "test_selectors": [
+        "tests.safety.test_coverage_safety",
+        "tests.unit.rules.test_conflicts",
+        "tests.unit.safety.test_invariant_008"
+      ],
+      "title": "A source or rule conflict must not collapse into a reassuring result"
+    },
+    {
+      "absence_markers": [],
+      "blockers": [
+        {
+          "code": "SAFETY_NO_HOLDOUT_CASES_EXIST",
+          "detail": "The separation mechanism is enforced and proven. There are zero holdout cases to separate, which is a scientific blocker WP-18 reports and no code can close.",
+          "owner": "scientific curators"
+        }
+      ],
+      "current_surfaces": [
+        "VALIDATION_PARTITION"
+      ],
+      "implementation_state": "COMPLIANT",
+      "invariant_id": "SAFETY-INV-009",
+      "legacy_bugs": [],
+      "negative_controls": [
+        "NC-INV-009-ID-IN-TWO-ROLES",
+        "NC-INV-009-CONTENT-DUPLICATE-ACROSS-PARTITIONS",
+        "NC-INV-009-DERIVATION-FAMILY-SPLIT"
+      ],
+      "note": "Reuses WP-18's audit_partition rather than re-deciding separation. Independence is the entire evidential value of a holdout set; once it leaks, no later analysis can undo it.",
+      "owning_work_packages": [
+        "WP-18"
+      ],
+      "refusal_code": "SAFETY_PARTITION_OVERLAP",
+      "required_surfaces": [
+        "VALIDATION_PARTITION"
+      ],
+      "requirement_reference": "docs/risk-management/safety-contract.md section 2, SAFETY-INV-009; section 8",
+      "severity": "CRITICAL_EVIDENTIAL",
+      "test_selectors": [
+        "tests.unit.validation.test_separation",
+        "tests.failure.test_wp18_partition_violations",
+        "tests.unit.safety.test_invariant_009"
+      ],
+      "title": "DEVELOPMENT, INTERNAL_HOLDOUT and EXPERT_HOLDOUT must not overlap or be pooled"
+    },
+    {
+      "absence_markers": [],
+      "blockers": [],
+      "current_surfaces": [
+        "CLAIM_SCANNER",
+        "DETERMINISTIC_REPORT",
+        "API_SERIALIZATION",
+        "WEB_RENDERING"
+      ],
+      "implementation_state": "COMPLIANT",
+      "invariant_id": "SAFETY-INV-010",
+      "legacy_bugs": [
+        "LEGACY-BUG-012"
+      ],
+      "negative_controls": [
+        "NC-INV-010-REPORT-CARRIES-RECOMMENDATION",
+        "NC-INV-010-API-STRING-CARRIES-DOSE",
+        "NC-INV-010-TEMPLATE-CARRIES-REASSURANCE"
+      ],
+      "note": "The scanner is a lexical last line, not an NLP system, and its documented limits are carried into the report rather than quietly dropped. Structural checks supplement it. A blocking claim prevents release; the text is never auto-edited into compliance.",
+      "owning_work_packages": [
+        "WP-00",
+        "WP-15",
+        "WP-16",
+        "WP-17"
+      ],
+      "refusal_code": "SAFETY_PROHIBITED_CLAIM",
+      "required_surfaces": [
+        "CLAIM_SCANNER",
+        "DETERMINISTIC_REPORT",
+        "API_SERIALIZATION",
+        "WEB_RENDERING"
+      ],
+      "requirement_reference": "docs/risk-management/safety-contract.md section 2, SAFETY-INV-010; section 3",
+      "severity": "CRITICAL_PATIENT_FACING",
+      "test_selectors": [
+        "tests.unit.test_claims",
+        "tests.adversarial.test_report_claims",
+        "tests.unit.reporting.test_safe_status_rendering",
+        "tests.unit.safety.test_invariant_010"
+      ],
+      "title": "Prohibited claim text must block release of user-facing output"
+    },
+    {
+      "absence_markers": [],
+      "blockers": [],
+      "current_surfaces": [
+        "INPUT_BOUNDARY",
+        "API_SERIALIZATION",
+        "VALIDATION_PARTITION",
+        "CLAIM_SCANNER"
+      ],
+      "implementation_state": "COMPLIANT",
+      "invariant_id": "SAFETY-INV-011",
+      "legacy_bugs": [],
+      "negative_controls": [
+        "NC-INV-011-NESTED-GENOTYPE-FIELD",
+        "NC-INV-011-PATIENT-IDENTIFIER",
+        "NC-INV-011-RAW-SEQUENCING-PAYLOAD",
+        "NC-INV-011-PILOT-MODE-REQUESTED"
+      ],
+      "note": "Prohibited field names are refused at any nesting depth, not only at the top level. Public gene nomenclature - CYP2D6, a drug name - is not patient data and must not be refused; the distinction is tested in both directions. PILOT stays disabled.",
+      "owning_work_packages": [
+        "WP-00",
+        "WP-16",
+        "WP-18"
+      ],
+      "refusal_code": "SAFETY_REAL_PATIENT_DATA",
+      "required_surfaces": [
+        "INPUT_BOUNDARY",
+        "API_SERIALIZATION",
+        "VALIDATION_PARTITION",
+        "CLAIM_SCANNER"
+      ],
+      "requirement_reference": "docs/risk-management/safety-contract.md section 2, SAFETY-INV-011; docs/architecture/intended-purpose.md section 3",
+      "severity": "CRITICAL_SCOPE",
+      "test_selectors": [
+        "tests.unit.test_claims",
+        "tests.unit.validation.test_cases",
+        "tests.unit.api.test_security_boundary",
+        "tests.unit.safety.test_invariant_011"
+      ],
+      "title": "Real patient or genomic data must not enter P0"
+    },
+    {
+      "absence_markers": [],
+      "blockers": [
+        {
+          "code": "SAFETY_AUDIT_COMPLETENESS_NOT_OPERATIONAL",
+          "detail": "The append-only, hash-linked audit record enforces every required trace field and is atomic with the governed change. WP-24 has composed the store and the transaction around it, and has written the verification command; no chain has been verified against real rows because no server exists here to hold any. Implemented, composed, and never run.",
+          "owner": "WP-24"
+        },
+        {
+          "code": "SAFETY_OPERATIONAL_REPEATABILITY_OWNED_BY_WP24",
+          "detail": "Repeat-run determinism across deployments and over time is a CI property. WP-20 proves it within one process and one machine. WP-24 has now written the pipeline that would prove the rest, and no provider has run it: this repository has no commits, so there has been nothing to run against.",
+          "owner": "WP-24"
+        }
+      ],
+      "current_surfaces": [
+        "ASSESSMENT_ENGINE",
+        "RELEASE_PINNING",
+        "DETERMINISTIC_REPORT"
+      ],
+      "implementation_state": "COMPLIANT",
+      "invariant_id": "SAFETY-INV-012",
+      "legacy_bugs": [
+        "LEGACY-BUG-007"
+      ],
+      "negative_controls": [
+        "NC-INV-012-SHUFFLED-INPUT-CHANGES-OUTPUT",
+        "NC-INV-012-MID-RUN-RELEASE-CHANGE",
+        "NC-INV-012-WALL-CLOCK-IN-OUTPUT"
+      ],
+      "note": "Determinism is proven by re-running the same pinned input with ordering variations and comparing structured bytes and hashes. The audit half stays explicitly blocked.",
+      "owning_work_packages": [
+        "WP-14",
+        "WP-23",
+        "WP-24"
+      ],
+      "refusal_code": "SAFETY_NON_DETERMINISTIC_RESULT",
+      "required_surfaces": [
+        "ASSESSMENT_ENGINE",
+        "RELEASE_PINNING",
+        "PERSISTENCE_BOUNDARY",
+        "DETERMINISTIC_REPORT"
+      ],
+      "requirement_reference": "docs/risk-management/safety-contract.md section 2, SAFETY-INV-012; section 9",
+      "severity": "CRITICAL_EVIDENTIAL",
+      "test_selectors": [
+        "tests.unit.application.test_assessment_determinism",
+        "tests.unit.reporting.test_determinism",
+        "tests.unit.safety.test_invariant_012",
+        "tests.unit.audit.test_governed_audit"
+      ],
+      "title": "Released results must be deterministic and auditable"
+    }
+  ],
+  "negative_controls": [
+    {
+      "control_id": "NC-INV-001-ABSENCE-MAPPED-TO-LOW",
+      "description": "an aggregation that maps an unassessed axis to LOW, exactly as the legacy engine's 'Dusuk / uyari yok' did",
+      "expected_refusal_code": "SAFETY_FALSE_REASSURANCE",
+      "fixture": "tests.fixtures.wp20.unsafe_engine",
+      "invariant_id": "SAFETY-INV-001",
+      "kind": "NEGATIVE",
+      "legacy_bug": "LEGACY-BUG-002"
+    },
+    {
+      "control_id": "NC-INV-001-NOT-ASSESSED-IN-MAXIMUM",
+      "description": "an aggregation that treats NOT_ASSESSED as a level and includes it in the attention maximum, making absence comparable to LOW",
+      "expected_refusal_code": "SAFETY_FALSE_REASSURANCE",
+      "fixture": "tests.fixtures.wp20.unsafe_engine",
+      "invariant_id": "SAFETY-INV-001",
+      "kind": "NEGATIVE",
+      "legacy_bug": ""
+    },
+    {
+      "control_id": "NC-INV-002-RENDERER-CHANGES-ATTENTION",
+      "description": "a test-only renderer whose narration reports a different attention level than the structured report it was given",
+      "expected_refusal_code": "SAFETY_LLM_ALTERED_FACT",
+      "fixture": "tests.fixtures.wp20.unsafe_renderer",
+      "invariant_id": "SAFETY-INV-002",
+      "kind": "NEGATIVE",
+      "legacy_bug": ""
+    },
+    {
+      "control_id": "NC-INV-002-RENDERER-INVENTS-DOSE",
+      "description": "a renderer that introduces a dose the deterministic report never contained",
+      "expected_refusal_code": "SAFETY_LLM_ALTERED_FACT",
+      "fixture": "tests.fixtures.wp20.unsafe_renderer",
+      "invariant_id": "SAFETY-INV-002",
+      "kind": "NEGATIVE",
+      "legacy_bug": ""
+    },
+    {
+      "control_id": "NC-INV-002-RENDERER-DROPS-VERSION",
+      "description": "a renderer that omits the release/version metadata, breaking the traceability the report exists to carry",
+      "expected_refusal_code": "SAFETY_LLM_ALTERED_FACT",
+      "fixture": "tests.fixtures.wp20.unsafe_renderer",
+      "invariant_id": "SAFETY-INV-002",
+      "kind": "NEGATIVE",
+      "legacy_bug": ""
+    },
+    {
+      "control_id": "NC-INV-003-DRAFT-RULE-FIRES",
+      "description": "a ruleset containing a DRAFT rule that participates in a calculation",
+      "expected_refusal_code": "SAFETY_UNVALIDATED_RULE_EXECUTED",
+      "fixture": "tests.fixtures.wp20.unsafe_ruleset",
+      "invariant_id": "SAFETY-INV-003",
+      "kind": "NEGATIVE",
+      "legacy_bug": "LEGACY-BUG-006"
+    },
+    {
+      "control_id": "NC-INV-003-DEPRECATED-RULE-FIRES",
+      "description": "a DEPRECATED rule that still produces a finding",
+      "expected_refusal_code": "SAFETY_UNVALIDATED_RULE_EXECUTED",
+      "fixture": "tests.fixtures.wp20.unsafe_ruleset",
+      "invariant_id": "SAFETY-INV-003",
+      "kind": "NEGATIVE",
+      "legacy_bug": ""
+    },
+    {
+      "control_id": "NC-INV-003-UNPINNED-RULESET-ACCEPTED",
+      "description": "a ruleset that is not the pinned active one being accepted for assessment",
+      "expected_refusal_code": "SAFETY_UNVALIDATED_RULE_EXECUTED",
+      "fixture": "tests.fixtures.wp20.unsafe_ruleset",
+      "invariant_id": "SAFETY-INV-003",
+      "kind": "NEGATIVE",
+      "legacy_bug": ""
+    },
+    {
+      "control_id": "NC-INV-004-PREFIX-MATCHER",
+      "description": "a matcher that accepts RAPID for a rule declaring ULTRARAPID because one string is a prefix of the other",
+      "expected_refusal_code": "SAFETY_PHENOTYPE_CROSS_MATCH",
+      "fixture": "tests.fixtures.wp20.unsafe_matcher",
+      "invariant_id": "SAFETY-INV-004",
+      "kind": "NEGATIVE",
+      "legacy_bug": "LEGACY-BUG-001"
+    },
+    {
+      "control_id": "NC-INV-004-SYNONYM-TABLE",
+      "description": "a synonym table that treats RAPID and ULTRARAPID as equivalent",
+      "expected_refusal_code": "SAFETY_PHENOTYPE_CROSS_MATCH",
+      "fixture": "tests.fixtures.wp20.unsafe_matcher",
+      "invariant_id": "SAFETY-INV-004",
+      "kind": "NEGATIVE",
+      "legacy_bug": ""
+    },
+    {
+      "control_id": "NC-INV-004-ORDINAL-PROXIMITY",
+      "description": "a matcher that accepts an adjacent phenotype by ordinal distance",
+      "expected_refusal_code": "SAFETY_PHENOTYPE_CROSS_MATCH",
+      "fixture": "tests.fixtures.wp20.unsafe_matcher",
+      "invariant_id": "SAFETY-INV-004",
+      "kind": "NEGATIVE",
+      "legacy_bug": ""
+    },
+    {
+      "control_id": "NC-INV-005-SAFETY-SCORE",
+      "description": "a candidate list carrying a 0-100 clinical suitability score, the legacy ranking that mixed data availability with preferability",
+      "expected_refusal_code": "SAFETY_CANDIDATE_PREFERENCE",
+      "fixture": "tests.fixtures.wp20.unsafe_candidates",
+      "invariant_id": "SAFETY-INV-005",
+      "kind": "NEGATIVE",
+      "legacy_bug": "LEGACY-BUG-009"
+    },
+    {
+      "control_id": "NC-INV-005-ORDERED-BY-ATTENTION",
+      "description": "a candidate list ordered by attention level, which reads as a ranking whatever the disclaimer says",
+      "expected_refusal_code": "SAFETY_CANDIDATE_PREFERENCE",
+      "fixture": "tests.fixtures.wp20.unsafe_candidates",
+      "invariant_id": "SAFETY-INV-005",
+      "kind": "NEGATIVE",
+      "legacy_bug": ""
+    },
+    {
+      "control_id": "NC-INV-005-PREFERRED-LABEL",
+      "description": "output labelling a candidate safer, preferred, suitable or recommended, in Turkish or English",
+      "expected_refusal_code": "SAFETY_CANDIDATE_PREFERENCE",
+      "fixture": "tests.fixtures.wp20.unsafe_candidates",
+      "invariant_id": "SAFETY-INV-005",
+      "kind": "NEGATIVE",
+      "legacy_bug": ""
+    },
+    {
+      "control_id": "NC-INV-006-DANGLING-EVIDENCE-REFERENCE",
+      "description": "a finding citing an evidence identifier that resolves to nothing",
+      "expected_refusal_code": "SAFETY_EVIDENCE_NOT_RESOLVABLE",
+      "fixture": "tests.fixtures.wp20.unsafe_evidence",
+      "invariant_id": "SAFETY-INV-006",
+      "kind": "NEGATIVE",
+      "legacy_bug": "LEGACY-BUG-005"
+    },
+    {
+      "control_id": "NC-INV-006-FINDING-WITHOUT-EVIDENCE",
+      "description": "a finding emitted with an empty evidence reference list",
+      "expected_refusal_code": "SAFETY_EVIDENCE_NOT_RESOLVABLE",
+      "fixture": "tests.fixtures.wp20.unsafe_evidence",
+      "invariant_id": "SAFETY-INV-006",
+      "kind": "NEGATIVE",
+      "legacy_bug": ""
+    },
+    {
+      "control_id": "NC-INV-006-EVIDENCE-OUTSIDE-PINNED-DATASET",
+      "description": "a finding whose evidence exists, but in a dataset version other than the pinned one",
+      "expected_refusal_code": "SAFETY_EVIDENCE_NOT_RESOLVABLE",
+      "fixture": "tests.fixtures.wp20.unsafe_evidence",
+      "invariant_id": "SAFETY-INV-006",
+      "kind": "NEGATIVE",
+      "legacy_bug": ""
+    },
+    {
+      "control_id": "NC-INV-007-MISSING-RELEASE-FIELD",
+      "description": "persistence attempted with each release/version field omitted in turn, rather than as a set",
+      "expected_refusal_code": "SAFETY_RELEASE_BUNDLE_INCOMPLETE",
+      "fixture": "tests.fixtures.wp20.unsafe_persistence",
+      "invariant_id": "SAFETY-INV-007",
+      "kind": "NEGATIVE",
+      "legacy_bug": "LEGACY-BUG-007"
+    },
+    {
+      "control_id": "NC-INV-007-MISSING-INPUT-HASH",
+      "description": "persistence attempted without the canonical input hash",
+      "expected_refusal_code": "SAFETY_RELEASE_BUNDLE_INCOMPLETE",
+      "fixture": "tests.fixtures.wp20.unsafe_persistence",
+      "invariant_id": "SAFETY-INV-007",
+      "kind": "NEGATIVE",
+      "legacy_bug": ""
+    },
+    {
+      "control_id": "NC-INV-007-MISSING-OUTPUT-HASH",
+      "description": "persistence attempted without the output hash",
+      "expected_refusal_code": "SAFETY_RELEASE_BUNDLE_INCOMPLETE",
+      "fixture": "tests.fixtures.wp20.unsafe_persistence",
+      "invariant_id": "SAFETY-INV-007",
+      "kind": "NEGATIVE",
+      "legacy_bug": ""
+    },
+    {
+      "control_id": "NC-INV-007-PARTIAL-PERSISTENCE",
+      "description": "a store that commits the assessment row and abandons its findings, leaving a result whose trustworthy half cannot be told from the rest",
+      "expected_refusal_code": "SAFETY_RELEASE_BUNDLE_INCOMPLETE",
+      "fixture": "tests.fixtures.wp20.unsafe_persistence",
+      "invariant_id": "SAFETY-INV-007",
+      "kind": "NEGATIVE",
+      "legacy_bug": ""
+    },
+    {
+      "control_id": "NC-INV-008-CONFLICT-TAKES-LOWER-LEVEL",
+      "description": "conflicting validated rules resolved by taking the lower attention level, the most reassuring possible answer",
+      "expected_refusal_code": "SAFETY_CONFLICT_COLLAPSED",
+      "fixture": "tests.fixtures.wp20.unsafe_conflict",
+      "invariant_id": "SAFETY-INV-008",
+      "kind": "NEGATIVE",
+      "legacy_bug": ""
+    },
+    {
+      "control_id": "NC-INV-008-CONFLICT-AVERAGED",
+      "description": "conflicting levels averaged into a middle value that neither rule supports",
+      "expected_refusal_code": "SAFETY_CONFLICT_COLLAPSED",
+      "fixture": "tests.fixtures.wp20.unsafe_conflict",
+      "invariant_id": "SAFETY-INV-008",
+      "kind": "NEGATIVE",
+      "legacy_bug": ""
+    },
+    {
+      "control_id": "NC-INV-008-CONFLICTING-RULE-DROPPED",
+      "description": "the disagreeing rule silently discarded to produce a clean answer",
+      "expected_refusal_code": "SAFETY_CONFLICT_COLLAPSED",
+      "fixture": "tests.fixtures.wp20.unsafe_conflict",
+      "invariant_id": "SAFETY-INV-008",
+      "kind": "NEGATIVE",
+      "legacy_bug": ""
+    },
+    {
+      "control_id": "NC-INV-009-ID-IN-TWO-ROLES",
+      "description": "one case identifier appearing as both DEVELOPMENT and EXPERT_HOLDOUT",
+      "expected_refusal_code": "SAFETY_PARTITION_OVERLAP",
+      "fixture": "tests.fixtures.wp20.unsafe_partition",
+      "invariant_id": "SAFETY-INV-009",
+      "kind": "NEGATIVE",
+      "legacy_bug": ""
+    },
+    {
+      "control_id": "NC-INV-009-CONTENT-DUPLICATE-ACROSS-PARTITIONS",
+      "description": "two different identifiers carrying identical content across the development/holdout line",
+      "expected_refusal_code": "SAFETY_PARTITION_OVERLAP",
+      "fixture": "tests.fixtures.wp20.unsafe_partition",
+      "invariant_id": "SAFETY-INV-009",
+      "kind": "NEGATIVE",
+      "legacy_bug": ""
+    },
+    {
+      "control_id": "NC-INV-009-DERIVATION-FAMILY-SPLIT",
+      "description": "one derivation family split across development and holdout - which neither an identifier nor a content check would catch",
+      "expected_refusal_code": "SAFETY_PARTITION_OVERLAP",
+      "fixture": "tests.fixtures.wp20.unsafe_partition",
+      "invariant_id": "SAFETY-INV-009",
+      "kind": "NEGATIVE",
+      "legacy_bug": ""
+    },
+    {
+      "control_id": "NC-INV-010-REPORT-CARRIES-RECOMMENDATION",
+      "description": "a deterministic report body carrying a treatment recommendation",
+      "expected_refusal_code": "SAFETY_PROHIBITED_CLAIM",
+      "fixture": "tests.fixtures.wp20.unsafe_text",
+      "invariant_id": "SAFETY-INV-010",
+      "kind": "NEGATIVE",
+      "legacy_bug": "LEGACY-BUG-012"
+    },
+    {
+      "control_id": "NC-INV-010-API-STRING-CARRIES-DOSE",
+      "description": "an API user-facing string carrying dosing language",
+      "expected_refusal_code": "SAFETY_PROHIBITED_CLAIM",
+      "fixture": "tests.fixtures.wp20.unsafe_text",
+      "invariant_id": "SAFETY-INV-010",
+      "kind": "NEGATIVE",
+      "legacy_bug": ""
+    },
+    {
+      "control_id": "NC-INV-010-TEMPLATE-CARRIES-REASSURANCE",
+      "description": "a rendered template asserting that no finding means the medication is safe",
+      "expected_refusal_code": "SAFETY_PROHIBITED_CLAIM",
+      "fixture": "tests.fixtures.wp20.unsafe_text",
+      "invariant_id": "SAFETY-INV-010",
+      "kind": "NEGATIVE",
+      "legacy_bug": ""
+    },
+    {
+      "control_id": "NC-INV-011-NESTED-GENOTYPE-FIELD",
+      "description": "a genotype field buried several levels deep in a request, where a top-level-only check would miss it",
+      "expected_refusal_code": "SAFETY_REAL_PATIENT_DATA",
+      "fixture": "tests.fixtures.wp20.unsafe_input",
+      "invariant_id": "SAFETY-INV-011",
+      "kind": "NEGATIVE",
+      "legacy_bug": ""
+    },
+    {
+      "control_id": "NC-INV-011-PATIENT-IDENTIFIER",
+      "description": "a direct patient identifier - name, MRN, date of birth",
+      "expected_refusal_code": "SAFETY_REAL_PATIENT_DATA",
+      "fixture": "tests.fixtures.wp20.unsafe_input",
+      "invariant_id": "SAFETY-INV-011",
+      "kind": "NEGATIVE",
+      "legacy_bug": ""
+    },
+    {
+      "control_id": "NC-INV-011-RAW-SEQUENCING-PAYLOAD",
+      "description": "a VCF/FASTQ/BAM payload or a star-allele diplotype",
+      "expected_refusal_code": "SAFETY_REAL_PATIENT_DATA",
+      "fixture": "tests.fixtures.wp20.unsafe_input",
+      "invariant_id": "SAFETY-INV-011",
+      "kind": "NEGATIVE",
+      "legacy_bug": ""
+    },
+    {
+      "control_id": "NC-INV-011-PILOT-MODE-REQUESTED",
+      "description": "an operation requesting PILOT mode, which is disabled in P0",
+      "expected_refusal_code": "SAFETY_REAL_PATIENT_DATA",
+      "fixture": "tests.fixtures.wp20.unsafe_input",
+      "invariant_id": "SAFETY-INV-011",
+      "kind": "NEGATIVE",
+      "legacy_bug": ""
+    },
+    {
+      "control_id": "NC-INV-012-SHUFFLED-INPUT-CHANGES-OUTPUT",
+      "description": "an engine whose output hash depends on the order the medications arrived in",
+      "expected_refusal_code": "SAFETY_NON_DETERMINISTIC_RESULT",
+      "fixture": "tests.fixtures.wp20.unsafe_determinism",
+      "invariant_id": "SAFETY-INV-012",
+      "kind": "NEGATIVE",
+      "legacy_bug": "LEGACY-BUG-007"
+    },
+    {
+      "control_id": "NC-INV-012-MID-RUN-RELEASE-CHANGE",
+      "description": "a release bundle that changes between two calculations of the same input, so neither result can be attributed",
+      "expected_refusal_code": "SAFETY_NON_DETERMINISTIC_RESULT",
+      "fixture": "tests.fixtures.wp20.unsafe_determinism",
+      "invariant_id": "SAFETY-INV-012",
+      "kind": "NEGATIVE",
+      "legacy_bug": ""
+    },
+    {
+      "control_id": "NC-INV-012-WALL-CLOCK-IN-OUTPUT",
+      "description": "wall-clock time inside the hashed output, which makes two identical runs disagree",
+      "expected_refusal_code": "SAFETY_NON_DETERMINISTIC_RESULT",
+      "fixture": "tests.fixtures.wp20.unsafe_determinism",
+      "invariant_id": "SAFETY-INV-012",
+      "kind": "NEGATIVE",
+      "legacy_bug": ""
+    }
+  ],
+  "note": "The authoritative machine-readable form of section 2 of docs/risk-management/safety-contract.md. Twelve invariants, not ten: the architecture asks for at least SAFETY-INV-010, and a registry that stopped there would drop real-patient-data and determinism. Every selector is resolved against live test discovery on each run, so a row whose tests were renamed empties itself and the emptiness is the finding.",
+  "registry_version": "pgx-wp20-safety-registry/1",
+  "resolved_modules": {
+    "SAFETY-INV-001": [
+      "tests.safety.test_assessment_safety",
+      "tests.safety.test_coverage_safety",
+      "tests.unit.engine.test_coverage_aggregation",
+      "tests.unit.safety.test_invariant_001"
+    ],
+    "SAFETY-INV-002": [
+      "tests.unit.reporting.test_fact_preservation",
+      "tests.unit.reporting.test_injection",
+      "tests.unit.safety.test_invariant_002"
+    ],
+    "SAFETY-INV-003": [
+      "tests.safety.test_coverage_safety",
+      "tests.unit.rules.test_rule_lifecycle",
+      "tests.unit.rules.test_ruleset_lifecycle",
+      "tests.unit.safety.test_invariant_003"
+    ],
+    "SAFETY-INV-004": [
+      "tests.unit.engine.test_profile",
+      "tests.unit.engine.test_truth_matrix",
+      "tests.unit.rules.test_exact_semantics",
+      "tests.unit.safety.test_invariant_004"
+    ],
+    "SAFETY-INV-005": [
+      "tests.adversarial.test_report_claims",
+      "tests.safety.test_coverage_safety",
+      "tests.unit.safety.test_invariant_005",
+      "tests.unit.test_claims"
+    ],
+    "SAFETY-INV-006": [
+      "tests.safety.test_assessment_safety",
+      "tests.unit.evidence.test_traceability",
+      "tests.unit.safety.test_invariant_006"
+    ],
+    "SAFETY-INV-007": [
+      "tests.unit.application.test_release_pinning",
+      "tests.unit.audit.test_governed_audit",
+      "tests.unit.infrastructure.test_assessment_persistence",
+      "tests.unit.safety.test_invariant_007"
+    ],
+    "SAFETY-INV-008": [
+      "tests.safety.test_coverage_safety",
+      "tests.unit.rules.test_conflicts",
+      "tests.unit.safety.test_invariant_008"
+    ],
+    "SAFETY-INV-009": [
+      "tests.failure.test_wp18_partition_violations",
+      "tests.unit.safety.test_invariant_009",
+      "tests.unit.validation.test_separation"
+    ],
+    "SAFETY-INV-010": [
+      "tests.adversarial.test_report_claims",
+      "tests.unit.reporting.test_safe_status_rendering",
+      "tests.unit.safety.test_invariant_010",
+      "tests.unit.test_claims"
+    ],
+    "SAFETY-INV-011": [
+      "tests.unit.api.test_security_boundary",
+      "tests.unit.safety.test_invariant_011",
+      "tests.unit.test_claims",
+      "tests.unit.validation.test_cases"
+    ],
+    "SAFETY-INV-012": [
+      "tests.unit.application.test_assessment_determinism",
+      "tests.unit.audit.test_governed_audit",
+      "tests.unit.reporting.test_determinism",
+      "tests.unit.safety.test_invariant_012"
+    ]
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "active_counts": {
+    "effect_rule_rows": 3084,
+    "guideline_rows": 36,
+    "supported_drugs": 15,
+    "supported_genes": 5
+  },
+  "backup_files_present": {
+    "drug_gene_guidelines.csv.bak": true,
+    "phenotype_effect_rules.csv.bak": true,
+    "supported_drugs.csv.bak": true
+  },
+  "description": "Active mutable legacy seed as it exists on disk after candidate onboarding merged into it. This is legacy state evidence, not a validated dataset release.",
+  "files": {
+    "drug_gene_guidelines.csv": {
+      "data_rows": 36,
+      "present": true,
+      "sha256": "b32940ab13fbb0e536f4b0dd3a4490513c67ff3e0ce502cc1d44ea51014ef847",
+      "size_bytes": 81343
+    },
+    "drug_gene_guidelines.csv.bak": {
+      "data_rows": 30,
+      "present": true,
+      "sha256": "24800a1ef628c384bcc531e1a1acd25b04c2b747f95d7acf132f1483607213c7",
+      "size_bytes": 70080
+    },
+    "mvp_demo_profiles.json": {
+      "present": true,
+      "sha256": "6d370e9358ec0096fa6a7af59b88abe2435ce458ed2eaae213922f7f3f9bd1ca",
+      "size_bytes": 2166
+    },
+    "mvp_seed_summary.json": {
+      "present": true,
+      "sha256": "5902d022e2b4ef913fe70a581a4ef6213c6df6d05015902f9cbb0d3b976e0c37",
+      "size_bytes": 1731
+    },
+    "phenotype_effect_rules.csv": {
+      "data_rows": 3084,
+      "present": true,
+      "sha256": "7e4f7d2504ec00d04cb476ecf6325d1a61901493350a136cded65328a11190f0",
+      "size_bytes": 2334528
+    },
+    "phenotype_effect_rules.csv.bak": {
+      "data_rows": 3084,
+      "present": true,
+      "sha256": "7e4f7d2504ec00d04cb476ecf6325d1a61901493350a136cded65328a11190f0",
+      "size_bytes": 2334528
+    },
+    "supported_drugs.csv": {
+      "data_rows": 15,
+      "present": true,
+      "sha256": "4ca6294cd2fdb7eaddfb4b24b56bc1c7fdff742b694fa79d248f90854c15c8a2",
+      "size_bytes": 2029
+    },
+    "supported_drugs.csv.bak": {
+      "data_rows": 11,
+      "present": true,
+      "sha256": "253e4747083740bc465e715907c6bb1b7f88b0affe62bc083c1dae9f8b3e8379",
+      "size_bytes": 1459
+    },
+    "supported_genes.csv": {
+      "data_rows": 5,
+      "present": true,
+      "sha256": "3726d7dde14d3a53cdbcf3826ad3c1d759e6653ef20a566ae71fe03680edcc48",
+      "size_bytes": 3743
+    }
+  },
+  "mutable_state_note": "candidate_onboarding.py --merge rewrote supported_drugs.csv and drug_gene_guidelines.csv in place and copied the previous versions to .bak; a repeated merge would overwrite those backups (LEGACY-BUG-010).",
+  "not_a_validated_release": true,
+  "snapshot_id": "current-active-seed",
+  "snapshot_kind": "active_legacy_state",
+  "stale_summary_counts": {
+    "effect_rule_rows": 3084,
+    "guideline_rows": 30,
+    "supported_drugs": 11,
+    "supported_genes": 5
+  },
+  "stale_summary_issue": {
+    "bug_id": "LEGACY-BUG-007",
+    "explanation": "mvp_seed_summary.json still reports the pre-merge counts while the active CSV files hold the post-merge counts.",
+    "protected_as_correct": false
+  }
+}

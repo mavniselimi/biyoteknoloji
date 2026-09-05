@@ -1,0 +1,140 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "description": "Two levels of hash. ``manifest_self_hash`` must be null: a manifest containing a digest of itself could never satisfy its own check, because writing the digest changes the bytes.",
+  "properties": {
+    "absent_member_paths": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "integrity_note": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "manifest_excludes_itself": {
+      "const": true,
+      "type": "boolean"
+    },
+    "manifest_member_path": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "manifest_self_hash": {
+      "type": "null"
+    },
+    "manifest_self_hash_note": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "member_count": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "members": {
+      "items": {
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "state": {
+                  "const": "ABSENT"
+                }
+              },
+              "required": [
+                "state"
+              ]
+            },
+            "then": {
+              "properties": {
+                "bytes": {
+                  "type": "null"
+                },
+                "present": {
+                  "const": false
+                },
+                "sha256": {
+                  "type": "null"
+                }
+              }
+            }
+          }
+        ],
+        "properties": {
+          "bytes": {
+            "minimum": 0,
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "path": {
+            "pattern": "^(?![/~\\\\])(?![A-Za-z]:)[^\\s].*$",
+            "type": "string"
+          },
+          "present": {
+            "type": "boolean"
+          },
+          "sha256": {
+            "pattern": "^sha256:[0-9a-f]{64}$",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "state": {
+            "enum": [
+              "PRESENT",
+              "ABSENT",
+              "SYMLINK_REFUSED"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "path",
+          "present",
+          "sha256",
+          "state"
+        ],
+        "type": "object"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "pack_integrity_version": {
+      "const": "pgx-wp25-pack-integrity/1",
+      "type": "string"
+    },
+    "pack_sha256": {
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "pack_version": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "present_member_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "refused_member_paths": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "pack_integrity_version",
+    "manifest_member_path",
+    "manifest_excludes_itself",
+    "manifest_self_hash",
+    "members",
+    "pack_sha256",
+    "member_count",
+    "integrity_note"
+  ],
+  "title": "WP-25 evidence pack manifest",
+  "type": "object"
+}

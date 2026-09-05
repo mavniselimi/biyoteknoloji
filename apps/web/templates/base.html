@@ -1,0 +1,80 @@
+{#
+  The page frame. Every screen extends this and none may replace its parts.
+
+  The warning block is not a block: it is rendered here unconditionally from
+  page.warning, which PageContext refuses to build from anything but the
+  canonical function. A child template cannot override it, hide it or wrap it
+  in a condition, because there is no {% block %} around it.
+
+  Nothing here is decorative. No icon font, no image, no external asset, no
+  inline script and no inline style: the content-security policy allows only
+  this origin's own stylesheet and script, and the page is fully usable with
+  both switched off.
+#}<!DOCTYPE html>
+<html lang="{{ page.locale }}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>{{ page.title }} - {{ text['app.title'] }}</title>
+<link rel="stylesheet" href="/static/css/app.css?v={{ page.asset_version }}">
+</head>
+<body data-route="{{ page.route_name }}">
+<a class="skip-link" href="#main">{{ text['app.skip_to_content'] }}</a>
+
+<header class="site-header">
+  <p class="site-title">{{ text['app.title'] }}</p>
+  <p class="site-subtitle">{{ text['app.subtitle'] }}</p>
+  <dl class="environment">
+    <dt>{{ text['app.environment'] }}</dt>
+    <dd>{{ page.environment or text['app.unknown'] }}</dd>
+  </dl>
+</header>
+
+<nav class="site-nav" aria-label="{{ text['app.main_navigation'] }}">
+  <ul>
+    {% for item in page.navigation %}
+    <li>
+      {% if item.is_current %}
+      <a href="{{ item.url }}" aria-current="page"><span class="current-marker" aria-hidden="true">&gt;</span> {{ item.text }}</a>
+      {% else %}
+      <a href="{{ item.url }}">{{ item.text }}</a>
+      {% endif %}
+    </li>
+    {% endfor %}
+  </ul>
+</nav>
+
+<main id="main" class="site-main">
+  <h1>{{ page.title }}</h1>
+
+  {# The warning sits directly under the page heading: first thing inside the
+     content, on every page, before anything it might qualify. It is inside
+     <main> rather than above it so that the document's first heading is the
+     h1 - a warning whose heading preceded the page heading would be a
+     heading-order violation on every screen, and an accessibility defect in
+     the one region that must never be skipped over. #}
+  {% include "_warning.html" %}
+
+  {% if page.dependency_notice %}
+  <p class="notice notice-dependency" role="status">{{ page.dependency_notice }}</p>
+  {% endif %}
+
+  {% block content %}{% endblock %}
+</main>
+
+<footer class="site-footer">
+  <p>{{ text['app.footer_note'] }}</p>
+  {% if page.request_id %}
+  <dl class="request-id">
+    <dt>{{ text['app.request_id'] }}</dt>
+    <dd><code>{{ page.request_id }}</code></dd>
+  </dl>
+  <p class="muted">{{ text['app.request_id_note'] }}</p>
+  {% endif %}
+  <p class="muted">{{ text['app.title'] }} {{ page.web_version }}</p>
+</footer>
+
+<script src="/static/js/app.js?v={{ page.asset_version }}" defer></script>
+</body>
+</html>

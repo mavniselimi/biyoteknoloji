@@ -1,0 +1,156 @@
+{
+  "$id": "https://pgx.local/schemas/wp19/flaky-report.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "A documented critical subset repeated under one fixed hash seed. A test whose outcome differed between repetitions is listed with what it produced each time; `distinct_outcomes` has minItems 2 because a test that agreed with itself is not a flaky test.",
+  "properties": {
+    "counts_by_repetition": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "discovered": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "errored": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "executed": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "failed": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "not_executed": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "passed": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "skipped": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "unexplained_skips": {
+            "minimum": 0,
+            "type": "integer"
+          }
+        },
+        "required": [
+          "discovered",
+          "executed",
+          "passed",
+          "failed",
+          "errored",
+          "skipped",
+          "unexplained_skips",
+          "not_executed"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "flaky_schema_version": {
+      "const": "pgx-wp19-flaky-report/1"
+    },
+    "flaky_test_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "flaky_tests": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "distinct_outcomes": {
+            "items": {
+              "enum": [
+                "PASS",
+                "FAIL",
+                "ERROR",
+                "SKIP",
+                "BLOCKED",
+                "MISSING"
+              ]
+            },
+            "minItems": 2,
+            "type": "array"
+          },
+          "outcomes_by_repetition": {
+            "items": {
+              "enum": [
+                "PASS",
+                "FAIL",
+                "ERROR",
+                "SKIP",
+                "BLOCKED",
+                "MISSING"
+              ]
+            },
+            "minItems": 2,
+            "type": "array"
+          },
+          "test_id": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "test_id",
+          "outcomes_by_repetition",
+          "distinct_outcomes"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "hash_seed": {
+      "type": "string"
+    },
+    "is_stable": {
+      "type": "boolean"
+    },
+    "note": {
+      "type": "string"
+    },
+    "profile": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "repetitions": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "status": {
+      "enum": [
+        "STABLE",
+        "FLAKY",
+        "BLOCKED"
+      ]
+    },
+    "unstable_selection": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "flaky_schema_version",
+    "profile",
+    "repetitions",
+    "status",
+    "flaky_tests",
+    "flaky_test_count",
+    "unstable_selection",
+    "hash_seed",
+    "is_stable",
+    "counts_by_repetition"
+  ],
+  "title": "WP-19 flaky-test report",
+  "type": "object"
+}

@@ -1,0 +1,94 @@
+{
+  "$id": "https://pgx.local/schemas/wp22/reveal-record.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "The one-way door and what it pinned. The expectation revision hash is required, so a revealed result is always attached to the exact prediction that preceded it and not to one appended afterwards.",
+  "properties": {
+    "attention_level": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "coverage_reason": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "coverage_status": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "expectation_revision_hash": {
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "expectation_revision_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "finding_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "firing_rule_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "output_hash": {
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "previous_hash": {
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "reveal_hash": {
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "reveal_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "revealed_at": {
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9:.]+Z$",
+      "type": "string"
+    },
+    "review_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "traceable_finding_count": {
+      "minimum": 0,
+      "type": "integer"
+    }
+  },
+  "required": [
+    "reveal_id",
+    "review_id",
+    "expectation_revision_id",
+    "expectation_revision_hash",
+    "revealed_at",
+    "reveal_hash",
+    "previous_hash",
+    "attention_level",
+    "coverage_status",
+    "coverage_reason",
+    "firing_rule_id",
+    "finding_count",
+    "traceable_finding_count",
+    "output_hash"
+  ],
+  "title": "WP-22 reveal record",
+  "type": "object"
+}

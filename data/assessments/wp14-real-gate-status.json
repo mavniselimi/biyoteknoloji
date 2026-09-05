@@ -1,0 +1,115 @@
+{
+  "assessment": "REAL ASSESSMENT EXECUTION IS BLOCKED",
+  "assessment_state": {
+    "real_completed_assessments": 0,
+    "real_executable_release_contexts": 0,
+    "real_findings": 0,
+    "real_medication_results": 0,
+    "real_persisted_assessments": 0
+  },
+  "blockers": [
+    {
+      "code": "ASSESSMENT_CLAIM_BOUNDARY_NOT_APPROVED",
+      "detail": "claim boundary status is DRAFT / AWAITING HUMAN AND SCIENTIFIC REVIEW",
+      "meaning": "the claim boundary is DRAFT and awaiting human and scientific review, so no assessment may execute in any mode",
+      "owner": "the people named in docs/architecture/intended-purpose.md, not code",
+      "unblocks": "the service stops refusing before it reads anything"
+    },
+    {
+      "code": "ASSESSMENT_CURATION_PROTOCOL_NOT_APPROVED",
+      "detail": "protocol status is AWAITING_EXPERT_REVIEW",
+      "meaning": "the curation protocol carries no ratification from a named scientific expert",
+      "owner": "a named scientific expert (not code)",
+      "unblocks": "the whole chain beneath assessment"
+    },
+    {
+      "code": "ASSESSMENT_DATASET_NOT_PUBLISHED",
+      "detail": "dataset state is BUILDING",
+      "meaning": "the canonical dataset is still BUILDING, so a release cannot pin something that will not change beneath it",
+      "owner": "the dataset quality and publication process (WP-07)",
+      "unblocks": "a stable dataset identity for a release to name"
+    },
+    {
+      "code": "ASSESSMENT_EVIDENCE_BUILD_QUARANTINED",
+      "detail": "evidence build labels are QUARANTINED, LEGACY_MIGRATION, NOT_CURATED, NOT_EXECUTABLE, NOT_PUBLICATION_ELIGIBLE",
+      "meaning": "the evidence build is quarantined and not publication-eligible, so no finding can cite resolvable approved evidence (SAFETY-INV-006)",
+      "owner": "source-policy review, then a re-labelled build",
+      "unblocks": "a finding can satisfy its traceability requirement"
+    },
+    {
+      "code": "ASSESSMENT_NO_ACTIVE_RELEASE",
+      "detail": "0 release bundles are ACTIVE in this repository",
+      "meaning": "no release bundle is ACTIVE, so there is nothing for an assessment to pin",
+      "owner": "the WP-03 release registry, which is itself blocked on everything below",
+      "unblocks": "a release can be pinned and its versions recorded"
+    },
+    {
+      "code": "ASSESSMENT_NO_APPROVED_COVERAGE_MANIFEST",
+      "detail": "0 approved coverage manifests found",
+      "meaning": "no approved coverage manifest exists, so no axis can be FULL and no finding may be emitted",
+      "owner": "a curator to declare the scope, an independent reviewer, and an approver, acting separately",
+      "unblocks": "coverage-first execution has something to consult"
+    },
+    {
+      "code": "ASSESSMENT_NO_FROZEN_RULESET",
+      "detail": "0 frozen rulesets in data/rulesets",
+      "meaning": "no frozen ruleset exists, so no rule can execute",
+      "owner": "the WP-11 rule governance chain",
+      "unblocks": "a validated member rule can produce a finding"
+    },
+    {
+      "code": "ASSESSMENT_NO_HUMAN_ROLE_ASSIGNMENTS",
+      "detail": "0 identities hold a scientific role",
+      "meaning": "no identity holds a scientific role, so none of the separated approvals above can be performed by anybody",
+      "owner": "WP-23 authentication, then whoever assigns roles",
+      "unblocks": "every approval this list depends on"
+    },
+    {
+      "code": "ASSESSMENT_NO_VALIDATED_RULE",
+      "detail": "0 rules have reached VALIDATED",
+      "meaning": "no rule has reached VALIDATED, so nothing is executable (SAFETY-INV-003)",
+      "owner": "rule authors, an independent validator, and an approver",
+      "unblocks": "an axis can carry a governed outcome"
+    }
+  ],
+  "claim_boundary": {
+    "approved": false,
+    "enabled_modes": [
+      "DEMO",
+      "VALIDATION"
+    ],
+    "phase": "P0",
+    "status": "DRAFT / AWAITING HUMAN AND SCIENTIFIC REVIEW"
+  },
+  "content_hash": "sha256:bde0759b6c9aa15cd0f0fc5bec1a330ba61c495df6030f5f01e2c4affe9289ff",
+  "gate_status_version": "pgx-wp14-gate-status/1",
+  "next_required_human_actions": [
+    "named humans review and approve the intended purpose, moving the claim boundary off DRAFT",
+    "a named scientific expert reads and approves the curation protocol against its content hash",
+    "the canonical dataset is quality-checked and published",
+    "the evidence build is reviewed and its quarantine labels are removed by whoever owns source policy",
+    "WP-23 supplies authentication, and somebody assigns scientific roles to real identities",
+    "rules are authored, independently validated, and a ruleset is frozen",
+    "curators, a reviewer and an approver declare an expected gene scope per drug and approve a coverage manifest",
+    "a release bundle pinning that software, dataset and ruleset is registered and activated"
+  ],
+  "note": "This is an expected governance result, not a test failure. The WP-14 machinery is implemented and verified against synthetic fixtures; what is missing is human and scientific judgement, and none of the blockers above can be cleared by writing code. No assessment in this repository has been executed against real data, no finding has been persisted, and no count above was asserted rather than read.",
+  "upstream_state": {
+    "active_releases": 0,
+    "approved_coverage_manifests": 0,
+    "canonical_dataset_published": false,
+    "canonical_dataset_state": "BUILDING",
+    "curation_protocol_status": "AWAITING_EXPERT_REVIEW",
+    "evidence_build_approved_for_assessment": false,
+    "evidence_build_labels": [
+      "QUARANTINED",
+      "LEGACY_MIGRATION",
+      "NOT_CURATED",
+      "NOT_EXECUTABLE",
+      "NOT_PUBLICATION_ELIGIBLE"
+    ],
+    "executable_rulesets_in_default_registry": 0,
+    "frozen_rulesets": 0,
+    "validated_rules": 0
+  }
+}

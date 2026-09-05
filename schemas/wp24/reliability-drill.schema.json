@@ -1,0 +1,183 @@
+{
+  "$id": "https://pgx.local/schemas/wp24/reliability-drill.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "environment_kind": {
+            "const": "LOCAL_REHEARSAL"
+          }
+        },
+        "required": [
+          "environment_kind"
+        ]
+      },
+      "then": {
+        "properties": {
+          "rehearsal_label": {
+            "const": "LOCAL_STAGING_REHEARSAL"
+          }
+        },
+        "required": [
+          "rehearsal_label"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "executed_count": {
+            "const": 0
+          }
+        },
+        "required": [
+          "executed_count"
+        ]
+      },
+      "then": {
+        "properties": {
+          "passed_count": {
+            "type": "null"
+          }
+        }
+      }
+    }
+  ],
+  "description": "A drill with no runner is BLOCKED, never passed. The three states - verified, executed-and-wrong, and not run - need different actions from different people.",
+  "properties": {
+    "blockers": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "blocking": {
+            "type": "boolean"
+          },
+          "code": {
+            "enum": [
+              "DEPLOY_ADVISORY_DATABASE_UNAVAILABLE",
+              "DEPLOY_ARGON2_UNAVAILABLE",
+              "DEPLOY_BACKUP_NOT_EXECUTED",
+              "DEPLOY_BUILD_BACKEND_UNAVAILABLE",
+              "DEPLOY_CI_NOT_EXECUTED",
+              "DEPLOY_CLAIM_BOUNDARY_NOT_APPROVED",
+              "DEPLOY_COMPOSITION_INCOMPLETE",
+              "DEPLOY_CONTAINER_RUNTIME_UNAVAILABLE",
+              "DEPLOY_DATABASE_UNAVAILABLE",
+              "DEPLOY_EXPERT_REVIEW_NOT_PERFORMED",
+              "DEPLOY_IMAGE_NOT_BUILT",
+              "DEPLOY_LOCKFILE_ABSENT",
+              "DEPLOY_LOCKFILE_UNVERIFIED",
+              "DEPLOY_MIGRATION_HEAD_MISMATCH",
+              "DEPLOY_MIGRATION_NOT_EXECUTED",
+              "DEPLOY_NO_ELIGIBLE_RELEASE",
+              "DEPLOY_NO_HOLDOUT_EVIDENCE",
+              "DEPLOY_NO_REAL_USERS",
+              "DEPLOY_PACKAGE_INDEX_UNAVAILABLE",
+              "DEPLOY_PERFORMANCE_NOT_EXECUTED",
+              "DEPLOY_RESTORE_NOT_VERIFIED",
+              "DEPLOY_ROLLBACK_NOT_EXERCISED",
+              "DEPLOY_RUNTIME_ASSET_MISSING",
+              "DEPLOY_SAFETY_GATE_BLOCKED",
+              "DEPLOY_SBOM_NOT_GENERATED",
+              "DEPLOY_SMOKE_NOT_EXECUTED",
+              "DEPLOY_STAGING_NOT_DEPLOYED",
+              "DEPLOY_TLS_NOT_OBSERVED",
+              "DEPLOY_VULNERABILITY_SCANNER_UNAVAILABLE"
+            ],
+            "type": "string"
+          },
+          "detail": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "owner": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "code",
+          "detail",
+          "owner",
+          "blocking"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "declared_count": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "drill_count": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "drills": {
+      "type": "array"
+    },
+    "environment_kind": {
+      "enum": [
+        "LOCAL_REHEARSAL",
+        "CONTINUOUS_INTEGRATION",
+        "STAGING",
+        "PRODUCTION"
+      ],
+      "type": "string"
+    },
+    "executed_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "failed_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "observed_at": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "passed_count": {
+      "minimum": 0,
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "rehearsal_label": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "reliability_drill_version": {
+      "const": "pgx-wp24-reliability-drill/1"
+    },
+    "results": {
+      "type": "array"
+    },
+    "state": {
+      "enum": [
+        "CONFIGURED",
+        "EXECUTED",
+        "OBSERVED",
+        "VERIFIED",
+        "BLOCKED",
+        "NOT_EXECUTED",
+        "STALE",
+        "NOT_APPLICABLE",
+        "TEST_ONLY_REHEARSAL"
+      ],
+      "type": "string"
+    }
+  },
+  "required": [
+    "reliability_drill_version",
+    "state"
+  ],
+  "title": "PGx reliability drill result (WP-24)",
+  "type": "object"
+}

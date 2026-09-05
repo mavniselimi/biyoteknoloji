@@ -1,0 +1,21 @@
+{
+  "agreement_distribution": null,
+  "clinical_validation_performed": false,
+  "completed_review_count": 0,
+  "expert_holdout_case_count": 0,
+  "expert_review_performed": false,
+  "free_text_included": false,
+  "free_text_note": "A reviewer's note is never aggregated, summarised or published. No language model reads, rewrites or scores one; a note leaves the review system only as the reviewer typed it, to a human auditor.",
+  "generated_note": "No expert review has been completed. Every summary field is null rather than zero, because a rate over zero reviews is not a low rate - it is no rate. The published schema refuses a document that pairs a zero count with a distribution.",
+  "invalidated_review_count": null,
+  "likert_summaries": null,
+  "not_clinical_validation": "This document reports how many reviews were completed and, currently, that none were. A completed review would be one expert's opinion about one case under one release; it would not be clinical validation, and no number of them published here becomes one.",
+  "protocol_approved": false,
+  "protocol_status": "DRAFT / AWAITING HUMAN AND SCIENTIFIC REVIEW",
+  "protocol_version": "pgx-wp22-expert-protocol/1",
+  "reviewer_count": 0,
+  "reviewer_identities_included": false,
+  "reviewer_identity_note": "No reviewer name, actor string or affiliation appears in this summary, whatever the completed count becomes.",
+  "schema_version": "pgx-wp22-public-review-summary/1",
+  "scientific_validation_performed": false
+}

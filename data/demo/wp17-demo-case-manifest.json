@@ -1,0 +1,31 @@
+{
+  "artifact_kind": "SOURCE_DERIVED_AND_AUTHORED",
+  "artifact_note": "Six cases are derived from the legacy source file named above; one is authored in apps/web/demo_migration.py to demonstrate insufficient coverage. Nothing here is browser-generated, runtime verified, or manually reviewed by a scientific reviewer.",
+  "authored_case_count": 1,
+  "case_count": 7,
+  "case_ids": [
+    "WP17-CASE-INSUFFICIENT",
+    "WP17-CASE-P1",
+    "WP17-CASE-P2",
+    "WP17-CASE-P3",
+    "WP17-CASE-P4",
+    "WP17-CASE-P5",
+    "WP17-CASE-P6"
+  ],
+  "catalog_bytes": 9201,
+  "catalog_file_bytes": 11532,
+  "catalog_file_path": "data/demo/wp17-development-cases.json",
+  "catalog_file_sha256": "sha256:22c8fd170e27e76a31cbfa6e895d51c3a151a9476a4f5fad55559348fde35ff9",
+  "catalog_hash_note": "catalog_sha256 is over a canonical compact serialisation of the catalogue content; catalog_file_sha256 is over the bytes of the committed file and is what sha256sum reports for it.",
+  "catalog_sha256": "sha256:51e86b601f7a664236c4dd9d95883bfe3f72153daeee0dbd55da3a05b769fb84",
+  "manifest_version": "pgx-wp17-demo-manifest/1",
+  "migrated_case_count": 6,
+  "migration_version": "pgx-wp17-demo-migration/1",
+  "schema_version": "pgx-wp17-development-cases/1",
+  "source": {
+    "source_file": "clinpgx_mvp_seed/mvp_demo_profiles.json",
+    "source_file_bytes": 2166,
+    "source_file_sha256": "sha256:6d370e9358ec0096fa6a7af59b88abe2435ce458ed2eaae213922f7f3f9bd1ca"
+  },
+  "validation_status": "NOT_VALIDATION_EVIDENCE"
+}

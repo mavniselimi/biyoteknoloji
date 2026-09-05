@@ -1,0 +1,157 @@
+{
+  "blocker_count": 1,
+  "blockers": [
+    {
+      "blocking": true,
+      "code": "THS6_NO_APPROVED_SOURCE",
+      "detail": "DEMO-02: at least one approved scientific source exists (observed 0)",
+      "gate_id": null,
+      "owner": "scientific source approver"
+    }
+  ],
+  "demo_executed": false,
+  "demo_execution_note": "false, and not a placeholder: no step was executed. The preflight decides whether execution would be honest, and for this repository it is not.",
+  "demo_manifest_version": "pgx-wp25-demo-manifest/1",
+  "environment_conditions": [
+    {
+      "condition_id": "DEMO-ENV-01",
+      "description": "the network is unavailable to the demonstration",
+      "met": true,
+      "note": "reachability of a package index is the strongest network signal this repository records; it is evidence about the environment, not proof that a running demo made no outbound request",
+      "observed": false,
+      "required": false,
+      "source": "data/deployment/wp24-real-gate-status.json.package_index_reachable"
+    },
+    {
+      "condition_id": "DEMO-ENV-02",
+      "description": "the language model is off",
+      "met": true,
+      "note": "read from the module constant rather than asserted; the reporting layer refuses with REPORT_LLM_DISABLED when it is off",
+      "observed": false,
+      "required": false,
+      "source": "pgx/reporting/llm.py:LLM_ENABLED"
+    },
+    {
+      "condition_id": "DEMO-ENV-03",
+      "description": "every P1 feature is off",
+      "markers_checked": [
+        "apps/api/routers/candidates.py",
+        "apps/api/routers/narration.py",
+        "apps/web/routers/candidates.py",
+        "pgx/engine/alternatives.py",
+        "pgx/engine/candidates.py",
+        "pgx/reporting/llm_gateway.py",
+        "pgx/reporting/narration_provider.py"
+      ],
+      "met": true,
+      "note": "checked by looking for the modules that would implement each P1 surface, not by reading a flag: a default-off flag in a build that ships the feature is a flag somebody can turn on",
+      "observed": "NOT_PRESENT",
+      "required": "NOT_PRESENT",
+      "source": "pgx/safety/definitions.py: absence markers of every invariant whose blocker is owned by P1"
+    }
+  ],
+  "exit_code": 2,
+  "force_available": false,
+  "note": "A demonstration that ran past an unmet precondition would demonstrate the fallback path while being presented as the system.",
+  "preflight_state": "BLOCKED",
+  "step_count": 10,
+  "steps": [
+    {
+      "preconditions": [
+        {
+          "description": "the interface templates are present and render here",
+          "met": true,
+          "observed": "True",
+          "source_field": "template_runtime_available",
+          "source_path": "data/web/wp17-real-gate-status.json"
+        },
+        {
+          "description": "the declared templates match the allowlist",
+          "met": true,
+          "observed": "True",
+          "source_field": "templates_match_allowlist",
+          "source_path": "data/web/wp17-real-gate-status.json"
+        }
+      ],
+      "reason": "every precondition holds; the step was not executed because a later one is blocked",
+      "state": "PRECONDITIONS_MET",
+      "step_id": "DEMO-01",
+      "title": "Serve the interface with no network available"
+    },
+    {
+      "preconditions": [
+        {
+          "description": "at least one approved scientific source exists",
+          "met": false,
+          "observed": "0",
+          "source_field": "upstream_state.source_registry_approved",
+          "source_path": "data/rulesets/wp11-real-gate-status.json"
+        }
+      ],
+      "reason": "a precondition is not met",
+      "state": "BLOCKED",
+      "step_id": "DEMO-02",
+      "title": "Choose a case from the governed catalogue"
+    },
+    {
+      "preconditions": [],
+      "reason": "an earlier step's precondition was not met, and the preflight does not evaluate past the first stop",
+      "state": "NOT_ATTEMPTED",
+      "step_id": "DEMO-03",
+      "title": "Resolve the active release version bundle"
+    },
+    {
+      "preconditions": [],
+      "reason": "an earlier step's precondition was not met, and the preflight does not evaluate past the first stop",
+      "state": "NOT_ATTEMPTED",
+      "step_id": "DEMO-04",
+      "title": "Submit a phenotype profile"
+    },
+    {
+      "preconditions": [],
+      "reason": "an earlier step's precondition was not met, and the preflight does not evaluate past the first stop",
+      "state": "NOT_ATTEMPTED",
+      "step_id": "DEMO-05",
+      "title": "Compute coverage and display it as its own axis"
+    },
+    {
+      "preconditions": [],
+      "reason": "an earlier step's precondition was not met, and the preflight does not evaluate past the first stop",
+      "state": "NOT_ATTEMPTED",
+      "step_id": "DEMO-06",
+      "title": "Compute the assessment deterministically"
+    },
+    {
+      "preconditions": [],
+      "reason": "an earlier step's precondition was not met, and the preflight does not evaluate past the first stop",
+      "state": "NOT_ATTEMPTED",
+      "step_id": "DEMO-07",
+      "title": "Render the report with evidence links"
+    },
+    {
+      "preconditions": [],
+      "reason": "an earlier step's precondition was not met, and the preflight does not evaluate past the first stop",
+      "state": "NOT_ATTEMPTED",
+      "step_id": "DEMO-08",
+      "title": "Record the governed audit event"
+    },
+    {
+      "preconditions": [],
+      "reason": "an earlier step's precondition was not met, and the preflight does not evaluate past the first stop",
+      "state": "NOT_ATTEMPTED",
+      "step_id": "DEMO-09",
+      "title": "Show the validation dashboard with release metrics"
+    },
+    {
+      "preconditions": [],
+      "reason": "an earlier step's precondition was not met, and the preflight does not evaluate past the first stop",
+      "state": "NOT_ATTEMPTED",
+      "step_id": "DEMO-10",
+      "title": "Serve the whole run from a deployed staging prototype"
+    }
+  ],
+  "steps_not_attempted": 8,
+  "steps_with_preconditions_met": 1,
+  "stopped_at_step_id": "DEMO-02",
+  "unmet_environment_condition_ids": []
+}

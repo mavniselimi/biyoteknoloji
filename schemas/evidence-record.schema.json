@@ -1,0 +1,255 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pgx-platform.invalid/schemas/evidence-record.schema.json",
+  "title": "PGx evidence record",
+  "description": "One statement a source made, as this project stored it (WP-08). An evidence record holds the source's own words and the provenance needed to find them again. It holds no project conclusion: no risk level, no plain-language summary, no effect direction, no recommendation of this project's own. The source's untouched payload lives under raw_source_payload and nowhere else; a field the source itself named 'recommendation' is the source's, not a claim made here.",
+  "type": "object",
+  "required": [
+    "evidence_record_version",
+    "natural_key",
+    "record_type_mapping",
+    "attribution",
+    "version",
+    "source_record_id_raw_type",
+    "source_payload_hash",
+    "canonical_build_key",
+    "canonical_build_content_hash",
+    "locators",
+    "content_hash",
+    "production_eligible",
+    "raw_source_payload"
+  ],
+  "properties": {
+    "evidence_record_version": {"const": "pgx-evidence-record/1"},
+    "record_uuid": {
+      "type": ["string", "null"],
+      "description": "Allocated, never derived from the content. A content-derived identity would make a corrected record a different record and would let an importer mint silently."
+    },
+    "natural_key": {
+      "type": "object",
+      "required": ["natural_key", "dataset_public_id", "provider_source_key",
+                   "record_type", "source_record_id", "version_part"],
+      "properties": {
+        "natural_key": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Five parts joined by '|'. Namespaced by dataset and provider, so one source's identifier cannot collide with another's."
+        },
+        "dataset_public_id": {"type": "string", "pattern": "^PGX-DATA-[0-9]{8}-[0-9]{3}$"},
+        "provider_source_key": {"type": "string", "minLength": 1},
+        "record_type": {
+          "enum": ["GUIDELINE_ANNOTATION", "VARIANT_ANNOTATION",
+                   "DRUG_LABEL_ANNOTATION", "CLINICAL_ANNOTATION",
+                   "PUBLICATION_REFERENCE", "OTHER_SOURCE_RECORD", "UNKNOWN"]
+        },
+        "source_record_id": {"type": "string", "minLength": 1},
+        "version_part": {"type": "string", "minLength": 1}
+      }
+    },
+    "record_type_mapping": {
+      "type": "object",
+      "required": ["record_type", "status"],
+      "properties": {
+        "record_type": {"type": "string", "minLength": 1},
+        "status": {
+          "enum": ["CONFIRMED", "PENDING_REVIEW", "UNMAPPED"],
+          "description": "PENDING_REVIEW means the evidence for the mapping is strong but not proof. Such records are quarantined from production evidence rather than assumed."
+        },
+        "source_object_class": {
+          "type": ["string", "null"],
+          "description": "What the source called this record. The record type is read from here, not from the container it was requested under: one container returns several kinds of record."
+        },
+        "requested_container": {
+          "type": ["string", "null"],
+          "description": "The request parameter the record arrived under. Kept beside the object class rather than normalised into it."
+        },
+        "note": {"type": ["string", "null"]}
+      }
+    },
+    "attribution": {
+      "type": "object",
+      "required": ["provider_source_key", "origin_status"],
+      "properties": {
+        "provider_source_key": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Where the bytes were retrieved from. Always known, because it is how they arrived."
+        },
+        "origin_status": {
+          "enum": ["STATED_BY_SOURCE", "NOT_STATED_BY_SOURCE", "AMBIGUOUS", "UNREGISTERED"],
+          "description": "Whether the record itself names the body that asserted it. A record that merely looks pharmacogenomic is NOT_STATED_BY_SOURCE, never assumed to be CPIC."
+        },
+        "origin_source_key": {
+          "type": ["string", "null"],
+          "description": "Present exactly when origin_status is STATED_BY_SOURCE, and absent otherwise. A key beside any other status would be a guess wearing the shape of a fact."
+        },
+        "raw_origin_value": {
+          "type": ["string", "null"],
+          "description": "What the source actually wrote, kept even when it resolves to no registered source."
+        }
+      }
+    },
+    "version": {
+      "type": "object",
+      "required": ["status"],
+      "properties": {
+        "status": {
+          "enum": ["KNOWN", "SOURCE_UNVERSIONED", "UNKNOWN_LEGACY", "MISSING", "INVALID"],
+          "description": "SOURCE_UNVERSIONED means the source publishes no versions. UNKNOWN_LEGACY means a version existed and this import cannot recover it. They are different facts and are not merged."
+        },
+        "value": {
+          "type": ["string", "null"],
+          "description": "Present only when status is KNOWN. Any other status carrying a value would be a fabricated version such as 'v1'."
+        },
+        "basis": {"type": "string"}
+      }
+    },
+    "source_record_id_raw_type": {
+      "enum": ["str", "int", "bool", "float", "null", "NoneType"],
+      "description": "How the source spelled its own identifier. An integer identity is an identity; reporting it as anonymous because a column is a string would be a false statement about the source."
+    },
+    "source_payload_hash": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "content_hash": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "description": "Digest of this project's rendering of the record. Excludes the allocated UUID, so two projects that allocated different identities still agree on what the record says."
+    },
+    "canonical_build_key": {"type": "string", "minLength": 1},
+    "canonical_build_content_hash": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "production_eligible": {
+      "type": "boolean",
+      "description": "Whether this record alone is complete. A build-level quarantine overrides it; a true here is not permission to publish."
+    },
+    "blocking_issue_count": {"type": "integer", "minimum": 0},
+    "locators": {
+      "type": "array",
+      "minItems": 1,
+      "description": "Every place this record was found, including all of a duplicate group's. A record with no locator cannot be traced and is not storable.",
+      "items": {
+        "type": "object",
+        "required": ["dataset_public_id", "snapshot_manifest_hash",
+                     "artifact_path", "artifact_sha256"],
+        "properties": {
+          "dataset_public_id": {"type": "string", "minLength": 1},
+          "snapshot_manifest_hash": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+          "artifact_path": {
+            "type": "string",
+            "pattern": "^(?!/)(?![A-Za-z]:)",
+            "description": "Relative to the snapshot root. An absolute path is a claim about one machine's filesystem and stops being true elsewhere."
+          },
+          "artifact_sha256": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+          "pointer": {"type": ["string", "null"]},
+          "csv_row_number": {"type": ["integer", "null"], "minimum": 1},
+          "requested_container": {"type": ["string", "null"]}
+        }
+      }
+    },
+    "entity_links": {
+      "type": "array",
+      "description": "One link per canonical entity this record names. A record naming three genes produces three links, not three copies of the record.",
+      "items": {
+        "type": "object",
+        "required": ["entity_type", "canonical_key", "entity_uuid", "role"],
+        "properties": {
+          "entity_type": {"enum": ["GENE", "DRUG"]},
+          "canonical_key": {"type": "string", "minLength": 1},
+          "entity_uuid": {"type": "string", "minLength": 1},
+          "role": {
+            "enum": ["RELATED_ENTITY", "QUERY_CONTEXT", "MENTIONED_IN_TEXT"],
+            "description": "A gene the source listed and a gene that appears only because the record was fetched under that gene's query are different facts."
+          },
+          "source_field": {"type": ["string", "null"]},
+          "raw_value": {"type": ["string", "null"]}
+        }
+      }
+    },
+    "text_fragments": {
+      "type": "array",
+      "description": "Source wording, per field, exactly as written. Never rewritten, translated, summarised or grammatically repaired.",
+      "items": {
+        "type": "object",
+        "required": ["field_name", "text", "ordinal", "text_hash", "exact_text_hash"],
+        "properties": {
+          "field_name": {"type": "string", "minLength": 1},
+          "text": {"type": "string", "minLength": 1},
+          "ordinal": {"type": "integer", "minimum": 0},
+          "text_format": {"type": "string"},
+          "language": {"enum": ["STATED_BY_SOURCE", "UNKNOWN"]},
+          "language_value": {"type": ["string", "null"]},
+          "text_hash": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+          "exact_text_hash": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"}
+        }
+      }
+    },
+    "publications": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["ordinal"],
+        "properties": {
+          "ordinal": {"type": "integer", "minimum": 0},
+          "pmid": {"type": ["string", "null"], "pattern": "^[0-9]{1,9}$"},
+          "doi": {"type": ["string", "null"]},
+          "title": {"type": ["string", "null"]},
+          "year": {"type": ["integer", "null"]},
+          "url": {"type": ["string", "null"]},
+          "identity": {
+            "type": ["string", "null"],
+            "pattern": "^(pmid:[0-9]{1,9}|doi:.+)$",
+            "description": "A PMID or a DOI, or nothing. Never derived from a title: two records printing one title have not been shown to cite one article."
+          },
+          "source_field": {"type": ["string", "null"]},
+          "raw_value": {},
+          "issues": {"type": "array", "items": {"type": "string"}}
+        }
+      }
+    },
+    "normalized_metadata": {
+      "type": "object",
+      "description": "This project's structural notes about the record - which payload relation held, which container it arrived under. Never a scientific conclusion: the prohibited-field list is enforced in code at construction, over this object recursively and over nothing else.",
+      "not": {
+        "anyOf": [
+          {"required": ["risk"]},
+          {"required": ["risk_level"]},
+          {"required": ["risk_meaning"]},
+          {"required": ["demo_risk_level"]},
+          {"required": ["attention_level"]},
+          {"required": ["plain_language"]},
+          {"required": ["plain_language_mvp"]},
+          {"required": ["evidence_strength"]},
+          {"required": ["usable_for_mvp"]},
+          {"required": ["drug_behavior_hint"]},
+          {"required": ["effect_direction"]},
+          {"required": ["normalized_effect"]},
+          {"required": ["normalized_phenotype"]},
+          {"required": ["normalized_phenotype_group"]},
+          {"required": ["candidate_score"]},
+          {"required": ["candidate_preference"]},
+          {"required": ["treatment_selection"]},
+          {"required": ["matcher_condition"]},
+          {"required": ["raw_source_payload"]}
+        ]
+      }
+    },
+    "issues": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["code", "severity", "subject", "detail"],
+        "properties": {
+          "code": {"type": "string", "pattern": "^[A-Z][A-Z0-9_]*$"},
+          "severity": {"enum": ["BLOCKING", "ADVISORY", "INFORMATIONAL"]},
+          "subject": {"type": "string"},
+          "detail": {"type": "string", "minLength": 1},
+          "natural_key": {"type": ["string", "null"]},
+          "locator": {}
+        }
+      }
+    },
+    "source_record_id_raw": {},
+    "raw_source_payload": {
+      "description": "The source's own record, stored unchanged. Field names here are the source's. No prohibited-field scan runs over this object: a source-owned field called 'recommendation' is not a project recommendation, and deleting it would make every citation of this record false."
+    },
+    "payload_namespace_note": {"type": "string"}
+  }
+}

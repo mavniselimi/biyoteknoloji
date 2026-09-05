@@ -1,0 +1,2330 @@
+{
+  "constructed_broad_group_case": {
+    "case": "constructed",
+    "expected_difference_id": "LEGACY-BROAD-DECREASED-FUNCTION-GROUPING",
+    "legacy_matches_intermediate_rule": true,
+    "legacy_matches_poor_rule": true,
+    "legacy_normalized": "decreased_function",
+    "raw_value": "decreased_function",
+    "v2_phenotype": null,
+    "v2_reason_code": "PHENOTYPE_INPUT_BROAD_GROUP_NOT_ALLOWED",
+    "v2_status": "UNSUPPORTED"
+  },
+  "constructed_cross_match_cases": [
+    {
+      "case": "constructed",
+      "declared": [
+        "ULTRARAPID"
+      ],
+      "differs": true,
+      "expected_difference_id": "LEGACY-BUG-001-RAPID-TO-ULTRARAPID",
+      "legacy_matched": true,
+      "observed": "RAPID",
+      "operator": "EXACT",
+      "v2_matched": false,
+      "v2_status": "NO_MATCH"
+    },
+    {
+      "case": "constructed",
+      "declared": [
+        "RAPID"
+      ],
+      "differs": true,
+      "expected_difference_id": "LEGACY-BUG-001-ULTRARAPID-TO-RAPID",
+      "legacy_matched": true,
+      "observed": "ULTRARAPID",
+      "operator": "EXACT",
+      "v2_matched": false,
+      "v2_status": "NO_MATCH"
+    },
+    {
+      "case": "constructed",
+      "declared": [
+        "RAPID",
+        "ULTRARAPID"
+      ],
+      "differs": false,
+      "expected_difference_id": null,
+      "legacy_matched": true,
+      "observed": "RAPID",
+      "operator": "ONE_OF",
+      "v2_matched": true,
+      "v2_status": "MATCH"
+    }
+  ],
+  "content_hash": "sha256:a648654036abc67a119b591370ba079fe237e63c61a8ec675d7f56629534f99b",
+  "expected_difference_hits": {
+    "LEGACY-BROAD-DECREASED-FUNCTION-GROUPING": 1,
+    "LEGACY-BUG-001-RAPID-TO-ULTRARAPID": 1,
+    "LEGACY-BUG-001-ULTRARAPID-TO-RAPID": 2,
+    "LEGACY-NORMAL-PHENOTYPE-SUPPRESSED": 23
+  },
+  "expected_differences": [
+    {
+      "comparison_selector": {
+        "declared": [
+          "ULTRARAPID"
+        ],
+        "observed": "RAPID",
+        "operator": "EXACT"
+      },
+      "difference_id": "LEGACY-BUG-001-RAPID-TO-ULTRARAPID",
+      "expected_status": "NO_MATCH",
+      "legacy_bug_id": "LEGACY-BUG-001",
+      "observed_legacy_behavior": "a RAPID profile value satisfies a rule group written for ULTRARAPID, because PROFILE_MATCH_GROUPS['rapid'] contains 'ultrarapid'",
+      "reference": "SAFETY-INV-004; architecture.md 9.1",
+      "required_v2_behavior": "NO_MATCH. A rule covering both phenotypes must declare both in a ONE_OF set",
+      "safety_rationale": "implicit equivalence applies a rule outside the evidence it was written from, which is an unreviewed scientific claim"
+    },
+    {
+      "comparison_selector": {
+        "declared": [
+          "RAPID"
+        ],
+        "observed": "ULTRARAPID",
+        "operator": "EXACT"
+      },
+      "difference_id": "LEGACY-BUG-001-ULTRARAPID-TO-RAPID",
+      "expected_status": "NO_MATCH",
+      "legacy_bug_id": "LEGACY-BUG-001",
+      "observed_legacy_behavior": "an ULTRARAPID profile value satisfies a rule group written for RAPID, because PROFILE_MATCH_GROUPS['ultrarapid'] contains 'rapid'",
+      "reference": "SAFETY-INV-004; architecture.md 9.1",
+      "required_v2_behavior": "NO_MATCH. The reverse direction is a separate entry because the legacy table states it separately, and a fix that closed only one direction would satisfy a single-entry allowlist",
+      "safety_rationale": "same defect, opposite direction; both must be closed or a rule still fires for a phenotype nobody reviewed it against"
+    },
+    {
+      "comparison_selector": {
+        "declared": [
+          "NORMAL"
+        ],
+        "observed": "NORMAL",
+        "operator": "EXACT"
+      },
+      "difference_id": "LEGACY-NORMAL-PHENOTYPE-SUPPRESSED",
+      "expected_status": "MATCH",
+      "legacy_bug_id": "LEGACY-BUG-001",
+      "observed_legacy_behavior": "PROFILE_MATCH_GROUPS['normal'] is the empty set, so a NORMAL profile value satisfies no rule at all - including a rule written for NORMAL",
+      "reference": "SAFETY-INV-001; architecture.md 9.1, 9.3",
+      "required_v2_behavior": "MATCH. NORMAL equals NORMAL; whether a matched rule warrants any attention is carried by the rule's own outcome, which may be NO_ACTIVE_ATTENTION, and is decided downstream",
+      "safety_rationale": "the legacy table answers 'should this raise a flag?' inside a function that is asked 'is this the same phenotype?'. Suppressing the match makes an evaluated rule indistinguishable from an axis no rule covered, which is the false-reassurance failure SAFETY-INV-001 exists to prevent. V2 separates the two: equality here, attention in WP-14"
+    },
+    {
+      "comparison_selector": {
+        "expected_normalization_status": "UNSUPPORTED",
+        "observed_raw": "decreased_function"
+      },
+      "difference_id": "LEGACY-BROAD-DECREASED-FUNCTION-GROUPING",
+      "expected_status": "UNSUPPORTED",
+      "legacy_bug_id": "LEGACY-BUG-001",
+      "observed_legacy_behavior": "POOR and INTERMEDIATE both satisfy a rule group written for the invented group 'decreased_function', and a supplied value containing 'decreased' becomes that group",
+      "reference": "architecture.md 9.1; SAFETY-INV-004",
+      "required_v2_behavior": "'decreased_function' is not a phenotype and is not a rule vocabulary member: as an input it is UNSUPPORTED, and no condition can declare it",
+      "safety_rationale": "the P0 phenotype model has six members and this is not one of them; expanding a broad functional group into POOR or INTERMEDIATE invents a mapping no curator made"
+    }
+  ],
+  "expected_differences_not_observed": [],
+  "input_contract_version": "pgx-phenotype-input/1",
+  "note": "This report compares phenotype normalisation and matcher semantics only. It compares no clinical output, because no approved ruleset exists to produce one. A difference listed here is a difference in how a value is read or compared, never a statement about any medicine.",
+  "profile_count": 6,
+  "profiles": [
+    {
+      "gene_count": 5,
+      "genes": [
+        {
+          "gene_id": "GENE:CYP1A2",
+          "legacy_normalized": "normal",
+          "match_rows": [
+            {
+              "declared": [
+                "POOR"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "INTERMEDIATE"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "NORMAL"
+              ],
+              "differs": true,
+              "expected_difference_id": "LEGACY-NORMAL-PHENOTYPE-SUPPRESSED",
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": true,
+              "v2_status": "MATCH"
+            },
+            {
+              "declared": [
+                "RAPID"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "ULTRARAPID"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "RAPID",
+                "ULTRARAPID"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "ONE_OF",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            }
+          ],
+          "raw_value": "normal",
+          "v2_phenotype": "NORMAL",
+          "v2_reason_code": null,
+          "v2_status": "NORMALIZED"
+        },
+        {
+          "gene_id": "GENE:CYP2C19",
+          "legacy_normalized": "normal",
+          "match_rows": [
+            {
+              "declared": [
+                "POOR"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "INTERMEDIATE"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "NORMAL"
+              ],
+              "differs": true,
+              "expected_difference_id": "LEGACY-NORMAL-PHENOTYPE-SUPPRESSED",
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": true,
+              "v2_status": "MATCH"
+            },
+            {
+              "declared": [
+                "RAPID"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "ULTRARAPID"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "RAPID",
+                "ULTRARAPID"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "ONE_OF",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            }
+          ],
+          "raw_value": "normal",
+          "v2_phenotype": "NORMAL",
+          "v2_reason_code": null,
+          "v2_status": "NORMALIZED"
+        },
+        {
+          "gene_id": "GENE:CYP2C9",
+          "legacy_normalized": "normal",
+          "match_rows": [
+            {
+              "declared": [
+                "POOR"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "INTERMEDIATE"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "NORMAL"
+              ],
+              "differs": true,
+              "expected_difference_id": "LEGACY-NORMAL-PHENOTYPE-SUPPRESSED",
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": true,
+              "v2_status": "MATCH"
+            },
+            {
+              "declared": [
+                "RAPID"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "ULTRARAPID"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "RAPID",
+                "ULTRARAPID"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "ONE_OF",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            }
+          ],
+          "raw_value": "normal",
+          "v2_phenotype": "NORMAL",
+          "v2_reason_code": null,
+          "v2_status": "NORMALIZED"
+        },
+        {
+          "gene_id": "GENE:CYP2D6",
+          "legacy_normalized": "normal",
+          "match_rows": [
+            {
+              "declared": [
+                "POOR"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "INTERMEDIATE"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "NORMAL"
+              ],
+              "differs": true,
+              "expected_difference_id": "LEGACY-NORMAL-PHENOTYPE-SUPPRESSED",
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": true,
+              "v2_status": "MATCH"
+            },
+            {
+              "declared": [
+                "RAPID"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "ULTRARAPID"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "RAPID",
+                "ULTRARAPID"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "ONE_OF",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            }
+          ],
+          "raw_value": "normal",
+          "v2_phenotype": "NORMAL",
+          "v2_reason_code": null,
+          "v2_status": "NORMALIZED"
+        },
+        {
+          "gene_id": "GENE:CYP3A4",
+          "legacy_normalized": "normal",
+          "match_rows": [
+            {
+              "declared": [
+                "POOR"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "INTERMEDIATE"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "NORMAL"
+              ],
+              "differs": true,
+              "expected_difference_id": "LEGACY-NORMAL-PHENOTYPE-SUPPRESSED",
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": true,
+              "v2_status": "MATCH"
+            },
+            {
+              "declared": [
+                "RAPID"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "ULTRARAPID"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "RAPID",
+                "ULTRARAPID"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "ONE_OF",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            }
+          ],
+          "raw_value": "normal",
+          "v2_phenotype": "NORMAL",
+          "v2_reason_code": null,
+          "v2_status": "NORMALIZED"
+        }
+      ],
+      "profile_content_hash": "sha256:356d9f3ad33eea43abfabdb5b99466bcc1d90c34419181aedec4af320d849684",
+      "profile_id": "P1_normal"
+    },
+    {
+      "gene_count": 5,
+      "genes": [
+        {
+          "gene_id": "GENE:CYP1A2",
+          "legacy_normalized": "normal",
+          "match_rows": [
+            {
+              "declared": [
+                "POOR"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "INTERMEDIATE"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "NORMAL"
+              ],
+              "differs": true,
+              "expected_difference_id": "LEGACY-NORMAL-PHENOTYPE-SUPPRESSED",
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": true,
+              "v2_status": "MATCH"
+            },
+            {
+              "declared": [
+                "RAPID"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "ULTRARAPID"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "RAPID",
+                "ULTRARAPID"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "ONE_OF",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            }
+          ],
+          "raw_value": "normal",
+          "v2_phenotype": "NORMAL",
+          "v2_reason_code": null,
+          "v2_status": "NORMALIZED"
+        },
+        {
+          "gene_id": "GENE:CYP2C19",
+          "legacy_normalized": "poor",
+          "match_rows": [
+            {
+              "declared": [
+                "POOR"
+              ],
+              "differs": false,
+              "legacy_matched": true,
+              "operator": "EXACT",
+              "v2_matched": true,
+              "v2_status": "MATCH"
+            },
+            {
+              "declared": [
+                "INTERMEDIATE"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "NORMAL"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "RAPID"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "ULTRARAPID"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "RAPID",
+                "ULTRARAPID"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "ONE_OF",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            }
+          ],
+          "raw_value": "poor",
+          "v2_phenotype": "POOR",
+          "v2_reason_code": null,
+          "v2_status": "NORMALIZED"
+        },
+        {
+          "gene_id": "GENE:CYP2C9",
+          "legacy_normalized": "normal",
+          "match_rows": [
+            {
+              "declared": [
+                "POOR"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "INTERMEDIATE"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "NORMAL"
+              ],
+              "differs": true,
+              "expected_difference_id": "LEGACY-NORMAL-PHENOTYPE-SUPPRESSED",
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": true,
+              "v2_status": "MATCH"
+            },
+            {
+              "declared": [
+                "RAPID"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "ULTRARAPID"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "RAPID",
+                "ULTRARAPID"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "ONE_OF",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            }
+          ],
+          "raw_value": "normal",
+          "v2_phenotype": "NORMAL",
+          "v2_reason_code": null,
+          "v2_status": "NORMALIZED"
+        },
+        {
+          "gene_id": "GENE:CYP2D6",
+          "legacy_normalized": "normal",
+          "match_rows": [
+            {
+              "declared": [
+                "POOR"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "INTERMEDIATE"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "NORMAL"
+              ],
+              "differs": true,
+              "expected_difference_id": "LEGACY-NORMAL-PHENOTYPE-SUPPRESSED",
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": true,
+              "v2_status": "MATCH"
+            },
+            {
+              "declared": [
+                "RAPID"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "ULTRARAPID"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "RAPID",
+                "ULTRARAPID"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "ONE_OF",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            }
+          ],
+          "raw_value": "normal",
+          "v2_phenotype": "NORMAL",
+          "v2_reason_code": null,
+          "v2_status": "NORMALIZED"
+        },
+        {
+          "gene_id": "GENE:CYP3A4",
+          "legacy_normalized": "normal",
+          "match_rows": [
+            {
+              "declared": [
+                "POOR"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "INTERMEDIATE"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "NORMAL"
+              ],
+              "differs": true,
+              "expected_difference_id": "LEGACY-NORMAL-PHENOTYPE-SUPPRESSED",
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": true,
+              "v2_status": "MATCH"
+            },
+            {
+              "declared": [
+                "RAPID"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "ULTRARAPID"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "RAPID",
+                "ULTRARAPID"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "ONE_OF",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            }
+          ],
+          "raw_value": "normal",
+          "v2_phenotype": "NORMAL",
+          "v2_reason_code": null,
+          "v2_status": "NORMALIZED"
+        }
+      ],
+      "profile_content_hash": "sha256:1a6835239dd620583c33ba36598ce8ed0e432ea0d2a64681cb9372adab20f563",
+      "profile_id": "P2_cyp2c19_poor"
+    },
+    {
+      "gene_count": 5,
+      "genes": [
+        {
+          "gene_id": "GENE:CYP1A2",
+          "legacy_normalized": "normal",
+          "match_rows": [
+            {
+              "declared": [
+                "POOR"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "INTERMEDIATE"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "NORMAL"
+              ],
+              "differs": true,
+              "expected_difference_id": "LEGACY-NORMAL-PHENOTYPE-SUPPRESSED",
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": true,
+              "v2_status": "MATCH"
+            },
+            {
+              "declared": [
+                "RAPID"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "ULTRARAPID"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "RAPID",
+                "ULTRARAPID"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "ONE_OF",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            }
+          ],
+          "raw_value": "normal",
+          "v2_phenotype": "NORMAL",
+          "v2_reason_code": null,
+          "v2_status": "NORMALIZED"
+        },
+        {
+          "gene_id": "GENE:CYP2C19",
+          "legacy_normalized": "normal",
+          "match_rows": [
+            {
+              "declared": [
+                "POOR"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "INTERMEDIATE"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "NORMAL"
+              ],
+              "differs": true,
+              "expected_difference_id": "LEGACY-NORMAL-PHENOTYPE-SUPPRESSED",
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": true,
+              "v2_status": "MATCH"
+            },
+            {
+              "declared": [
+                "RAPID"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "ULTRARAPID"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "RAPID",
+                "ULTRARAPID"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "ONE_OF",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            }
+          ],
+          "raw_value": "normal",
+          "v2_phenotype": "NORMAL",
+          "v2_reason_code": null,
+          "v2_status": "NORMALIZED"
+        },
+        {
+          "gene_id": "GENE:CYP2C9",
+          "legacy_normalized": "normal",
+          "match_rows": [
+            {
+              "declared": [
+                "POOR"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "INTERMEDIATE"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "NORMAL"
+              ],
+              "differs": true,
+              "expected_difference_id": "LEGACY-NORMAL-PHENOTYPE-SUPPRESSED",
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": true,
+              "v2_status": "MATCH"
+            },
+            {
+              "declared": [
+                "RAPID"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "ULTRARAPID"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "RAPID",
+                "ULTRARAPID"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "ONE_OF",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            }
+          ],
+          "raw_value": "normal",
+          "v2_phenotype": "NORMAL",
+          "v2_reason_code": null,
+          "v2_status": "NORMALIZED"
+        },
+        {
+          "gene_id": "GENE:CYP2D6",
+          "legacy_normalized": "poor",
+          "match_rows": [
+            {
+              "declared": [
+                "POOR"
+              ],
+              "differs": false,
+              "legacy_matched": true,
+              "operator": "EXACT",
+              "v2_matched": true,
+              "v2_status": "MATCH"
+            },
+            {
+              "declared": [
+                "INTERMEDIATE"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "NORMAL"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "RAPID"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "ULTRARAPID"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "RAPID",
+                "ULTRARAPID"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "ONE_OF",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            }
+          ],
+          "raw_value": "poor",
+          "v2_phenotype": "POOR",
+          "v2_reason_code": null,
+          "v2_status": "NORMALIZED"
+        },
+        {
+          "gene_id": "GENE:CYP3A4",
+          "legacy_normalized": "normal",
+          "match_rows": [
+            {
+              "declared": [
+                "POOR"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "INTERMEDIATE"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "NORMAL"
+              ],
+              "differs": true,
+              "expected_difference_id": "LEGACY-NORMAL-PHENOTYPE-SUPPRESSED",
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": true,
+              "v2_status": "MATCH"
+            },
+            {
+              "declared": [
+                "RAPID"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "ULTRARAPID"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "RAPID",
+                "ULTRARAPID"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "ONE_OF",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            }
+          ],
+          "raw_value": "normal",
+          "v2_phenotype": "NORMAL",
+          "v2_reason_code": null,
+          "v2_status": "NORMALIZED"
+        }
+      ],
+      "profile_content_hash": "sha256:b17fc1b1bf80f3841f72e24593db3fa3fb4bfa65dba99b5ee1642b71ea837ab2",
+      "profile_id": "P3_cyp2d6_poor"
+    },
+    {
+      "gene_count": 5,
+      "genes": [
+        {
+          "gene_id": "GENE:CYP1A2",
+          "legacy_normalized": "normal",
+          "match_rows": [
+            {
+              "declared": [
+                "POOR"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "INTERMEDIATE"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "NORMAL"
+              ],
+              "differs": true,
+              "expected_difference_id": "LEGACY-NORMAL-PHENOTYPE-SUPPRESSED",
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": true,
+              "v2_status": "MATCH"
+            },
+            {
+              "declared": [
+                "RAPID"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "ULTRARAPID"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "RAPID",
+                "ULTRARAPID"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "ONE_OF",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            }
+          ],
+          "raw_value": "normal",
+          "v2_phenotype": "NORMAL",
+          "v2_reason_code": null,
+          "v2_status": "NORMALIZED"
+        },
+        {
+          "gene_id": "GENE:CYP2C19",
+          "legacy_normalized": "normal",
+          "match_rows": [
+            {
+              "declared": [
+                "POOR"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "INTERMEDIATE"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "NORMAL"
+              ],
+              "differs": true,
+              "expected_difference_id": "LEGACY-NORMAL-PHENOTYPE-SUPPRESSED",
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": true,
+              "v2_status": "MATCH"
+            },
+            {
+              "declared": [
+                "RAPID"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "ULTRARAPID"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "RAPID",
+                "ULTRARAPID"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "ONE_OF",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            }
+          ],
+          "raw_value": "normal",
+          "v2_phenotype": "NORMAL",
+          "v2_reason_code": null,
+          "v2_status": "NORMALIZED"
+        },
+        {
+          "gene_id": "GENE:CYP2C9",
+          "legacy_normalized": "normal",
+          "match_rows": [
+            {
+              "declared": [
+                "POOR"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "INTERMEDIATE"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "NORMAL"
+              ],
+              "differs": true,
+              "expected_difference_id": "LEGACY-NORMAL-PHENOTYPE-SUPPRESSED",
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": true,
+              "v2_status": "MATCH"
+            },
+            {
+              "declared": [
+                "RAPID"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "ULTRARAPID"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "RAPID",
+                "ULTRARAPID"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "ONE_OF",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            }
+          ],
+          "raw_value": "normal",
+          "v2_phenotype": "NORMAL",
+          "v2_reason_code": null,
+          "v2_status": "NORMALIZED"
+        },
+        {
+          "gene_id": "GENE:CYP2D6",
+          "legacy_normalized": "ultrarapid",
+          "match_rows": [
+            {
+              "declared": [
+                "POOR"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "INTERMEDIATE"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "NORMAL"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "RAPID"
+              ],
+              "differs": true,
+              "expected_difference_id": "LEGACY-BUG-001-ULTRARAPID-TO-RAPID",
+              "legacy_matched": true,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "ULTRARAPID"
+              ],
+              "differs": false,
+              "legacy_matched": true,
+              "operator": "EXACT",
+              "v2_matched": true,
+              "v2_status": "MATCH"
+            },
+            {
+              "declared": [
+                "RAPID",
+                "ULTRARAPID"
+              ],
+              "differs": false,
+              "legacy_matched": true,
+              "operator": "ONE_OF",
+              "v2_matched": true,
+              "v2_status": "MATCH"
+            }
+          ],
+          "raw_value": "ultrarapid",
+          "v2_phenotype": "ULTRARAPID",
+          "v2_reason_code": null,
+          "v2_status": "NORMALIZED"
+        },
+        {
+          "gene_id": "GENE:CYP3A4",
+          "legacy_normalized": "normal",
+          "match_rows": [
+            {
+              "declared": [
+                "POOR"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "INTERMEDIATE"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "NORMAL"
+              ],
+              "differs": true,
+              "expected_difference_id": "LEGACY-NORMAL-PHENOTYPE-SUPPRESSED",
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": true,
+              "v2_status": "MATCH"
+            },
+            {
+              "declared": [
+                "RAPID"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "ULTRARAPID"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "RAPID",
+                "ULTRARAPID"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "ONE_OF",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            }
+          ],
+          "raw_value": "normal",
+          "v2_phenotype": "NORMAL",
+          "v2_reason_code": null,
+          "v2_status": "NORMALIZED"
+        }
+      ],
+      "profile_content_hash": "sha256:5fd8b373b0124a3516aba5e59a76d92c38f0fa335e4302ed6d41f49c320ba1ec",
+      "profile_id": "P4_cyp2d6_ultrarapid"
+    },
+    {
+      "gene_count": 5,
+      "genes": [
+        {
+          "gene_id": "GENE:CYP1A2",
+          "legacy_normalized": "normal",
+          "match_rows": [
+            {
+              "declared": [
+                "POOR"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "INTERMEDIATE"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "NORMAL"
+              ],
+              "differs": true,
+              "expected_difference_id": "LEGACY-NORMAL-PHENOTYPE-SUPPRESSED",
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": true,
+              "v2_status": "MATCH"
+            },
+            {
+              "declared": [
+                "RAPID"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "ULTRARAPID"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "RAPID",
+                "ULTRARAPID"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "ONE_OF",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            }
+          ],
+          "raw_value": "normal",
+          "v2_phenotype": "NORMAL",
+          "v2_reason_code": null,
+          "v2_status": "NORMALIZED"
+        },
+        {
+          "gene_id": "GENE:CYP2C19",
+          "legacy_normalized": "normal",
+          "match_rows": [
+            {
+              "declared": [
+                "POOR"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "INTERMEDIATE"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "NORMAL"
+              ],
+              "differs": true,
+              "expected_difference_id": "LEGACY-NORMAL-PHENOTYPE-SUPPRESSED",
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": true,
+              "v2_status": "MATCH"
+            },
+            {
+              "declared": [
+                "RAPID"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "ULTRARAPID"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "RAPID",
+                "ULTRARAPID"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "ONE_OF",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            }
+          ],
+          "raw_value": "normal",
+          "v2_phenotype": "NORMAL",
+          "v2_reason_code": null,
+          "v2_status": "NORMALIZED"
+        },
+        {
+          "gene_id": "GENE:CYP2C9",
+          "legacy_normalized": "intermediate",
+          "match_rows": [
+            {
+              "declared": [
+                "POOR"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "INTERMEDIATE"
+              ],
+              "differs": false,
+              "legacy_matched": true,
+              "operator": "EXACT",
+              "v2_matched": true,
+              "v2_status": "MATCH"
+            },
+            {
+              "declared": [
+                "NORMAL"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "RAPID"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "ULTRARAPID"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "RAPID",
+                "ULTRARAPID"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "ONE_OF",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            }
+          ],
+          "raw_value": "intermediate",
+          "v2_phenotype": "INTERMEDIATE",
+          "v2_reason_code": null,
+          "v2_status": "NORMALIZED"
+        },
+        {
+          "gene_id": "GENE:CYP2D6",
+          "legacy_normalized": "normal",
+          "match_rows": [
+            {
+              "declared": [
+                "POOR"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "INTERMEDIATE"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "NORMAL"
+              ],
+              "differs": true,
+              "expected_difference_id": "LEGACY-NORMAL-PHENOTYPE-SUPPRESSED",
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": true,
+              "v2_status": "MATCH"
+            },
+            {
+              "declared": [
+                "RAPID"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "ULTRARAPID"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "RAPID",
+                "ULTRARAPID"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "ONE_OF",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            }
+          ],
+          "raw_value": "normal",
+          "v2_phenotype": "NORMAL",
+          "v2_reason_code": null,
+          "v2_status": "NORMALIZED"
+        },
+        {
+          "gene_id": "GENE:CYP3A4",
+          "legacy_normalized": "normal",
+          "match_rows": [
+            {
+              "declared": [
+                "POOR"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "INTERMEDIATE"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "NORMAL"
+              ],
+              "differs": true,
+              "expected_difference_id": "LEGACY-NORMAL-PHENOTYPE-SUPPRESSED",
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": true,
+              "v2_status": "MATCH"
+            },
+            {
+              "declared": [
+                "RAPID"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "ULTRARAPID"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "RAPID",
+                "ULTRARAPID"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "ONE_OF",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            }
+          ],
+          "raw_value": "normal",
+          "v2_phenotype": "NORMAL",
+          "v2_reason_code": null,
+          "v2_status": "NORMALIZED"
+        }
+      ],
+      "profile_content_hash": "sha256:25e11781717befeb394c9769dcbc016922de7e072b153ece7c51314c40c338b8",
+      "profile_id": "P5_cyp2c9_decreased"
+    },
+    {
+      "gene_count": 5,
+      "genes": [
+        {
+          "gene_id": "GENE:CYP1A2",
+          "legacy_normalized": "normal",
+          "match_rows": [
+            {
+              "declared": [
+                "POOR"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "INTERMEDIATE"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "NORMAL"
+              ],
+              "differs": true,
+              "expected_difference_id": "LEGACY-NORMAL-PHENOTYPE-SUPPRESSED",
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": true,
+              "v2_status": "MATCH"
+            },
+            {
+              "declared": [
+                "RAPID"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "ULTRARAPID"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "RAPID",
+                "ULTRARAPID"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "ONE_OF",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            }
+          ],
+          "raw_value": "normal",
+          "v2_phenotype": "NORMAL",
+          "v2_reason_code": null,
+          "v2_status": "NORMALIZED"
+        },
+        {
+          "gene_id": "GENE:CYP2C19",
+          "legacy_normalized": "poor",
+          "match_rows": [
+            {
+              "declared": [
+                "POOR"
+              ],
+              "differs": false,
+              "legacy_matched": true,
+              "operator": "EXACT",
+              "v2_matched": true,
+              "v2_status": "MATCH"
+            },
+            {
+              "declared": [
+                "INTERMEDIATE"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "NORMAL"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "RAPID"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "ULTRARAPID"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "RAPID",
+                "ULTRARAPID"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "ONE_OF",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            }
+          ],
+          "raw_value": "poor",
+          "v2_phenotype": "POOR",
+          "v2_reason_code": null,
+          "v2_status": "NORMALIZED"
+        },
+        {
+          "gene_id": "GENE:CYP2C9",
+          "legacy_normalized": "intermediate",
+          "match_rows": [
+            {
+              "declared": [
+                "POOR"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "INTERMEDIATE"
+              ],
+              "differs": false,
+              "legacy_matched": true,
+              "operator": "EXACT",
+              "v2_matched": true,
+              "v2_status": "MATCH"
+            },
+            {
+              "declared": [
+                "NORMAL"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "RAPID"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "ULTRARAPID"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "RAPID",
+                "ULTRARAPID"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "ONE_OF",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            }
+          ],
+          "raw_value": "intermediate",
+          "v2_phenotype": "INTERMEDIATE",
+          "v2_reason_code": null,
+          "v2_status": "NORMALIZED"
+        },
+        {
+          "gene_id": "GENE:CYP2D6",
+          "legacy_normalized": "poor",
+          "match_rows": [
+            {
+              "declared": [
+                "POOR"
+              ],
+              "differs": false,
+              "legacy_matched": true,
+              "operator": "EXACT",
+              "v2_matched": true,
+              "v2_status": "MATCH"
+            },
+            {
+              "declared": [
+                "INTERMEDIATE"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "NORMAL"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "RAPID"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "ULTRARAPID"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "RAPID",
+                "ULTRARAPID"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "ONE_OF",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            }
+          ],
+          "raw_value": "poor",
+          "v2_phenotype": "POOR",
+          "v2_reason_code": null,
+          "v2_status": "NORMALIZED"
+        },
+        {
+          "gene_id": "GENE:CYP3A4",
+          "legacy_normalized": "normal",
+          "match_rows": [
+            {
+              "declared": [
+                "POOR"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "INTERMEDIATE"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "NORMAL"
+              ],
+              "differs": true,
+              "expected_difference_id": "LEGACY-NORMAL-PHENOTYPE-SUPPRESSED",
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": true,
+              "v2_status": "MATCH"
+            },
+            {
+              "declared": [
+                "RAPID"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "ULTRARAPID"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "EXACT",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            },
+            {
+              "declared": [
+                "RAPID",
+                "ULTRARAPID"
+              ],
+              "differs": false,
+              "legacy_matched": false,
+              "operator": "ONE_OF",
+              "v2_matched": false,
+              "v2_status": "NO_MATCH"
+            }
+          ],
+          "raw_value": "normal",
+          "v2_phenotype": "NORMAL",
+          "v2_reason_code": null,
+          "v2_status": "NORMALIZED"
+        }
+      ],
+      "profile_content_hash": "sha256:a1db480b1276b056084c0ea1cdf76e8f65d7d39808ffb1458c974a5daffe2db0",
+      "profile_id": "P6_mixed_high_attention"
+    }
+  ],
+  "report_schema_version": "pgx-phenotype-regression-report/1",
+  "source_profiles": "clinpgx_mvp_seed/mvp_demo_profiles.json",
+  "unexpected_differences": []
+}

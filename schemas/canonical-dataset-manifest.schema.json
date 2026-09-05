@@ -1,0 +1,170 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pgx-platform.invalid/schemas/canonical-dataset-manifest.schema.json",
+  "title": "PGx canonical dataset build manifest",
+  "description": "The machine-readable account of one sealed canonical build (WP-07). It records which raw snapshot it was derived from, under which rule versions, which identity allocation supplied its UUIDs, and the digest of every file in the build directory. A canonical build is a build product: it is not a quality approval, not a publication and not a release, and the dataset it describes stays BUILDING until a named human records a decision. Counts under source_observed_axes describe what the snapshot mentions; they are not validated coverage, clinical coverage, supported treatment, safe alternatives or executable pharmacogenetic rules.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "canonical_build_layout_version",
+    "dataset_public_id",
+    "canonical_build_key",
+    "content_hash",
+    "snapshot_manifest_hash",
+    "snapshot_content_hash",
+    "snapshot_state",
+    "snapshot_kind",
+    "snapshot_complete",
+    "rule_versions",
+    "allocation_content_hash",
+    "built_at",
+    "dataset_lifecycle_state",
+    "lifecycle_note",
+    "summary",
+    "source_observed_axes",
+    "files"
+  ],
+  "properties": {
+    "canonical_build_layout_version": {
+      "description": "Layout shape version. A build declaring another version is refused rather than silently upgraded.",
+      "const": "pgx-canonical-build/1"
+    },
+    "dataset_public_id": {
+      "type": "string",
+      "pattern": "^PGX-DATA-[0-9]{8}-[0-9]{3}$",
+      "description": "The dataset this build belongs to."
+    },
+    "canonical_build_key": {
+      "description": "Dataset public id and the first 16 hex characters of the content hash. Two builds of the same snapshot under the same rules share it.",
+      "type": "string",
+      "minLength": 1
+    },
+    "content_hash": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "description": "Digest of everything two builds of one snapshot must agree on. Excludes built_at and every per-run count."
+    },
+    "snapshot_manifest_hash": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "description": "The raw snapshot manifest this build was derived from."
+    },
+    "snapshot_content_hash": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "description": "The raw snapshot's aggregate content hash."
+    },
+    "snapshot_state": {
+      "description": "The snapshot's state at build time. A QUARANTINED snapshot may be built from and may not pass a quality check.",
+      "enum": [
+        "STAGING",
+        "SEALED",
+        "QUARANTINED"
+      ]
+    },
+    "snapshot_kind": {
+      "enum": [
+        "ACQUISITION",
+        "CACHE_REPLAY",
+        "LEGACY_IMPORT"
+      ]
+    },
+    "snapshot_complete": {
+      "description": "Whether the raw snapshot asserts completeness relative to the upstream source. False for a legacy import, where completeness is unknown and is not inferred from the fact that every file present was copied.",
+      "type": "boolean"
+    },
+    "rule_versions": {
+      "description": "Every rule version this build depended on. A build is only comparable with one produced under the same set.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "canonical_build_layout_version",
+        "normalization_rule_version",
+        "artifact_role_map_version",
+        "extraction_rule_version",
+        "resolver_policy_version",
+        "dedup_key_version",
+        "allocation_format_version"
+      ],
+      "properties": {
+        "canonical_build_layout_version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "normalization_rule_version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "artifact_role_map_version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "extraction_rule_version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "resolver_policy_version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "dedup_key_version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "allocation_format_version": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "allocation_content_hash": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "description": "Digest of the identity allocation this build read its UUIDs from. Identity is allocated explicitly and never derived from a name."
+    },
+    "identity_minted_count": {
+      "description": "Identities this run created. Zero on a reproduction. A per-run fact, excluded from content_hash.",
+      "type": "integer",
+      "minimum": 0
+    },
+    "identity_reused_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "built_at": {
+      "description": "When this run wrote the build. Provenance, not content: excluded from content_hash.",
+      "type": "string",
+      "minLength": 20
+    },
+    "build_note": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "dataset_lifecycle_state": {
+      "description": "Always BUILDING. Nothing in WP-07 can transition a dataset; a quality decision is recorded by a named human.",
+      "const": "BUILDING"
+    },
+    "lifecycle_note": {
+      "type": "string",
+      "minLength": 1
+    },
+    "summary": {
+      "description": "Counts, every one derived from the build's own artifacts. A separate re-count reads the sealed files back and a disagreement is a blocking data-quality finding.",
+      "type": "object"
+    },
+    "source_observed_axes": {
+      "description": "What the snapshot was observed to mention. Deliberately not called coverage.",
+      "type": "object"
+    },
+    "files": {
+      "description": "SHA-256 of every file in the build directory, keyed by name.",
+      "type": "object"
+    }
+  }
+}

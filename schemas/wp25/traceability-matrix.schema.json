@@ -1,0 +1,218 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "p0_dod_014_satisfied": {
+            "const": true
+          }
+        },
+        "required": [
+          "p0_dod_014_satisfied"
+        ]
+      },
+      "then": {
+        "properties": {
+          "every_claim_names_required_evidence": {
+            "const": true
+          },
+          "has_dangling_reference": {
+            "const": false
+          }
+        }
+      }
+    }
+  ],
+  "description": "Requirement to result. Every dangling list must be empty: a matrix citing a deleted module asserts coverage it does not have, which is worse than no matrix.",
+  "properties": {
+    "counts_by_result": {
+      "additionalProperties": {
+        "minimum": 0,
+        "type": "integer"
+      },
+      "propertyNames": {
+        "enum": [
+          "SUPPORTED",
+          "PARTIALLY_SUPPORTED",
+          "UNSUPPORTED",
+          "NOT_EVALUATED",
+          "CONTRADICTED"
+        ]
+      },
+      "type": "object"
+    },
+    "dangling": {
+      "additionalProperties": {
+        "items": {
+          "type": "string"
+        },
+        "type": "array"
+      },
+      "type": "object"
+    },
+    "every_claim_names_required_evidence": {
+      "type": "boolean"
+    },
+    "gap_owners": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "has_dangling_reference": {
+      "type": "boolean"
+    },
+    "note": {
+      "type": "string"
+    },
+    "p0_dod_014_basis": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "p0_dod_014_satisfied": {
+      "type": "boolean"
+    },
+    "row_count": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "rows": {
+      "items": {
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "result": {
+                  "enum": [
+                    "PARTIALLY_SUPPORTED",
+                    "UNSUPPORTED",
+                    "NOT_EVALUATED",
+                    "CONTRADICTED"
+                  ]
+                }
+              },
+              "required": [
+                "result"
+              ]
+            },
+            "then": {
+              "properties": {
+                "gap": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "gap_owner": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "gap",
+                "gap_owner"
+              ]
+            }
+          }
+        ],
+        "properties": {
+          "claim_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "dod_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "evidence_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "gap": {
+            "type": "string"
+          },
+          "gap_owner": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "gate_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "implementation_paths": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "requirement": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "requirement_source": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "result": {
+            "enum": [
+              "SUPPORTED",
+              "PARTIALLY_SUPPORTED",
+              "UNSUPPORTED",
+              "NOT_EVALUATED",
+              "CONTRADICTED"
+            ],
+            "type": "string"
+          },
+          "row_id": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "test_paths": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "row_id",
+          "requirement",
+          "requirement_source",
+          "implementation_paths",
+          "test_paths",
+          "evidence_ids",
+          "claim_ids",
+          "gate_ids",
+          "dod_ids",
+          "result"
+        ],
+        "type": "object"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "traceability_version": {
+      "const": "pgx-wp25-traceability/1",
+      "type": "string"
+    }
+  },
+  "required": [
+    "traceability_version",
+    "row_count",
+    "rows",
+    "dangling",
+    "has_dangling_reference",
+    "p0_dod_014_satisfied"
+  ],
+  "title": "WP-25 traceability matrix",
+  "type": "object"
+}

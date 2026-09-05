@@ -1,0 +1,139 @@
+{
+  "entries": [
+    {
+      "command": "python3 clean_mvp_seed_dataset.py --input-dir clinpgx_outputs_v2 --out-dir <TEMPORARY-DIRECTORY>",
+      "exit_code": 0,
+      "network_used": false,
+      "result": "PASS",
+      "started_at_utc": "2026-08-29T20:57:58Z",
+      "stderr_head": [],
+      "stderr_lines": 0,
+      "stdout_lines": 42,
+      "step": "original-cleaner-rebuild",
+      "working_directory_policy": "repository root"
+    },
+    {
+      "command": "python3 risk_engine.py --seed-dir clinpgx_mvp_seed --profile-id P2_cyp2c19_poor --drugs clopidogrel,voriconazole,codeine,warfarin,amitriptyline --out-dir <TEMPORARY-DIRECTORY>",
+      "exit_code": 0,
+      "network_used": false,
+      "result": "PASS",
+      "started_at_utc": "2026-08-29T20:57:58Z",
+      "stderr_head": [],
+      "stderr_lines": 0,
+      "stdout_lines": 21,
+      "step": "risk-p2-cyp2c19-poor",
+      "working_directory_policy": "repository root"
+    },
+    {
+      "command": "python3 alternative_ranker.py --seed-dir clinpgx_mvp_seed --source-drug clopidogrel --profile-id P2_cyp2c19_poor --current-drugs clopidogrel,voriconazole,codeine,warfarin,amitriptyline --candidate-file candidate_alternatives.csv --graph-file drug_graph_edges.csv --out-dir <TEMPORARY-DIRECTORY>",
+      "exit_code": 0,
+      "network_used": false,
+      "result": "PASS",
+      "started_at_utc": "2026-08-29T20:57:58Z",
+      "stderr_head": [],
+      "stderr_lines": 0,
+      "stdout_lines": 17,
+      "step": "alternative-beta-clopidogrel",
+      "working_directory_policy": "repository root"
+    },
+    {
+      "command": "python3 gemini_report_generator.py --input clinpgx_mvp_seed/risk_outputs/gemini_input.json --no-api --out-dir <TEMPORARY-DIRECTORY>",
+      "exit_code": 0,
+      "network_used": false,
+      "result": "PASS",
+      "started_at_utc": "2026-08-29T20:57:58Z",
+      "stderr_head": [],
+      "stderr_lines": 0,
+      "stdout_lines": 11,
+      "step": "recorded-report-observation",
+      "working_directory_policy": "repository root; GEMINI_API_KEY stripped"
+    },
+    {
+      "command": "python3 clean_mvp_seed_dataset.py --help",
+      "exit_code": 0,
+      "network_used": false,
+      "result": "PASS",
+      "started_at_utc": "2026-08-29T20:57:58Z",
+      "stderr_head": [],
+      "stderr_lines": 0,
+      "stdout_lines": 12,
+      "step": "cli-contract:clean_mvp_seed_dataset.py",
+      "working_directory_policy": "repository root"
+    },
+    {
+      "command": "python3 risk_engine.py --help",
+      "exit_code": 0,
+      "network_used": false,
+      "result": "PASS",
+      "started_at_utc": "2026-08-29T20:57:58Z",
+      "stderr_head": [],
+      "stderr_lines": 0,
+      "stdout_lines": 21,
+      "step": "cli-contract:risk_engine.py",
+      "working_directory_policy": "repository root"
+    },
+    {
+      "command": "python3 gemini_report_generator.py --help",
+      "exit_code": 0,
+      "network_used": false,
+      "result": "PASS",
+      "started_at_utc": "2026-08-29T20:57:58Z",
+      "stderr_head": [],
+      "stderr_lines": 0,
+      "stdout_lines": 17,
+      "step": "cli-contract:gemini_report_generator.py",
+      "working_directory_policy": "repository root"
+    },
+    {
+      "command": "python3 candidate_onboarding.py --help",
+      "exit_code": 0,
+      "network_used": false,
+      "result": "PASS",
+      "started_at_utc": "2026-08-29T20:57:58Z",
+      "stderr_head": [],
+      "stderr_lines": 0,
+      "stdout_lines": 17,
+      "step": "cli-contract:candidate_onboarding.py",
+      "working_directory_policy": "repository root"
+    },
+    {
+      "command": "python3 alternative_ranker.py --help",
+      "exit_code": 0,
+      "network_used": false,
+      "result": "PASS",
+      "started_at_utc": "2026-08-29T20:57:58Z",
+      "stderr_head": [],
+      "stderr_lines": 0,
+      "stdout_lines": 22,
+      "step": "cli-contract:alternative_ranker.py",
+      "working_directory_policy": "repository root"
+    },
+    {
+      "command": "(not executed)",
+      "exit_code": null,
+      "network_used": false,
+      "reason_code": "NETWORK_REQUIRED_NOT_EXECUTED",
+      "result": "BLOCKED",
+      "started_at_utc": "2026-08-29T20:57:58Z",
+      "stderr_head": [],
+      "stderr_lines": 0,
+      "stdout_lines": 0,
+      "step": "cli-contract:clinpgx_probe.py",
+      "working_directory_policy": "n/a"
+    },
+    {
+      "command": "(not executed)",
+      "exit_code": null,
+      "network_used": false,
+      "reason_code": "NETWORK_REQUIRED_NOT_EXECUTED",
+      "result": "BLOCKED",
+      "started_at_utc": "2026-08-29T20:57:58Z",
+      "stderr_head": [],
+      "stderr_lines": 0,
+      "stdout_lines": 0,
+      "step": "cli-contract:clinpgx_probe_v2.py",
+      "working_directory_policy": "n/a"
+    }
+  ],
+  "schema_version": "wp01-run-log/1"
+}

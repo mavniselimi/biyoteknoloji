@@ -1,0 +1,155 @@
+{
+  "$id": "https://pgx-platform.invalid/schemas/wp14-gate-status.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Why no real assessment can execute yet. Every count is read off the repository rather than asserted, and at least one blocker is required: a gate status with an empty blocker list would be a claim that execution is permitted, and this schema will not express one while the list is how the refusal is stated. additionalProperties is false throughout, which is where the boundary is actually enforced: a dose, a recommendation, a preferred or safer flag, a suitability score, a ranking, a treatment or a rendered sentence cannot be attached to any of these documents by anything downstream, because the schema refuses every property it does not name. WP-14 calculates structured facts; WP-15 renders them.",
+  "properties": {
+    "assessment": {
+      "minLength": 10,
+      "type": "string"
+    },
+    "assessment_state": {
+      "additionalProperties": false,
+      "properties": {
+        "real_completed_assessments": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "real_executable_release_contexts": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "real_findings": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "real_medication_results": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "real_persisted_assessments": {
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "real_completed_assessments",
+        "real_executable_release_contexts",
+        "real_findings",
+        "real_medication_results",
+        "real_persisted_assessments"
+      ],
+      "type": "object"
+    },
+    "blockers": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "code": {
+            "enum": [
+              "ASSESSMENT_CLAIM_BOUNDARY_NOT_APPROVED",
+              "ASSESSMENT_CURATION_PROTOCOL_NOT_APPROVED",
+              "ASSESSMENT_DATASET_NOT_PUBLISHED",
+              "ASSESSMENT_EVIDENCE_BUILD_QUARANTINED",
+              "ASSESSMENT_NO_ACTIVE_RELEASE",
+              "ASSESSMENT_NO_APPROVED_COVERAGE_MANIFEST",
+              "ASSESSMENT_NO_FROZEN_RULESET",
+              "ASSESSMENT_NO_HUMAN_ROLE_ASSIGNMENTS",
+              "ASSESSMENT_NO_VALIDATED_RULE"
+            ]
+          },
+          "detail": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "meaning": {
+            "minLength": 20,
+            "type": "string"
+          },
+          "owner": {
+            "minLength": 10,
+            "type": "string"
+          },
+          "unblocks": {
+            "minLength": 10,
+            "type": "string"
+          }
+        },
+        "required": [
+          "code",
+          "detail",
+          "meaning",
+          "owner",
+          "unblocks"
+        ],
+        "type": "object"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "claim_boundary": {
+      "additionalProperties": false,
+      "properties": {
+        "approved": {
+          "type": "boolean"
+        },
+        "enabled_modes": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "phase": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "status": {
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "approved",
+        "enabled_modes",
+        "phase",
+        "status"
+      ],
+      "type": "object"
+    },
+    "content_hash": {
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "gate_status_version": {
+      "const": "pgx-wp14-gate-status/1"
+    },
+    "next_required_human_actions": {
+      "items": {
+        "minLength": 20,
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "note": {
+      "minLength": 100,
+      "type": "string"
+    },
+    "upstream_state": {
+      "type": "object"
+    }
+  },
+  "required": [
+    "assessment",
+    "assessment_state",
+    "blockers",
+    "claim_boundary",
+    "content_hash",
+    "gate_status_version",
+    "next_required_human_actions",
+    "note",
+    "upstream_state"
+  ],
+  "title": "PGx WP-14 real-data gate status",
+  "type": "object"
+}

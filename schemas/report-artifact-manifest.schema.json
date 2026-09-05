@@ -1,0 +1,284 @@
+{
+  "$defs": {
+    "claimScan": {
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "is_clean": {
+                "const": true
+              }
+            },
+            "required": [
+              "is_clean"
+            ]
+          },
+          "then": {
+            "properties": {
+              "violation_count": {
+                "maximum": 0
+              },
+              "violations": {
+                "maxItems": 0
+              }
+            }
+          }
+        }
+      ],
+      "description": "The scan kept as evidence. A clean scan is not a boolean: the categories in force, the rule ids, the offsets and every suppressed match are preserved so a reviewer can see what was let through and why.",
+      "properties": {
+        "boundary_version": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "categories": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "gate_contract_version": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "is_clean": {
+          "type": "boolean"
+        },
+        "limits": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "rule_ids": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "scanner_version": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "suppressed": {
+          "items": {
+            "$ref": "#/$defs/suppressed"
+          },
+          "type": "array"
+        },
+        "text_length": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "violation_count": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "violations": {
+          "items": {
+            "$ref": "#/$defs/violation"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "boundary_version",
+        "categories",
+        "gate_contract_version",
+        "is_clean",
+        "limits",
+        "rule_ids",
+        "scanner_version",
+        "suppressed",
+        "text_length",
+        "violation_count",
+        "violations"
+      ],
+      "type": "object"
+    },
+    "suppressed": {
+      "additionalProperties": false,
+      "properties": {
+        "category": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "end": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "rule_id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "safe_context": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "start": {
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "category",
+        "end",
+        "rule_id",
+        "safe_context",
+        "start"
+      ],
+      "type": "object"
+    },
+    "violation": {
+      "additionalProperties": false,
+      "description": "Offsets and identity, never the matched sentence: a record holding the prohibited sentence puts it into the log.",
+      "properties": {
+        "category": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "end": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "language": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "rule_id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "severity": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "start": {
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "category",
+        "end",
+        "language",
+        "rule_id",
+        "severity",
+        "start"
+      ],
+      "type": "object"
+    }
+  },
+  "$id": "https://pgx-platform.invalid/schemas/report-artifact-manifest.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "The manifest written beside every published report. It carries three distinct digests on purpose: output_hash says whether the facts are the same, report_hash whether the document is, and rendered_checksum whether the bytes are. A renderer change moves the third and not the first two.",
+  "properties": {
+    "assessment_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "canonical_result_hash": {
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "claim_scan": {
+      "$ref": "#/$defs/claimScan"
+    },
+    "computation_schema_version": {
+      "type": "string"
+    },
+    "coverage_result_hash": {
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "document_filename": {
+      "pattern": "^report-[A-Za-z0-9._-]+\\.md$",
+      "type": "string"
+    },
+    "engine_contract_version": {
+      "type": "string"
+    },
+    "fact_ledger": {
+      "type": "object"
+    },
+    "input_hash": {
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "locale": {
+      "enum": [
+        "tr",
+        "en"
+      ]
+    },
+    "manifest_filename": {
+      "pattern": "^report-[A-Za-z0-9._-]+\\.manifest\\.json$",
+      "type": "string"
+    },
+    "manifest_schema_version": {
+      "const": "pgx-report-artifact-manifest/1"
+    },
+    "note": {
+      "minLength": 100,
+      "type": "string"
+    },
+    "output_hash": {
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "release_provenance": {
+      "type": "object"
+    },
+    "rendered_bytes": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "rendered_checksum": {
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "renderer_version": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "report_hash": {
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "report_schema_version": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "template_version": {
+      "minLength": 1,
+      "type": "string"
+    }
+  },
+  "required": [
+    "assessment_id",
+    "canonical_result_hash",
+    "claim_scan",
+    "computation_schema_version",
+    "coverage_result_hash",
+    "document_filename",
+    "engine_contract_version",
+    "fact_ledger",
+    "input_hash",
+    "locale",
+    "manifest_filename",
+    "manifest_schema_version",
+    "note",
+    "output_hash",
+    "release_provenance",
+    "rendered_bytes",
+    "rendered_checksum",
+    "renderer_version",
+    "report_hash",
+    "report_schema_version",
+    "template_version"
+  ],
+  "title": "PGx report artifact manifest",
+  "type": "object"
+}

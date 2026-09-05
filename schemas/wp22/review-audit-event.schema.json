@@ -1,0 +1,176 @@
+{
+  "$id": "https://pgx.local/schemas/wp22/review-audit-event.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "sequence": {
+            "const": 1
+          }
+        },
+        "required": [
+          "sequence"
+        ]
+      },
+      "then": {
+        "properties": {
+          "previous_hash": {
+            "type": "null"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "actor_authenticated": {
+            "const": true
+          }
+        },
+        "required": [
+          "actor_authenticated"
+        ]
+      },
+      "then": {
+        "properties": {
+          "auth_assurance": {
+            "const": "SESSION"
+          }
+        }
+      }
+    }
+  ],
+  "description": "One hash-linked event. actor_authenticated may be true only for a validated server-side session; a static development token records TEST_STATIC_TOKEN assurance and stays distinguishable from a person forever.",
+  "properties": {
+    "action": {
+      "enum": [
+        "REVIEW_ASSIGNED",
+        "REVIEW_EXPECTATION_RECORDED",
+        "REVIEW_RESULT_REVEALED",
+        "REVIEW_COMPLETED",
+        "REVIEW_INVALIDATED",
+        "REVIEW_CORRECTION_APPENDED",
+        "REVIEW_PERMIT_ISSUED",
+        "REVIEW_PERMIT_REFUSED"
+      ],
+      "type": "string"
+    },
+    "actor": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "actor_authenticated": {
+      "type": "boolean"
+    },
+    "actor_role": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "auth_assurance": {
+      "enum": [
+        "NONE",
+        "TEST_STATIC_TOKEN",
+        "SESSION"
+      ],
+      "type": "string"
+    },
+    "case_manifest_hash": {
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "event_hash": {
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "event_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "new_state": {
+      "enum": [
+        "ASSIGNED",
+        "EXPECTATION_RECORDED",
+        "RESULT_REVEALED",
+        "COMPLETED",
+        "INVALIDATED"
+      ],
+      "type": "string"
+    },
+    "occurred_at": {
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9:.]+Z$",
+      "type": "string"
+    },
+    "outcome_code": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "previous_hash": {
+      "anyOf": [
+        {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "previous_state": {
+      "enum": [
+        "ASSIGNED",
+        "EXPECTATION_RECORDED",
+        "RESULT_REVEALED",
+        "COMPLETED",
+        "INVALIDATED"
+      ],
+      "type": "string"
+    },
+    "protocol_hash": {
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "record_hashes": {
+      "type": "object"
+    },
+    "release_manifest_hash": {
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "review_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "pgx-wp22-review-audit-event/1"
+    },
+    "sequence": {
+      "minimum": 1,
+      "type": "integer"
+    }
+  },
+  "required": [
+    "schema_version",
+    "event_id",
+    "sequence",
+    "review_id",
+    "action",
+    "actor",
+    "actor_role",
+    "actor_authenticated",
+    "auth_assurance",
+    "occurred_at",
+    "previous_state",
+    "new_state",
+    "outcome_code",
+    "protocol_hash",
+    "release_manifest_hash",
+    "case_manifest_hash",
+    "record_hashes",
+    "previous_hash",
+    "event_hash"
+  ],
+  "title": "WP-22 review audit event",
+  "type": "object"
+}

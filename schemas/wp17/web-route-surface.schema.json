@@ -1,0 +1,399 @@
+{
+  "$id": "https://pgx.local/schemas/wp17/web-route-surface.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "description": "The closed list of pages. A route not on this list does not exist. These are HTML pages and are deliberately absent from the API's OpenAPI document, which is generated from the API route table alone.",
+  "title": "PGx server-rendered web route surface (WP-17)",
+  "type": "array",
+  "x-pgx-artifact-kind": "SOURCE_DERIVED",
+  "x-pgx-html-gate": {
+    "gate_version": "pgx-web-html-gate/1",
+    "limits": [
+      "the scanner is lexical: it matches published patterns over folded text and performs no semantic analysis",
+      "a prohibited claim phrased outside the published patterns is not detected",
+      "safe-context suppression is broad, so a negated sentence suppresses matches inside it",
+      "a clean scan is evidence that no published pattern matched, and is never evidence that a page is safe"
+    ],
+    "max_display_length": 4096,
+    "scanned_projections": [
+      "visible text, nodes joined with a space",
+      "concatenated text, so markup inside a phrase does not break it",
+      "textual and data- attribute values, plus comments",
+      "the raw markup"
+    ],
+    "scanner_version": "claim-scanner/0.1.0",
+    "script_policy": "a script element referencing a same-origin file is permitted and checked as a URL; a script with no src, or with content inside it, carries executable code in the document and is refused",
+    "structural_refusals": [
+      "INLINE_SCRIPT",
+      "EVENT_HANDLER",
+      "INLINE_STYLE",
+      "EMBEDDED_CONTENT",
+      "CONTROL_CHARACTER"
+    ],
+    "url_policy": "absolute internal paths, fragments and bare queries only; no scheme of any kind, so no parser decides which schemes are safe"
+  },
+  "x-pgx-navigation": [
+    "web.home",
+    "web.cases",
+    "web.validation",
+    "web.system",
+    "web.login"
+  ],
+  "x-pgx-routes": [
+    {
+      "description": "The entry page. Public, because a page that required a principal in a deployment where none can be established would leave a visitor at an error with nothing to do. It shows the warning, the navigation and the environment, and no case data.",
+      "method": "GET",
+      "name": "web.home",
+      "navigation_key": "nav.home",
+      "parameters": [],
+      "path": "/",
+      "permitted_roles": [],
+      "public": true,
+      "requires_csrf": false,
+      "success_status": 200,
+      "template": "home.html",
+      "title_key": "home.heading"
+    },
+    {
+      "description": "The login form. Public because an unauthenticated visitor is exactly who needs it. It sets a short-lived host-scoped pre-auth cookie and renders a CSRF token bound to it; it displays no credential and states nothing about whether any username exists.",
+      "method": "GET",
+      "name": "web.login",
+      "navigation_key": "nav.login",
+      "parameters": [],
+      "path": "/login",
+      "permitted_roles": [],
+      "public": true,
+      "requires_csrf": false,
+      "success_status": 200,
+      "template": "login.html",
+      "title_key": "login.heading"
+    },
+    {
+      "description": "Authenticate and start a session. Public in the access-policy sense - there is no principal yet - and emphatically not unprotected: the pre-auth CSRF token is verified first. A login form without CSRF lets an attacker log a victim into the attacker's account, and everything the victim then does happens in a session the attacker controls.",
+      "method": "POST",
+      "name": "web.login_submit",
+      "navigation_key": null,
+      "parameters": [],
+      "path": "/login",
+      "permitted_roles": [],
+      "public": true,
+      "requires_csrf": true,
+      "success_status": 200,
+      "template": "login.html",
+      "title_key": "login.heading"
+    },
+    {
+      "description": "Revoke the server-side session, then clear the cookie. In that order: clearing first would leave a live session the user believes is closed, usable by anyone holding a copy of the token.",
+      "method": "POST",
+      "name": "web.logout",
+      "navigation_key": null,
+      "parameters": [],
+      "path": "/logout",
+      "permitted_roles": [],
+      "public": true,
+      "requires_csrf": true,
+      "success_status": 200,
+      "template": "login.html",
+      "title_key": "login.heading"
+    },
+    {
+      "description": "The synthetic development case catalogue, read from the sealed WP-17 artifact. Never from the legacy seed file.",
+      "method": "GET",
+      "name": "web.cases",
+      "navigation_key": "nav.cases",
+      "parameters": [],
+      "path": "/cases",
+      "permitted_roles": [
+        "ADMIN",
+        "DEMO_USER",
+        "EXPERT_REVIEWER"
+      ],
+      "public": false,
+      "requires_csrf": false,
+      "success_status": 200,
+      "template": "cases.html",
+      "title_key": "cases.heading"
+    },
+    {
+      "description": "One development case: its canonical observations, the pinned release's medication catalogue, and exactly which fields a submission would carry.",
+      "method": "GET",
+      "name": "web.case_detail",
+      "navigation_key": null,
+      "parameters": [
+        {
+          "in": "path",
+          "kind": "string",
+          "max_length": 48,
+          "maximum": null,
+          "minimum": null,
+          "name": "case_id",
+          "pattern": "^WP17-CASE-[A-Z0-9][A-Z0-9-]{0,31}$",
+          "required": true
+        }
+      ],
+      "path": "/cases/{case_id}",
+      "permitted_roles": [
+        "ADMIN",
+        "DEMO_USER",
+        "EXPERT_REVIEWER"
+      ],
+      "public": false,
+      "requires_csrf": false,
+      "success_status": 200,
+      "template": "case_detail.html",
+      "title_key": "case.heading"
+    },
+    {
+      "description": "Submit one synthetic assessment through the WP-16 client. The only state-changing page route. Unavailable in production until a CSRF verifier and an authentication provider exist.",
+      "method": "POST",
+      "name": "web.case_assess",
+      "navigation_key": null,
+      "parameters": [
+        {
+          "in": "path",
+          "kind": "string",
+          "max_length": 48,
+          "maximum": null,
+          "minimum": null,
+          "name": "case_id",
+          "pattern": "^WP17-CASE-[A-Z0-9][A-Z0-9-]{0,31}$",
+          "required": true
+        }
+      ],
+      "path": "/cases/{case_id}/assess",
+      "permitted_roles": [
+        "ADMIN",
+        "DEMO_USER",
+        "EXPERT_REVIEWER"
+      ],
+      "public": false,
+      "requires_csrf": true,
+      "success_status": 200,
+      "template": "assessment.html",
+      "title_key": "assessment.heading"
+    },
+    {
+      "description": "One stored assessment, rendered from the exact WP-16 response. Reports the release it was pinned to, whatever is active now.",
+      "method": "GET",
+      "name": "web.assessment",
+      "navigation_key": null,
+      "parameters": [
+        {
+          "in": "path",
+          "kind": "string",
+          "max_length": 36,
+          "maximum": null,
+          "minimum": null,
+          "name": "assessment_id",
+          "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$",
+          "required": true
+        }
+      ],
+      "path": "/assessments/{assessment_id}",
+      "permitted_roles": [
+        "ADMIN",
+        "DEMO_USER",
+        "EXPERT_REVIEWER"
+      ],
+      "public": false,
+      "requires_csrf": false,
+      "success_status": 200,
+      "template": "assessment.html",
+      "title_key": "assessment.heading"
+    },
+    {
+      "description": "One evidence record's immutable provenance projection. Identity and hashes; no source prose, no path, no authored advice.",
+      "method": "GET",
+      "name": "web.evidence",
+      "navigation_key": null,
+      "parameters": [
+        {
+          "in": "path",
+          "kind": "string",
+          "max_length": 36,
+          "maximum": null,
+          "minimum": null,
+          "name": "evidence_id",
+          "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$",
+          "required": true
+        }
+      ],
+      "path": "/evidence/{evidence_id}",
+      "permitted_roles": [
+        "ADMIN",
+        "DEMO_USER",
+        "EXPERT_REVIEWER"
+      ],
+      "public": false,
+      "requires_csrf": false,
+      "success_status": 200,
+      "template": "evidence.html",
+      "title_key": "evidence.heading"
+    },
+    {
+      "description": "The shell and the honest empty state. No metric is computed and no zero denominator becomes a percentage.",
+      "method": "GET",
+      "name": "web.validation",
+      "navigation_key": "nav.validation",
+      "parameters": [],
+      "path": "/validation",
+      "permitted_roles": [
+        "ADMIN",
+        "DEMO_USER",
+        "EXPERT_REVIEWER"
+      ],
+      "public": false,
+      "requires_csrf": false,
+      "success_status": 200,
+      "template": "validation.html",
+      "title_key": "validation.heading"
+    },
+    {
+      "description": "The reviewer's own assignment, state-aware. Blinded until a reveal record exists: the view model has no field a result could occupy, so no template mistake can leak one into a hidden element. A missing or foreign assignment renders one controlled unavailable state that discloses nothing about whether the case exists.",
+      "method": "GET",
+      "name": "web.expert_review",
+      "navigation_key": "nav.expert_review",
+      "parameters": [
+        {
+          "in": "path",
+          "kind": "string",
+          "max_length": 64,
+          "maximum": null,
+          "minimum": null,
+          "name": "case_id",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,63}$",
+          "required": true
+        }
+      ],
+      "path": "/expert-reviews/{case_id}",
+      "permitted_roles": [
+        "EXPERT_REVIEWER"
+      ],
+      "public": false,
+      "requires_csrf": false,
+      "success_status": 200,
+      "template": "expert_review.html",
+      "title_key": "expert.heading"
+    },
+    {
+      "description": "Lock the expected response. Unavailable in production until a CSRF verifier and an authentication provider exist, which is WP-23's work - the form renders inert without both.",
+      "method": "POST",
+      "name": "web.expert_review_expected",
+      "navigation_key": null,
+      "parameters": [
+        {
+          "in": "path",
+          "kind": "string",
+          "max_length": 64,
+          "maximum": null,
+          "minimum": null,
+          "name": "case_id",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,63}$",
+          "required": true
+        }
+      ],
+      "path": "/expert-reviews/{case_id}/expected",
+      "permitted_roles": [
+        "EXPERT_REVIEWER"
+      ],
+      "public": false,
+      "requires_csrf": true,
+      "success_status": 200,
+      "template": "expert_review.html",
+      "title_key": "expert.heading"
+    },
+    {
+      "description": "The one-way door. Permitted only once an expectation is locked, and only once.",
+      "method": "POST",
+      "name": "web.expert_review_reveal",
+      "navigation_key": null,
+      "parameters": [
+        {
+          "in": "path",
+          "kind": "string",
+          "max_length": 64,
+          "maximum": null,
+          "minimum": null,
+          "name": "case_id",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,63}$",
+          "required": true
+        }
+      ],
+      "path": "/expert-reviews/{case_id}/reveal",
+      "permitted_roles": [
+        "EXPERT_REVIEWER"
+      ],
+      "public": false,
+      "requires_csrf": true,
+      "success_status": 200,
+      "template": "expert_review.html",
+      "title_key": "expert.heading"
+    },
+    {
+      "description": "Record AGREE, PARTIAL or DISAGREE and any optional ratings. The record is immutable afterwards.",
+      "method": "POST",
+      "name": "web.expert_review_complete",
+      "navigation_key": null,
+      "parameters": [
+        {
+          "in": "path",
+          "kind": "string",
+          "max_length": 64,
+          "maximum": null,
+          "minimum": null,
+          "name": "case_id",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,63}$",
+          "required": true
+        }
+      ],
+      "path": "/expert-reviews/{case_id}/complete",
+      "permitted_roles": [
+        "EXPERT_REVIEWER"
+      ],
+      "public": false,
+      "requires_csrf": true,
+      "success_status": 200,
+      "template": "expert_review.html",
+      "title_key": "expert.heading"
+    },
+    {
+      "description": "The active release and the readiness report, exactly as WP-16 returns them. Public on the same terms as the API's own version and health routes.",
+      "method": "GET",
+      "name": "web.system",
+      "navigation_key": "nav.system",
+      "parameters": [],
+      "path": "/system",
+      "permitted_roles": [],
+      "public": true,
+      "requires_csrf": false,
+      "success_status": 200,
+      "template": "system.html",
+      "title_key": "system.heading"
+    }
+  ],
+  "x-pgx-security-headers": {
+    "Cache-Control": "no-store",
+    "Content-Security-Policy": "default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; form-action 'self'; base-uri 'none'; frame-ancestors 'none'",
+    "Cross-Origin-Opener-Policy": "same-origin",
+    "Cross-Origin-Resource-Policy": "same-origin",
+    "Permissions-Policy": "accelerometer=(), autoplay=(), camera=(), display-capture=(), geolocation=(), gyroscope=(), microphone=(), payment=(), usb=()",
+    "Referrer-Policy": "no-referrer",
+    "X-Content-Type-Options": "nosniff",
+    "X-Frame-Options": "DENY"
+  },
+  "x-pgx-template-allowlist": [
+    "base.html",
+    "home.html",
+    "login.html",
+    "cases.html",
+    "case_detail.html",
+    "assessment.html",
+    "evidence.html",
+    "validation.html",
+    "expert_review.html",
+    "system.html",
+    "error.html",
+    "_status_pair.html",
+    "_provenance.html",
+    "_warning.html"
+  ]
+}

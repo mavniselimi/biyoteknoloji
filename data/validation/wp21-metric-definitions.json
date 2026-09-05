@@ -1,0 +1,582 @@
+{
+  "metric_count": 15,
+  "metric_registry_digest": "sha256:42d1264d5e65b46930a0f329d140c84b9d1a7e7693164820632107e2d9ebe832",
+  "metric_registry_version": "pgx-wp21-metric-registry/1",
+  "metrics": [
+    {
+      "architecture_reference": "architecture.md section 12.3, first bullet",
+      "categories": [],
+      "decimal_places": 4,
+      "denominator": "eligible observations that have a supplied reference judgment for the pinned release",
+      "eligible_roles": [
+        "INTERNAL_HOLDOUT",
+        "EXPERT_HOLDOUT"
+      ],
+      "is_validation_evidence": true,
+      "kind": "RATE",
+      "metric_id": "PGX-VAL-001",
+      "note": "WP-18 deliberately stores no expected answer, so the denominator counts supplied reference judgments and not cases. With no judgment port wired, this is NO_REFERENCE_JUDGMENT and not a zero.",
+      "numerator": "eligible observations whose calculated attention level, coverage status and firing rule identity all equal the reference judgment's",
+      "plain_meaning": "Of the eligible cases where a reference judgment says what the answer should be, how many did the system match exactly.",
+      "required_inputs": [
+        "pinned release",
+        "eligible holdout observations",
+        "immutable reference judgments"
+      ],
+      "requires_expert_review": false,
+      "threshold": null,
+      "threshold_provenance": null,
+      "title": "Guideline and rule concordance",
+      "unavailable_when": [
+        "BENCHMARK_NOT_EXECUTED",
+        "NO_ACTIVE_RELEASE",
+        "RELEASE_NOT_PINNED",
+        "SEPARATION_AUDIT_FAILED",
+        "RELEASE_HASH_MISMATCH",
+        "CASE_MANIFEST_HASH_MISMATCH",
+        "ZERO_DENOMINATOR",
+        "NO_HOLDOUT_CASES",
+        "NO_REFERENCE_JUDGMENT",
+        "RESTRICTED_STORAGE_NOT_CONFIGURED",
+        "NO_ELIGIBLE_OBSERVATIONS"
+      ]
+    },
+    {
+      "architecture_reference": "architecture.md sections 9.2 and 12.3",
+      "categories": [],
+      "decimal_places": 4,
+      "denominator": "eligible observations that have a supplied reference judgment for the pinned release",
+      "eligible_roles": [
+        "INTERNAL_HOLDOUT",
+        "EXPERT_HOLDOUT"
+      ],
+      "is_validation_evidence": true,
+      "kind": "RATE",
+      "metric_id": "PGX-VAL-002",
+      "note": "Kept separate from concordance on purpose. Right answer, wrong coverage reason is a real defect that a combined metric hides.",
+      "numerator": "eligible observations whose coverage status and coverage reason code equal the reference judgment's",
+      "plain_meaning": "Of the eligible cases with a reference judgment, how many had exactly the right coverage status and reason code - independently of whether the attention level matched.",
+      "required_inputs": [
+        "pinned release",
+        "eligible holdout observations",
+        "immutable reference judgments"
+      ],
+      "requires_expert_review": false,
+      "threshold": null,
+      "threshold_provenance": null,
+      "title": "Coverage correctness",
+      "unavailable_when": [
+        "BENCHMARK_NOT_EXECUTED",
+        "NO_ACTIVE_RELEASE",
+        "RELEASE_NOT_PINNED",
+        "SEPARATION_AUDIT_FAILED",
+        "RELEASE_HASH_MISMATCH",
+        "CASE_MANIFEST_HASH_MISMATCH",
+        "ZERO_DENOMINATOR",
+        "NO_HOLDOUT_CASES",
+        "NO_REFERENCE_JUDGMENT",
+        "RESTRICTED_STORAGE_NOT_CONFIGURED",
+        "NO_ELIGIBLE_OBSERVATIONS"
+      ]
+    },
+    {
+      "architecture_reference": "architecture.md sections 3 and 12.3; SAFETY-INV-001",
+      "categories": [],
+      "decimal_places": 4,
+      "denominator": "eligible observations executed under the pinned release",
+      "eligible_roles": [
+        "INTERNAL_HOLDOUT",
+        "EXPERT_HOLDOUT"
+      ],
+      "is_validation_evidence": true,
+      "kind": "COUNT",
+      "metric_id": "PGX-VAL-003",
+      "note": "This is NOT WP-20's detector result. WP-20 proved that a detector rejects 36 constructed unsafe states; that says nothing about how a real case behaves under a real release. Reusing that number here would be the exact substitution this work package exists to prevent.",
+      "numerator": "eligible observations emitting LOW or NO_ACTIVE_ATTENTION while coverage was not FULL",
+      "plain_meaning": "How many eligible cases produced LOW or NO_ACTIVE_ATTENTION when the required inputs were absent - a reader told 'no risk' where the truth is 'we did not look'.",
+      "required_inputs": [
+        "pinned release",
+        "eligible holdout observations"
+      ],
+      "requires_expert_review": false,
+      "threshold": null,
+      "threshold_provenance": null,
+      "title": "Unsafe false reassurance",
+      "unavailable_when": [
+        "BENCHMARK_NOT_EXECUTED",
+        "NO_ACTIVE_RELEASE",
+        "RELEASE_NOT_PINNED",
+        "SEPARATION_AUDIT_FAILED",
+        "RELEASE_HASH_MISMATCH",
+        "CASE_MANIFEST_HASH_MISMATCH",
+        "NO_HOLDOUT_CASES",
+        "RESTRICTED_STORAGE_NOT_CONFIGURED",
+        "NO_ELIGIBLE_OBSERVATIONS"
+      ]
+    },
+    {
+      "architecture_reference": "architecture.md section 12.3, third bullet",
+      "categories": [],
+      "decimal_places": 4,
+      "denominator": "eligible observations executed under the pinned release",
+      "eligible_roles": [
+        "INTERNAL_HOLDOUT",
+        "EXPERT_HOLDOUT"
+      ],
+      "is_validation_evidence": true,
+      "kind": "RATE",
+      "metric_id": "PGX-VAL-004",
+      "note": "A zero here is only meaningful beside its denominator. Zero over zero is unavailable, and the artifact keeps both numbers so a reader never has to trust the ratio alone.",
+      "numerator": "the PGX-VAL-003 count",
+      "plain_meaning": "The same finding as a proportion of eligible cases.",
+      "required_inputs": [
+        "pinned release",
+        "eligible holdout observations"
+      ],
+      "requires_expert_review": false,
+      "threshold": null,
+      "threshold_provenance": null,
+      "title": "Unsafe false reassurance rate",
+      "unavailable_when": [
+        "BENCHMARK_NOT_EXECUTED",
+        "NO_ACTIVE_RELEASE",
+        "RELEASE_NOT_PINNED",
+        "SEPARATION_AUDIT_FAILED",
+        "RELEASE_HASH_MISMATCH",
+        "CASE_MANIFEST_HASH_MISMATCH",
+        "ZERO_DENOMINATOR",
+        "NO_HOLDOUT_CASES",
+        "RESTRICTED_STORAGE_NOT_CONFIGURED",
+        "NO_ELIGIBLE_OBSERVATIONS"
+      ]
+    },
+    {
+      "architecture_reference": "architecture.md section 12.3; SAFETY-INV-006",
+      "categories": [],
+      "decimal_places": 4,
+      "denominator": "emitted findings across eligible observations",
+      "eligible_roles": [
+        "INTERNAL_HOLDOUT",
+        "EXPERT_HOLDOUT"
+      ],
+      "is_validation_evidence": true,
+      "kind": "COUNT",
+      "metric_id": "PGX-VAL-005",
+      "note": "The denominator is findings, not cases. One case can emit several findings and a case-level denominator would let a single untraceable finding hide behind a traceable sibling.",
+      "numerator": "emitted findings with at least one resolvable, pinned evidence reference",
+      "plain_meaning": "How many emitted findings carried at least one evidence reference that resolves inside the pinned release.",
+      "required_inputs": [
+        "pinned release",
+        "eligible holdout observations",
+        "the release's evidence index"
+      ],
+      "requires_expert_review": false,
+      "threshold": null,
+      "threshold_provenance": null,
+      "title": "Evidence traceability",
+      "unavailable_when": [
+        "BENCHMARK_NOT_EXECUTED",
+        "NO_ACTIVE_RELEASE",
+        "RELEASE_NOT_PINNED",
+        "SEPARATION_AUDIT_FAILED",
+        "RELEASE_HASH_MISMATCH",
+        "CASE_MANIFEST_HASH_MISMATCH",
+        "NO_HOLDOUT_CASES",
+        "RESTRICTED_STORAGE_NOT_CONFIGURED",
+        "NO_ELIGIBLE_OBSERVATIONS"
+      ]
+    },
+    {
+      "architecture_reference": "architecture.md section 12.3, fourth bullet",
+      "categories": [],
+      "decimal_places": 4,
+      "denominator": "emitted findings across eligible observations",
+      "eligible_roles": [
+        "INTERNAL_HOLDOUT",
+        "EXPERT_HOLDOUT"
+      ],
+      "is_validation_evidence": true,
+      "kind": "RATE",
+      "metric_id": "PGX-VAL-006",
+      "note": "",
+      "numerator": "the PGX-VAL-005 count",
+      "plain_meaning": "The same finding as a proportion of emitted findings.",
+      "required_inputs": [
+        "pinned release",
+        "eligible holdout observations",
+        "the release's evidence index"
+      ],
+      "requires_expert_review": false,
+      "threshold": null,
+      "threshold_provenance": null,
+      "title": "Evidence traceability rate",
+      "unavailable_when": [
+        "BENCHMARK_NOT_EXECUTED",
+        "NO_ACTIVE_RELEASE",
+        "RELEASE_NOT_PINNED",
+        "SEPARATION_AUDIT_FAILED",
+        "RELEASE_HASH_MISMATCH",
+        "CASE_MANIFEST_HASH_MISMATCH",
+        "ZERO_DENOMINATOR",
+        "NO_HOLDOUT_CASES",
+        "RESTRICTED_STORAGE_NOT_CONFIGURED",
+        "NO_ELIGIBLE_OBSERVATIONS"
+      ]
+    },
+    {
+      "architecture_reference": "architecture.md sections 9.6 and 12.3; SAFETY-INV-012",
+      "categories": [],
+      "decimal_places": 4,
+      "denominator": "eligible observations executed with at least two declared repeats",
+      "eligible_roles": [
+        "DEVELOPMENT",
+        "INTERNAL_HOLDOUT",
+        "EXPERT_HOLDOUT"
+      ],
+      "is_validation_evidence": false,
+      "kind": "COUNT",
+      "metric_id": "PGX-VAL-007",
+      "note": "Computable over development cases too, because determinism is a software property rather than a scientific claim - so this is reported per role and marked not-validation-evidence. A single repeat cannot show repeatability, so the denominator counts only observations that actually repeated.",
+      "numerator": "eligible observations whose output hash was identical across every declared repeat",
+      "plain_meaning": "How many eligible cases produced a byte-identical result on every repeat under the same pinned release.",
+      "required_inputs": [
+        "pinned release",
+        "observations",
+        "a repeat count of at least two"
+      ],
+      "requires_expert_review": false,
+      "threshold": null,
+      "threshold_provenance": null,
+      "title": "Deterministic repeatability",
+      "unavailable_when": [
+        "BENCHMARK_NOT_EXECUTED",
+        "NO_ACTIVE_RELEASE",
+        "RELEASE_NOT_PINNED",
+        "SEPARATION_AUDIT_FAILED",
+        "RELEASE_HASH_MISMATCH",
+        "CASE_MANIFEST_HASH_MISMATCH",
+        "NO_ELIGIBLE_OBSERVATIONS",
+        "INPUT_INCOMPATIBLE"
+      ]
+    },
+    {
+      "architecture_reference": "architecture.md section 12.3, fifth bullet",
+      "categories": [],
+      "decimal_places": 4,
+      "denominator": "eligible observations executed with at least two declared repeats",
+      "eligible_roles": [
+        "DEVELOPMENT",
+        "INTERNAL_HOLDOUT",
+        "EXPERT_HOLDOUT"
+      ],
+      "is_validation_evidence": false,
+      "kind": "RATE",
+      "metric_id": "PGX-VAL-008",
+      "note": "",
+      "numerator": "the PGX-VAL-007 count",
+      "plain_meaning": "The same finding as a proportion of repeated cases.",
+      "required_inputs": [
+        "pinned release",
+        "observations",
+        "a repeat count of at least two"
+      ],
+      "requires_expert_review": false,
+      "threshold": null,
+      "threshold_provenance": null,
+      "title": "Deterministic repeatability rate",
+      "unavailable_when": [
+        "BENCHMARK_NOT_EXECUTED",
+        "NO_ACTIVE_RELEASE",
+        "RELEASE_NOT_PINNED",
+        "SEPARATION_AUDIT_FAILED",
+        "RELEASE_HASH_MISMATCH",
+        "CASE_MANIFEST_HASH_MISMATCH",
+        "ZERO_DENOMINATOR",
+        "NO_ELIGIBLE_OBSERVATIONS",
+        "INPUT_INCOMPATIBLE"
+      ]
+    },
+    {
+      "architecture_reference": "architecture.md section 12.3, sixth bullet",
+      "categories": [],
+      "decimal_places": 4,
+      "denominator": "holdout observations with a supplied reference judgment",
+      "eligible_roles": [
+        "INTERNAL_HOLDOUT",
+        "EXPERT_HOLDOUT"
+      ],
+      "is_validation_evidence": true,
+      "kind": "COUNT",
+      "metric_id": "PGX-VAL-009",
+      "note": "Reported separately for INTERNAL_HOLDOUT and EXPERT_HOLDOUT. There is no combined holdout figure: the two partitions answer different questions and pooling them would let a large, easy partition carry a small, hard one.",
+      "numerator": "holdout observations satisfying concordance, coverage correctness and evidence traceability together",
+      "plain_meaning": "How many holdout cases the system got fully right - attention, coverage and evidence all correct against the reference judgment.",
+      "required_inputs": [
+        "pinned release",
+        "holdout observations",
+        "immutable reference judgments"
+      ],
+      "requires_expert_review": false,
+      "threshold": null,
+      "threshold_provenance": null,
+      "title": "Holdout pass count",
+      "unavailable_when": [
+        "BENCHMARK_NOT_EXECUTED",
+        "NO_ACTIVE_RELEASE",
+        "RELEASE_NOT_PINNED",
+        "SEPARATION_AUDIT_FAILED",
+        "RELEASE_HASH_MISMATCH",
+        "CASE_MANIFEST_HASH_MISMATCH",
+        "NO_HOLDOUT_CASES",
+        "NO_REFERENCE_JUDGMENT",
+        "RESTRICTED_STORAGE_NOT_CONFIGURED",
+        "NO_ELIGIBLE_OBSERVATIONS"
+      ]
+    },
+    {
+      "architecture_reference": "architecture.md section 12.3, sixth bullet",
+      "categories": [],
+      "decimal_places": 4,
+      "denominator": "holdout observations with a supplied reference judgment",
+      "eligible_roles": [
+        "INTERNAL_HOLDOUT",
+        "EXPERT_HOLDOUT"
+      ],
+      "is_validation_evidence": true,
+      "kind": "RATE",
+      "metric_id": "PGX-VAL-010",
+      "note": "",
+      "numerator": "the PGX-VAL-009 count",
+      "plain_meaning": "The same finding as a proportion of judged holdout cases.",
+      "required_inputs": [
+        "pinned release",
+        "holdout observations",
+        "immutable reference judgments"
+      ],
+      "requires_expert_review": false,
+      "threshold": null,
+      "threshold_provenance": null,
+      "title": "Holdout pass rate",
+      "unavailable_when": [
+        "BENCHMARK_NOT_EXECUTED",
+        "NO_ACTIVE_RELEASE",
+        "RELEASE_NOT_PINNED",
+        "SEPARATION_AUDIT_FAILED",
+        "RELEASE_HASH_MISMATCH",
+        "CASE_MANIFEST_HASH_MISMATCH",
+        "ZERO_DENOMINATOR",
+        "NO_HOLDOUT_CASES",
+        "NO_REFERENCE_JUDGMENT",
+        "RESTRICTED_STORAGE_NOT_CONFIGURED",
+        "NO_ELIGIBLE_OBSERVATIONS"
+      ]
+    },
+    {
+      "architecture_reference": "architecture.md sections 12.3 and 17, WP-22",
+      "categories": [
+        "AGREE",
+        "PARTIAL",
+        "DISAGREE"
+      ],
+      "decimal_places": 4,
+      "denominator": "expert-holdout observations with a completed, post-reveal expert decision",
+      "eligible_roles": [
+        "EXPERT_HOLDOUT"
+      ],
+      "is_validation_evidence": true,
+      "kind": "DISTRIBUTION",
+      "metric_id": "PGX-VAL-011",
+      "note": "Three counts, never one score. Collapsing agree/partial/disagree into a single percentage would hide whether the disagreements clustered on the dangerous cases.",
+      "numerator": "expert decisions in each category",
+      "plain_meaning": "How named expert reviewers judged the system's output on expert-holdout cases: agree, partially agree, or disagree.",
+      "required_inputs": [
+        "pinned release",
+        "expert-holdout observations",
+        "completed WP-22 expert review records"
+      ],
+      "requires_expert_review": true,
+      "threshold": null,
+      "threshold_provenance": null,
+      "title": "Expert agreement distribution",
+      "unavailable_when": [
+        "BENCHMARK_NOT_EXECUTED",
+        "NO_ACTIVE_RELEASE",
+        "RELEASE_NOT_PINNED",
+        "SEPARATION_AUDIT_FAILED",
+        "RELEASE_HASH_MISMATCH",
+        "CASE_MANIFEST_HASH_MISMATCH",
+        "ZERO_DENOMINATOR",
+        "NO_HOLDOUT_CASES",
+        "NO_COMPLETED_EXPERT_REVIEWS",
+        "RESTRICTED_STORAGE_NOT_CONFIGURED",
+        "NO_ELIGIBLE_OBSERVATIONS"
+      ]
+    },
+    {
+      "architecture_reference": "architecture.md section 12.3, eighth bullet",
+      "categories": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "decimal_places": 4,
+      "denominator": "expert-holdout observations with a completed rating for that dimension",
+      "eligible_roles": [
+        "EXPERT_HOLDOUT"
+      ],
+      "is_validation_evidence": true,
+      "kind": "DISTRIBUTION",
+      "metric_id": "PGX-VAL-012",
+      "note": "Optional in the architecture, so its absence is not itself a blocker; it is unavailable like any other unmeasured thing.",
+      "numerator": "expert ratings at each Likert point, per dimension",
+      "plain_meaning": "Optional expert ratings on declared dimensions such as clarity and clinical usefulness.",
+      "required_inputs": [
+        "pinned release",
+        "expert-holdout observations",
+        "completed WP-22 Likert responses"
+      ],
+      "requires_expert_review": true,
+      "threshold": null,
+      "threshold_provenance": null,
+      "title": "Expert Likert dimensions",
+      "unavailable_when": [
+        "BENCHMARK_NOT_EXECUTED",
+        "NO_ACTIVE_RELEASE",
+        "RELEASE_NOT_PINNED",
+        "SEPARATION_AUDIT_FAILED",
+        "RELEASE_HASH_MISMATCH",
+        "CASE_MANIFEST_HASH_MISMATCH",
+        "ZERO_DENOMINATOR",
+        "NO_HOLDOUT_CASES",
+        "NO_COMPLETED_EXPERT_REVIEWS",
+        "RESTRICTED_STORAGE_NOT_CONFIGURED",
+        "NO_ELIGIBLE_OBSERVATIONS"
+      ]
+    },
+    {
+      "architecture_reference": "architecture.md section 12.3, ninth bullet; SAFETY-INV-008",
+      "categories": [],
+      "decimal_places": 4,
+      "denominator": "eligible observations executed under the pinned release",
+      "eligible_roles": [
+        "DEVELOPMENT",
+        "INTERNAL_HOLDOUT",
+        "EXPERT_HOLDOUT"
+      ],
+      "is_validation_evidence": false,
+      "kind": "COUNT",
+      "metric_id": "PGX-VAL-013",
+      "note": "A count with no rate on purpose. One unresolved conflict is a finding to act on; expressing it as a small percentage of a large run would make it look like noise.",
+      "numerator": "eligible observations reporting a conflict with no applicable precedence rule",
+      "plain_meaning": "How many eligible cases ended with two validated sources or rules disagreeing and no declared precedence to settle it.",
+      "required_inputs": [
+        "pinned release",
+        "observations"
+      ],
+      "requires_expert_review": false,
+      "threshold": null,
+      "threshold_provenance": null,
+      "title": "Unresolved source conflicts",
+      "unavailable_when": [
+        "BENCHMARK_NOT_EXECUTED",
+        "NO_ACTIVE_RELEASE",
+        "RELEASE_NOT_PINNED",
+        "SEPARATION_AUDIT_FAILED",
+        "RELEASE_HASH_MISMATCH",
+        "CASE_MANIFEST_HASH_MISMATCH",
+        "NO_ELIGIBLE_OBSERVATIONS"
+      ]
+    },
+    {
+      "architecture_reference": "architecture.md section 12.3, tenth bullet",
+      "categories": [],
+      "decimal_places": 4,
+      "denominator": "the size of the predeclared failure-path catalogue",
+      "eligible_roles": [
+        "DEVELOPMENT",
+        "INTERNAL_HOLDOUT",
+        "EXPERT_HOLDOUT"
+      ],
+      "is_validation_evidence": false,
+      "kind": "COUNT",
+      "metric_id": "PGX-VAL-014",
+      "note": "The denominator is the catalogue, never the set of paths that happened to run. A run touching two paths reports 2/10, not 2/2.",
+      "numerator": "distinct failure path ids from the catalogue observed at least once in this run",
+      "plain_meaning": "How many of the predeclared failure paths this benchmark actually exercised.",
+      "required_inputs": [
+        "pinned release",
+        "observations",
+        "the predeclared failure-path catalogue"
+      ],
+      "requires_expert_review": false,
+      "threshold": null,
+      "threshold_provenance": null,
+      "title": "Failure-path coverage",
+      "unavailable_when": [
+        "BENCHMARK_NOT_EXECUTED",
+        "NO_ACTIVE_RELEASE",
+        "RELEASE_NOT_PINNED",
+        "SEPARATION_AUDIT_FAILED",
+        "RELEASE_HASH_MISMATCH",
+        "CASE_MANIFEST_HASH_MISMATCH",
+        "NO_ELIGIBLE_OBSERVATIONS"
+      ]
+    },
+    {
+      "architecture_reference": "architecture.md section 12.3, tenth bullet",
+      "categories": [],
+      "decimal_places": 4,
+      "denominator": "the size of the predeclared failure-path catalogue",
+      "eligible_roles": [
+        "DEVELOPMENT",
+        "INTERNAL_HOLDOUT",
+        "EXPERT_HOLDOUT"
+      ],
+      "is_validation_evidence": false,
+      "kind": "RATE",
+      "metric_id": "PGX-VAL-015",
+      "note": "",
+      "numerator": "the PGX-VAL-014 count",
+      "plain_meaning": "The same finding as a proportion of the catalogue.",
+      "required_inputs": [
+        "pinned release",
+        "observations",
+        "the predeclared failure-path catalogue"
+      ],
+      "requires_expert_review": false,
+      "threshold": null,
+      "threshold_provenance": null,
+      "title": "Failure-path coverage rate",
+      "unavailable_when": [
+        "BENCHMARK_NOT_EXECUTED",
+        "NO_ACTIVE_RELEASE",
+        "RELEASE_NOT_PINNED",
+        "SEPARATION_AUDIT_FAILED",
+        "RELEASE_HASH_MISMATCH",
+        "CASE_MANIFEST_HASH_MISMATCH",
+        "ZERO_DENOMINATOR",
+        "NO_ELIGIBLE_OBSERVATIONS"
+      ]
+    }
+  ],
+  "schema_version": "pgx-wp21-metric-definitions/1",
+  "threshold_policy": "No metric carries a threshold. A release threshold is a policy decision made by named people before results exist, with recorded provenance. No such policy exists for this system, so every threshold is null. A threshold added after seeing results would describe those results rather than judge them.",
+  "thresholds_declared": 0,
+  "unavailable_reasons": {
+    "BENCHMARK_NOT_EXECUTED": "no benchmark run exists; nobody looked",
+    "CASE_MANIFEST_HASH_MISMATCH": "the case manifest hash disagrees with the one the plan pinned",
+    "INPUT_INCOMPATIBLE": "the supplied input does not satisfy this metric's declared requirements",
+    "NO_ACTIVE_RELEASE": "no release is registered or active, so nothing can be pinned and no benchmark can name what it measured",
+    "NO_COMPLETED_EXPERT_REVIEWS": "this metric summarises what named experts decided under the blind protocol; the protocol and the review module exist and no expert has completed a review",
+    "NO_ELIGIBLE_OBSERVATIONS": "no observation in this run belongs to a role this metric may be computed over",
+    "NO_HOLDOUT_CASES": "no case is held out from development, so nothing here measures generalisation",
+    "NO_REFERENCE_JUDGMENT": "this metric compares an output against a reference judgment, and no reference judgment has been supplied; WP-18 stores no expected answer, by design",
+    "RELEASE_HASH_MISMATCH": "an observation names a release or manifest hash that disagrees with the pinned one",
+    "RELEASE_NOT_PINNED": "the benchmark plan does not pin one release with all required hashes",
+    "RESTRICTED_STORAGE_NOT_CONFIGURED": "holdout payloads live in restricted storage and none is configured, so the cases could not be executed",
+    "SEPARATION_AUDIT_FAILED": "the development/holdout separation audit is not clean, so no metric may be computed from this case set at all",
+    "ZERO_DENOMINATOR": "the denominator this metric divides by is zero, so there is no rate to report; zero and one hundred would both be inventions"
+  }
+}

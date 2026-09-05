@@ -1,0 +1,216 @@
+{% extends "base.html" %}
+{% block content %}
+{#
+  The blind review workflow, state-aware.
+
+  The result block below is guarded by `model.result`, which the view model
+  physically cannot hold while `model.blinded` is true - `ExpertReviewPageModel`
+  raises on that combination. So the guard here is the second line, not the
+  first: a template mistake cannot leak a result, because there is nothing in
+  the model to leak.
+
+  Every form is inert unless `model.forms_enabled`, which requires a CSRF token
+  and a live assignment. A control that cannot submit is worse than none: a
+  reviewer would fill it in and believe it was recorded.
+#}
+
+{% if not model.available %}
+<div class="notice notice-unavailable" role="status">
+  <p><strong>{{ text['status.unavailable'] }}.</strong> {{ model.unavailable_note }}</p>
+  <p>{{ model.no_disclosure_note }}</p>
+</div>
+{% endif %}
+
+{% if not model.protocol_approved %}
+<div class="notice notice-unavailable" role="status">
+  <p><strong>{{ text['status.not_implemented'] }}.</strong> {{ model.protocol_note }}</p>
+</div>
+{% endif %}
+
+{% if not model.forms_enabled %}
+<div class="notice notice-unavailable" role="status">
+  <p>{{ text['expert.forms_disabled'] }}</p>
+</div>
+{% endif %}
+
+<dl class="fact-list">
+  <div><dt>{{ text['cases.case_id'] }}</dt><dd><code>{{ model.case_id }}</code></dd></div>
+  {% if model.available %}
+  <div><dt>{{ text['expert.release'] }}</dt><dd><code>{{ model.release_public_id }}</code></dd></div>
+  <div><dt>{{ text['expert.protocol'] }}</dt><dd><code>{{ model.protocol_version }}</code></dd></div>
+  {% endif %}
+  <div><dt>{{ field['statement'] }}</dt><dd>{{ model.no_disclosure_note }}</dd></div>
+</dl>
+
+<h2>{{ text['expert.heading'] }}</h2>
+<p>{{ model.order_note }}</p>
+<ol class="phase-list">
+  {% for phase, state in model.phases %}
+  <li>
+    <span class="phase-name">{{ phase }}</span>
+    <span class="{% if state == text['expert.phase_done'] %}numeric{% else %}unavailable{% endif %}">{{ state }}</span>
+  </li>
+  {% endfor %}
+</ol>
+
+{% if model.blinded %}
+<p class="notice notice-unavailable" role="status">{{ model.blinded_note }}</p>
+{% endif %}
+
+{#-- 1-2. The blinded form, then the locked receipt --------------------------#}
+{% if model.available and not model.expectation %}
+<h3>{{ text['expert.expected_form'] }}</h3>
+<form method="post" action="/expert-reviews/{{ model.case_id }}/expected" class="review-form">
+  {% if model.csrf_token %}<input type="hidden" name="csrf_token" value="{{ model.csrf_token }}">{% endif %}
+  <p>
+    <label for="expected_attention_level">{{ text['expert.attention'] }}</label>
+    <input id="expected_attention_level" name="expected_attention_level" type="text" required {% if not model.forms_enabled %}disabled{% endif %}>
+  </p>
+  <p>
+    <label for="expected_coverage_status">{{ text['expert.coverage'] }}</label>
+    <input id="expected_coverage_status" name="expected_coverage_status" type="text" required {% if not model.forms_enabled %}disabled{% endif %}>
+  </p>
+  <p>
+    <label for="expected_coverage_reason">{{ text['expert.coverage_reason'] }}</label>
+    <input id="expected_coverage_reason" name="expected_coverage_reason" type="text" {% if not model.forms_enabled %}disabled{% endif %}>
+  </p>
+  <p>
+    <label for="expected_rule_id">{{ text['expert.rule_id'] }}</label>
+    <input id="expected_rule_id" name="expected_rule_id" type="text" {% if not model.forms_enabled %}disabled{% endif %}>
+  </p>
+  <p>
+    <label for="requires_traceable_evidence">{{ text['expert.evidence_required'] }}</label>
+    <input id="requires_traceable_evidence" name="requires_traceable_evidence" type="checkbox" value="true" checked {% if not model.forms_enabled %}disabled{% endif %}>
+  </p>
+  <fieldset>
+    <legend>{{ text['expert.rationale'] }}</legend>
+    {% for code in model.rationale_choices %}
+    <label><input type="checkbox" name="rationale_codes" value="{{ code }}" {% if not model.forms_enabled %}disabled{% endif %}> <code>{{ code }}</code></label>
+    {% endfor %}
+  </fieldset>
+  <p>
+    <label for="reviewer_note">{{ text['expert.note'] }}</label>
+    <textarea id="reviewer_note" name="reviewer_note" rows="4" maxlength="1000" {% if not model.forms_enabled %}disabled{% endif %}></textarea>
+    <span class="muted">{{ text['expert.note_limit'] }}</span>
+  </p>
+  <p><button type="submit" {% if not model.forms_enabled %}disabled{% endif %}>{{ text['expert.expected_form'] }}</button></p>
+</form>
+{% endif %}
+
+{% if model.expectation %}
+<h3>{{ text['expert.expected_heading'] }}</h3>
+<p class="notice" role="status">{{ text['expert.expected_locked'] }}</p>
+<table class="data-table">
+  <caption>{{ text['expert.expected_heading'] }}</caption>
+  <thead><tr><th scope="col">{{ field['subject'] }}</th><th scope="col">{{ field['value'] }}</th></tr></thead>
+  <tbody>
+    <tr><th scope="row">{{ text['expert.attention'] }}</th><td>{{ model.expectation.expected_attention_level }}</td></tr>
+    <tr><th scope="row">{{ text['expert.coverage'] }}</th><td>{{ model.expectation.expected_coverage_status }}</td></tr>
+    <tr><th scope="row">{{ text['expert.coverage_reason'] }}</th><td>{{ model.expectation.expected_coverage_reason or text['app.none_recorded'] }}</td></tr>
+    <tr><th scope="row">{{ text['expert.rule_id'] }}</th><td>{{ model.expectation.expected_rule_id or text['app.none_recorded'] }}</td></tr>
+    <tr><th scope="row">{{ text['expert.evidence_required'] }}</th><td>{{ model.expectation.requires_traceable_evidence }}</td></tr>
+    <tr><th scope="row">{{ text['expert.rationale'] }}</th><td>{% for code in model.expectation.rationale_codes %}<code>{{ code }}</code> {% else %}{{ text['app.none_recorded'] }}{% endfor %}</td></tr>
+    <tr><th scope="row">{{ text['expert.note'] }}</th><td>{{ model.expectation.reviewer_note or text['app.none_recorded'] }}</td></tr>
+    <tr><th scope="row">{{ text['expert.recorded_at'] }}</th><td><code>{{ model.expectation.recorded_at }}</code></td></tr>
+    <tr><th scope="row">{{ text['expert.revision_hash'] }}</th><td><code>{{ model.expectation.revision_hash }}</code></td></tr>
+  </tbody>
+</table>
+{% endif %}
+
+{#-- 3. The reveal action ---------------------------------------------------#}
+{% if model.expectation and model.blinded %}
+<h3>{{ text['expert.reveal_action'] }}</h3>
+<p class="notice notice-unavailable" role="status"><strong>{{ text['expert.reveal_warning'] }}</strong></p>
+<form method="post" action="/expert-reviews/{{ model.case_id }}/reveal" class="review-form">
+  {% if model.csrf_token %}<input type="hidden" name="csrf_token" value="{{ model.csrf_token }}">{% endif %}
+  <p><button type="submit" {% if not model.forms_enabled %}disabled{% endif %}>{{ text['expert.reveal_action'] }}</button></p>
+</form>
+{% endif %}
+
+{#-- 4. The revealed result, beside the locked expectation ------------------#}
+{% if model.result %}
+<h3>{{ text['expert.result_heading'] }}</h3>
+<table class="data-table">
+  <caption>{{ text['expert.result_heading'] }}</caption>
+  <thead><tr><th scope="col">{{ field['subject'] }}</th><th scope="col">{{ field['value'] }}</th></tr></thead>
+  <tbody>
+    <tr><th scope="row">{{ text['expert.result_attention'] }}</th><td>{{ model.result.attention_level }}</td></tr>
+    <tr><th scope="row">{{ text['expert.result_coverage'] }}</th><td>{{ model.result.coverage_status }}</td></tr>
+    <tr><th scope="row">{{ text['expert.result_coverage_reason'] }}</th><td>{{ model.result.coverage_reason or text['app.none_recorded'] }}</td></tr>
+    <tr><th scope="row">{{ text['expert.result_rule_id'] }}</th><td>{{ model.result.firing_rule_id or text['app.none_recorded'] }}</td></tr>
+    <tr><th scope="row">{{ text['expert.finding_count'] }}</th><td class="numeric">{{ model.result.finding_count }}</td></tr>
+    <tr><th scope="row">{{ text['expert.traceable_finding_count'] }}</th><td class="numeric">{{ model.result.traceable_finding_count }}</td></tr>
+    <tr><th scope="row">{{ field['output_hash'] }}</th><td><code>{{ model.result.output_hash }}</code></td></tr>
+    <tr><th scope="row">{{ text['expert.pinned_expectation'] }}</th><td><code>{{ model.result.pinned_expectation_hash }}</code></td></tr>
+    <tr><th scope="row">{{ text['expert.recorded_at'] }}</th><td><code>{{ model.result.revealed_at }}</code></td></tr>
+  </tbody>
+</table>
+{% endif %}
+
+{#-- 5-6. The decision and optional ratings ---------------------------------#}
+{% if model.result and not model.decision %}
+<h3>{{ text['expert.decision_heading'] }}</h3>
+<p>{{ text['expert.decision_note'] }}</p>
+<form method="post" action="/expert-reviews/{{ model.case_id }}/complete" class="review-form">
+  {% if model.csrf_token %}<input type="hidden" name="csrf_token" value="{{ model.csrf_token }}">{% endif %}
+  <fieldset>
+    <legend>{{ text['expert.decision_heading'] }}</legend>
+    {% for choice in model.decision_choices %}
+    <label><input type="radio" name="decision" value="{{ choice }}" required {% if not model.forms_enabled %}disabled{% endif %}> <code>{{ choice }}</code></label>
+    {% endfor %}
+  </fieldset>
+  <fieldset>
+    <legend>{{ text['expert.ratings_heading'] }}</legend>
+    <p class="muted">{{ text['expert.ratings_note'] }}</p>
+    {% for dimension in model.rating_dimensions %}
+    <p>
+      <label for="rating_{{ dimension }}">{{ dimension }}</label>
+      <input id="rating_{{ dimension }}" name="rating_{{ dimension }}" type="number" min="1" max="5" {% if not model.forms_enabled %}disabled{% endif %}>
+    </p>
+    {% endfor %}
+  </fieldset>
+  <p>
+    <label for="decision_note">{{ text['expert.note'] }}</label>
+    <textarea id="decision_note" name="reviewer_note" rows="4" maxlength="1000" {% if not model.forms_enabled %}disabled{% endif %}></textarea>
+  </p>
+  <p><button type="submit" {% if not model.forms_enabled %}disabled{% endif %}>{{ text['expert.decision_heading'] }}</button></p>
+</form>
+{% endif %}
+
+{#-- 7. The immutable completed summary -------------------------------------#}
+{% if model.decision %}
+<h3>{{ text['expert.completed_heading'] }}</h3>
+<p class="notice" role="status">{{ text['expert.completed_note'] }}</p>
+<table class="data-table">
+  <caption>{{ text['expert.completed_heading'] }}</caption>
+  <thead><tr><th scope="col">{{ field['subject'] }}</th><th scope="col">{{ field['value'] }}</th></tr></thead>
+  <tbody>
+    <tr><th scope="row">{{ text['expert.decision_heading'] }}</th><td><code>{{ model.decision }}</code></td></tr>
+    <tr><th scope="row">{{ text['expert.ratings_heading'] }}</th><td>{% for dimension in model.rated_dimensions %}<code>{{ dimension }}</code> {% else %}{{ text['app.none_recorded'] }}{% endfor %}</td></tr>
+  </tbody>
+</table>
+{% endif %}
+
+{#-- 8. Append-only correction history --------------------------------------#}
+{% if model.corrections %}
+<h3>{{ text['expert.corrections_heading'] }}</h3>
+<table class="data-table">
+  <caption>{{ text['expert.corrections_heading'] }}</caption>
+  <thead><tr><th scope="col">{{ field['subject'] }}</th><th scope="col">{{ field['reason'] }}</th><th scope="col">{{ field['value'] }}</th></tr></thead>
+  <tbody>
+    {% for correction in model.corrections %}
+    <tr>
+      <th scope="row"><code>{{ correction.kind }}</code></th>
+      <td>{{ correction.reason_code }}</td>
+      <td>
+        <code>{{ correction.recorded_at }}</code>
+        <span class="unavailable">{% if correction.after_reveal %}{{ text['expert.correction_after_reveal'] }}{% else %}{{ text['expert.correction_before_reveal'] }}{% endif %}</span>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endif %}
+
+<p><strong>{{ text['expert.not_an_opinion'] }}</strong></p>
+{% endblock %}

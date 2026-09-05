@@ -1,0 +1,374 @@
+{
+  "$id": "https://pgx.local/schemas/wp24/supply-chain-result.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "description": "A vulnerability report's most important field is not the count of findings; it is what they were compared against. A VERIFIED scan must name the scanner, its version and the advisory database.",
+  "properties": {
+    "blockers": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "blocking": {
+            "type": "boolean"
+          },
+          "code": {
+            "enum": [
+              "DEPLOY_ADVISORY_DATABASE_UNAVAILABLE",
+              "DEPLOY_ARGON2_UNAVAILABLE",
+              "DEPLOY_BACKUP_NOT_EXECUTED",
+              "DEPLOY_BUILD_BACKEND_UNAVAILABLE",
+              "DEPLOY_CI_NOT_EXECUTED",
+              "DEPLOY_CLAIM_BOUNDARY_NOT_APPROVED",
+              "DEPLOY_COMPOSITION_INCOMPLETE",
+              "DEPLOY_CONTAINER_RUNTIME_UNAVAILABLE",
+              "DEPLOY_DATABASE_UNAVAILABLE",
+              "DEPLOY_EXPERT_REVIEW_NOT_PERFORMED",
+              "DEPLOY_IMAGE_NOT_BUILT",
+              "DEPLOY_LOCKFILE_ABSENT",
+              "DEPLOY_LOCKFILE_UNVERIFIED",
+              "DEPLOY_MIGRATION_HEAD_MISMATCH",
+              "DEPLOY_MIGRATION_NOT_EXECUTED",
+              "DEPLOY_NO_ELIGIBLE_RELEASE",
+              "DEPLOY_NO_HOLDOUT_EVIDENCE",
+              "DEPLOY_NO_REAL_USERS",
+              "DEPLOY_PACKAGE_INDEX_UNAVAILABLE",
+              "DEPLOY_PERFORMANCE_NOT_EXECUTED",
+              "DEPLOY_RESTORE_NOT_VERIFIED",
+              "DEPLOY_ROLLBACK_NOT_EXERCISED",
+              "DEPLOY_RUNTIME_ASSET_MISSING",
+              "DEPLOY_SAFETY_GATE_BLOCKED",
+              "DEPLOY_SBOM_NOT_GENERATED",
+              "DEPLOY_SMOKE_NOT_EXECUTED",
+              "DEPLOY_STAGING_NOT_DEPLOYED",
+              "DEPLOY_TLS_NOT_OBSERVED",
+              "DEPLOY_VULNERABILITY_SCANNER_UNAVAILABLE"
+            ],
+            "type": "string"
+          },
+          "detail": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "owner": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "code",
+          "detail",
+          "owner",
+          "blocking"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "release_path_clear": {
+      "type": "boolean"
+    },
+    "sbom": {
+      "properties": {
+        "blockers": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "blocking": {
+                "type": "boolean"
+              },
+              "code": {
+                "enum": [
+                  "DEPLOY_ADVISORY_DATABASE_UNAVAILABLE",
+                  "DEPLOY_ARGON2_UNAVAILABLE",
+                  "DEPLOY_BACKUP_NOT_EXECUTED",
+                  "DEPLOY_BUILD_BACKEND_UNAVAILABLE",
+                  "DEPLOY_CI_NOT_EXECUTED",
+                  "DEPLOY_CLAIM_BOUNDARY_NOT_APPROVED",
+                  "DEPLOY_COMPOSITION_INCOMPLETE",
+                  "DEPLOY_CONTAINER_RUNTIME_UNAVAILABLE",
+                  "DEPLOY_DATABASE_UNAVAILABLE",
+                  "DEPLOY_EXPERT_REVIEW_NOT_PERFORMED",
+                  "DEPLOY_IMAGE_NOT_BUILT",
+                  "DEPLOY_LOCKFILE_ABSENT",
+                  "DEPLOY_LOCKFILE_UNVERIFIED",
+                  "DEPLOY_MIGRATION_HEAD_MISMATCH",
+                  "DEPLOY_MIGRATION_NOT_EXECUTED",
+                  "DEPLOY_NO_ELIGIBLE_RELEASE",
+                  "DEPLOY_NO_HOLDOUT_EVIDENCE",
+                  "DEPLOY_NO_REAL_USERS",
+                  "DEPLOY_PACKAGE_INDEX_UNAVAILABLE",
+                  "DEPLOY_PERFORMANCE_NOT_EXECUTED",
+                  "DEPLOY_RESTORE_NOT_VERIFIED",
+                  "DEPLOY_ROLLBACK_NOT_EXERCISED",
+                  "DEPLOY_RUNTIME_ASSET_MISSING",
+                  "DEPLOY_SAFETY_GATE_BLOCKED",
+                  "DEPLOY_SBOM_NOT_GENERATED",
+                  "DEPLOY_SMOKE_NOT_EXECUTED",
+                  "DEPLOY_STAGING_NOT_DEPLOYED",
+                  "DEPLOY_TLS_NOT_OBSERVED",
+                  "DEPLOY_VULNERABILITY_SCANNER_UNAVAILABLE"
+                ],
+                "type": "string"
+              },
+              "detail": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "owner": {
+                "minLength": 1,
+                "type": "string"
+              }
+            },
+            "required": [
+              "code",
+              "detail",
+              "owner",
+              "blocking"
+            ],
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "format": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "generator": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "path": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "source": {
+          "enum": [
+            "image",
+            "lockfile",
+            null
+          ],
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "state": {
+          "enum": [
+            "CONFIGURED",
+            "EXECUTED",
+            "OBSERVED",
+            "VERIFIED",
+            "BLOCKED",
+            "NOT_EXECUTED",
+            "STALE",
+            "NOT_APPLICABLE",
+            "TEST_ONLY_REHEARSAL"
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "state",
+        "generator",
+        "source"
+      ],
+      "type": "object"
+    },
+    "secret_scan": {
+      "type": "object"
+    },
+    "supply_chain_version": {
+      "const": "pgx-wp24-supply-chain/1"
+    },
+    "vulnerability_scan": {
+      "if": {
+        "properties": {
+          "state": {
+            "const": "VERIFIED"
+          }
+        },
+        "required": [
+          "state"
+        ]
+      },
+      "properties": {
+        "active_ignores": {
+          "type": "array"
+        },
+        "advisory_database_date": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "advisory_database_identity": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "blockers": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "blocking": {
+                "type": "boolean"
+              },
+              "code": {
+                "enum": [
+                  "DEPLOY_ADVISORY_DATABASE_UNAVAILABLE",
+                  "DEPLOY_ARGON2_UNAVAILABLE",
+                  "DEPLOY_BACKUP_NOT_EXECUTED",
+                  "DEPLOY_BUILD_BACKEND_UNAVAILABLE",
+                  "DEPLOY_CI_NOT_EXECUTED",
+                  "DEPLOY_CLAIM_BOUNDARY_NOT_APPROVED",
+                  "DEPLOY_COMPOSITION_INCOMPLETE",
+                  "DEPLOY_CONTAINER_RUNTIME_UNAVAILABLE",
+                  "DEPLOY_DATABASE_UNAVAILABLE",
+                  "DEPLOY_EXPERT_REVIEW_NOT_PERFORMED",
+                  "DEPLOY_IMAGE_NOT_BUILT",
+                  "DEPLOY_LOCKFILE_ABSENT",
+                  "DEPLOY_LOCKFILE_UNVERIFIED",
+                  "DEPLOY_MIGRATION_HEAD_MISMATCH",
+                  "DEPLOY_MIGRATION_NOT_EXECUTED",
+                  "DEPLOY_NO_ELIGIBLE_RELEASE",
+                  "DEPLOY_NO_HOLDOUT_EVIDENCE",
+                  "DEPLOY_NO_REAL_USERS",
+                  "DEPLOY_PACKAGE_INDEX_UNAVAILABLE",
+                  "DEPLOY_PERFORMANCE_NOT_EXECUTED",
+                  "DEPLOY_RESTORE_NOT_VERIFIED",
+                  "DEPLOY_ROLLBACK_NOT_EXERCISED",
+                  "DEPLOY_RUNTIME_ASSET_MISSING",
+                  "DEPLOY_SAFETY_GATE_BLOCKED",
+                  "DEPLOY_SBOM_NOT_GENERATED",
+                  "DEPLOY_SMOKE_NOT_EXECUTED",
+                  "DEPLOY_STAGING_NOT_DEPLOYED",
+                  "DEPLOY_TLS_NOT_OBSERVED",
+                  "DEPLOY_VULNERABILITY_SCANNER_UNAVAILABLE"
+                ],
+                "type": "string"
+              },
+              "detail": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "owner": {
+                "minLength": 1,
+                "type": "string"
+              }
+            },
+            "required": [
+              "code",
+              "detail",
+              "owner",
+              "blocking"
+            ],
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "blocking_finding_count": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "blocking_severities": {
+          "type": "array"
+        },
+        "exit_code": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "expired_ignores": {
+          "type": "array"
+        },
+        "finding_counts": {
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "image_digest": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "image_reference": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "scanner_name": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "scanner_version": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "severity_policy": {
+          "type": "object"
+        },
+        "state": {
+          "enum": [
+            "CONFIGURED",
+            "EXECUTED",
+            "OBSERVED",
+            "VERIFIED",
+            "BLOCKED",
+            "NOT_EXECUTED",
+            "STALE",
+            "NOT_APPLICABLE",
+            "TEST_ONLY_REHEARSAL"
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "state",
+        "scanner_name",
+        "scanner_version",
+        "advisory_database_identity",
+        "severity_policy"
+      ],
+      "then": {
+        "properties": {
+          "advisory_database_identity": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "scanner_name": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "scanner_version": {
+            "minLength": 1,
+            "type": "string"
+          }
+        }
+      },
+      "type": "object"
+    }
+  },
+  "required": [
+    "supply_chain_version",
+    "sbom",
+    "vulnerability_scan"
+  ],
+  "title": "PGx SBOM and vulnerability result (WP-24)",
+  "type": "object"
+}

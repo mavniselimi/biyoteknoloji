@@ -1,0 +1,277 @@
+{
+  "schema_version": "pgx-legacy-source-inventory/1",
+  "columns_scanned": [
+    {
+      "file": "clinpgx_mvp_seed/drug_gene_guidelines.csv",
+      "column": "source",
+      "kind": "SOURCE_NAME",
+      "note": "guideline-issuing body as recorded by the legacy cleaner"
+    },
+    {
+      "file": "clinpgx_mvp_seed/drug_gene_guidelines.csv",
+      "column": "source_container",
+      "kind": "SOURCE_CONTAINER",
+      "note": "provider container the guideline annotation was read from"
+    },
+    {
+      "file": "clinpgx_mvp_seed/phenotype_effect_rules.csv",
+      "column": "source_container",
+      "kind": "SOURCE_CONTAINER",
+      "note": "provider container the variant annotation was read from"
+    },
+    {
+      "file": "clinpgx_mvp_seed/supported_genes.csv",
+      "column": "alleleFunctionSource",
+      "kind": "ALLELE_FUNCTION_SOURCE",
+      "note": "attribution for the allele-function assignment"
+    },
+    {
+      "file": "clinpgx_outputs_v2/guideline_annotation_rows.csv",
+      "column": "source_hint",
+      "kind": "SOURCE_CONTAINER",
+      "note": "probe-recorded container for guideline annotation rows"
+    },
+    {
+      "file": "clinpgx_outputs_v2/mvp_candidate_drug_gene_edges.csv",
+      "column": "edge_source",
+      "kind": "SOURCE_CONTAINER",
+      "note": "provider container each candidate drug-gene edge was derived from"
+    },
+    {
+      "file": "clinpgx_outputs_v2/pair_annotation_rows.csv",
+      "column": "source_hint",
+      "kind": "SOURCE_CONTAINER",
+      "note": "probe-recorded container for pair annotation rows"
+    },
+    {
+      "file": "clinpgx_outputs_v2/resolved_genes.csv",
+      "column": "alleleFunctionSource",
+      "kind": "ALLELE_FUNCTION_SOURCE",
+      "note": "attribution for the allele-function assignment"
+    },
+    {
+      "file": "clinpgx_outputs_v2/variant_annotation_filtered_rows.csv",
+      "column": "source_hint",
+      "kind": "SOURCE_CONTAINER",
+      "note": "probe-recorded container for filtered variant annotation rows"
+    }
+  ],
+  "excluded_columns": [
+    {
+      "file": "candidate_alternatives.csv",
+      "column": "source_drug",
+      "reason": "the drug an alternative is proposed for, not a source of evidence."
+    },
+    {
+      "file": "clinpgx_mvp_seed/drug_gene_guidelines.csv",
+      "column": "literature_titles",
+      "reason": "bibliographic titles of cited papers. These are citations belonging to a source, not sources the project acquires from."
+    },
+    {
+      "file": "drug_graph_edges.csv",
+      "column": "source",
+      "reason": "graph edge origin node - carries a drug name such as 'clopidogrel', not a scientific source. Counting it would invent sources named after medicines."
+    }
+  ],
+  "input_digests": {
+    "clinpgx_mvp_seed/drug_gene_guidelines.csv": "sha256:b32940ab13fbb0e536f4b0dd3a4490513c67ff3e0ce502cc1d44ea51014ef847",
+    "clinpgx_mvp_seed/phenotype_effect_rules.csv": "sha256:7e4f7d2504ec00d04cb476ecf6325d1a61901493350a136cded65328a11190f0",
+    "clinpgx_mvp_seed/supported_genes.csv": "sha256:3726d7dde14d3a53cdbcf3826ad3c1d759e6653ef20a566ae71fe03680edcc48",
+    "clinpgx_outputs_v2/guideline_annotation_rows.csv": "sha256:99482334fe14a527a5dbe9439e497f085282085271e02c12a9b10ed7c0dc6894",
+    "clinpgx_outputs_v2/mvp_candidate_drug_gene_edges.csv": "sha256:3922ce7285545886801ef9c8d9206b9211c058f50bf174082c5397b8258e7690",
+    "clinpgx_outputs_v2/pair_annotation_rows.csv": "sha256:03a75f6e4f4c885a2f7316517dd2448c364cffe17d0bed043a95c796c2dba7bd",
+    "clinpgx_outputs_v2/resolved_genes.csv": "sha256:e62736b822672f800abccc2e0c41896cf6bb416c396feeee2c5f8ea0d4edeb20",
+    "clinpgx_outputs_v2/variant_annotation_filtered_rows.csv": "sha256:7d83d884f88034dfbf0a5a4e786bcf41277880216bc7ab2a1b2bad36f8662f3a"
+  },
+  "missing_inputs": [],
+  "totals": {
+    "distinct_values": 18,
+    "total_occurrences": 11308,
+    "columns_scanned": 9
+  },
+  "observations": [
+    "2 row(s) carry a blank source value, in clinpgx_mvp_seed/supported_genes.csv::alleleFunctionSource, clinpgx_outputs_v2/resolved_genes.csv::alleleFunctionSource. Their provenance is unrecorded and cannot be inferred.",
+    "SOURCE_CONTAINER: 'report/pair:GuidelineAnnotation', 'report/pair:guidelineAnnotation' differ only by case. They are counted separately; whether they name the same thing is a question for the source owner, not a normalisation this project may apply.",
+    "SOURCE_CONTAINER: 'report/pair:VariantAnnotation', 'report/pair:variantAnnotation' differ only by case. They are counted separately; whether they name the same thing is a question for the source owner, not a normalisation this project may apply.",
+    "11 value(s) appear in more than one column; each is listed with every column it was found in."
+  ],
+  "values": [
+    {
+      "value": "",
+      "kind": "ALLELE_FUNCTION_SOURCE",
+      "occurrences": 2,
+      "columns": [
+        "clinpgx_mvp_seed/supported_genes.csv::alleleFunctionSource",
+        "clinpgx_outputs_v2/resolved_genes.csv::alleleFunctionSource"
+      ],
+      "blank": true
+    },
+    {
+      "value": "CPIC",
+      "kind": "ALLELE_FUNCTION_SOURCE",
+      "occurrences": 6,
+      "columns": [
+        "clinpgx_mvp_seed/supported_genes.csv::alleleFunctionSource",
+        "clinpgx_outputs_v2/resolved_genes.csv::alleleFunctionSource"
+      ],
+      "blank": false
+    },
+    {
+      "value": "ClinPGx",
+      "kind": "ALLELE_FUNCTION_SOURCE",
+      "occurrences": 2,
+      "columns": [
+        "clinpgx_mvp_seed/supported_genes.csv::alleleFunctionSource",
+        "clinpgx_outputs_v2/resolved_genes.csv::alleleFunctionSource"
+      ],
+      "blank": false
+    },
+    {
+      "value": "data/guidelineAnnotation",
+      "kind": "SOURCE_CONTAINER",
+      "occurrences": 1206,
+      "columns": [
+        "clinpgx_mvp_seed/drug_gene_guidelines.csv::source_container",
+        "clinpgx_outputs_v2/guideline_annotation_rows.csv::source_hint",
+        "clinpgx_outputs_v2/mvp_candidate_drug_gene_edges.csv::edge_source"
+      ],
+      "blank": false
+    },
+    {
+      "value": "data/variantAnnotation",
+      "kind": "SOURCE_CONTAINER",
+      "occurrences": 362,
+      "columns": [
+        "clinpgx_mvp_seed/phenotype_effect_rules.csv::source_container",
+        "clinpgx_outputs_v2/mvp_candidate_drug_gene_edges.csv::edge_source",
+        "clinpgx_outputs_v2/variant_annotation_filtered_rows.csv::source_hint"
+      ],
+      "blank": false
+    },
+    {
+      "value": "manual_normalization_from_clinpgx_outputs",
+      "kind": "SOURCE_CONTAINER",
+      "occurrences": 22,
+      "columns": [
+        "clinpgx_mvp_seed/phenotype_effect_rules.csv::source_container"
+      ],
+      "blank": false
+    },
+    {
+      "value": "report/pair:DrugLabel",
+      "kind": "SOURCE_CONTAINER",
+      "occurrences": 58,
+      "columns": [
+        "clinpgx_outputs_v2/mvp_candidate_drug_gene_edges.csv::edge_source",
+        "clinpgx_outputs_v2/pair_annotation_rows.csv::source_hint"
+      ],
+      "blank": false
+    },
+    {
+      "value": "report/pair:GuidelineAnnotation",
+      "kind": "SOURCE_CONTAINER",
+      "occurrences": 60,
+      "columns": [
+        "clinpgx_outputs_v2/mvp_candidate_drug_gene_edges.csv::edge_source",
+        "clinpgx_outputs_v2/pair_annotation_rows.csv::source_hint"
+      ],
+      "blank": false
+    },
+    {
+      "value": "report/pair:VariantAnnotation",
+      "kind": "SOURCE_CONTAINER",
+      "occurrences": 4718,
+      "columns": [
+        "clinpgx_mvp_seed/phenotype_effect_rules.csv::source_container",
+        "clinpgx_outputs_v2/mvp_candidate_drug_gene_edges.csv::edge_source",
+        "clinpgx_outputs_v2/pair_annotation_rows.csv::source_hint"
+      ],
+      "blank": false
+    },
+    {
+      "value": "report/pair:guidelineAnnotation",
+      "kind": "SOURCE_CONTAINER",
+      "occurrences": 60,
+      "columns": [
+        "clinpgx_outputs_v2/mvp_candidate_drug_gene_edges.csv::edge_source",
+        "clinpgx_outputs_v2/pair_annotation_rows.csv::source_hint"
+      ],
+      "blank": false
+    },
+    {
+      "value": "report/pair:label",
+      "kind": "SOURCE_CONTAINER",
+      "occurrences": 58,
+      "columns": [
+        "clinpgx_outputs_v2/mvp_candidate_drug_gene_edges.csv::edge_source",
+        "clinpgx_outputs_v2/pair_annotation_rows.csv::source_hint"
+      ],
+      "blank": false
+    },
+    {
+      "value": "report/pair:variantAnnotation",
+      "kind": "SOURCE_CONTAINER",
+      "occurrences": 4718,
+      "columns": [
+        "clinpgx_mvp_seed/phenotype_effect_rules.csv::source_container",
+        "clinpgx_outputs_v2/mvp_candidate_drug_gene_edges.csv::edge_source",
+        "clinpgx_outputs_v2/pair_annotation_rows.csv::source_hint"
+      ],
+      "blank": false
+    },
+    {
+      "value": "AHA",
+      "kind": "SOURCE_NAME",
+      "occurrences": 1,
+      "columns": [
+        "clinpgx_mvp_seed/drug_gene_guidelines.csv::source"
+      ],
+      "blank": false
+    },
+    {
+      "value": "AusNZ",
+      "kind": "SOURCE_NAME",
+      "occurrences": 1,
+      "columns": [
+        "clinpgx_mvp_seed/drug_gene_guidelines.csv::source"
+      ],
+      "blank": false
+    },
+    {
+      "value": "CPIC",
+      "kind": "SOURCE_NAME",
+      "occurrences": 13,
+      "columns": [
+        "clinpgx_mvp_seed/drug_gene_guidelines.csv::source"
+      ],
+      "blank": false
+    },
+    {
+      "value": "CPNDS",
+      "kind": "SOURCE_NAME",
+      "occurrences": 3,
+      "columns": [
+        "clinpgx_mvp_seed/drug_gene_guidelines.csv::source"
+      ],
+      "blank": false
+    },
+    {
+      "value": "DPWG",
+      "kind": "SOURCE_NAME",
+      "occurrences": 15,
+      "columns": [
+        "clinpgx_mvp_seed/drug_gene_guidelines.csv::source"
+      ],
+      "blank": false
+    },
+    {
+      "value": "RNPGx",
+      "kind": "SOURCE_NAME",
+      "occurrences": 3,
+      "columns": [
+        "clinpgx_mvp_seed/drug_gene_guidelines.csv::source"
+      ],
+      "blank": false
+    }
+  ]
+}

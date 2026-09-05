@@ -1,0 +1,129 @@
+{
+  "profile": {
+    "profile_name": "CYP2C19 poor metabolizer profili",
+    "phenotypes": {
+      "CYP2C19": "poor",
+      "CYP2D6": "normal",
+      "CYP2C9": "normal",
+      "CYP3A4": "normal",
+      "CYP1A2": "normal"
+    }
+  },
+  "selected_drugs": [
+    "clopidogrel",
+    "voriconazole",
+    "codeine",
+    "warfarin",
+    "amitriptyline"
+  ],
+  "overall_risk_level": "high",
+  "overall_risk_label_tr": "Yüksek dikkat",
+  "risk_flag_count": 3,
+  "drug_results": [
+    {
+      "drug": "clopidogrel",
+      "drug_behavior_hint": "prodrug_activation",
+      "overall_risk_level": "high",
+      "overall_risk_label_tr": "Yüksek dikkat",
+      "findings": [
+        {
+          "gene": "CYP2C19",
+          "user_phenotype": "poor",
+          "risk_level": "high",
+          "risk_label_tr": "Yüksek dikkat",
+          "effect_direction": "decreased_activation",
+          "risk_meaning": "reduced_response_attention",
+          "plain_language": "CYP2C19 aktivitesi düşük olduğunda clopidogrel aktif metabolite daha az dönüşebilir; bu durum antiplatelet yanıtın azalması açısından dikkat gerektirir.",
+          "guideline_sources": [
+            "AHA",
+            "CPIC",
+            "DPWG"
+          ],
+          "guideline_summary": "The CPIC Dosing Guideline for clopidogrel recommends an alternative antiplatelet therapy for CYP2C19 poor or intermediate metabolizers (cardiovascular indications: prasugrel or ticagrelor if no contraindication; neurovascular indications: alternative P2Y12 inhibitor if clinically indicated and no contraindication.)",
+          "evidence_strength": "high_guideline_supported"
+        }
+      ]
+    },
+    {
+      "drug": "voriconazole",
+      "drug_behavior_hint": "active_drug_or_general_drug",
+      "overall_risk_level": "high",
+      "overall_risk_label_tr": "Yüksek dikkat",
+      "findings": [
+        {
+          "gene": "CYP2C19",
+          "user_phenotype": "poor",
+          "risk_level": "high",
+          "risk_label_tr": "Yüksek dikkat",
+          "effect_direction": "decreased_clearance",
+          "risk_meaning": "increased_exposure_attention",
+          "plain_language": "CYP2C19 aktivitesi düşük olduğunda voriconazole metabolizması azalabilir; maruziyet artışı açısından dikkat gerekir.",
+          "guideline_sources": [
+            "AusNZ",
+            "CPIC",
+            "DPWG"
+          ],
+          "guideline_summary": "The CPIC dosing guideline for voriconazole recommends selecting an alternative agent that is not dependent on CYP2C19 metabolism in adults who are CYP2C19 ultrarapid metabolizers, rapid metabolizers or poor metabolizers. In pediatric patients, an alternative agent should be used in patients who are ultrarapid metabolizers or poor metabolizers. In pediatric rapid metabolizers, therapy should be initiated at recommended standard case dosing, then therapeutic dosing monitoring should be used to tit...",
+          "evidence_strength": "high_guideline_supported"
+        }
+      ]
+    },
+    {
+      "drug": "codeine",
+      "drug_behavior_hint": "prodrug_activation",
+      "overall_risk_level": "none",
+      "overall_risk_label_tr": "Düşük / uyarı yok",
+      "findings": []
+    },
+    {
+      "drug": "warfarin",
+      "drug_behavior_hint": "active_drug_or_general_drug",
+      "overall_risk_level": "none",
+      "overall_risk_label_tr": "Düşük / uyarı yok",
+      "findings": []
+    },
+    {
+      "drug": "amitriptyline",
+      "drug_behavior_hint": "active_drug_or_general_drug",
+      "overall_risk_level": "medium",
+      "overall_risk_label_tr": "Orta dikkat",
+      "findings": [
+        {
+          "gene": "CYP2C19",
+          "user_phenotype": "poor",
+          "risk_level": "medium",
+          "risk_label_tr": "Orta dikkat",
+          "effect_direction": "altered_metabolism",
+          "risk_meaning": "exposure_change_attention",
+          "plain_language": "CYP2C19 fenotipi amitriptyline metabolizmasını etkileyebilir; maruziyet değişimi açısından farmakogenetik dikkat bayrağı üretilebilir.",
+          "guideline_sources": [
+            "CPIC",
+            "DPWG"
+          ],
+          "guideline_summary": "The CPIC Dosing Guideline update for amitriptyline recommends an alternative drug for CYP2D6 ultrarapid or poor metabolizers and CYP2C19 ultrarapid, rapid or poor metabolizers. If amitriptyline is warranted, consider a 50% dose reduction in CYP2D6 or CYP2C19 poor metabolizers. For CYP2D6 intermediate metabolizers, a 25% dose reduction should be considered. CPIC has updated the CYP2D6 genotype-phenotype translation in all supplemental files since the guideline was published.",
+          "evidence_strength": "high_guideline_supported"
+        }
+      ]
+    }
+  ],
+  "same_gene_attention": [
+    {
+      "gene": "CYP2C19",
+      "drugs": [
+        "clopidogrel",
+        "voriconazole",
+        "amitriptyline"
+      ],
+      "message": "Seçilen ilaçlardan clopidogrel, voriconazole, amitriptyline aynı CYP2C19 farmakogenetik ekseniyle ilişkilidir. Bu bulgu doğrudan ilaç-ilaç etkileşimi iddiası değildir; MVP içinde aynı gen üzerinden birden fazla dikkat noktasını görünür kılar."
+    },
+    {
+      "gene": "CYP2D6",
+      "drugs": [
+        "codeine",
+        "amitriptyline"
+      ],
+      "message": "Seçilen ilaçlardan codeine, amitriptyline aynı CYP2D6 farmakogenetik ekseniyle ilişkilidir. Bu bulgu doğrudan ilaç-ilaç etkileşimi iddiası değildir; MVP içinde aynı gen üzerinden birden fazla dikkat noktasını görünür kılar."
+    }
+  ],
+  "must_include_warning": "Bu çıktı klinik karar, doz önerisi veya tedavi önerisi değildir. ClinPGx kaynaklı veriler ve sentetik CYP profilleri kullanılarak oluşturulmuş açıklanabilir farmakogenetik ön değerlendirme / MVP dikkat bayrağıdır."
+}

@@ -1,0 +1,1136 @@
+{
+  "amendments": [
+    {
+      "amended_at_utc": "2026-08-29",
+      "amendment_schema_version": "wp01-manifest-amendment/1",
+      "legacy_artifacts_verified_unchanged": 64,
+      "new_sha256": "e38fb05b6d2a005d1796f63b64bd13a5055749630c7feda256d248d02dc8a2be",
+      "new_size_bytes": 19921,
+      "note": "WP-02 phase transition; legacy artifacts unchanged",
+      "old_sha256": "474e1793360182295ce2f671209e93da795229fd5cdfaf8063fe615297220681",
+      "old_size_bytes": 17810,
+      "path": "tests/regression/legacy/test_legacy_reproduction.py",
+      "reason": "WP-01 test test_no_wp02_packaging_or_database_artifacts_were_added became obsolete when WP-02 legitimately introduced pyproject.toml and the pgx/ package. Replaced with test_wp01_baseline_does_not_absorb_wp02_artifacts (the WP-01 manifest must not own or hash WP-02 paths) and test_wp01_baseline_scope_is_unchanged (64 legacy + 22 evidence artifacts). Authorized by the human reviewer in the WP-02 corrective pass.",
+      "rebuild_performed": false
+    }
+  ],
+  "artifact_counts": {
+    "legacy_and_wp00": 64,
+    "wp01_evidence": 22
+  },
+  "artifacts": [
+    {
+      "artifact_type": "markdown_doc",
+      "known_issue_ids": [],
+      "mutable_legacy_state": false,
+      "path": "MVP_1_TEKNIK_DURUM_RAPORU.md",
+      "provenance_note": "Legacy repository artifact captured by the WP-01 baseline.",
+      "required": true,
+      "role": "legacy_historical_doc",
+      "sha256": "e766bc4159a0840921d80935bcde9f5fba3dcb63506ca2fc4c77f1228e106ea6",
+      "size_bytes": 25808
+    },
+    {
+      "artifact_type": "python_module",
+      "known_issue_ids": [
+        "LEGACY-BUG-008",
+        "LEGACY-BUG-009"
+      ],
+      "mutable_legacy_state": false,
+      "path": "alternative_ranker.py",
+      "provenance_note": "Legacy executable module; frozen until its owning migration WP retires it.",
+      "required": true,
+      "role": "legacy_module",
+      "sha256": "c0f70a50d92b1dfae8d6de6f0712ccbc986357c95a2ef849a3d7b9d8f567db0b",
+      "size_bytes": 27917
+    },
+    {
+      "artifact_type": "markdown_doc",
+      "known_issue_ids": [],
+      "mutable_legacy_state": false,
+      "path": "architecture.md",
+      "provenance_note": "Implementation source of truth; must not be modified by a work package.",
+      "required": true,
+      "role": "architecture_contract",
+      "sha256": "4faef6e8eb5097297da12a9ece9a6b4871cd5f1518a6f57987bbe3ec83cd4f56",
+      "size_bytes": 71522
+    },
+    {
+      "artifact_type": "csv_dataset",
+      "known_issue_ids": [],
+      "mutable_legacy_state": false,
+      "path": "candidate_alternatives.csv",
+      "provenance_note": "Legacy repository artifact captured by the WP-01 baseline.",
+      "required": true,
+      "role": "legacy_candidate_seed",
+      "sha256": "db5fcaac054107f5a335cf370a2470a23727910f8a1f5f5012b054ca913e7437",
+      "size_bytes": 425
+    },
+    {
+      "artifact_type": "python_module",
+      "known_issue_ids": [
+        "LEGACY-BUG-007",
+        "LEGACY-BUG-010",
+        "LEGACY-BUG-011"
+      ],
+      "mutable_legacy_state": false,
+      "path": "candidate_onboarding.py",
+      "provenance_note": "Legacy executable module; frozen until its owning migration WP retires it.",
+      "required": true,
+      "role": "legacy_module",
+      "sha256": "239cfafd2f3a771d70e4001ec4c573eed1e0d8d19e15bda6a63dc4cc5f869bab",
+      "size_bytes": 41626
+    },
+    {
+      "artifact_type": "python_module",
+      "known_issue_ids": [
+        "LEGACY-BUG-005",
+        "LEGACY-BUG-006"
+      ],
+      "mutable_legacy_state": false,
+      "path": "clean_mvp_seed_dataset.py",
+      "provenance_note": "Legacy executable module; frozen until its owning migration WP retires it.",
+      "required": true,
+      "role": "legacy_module",
+      "sha256": "acb07c7f4e391538e89af6b2db7d75be7c75e27610f47af5aaf6b8c37cea6830",
+      "size_bytes": 41661
+    },
+    {
+      "artifact_type": "csv_output",
+      "known_issue_ids": [],
+      "mutable_legacy_state": false,
+      "path": "clinpgx_mvp_seed/alternative_outputs/alternative_candidates.csv",
+      "provenance_note": "Mutable legacy seed; mutated in place by candidate_onboarding.py --merge.",
+      "required": true,
+      "role": "legacy_derived_output",
+      "sha256": "a3e5c1221e426e4f38b5c33a47c7c352cc2bc3dd24016beec26c845b2474cef9",
+      "size_bytes": 637
+    },
+    {
+      "artifact_type": "markdown_report",
+      "known_issue_ids": [],
+      "mutable_legacy_state": false,
+      "path": "clinpgx_mvp_seed/alternative_outputs/alternative_report.md",
+      "provenance_note": "Mutable legacy seed; mutated in place by candidate_onboarding.py --merge.",
+      "required": true,
+      "role": "legacy_derived_output",
+      "sha256": "b69bf8044fe16411cb5aedb2bb16605a8dcb70765a7ca0eeab59dc8f546ab040",
+      "size_bytes": 4886
+    },
+    {
+      "artifact_type": "json_output",
+      "known_issue_ids": [
+        "LEGACY-BUG-008",
+        "LEGACY-BUG-009"
+      ],
+      "mutable_legacy_state": false,
+      "path": "clinpgx_mvp_seed/alternative_outputs/alternative_result_full.json",
+      "provenance_note": "Mutable legacy seed; mutated in place by candidate_onboarding.py --merge.",
+      "required": true,
+      "role": "legacy_derived_output",
+      "sha256": "0c9a7ea733dc88dd4332875ef1358ad70d923e9c7951915372a65204fc4b37a5",
+      "size_bytes": 5021
+    },
+    {
+      "artifact_type": "csv_output",
+      "known_issue_ids": [],
+      "mutable_legacy_state": false,
+      "path": "clinpgx_mvp_seed/alternative_outputs_beta/alternative_candidates.csv",
+      "provenance_note": "Mutable legacy seed; mutated in place by candidate_onboarding.py --merge.",
+      "required": true,
+      "role": "legacy_derived_output",
+      "sha256": "6623e50ea8224dda84b36e0c1ca5b36a0b9b0dbf61235a332a19d4ded40eff7e",
+      "size_bytes": 593
+    },
+    {
+      "artifact_type": "markdown_report",
+      "known_issue_ids": [],
+      "mutable_legacy_state": false,
+      "path": "clinpgx_mvp_seed/alternative_outputs_beta/alternative_report.md",
+      "provenance_note": "Mutable legacy seed; mutated in place by candidate_onboarding.py --merge.",
+      "required": true,
+      "role": "legacy_derived_output",
+      "sha256": "e8214ec67c90df79e907b070c72cb9506931e6a5db9700d129d7079d5c17fa12",
+      "size_bytes": 4692
+    },
+    {
+      "artifact_type": "json_output",
+      "known_issue_ids": [
+        "LEGACY-BUG-008",
+        "LEGACY-BUG-009"
+      ],
+      "mutable_legacy_state": false,
+      "path": "clinpgx_mvp_seed/alternative_outputs_beta/alternative_result_full.json",
+      "provenance_note": "Mutable legacy seed; mutated in place by candidate_onboarding.py --merge.",
+      "required": true,
+      "role": "legacy_derived_output",
+      "sha256": "aefd724c02a93a0966d0ccf49bbca372ad8c23946245f7c1469a03adf670e3b4",
+      "size_bytes": 4835
+    },
+    {
+      "artifact_type": "csv_output",
+      "known_issue_ids": [],
+      "mutable_legacy_state": false,
+      "path": "clinpgx_mvp_seed/candidate_onboarding_outputs/candidate_drug_gene_guidelines_extension.csv",
+      "provenance_note": "Mutable legacy seed; mutated in place by candidate_onboarding.py --merge.",
+      "required": true,
+      "role": "legacy_derived_output",
+      "sha256": "0ffb15628e1d34bc94e6290f196b8112a2a62f232a2c801807be8a9401c60601",
+      "size_bytes": 11540
+    },
+    {
+      "artifact_type": "csv_output",
+      "known_issue_ids": [],
+      "mutable_legacy_state": false,
+      "path": "clinpgx_mvp_seed/candidate_onboarding_outputs/candidate_guideline_annotation_rows.csv",
+      "provenance_note": "Mutable legacy seed; mutated in place by candidate_onboarding.py --merge.",
+      "required": true,
+      "role": "legacy_derived_output",
+      "sha256": "70ee3328a64b39220beefc45f31276e04e33ccc594011defc0d05737d79042ab",
+      "size_bytes": 1112
+    },
+    {
+      "artifact_type": "csv_output",
+      "known_issue_ids": [],
+      "mutable_legacy_state": false,
+      "path": "clinpgx_mvp_seed/candidate_onboarding_outputs/candidate_label_rows.csv",
+      "provenance_note": "Mutable legacy seed; mutated in place by candidate_onboarding.py --merge.",
+      "required": true,
+      "role": "legacy_derived_output",
+      "sha256": "c21a2965f6646e982eacbc40353e1fe275e5bb3eee8c65d6c7299edcd3c9bda1",
+      "size_bytes": 310
+    },
+    {
+      "artifact_type": "markdown_report",
+      "known_issue_ids": [],
+      "mutable_legacy_state": false,
+      "path": "clinpgx_mvp_seed/candidate_onboarding_outputs/candidate_onboarding_report.md",
+      "provenance_note": "Mutable legacy seed; mutated in place by candidate_onboarding.py --merge.",
+      "required": true,
+      "role": "legacy_derived_output",
+      "sha256": "59e6d2536990f17d8c582401ba35a5bc58e9b66214a5bc7ded97920075b5bbaa",
+      "size_bytes": 2971
+    },
+    {
+      "artifact_type": "json_output",
+      "known_issue_ids": [],
+      "mutable_legacy_state": false,
+      "path": "clinpgx_mvp_seed/candidate_onboarding_outputs/candidate_onboarding_result_full.json",
+      "provenance_note": "Mutable legacy seed; mutated in place by candidate_onboarding.py --merge.",
+      "required": true,
+      "role": "legacy_derived_output",
+      "sha256": "80d4a9661a230965d6d50c88dad5065a4b3961cf26fbe78bc6c0d65b7f6548c1",
+      "size_bytes": 3458
+    },
+    {
+      "artifact_type": "json_output",
+      "known_issue_ids": [],
+      "mutable_legacy_state": false,
+      "path": "clinpgx_mvp_seed/candidate_onboarding_outputs/candidate_pair_probe_raw.json",
+      "provenance_note": "Mutable legacy seed; mutated in place by candidate_onboarding.py --merge.",
+      "required": true,
+      "role": "legacy_derived_output",
+      "sha256": "668d9cadb059dfc8ec250b79789d9639e30807367fe62a59292c4c6bd98a1925",
+      "size_bytes": 117190
+    },
+    {
+      "artifact_type": "csv_output",
+      "known_issue_ids": [],
+      "mutable_legacy_state": false,
+      "path": "clinpgx_mvp_seed/candidate_onboarding_outputs/candidate_phenotype_effect_rules_extension.csv",
+      "provenance_note": "Mutable legacy seed; mutated in place by candidate_onboarding.py --merge.",
+      "required": true,
+      "role": "legacy_derived_output",
+      "sha256": "e1239966d5b5e9a5b756692a3cb58fe388a8d809979de51caf9df624577b4cdf",
+      "size_bytes": 338
+    },
+    {
+      "artifact_type": "csv_output",
+      "known_issue_ids": [],
+      "mutable_legacy_state": false,
+      "path": "clinpgx_mvp_seed/candidate_onboarding_outputs/candidate_supported_drugs_extension.csv",
+      "provenance_note": "Mutable legacy seed; mutated in place by candidate_onboarding.py --merge.",
+      "required": true,
+      "role": "legacy_derived_output",
+      "sha256": "eb39d1cd89316e747a570ca4cdb633c3fe16d0fd2ae505cc83c026288ff6c91a",
+      "size_bytes": 655
+    },
+    {
+      "artifact_type": "csv_output",
+      "known_issue_ids": [],
+      "mutable_legacy_state": false,
+      "path": "clinpgx_mvp_seed/candidate_onboarding_outputs/candidate_variant_annotation_rows.csv",
+      "provenance_note": "Mutable legacy seed; mutated in place by candidate_onboarding.py --merge.",
+      "required": true,
+      "role": "legacy_derived_output",
+      "sha256": "c21a2965f6646e982eacbc40353e1fe275e5bb3eee8c65d6c7299edcd3c9bda1",
+      "size_bytes": 310
+    },
+    {
+      "artifact_type": "csv_dataset",
+      "known_issue_ids": [
+        "LEGACY-BUG-005",
+        "LEGACY-BUG-007"
+      ],
+      "mutable_legacy_state": true,
+      "path": "clinpgx_mvp_seed/drug_gene_guidelines.csv",
+      "provenance_note": "Mutable legacy seed; mutated in place by candidate_onboarding.py --merge.",
+      "required": true,
+      "role": "legacy_seed_dataset",
+      "sha256": "b32940ab13fbb0e536f4b0dd3a4490513c67ff3e0ce502cc1d44ea51014ef847",
+      "size_bytes": 81343
+    },
+    {
+      "artifact_type": "csv_dataset",
+      "known_issue_ids": [
+        "LEGACY-BUG-010"
+      ],
+      "mutable_legacy_state": true,
+      "path": "clinpgx_mvp_seed/drug_gene_guidelines.csv.bak",
+      "provenance_note": "Mutable legacy seed; mutated in place by candidate_onboarding.py --merge.",
+      "required": true,
+      "role": "legacy_seed_backup",
+      "sha256": "24800a1ef628c384bcc531e1a1acd25b04c2b747f95d7acf132f1483607213c7",
+      "size_bytes": 70080
+    },
+    {
+      "artifact_type": "json_dataset",
+      "known_issue_ids": [],
+      "mutable_legacy_state": true,
+      "path": "clinpgx_mvp_seed/mvp_demo_profiles.json",
+      "provenance_note": "Mutable legacy seed; mutated in place by candidate_onboarding.py --merge.",
+      "required": true,
+      "role": "legacy_seed_dataset",
+      "sha256": "6d370e9358ec0096fa6a7af59b88abe2435ce458ed2eaae213922f7f3f9bd1ca",
+      "size_bytes": 2166
+    },
+    {
+      "artifact_type": "json_dataset",
+      "known_issue_ids": [
+        "LEGACY-BUG-007"
+      ],
+      "mutable_legacy_state": true,
+      "path": "clinpgx_mvp_seed/mvp_seed_summary.json",
+      "provenance_note": "Mutable legacy seed; mutated in place by candidate_onboarding.py --merge.",
+      "required": true,
+      "role": "legacy_seed_dataset",
+      "sha256": "5902d022e2b4ef913fe70a581a4ef6213c6df6d05015902f9cbb0d3b976e0c37",
+      "size_bytes": 1731
+    },
+    {
+      "artifact_type": "csv_dataset",
+      "known_issue_ids": [
+        "LEGACY-BUG-005",
+        "LEGACY-BUG-006"
+      ],
+      "mutable_legacy_state": true,
+      "path": "clinpgx_mvp_seed/phenotype_effect_rules.csv",
+      "provenance_note": "Mutable legacy seed; mutated in place by candidate_onboarding.py --merge.",
+      "required": true,
+      "role": "legacy_seed_dataset",
+      "sha256": "7e4f7d2504ec00d04cb476ecf6325d1a61901493350a136cded65328a11190f0",
+      "size_bytes": 2334528
+    },
+    {
+      "artifact_type": "csv_dataset",
+      "known_issue_ids": [
+        "LEGACY-BUG-010"
+      ],
+      "mutable_legacy_state": true,
+      "path": "clinpgx_mvp_seed/phenotype_effect_rules.csv.bak",
+      "provenance_note": "Mutable legacy seed; mutated in place by candidate_onboarding.py --merge.",
+      "required": true,
+      "role": "legacy_seed_backup",
+      "sha256": "7e4f7d2504ec00d04cb476ecf6325d1a61901493350a136cded65328a11190f0",
+      "size_bytes": 2334528
+    },
+    {
+      "artifact_type": "json_output",
+      "known_issue_ids": [
+        "LEGACY-BUG-003"
+      ],
+      "mutable_legacy_state": false,
+      "path": "clinpgx_mvp_seed/risk_outputs/gemini_input.json",
+      "provenance_note": "Mutable legacy seed; mutated in place by candidate_onboarding.py --merge.",
+      "required": true,
+      "role": "legacy_derived_output",
+      "sha256": "b930d34197e4d7648a23e739d25f2ae3d510c91284c5cbb267ce3513222f2987",
+      "size_bytes": 6333
+    },
+    {
+      "artifact_type": "csv_output",
+      "known_issue_ids": [],
+      "mutable_legacy_state": false,
+      "path": "clinpgx_mvp_seed/risk_outputs/risk_findings.csv",
+      "provenance_note": "Mutable legacy seed; mutated in place by candidate_onboarding.py --merge.",
+      "required": true,
+      "role": "legacy_derived_output",
+      "sha256": "100cc96c554f6723f41049d8320e71b1f5450afa754c0caaf7ae21a4726d38f7",
+      "size_bytes": 7812
+    },
+    {
+      "artifact_type": "markdown_report",
+      "known_issue_ids": [],
+      "mutable_legacy_state": false,
+      "path": "clinpgx_mvp_seed/risk_outputs/risk_report.md",
+      "provenance_note": "Mutable legacy seed; mutated in place by candidate_onboarding.py --merge.",
+      "required": true,
+      "role": "legacy_derived_output",
+      "sha256": "ab7b462806326cc0531eac17126707632d16070a8eaae004418df3730c347cb7",
+      "size_bytes": 4915
+    },
+    {
+      "artifact_type": "json_output",
+      "known_issue_ids": [
+        "LEGACY-BUG-001",
+        "LEGACY-BUG-002"
+      ],
+      "mutable_legacy_state": false,
+      "path": "clinpgx_mvp_seed/risk_outputs/risk_result_full.json",
+      "provenance_note": "Mutable legacy seed; mutated in place by candidate_onboarding.py --merge.",
+      "required": true,
+      "role": "legacy_derived_output",
+      "sha256": "39399dcecc551339bc4fcc03075fb19e60b3ad533c829aa7e3b18776dab6bfe2",
+      "size_bytes": 30049
+    },
+    {
+      "artifact_type": "csv_dataset",
+      "known_issue_ids": [
+        "LEGACY-BUG-007"
+      ],
+      "mutable_legacy_state": true,
+      "path": "clinpgx_mvp_seed/supported_drugs.csv",
+      "provenance_note": "Mutable legacy seed; mutated in place by candidate_onboarding.py --merge.",
+      "required": true,
+      "role": "legacy_seed_dataset",
+      "sha256": "4ca6294cd2fdb7eaddfb4b24b56bc1c7fdff742b694fa79d248f90854c15c8a2",
+      "size_bytes": 2029
+    },
+    {
+      "artifact_type": "csv_dataset",
+      "known_issue_ids": [
+        "LEGACY-BUG-010"
+      ],
+      "mutable_legacy_state": true,
+      "path": "clinpgx_mvp_seed/supported_drugs.csv.bak",
+      "provenance_note": "Mutable legacy seed; mutated in place by candidate_onboarding.py --merge.",
+      "required": true,
+      "role": "legacy_seed_backup",
+      "sha256": "253e4747083740bc465e715907c6bb1b7f88b0affe62bc083c1dae9f8b3e8379",
+      "size_bytes": 1459
+    },
+    {
+      "artifact_type": "csv_dataset",
+      "known_issue_ids": [],
+      "mutable_legacy_state": true,
+      "path": "clinpgx_mvp_seed/supported_genes.csv",
+      "provenance_note": "Mutable legacy seed; mutated in place by candidate_onboarding.py --merge.",
+      "required": true,
+      "role": "legacy_seed_dataset",
+      "sha256": "3726d7dde14d3a53cdbcf3826ad3c1d759e6653ef20a566ae71fe03680edcc48",
+      "size_bytes": 3743
+    },
+    {
+      "artifact_type": "json_output",
+      "known_issue_ids": [],
+      "mutable_legacy_state": false,
+      "path": "clinpgx_outputs/first_probe_results.json",
+      "provenance_note": "First-generation ClinPGx exploration output; historical evidence only.",
+      "required": true,
+      "role": "legacy_raw_output",
+      "sha256": "0043ae1ccfbbfcdd51464c36c61318168c4a265b6ab7c1cd608575e94538f358",
+      "size_bytes": 16348350
+    },
+    {
+      "artifact_type": "csv_output",
+      "known_issue_ids": [],
+      "mutable_legacy_state": false,
+      "path": "clinpgx_outputs_v2/guideline_annotation_rows.csv",
+      "provenance_note": "Raw ClinPGx retrieval output from clinpgx_probe_v2.py (network run, not reproduced offline).",
+      "required": true,
+      "role": "legacy_raw_output",
+      "sha256": "99482334fe14a527a5dbe9439e497f085282085271e02c12a9b10ed7c0dc6894",
+      "size_bytes": 76628
+    },
+    {
+      "artifact_type": "csv_output",
+      "known_issue_ids": [],
+      "mutable_legacy_state": false,
+      "path": "clinpgx_outputs_v2/mvp_candidate_drug_gene_edges.csv",
+      "provenance_note": "Raw ClinPGx retrieval output from clinpgx_probe_v2.py (network run, not reproduced offline).",
+      "required": true,
+      "role": "legacy_raw_output",
+      "sha256": "3922ce7285545886801ef9c8d9206b9211c058f50bf174082c5397b8258e7690",
+      "size_bytes": 1723550
+    },
+    {
+      "artifact_type": "json_output",
+      "known_issue_ids": [],
+      "mutable_legacy_state": false,
+      "path": "clinpgx_outputs_v2/mvp_candidate_drug_gene_edges.json",
+      "provenance_note": "Raw ClinPGx retrieval output from clinpgx_probe_v2.py (network run, not reproduced offline).",
+      "required": true,
+      "role": "legacy_raw_output",
+      "sha256": "4520d326ad63e696c54665a2dfa5e1656c0e5a9771c0b9cb21a3cb41172e1ac5",
+      "size_bytes": 3536582
+    },
+    {
+      "artifact_type": "json_output",
+      "known_issue_ids": [],
+      "mutable_legacy_state": false,
+      "path": "clinpgx_outputs_v2/openapi_snapshot.json",
+      "provenance_note": "Raw ClinPGx retrieval output from clinpgx_probe_v2.py (network run, not reproduced offline).",
+      "required": true,
+      "role": "legacy_raw_output",
+      "sha256": "cd322e7c647fb30d5db2e92cf448c63443462e5e97f829df07307e3ff29ab1dc",
+      "size_bytes": 117770
+    },
+    {
+      "artifact_type": "csv_output",
+      "known_issue_ids": [
+        "LEGACY-BUG-004"
+      ],
+      "mutable_legacy_state": false,
+      "path": "clinpgx_outputs_v2/pair_annotation_rows.csv",
+      "provenance_note": "Raw ClinPGx retrieval output from clinpgx_probe_v2.py (network run, not reproduced offline).",
+      "required": true,
+      "role": "legacy_raw_output",
+      "sha256": "03a75f6e4f4c885a2f7316517dd2448c364cffe17d0bed043a95c796c2dba7bd",
+      "size_bytes": 2658945
+    },
+    {
+      "artifact_type": "json_output",
+      "known_issue_ids": [
+        "LEGACY-BUG-004",
+        "LEGACY-BUG-011"
+      ],
+      "mutable_legacy_state": false,
+      "path": "clinpgx_outputs_v2/pair_probe_raw.json",
+      "provenance_note": "Raw ClinPGx retrieval output from clinpgx_probe_v2.py (network run, not reproduced offline).",
+      "required": true,
+      "role": "legacy_raw_output",
+      "sha256": "aeee31863ac82f799b3ee220a893f905554fcd3ddd1d08ff4b78a566447ad2cf",
+      "size_bytes": 27043277
+    },
+    {
+      "artifact_type": "csv_output",
+      "known_issue_ids": [],
+      "mutable_legacy_state": false,
+      "path": "clinpgx_outputs_v2/resolved_chemicals.csv",
+      "provenance_note": "Raw ClinPGx retrieval output from clinpgx_probe_v2.py (network run, not reproduced offline).",
+      "required": true,
+      "role": "legacy_raw_output",
+      "sha256": "407f9f8047672600fe16210ea915957684a8c77f312dd9fa519a5e271e7e1b0e",
+      "size_bytes": 1039
+    },
+    {
+      "artifact_type": "json_output",
+      "known_issue_ids": [],
+      "mutable_legacy_state": false,
+      "path": "clinpgx_outputs_v2/resolved_chemicals.json",
+      "provenance_note": "Raw ClinPGx retrieval output from clinpgx_probe_v2.py (network run, not reproduced offline).",
+      "required": true,
+      "role": "legacy_raw_output",
+      "sha256": "59694b5337cb3400bacb5795326c95ed6787d530334945aacf6f95924307c65a",
+      "size_bytes": 3994
+    },
+    {
+      "artifact_type": "csv_output",
+      "known_issue_ids": [],
+      "mutable_legacy_state": false,
+      "path": "clinpgx_outputs_v2/resolved_genes.csv",
+      "provenance_note": "Raw ClinPGx retrieval output from clinpgx_probe_v2.py (network run, not reproduced offline).",
+      "required": true,
+      "role": "legacy_raw_output",
+      "sha256": "e62736b822672f800abccc2e0c41896cf6bb416c396feeee2c5f8ea0d4edeb20",
+      "size_bytes": 4353
+    },
+    {
+      "artifact_type": "json_output",
+      "known_issue_ids": [],
+      "mutable_legacy_state": false,
+      "path": "clinpgx_outputs_v2/resolved_genes.json",
+      "provenance_note": "Raw ClinPGx retrieval output from clinpgx_probe_v2.py (network run, not reproduced offline).",
+      "required": true,
+      "role": "legacy_raw_output",
+      "sha256": "3c0aeac4b26f690b65919dfc7c06447585e639417ed0c40b8a2a7c6d396c732e",
+      "size_bytes": 18962
+    },
+    {
+      "artifact_type": "json_output",
+      "known_issue_ids": [],
+      "mutable_legacy_state": false,
+      "path": "clinpgx_outputs_v2/variant_annotation_filtered_raw.json",
+      "provenance_note": "Raw ClinPGx retrieval output from clinpgx_probe_v2.py (network run, not reproduced offline).",
+      "required": true,
+      "role": "legacy_raw_output",
+      "sha256": "98e28d30a7b764448033d0f8697731ec0325186ac1bb71245d38c9c57bd8cda0",
+      "size_bytes": 1277075
+    },
+    {
+      "artifact_type": "csv_output",
+      "known_issue_ids": [],
+      "mutable_legacy_state": false,
+      "path": "clinpgx_outputs_v2/variant_annotation_filtered_rows.csv",
+      "provenance_note": "Raw ClinPGx retrieval output from clinpgx_probe_v2.py (network run, not reproduced offline).",
+      "required": true,
+      "role": "legacy_raw_output",
+      "sha256": "7d83d884f88034dfbf0a5a4e786bcf41277880216bc7ab2a1b2bad36f8662f3a",
+      "size_bytes": 104908
+    },
+    {
+      "artifact_type": "python_module",
+      "known_issue_ids": [
+        "LEGACY-BUG-011"
+      ],
+      "mutable_legacy_state": false,
+      "path": "clinpgx_probe.py",
+      "provenance_note": "Legacy executable module; frozen until its owning migration WP retires it.",
+      "required": true,
+      "role": "legacy_module",
+      "sha256": "1eccbe90ffc2ab74ff775c7ce258962ef7c3e273840c9e28ad12bcf34ed7c3dc",
+      "size_bytes": 10110
+    },
+    {
+      "artifact_type": "python_module",
+      "known_issue_ids": [
+        "LEGACY-BUG-004",
+        "LEGACY-BUG-011"
+      ],
+      "mutable_legacy_state": false,
+      "path": "clinpgx_probe_v2.py",
+      "provenance_note": "Legacy executable module; frozen until its owning migration WP retires it.",
+      "required": true,
+      "role": "legacy_module",
+      "sha256": "9372030386c6d73e0e9863bdb24536ec2a84143ae6411d14ec51eadc76d0252c",
+      "size_bytes": 22755
+    },
+    {
+      "artifact_type": "markdown_doc",
+      "known_issue_ids": [],
+      "mutable_legacy_state": false,
+      "path": "docs/architecture/intended-purpose.md",
+      "provenance_note": "WP-00 governance document; DRAFT / AWAITING HUMAN AND SCIENTIFIC REVIEW.",
+      "required": true,
+      "role": "wp00_governance_doc",
+      "sha256": "8e3e756df37e236736cbeda172b79b1ed6219a67cda3839506dd9a830160d130",
+      "size_bytes": 17839
+    },
+    {
+      "artifact_type": "markdown_doc",
+      "known_issue_ids": [],
+      "mutable_legacy_state": false,
+      "path": "docs/risk-management/safety-contract.md",
+      "provenance_note": "WP-00 governance document; DRAFT / AWAITING HUMAN AND SCIENTIFIC REVIEW.",
+      "required": true,
+      "role": "wp00_governance_doc",
+      "sha256": "ef605e04cc65152c547c201a8d5637396db8307590019f942313c78cda7b99d5",
+      "size_bytes": 36613
+    },
+    {
+      "artifact_type": "csv_dataset",
+      "known_issue_ids": [],
+      "mutable_legacy_state": false,
+      "path": "drug_graph_edges.csv",
+      "provenance_note": "Legacy repository artifact captured by the WP-01 baseline.",
+      "required": true,
+      "role": "legacy_candidate_seed",
+      "sha256": "92812c3f3ebfb561350577473243dbb3e7aeb1f8a3fb6ced77b58d5ab4921e1f",
+      "size_bytes": 1678
+    },
+    {
+      "artifact_type": "text_output",
+      "known_issue_ids": [],
+      "mutable_legacy_state": false,
+      "path": "final_report/gemini_prompt.txt",
+      "provenance_note": "Recorded Gemini report artifacts; produced by an earlier run, not regenerated here.",
+      "required": true,
+      "role": "legacy_report_artifact",
+      "sha256": "052ed7288f4bed3f6c31e5a72ba1108949a2c24f4ef4de87bfdae6e41524e753",
+      "size_bytes": 6881
+    },
+    {
+      "artifact_type": "markdown_report",
+      "known_issue_ids": [
+        "LEGACY-BUG-012"
+      ],
+      "mutable_legacy_state": false,
+      "path": "final_report/gemini_report.md",
+      "provenance_note": "Recorded Gemini report artifacts; produced by an earlier run, not regenerated here.",
+      "required": true,
+      "role": "legacy_report_artifact",
+      "sha256": "84d71835057f9bc3ea6207036c3f3ea9054e2cd7bd754692e2b3270c79994df1",
+      "size_bytes": 4536
+    },
+    {
+      "artifact_type": "json_output",
+      "known_issue_ids": [],
+      "mutable_legacy_state": false,
+      "path": "final_report/gemini_report_payload.json",
+      "provenance_note": "Recorded Gemini report artifacts; produced by an earlier run, not regenerated here.",
+      "required": true,
+      "role": "legacy_report_artifact",
+      "sha256": "7c120e3f446cee7db941cdd8e8d301a671620e32321b6dbfbf4ec869f7992bfd",
+      "size_bytes": 5812
+    },
+    {
+      "artifact_type": "json_output",
+      "known_issue_ids": [],
+      "mutable_legacy_state": false,
+      "path": "final_report/gemini_report_status.json",
+      "provenance_note": "Recorded Gemini report artifacts; produced by an earlier run, not regenerated here.",
+      "required": true,
+      "role": "legacy_report_artifact",
+      "sha256": "819cbad38f688e510250305161e70746aa13fa7afce7d9fb2005601b8545ea71",
+      "size_bytes": 371
+    },
+    {
+      "artifact_type": "python_module",
+      "known_issue_ids": [
+        "LEGACY-BUG-003",
+        "LEGACY-BUG-012"
+      ],
+      "mutable_legacy_state": false,
+      "path": "gemini_report_generator.py",
+      "provenance_note": "Legacy executable module; frozen until its owning migration WP retires it.",
+      "required": true,
+      "role": "legacy_module",
+      "sha256": "6938e155230176b9a658b7d36046b35d7956ba1f7935928bfb829060009f87af",
+      "size_bytes": 19689
+    },
+    {
+      "artifact_type": "python_module",
+      "known_issue_ids": [],
+      "mutable_legacy_state": false,
+      "path": "pgx/__init__.py",
+      "provenance_note": "WP-00 domain code; claims boundary contract.",
+      "required": true,
+      "role": "wp00_domain_code",
+      "sha256": "5528ef4016aa621459b352f18275794fd13af168d4a79d72fbaabf9cd801278c",
+      "size_bytes": 705
+    },
+    {
+      "artifact_type": "python_module",
+      "known_issue_ids": [],
+      "mutable_legacy_state": false,
+      "path": "pgx/domain/__init__.py",
+      "provenance_note": "WP-00 domain code; claims boundary contract.",
+      "required": true,
+      "role": "wp00_domain_code",
+      "sha256": "8a719e8a4aed1a653b3f584ea94be1b514f8d78ef46529c9983457ea937f4987",
+      "size_bytes": 1716
+    },
+    {
+      "artifact_type": "python_module",
+      "known_issue_ids": [],
+      "mutable_legacy_state": false,
+      "path": "pgx/domain/claims.py",
+      "provenance_note": "WP-00 domain code; claims boundary contract.",
+      "required": true,
+      "role": "wp00_domain_code",
+      "sha256": "b31fbb7c1515688d920c0ff20388007ec96ea7a2bee4f91ebd17ed228ee1717e",
+      "size_bytes": 44053
+    },
+    {
+      "artifact_type": "python_module",
+      "known_issue_ids": [
+        "LEGACY-BUG-001",
+        "LEGACY-BUG-002",
+        "LEGACY-BUG-003"
+      ],
+      "mutable_legacy_state": false,
+      "path": "risk_engine.py",
+      "provenance_note": "Legacy executable module; frozen until its owning migration WP retires it.",
+      "required": true,
+      "role": "legacy_module",
+      "sha256": "c6a74f29ecf74117c2f6adef320b91d67b48beb64a9f8cbd85e55a57c0f76754",
+      "size_bytes": 35316
+    },
+    {
+      "artifact_type": "python_test",
+      "known_issue_ids": [],
+      "mutable_legacy_state": false,
+      "path": "tests/__init__.py",
+      "provenance_note": "Legacy repository artifact captured by the WP-01 baseline.",
+      "required": true,
+      "role": "wp00_test",
+      "sha256": "cb1fa41648a2c7d7de6c904ec61333c9c53a0630d26b9cf3d668e6a650119c9e",
+      "size_bytes": 45
+    },
+    {
+      "artifact_type": "python_test",
+      "known_issue_ids": [],
+      "mutable_legacy_state": false,
+      "path": "tests/unit/__init__.py",
+      "provenance_note": "WP-00 claim scanner tests.",
+      "required": true,
+      "role": "wp00_test",
+      "sha256": "5b7aad71f203f67297fd4363a7a6b5ba327e21864c90c05b14a97b08a156b5d4",
+      "size_bytes": 58
+    },
+    {
+      "artifact_type": "python_test",
+      "known_issue_ids": [],
+      "mutable_legacy_state": false,
+      "path": "tests/unit/test_claims.py",
+      "provenance_note": "WP-00 claim scanner tests.",
+      "required": true,
+      "role": "wp00_test",
+      "sha256": "2b23af7426612573efb327df543075dbf88c0c49236ffb625fc26aac4477ff2a",
+      "size_bytes": 26141
+    }
+  ],
+  "baseline_facts": {
+    "active_effect_rule_rows": 3084,
+    "active_guideline_rows": 36,
+    "active_supported_drugs": 15,
+    "facts_are_legacy_observations_only": "These counts document current legacy behaviour. They are not scientific validation and not a protected expected V2 result.",
+    "original_cleaner_effect_rule_rows": 3084,
+    "original_cleaner_guideline_rows": 30,
+    "original_cleaner_supported_drugs": 11,
+    "original_cleaner_supported_genes": 5,
+    "stale_mvp_seed_summary_guideline_rows": 30,
+    "stale_mvp_seed_summary_supported_drugs": 11,
+    "stale_summary_known_issue_id": "LEGACY-BUG-007",
+    "supported_genes": 5
+  },
+  "baseline_id": "WP01-LEGACY-BASELINE-001",
+  "captured_at_utc": "2026-08-29T20:57:58Z",
+  "evidence_artifacts": [
+    {
+      "evidence_role": "baseline_registry",
+      "path": "data/legacy-baseline/expected-differences.json",
+      "required": true,
+      "sha256": "50d860fda1c7183deb2066f68e31f73cac45d3ea6c010f69b98aea18f660b234",
+      "size_bytes": 18432
+    },
+    {
+      "evidence_role": "baseline_registry",
+      "path": "data/legacy-baseline/reproduction-run-log.json",
+      "required": true,
+      "sha256": "16bc2386a9bfe6b3b0ad437d3723def09873ff6187c357111b02950e14847116",
+      "size_bytes": 4754
+    },
+    {
+      "evidence_role": "baseline_snapshot",
+      "path": "data/legacy-baseline/snapshots/alternative-beta-clopidogrel.json",
+      "required": true,
+      "sha256": "78a33647a742d569eaef0e524112d0673644589ff61e8009c342ad45724c5561",
+      "size_bytes": 2507
+    },
+    {
+      "evidence_role": "baseline_snapshot",
+      "path": "data/legacy-baseline/snapshots/cli-contracts.json",
+      "required": true,
+      "sha256": "98c1ad372c64786f4e066290131a591f58bd8b7dd2cf502f3bf86bc4fa69d203",
+      "size_bytes": 5003
+    },
+    {
+      "evidence_role": "baseline_snapshot",
+      "path": "data/legacy-baseline/snapshots/current-active-seed.json",
+      "required": true,
+      "sha256": "e6cc99238ab01c121e46d6c7dd831a35eadc12c77bd2a98ea084d963d36e0e0c",
+      "size_bytes": 2931
+    },
+    {
+      "evidence_role": "baseline_snapshot",
+      "path": "data/legacy-baseline/snapshots/original-cleaner-rebuild.json",
+      "required": true,
+      "sha256": "85d70929cec12a4b9a6b2e9ec0fbf1a6d7a2f424a87a3c5c6307784c6a8a17ad",
+      "size_bytes": 2788
+    },
+    {
+      "evidence_role": "baseline_snapshot",
+      "path": "data/legacy-baseline/snapshots/recorded-report-observation.json",
+      "required": true,
+      "sha256": "c166f0c44e4efd4fb10e4001bf52ac615dc529758d6279024c96b863e074b24b",
+      "size_bytes": 3712
+    },
+    {
+      "evidence_role": "baseline_snapshot",
+      "path": "data/legacy-baseline/snapshots/risk-p2-cyp2c19-poor.json",
+      "required": true,
+      "sha256": "22ac53d7b8572ea3a888bb763f266fe00008d19f366147ab7188f3b5cf0c95d5",
+      "size_bytes": 4845
+    },
+    {
+      "evidence_role": "wp01_migration_doc",
+      "path": "docs/migration/legacy-inventory.md",
+      "required": true,
+      "sha256": "f39a41abeb23e43c5e9230fec29134117bb673d65cb9e6c53ce9287336c262e8",
+      "size_bytes": 27558
+    },
+    {
+      "evidence_role": "wp01_migration_doc",
+      "path": "docs/migration/legacy-reproducibility.md",
+      "required": true,
+      "sha256": "7f7c29808fe585278c26aaa2fef520059979c7b889b43bb4c4a64a76084497ea",
+      "size_bytes": 13831
+    },
+    {
+      "evidence_role": "wp01_tooling",
+      "path": "scripts/build_legacy_baseline.py",
+      "required": true,
+      "sha256": "9aa2ac3162d654321fc5c2a245d844b39feb6346d7fb0bce2b056b98cfebd4bd",
+      "size_bytes": 51582
+    },
+    {
+      "evidence_role": "wp01_tooling",
+      "path": "scripts/compare_legacy_v2.py",
+      "required": true,
+      "sha256": "44e645b04c8206e289512011afd4622e5ba21ebc7a8aee9284e2f1384300b2bc",
+      "size_bytes": 42462
+    },
+    {
+      "evidence_role": "wp01_tooling",
+      "path": "scripts/legacy_baseline_lib.py",
+      "required": true,
+      "sha256": "84b4260b4e99d34aab794818568483adeb01e695e5c3a75412b5274a26f42bea",
+      "size_bytes": 10907
+    },
+    {
+      "evidence_role": "wp01_tooling",
+      "path": "scripts/legacy_bug_registry.py",
+      "required": true,
+      "sha256": "04bd47b36db3df298fd513609f4388df7e05bfd6a7d6b3ad621b9516bd85f676",
+      "size_bytes": 16512
+    },
+    {
+      "evidence_role": "wp01_regression_test",
+      "path": "tests/regression/__init__.py",
+      "required": true,
+      "sha256": "665ef5833dc46bf57861c163bb5d0bbc046e4fb2986ee0c3157d5d52a212f2c1",
+      "size_bytes": 37
+    },
+    {
+      "evidence_role": "wp01_regression_test",
+      "path": "tests/regression/legacy/__init__.py",
+      "required": true,
+      "sha256": "d7539304b74ff7bd41af66aea8f303bb1b958113fe70aec5741bbdf4c47e2c99",
+      "size_bytes": 63
+    },
+    {
+      "evidence_role": "wp01_regression_test",
+      "path": "tests/regression/legacy/_support.py",
+      "required": true,
+      "sha256": "ec071378ee117f672cfacecf51fe27549a95fc95de602ffa5fd9ed7a13b44e36",
+      "size_bytes": 3523
+    },
+    {
+      "evidence_role": "wp01_regression_fixture",
+      "path": "tests/regression/legacy/fixtures/legacy-alternative-beta-clopidogrel.json",
+      "required": true,
+      "sha256": "18db567dfdb2c0e999739df7bced1f1fd04dc4f551751e46e4b136d08ca6f1ad",
+      "size_bytes": 703
+    },
+    {
+      "evidence_role": "wp01_regression_fixture",
+      "path": "tests/regression/legacy/fixtures/legacy-risk-p2-cyp2c19-poor.json",
+      "required": true,
+      "sha256": "e95bb0e6c82890a475cb0c544256f87c9d24d28046a95d09e6fd475c9251f8b4",
+      "size_bytes": 959
+    },
+    {
+      "evidence_role": "wp01_regression_test",
+      "path": "tests/regression/legacy/test_compare_legacy_v2.py",
+      "required": true,
+      "sha256": "bee809eebe79ada42775ce18a85204b5286a1faa58f61fdcbf46c4ffe34a60e3",
+      "size_bytes": 29729
+    },
+    {
+      "evidence_role": "wp01_regression_test",
+      "path": "tests/regression/legacy/test_legacy_manifest.py",
+      "required": true,
+      "sha256": "88f6952342ce168fdfc94455f4662fc6291b5f5c100b9379fb76a6a835146440",
+      "size_bytes": 29095
+    },
+    {
+      "evidence_role": "wp01_regression_test",
+      "path": "tests/regression/legacy/test_legacy_reproduction.py",
+      "required": true,
+      "sha256": "e38fb05b6d2a005d1796f63b64bd13a5055749630c7feda256d248d02dc8a2be",
+      "size_bytes": 19921
+    }
+  ],
+  "evidence_policy": "WP-01's own outputs (snapshots, allowlist, run log, tooling, regression tests and migration docs) are hashed here so the baseline is tamper-evident even before a Git commit exists. The manifest is written last and never hashes itself.",
+  "git_checkpoint": {
+    "blocked_reasons": [
+      "GIT_IDENTITY_NOT_CONFIGURED",
+      "GIT_METADATA_WRITE_NOT_AUTHORIZED",
+      "NO_COMMIT_ON_BRANCH"
+    ],
+    "branch": "main",
+    "checkpoint_status": "BLOCKED",
+    "commit": null,
+    "git_available": true,
+    "is_repository": true,
+    "observations": {
+      "identity_configured": false,
+      "stale_index_lock_path": ".git/index.lock",
+      "stale_index_lock_present": true
+    },
+    "scope_note": "These reasons describe Git checkpoint authorisation in this session. They are not a claim about filesystem or mount capabilities: ordinary repository files are created and rewritten normally in this working tree."
+  },
+  "git_commit": null,
+  "legacy_bugs": [
+    {
+      "bug_id": "LEGACY-BUG-001",
+      "disposition": "registered_not_allowlisted",
+      "protected_as_correct": false,
+      "target_wp": "WP-12",
+      "title": "RAPID and ULTRARAPID implicitly match each other"
+    },
+    {
+      "bug_id": "LEGACY-BUG-002",
+      "disposition": "allowlisted_selector",
+      "protected_as_correct": false,
+      "target_wp": "WP-13/WP-14",
+      "title": "Missing / no-rule / unsupported drugs receive top-level risk 'none'"
+    },
+    {
+      "bug_id": "LEGACY-BUG-003",
+      "disposition": "allowlisted_selector",
+      "protected_as_correct": false,
+      "target_wp": "WP-15",
+      "title": "Gemini compact payload drops status and missing-data reason"
+    },
+    {
+      "bug_id": "LEGACY-BUG-004",
+      "disposition": "registered_not_allowlisted",
+      "protected_as_correct": false,
+      "target_wp": "WP-07",
+      "title": "Pair endpoint case variants produce large duplicate sets"
+    },
+    {
+      "bug_id": "LEGACY-BUG-005",
+      "disposition": "registered_not_allowlisted",
+      "protected_as_correct": false,
+      "target_wp": "WP-08/WP-11",
+      "title": "Pair-level guideline presence upgrades annotation rows to high_guideline_supported"
+    },
+    {
+      "bug_id": "LEGACY-BUG-006",
+      "disposition": "registered_not_allowlisted",
+      "protected_as_correct": false,
+      "target_wp": "WP-09/WP-10",
+      "title": "MANUAL_EFFECT_HINTS applies pair-level effect/severity broadly"
+    },
+    {
+      "bug_id": "LEGACY-BUG-007",
+      "disposition": "allowlisted_selector",
+      "protected_as_correct": false,
+      "target_wp": "WP-03/WP-06",
+      "title": "Summary counts become stale after seed merge"
+    },
+    {
+      "bug_id": "LEGACY-BUG-008",
+      "disposition": "registered_not_allowlisted",
+      "protected_as_correct": false,
+      "target_wp": "P1-01/P1-02",
+      "title": "Candidate graph is manual lookup plus display context, not traversal"
+    },
+    {
+      "bug_id": "LEGACY-BUG-009",
+      "disposition": "allowlisted_selector",
+      "protected_as_correct": false,
+      "target_wp": "P1-02",
+      "title": "0-100 candidate score creates an unsupported evaluability/safety impression"
+    },
+    {
+      "bug_id": "LEGACY-BUG-010",
+      "disposition": "registered_not_allowlisted",
+      "protected_as_correct": false,
+      "target_wp": "WP-03",
+      "title": ".bak files are overwritten on repeated merge"
+    },
+    {
+      "bug_id": "LEGACY-BUG-011",
+      "disposition": "registered_not_allowlisted",
+      "protected_as_correct": false,
+      "target_wp": "WP-04",
+      "title": "API acquisition lacks pagination, retry, provenance, and failure completeness"
+    },
+    {
+      "bug_id": "LEGACY-BUG-012",
+      "disposition": "registered_not_allowlisted",
+      "protected_as_correct": false,
+      "target_wp": "WP-15/P1-06",
+      "title": "Report can surface dosage/replacement language from source summaries"
+    }
+  ],
+  "manifest_excludes_itself": true,
+  "manifest_hash_algorithm": "sha256",
+  "platform": {
+    "machine": "aarch64",
+    "release": "6.8.0-136-generic",
+    "system": "Linux"
+  },
+  "python_version": "3.10.12",
+  "repository_root_policy": "All artifact paths are repo-relative POSIX paths. Absolute paths, '..' traversal, and symlink escapes outside the repository are rejected.",
+  "reproduction_cases": [
+    {
+      "case_id": "original-cleaner-rebuild",
+      "executed": true,
+      "network_used": false,
+      "output_location": "TemporaryDirectory",
+      "snapshot": "data/legacy-baseline/snapshots/original-cleaner-rebuild.json"
+    },
+    {
+      "case_id": "current-active-seed",
+      "executed": false,
+      "network_used": false,
+      "output_location": "read-only inspection of the live seed",
+      "snapshot": "data/legacy-baseline/snapshots/current-active-seed.json"
+    },
+    {
+      "case_id": "risk-p2-cyp2c19-poor",
+      "executed": true,
+      "network_used": false,
+      "output_location": "TemporaryDirectory",
+      "snapshot": "data/legacy-baseline/snapshots/risk-p2-cyp2c19-poor.json"
+    },
+    {
+      "case_id": "alternative-beta-clopidogrel",
+      "executed": true,
+      "network_used": false,
+      "output_location": "TemporaryDirectory",
+      "snapshot": "data/legacy-baseline/snapshots/alternative-beta-clopidogrel.json"
+    },
+    {
+      "case_id": "recorded-report-observation",
+      "executed": true,
+      "network_used": false,
+      "output_location": "TemporaryDirectory (--no-api fallback only)",
+      "snapshot": "data/legacy-baseline/snapshots/recorded-report-observation.json"
+    },
+    {
+      "case_id": "cli-contracts",
+      "executed": true,
+      "network_used": false,
+      "output_location": "no artifacts written",
+      "snapshot": "data/legacy-baseline/snapshots/cli-contracts.json"
+    },
+    {
+      "case_id": "clinpgx-probe-network-acquisition",
+      "executed": false,
+      "network_used": false,
+      "output_location": "n/a",
+      "reason_code": "NETWORK_REQUIRED_NOT_EXECUTED",
+      "snapshot": null
+    },
+    {
+      "case_id": "candidate-onboarding-acquisition-and-merge",
+      "executed": false,
+      "network_used": false,
+      "output_location": "n/a",
+      "reason_code": "NETWORK_AND_MUTATION_FORBIDDEN_NOT_EXECUTED",
+      "snapshot": null
+    }
+  ],
+  "schema_version": "wp01-legacy-baseline/1",
+  "wp00_approval_status": {
+    "claim_boundary_status": "DRAFT / AWAITING HUMAN AND SCIENTIFIC REVIEW",
+    "is_approved": false,
+    "note": "WP-01 did not change and does not claim WP-00 approval."
+  }
+}

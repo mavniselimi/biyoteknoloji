@@ -1,0 +1,346 @@
+# PGx Platform V2 - package, dependency and tooling authority (WP-02).
+#
+# This file is the single source of truth for project metadata, dependencies,
+# lint, type-check and test configuration. The version is a fixed development
+# value: the repository has no Git commit yet, so dynamic SCM versioning would
+# fail (see docs/migration/legacy-inventory.md section A.1).
+
+[build-system]
+requires = ["hatchling>=1.24"]
+build-backend = "hatchling.build"
+
+[project]
+name = "pgx-platform"
+version = "0.2.0.dev0"
+description = "PGx Platform V2 - traceable, deterministic pharmacogenetic assessment prototype"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "Proprietary" }
+classifiers = [
+    "Private :: Do Not Upload",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+
+# Runtime dependencies. The domain layer uses none of these: it is standard
+# library only and is guarded by tests/unit/domain/test_dependency_boundaries.py.
+dependencies = [
+    "SQLAlchemy>=2.0.30,<3.0",
+    "alembic>=1.13.1,<2.0",
+    "psycopg[binary]>=3.1.18,<4.0",
+    # WP-23. Argon2id password hashing, through the reference binding to the
+    # C implementation. Declared here rather than vendored or reimplemented:
+    # a hand-written Argon2 is a cryptographic primitive written by people
+    # who are not cryptographers, and this project has no reason to own one.
+    #
+    # There is deliberately no alternative. If this package is absent,
+    # pgx.security.passwords raises PASSWORD_HASHING_UNAVAILABLE and
+    # authentication fails readiness - it does not fall back to PBKDF2,
+    # scrypt or anything else, because the fallback would be reached exactly
+    # in the situation where it must not be: an install that silently failed.
+    #
+    # Bounded below at the release that made Argon2id the default type and
+    # above at the next major, so a major-version change is a decision
+    # somebody makes rather than one a resolver makes.
+    "argon2-cffi>=23.1.0,<26.0",
+]
+
+[project.optional-dependencies]
+# The WP-16 API edge. FastAPI, Pydantic and an ASGI server are permitted here
+# and nowhere below it: pgx/domain, pgx/engine, pgx/evidence, pgx/rules and
+# pgx/reporting import none of them, and tests/unit/api/test_wp16_boundaries.py
+# asserts that by reading every module in pgx as a syntax tree.
+#
+# An optional extra rather than a runtime dependency because the scientific
+# layers are usable, and are used, without a web server: the CLIs, the release
+# tooling and the whole test suite run with none of this installed.
+api = [
+    "fastapi>=0.110,<1.0",
+    "pydantic>=2.6,<3.0",
+    "uvicorn[standard]>=0.29,<1.0",
+]
+
+# The WP-17 interface. A superset of `api`, because the interface is served by
+# the same framework and, in the combined deployment, by the same process.
+#
+# It adds exactly two things:
+#
+# - **Jinja2**, the template engine. The interface renders HTML on the server
+#   and ships no client-side framework, so this is the whole rendering stack.
+#   MarkupSafe comes with it and provides the autoescaping the claim gate
+#   assumes; `apps/web/render.py` refuses to build an environment with
+#   autoescape off, so an installation cannot turn it back off.
+# - **python-multipart**, which Starlette needs to parse a form body. Without
+#   it a POST route raises at request time rather than at import, so it is a
+#   hard dependency of this extra rather than an optional convenience.
+#
+# There is no CSS toolchain, no bundler, no CDN and no JavaScript dependency:
+# the two static assets are hand-written files in `apps/web/static`, and
+# `tests/unit/web/test_security.py` asserts that no template, stylesheet or
+# script references a remote origin.
+web = [
+    "fastapi>=0.110,<1.0",
+    "pydantic>=2.6,<3.0",
+    "uvicorn[standard]>=0.29,<1.0",
+    "jinja2>=3.0,<4.0",
+    "python-multipart>=0.0.9,<1.0",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.1,<9.0",
+    "ruff>=0.4.0,<1.0",
+    "mypy>=1.9,<2.0",
+    # The ASGI test client. In the dev group rather than the api extra: it is
+    # needed to exercise the application, never to serve it.
+    "httpx>=0.27,<1.0",
+    # WP-17 browser evidence. In the dev group and nowhere else: no deployment
+    # needs a browser, and the tests that use it
+    # (tests/integration/web/test_browser_e2e.py) skip with a message naming
+    # this package when it is absent. Installing it is not sufficient on its
+    # own - `playwright install chromium` must also have been run - and the
+    # skip reason says which of the two is missing.
+    "playwright>=1.44,<2.0",
+    # Read by the accessibility tests to parse rendered HTML. Jinja2 renders
+    # the pages; this reads them back as a tree. Only lxml is used, through
+    # the standard library's HTMLParser fallback when it is absent, so its
+    # absence weakens the parse rather than blocking the test.
+    "lxml>=5.0,<6.0",
+    # WP-19 coverage measurement. The `[toml]` extra is what lets it read the
+    # [tool.coverage.*] tables below; without it the configuration here is
+    # silently ignored and the run measures the wrong tree.
+    #
+    # In the dev group and nowhere else: no deployment measures coverage. When
+    # it is absent, `pgx-verify coverage` reports BLOCKED with this install
+    # command and no percentage at all - a number nobody measured is never
+    # estimated, carried over, or replaced with zero.
+    "coverage[toml]>=7.4,<8.0",
+]
+
+[project.scripts]
+# Point at package modules, not at root scripts/: only `pgx` ships in the
+# wheel, so a scripts.* target would be unimportable after install.
+pgx-db-seed = "pgx.infrastructure.db.cli_seed:main"
+pgx-db-check = "pgx.infrastructure.db.cli_check:main"
+pgx-release = "pgx.application.release_cli:main"
+pgx-ingest-clinpgx = "pgx.application.ingestion_cli:main"
+pgx-source-policy = "pgx.application.source_policy_cli:main"
+pgx-dataset = "pgx.application.dataset_cli:main"
+pgx-normalize = "pgx.application.normalize_cli:main"
+pgx-evidence = "pgx.application.evidence_cli:main"
+pgx-curation-protocol = "pgx.application.curation_protocol_cli:main"
+# WP-18. Builds and audits the validation partition. It has no subcommand that
+# approves anything: a case does not become evidence because a command said so.
+pgx-validation = "pgx.application.validation_cli:main"
+# WP-20. The safety invariant gate: twelve invariants, each with a safe
+# control and a detected unsafe control, and a `check` subcommand that returns
+# non-zero on FAIL, BLOCKED, NOT_EXECUTED or STALE. It verifies software
+# detectors. It performs no clinical or scientific validation and approves
+# nothing.
+pgx-safety = "pgx.application.safety_cli:main"
+# WP-21. The benchmark and validation metric system: a metric registry defined
+# before any result exists, a benchmark that pins exactly one release, and a
+# public aggregate report. `run` and `gate-status` exit 2 here because no
+# release, holdout case or reference judgment exists. There is no
+# --use-test-fixture flag: the synthetic release that proves the engine can
+# render a numerical table lives in the test suite, not behind a production
+# switch.
+pgx-benchmark = "pgx.application.benchmark_cli:main"
+pgx-expert-review = "pgx.application.expert_review_cli:main"
+pgx-auth = "pgx.application.auth_cli:main"
+pgx-audit = "pgx.application.audit_cli:main"
+pgx-security = "pgx.application.security_cli:main"
+# WP-24. The one documented deployment command: preflight, lock, build,
+# migrate, staging-up, smoke, performance, backup, restore-verify,
+# rollback, release-validation, status, stop, artifacts. Exit 0 only for
+# work that ran and held; 2 for blocked, not executed or stale - which is
+# what almost every subcommand returns in this repository, correctly.
+# There is no subcommand that deletes a volume, creates a user, activates
+# a release or approves anything.
+pgx-deploy = "pgx.application.deploy_cli:main"
+# WP-19. The software verification system: inventory, requirement matrix,
+# execution profiles, coverage, flakiness, reproducibility and gate status.
+# It verifies software. It performs no scientific validation, approves
+# nothing, and has no subcommand that could.
+pgx-verify = "pgx.application.verification_cli:main"
+# WP-25. The THS 6 evidence pack: inventory, claims, traceability, gates,
+# dod, demo-preflight, verify-pack, build-pack, status. It reads committed
+# evidence and reports what it supports. There is no --force, no --assume,
+# no --fixture and no --ignore-blocker, and no subcommand can sign, approve
+# or execute anything. verify-pack and build-pack exit 0 for an intact pack
+# that honestly records blockers; every other subcommand exits 2 while the
+# programme is blocked.
+pgx-ths6 = "pgx.application.ths6_cli:main"
+# WP-16. Starts the real ASGI application. `apps.api.main` connects to nothing
+# at import - no database, no active release, no fixture - so installing this
+# entry point cannot make an import depend on a running PostgreSQL. The ASGI
+# server itself is imported inside run(), so the console script exists even
+# where the `api` extra is not installed and fails with a clear message.
+pgx-api = "apps.api.main:run"
+# WP-17. Starts the combined application: WP-16's API, unchanged, with the
+# eleven page routes and the two static assets added to it. Like `pgx-api`, it
+# connects to nothing at import - the case catalogue is read per request, not
+# at startup - so a deployment with a missing sealed artifact serves a page
+# saying so rather than failing to boot. The ASGI server is imported inside
+# run(), so the console script exists without the `web` extra and fails with a
+# message naming what to install.
+pgx-web = "apps.web.main:run"
+
+# ---------------------------------------------------------------------------
+# Package discovery
+# ---------------------------------------------------------------------------
+# Only the V2 package is distributed. The seven root-level legacy scripts are
+# frozen WP-01 baseline artifacts and are deliberately NOT packaged, NOT
+# importable as project modules, and NOT linted or formatted.
+
+[tool.hatch.build.targets.wheel]
+# `apps` ships beside `pgx`. The direction is one-way and enforced: `apps` may
+# import `pgx`, and no module in `pgx` imports `apps`.
+packages = ["pgx", "apps"]
+
+[tool.hatch.build.targets.sdist]
+# `config` and `schemas` travel with the source distribution: the source
+# registry is a reviewed document, and a build without it must fail to load
+# a policy rather than quietly find none.
+include = ["pgx", "apps", "migrations", "alembic.ini", "pyproject.toml", "config", "schemas"]
+
+# ---------------------------------------------------------------------------
+# Ruff - scoped to V2 code and WP-02 tooling only
+# ---------------------------------------------------------------------------
+
+[tool.ruff]
+line-length = 96
+target-version = "py310"
+# Frozen legacy scripts and frozen WP-00/WP-01 artifacts are never reformatted.
+extend-exclude = [
+    "clinpgx_probe.py",
+    "clinpgx_probe_v2.py",
+    "clean_mvp_seed_dataset.py",
+    "risk_engine.py",
+    "gemini_report_generator.py",
+    "candidate_onboarding.py",
+    "alternative_ranker.py",
+    "clinpgx_mvp_seed",
+    "clinpgx_outputs",
+    "clinpgx_outputs_v2",
+    "final_report",
+    "data/legacy-baseline",
+    "scripts/legacy_baseline_lib.py",
+    "scripts/legacy_bug_registry.py",
+    "scripts/build_legacy_baseline.py",
+    "scripts/compare_legacy_v2.py",
+    "tests/regression",
+    "migrations/versions",
+]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "N", "UP", "B", "A", "C4", "SIM", "RUF"]
+ignore = [
+    "UP006",  # keep typing.Dict/List spellings valid on Python 3.10
+    "UP035",
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**" = ["E501"]
+
+# ---------------------------------------------------------------------------
+# mypy - blocking on V2 packages only
+# ---------------------------------------------------------------------------
+
+[tool.mypy]
+python_version = "3.10"
+strict = true
+warn_unused_configs = true
+warn_return_any = true
+disallow_untyped_defs = true
+no_implicit_optional = true
+show_error_codes = true
+files = ["pgx", "apps"]
+exclude = "(^|/)(clinpgx_|clean_mvp_|risk_engine|gemini_report_|candidate_onboarding|alternative_ranker)"
+
+[[tool.mypy.overrides]]
+# The API layer's framework imports cannot be resolved in an environment where
+# the `api` extra is not installed, which is where this repository is built.
+# Missing imports are ignored for those three modules only; everything else in
+# `apps` is type-checked on the same strict terms as `pgx`.
+module = ["fastapi.*", "starlette.*", "pydantic.*", "uvicorn.*"]
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+# Frozen WP-01 tooling is not part of the V2 type-checked surface.
+module = ["legacy_baseline_lib.*", "legacy_bug_registry.*", "compare_legacy_v2.*", "build_legacy_baseline.*"]
+ignore_errors = true
+
+# ---------------------------------------------------------------------------
+# coverage.py - WP-19
+# ---------------------------------------------------------------------------
+# Measures the first-party V2 packages and nothing else. Three groups are
+# excluded, each for a different reason:
+#
+# - the tests themselves, because measuring them reports how much of the suite
+#   ran, which is already what the test result says;
+# - the seven frozen WP-01 legacy scripts and their tooling, because they are a
+#   baseline to compare against rather than code under development, and
+#   including them would move the aggregate without telling anybody anything;
+# - generated revision scripts and data artifacts, because they are executed
+#   against a database or are not code at all.
+#
+# `branch = true` because a coverage number without branches over-reports: a
+# line with an untaken `else` counts as covered.
+
+[tool.coverage.run]
+branch = true
+source = ["pgx", "apps"]
+parallel = false
+omit = [
+    "*/__pycache__/*",
+    "tests/*",
+    "migrations/versions/*",
+    "scripts/legacy_*.py",
+    "scripts/build_legacy_baseline.py",
+    "scripts/compare_legacy_v2.py",
+    "clinpgx_probe.py",
+    "clinpgx_probe_v2.py",
+    "clean_mvp_seed_dataset.py",
+    "risk_engine.py",
+    "gemini_report_generator.py",
+    "candidate_onboarding.py",
+    "alternative_ranker.py",
+]
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = false
+# No `fail_under`. A threshold is declared in
+# pgx/verification/coverage_report.py as DECLARED_LINE_THRESHOLD, written
+# before any measurement was taken so that it cannot be the number that
+# happened to come out. It lists critical modules for attention; it is not a
+# gate, because nothing has measured this repository yet and inventing a
+# passing bar for an unmeasured thing is the same error in the other direction.
+exclude_lines = [
+    "pragma: no cover",
+    "if __name__ == .__main__.:",
+    "raise NotImplementedError",
+    "if TYPE_CHECKING:",
+]
+
+[tool.coverage.json]
+show_contexts = false
+pretty_print = true
+
+# ---------------------------------------------------------------------------
+# pytest
+# ---------------------------------------------------------------------------
+
+[tool.pytest.ini_options]
+minversion = "8.0"
+testpaths = ["tests/unit", "tests/failure", "tests/integration"]
+python_files = ["test_*.py"]
+addopts = "-ra --strict-markers"
+markers = [
+    "integration: requires a real PostgreSQL database via TEST_DATABASE_URL",
+]
+# WP-01 regression tests run under unittest and are excluded from pytest
+# collection so the frozen baseline suite keeps its own runner.
+norecursedirs = ["tests/regression", "data", "clinpgx_mvp_seed", "clinpgx_outputs", "clinpgx_outputs_v2", "final_report"]

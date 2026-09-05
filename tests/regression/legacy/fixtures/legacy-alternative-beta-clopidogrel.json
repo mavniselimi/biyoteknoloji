@@ -1,0 +1,18 @@
+{
+  "_fixture_note": "Frozen legacy candidate fixture. The score is recorded as legacy evidence under LEGACY-BUG-009 and is explicitly NOT a protected result; no candidate preference or safety conclusion may be drawn from it.",
+  "candidate_results": [
+    {
+      "candidate_drug": "prasugrel",
+      "candidate_specific_risk_level": "unknown",
+      "legacy_score_unprotected": 59,
+      "mvp_data_status": "insufficient_pgx_rule_data"
+    },
+    {
+      "candidate_drug": "ticagrelor",
+      "candidate_specific_risk_level": "unknown",
+      "legacy_score_unprotected": 59,
+      "mvp_data_status": "insufficient_pgx_rule_data"
+    }
+  ],
+  "legacy_score_name": "MVP alternatif uygunluk ön skoru"
+}

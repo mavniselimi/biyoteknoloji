@@ -1,0 +1,9 @@
+{
+  "complete": false,
+  "environment": {},
+  "inputs": {},
+  "invalidated": true,
+  "invalidation_reason": "the safety gate reported BLOCKED; previous evidence is no longer valid",
+  "invariants": [],
+  "note": "A previous successful run was invalidated. Safety evidence is replaced by failure rather than left standing, so an interrupted or failing build cannot inherit an earlier PASS."
+}

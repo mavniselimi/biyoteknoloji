@@ -1,0 +1,118 @@
+{
+  "assessment": "REAL RULE CREATION, VALIDATION AND FREEZING ARE BLOCKED",
+  "blockers": [
+    {
+      "code": "CURATION_PROTOCOL_NOT_APPROVED",
+      "detail": "protocol status is AWAITING_EXPERT_REVIEW with no named approver",
+      "meaning": "the curation protocol has not been approved by a named scientific expert",
+      "owner": "a named scientific expert (not code)",
+      "unblocks": "curated interpretations may begin under an approved protocol, and a rule may pin a protocol that was in force"
+    },
+    {
+      "code": "DATASET_NOT_PUBLISHED",
+      "detail": "canonical dataset lifecycle state is BUILDING",
+      "meaning": "the canonical dataset is not PUBLISHED",
+      "owner": "the dataset quality and publication process (WP-07)",
+      "unblocks": "a rule may pin a published dataset boundary"
+    },
+    {
+      "code": "EVIDENCE_BUILD_NOT_APPROVED",
+      "detail": "evidence build carries QUARANTINED, LEGACY_MIGRATION, NOT_CURATED, NOT_EXECUTABLE, NOT_PUBLICATION_ELIGIBLE",
+      "meaning": "the evidence build is quarantined and not eligible for publication or rule construction",
+      "owner": "data acquisition and source policy review",
+      "unblocks": "a rule may cite evidence from an approved build"
+    },
+    {
+      "code": "HUMAN_ROLE_ASSIGNMENTS_MISSING",
+      "detail": "curation_role_assignments is empty by design until WP-23",
+      "meaning": "no identity holds any curation or review role; the production role assignment set is empty",
+      "owner": "WP-23 authentication, then whoever assigns roles",
+      "unblocks": "any actor-bound operation in the rule layer"
+    },
+    {
+      "code": "LEGACY_ITEMS_NOT_ELIGIBLE",
+      "detail": "1559 legacy work items are RAW and unreviewed",
+      "meaning": "every legacy-derived candidate is still RAW and unreviewed, so none is eligible to become a rule",
+      "owner": "scientific curators",
+      "unblocks": "legacy candidates may enter curation and, once approved, become rule sources"
+    },
+    {
+      "code": "NO_CURATED_INTERPRETATIONS",
+      "detail": "0 of 1559 work items are CURATED",
+      "meaning": "no curation work item has reached CURATED, so there is no accepted conclusion for a rule to encode",
+      "owner": "scientific curators and an independent reviewer",
+      "unblocks": "a DRAFT rule may be marked CURATED"
+    },
+    {
+      "code": "NO_RULE_APPROVAL_ENVELOPES",
+      "detail": "no rule approval envelope exists; WP-10's production role assignment set is empty, so nobody could have signed one",
+      "meaning": "no WP-10 rule approval envelope exists",
+      "owner": "a curator, an independent reviewer and an approver, acting separately",
+      "unblocks": "a CURATED rule may be validated"
+    },
+    {
+      "code": "NO_VALIDATED_RULES",
+      "detail": "0 rules exist in any state",
+      "meaning": "no rule has been validated, so no ruleset can have members",
+      "owner": "an independent scientific reviewer or adjudicator",
+      "unblocks": "a BUILDING ruleset may gain members and validate"
+    },
+    {
+      "code": "SOURCE_POLICY_NOT_APPROVED",
+      "detail": "20 source entries, 0 approved",
+      "meaning": "no source policy entry has completed human review, so no source is cleared for use in an executable rule",
+      "owner": "a named source-policy approver",
+      "unblocks": "the source-policy eligibility gate opens"
+    },
+    {
+      "code": "UNLINKED_CURATION_ITEMS_REMAIN",
+      "detail": "33 legacy work items have no evidence link",
+      "meaning": "some legacy work items have no evidence link, so they cannot cite evidence even if curated",
+      "owner": "scientific curators selecting evidence during curation",
+      "unblocks": "those items may cite evidence and become rule sources"
+    }
+  ],
+  "content_hash": "sha256:ee583bea2becb5ab0e307c375a52342b8a3d5992acdf97b4e8ae1557950918d1",
+  "curation_state": {
+    "curated_interpretations": 0,
+    "eligible_rule_approval_envelopes": 0,
+    "legacy_work_items": 1559,
+    "linked_work_items": 1526,
+    "unlinked_work_items": 33
+  },
+  "gate_status_version": "pgx-wp11-gate-status/1",
+  "next_required_human_actions": [
+    "a named scientific expert reads and approves the curation protocol against its content hash",
+    "two named curators complete the WP-09 inter-curator exercise",
+    "a source-policy approver completes review of the source registry",
+    "the evidence build leaves quarantine through the publication gate",
+    "WP-23 provides authenticated identities so roles can be assigned",
+    "curators reach at least one CURATED interpretation with cited evidence",
+    "a curator, an independent reviewer and an approver produce a rule approval envelope"
+  ],
+  "note": "This is an expected governance result, not a test failure. The WP-11 machinery is implemented and verified against synthetic fixtures; what is missing is human scientific approval, which no code can supply. Nothing here may be closed by generating an approval.",
+  "rule_state": {
+    "executable_rulesets_in_default_registry": 0,
+    "real_curated_rules": 0,
+    "real_deprecated_rules": 0,
+    "real_draft_rules": 0,
+    "real_frozen_rulesets": 0,
+    "real_validated_rules": 0
+  },
+  "upstream_state": {
+    "canonical_dataset_published": false,
+    "canonical_dataset_state": "BUILDING",
+    "curation_protocol_approved": false,
+    "curation_protocol_status": "AWAITING_EXPERT_REVIEW",
+    "evidence_build_approved_for_rules": false,
+    "evidence_build_labels": [
+      "QUARANTINED",
+      "LEGACY_MIGRATION",
+      "NOT_CURATED",
+      "NOT_EXECUTABLE",
+      "NOT_PUBLICATION_ELIGIBLE"
+    ],
+    "source_registry_approved": 0,
+    "source_registry_entries": 20
+  }
+}

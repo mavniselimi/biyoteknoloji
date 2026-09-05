@@ -1,0 +1,99 @@
+{
+  "active_release_available": false,
+  "benchmark_executed_against_active_release": false,
+  "benchmark_gate_status": "BLOCKED",
+  "blocker_count": 8,
+  "blockers": [
+    {
+      "blocking": true,
+      "code": "BENCHMARK_CLAIM_BOUNDARY_NOT_APPROVED",
+      "detail": "claim boundary status is DRAFT / AWAITING HUMAN AND SCIENTIFIC REVIEW",
+      "owner": "named human and scientific reviewers"
+    },
+    {
+      "blocking": true,
+      "code": "BENCHMARK_NOT_EXECUTED",
+      "detail": "no benchmark run exists for any release",
+      "owner": "whoever runs a benchmark once a release exists"
+    },
+    {
+      "blocking": true,
+      "code": "BENCHMARK_NO_ACTIVE_RELEASE",
+      "detail": "no release resolver is wired and no release is active",
+      "owner": "WP-03 operation"
+    },
+    {
+      "blocking": true,
+      "code": "BENCHMARK_NO_COMPLETED_EXPERT_REVIEWS",
+      "detail": "the WP-22 review module is implemented; no review store was inspected, so no completed review count was taken",
+      "owner": "named experts under the approved protocol"
+    },
+    {
+      "blocking": true,
+      "code": "BENCHMARK_NO_HOLDOUT_CASES",
+      "detail": "internal holdout: 0, expert holdout: 0",
+      "owner": "scientific curators; a holdout case cannot be generated"
+    },
+    {
+      "blocking": true,
+      "code": "BENCHMARK_NO_REFERENCE_JUDGMENT",
+      "detail": "WP-18 stores no expected answer by design and no separate reference-judgment input has been supplied",
+      "owner": "scientific curators under the WP-22 protocol"
+    },
+    {
+      "blocking": true,
+      "code": "BENCHMARK_NO_VALIDATION_EVIDENCE_CASES",
+      "detail": "7 development case(s) exist and none of them may enter a validation denominator",
+      "owner": "scientific curators"
+    },
+    {
+      "blocking": true,
+      "code": "BENCHMARK_RESTRICTED_STORAGE_NOT_CONFIGURED",
+      "detail": "PGX_VALIDATION_RESTRICTED_ROOT is unset or does not name a directory",
+      "owner": "deployment"
+    }
+  ],
+  "claim_boundary_approved": false,
+  "claim_boundary_status": "DRAFT / AWAITING HUMAN AND SCIENTIFIC REVIEW",
+  "clinical_validation_performed": false,
+  "completed_expert_review_count": null,
+  "completed_expert_review_count_source": "null rather than zero: no review store was inspected, so no count was taken",
+  "computed_metric_value_count": 0,
+  "computed_metric_value_note": "zero rather than null: the metric layer ran and produced no value because no benchmark was executed. Every metric is NOT_EXECUTED or BLOCKED, never a numeric zero.",
+  "development_case_count": 7,
+  "development_is_not_validation": "The 7 development cases are a regression signal. They shaped the software and are structurally excluded from every validation denominator; results derived from them appear only under DEVELOPMENT_REGRESSION.",
+  "expert_holdout_case_count": 0,
+  "expert_review_module_implemented": true,
+  "expert_review_performed": false,
+  "failure_path_catalogue_version": "pgx-wp21-failure-paths/1",
+  "failure_path_count": 10,
+  "gate_status_schema_version": "pgx-wp21-gate-status/1",
+  "implementation_note": "The metric registry, the benchmark contract, the engine, the public report and the dashboard feed are implemented. That is a statement about software. Whether any release has been validated is the separate question below, and the answer is no.",
+  "implementation_status": "IMPLEMENTED",
+  "internal_holdout_case_count": 0,
+  "metric_definition_count": 15,
+  "metric_framework_implemented": true,
+  "metric_registry_digest": "sha256:42d1264d5e65b46930a0f329d140c84b9d1a7e7693164820632107e2d9ebe832",
+  "metric_registry_version": "pgx-wp21-metric-registry/1",
+  "not_clinical_validation": "This document describes metric machinery and its current empty state. It is not clinical validation, scientific validation or expert review, and no number in it establishes that the system is safe for any patient.",
+  "numeric_validation_metric_count": 0,
+  "reference_judgment_count": 0,
+  "reference_judgment_note": "WP-18 stores no expected answer. A reference judgment is a separate immutable input with its own provenance; none has been supplied, so concordance-style metrics are NO_REFERENCE_JUDGMENT rather than zero.",
+  "release_may_proceed": false,
+  "release_validation_result_available": false,
+  "restricted_storage_configured": false,
+  "separation_audit_checked_case_count": 7,
+  "separation_audit_clean": true,
+  "separation_audit_issue_codes": [],
+  "threshold_count": 0,
+  "threshold_note": "No metric carries a threshold. One would require a predeclared, reviewable policy with provenance, and none exists.",
+  "validation_evidence_case_count": 0,
+  "validation_evidence_metric_count": 10,
+  "work_package": "WP-21",
+  "wp21_markers_found": [
+    "pgx/validation/benchmark.py",
+    "pgx/validation/metrics.py",
+    "docs/architecture/wp21-validation-metrics.md"
+  ],
+  "wp22_started": true
+}

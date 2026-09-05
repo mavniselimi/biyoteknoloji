@@ -1,0 +1,410 @@
+{
+  "$id": "https://pgx.local/schemas/wp16/route-surface.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "description": "The closed list of operations. A route not on this list does not exist, and adding one means changing this artifact.",
+  "title": "PGx API P0 route surface (WP-16)",
+  "type": "array",
+  "x-pgx-routes": [
+    {
+      "error_codes": [
+        "ACTIVE_RELEASE_UNAVAILABLE",
+        "ARTIFACT_INCONSISTENT",
+        "ASSESSMENT_INPUT_INVALID",
+        "AUTHENTICATION_NOT_CONFIGURED",
+        "CLAIM_BOUNDARY_NOT_APPROVED",
+        "DATABASE_UNAVAILABLE",
+        "FORBIDDEN_ROLE",
+        "INPUT_KIND_NOT_PERMITTED",
+        "INTERNAL_ERROR",
+        "MODE_NOT_PERMITTED",
+        "PERSISTENCE_REFUSED",
+        "PROHIBITED_INPUT_FIELD",
+        "RELEASE_NOT_ACTIVE",
+        "REQUEST_CONTRACT_VIOLATION",
+        "REQUEST_ID_INVALID",
+        "REQUEST_MALFORMED",
+        "REQUEST_TOO_LARGE",
+        "SERVICE_NOT_READY",
+        "UNAUTHENTICATED",
+        "UNSUPPORTED_PHENOTYPE"
+      ],
+      "implemented": true,
+      "method": "POST",
+      "operation_id": "createAssessment",
+      "path": "/api/v1/assessments",
+      "permitted_roles": [
+        "ADMIN",
+        "DEMO_USER",
+        "EXPERT_REVIEWER"
+      ],
+      "public": false,
+      "request_model": "AssessmentCreateRequest",
+      "response_model": "AssessmentResponse",
+      "success_status": 201,
+      "superseded_by": null
+    },
+    {
+      "error_codes": [
+        "ASSESSMENT_NOT_FOUND",
+        "AUTHENTICATION_NOT_CONFIGURED",
+        "DATABASE_UNAVAILABLE",
+        "FORBIDDEN_ROLE",
+        "INTERNAL_ERROR",
+        "REQUEST_ID_INVALID",
+        "REQUEST_MALFORMED",
+        "SERVICE_NOT_READY",
+        "STORED_RESULT_INCONSISTENT",
+        "UNAUTHENTICATED"
+      ],
+      "implemented": true,
+      "method": "GET",
+      "operation_id": "getAssessment",
+      "path": "/api/v1/assessments/{assessment_id}",
+      "permitted_roles": [
+        "ADMIN",
+        "DEMO_USER",
+        "EXPERT_REVIEWER"
+      ],
+      "public": false,
+      "request_model": null,
+      "response_model": "AssessmentResponse",
+      "success_status": 200,
+      "superseded_by": null
+    },
+    {
+      "error_codes": [
+        "ACTIVE_RELEASE_UNAVAILABLE",
+        "AUTHENTICATION_NOT_CONFIGURED",
+        "CATALOGUE_UNAVAILABLE",
+        "CURSOR_RELEASE_MISMATCH",
+        "FORBIDDEN_ROLE",
+        "INTERNAL_ERROR",
+        "REQUEST_ID_INVALID",
+        "REQUEST_MALFORMED",
+        "SERVICE_NOT_READY",
+        "UNAUTHENTICATED"
+      ],
+      "implemented": true,
+      "method": "GET",
+      "operation_id": "listDrugs",
+      "path": "/api/v1/drugs",
+      "permitted_roles": [
+        "ADMIN",
+        "DEMO_USER",
+        "EXPERT_REVIEWER"
+      ],
+      "public": false,
+      "request_model": null,
+      "response_model": "DrugCollectionResponse",
+      "success_status": 200,
+      "superseded_by": null
+    },
+    {
+      "error_codes": [
+        "ACTIVE_RELEASE_UNAVAILABLE",
+        "AUTHENTICATION_NOT_CONFIGURED",
+        "CATALOGUE_UNAVAILABLE",
+        "CURSOR_RELEASE_MISMATCH",
+        "FORBIDDEN_ROLE",
+        "INTERNAL_ERROR",
+        "REQUEST_ID_INVALID",
+        "REQUEST_MALFORMED",
+        "SERVICE_NOT_READY",
+        "UNAUTHENTICATED"
+      ],
+      "implemented": true,
+      "method": "GET",
+      "operation_id": "listGenes",
+      "path": "/api/v1/genes",
+      "permitted_roles": [
+        "ADMIN",
+        "DEMO_USER",
+        "EXPERT_REVIEWER"
+      ],
+      "public": false,
+      "request_model": null,
+      "response_model": "GeneCollectionResponse",
+      "success_status": 200,
+      "superseded_by": null
+    },
+    {
+      "error_codes": [
+        "ARTIFACT_INCONSISTENT",
+        "AUTHENTICATION_NOT_CONFIGURED",
+        "EVIDENCE_BUILD_UNAVAILABLE",
+        "EVIDENCE_NOT_FOUND",
+        "FORBIDDEN_ROLE",
+        "INTERNAL_ERROR",
+        "REQUEST_ID_INVALID",
+        "REQUEST_MALFORMED",
+        "SERVICE_NOT_READY",
+        "UNAUTHENTICATED"
+      ],
+      "implemented": true,
+      "method": "GET",
+      "operation_id": "getEvidenceRecord",
+      "path": "/api/v1/evidence/{evidence_id}",
+      "permitted_roles": [
+        "ADMIN",
+        "DEMO_USER",
+        "EXPERT_REVIEWER"
+      ],
+      "public": false,
+      "request_model": null,
+      "response_model": "EvidenceDetailResponse",
+      "success_status": 200,
+      "superseded_by": null
+    },
+    {
+      "error_codes": [
+        "ACTIVE_RELEASE_UNAVAILABLE",
+        "INTERNAL_ERROR",
+        "REQUEST_ID_INVALID",
+        "REQUEST_MALFORMED",
+        "SERVICE_NOT_READY"
+      ],
+      "implemented": true,
+      "method": "GET",
+      "operation_id": "getSystemVersion",
+      "path": "/api/v1/system/version",
+      "permitted_roles": [],
+      "public": true,
+      "request_model": null,
+      "response_model": "SystemVersionResponse",
+      "success_status": 200,
+      "superseded_by": null
+    },
+    {
+      "error_codes": [
+        "AUTHENTICATION_NOT_CONFIGURED",
+        "EXPERT_REVIEW_AUDIT_FAILED",
+        "EXPERT_REVIEW_CASE_MANIFEST_MISMATCH",
+        "EXPERT_REVIEW_FORGED_FIELD",
+        "EXPERT_REVIEW_INVALID_TRANSITION",
+        "EXPERT_REVIEW_NOT_ASSIGNED",
+        "EXPERT_REVIEW_NOT_AVAILABLE",
+        "EXPERT_REVIEW_PROTOCOL_MISMATCH",
+        "EXPERT_REVIEW_PROTOCOL_NOT_APPROVED",
+        "EXPERT_REVIEW_RELEASE_MISMATCH",
+        "EXPERT_REVIEW_ROLE_REQUIRED",
+        "FORBIDDEN_ROLE",
+        "INTERNAL_ERROR",
+        "REQUEST_ID_INVALID",
+        "REQUEST_MALFORMED",
+        "UNAUTHENTICATED"
+      ],
+      "implemented": true,
+      "method": "GET",
+      "operation_id": "listExpertReviewAssignments",
+      "path": "/api/v1/expert-reviews",
+      "permitted_roles": [
+        "EXPERT_REVIEWER"
+      ],
+      "public": false,
+      "request_model": null,
+      "response_model": "ExpertReviewAssignmentListResponse",
+      "success_status": 200,
+      "superseded_by": null
+    },
+    {
+      "error_codes": [
+        "AUTHENTICATION_NOT_CONFIGURED",
+        "EXPERT_REVIEW_AUDIT_FAILED",
+        "EXPERT_REVIEW_CASE_MANIFEST_MISMATCH",
+        "EXPERT_REVIEW_FORGED_FIELD",
+        "EXPERT_REVIEW_INVALID_TRANSITION",
+        "EXPERT_REVIEW_NOT_ASSIGNED",
+        "EXPERT_REVIEW_NOT_AVAILABLE",
+        "EXPERT_REVIEW_PROTOCOL_MISMATCH",
+        "EXPERT_REVIEW_PROTOCOL_NOT_APPROVED",
+        "EXPERT_REVIEW_RELEASE_MISMATCH",
+        "EXPERT_REVIEW_ROLE_REQUIRED",
+        "FORBIDDEN_ROLE",
+        "INTERNAL_ERROR",
+        "REQUEST_ID_INVALID",
+        "REQUEST_MALFORMED",
+        "UNAUTHENTICATED"
+      ],
+      "implemented": true,
+      "method": "GET",
+      "operation_id": "getExpertReviewState",
+      "path": "/api/v1/expert-reviews/{case_id}",
+      "permitted_roles": [
+        "EXPERT_REVIEWER"
+      ],
+      "public": false,
+      "request_model": null,
+      "response_model": "ExpertReviewStateResponse",
+      "success_status": 200,
+      "superseded_by": null
+    },
+    {
+      "error_codes": [
+        "AUTHENTICATION_NOT_CONFIGURED",
+        "EXPERT_REVIEW_AUDIT_FAILED",
+        "EXPERT_REVIEW_CASE_MANIFEST_MISMATCH",
+        "EXPERT_REVIEW_EXPECTATION_ALREADY_LOCKED",
+        "EXPERT_REVIEW_FORGED_FIELD",
+        "EXPERT_REVIEW_INVALID_TRANSITION",
+        "EXPERT_REVIEW_NOT_ASSIGNED",
+        "EXPERT_REVIEW_NOT_AVAILABLE",
+        "EXPERT_REVIEW_PROTOCOL_MISMATCH",
+        "EXPERT_REVIEW_PROTOCOL_NOT_APPROVED",
+        "EXPERT_REVIEW_RELEASE_MISMATCH",
+        "EXPERT_REVIEW_ROLE_REQUIRED",
+        "FORBIDDEN_ROLE",
+        "INTERNAL_ERROR",
+        "REQUEST_ID_INVALID",
+        "REQUEST_MALFORMED",
+        "UNAUTHENTICATED"
+      ],
+      "implemented": true,
+      "method": "POST",
+      "operation_id": "submitExpertReviewExpected",
+      "path": "/api/v1/expert-reviews/{case_id}/expected",
+      "permitted_roles": [
+        "EXPERT_REVIEWER"
+      ],
+      "public": false,
+      "request_model": "ExpertReviewExpectedRequest",
+      "response_model": "ExpertReviewExpectedResponse",
+      "success_status": 201,
+      "superseded_by": null
+    },
+    {
+      "error_codes": [
+        "AUTHENTICATION_NOT_CONFIGURED",
+        "EXPERT_REVIEW_AUDIT_FAILED",
+        "EXPERT_REVIEW_CASE_MANIFEST_MISMATCH",
+        "EXPERT_REVIEW_EXPECTATION_REQUIRED",
+        "EXPERT_REVIEW_FORGED_FIELD",
+        "EXPERT_REVIEW_INVALID_TRANSITION",
+        "EXPERT_REVIEW_NOT_ASSIGNED",
+        "EXPERT_REVIEW_NOT_AVAILABLE",
+        "EXPERT_REVIEW_PROTOCOL_MISMATCH",
+        "EXPERT_REVIEW_PROTOCOL_NOT_APPROVED",
+        "EXPERT_REVIEW_RELEASE_MISMATCH",
+        "EXPERT_REVIEW_RESULT_ALREADY_REVEALED",
+        "EXPERT_REVIEW_ROLE_REQUIRED",
+        "FORBIDDEN_ROLE",
+        "INTERNAL_ERROR",
+        "REQUEST_ID_INVALID",
+        "REQUEST_MALFORMED",
+        "UNAUTHENTICATED"
+      ],
+      "implemented": true,
+      "method": "POST",
+      "operation_id": "revealExpertReviewResult",
+      "path": "/api/v1/expert-reviews/{case_id}/reveal",
+      "permitted_roles": [
+        "EXPERT_REVIEWER"
+      ],
+      "public": false,
+      "request_model": "ExpertReviewRevealRequest",
+      "response_model": "ExpertReviewRevealResponse",
+      "success_status": 200,
+      "superseded_by": null
+    },
+    {
+      "error_codes": [
+        "AUTHENTICATION_NOT_CONFIGURED",
+        "EXPERT_REVIEW_ALREADY_COMPLETED",
+        "EXPERT_REVIEW_AUDIT_FAILED",
+        "EXPERT_REVIEW_CASE_MANIFEST_MISMATCH",
+        "EXPERT_REVIEW_FORGED_FIELD",
+        "EXPERT_REVIEW_INVALID_TRANSITION",
+        "EXPERT_REVIEW_NOT_ASSIGNED",
+        "EXPERT_REVIEW_NOT_AVAILABLE",
+        "EXPERT_REVIEW_PROTOCOL_MISMATCH",
+        "EXPERT_REVIEW_PROTOCOL_NOT_APPROVED",
+        "EXPERT_REVIEW_RELEASE_MISMATCH",
+        "EXPERT_REVIEW_REVEAL_REQUIRED",
+        "EXPERT_REVIEW_ROLE_REQUIRED",
+        "FORBIDDEN_ROLE",
+        "INTERNAL_ERROR",
+        "REQUEST_ID_INVALID",
+        "REQUEST_MALFORMED",
+        "UNAUTHENTICATED"
+      ],
+      "implemented": true,
+      "method": "POST",
+      "operation_id": "completeExpertReview",
+      "path": "/api/v1/expert-reviews/{case_id}/complete",
+      "permitted_roles": [
+        "EXPERT_REVIEWER"
+      ],
+      "public": false,
+      "request_model": "ExpertReviewCompleteRequest",
+      "response_model": "ExpertReviewCompleteResponse",
+      "success_status": 201,
+      "superseded_by": null
+    },
+    {
+      "error_codes": [
+        "AUTHENTICATION_NOT_CONFIGURED",
+        "EXPERT_REVIEW_AUDIT_FAILED",
+        "EXPERT_REVIEW_CASE_MANIFEST_MISMATCH",
+        "EXPERT_REVIEW_FORGED_FIELD",
+        "EXPERT_REVIEW_INVALID_TRANSITION",
+        "EXPERT_REVIEW_NOT_ASSIGNED",
+        "EXPERT_REVIEW_NOT_AVAILABLE",
+        "EXPERT_REVIEW_PROTOCOL_MISMATCH",
+        "EXPERT_REVIEW_PROTOCOL_NOT_APPROVED",
+        "EXPERT_REVIEW_RELEASE_MISMATCH",
+        "EXPERT_REVIEW_ROLE_REQUIRED",
+        "FORBIDDEN_ROLE",
+        "INTERNAL_ERROR",
+        "REQUEST_ID_INVALID",
+        "REQUEST_MALFORMED",
+        "UNAUTHENTICATED"
+      ],
+      "implemented": true,
+      "method": "POST",
+      "operation_id": "appendExpertReviewCorrection",
+      "path": "/api/v1/expert-reviews/{case_id}/corrections",
+      "permitted_roles": [
+        "EXPERT_REVIEWER"
+      ],
+      "public": false,
+      "request_model": "ExpertReviewCorrectionRequest",
+      "response_model": "ExpertReviewCorrectionResponse",
+      "success_status": 201,
+      "superseded_by": null
+    },
+    {
+      "error_codes": [
+        "INTERNAL_ERROR",
+        "REQUEST_ID_INVALID",
+        "REQUEST_MALFORMED"
+      ],
+      "implemented": true,
+      "method": "GET",
+      "operation_id": "getLiveness",
+      "path": "/health/live",
+      "permitted_roles": [],
+      "public": true,
+      "request_model": null,
+      "response_model": "LivenessResponse",
+      "success_status": 200,
+      "superseded_by": null
+    },
+    {
+      "error_codes": [
+        "INTERNAL_ERROR",
+        "REQUEST_ID_INVALID",
+        "REQUEST_MALFORMED",
+        "SERVICE_NOT_READY"
+      ],
+      "implemented": true,
+      "method": "GET",
+      "operation_id": "getReadiness",
+      "path": "/health/ready",
+      "permitted_roles": [],
+      "public": true,
+      "request_model": null,
+      "response_model": "ReadinessResponse",
+      "success_status": 200,
+      "superseded_by": null
+    }
+  ]
+}

@@ -1,0 +1,206 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pgx-platform.invalid/schemas/curation-work-item.schema.json",
+  "title": "PGx curation work item",
+  "description": "One curation question and where it has got to (WP-10). A work item is a question on a queue, not a conclusion: reaching CURATED requires a named independent reviewer and thirteen open gates, and in this repository none of the 1,559 legacy work items has either. The schema asserts the parts a hand-edited file would most usefully lie about: that RAW carries no reviewer, that a decided item names the revision that was decided, and that legacy values are namespaced as unreviewed input.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "workflow_model_version",
+    "work_item_id",
+    "status",
+    "version",
+    "question_id",
+    "gene_canonical_key",
+    "drug_canonical_key",
+    "tags",
+    "legacy_values",
+    "created_by",
+    "created_at",
+    "is_terminal",
+    "is_legacy"
+  ],
+  "properties": {
+    "workflow_model_version": {
+      "const": "pgx-curation-workflow/1"
+    },
+    "work_item_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "enum": [
+        "RAW",
+        "UNDER_REVIEW",
+        "CURATED",
+        "REJECTED"
+      ],
+      "description": "The persisted state. WP-09's DRAFT is not a fifth value: it describes a revision's content while its work item is RAW."
+    },
+    "version": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "The optimistic-concurrency counter. Every guarded update advances it, so two reviewers cannot decide one state."
+    },
+    "question_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "gene_canonical_key": {
+      "type": "string",
+      "pattern": "^GENE:.+"
+    },
+    "drug_canonical_key": {
+      "type": "string",
+      "pattern": "^DRUG:.+"
+    },
+    "current_revision_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "submitted_revision_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "legacy_proposal_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "legacy_values": {
+      "type": "object",
+      "description": "The old project's values, carried as unreviewed input. Every key is namespaced 'legacy.' so no reader and no query can mistake one for a curated field.",
+      "propertyNames": {
+        "pattern": "^legacy\\."
+      }
+    },
+    "created_by": {
+      "type": "string",
+      "minLength": 1
+    },
+    "created_at": {
+      "type": "string",
+      "minLength": 1
+    },
+    "updated_at": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "is_terminal": {
+      "type": "boolean"
+    },
+    "is_legacy": {
+      "type": "boolean"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "RAW"
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "then": {
+        "properties": {
+          "submitted_revision_id": {
+            "type": "null"
+          }
+        },
+        "description": "A RAW work item has nothing under review. Naming a submitted revision here would claim a submission nobody made."
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "UNDER_REVIEW"
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "then": {
+        "properties": {
+          "submitted_revision_id": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "submitted_revision_id"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "CURATED"
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "then": {
+        "properties": {
+          "submitted_revision_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "is_terminal": {
+            "const": true
+          }
+        },
+        "required": [
+          "submitted_revision_id"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "REJECTED"
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "then": {
+        "properties": {
+          "submitted_revision_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "is_terminal": {
+            "const": true
+          }
+        },
+        "required": [
+          "submitted_revision_id"
+        ]
+      }
+    }
+  ]
+}

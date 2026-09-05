@@ -1,0 +1,286 @@
+{
+  "$id": "https://pgx-platform.invalid/schemas/medication-assessment.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "attention_level": {
+            "const": "NO_ACTIVE_ATTENTION"
+          }
+        },
+        "required": [
+          "attention_level"
+        ]
+      },
+      "then": {
+        "properties": {
+          "coverage_status": {
+            "const": "FULL"
+          }
+        }
+      }
+    },
+    {
+      "else": {
+        "properties": {
+          "coverage_reason_codes": {
+            "minItems": 1
+          }
+        }
+      },
+      "if": {
+        "properties": {
+          "coverage_status": {
+            "const": "FULL"
+          }
+        },
+        "required": [
+          "coverage_status"
+        ]
+      },
+      "then": {
+        "properties": {
+          "coverage_reason_codes": {
+            "maxItems": 0
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "attention_level": {
+            "const": "NOT_ASSESSED"
+          }
+        },
+        "required": [
+          "attention_level"
+        ]
+      },
+      "then": {
+        "properties": {
+          "finding_count": {
+            "maximum": 0
+          },
+          "findings": {
+            "maxItems": 0
+          }
+        }
+      }
+    }
+  ],
+  "description": "What was calculated for one requested medication, and what was not. Coverage and attention are separate first-class outputs and neither is derived from the other: a reader who sees HIGH must also see PARTIAL, because 'the worst of what could be evaluated' and 'how much could be evaluated' are different facts. NO_ACTIVE_ATTENTION is admitted only with FULL coverage and NOT_ASSESSED only with no findings, which is SAFETY-INV-001 in a form a downstream reader enforces for itself. additionalProperties is false throughout, which is where the boundary is actually enforced: a dose, a recommendation, a preferred or safer flag, a suitability score, a ranking, a treatment or a rendered sentence cannot be attached to any of these documents by anything downstream, because the schema refuses every property it does not name. WP-14 calculates structured facts; WP-15 renders them.",
+  "properties": {
+    "attention_level": {
+      "enum": [
+        "NOT_ASSESSED",
+        "NO_ACTIVE_ATTENTION",
+        "LOW",
+        "MEDIUM",
+        "HIGH"
+      ]
+    },
+    "axis_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "conflicted_axis_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "coverage_reason_codes": {
+      "items": {
+        "enum": [
+          "DRUG_NOT_IN_CANONICAL_DATASET",
+          "PHENOTYPE_NOT_PROVIDED",
+          "PHENOTYPE_NOT_SUPPORTED",
+          "NO_VALIDATED_RULE_FOR_AXIS",
+          "SOME_AXES_NOT_COVERED",
+          "VALIDATED_RULES_CONFLICT",
+          "DATASET_RULESET_MISMATCH",
+          "EVIDENCE_REFERENCE_MISSING"
+        ]
+      },
+      "type": "array",
+      "uniqueItems": true
+    },
+    "coverage_status": {
+      "enum": [
+        "FULL",
+        "PARTIAL",
+        "INSUFFICIENT",
+        "UNSUPPORTED_DRUG",
+        "UNSUPPORTED_PHENOTYPE",
+        "SOURCE_CONFLICT"
+      ]
+    },
+    "drug_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "finding_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "findings": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "attention_level": {
+            "enum": [
+              "NO_ACTIVE_ATTENTION",
+              "LOW",
+              "MEDIUM",
+              "HIGH"
+            ]
+          },
+          "canonical_build_content_hash": {
+            "pattern": "^sha256:[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "coverage_manifest_hash": {
+            "pattern": "^sha256:[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "curation_revision_hash": {
+            "pattern": "^sha256:[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "curation_revision_id": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "dataset_public_id": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "drug_id": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "effect_code": {
+            "anyOf": [
+              {
+                "type": "null"
+              },
+              {
+                "minLength": 1,
+                "type": "string"
+              }
+            ]
+          },
+          "evidence_references": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "minItems": 1,
+            "type": "array",
+            "uniqueItems": true
+          },
+          "explanation_code": {
+            "anyOf": [
+              {
+                "type": "null"
+              },
+              {
+                "minLength": 1,
+                "type": "string"
+              }
+            ]
+          },
+          "finding_schema_version": {
+            "const": "pgx-assessment-finding/1"
+          },
+          "gene_id": {
+            "pattern": "^GENE:[A-Z0-9][A-Z0-9\\-.@_]*$",
+            "type": "string"
+          },
+          "phenotype": {
+            "enum": [
+              "POOR",
+              "INTERMEDIATE",
+              "NORMAL",
+              "RAPID",
+              "ULTRARAPID"
+            ]
+          },
+          "rationale_reference": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "rule_content_hash": {
+            "pattern": "^sha256:[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "rule_family_id": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "rule_id": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "rule_version": {
+            "minimum": 1,
+            "type": "integer"
+          },
+          "ruleset_content_hash": {
+            "pattern": "^sha256:[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "ruleset_public_id": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "attention_level",
+          "canonical_build_content_hash",
+          "coverage_manifest_hash",
+          "curation_revision_hash",
+          "curation_revision_id",
+          "dataset_public_id",
+          "drug_id",
+          "effect_code",
+          "evidence_references",
+          "explanation_code",
+          "finding_schema_version",
+          "gene_id",
+          "phenotype",
+          "rationale_reference",
+          "rule_content_hash",
+          "rule_family_id",
+          "rule_id",
+          "rule_version",
+          "ruleset_content_hash",
+          "ruleset_public_id"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "medication_assessment_schema_version": {
+      "const": "pgx-medication-assessment/1"
+    },
+    "requested_value": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "attention_level",
+    "axis_count",
+    "conflicted_axis_count",
+    "coverage_reason_codes",
+    "coverage_status",
+    "drug_id",
+    "finding_count",
+    "findings",
+    "medication_assessment_schema_version",
+    "requested_value"
+  ],
+  "title": "PGx medication assessment",
+  "type": "object"
+}

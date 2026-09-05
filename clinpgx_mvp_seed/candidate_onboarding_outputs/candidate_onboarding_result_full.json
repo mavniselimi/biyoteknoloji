@@ -1,0 +1,94 @@
+{
+  "candidates": [
+    "nortriptyline",
+    "pantoprazole",
+    "prasugrel",
+    "ticagrelor"
+  ],
+  "candidate_statuses": [
+    {
+      "candidate_drug": "nortriptyline",
+      "already_supported": false,
+      "resolve_status": "resolved_via_api",
+      "drug_id": "PA450657",
+      "note": "",
+      "usable_effect_rules": 0
+    },
+    {
+      "candidate_drug": "pantoprazole",
+      "already_supported": false,
+      "resolve_status": "resolved_via_api",
+      "drug_id": "PA450774",
+      "note": "",
+      "usable_effect_rules": 0
+    },
+    {
+      "candidate_drug": "prasugrel",
+      "already_supported": false,
+      "resolve_status": "resolved_via_api",
+      "drug_id": "PA154410481",
+      "note": "",
+      "usable_effect_rules": 0
+    },
+    {
+      "candidate_drug": "ticagrelor",
+      "already_supported": false,
+      "resolve_status": "resolved_via_api",
+      "drug_id": "PA165374673",
+      "note": "",
+      "usable_effect_rules": 0
+    }
+  ],
+  "annotation_counts": {
+    "supported_extension_rows": 4,
+    "guideline_rows": 6,
+    "variant_rows": 0,
+    "label_rows": 0,
+    "guideline_extension_rows": 6,
+    "effect_extension_rows": 0
+  },
+  "merge_requested": true,
+  "merge_results": [
+    {
+      "target": "clinpgx_mvp_seed/supported_drugs.csv",
+      "added": 4,
+      "skipped_duplicates": 0,
+      "backup": "clinpgx_mvp_seed/supported_drugs.csv.bak"
+    },
+    {
+      "target": "clinpgx_mvp_seed/drug_gene_guidelines.csv",
+      "added": 6,
+      "skipped_duplicates": 0,
+      "backup": "clinpgx_mvp_seed/drug_gene_guidelines.csv.bak"
+    },
+    {
+      "target": "clinpgx_mvp_seed/phenotype_effect_rules.csv",
+      "added": 0,
+      "skipped_duplicates": 0,
+      "backup": "clinpgx_mvp_seed/phenotype_effect_rules.csv.bak"
+    }
+  ],
+  "beta_ranker_result": {
+    "command": "/opt/homebrew/opt/python@3.14/bin/python3.14 alternative_ranker.py --seed-dir clinpgx_mvp_seed --source-drug clopidogrel --profile-id P2_cyp2c19_poor --current-drugs clopidogrel,voriconazole,codeine,warfarin,amitriptyline --out-dir clinpgx_mvp_seed/alternative_outputs_beta",
+    "returncode": 0,
+    "stdout": "[LOAD] clinpgx_mvp_seed/supported_genes.csv\n[LOAD] clinpgx_mvp_seed/supported_drugs.csv\n[LOAD] clinpgx_mvp_seed/drug_gene_guidelines.csv\n[LOAD] clinpgx_mvp_seed/phenotype_effect_rules.csv\n[LOAD] clinpgx_mvp_seed/mvp_demo_profiles.json\n\n=== ALTERNATIVE RANKING DONE ===\nSource drug: clopidogrel\nProfile: CYP2C19 poor metabolizer profili\nCandidates: 2\n- #1 prasugrel: 59 | veri sınırlı / yorum dikkatli yapılmalı | insufficient_pgx_rule_data\n- #2 ticagrelor: 59 | veri sınırlı / yorum dikkatli yapılmalı | insufficient_pgx_rule_data\n\nÇıktılar:\n- clinpgx_mvp_seed/alternative_outputs_beta/alternative_candidates.csv\n- clinpgx_mvp_seed/alternative_outputs_beta/alternative_result_full.json\n- clinpgx_mvp_seed/alternative_outputs_beta/alternative_report.md\n",
+    "stderr": "",
+    "candidate_statuses": [
+      {
+        "candidate_drug": "prasugrel",
+        "mvp_data_status": "insufficient_pgx_rule_data",
+        "score": 59,
+        "candidate_specific_risk_level": "unknown"
+      },
+      {
+        "candidate_drug": "ticagrelor",
+        "mvp_data_status": "insufficient_pgx_rule_data",
+        "score": 59,
+        "candidate_specific_risk_level": "unknown"
+      }
+    ]
+  },
+  "dry_run": false,
+  "candidate_file": "candidate_alternatives.csv",
+  "clinpgx_outputs_dir": "clinpgx_outputs_v2"
+}

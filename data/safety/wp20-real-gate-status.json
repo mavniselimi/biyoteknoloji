@@ -1,0 +1,321 @@
+{
+  "active_release_available": false,
+  "blocker_count": 11,
+  "blockers": [
+    {
+      "blocking": true,
+      "code": "SAFETY_CI_JOB_NOT_EXECUTED",
+      "detail": "A workflow file is CONFIGURED, not EXECUTED. No CI provider run has been observed by this repository, so this stays false until one is recorded.",
+      "owner": "WP-24 / a CI provider"
+    },
+    {
+      "blocking": true,
+      "code": "SAFETY_CLAIM_BOUNDARY_NOT_APPROVED",
+      "detail": "claim boundary status is DRAFT / AWAITING HUMAN AND SCIENTIFIC REVIEW",
+      "owner": "named human and scientific reviewers"
+    },
+    {
+      "blocking": true,
+      "code": "SAFETY_CLAIM_SCANNER_KNOWN_GAPS",
+      "detail": "4 prohibited phrasing(s) are not matched by the claim scanner; recorded as a finding for the WP-00 claim registry rather than patched on an implementer's judgement",
+      "owner": "WP-00 claim registry reviewers"
+    },
+    {
+      "blocking": true,
+      "code": "SAFETY_INVARIANT_BLOCKED_BY_LATER_WP",
+      "detail": "SAFETY-INV-002: every executable check passed; enforcement is incomplete because P1-06 owns the optional narration renderer. P0 ships none, the default is disabled, and the deterministic report needs no model at all. The adversarial fixtures here are test-only doubles.",
+      "owner": "the later work package named"
+    },
+    {
+      "blocking": true,
+      "code": "SAFETY_INVARIANT_BLOCKED_BY_LATER_WP",
+      "detail": "SAFETY-INV-005: every executable check passed; enforcement is incomplete because P1-02 owns candidate exploration. P0 ships none. The legacy 0-100 suitability score is removed and must not return.",
+      "owner": "the later work package named"
+    },
+    {
+      "blocking": true,
+      "code": "SAFETY_INVARIANT_BLOCKED_BY_LATER_WP",
+      "detail": "SAFETY-INV-007: every executable check passed; enforcement is incomplete because The canonical audit record enforces actor, role, session reference, authentication assurance and correlation id, and the append is atomic with the governed change. No deployment has composed the store, so nothing has been recorded: the mechanism is implemented and unexercised.",
+      "owner": "the later work package named"
+    },
+    {
+      "blocking": true,
+      "code": "SAFETY_INVARIANT_BLOCKED_BY_LATER_WP",
+      "detail": "SAFETY-INV-009: every executable check passed; enforcement is incomplete because The separation mechanism is enforced and proven. There are zero holdout cases to separate, which is a scientific blocker WP-18 reports and no code can close.",
+      "owner": "the later work package named"
+    },
+    {
+      "blocking": true,
+      "code": "SAFETY_INVARIANT_BLOCKED_BY_LATER_WP",
+      "detail": "SAFETY-INV-012: every executable check passed; enforcement is incomplete because The append-only, hash-linked audit record enforces every required trace field and is atomic with the governed change. No deployment has composed the store, so no chain has been verified against real rows: the mechanism is implemented and unexercised.; Repeat-run determinism across deployments and over time is a CI property. WP-20 proves it within one process and one machine.",
+      "owner": "the later work package named"
+    },
+    {
+      "blocking": true,
+      "code": "SAFETY_NO_ACTIVE_RELEASE",
+      "detail": "no release is registered or active, so no assessment can pin one",
+      "owner": "WP-03 operation"
+    },
+    {
+      "blocking": true,
+      "code": "SAFETY_NO_HOLDOUT_CASES",
+      "detail": "the separation mechanism is enforced and proven; there are zero holdout cases to separate",
+      "owner": "scientific curators"
+    },
+    {
+      "blocking": true,
+      "code": "SAFETY_POSTGRESQL_NOT_EXERCISED",
+      "detail": "no PostgreSQL server was reached, so the database half of the persistence and separation invariants did not execute",
+      "owner": "deployment (start the disposable test database)"
+    }
+  ],
+  "ci_job_configured": true,
+  "ci_job_executed": false,
+  "ci_job_execution_note": "A workflow file is CONFIGURED, not EXECUTED. No CI provider run has been observed by this repository, so this stays false until one is recorded.",
+  "ci_job_path": ".github/workflows/safety-gate.yml",
+  "claim_boundary_approved": false,
+  "claim_boundary_status": "DRAFT / AWAITING HUMAN AND SCIENTIFIC REVIEW",
+  "claim_scanner_known_gap_count": 4,
+  "clinical_validation_performed": false,
+  "detected_negative_control_count": 37,
+  "detector_evidence_disclaimer": "Detecting an unsafe negative control proves that this software detector rejects that unsafe state. It is not clinical validation, scientific validation, expert review, or evidence that the system is safe for any patient. Those are produced by people under WP-21 and WP-22 and cannot be produced by running tests.",
+  "evidence_reason": "the safety gate reported BLOCKED; previous evidence is no longer valid",
+  "evidence_state": "INVALIDATED",
+  "executed_invariant_count": 12,
+  "expert_review_performed": false,
+  "false_reassurance_corpus_size": 36,
+  "false_reassurance_violation_count": 0,
+  "gate_status_schema_version": "pgx-wp20-gate-status/1",
+  "holdout_case_count": 0,
+  "implementation_status": "IMPLEMENTED",
+  "invariant_status": {
+    "SAFETY-INV-001": {
+      "compliance_state": "COMPLIANT",
+      "execution_state": "PASS",
+      "later_wp_blockers": [],
+      "negative_control_count": 2,
+      "negative_controls_all_detected": true,
+      "negative_controls_detected": 2,
+      "reason": "",
+      "refusal_code": "SAFETY_FALSE_REASSURANCE",
+      "registered": true,
+      "safe_control_executed": true,
+      "safe_control_satisfied": true,
+      "severity": "CRITICAL_PATIENT_FACING",
+      "tests_executed": 121
+    },
+    "SAFETY-INV-002": {
+      "compliance_state": "NOT_PRESENT",
+      "execution_state": "BLOCKED",
+      "later_wp_blockers": [
+        "P1"
+      ],
+      "negative_control_count": 3,
+      "negative_controls_all_detected": true,
+      "negative_controls_detected": 3,
+      "reason": "every executable check passed; enforcement is incomplete because P1-06 owns the optional narration renderer. P0 ships none, the default is disabled, and the deterministic report needs no model at all. The adversarial fixtures here are test-only doubles.",
+      "refusal_code": "SAFETY_LLM_ALTERED_FACT",
+      "registered": true,
+      "safe_control_executed": true,
+      "safe_control_satisfied": true,
+      "severity": "CRITICAL_PATIENT_FACING",
+      "tests_executed": 64
+    },
+    "SAFETY-INV-003": {
+      "compliance_state": "COMPLIANT",
+      "execution_state": "PASS",
+      "later_wp_blockers": [],
+      "negative_control_count": 3,
+      "negative_controls_all_detected": true,
+      "negative_controls_detected": 3,
+      "reason": "",
+      "refusal_code": "SAFETY_UNVALIDATED_RULE_EXECUTED",
+      "registered": true,
+      "safe_control_executed": true,
+      "safe_control_satisfied": true,
+      "severity": "CRITICAL_EVIDENTIAL",
+      "tests_executed": 81
+    },
+    "SAFETY-INV-004": {
+      "compliance_state": "COMPLIANT",
+      "execution_state": "PASS",
+      "later_wp_blockers": [],
+      "negative_control_count": 3,
+      "negative_controls_all_detected": true,
+      "negative_controls_detected": 3,
+      "reason": "",
+      "refusal_code": "SAFETY_PHENOTYPE_CROSS_MATCH",
+      "registered": true,
+      "safe_control_executed": true,
+      "safe_control_satisfied": true,
+      "severity": "CRITICAL_PATIENT_FACING",
+      "tests_executed": 69
+    },
+    "SAFETY-INV-005": {
+      "compliance_state": "NOT_PRESENT",
+      "execution_state": "BLOCKED",
+      "later_wp_blockers": [
+        "P1"
+      ],
+      "negative_control_count": 3,
+      "negative_controls_all_detected": true,
+      "negative_controls_detected": 3,
+      "reason": "every executable check passed; enforcement is incomplete because P1-02 owns candidate exploration. P0 ships none. The legacy 0-100 suitability score is removed and must not return.",
+      "refusal_code": "SAFETY_CANDIDATE_PREFERENCE",
+      "registered": true,
+      "safe_control_executed": true,
+      "safe_control_satisfied": true,
+      "severity": "CRITICAL_PATIENT_FACING",
+      "tests_executed": 131
+    },
+    "SAFETY-INV-006": {
+      "compliance_state": "COMPLIANT",
+      "execution_state": "PASS",
+      "later_wp_blockers": [],
+      "negative_control_count": 3,
+      "negative_controls_all_detected": true,
+      "negative_controls_detected": 3,
+      "reason": "",
+      "refusal_code": "SAFETY_EVIDENCE_NOT_RESOLVABLE",
+      "registered": true,
+      "safe_control_executed": true,
+      "safe_control_satisfied": true,
+      "severity": "CRITICAL_EVIDENTIAL",
+      "tests_executed": 60
+    },
+    "SAFETY-INV-007": {
+      "compliance_state": "COMPLIANT",
+      "execution_state": "BLOCKED",
+      "later_wp_blockers": [
+        "WP-24"
+      ],
+      "negative_control_count": 4,
+      "negative_controls_all_detected": true,
+      "negative_controls_detected": 4,
+      "reason": "every executable check passed; enforcement is incomplete because The canonical audit record enforces actor, role, session reference, authentication assurance and correlation id, and the append is atomic with the governed change. No deployment has composed the store, so nothing has been recorded: the mechanism is implemented and unexercised.",
+      "refusal_code": "SAFETY_RELEASE_BUNDLE_INCOMPLETE",
+      "registered": true,
+      "safe_control_executed": true,
+      "safe_control_satisfied": true,
+      "severity": "CRITICAL_EVIDENTIAL",
+      "tests_executed": 136
+    },
+    "SAFETY-INV-008": {
+      "compliance_state": "COMPLIANT",
+      "execution_state": "PASS",
+      "later_wp_blockers": [],
+      "negative_control_count": 3,
+      "negative_controls_all_detected": true,
+      "negative_controls_detected": 3,
+      "reason": "",
+      "refusal_code": "SAFETY_CONFLICT_COLLAPSED",
+      "registered": true,
+      "safe_control_executed": true,
+      "safe_control_satisfied": true,
+      "severity": "CRITICAL_PATIENT_FACING",
+      "tests_executed": 64
+    },
+    "SAFETY-INV-009": {
+      "compliance_state": "COMPLIANT",
+      "execution_state": "BLOCKED",
+      "later_wp_blockers": [
+        "scientific curators"
+      ],
+      "negative_control_count": 3,
+      "negative_controls_all_detected": true,
+      "negative_controls_detected": 3,
+      "reason": "every executable check passed; enforcement is incomplete because The separation mechanism is enforced and proven. There are zero holdout cases to separate, which is a scientific blocker WP-18 reports and no code can close.",
+      "refusal_code": "SAFETY_PARTITION_OVERLAP",
+      "registered": true,
+      "safe_control_executed": true,
+      "safe_control_satisfied": true,
+      "severity": "CRITICAL_EVIDENTIAL",
+      "tests_executed": 54
+    },
+    "SAFETY-INV-010": {
+      "compliance_state": "COMPLIANT",
+      "execution_state": "PASS",
+      "later_wp_blockers": [],
+      "negative_control_count": 3,
+      "negative_controls_all_detected": true,
+      "negative_controls_detected": 3,
+      "reason": "",
+      "refusal_code": "SAFETY_PROHIBITED_CLAIM",
+      "registered": true,
+      "safe_control_executed": true,
+      "safe_control_satisfied": true,
+      "severity": "CRITICAL_PATIENT_FACING",
+      "tests_executed": 135
+    },
+    "SAFETY-INV-011": {
+      "compliance_state": "COMPLIANT",
+      "execution_state": "PASS",
+      "later_wp_blockers": [],
+      "negative_control_count": 4,
+      "negative_controls_all_detected": true,
+      "negative_controls_detected": 4,
+      "reason": "",
+      "refusal_code": "SAFETY_REAL_PATIENT_DATA",
+      "registered": true,
+      "safe_control_executed": true,
+      "safe_control_satisfied": true,
+      "severity": "CRITICAL_SCOPE",
+      "tests_executed": 142
+    },
+    "SAFETY-INV-012": {
+      "compliance_state": "COMPLIANT",
+      "execution_state": "BLOCKED",
+      "later_wp_blockers": [
+        "WP-24",
+        "WP-24"
+      ],
+      "negative_control_count": 3,
+      "negative_controls_all_detected": true,
+      "negative_controls_detected": 3,
+      "reason": "every executable check passed; enforcement is incomplete because The append-only, hash-linked audit record enforces every required trace field and is atomic with the governed change. No deployment has composed the store, so no chain has been verified against real rows: the mechanism is implemented and unexercised.; Repeat-run determinism across deployments and over time is a CI property. WP-20 proves it within one process and one machine.",
+      "refusal_code": "SAFETY_NON_DETERMINISTIC_RESULT",
+      "registered": true,
+      "safe_control_executed": true,
+      "safe_control_satisfied": true,
+      "severity": "CRITICAL_EVIDENTIAL",
+      "tests_executed": 108
+    }
+  },
+  "negative_control_count": 37,
+  "not_clinical_validation": "This is a software safety gate. Every result in it describes software detectors and software behaviour. It is not clinical validation, scientific validation, expert review, or evidence that the system is safe for any patient. No holdout result, metric, expert opinion or human approval is asserted or implied.",
+  "postgresql_available": false,
+  "prohibited_claim_surface_count": 6,
+  "registered_invariant_count": 12,
+  "release_may_proceed": false,
+  "safety_gate_status": "BLOCKED",
+  "stale_or_missing_selector_count": 0,
+  "tests_executed": 1165,
+  "unexplained_skip_count": 0,
+  "validation_metrics_implemented": true,
+  "validation_metrics_note": "WP-21 implemented the metric registry, the benchmark contract and the public report. No benchmark has been executed against any release, so no metric has a value. Implemented is not computed, and computed would not be validated.",
+  "work_package": "WP-20",
+  "wp21_markers_found": [
+    "docs/architecture/wp21-validation-metrics.md",
+    "pgx/validation/benchmark.py",
+    "pgx/validation/metrics.py"
+  ],
+  "wp21_started": true,
+  "wp22_markers_found": [
+    "docs/architecture/wp22-expert-review.md",
+    "docs/validation/expert-protocol.md",
+    "pgx/expert_review/protocol.py",
+    "pgx/expert_review/service.py"
+  ],
+  "wp22_started": true,
+  "wp23_markers_found": [
+    "apps/api/auth.py",
+    "docs/architecture/wp23-auth-audit.md",
+    "migrations/versions/0011_wp23_auth_audit.py",
+    "pgx/infrastructure/audit/models.py",
+    "pgx/security/passwords.py",
+    "pgx/security/service.py"
+  ],
+  "wp23_started": true,
+  "wp24_markers_found": [],
+  "wp24_started": false
+}

@@ -1,0 +1,334 @@
+# WP-24 - the software verification pipeline.
+#
+# The ordered sequence from architecture.md section 14.2, up to the point
+# where the release path needs evidence this repository does not have:
+#
+#   format-check -> lint -> type-check -> unit -> integration + migration
+#   -> API contract -> legacy regression -> safety invariants
+#
+# The release half - holdout regression, image build, vulnerability and secret
+# checks, release validation - lives in release-validation.yml, because the
+# distinction between "does the software work" and "may this be released" is
+# the distinction this whole project is built around, and putting them in one
+# file invites a green check mark to mean the second when it means the first.
+#
+# ACTION PINNING. Every `uses:` below carries the all-zero SHA. That is a
+# documented placeholder, not a fabrication: forty zeros is not a commit in
+# any git repository, so the workflow fails loudly rather than executing
+# whatever happens to be at a guessed address. The environment this file was
+# written in had no network to resolve a tag into a real SHA, and inventing
+# one would have produced a pin that looks precise and is wrong. Run
+# `scripts/resolve_action_pins.sh` once, on a host with network, and every
+# placeholder becomes a real pin. Until then `pgx-deploy` reports the pipeline
+# as fail-closed and `pgx/deployment/ci_status.py` says exactly which
+# references are unresolved.
+#
+# `pull_request_target` is deliberately absent. It runs with the base
+# repository's token against a fork's code, which is the standard way a public
+# repository leaks its secrets.
+
+name: build-and-verify
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+# Least privilege, at the top level. No job needs more; a job that later does
+# raises it for itself, in the open, in a diff a reviewer sees.
+permissions:
+  contents: read
+
+# One run per ref. A superseded run is cancelled rather than left racing the
+# one that replaced it for the same database service.
+concurrency:
+  group: build-and-verify-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  # The deployment runtime, pinned. NOT the runner's default: the image runs
+  # 3.11 and a suite that passed on 3.12 has not tested what ships.
+  PGX_PYTHON_VERSION: "3.11"
+  PYTHONDONTWRITEBYTECODE: "1"
+
+jobs:
+  # -------------------------------------------------------------------------
+  # Gate 0. Not in architecture.md's list, and it runs first anyway: a
+  # pipeline whose actions are not pinned is a pipeline whose steps are
+  # whatever their owners published this morning.
+  #
+  # This job uses NO action. It clones with git and the automatic token, so
+  # the check that verifies the pins does not itself depend on an unpinned
+  # one.
+  # -------------------------------------------------------------------------
+  action-pins:
+    name: action pins are resolved
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Clone without an action
+        run: |
+          set -euo pipefail
+          git clone --depth 1 --branch "${GITHUB_REF_NAME}" \
+            "${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}.git" .
+      - name: Every third-party action is pinned to a commit SHA
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json, sys
+          sys.path.insert(0, ".")
+          from pgx.deployment.ci_status import action_pins
+          pins = action_pins(".")
+          print(json.dumps(pins, indent=2, sort_keys=True))
+          if not pins["all_sha_pinned"]:
+              sys.stderr.write(
+                  "\n%d action references are not pinned to a commit SHA.\n"
+                  "Run scripts/resolve_action_pins.sh on a host with network "
+                  "access and commit the result.\n"
+                  % (pins["unresolved_count"] + pins["tag_pinned_count"]))
+              raise SystemExit(1)
+          PY
+
+  format-check:
+    name: 1. format-check
+    needs: action-pins
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@0000000000000000000000000000000000000000 # v4.2.2 - UNRESOLVED
+      - uses: actions/setup-python@0000000000000000000000000000000000000000 # v5.3.0 - UNRESOLVED
+        with:
+          python-version: ${{ env.PGX_PYTHON_VERSION }}
+      - uses: astral-sh/setup-uv@0000000000000000000000000000000000000000 # v5.1.0 - UNRESOLVED
+        with:
+          # The cache key includes the lockfile digest. A cache keyed on
+          # anything coarser serves a dependency set from a different lock.
+          enable-cache: true
+          cache-dependency-glob: uv.lock
+      - name: Install the development group
+        run: uv sync --frozen --extra web --group dev
+      - name: ruff format --check
+        run: uv run ruff format --check .
+
+  lint:
+    name: 2. lint
+    needs: format-check
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@0000000000000000000000000000000000000000 # v4.2.2 - UNRESOLVED
+      - uses: actions/setup-python@0000000000000000000000000000000000000000 # v5.3.0 - UNRESOLVED
+        with:
+          python-version: ${{ env.PGX_PYTHON_VERSION }}
+      - uses: astral-sh/setup-uv@0000000000000000000000000000000000000000 # v5.1.0 - UNRESOLVED
+        with:
+          enable-cache: true
+          cache-dependency-glob: uv.lock
+      - run: uv sync --frozen --extra web --group dev
+      - run: uv run ruff check .
+
+  type-check:
+    name: 3. type-check
+    needs: lint
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@0000000000000000000000000000000000000000 # v4.2.2 - UNRESOLVED
+      - uses: actions/setup-python@0000000000000000000000000000000000000000 # v5.3.0 - UNRESOLVED
+        with:
+          python-version: ${{ env.PGX_PYTHON_VERSION }}
+      - uses: astral-sh/setup-uv@0000000000000000000000000000000000000000 # v5.1.0 - UNRESOLVED
+        with:
+          enable-cache: true
+          cache-dependency-glob: uv.lock
+      - run: uv sync --frozen --extra web --group dev
+      # Blocking for pgx and apps, per architecture.md section 14.1.
+      - run: uv run mypy
+
+  unit:
+    name: 4. unit
+    needs: type-check
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@0000000000000000000000000000000000000000 # v4.2.2 - UNRESOLVED
+      - uses: actions/setup-python@0000000000000000000000000000000000000000 # v5.3.0 - UNRESOLVED
+        with:
+          python-version: ${{ env.PGX_PYTHON_VERSION }}
+      - uses: astral-sh/setup-uv@0000000000000000000000000000000000000000 # v5.1.0 - UNRESOLVED
+        with:
+          enable-cache: true
+          cache-dependency-glob: uv.lock
+      - run: uv sync --frozen --extra web --group dev
+      # -W error::ResourceWarning is the documented command. An unclosed
+      # database session or file is a defect this project has caught before,
+      # and downgrading it to a warning is how it stops being caught.
+      - name: The documented suite command
+        run: |
+          uv run python -W error::ResourceWarning -m unittest discover \
+            -s tests -p 'test_*.py' -t .
+      - name: WP-19 verification profile
+        run: uv run pgx-verify run --profile fast --format json
+      - name: Upload the verification report
+        if: always()
+        uses: actions/upload-artifact@0000000000000000000000000000000000000000 # v4.4.3 - UNRESOLVED
+        with:
+          name: wp19-verification
+          path: |
+            data/verification/wp19-verification-run.json
+            data/verification/wp19-real-gate-status.json
+          if-no-files-found: warn
+
+  integration-and-migration:
+    name: 5. integration + migration
+    needs: unit
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    services:
+      # An ISOLATED database for this job. Not a shared one, and never the
+      # development compose service: the integration suite runs
+      # `alembic downgrade base`, and pointing it anywhere with data is how a
+      # pipeline destroys something.
+      postgres:
+        image: postgres:16.13-bookworm
+        env:
+          POSTGRES_USER: pgx_ci
+          # A throwaway credential for a database that exists for the length
+          # of one job and is reachable only from it. It is not a secret and
+          # is deliberately not stored as one: a repository secret used by a
+          # pull-request workflow is a secret exposed to fork code.
+          POSTGRES_PASSWORD: pgx_ci_ephemeral
+          POSTGRES_DB: pgx_ci_test
+          POSTGRES_INITDB_ARGS: "--encoding=UTF8 --locale=C"
+        ports:
+          - 55432:5432
+        options: >-
+          --health-cmd "pg_isready -U pgx_ci -d pgx_ci_test"
+          --health-interval 5s --health-timeout 5s --health-retries 12
+    env:
+      TEST_DATABASE_URL: >-
+        postgresql+psycopg://pgx_ci:pgx_ci_ephemeral@localhost:55432/pgx_ci_test
+      DATABASE_URL: >-
+        postgresql+psycopg://pgx_ci:pgx_ci_ephemeral@localhost:55432/pgx_ci_test
+    steps:
+      - uses: actions/checkout@0000000000000000000000000000000000000000 # v4.2.2 - UNRESOLVED
+      - uses: actions/setup-python@0000000000000000000000000000000000000000 # v5.3.0 - UNRESOLVED
+        with:
+          python-version: ${{ env.PGX_PYTHON_VERSION }}
+      - uses: astral-sh/setup-uv@0000000000000000000000000000000000000000 # v5.1.0 - UNRESOLVED
+        with:
+          enable-cache: true
+          cache-dependency-glob: uv.lock
+      - run: uv sync --frozen --extra web --group dev
+
+      - name: The revision chain has exactly one head
+        run: |
+          uv run python -m pgx.application.deploy_cli \
+            --format json migrate --dry-run
+
+      - name: alembic upgrade head, against a real server
+        run: uv run alembic upgrade head
+
+      - name: The database is at the expected head
+        run: |
+          uv run python - <<'PY'
+          import os, sys
+          sys.path.insert(0, ".")
+          from sqlalchemy import create_engine
+          from pgx.deployment.migration import (chain_heads,
+                                                current_database_revision)
+          engine = create_engine(os.environ["DATABASE_URL"])
+          revision, reason = current_database_revision(engine)
+          expected = chain_heads(".")["head"]
+          print("database:", revision, "expected:", expected, reason)
+          raise SystemExit(0 if revision == expected else 1)
+          PY
+
+      - name: The PostgreSQL integration and migration suites
+        run: |
+          uv run python -W error::ResourceWarning -m unittest discover \
+            -s tests/integration -p 'test_*.py' -t .
+
+      - name: Argon2 is importable in the environment that will hash
+        # Not a fallback check - a presence check. The WP-23 handoff is
+        # explicit that a build which cannot hash a password must fail rather
+        # than substitute an algorithm, and this is where that fails.
+        run: uv run python -c "import argon2; print(argon2.__version__)"
+
+  api-contract:
+    name: 6. API contract
+    needs: integration-and-migration
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@0000000000000000000000000000000000000000 # v4.2.2 - UNRESOLVED
+      - uses: actions/setup-python@0000000000000000000000000000000000000000 # v5.3.0 - UNRESOLVED
+        with:
+          python-version: ${{ env.PGX_PYTHON_VERSION }}
+      - uses: astral-sh/setup-uv@0000000000000000000000000000000000000000 # v5.1.0 - UNRESOLVED
+        with:
+          enable-cache: true
+          cache-dependency-glob: uv.lock
+      - run: uv sync --frozen --extra web --group dev
+      - name: The served document matches the committed one
+        run: uv run pgx-verify run --profile runtime --format json
+      - name: Upload the API contract evidence
+        if: always()
+        uses: actions/upload-artifact@0000000000000000000000000000000000000000 # v4.4.3 - UNRESOLVED
+        with:
+          name: wp16-api-contract
+          path: |
+            schemas/openapi/wp16-openapi.json
+            data/api/wp16-real-gate-status.json
+            data/api/wp16-runtime-verification.json
+          if-no-files-found: warn
+
+  legacy-regression:
+    name: 7. legacy regression
+    needs: api-contract
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@0000000000000000000000000000000000000000 # v4.2.2 - UNRESOLVED
+      - uses: actions/setup-python@0000000000000000000000000000000000000000 # v5.3.0 - UNRESOLVED
+        with:
+          python-version: ${{ env.PGX_PYTHON_VERSION }}
+      - uses: astral-sh/setup-uv@0000000000000000000000000000000000000000 # v5.1.0 - UNRESOLVED
+        with:
+          enable-cache: true
+          cache-dependency-glob: uv.lock
+      - run: uv sync --frozen --extra web --group dev
+      - name: The frozen WP-01 baseline still reproduces
+        run: |
+          uv run python -m unittest discover \
+            -s tests/regression -p 'test_*.py' -t .
+
+  safety-invariants:
+    name: 8. safety invariants
+    needs: legacy-regression
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@0000000000000000000000000000000000000000 # v4.2.2 - UNRESOLVED
+      - uses: actions/setup-python@0000000000000000000000000000000000000000 # v5.3.0 - UNRESOLVED
+        with:
+          python-version: ${{ env.PGX_PYTHON_VERSION }}
+      # No uv, no install. pgx/safety is standard library by construction and
+      # a dependency here would mean the gate could not run in the
+      # environment where a release is actually built.
+      - name: The authoritative gate, by exit code
+        # Nothing here re-implements a safety rule. Exit 0 PASS, 1 FAIL,
+        # 2 BLOCKED/NOT_EXECUTED/STALE, 3 registry error - and only 0
+        # continues, which is what `set -e` plus a bare invocation gives with
+        # nothing to get wrong.
+        run: python3 -m pgx.application.safety_cli check --format json
+      - name: Upload the safety report
+        if: always()
+        uses: actions/upload-artifact@0000000000000000000000000000000000000000 # v4.4.3 - UNRESOLVED
+        with:
+          name: wp20-safety
+          path: |
+            data/safety/wp20-safety-report.json
+            data/safety/wp20-safety-execution.json
+            data/safety/wp20-real-gate-status.json
+          if-no-files-found: warn

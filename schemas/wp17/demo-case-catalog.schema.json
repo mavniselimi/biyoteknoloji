@@ -1,0 +1,192 @@
+{
+  "$id": "https://pgx.local/schemas/wp17/demo-case-catalog.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "description": "Synthetic development cases for demonstration. Every case is DEVELOPMENT, synthetic, and explicitly not validation evidence and not holdout data. There is no property in which an expected result could be recorded, so a catalogue of these cases cannot be scored and cannot become a pass rate.",
+  "properties": {
+    "authored_case_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "case_count": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "case_role": {
+      "const": "DEVELOPMENT"
+    },
+    "cases": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "case_id": {
+            "pattern": "^WP17-CASE-[A-Z0-9][A-Z0-9-]{0,31}$",
+            "type": "string"
+          },
+          "case_role": {
+            "const": "DEVELOPMENT"
+          },
+          "demonstrates": {
+            "type": "string"
+          },
+          "is_holdout": {
+            "const": false
+          },
+          "is_synthetic": {
+            "const": true
+          },
+          "is_validation_evidence": {
+            "const": false
+          },
+          "label": {
+            "maxLength": 256,
+            "type": "string"
+          },
+          "legacy_profile_key": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "migration_note": {
+            "type": "string"
+          },
+          "no_pii_assertion": {
+            "type": "string"
+          },
+          "observation_count": {
+            "minimum": 1,
+            "type": "integer"
+          },
+          "observations": {
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "gene": {
+                  "pattern": "^GENE:[A-Z0-9][A-Z0-9\\-.@_]{0,48}$",
+                  "type": "string"
+                },
+                "value": {
+                  "pattern": "^[A-Z][A-Z_]{0,31}$",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "gene",
+                "value"
+              ],
+              "type": "object"
+            },
+            "minItems": 1,
+            "type": "array"
+          },
+          "schema_version": {
+            "const": "pgx-wp17-development-cases/1"
+          },
+          "source_file": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "source_file_sha256": {
+            "anyOf": [
+              {
+                "pattern": "^sha256:[0-9a-f]{64}$",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "schema_version",
+          "case_id",
+          "label",
+          "case_role",
+          "is_synthetic",
+          "is_validation_evidence",
+          "is_holdout",
+          "observations",
+          "no_pii_assertion"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "contains_holdout": {
+      "const": false
+    },
+    "is_validation_evidence": {
+      "const": false
+    },
+    "migrated_case_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "migration_version": {
+      "const": "pgx-wp17-demo-migration/1"
+    },
+    "schema_version": {
+      "const": "pgx-wp17-development-cases/1"
+    }
+  },
+  "required": [
+    "schema_version",
+    "migration_version",
+    "case_role",
+    "is_validation_evidence",
+    "contains_holdout",
+    "case_count",
+    "source",
+    "cases"
+  ],
+  "title": "WP-17 development case catalogue",
+  "type": "object",
+  "x-pgx-artifact-kind": "SOURCE_DERIVED_AND_AUTHORED",
+  "x-pgx-forbidden-properties": [
+    "accuracy",
+    "activity_score",
+    "alleles",
+    "concordance",
+    "date_of_birth",
+    "demo_use",
+    "diagnosis",
+    "diplotype",
+    "dob",
+    "dosage",
+    "dose",
+    "ehr",
+    "expected_attention",
+    "expected_coverage",
+    "expected_findings",
+    "expected_outcome",
+    "expected_result",
+    "genotype",
+    "gold_standard",
+    "ground_truth",
+    "indication",
+    "mrn",
+    "narrative",
+    "pass_rate",
+    "patient_id",
+    "patient_name",
+    "rank",
+    "recommended_medications",
+    "reference_answer",
+    "score",
+    "star_allele",
+    "validation_result",
+    "vcf",
+    "vcf_path"
+  ]
+}

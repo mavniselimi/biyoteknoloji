@@ -1,0 +1,14 @@
+{
+  "created_at": "2026-06-20T17:30:36+03:00",
+  "input_file": "clinpgx_mvp_seed/risk_outputs/gemini_input.json",
+  "output_file": "final_report/gemini_report.md",
+  "validation_warnings": [],
+  "metadata": {
+    "provider": "google_gemini",
+    "model": "gemini-2.5-flash",
+    "temperature": 0.2,
+    "used_api": true
+  },
+  "used_api": true,
+  "fallback_used": false
+}

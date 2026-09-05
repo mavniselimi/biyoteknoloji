@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "description": "One failure and its response. ``does_not_prove`` is required and non-empty: a contingency matrix without it reads as resilience and is silent about correctness.",
+  "properties": {
+    "continuation_permitted": {
+      "type": "boolean"
+    },
+    "detection": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "does_not_prove": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "owner": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "proves": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "response": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "scenario_id": {
+      "pattern": "^CONT-[0-9]{2}$",
+      "type": "string"
+    },
+    "title": {
+      "minLength": 1,
+      "type": "string"
+    }
+  },
+  "required": [
+    "scenario_id",
+    "title",
+    "detection",
+    "response",
+    "proves",
+    "does_not_prove",
+    "continuation_permitted",
+    "owner"
+  ],
+  "title": "WP-25 contingency scenario",
+  "type": "object"
+}

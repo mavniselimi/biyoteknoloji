@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% block content %}
+{#
+  The login page.
+
+  Two states, and the model decides which: a signed-in reader sees who they
+  are and a sign-out control; everybody else sees the form, live only when a
+  provider and a pre-auth CSRF token both exist.
+
+  `model.form_enabled` requires a CSRF token - `LoginPageModel` raises on the
+  other combination - so a form rendered here always has one. That is why the
+  guard below is the second line of defence rather than the first.
+
+  Nothing on this page reports whether any username exists, and there is no
+  signup link and no password-reset link, because neither flow exists.
+#}
+
+{% if not model.authentication_configured %}
+<div class="notice notice-unavailable" role="status">
+  <p><strong>{{ text['status.unavailable'] }}.</strong> {{ model.not_configured_note }}</p>
+</div>
+{% endif %}
+
+{% if model.failed %}
+<div class="notice notice-unavailable" role="alert">
+  <p>{{ model.failure_note }}</p>
+</div>
+{% endif %}
+
+{% if model.rate_limited %}
+<div class="notice notice-unavailable" role="alert">
+  <p>{{ model.rate_limited_note }}</p>
+</div>
+{% endif %}
+
+<p>{{ model.required_note }}</p>
+
+{% if model.signed_in %}
+<h2>{{ text['login.signed_in_as'] }}</h2>
+<dl class="fact-list">
+  <div><dt>{{ text['login.signed_in_as'] }}</dt><dd><code>{{ model.actor }}</code></dd></div>
+  <div><dt>{{ text['login.role'] }}</dt><dd><code>{{ model.role }}</code></dd></div>
+</dl>
+<p class="muted">{{ text['login.no_personal_data'] }}</p>
+
+<form method="post" action="/logout" class="review-form">
+  {% if model.csrf_token %}<input type="hidden" name="csrf_token" value="{{ model.csrf_token }}">{% endif %}
+  <p><button type="submit">{{ text['login.logout'] }}</button></p>
+</form>
+<p class="muted">{{ model.logout_note }}</p>
+{% else %}
+
+{% if model.form_enabled %}
+<h2>{{ text['login.heading'] }}</h2>
+<form method="post" action="/login" class="review-form" autocomplete="off">
+  <input type="hidden" name="csrf_token" value="{{ model.csrf_token }}">
+  <p>
+    <label for="username">{{ text['login.username'] }}</label>
+    <input id="username" name="username" type="text" required maxlength="64"
+           autocomplete="username" spellcheck="false">
+  </p>
+  <p>
+    <label for="password">{{ text['login.password'] }}</label>
+    <input id="password" name="password" type="password" required maxlength="1024"
+           autocomplete="current-password">
+  </p>
+  <p><button type="submit">{{ text['login.submit'] }}</button></p>
+</form>
+{% else %}
+<div class="notice notice-unavailable" role="status">
+  <p>{{ model.logout_note }}</p>
+</div>
+{% endif %}
+
+{% endif %}
+
+<p class="muted">{{ model.owner_note }}</p>
+<p class="muted">{{ model.no_signup_note }}</p>
+<p class="muted">{{ text['login.https_required'] }}</p>
+{% endblock %}

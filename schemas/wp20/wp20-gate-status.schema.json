@@ -1,0 +1,196 @@
+{
+  "$id": "https://pgx.local/schemas/wp20/wp20-gate-status.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "description": "Twelve invariants reported independently, plus the environment and governance facts a release depends on. `release_may_proceed` sits beside those fields rather than instead of them: the gate can be in a state where every executable check passes and a release still must not proceed.",
+  "properties": {
+    "active_release_available": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "blocker_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "blockers": {
+      "items": {
+        "additionalProperties": true,
+        "properties": {
+          "code": {
+            "pattern": "^SAFETY_[A-Z0-9_]+$",
+            "type": "string"
+          },
+          "detail": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "owner": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "code",
+          "owner",
+          "detail"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "ci_job_configured": {
+      "type": "boolean"
+    },
+    "ci_job_executed": {
+      "type": "boolean"
+    },
+    "claim_boundary_approved": {
+      "type": "boolean"
+    },
+    "claim_scanner_known_gap_count": {
+      "minimum": 0,
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "clinical_validation_performed": {
+      "const": false
+    },
+    "detected_negative_control_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "evidence_state": {
+      "enum": [
+        "CURRENT",
+        "STALE",
+        "ABSENT",
+        "INVALIDATED"
+      ]
+    },
+    "executed_invariant_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "expert_review_performed": {
+      "const": false
+    },
+    "false_reassurance_corpus_size": {
+      "minimum": 0,
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "false_reassurance_violation_count": {
+      "minimum": 0,
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "gate_status_schema_version": {
+      "const": "pgx-wp20-gate-status/1"
+    },
+    "holdout_case_count": {
+      "minimum": 0,
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "invariant_status": {
+      "additionalProperties": {
+        "type": "object"
+      },
+      "propertyNames": {
+        "pattern": "^SAFETY-INV-0(0[1-9]|1[0-2])$"
+      },
+      "type": "object"
+    },
+    "negative_control_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "not_clinical_validation": {
+      "minLength": 80,
+      "type": "string"
+    },
+    "postgresql_available": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "prohibited_claim_surface_count": {
+      "minimum": 0,
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "registered_invariant_count": {
+      "const": 12
+    },
+    "release_may_proceed": {
+      "type": "boolean"
+    },
+    "safety_gate_status": {
+      "enum": [
+        "PASS",
+        "FAIL",
+        "ERROR",
+        "BLOCKED",
+        "NOT_EXECUTED",
+        "STALE"
+      ]
+    },
+    "stale_or_missing_selector_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "unexplained_skip_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "validation_metrics_implemented": {
+      "type": "boolean"
+    },
+    "work_package": {
+      "const": "WP-20"
+    }
+  },
+  "required": [
+    "gate_status_schema_version",
+    "work_package",
+    "registered_invariant_count",
+    "executed_invariant_count",
+    "negative_control_count",
+    "detected_negative_control_count",
+    "false_reassurance_corpus_size",
+    "false_reassurance_violation_count",
+    "prohibited_claim_surface_count",
+    "stale_or_missing_selector_count",
+    "unexplained_skip_count",
+    "ci_job_configured",
+    "ci_job_executed",
+    "claim_boundary_approved",
+    "postgresql_available",
+    "active_release_available",
+    "safety_gate_status",
+    "release_may_proceed",
+    "invariant_status",
+    "blockers",
+    "blocker_count",
+    "clinical_validation_performed",
+    "expert_review_performed",
+    "validation_metrics_implemented",
+    "not_clinical_validation",
+    "evidence_state"
+  ],
+  "title": "WP-20 safety gate status",
+  "type": "object"
+}

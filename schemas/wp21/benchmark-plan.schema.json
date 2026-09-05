@@ -1,0 +1,152 @@
+{
+  "$id": "https://pgx.local/schemas/wp21/benchmark-plan.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "description": "What a run will measure, pinned before it measures. Every hash is required: a plan that could omit one would let a result name a release it did not use.",
+  "properties": {
+    "case_manifest_hashes": {
+      "minProperties": 1,
+      "type": "object"
+    },
+    "declared_metric_ids": {
+      "items": {
+        "enum": [
+          "PGX-VAL-001",
+          "PGX-VAL-002",
+          "PGX-VAL-003",
+          "PGX-VAL-004",
+          "PGX-VAL-005",
+          "PGX-VAL-006",
+          "PGX-VAL-007",
+          "PGX-VAL-008",
+          "PGX-VAL-009",
+          "PGX-VAL-010",
+          "PGX-VAL-011",
+          "PGX-VAL-012",
+          "PGX-VAL-013",
+          "PGX-VAL-014",
+          "PGX-VAL-015"
+        ],
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "failure_path_catalogue_version": {
+      "type": "string"
+    },
+    "metric_registry_digest": {
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "metric_registry_version": {
+      "const": "pgx-wp21-metric-registry/1"
+    },
+    "note": {
+      "type": "string"
+    },
+    "pinned_release": {
+      "additionalProperties": true,
+      "properties": {
+        "active_pointer_generation": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "dataset_content_hash": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "dataset_public_id": {
+          "minLength": 3,
+          "type": "string"
+        },
+        "release_manifest_hash": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "release_public_id": {
+          "minLength": 3,
+          "type": "string"
+        },
+        "resolved_at": {
+          "minLength": 20,
+          "type": "string"
+        },
+        "ruleset_content_hash": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "ruleset_public_id": {
+          "minLength": 3,
+          "type": "string"
+        },
+        "software_hash": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "software_version": {
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "release_public_id",
+        "release_manifest_hash",
+        "software_version",
+        "software_hash",
+        "dataset_public_id",
+        "dataset_content_hash",
+        "ruleset_public_id",
+        "ruleset_content_hash",
+        "resolved_at"
+      ],
+      "type": "object"
+    },
+    "plan_id": {
+      "minLength": 3,
+      "type": "string"
+    },
+    "protocol_version": {
+      "const": "pgx-wp21-benchmark-protocol/1"
+    },
+    "repeat_count": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "roles": {
+      "items": {
+        "enum": [
+          "DEVELOPMENT",
+          "INTERNAL_HOLDOUT",
+          "EXPERT_HOLDOUT"
+        ],
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    }
+  },
+  "required": [
+    "protocol_version",
+    "plan_id",
+    "pinned_release",
+    "roles",
+    "case_manifest_hashes",
+    "declared_metric_ids",
+    "metric_registry_version",
+    "metric_registry_digest",
+    "failure_path_catalogue_version",
+    "repeat_count"
+  ],
+  "title": "WP-21 benchmark plan",
+  "type": "object"
+}

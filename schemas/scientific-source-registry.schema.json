@@ -1,0 +1,521 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pgx-platform.invalid/schemas/scientific-source-registry.schema.json",
+  "title": "PGx scientific source registry",
+  "description": "The project's recorded position on every scientific source (WP-05). This document is a reviewed artefact kept in version control: a change to a licensing conclusion must appear as a diff with an author against it. It separates what a source published, this project's interpretation of it, and the approval decision a named human made. Absence is never permission: a source with no record here, or a reuse dimension left unanswered, blocks publication.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "sources"
+  ],
+  "properties": {
+    "schema_version": {
+      "description": "Registry shape version. A file declaring another version is refused rather than half-understood.",
+      "const": "pgx-scientific-source-registry/1"
+    },
+    "generated_note": {
+      "description": "Free-text note about how this file was produced.",
+      "type": "string"
+    },
+    "policy_owner": {
+      "description": "Who maintains this document. Not an approver: approval is recorded per source, in a review record.",
+      "type": "string"
+    },
+    "sources": {
+      "description": "One policy record per source key.",
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/source"
+      }
+    },
+    "conflicts": {
+      "description": "Recorded disagreements between registered sources. An unsettled conflict blocks publication for the sources it names, including one whose materiality is undetermined.",
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/conflict"
+      }
+    }
+  },
+  "$defs": {
+    "digest": {
+      "description": "Canonical SHA-256 spelling used across the project.",
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "instant": {
+      "description": "ISO-8601 UTC instant. An offset is required: a naive timestamp names no instant and cannot be audited.",
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(\\.[0-9]+)?(Z|\\+00:00)$"
+    },
+    "permission": {
+      "description": "One answer for one reuse question. UNKNOWN and PROHIBITED both block; they differ only in what a reviewer does next.",
+      "enum": [
+        "ALLOWED",
+        "RESTRICTED",
+        "PROHIBITED",
+        "UNKNOWN",
+        "NOT_APPLICABLE"
+      ]
+    },
+    "evidence": {
+      "description": "A pointer to something the source itself published. The artefact's text is deliberately not stored here: a copy in this repository would go stale without anybody noticing.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "evidence_type"
+      ],
+      "properties": {
+        "evidence_type": {
+          "enum": [
+            "NOT_OBTAINED",
+            "OFFICIAL_TERMS_PAGE",
+            "OFFICIAL_LICENSE_FILE",
+            "OFFICIAL_API_DOCUMENTATION",
+            "OFFICIAL_PUBLICATION",
+            "DIRECT_WRITTEN_PERMISSION"
+          ]
+        },
+        "official_url": {
+          "description": "The source's own https URL.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^https://"
+        },
+        "retrieved_at": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/instant"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "content_hash": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/digest"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "summary": {
+          "description": "A short factual summary in this project's words. Not a copy of the source's terms.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 1000
+        },
+        "verification": {
+          "enum": [
+            "NOT_ATTEMPTED",
+            "BLOCKED",
+            "VERIFIED",
+            "STALE"
+          ]
+        },
+        "blocked_reason": {
+          "description": "Why retrieval failed. Required when verification is BLOCKED: an unexplained block is indistinguishable from an untried one.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 500
+        }
+      }
+    },
+    "interpretation": {
+      "description": "What this project concluded the source's terms mean. Held apart from the source's own wording so a conclusion can be re-examined. Not legal advice.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "summary",
+        "interpreted_by",
+        "interpreted_at"
+      ],
+      "properties": {
+        "summary": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2000
+        },
+        "interpreted_by": {
+          "type": "string",
+          "minLength": 1
+        },
+        "interpreted_at": {
+          "$ref": "#/$defs/instant"
+        },
+        "open_questions": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "review": {
+      "description": "The decision a named human made. An approving decision requires cited evidence; APPROVE_WITH_RESTRICTIONS requires the restrictions to be named.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "decision",
+        "reviewer_name",
+        "reviewer_role",
+        "decided_at"
+      ],
+      "properties": {
+        "decision": {
+          "enum": [
+            "APPROVE",
+            "APPROVE_WITH_RESTRICTIONS",
+            "REJECT",
+            "REQUEST_MORE_INFORMATION"
+          ]
+        },
+        "reviewer_name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "reviewer_role": {
+          "type": "string",
+          "minLength": 1
+        },
+        "decided_at": {
+          "$ref": "#/$defs/instant"
+        },
+        "evidence_urls": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "restrictions": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "notes": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "expires_at": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/instant"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_key",
+        "display_name",
+        "role",
+        "status"
+      ],
+      "properties": {
+        "source_key": {
+          "description": "Stable machine key. Lower-case, dot-separated: provider, then the specific interface or product.",
+          "type": "string",
+          "pattern": "^[a-z0-9]+([._-][a-z0-9]+)*$",
+          "maxLength": 120
+        },
+        "display_name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "role": {
+          "enum": [
+            "PRIMARY_GUIDELINE",
+            "SUPPORTING_ANNOTATION",
+            "REFERENCE_ONLY",
+            "INTERNAL_SYSTEM"
+          ]
+        },
+        "status": {
+          "enum": [
+            "UNREGISTERED",
+            "PENDING_REVIEW",
+            "UNDER_REVIEW",
+            "APPROVED",
+            "APPROVED_WITH_RESTRICTIONS",
+            "REJECTED",
+            "SUSPENDED"
+          ]
+        },
+        "acquisition_mode": {
+          "enum": [
+            "NOT_DETERMINED",
+            "MANUAL_DOWNLOAD",
+            "OFFICIAL_API",
+            "LICENSED_BULK_EXPORT",
+            "PUBLICATION_TRANSCRIPTION",
+            "INTERNAL_DERIVATION"
+          ]
+        },
+        "provider": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "jurisdiction": {
+          "description": "Where a drug-label source's authority applies. Null where the question does not arise.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "version_policy": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "citation_policy": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "license_identifier": {
+          "description": "The licence the source itself names, verbatim. Never guessed from context, never inferred from a similar source.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "reuse": {
+          "description": "One permission per reuse dimension. Any dimension omitted reads as UNKNOWN, which blocks.",
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "LOCAL_STORAGE": {
+              "description": "Permission for LOCAL_STORAGE.",
+              "$ref": "#/$defs/permission"
+            },
+            "INTERNAL_ANALYSIS": {
+              "description": "Permission for INTERNAL_ANALYSIS.",
+              "$ref": "#/$defs/permission"
+            },
+            "DERIVED_WORK_CREATION": {
+              "description": "Permission for DERIVED_WORK_CREATION.",
+              "$ref": "#/$defs/permission"
+            },
+            "AGGREGATED_REDISTRIBUTION": {
+              "description": "Permission for AGGREGATED_REDISTRIBUTION.",
+              "$ref": "#/$defs/permission"
+            },
+            "VERBATIM_REDISTRIBUTION": {
+              "description": "Permission for VERBATIM_REDISTRIBUTION.",
+              "$ref": "#/$defs/permission"
+            },
+            "COMMERCIAL_USE": {
+              "description": "Permission for COMMERCIAL_USE.",
+              "$ref": "#/$defs/permission"
+            },
+            "AUTOMATED_ACQUISITION": {
+              "description": "Permission for AUTOMATED_ACQUISITION.",
+              "$ref": "#/$defs/permission"
+            },
+            "BULK_DOWNLOAD": {
+              "description": "Permission for BULK_DOWNLOAD.",
+              "$ref": "#/$defs/permission"
+            },
+            "THIRD_PARTY_SHARING": {
+              "description": "Permission for THIRD_PARTY_SHARING.",
+              "$ref": "#/$defs/permission"
+            },
+            "PUBLIC_DISPLAY": {
+              "description": "Permission for PUBLIC_DISPLAY.",
+              "$ref": "#/$defs/permission"
+            }
+          }
+        },
+        "permitted_claim_categories": {
+          "description": "What the source may be cited for. Must be empty unless the record carries an approving review: what a source is cleared for is decided at review.",
+          "type": "array",
+          "items": {
+            "enum": [
+              "PRIMARY_GUIDELINE_RECOMMENDATION",
+              "SUPPORTING_ANNOTATION",
+              "ALLELE_FUNCTION_ASSIGNMENT",
+              "PHENOTYPE_MAPPING",
+              "DRUG_LABEL_STATEMENT",
+              "LITERATURE_REFERENCE",
+              "INTERNAL_BOOKKEEPING"
+            ]
+          }
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/evidence"
+          }
+        },
+        "interpretation": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/interpretation"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "review": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/review"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "legacy_aliases": {
+          "description": "Exact strings the frozen legacy files use for this source. Recorded one spelling at a time so that matching legacy data to a policy is a reviewed decision, not a fuzzy match.",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "blocking_reasons": {
+          "description": "Plain statements of what is outstanding. Written for the reviewer who picks this up next.",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "notes": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "active": {
+          "type": "boolean"
+        }
+      }
+    },
+    "conflict": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "conflict_key",
+        "subject",
+        "source_keys",
+        "description"
+      ],
+      "properties": {
+        "conflict_key": {
+          "type": "string",
+          "minLength": 1
+        },
+        "subject": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_keys": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1
+        },
+        "materiality": {
+          "enum": [
+            "MATERIAL",
+            "NON_MATERIAL",
+            "UNDETERMINED"
+          ]
+        },
+        "status": {
+          "enum": [
+            "OPEN",
+            "UNDER_REVIEW",
+            "RESOLVED",
+            "ACCEPTED_VARIANCE"
+          ]
+        },
+        "detected_at": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/instant"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "resolution": {
+          "description": "Required once the status is RESOLVED or ACCEPTED_VARIANCE. A conflict is settled by a named human, not by a status field.",
+          "oneOf": [
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "decision_summary",
+                "rationale",
+                "decided_by",
+                "decided_at"
+              ],
+              "properties": {
+                "decision_summary": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "rationale": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "decided_by": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "decided_at": {
+                  "$ref": "#/$defs/instant"
+                },
+                "preferred_source_key": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              }
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

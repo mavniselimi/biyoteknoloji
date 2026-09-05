@@ -1,0 +1,163 @@
+{
+  "$id": "https://pgx-platform.invalid/schemas/wp18-gate-status.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "description": "What this repository can honestly say about validation. Counts that could not be measured are null rather than zero: 'nobody looked' and 'we looked and found none' are different facts, and a reader acting on them would act differently. The P0 target and the actual count are separate fields for the same reason.",
+  "properties": {
+    "active_release_available": {
+      "const": false
+    },
+    "benchmark_executed": {
+      "type": "boolean"
+    },
+    "benchmark_gate_status": {
+      "enum": [
+        "PASS",
+        "BLOCKED",
+        "FAILED",
+        "ABSENT"
+      ],
+      "type": "string"
+    },
+    "blockers": {
+      "items": {
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "claim_boundary_approved": {
+      "const": false
+    },
+    "development_case_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "expert_holdout_case_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "expert_review_implemented": {
+      "type": "boolean"
+    },
+    "expert_review_performed": {
+      "const": false
+    },
+    "expert_review_protocol_approved": {
+      "const": false
+    },
+    "expert_reviewed_case_count": {
+      "minimum": 0,
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "gate_status_schema_version": {
+      "const": "pgx-wp18-gate-status/1"
+    },
+    "holdout_case_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "implementation_status": {
+      "enum": [
+        "IMPLEMENTED",
+        "PARTIAL",
+        "NOT_STARTED"
+      ]
+    },
+    "internal_holdout_case_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "may_report_validation_result": {
+      "const": false
+    },
+    "numeric_validation_metric_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "p0_target_case_count": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "p0_target_met": {
+      "type": "boolean"
+    },
+    "p0_target_shortfall": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "real_patient_case_count": {
+      "const": 0
+    },
+    "restricted_payload_availability": {
+      "enum": [
+        "NOT_CONFIGURED",
+        "CONFIGURED_EMPTY",
+        "CONFIGURED_PRESENT"
+      ]
+    },
+    "restricted_payload_count": {
+      "minimum": 0,
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "separation_audit_clean": {
+      "type": "boolean"
+    },
+    "validation_metric_count": {
+      "minimum": 0,
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "validation_metric_definition_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "validation_metrics_implemented": {
+      "type": "boolean"
+    },
+    "work_package": {
+      "const": "WP-18"
+    },
+    "wp19_started": {
+      "type": "boolean"
+    },
+    "wp21_started": {
+      "type": "boolean"
+    },
+    "wp22_started": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "gate_status_schema_version",
+    "work_package",
+    "implementation_status",
+    "development_case_count",
+    "internal_holdout_case_count",
+    "expert_holdout_case_count",
+    "holdout_case_count",
+    "real_patient_case_count",
+    "p0_target_case_count",
+    "p0_target_met",
+    "restricted_payload_availability",
+    "separation_audit_clean",
+    "claim_boundary_approved",
+    "active_release_available",
+    "validation_metrics_implemented",
+    "expert_review_implemented",
+    "expert_review_performed",
+    "wp19_started",
+    "wp21_started",
+    "wp22_started",
+    "blockers",
+    "may_report_validation_result"
+  ],
+  "title": "WP-18 validation dataset gate status",
+  "type": "object"
+}

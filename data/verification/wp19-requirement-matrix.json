@@ -1,0 +1,1610 @@
+{
+  "categories": [
+    {
+      "category": "UNIT",
+      "module_count": 108,
+      "modules": [
+        "tests.unit.api.test_wp16_documentation",
+        "tests.unit.application.test_assessment_cli",
+        "tests.unit.application.test_assessment_input",
+        "tests.unit.application.test_assessment_preflight",
+        "tests.unit.application.test_coverage_cli",
+        "tests.unit.application.test_release_boundaries",
+        "tests.unit.application.test_release_cli",
+        "tests.unit.application.test_release_manifest",
+        "tests.unit.application.test_release_pinning",
+        "tests.unit.application.test_release_service",
+        "tests.unit.application.test_release_source_gate",
+        "tests.unit.application.test_report_cli",
+        "tests.unit.application.test_rollback",
+        "tests.unit.benchmark.test_cli",
+        "tests.unit.curation.test_conflict_and_insufficiency",
+        "tests.unit.curation.test_curation_boundaries",
+        "tests.unit.curation.test_curation_protocol_cli",
+        "tests.unit.curation.test_curation_records",
+        "tests.unit.curation.test_exercise",
+        "tests.unit.curation.test_protocol_structure",
+        "tests.unit.curation.test_roles_and_cases",
+        "tests.unit.curation.test_wp09_documentation",
+        "tests.unit.curation.workflow.test_audit_and_immutability",
+        "tests.unit.curation.workflow.test_forms_and_cli",
+        "tests.unit.curation.workflow.test_persistence_adapters",
+        "tests.unit.curation.workflow.test_roles_and_gates",
+        "tests.unit.curation.workflow.test_rule_approval_envelope",
+        "tests.unit.curation.workflow.test_state_machine",
+        "tests.unit.curation.workflow.test_wp10_boundaries",
+        "tests.unit.curation.workflow.test_wp10_documentation",
+        "tests.unit.engine.test_coverage_aggregation",
+        "tests.unit.engine.test_coverage_axis",
+        "tests.unit.engine.test_coverage_manifest",
+        "tests.unit.engine.test_normalization",
+        "tests.unit.engine.test_phenotype_cli",
+        "tests.unit.engine.test_profile",
+        "tests.unit.engine.test_risk_execution",
+        "tests.unit.engine.test_wp12_boundaries",
+        "tests.unit.engine.test_wp12_documentation",
+        "tests.unit.engine.test_wp13_boundaries",
+        "tests.unit.engine.test_wp13_documentation",
+        "tests.unit.engine.test_wp14_boundaries",
+        "tests.unit.engine.test_wp14_documentation",
+        "tests.unit.evidence.test_draft_curation",
+        "tests.unit.evidence.test_evidence_boundaries",
+        "tests.unit.evidence.test_evidence_build",
+        "tests.unit.evidence.test_evidence_cli",
+        "tests.unit.evidence.test_extraction",
+        "tests.unit.evidence.test_identity_and_version",
+        "tests.unit.evidence.test_record_types_and_publications",
+        "tests.unit.evidence.test_source_separation",
+        "tests.unit.evidence.test_traceability",
+        "tests.unit.evidence.test_wp08_documentation",
+        "tests.unit.infrastructure.test_assessment_persistence",
+        "tests.unit.infrastructure.test_packaging_and_environment",
+        "tests.unit.ingestion.test_acquisition",
+        "tests.unit.ingestion.test_clinpgx_catalog",
+        "tests.unit.ingestion.test_ingestion_cli",
+        "tests.unit.ingestion.test_request_key_and_cache",
+        "tests.unit.ingestion.test_transport_and_retry",
+        "tests.unit.normalization.test_artifact_extraction",
+        "tests.unit.normalization.test_canonical_build",
+        "tests.unit.normalization.test_canonical_models",
+        "tests.unit.normalization.test_data_quality",
+        "tests.unit.normalization.test_deduplication",
+        "tests.unit.normalization.test_identity_allocation",
+        "tests.unit.normalization.test_normalization_boundaries",
+        "tests.unit.normalization.test_normalize_cli",
+        "tests.unit.normalization.test_normalize_rules",
+        "tests.unit.normalization.test_quality_transition",
+        "tests.unit.normalization.test_strict_resolver",
+        "tests.unit.normalization.test_wp07_documentation",
+        "tests.unit.reporting.test_canonical_result",
+        "tests.unit.reporting.test_fact_preservation",
+        "tests.unit.reporting.test_structured_report",
+        "tests.unit.reporting.test_wp15_boundaries",
+        "tests.unit.reporting.test_wp15_documentation",
+        "tests.unit.rules.test_condition_language",
+        "tests.unit.rules.test_conflicts",
+        "tests.unit.rules.test_engine_registry",
+        "tests.unit.rules.test_exact_semantics",
+        "tests.unit.rules.test_persistence_adapters",
+        "tests.unit.rules.test_rule_document",
+        "tests.unit.rules.test_rule_lifecycle",
+        "tests.unit.rules.test_rules_cli",
+        "tests.unit.rules.test_ruleset_lifecycle",
+        "tests.unit.rules.test_validator",
+        "tests.unit.rules.test_wp11_boundaries",
+        "tests.unit.rules.test_wp11_documentation",
+        "tests.unit.scientific.test_conflict_policy",
+        "tests.unit.scientific.test_publication_gate",
+        "tests.unit.scientific.test_registry_config",
+        "tests.unit.scientific.test_scientific_boundaries",
+        "tests.unit.scientific.test_source_policy_cli",
+        "tests.unit.scientific.test_vocabularies",
+        "tests.unit.verification.test_cli",
+        "tests.unit.verification.test_coverage_and_database",
+        "tests.unit.verification.test_discovery_and_inventory",
+        "tests.unit.verification.test_gate_status",
+        "tests.unit.verification.test_matrix",
+        "tests.unit.verification.test_runner_and_results",
+        "tests.unit.verification.test_wp19_boundaries",
+        "tests.unit.web.test_accessibility",
+        "tests.unit.web.test_client",
+        "tests.unit.web.test_demo_migration",
+        "tests.unit.web.test_pages",
+        "tests.unit.web.test_view_models",
+        "tests.unit.web.test_wp17_boundaries"
+      ],
+      "static_outcome": "BLOCKED",
+      "test_count": 3101,
+      "test_id_sha256": "7452aa6a5c7b1248ebb95612fd0061e940239a4b234d18761d7c81529ebf9ecc"
+    },
+    {
+      "category": "DOMAIN_INVARIANT",
+      "module_count": 42,
+      "modules": [
+        "tests.safety.test_assessment_safety",
+        "tests.safety.test_coverage_safety",
+        "tests.unit.api.test_safety",
+        "tests.unit.audit.test_governed_audit",
+        "tests.unit.benchmark.test_metric_computation",
+        "tests.unit.benchmark.test_metric_definitions",
+        "tests.unit.benchmark.test_metric_values",
+        "tests.unit.deployment.test_composition",
+        "tests.unit.domain.test_dependency_boundaries",
+        "tests.unit.domain.test_hashing",
+        "tests.unit.domain.test_identifiers",
+        "tests.unit.domain.test_immutability",
+        "tests.unit.domain.test_models",
+        "tests.unit.domain.test_ports",
+        "tests.unit.domain.test_typed_boundaries",
+        "tests.unit.engine.test_truth_matrix",
+        "tests.unit.expert_review.test_blinding",
+        "tests.unit.expert_review.test_immutability_and_audit",
+        "tests.unit.expert_review.test_state_machine",
+        "tests.unit.reporting.test_safe_status_rendering",
+        "tests.unit.rules.test_safety_invariants",
+        "tests.unit.safety.test_gate",
+        "tests.unit.safety.test_invariant_001",
+        "tests.unit.safety.test_invariant_002",
+        "tests.unit.safety.test_invariant_003",
+        "tests.unit.safety.test_invariant_004",
+        "tests.unit.safety.test_invariant_005",
+        "tests.unit.safety.test_invariant_006",
+        "tests.unit.safety.test_invariant_007",
+        "tests.unit.safety.test_invariant_008",
+        "tests.unit.safety.test_invariant_009",
+        "tests.unit.safety.test_invariant_010",
+        "tests.unit.safety.test_invariant_011",
+        "tests.unit.safety.test_invariant_012",
+        "tests.unit.safety.test_registry",
+        "tests.unit.scientific.test_fail_closed",
+        "tests.unit.security.test_authentication_service",
+        "tests.unit.security.test_passwords",
+        "tests.unit.security.test_users_and_sessions",
+        "tests.unit.test_claims",
+        "tests.unit.ths6.test_vocabulary_and_models",
+        "tests.unit.web.test_safety"
+      ],
+      "static_outcome": "BLOCKED",
+      "test_count": 1031,
+      "test_id_sha256": "d4542e67ca851220652c1ad4dd7f1e9bbc368663615ae06b71a544b648b6ceea"
+    },
+    {
+      "category": "FAILURE_NEGATIVE",
+      "module_count": 5,
+      "modules": [
+        "tests.adversarial.test_report_claims",
+        "tests.failure.test_domain_layer_violations",
+        "tests.failure.test_wp18_partition_violations",
+        "tests.unit.benchmark.test_benchmark_contract",
+        "tests.unit.engine.test_failure_modes"
+      ],
+      "static_outcome": "BLOCKED",
+      "test_count": 97,
+      "test_id_sha256": "1581d747bedaef65f4d70b2da055e71ff1cd89a41f38279532d6fa07ed3d5401"
+    },
+    {
+      "category": "INTEGRATION",
+      "module_count": 6,
+      "modules": [
+        "tests.integration.engine.test_assessment_end_to_end",
+        "tests.integration.engine.test_coverage_end_to_end",
+        "tests.integration.engine.test_wp11_integration",
+        "tests.integration.reporting.test_report_end_to_end",
+        "tests.unit.rules.test_synthetic_end_to_end",
+        "tests.unit.web.test_e2e_flow"
+      ],
+      "static_outcome": "BLOCKED",
+      "test_count": 115,
+      "test_id_sha256": "2381c4cceb0dca11fc732e3af4aee3723a1e6f70310302c395ea3632bded1e41"
+    },
+    {
+      "category": "POSTGRESQL_INTEGRATION",
+      "module_count": 6,
+      "modules": [
+        "tests.integration.db.test_constraints",
+        "tests.integration.db.test_release_registry",
+        "tests.integration.db.test_repositories",
+        "tests.integration.db.test_seed",
+        "tests.integration.db.test_unit_of_work",
+        "tests.integration.db.test_wp11_rules"
+      ],
+      "static_outcome": "BLOCKED",
+      "test_count": 72,
+      "test_id_sha256": "3350608529d1423cfb347ae4e56a4186cbede37e0542f58d62dc2adf50fb7138"
+    },
+    {
+      "category": "MIGRATION",
+      "module_count": 5,
+      "modules": [
+        "tests.integration.db.test_migrations",
+        "tests.unit.curation.workflow.test_migration_0007",
+        "tests.unit.expert_review.test_persistence",
+        "tests.unit.rules.test_migration_0008",
+        "tests.unit.security.test_persistence"
+      ],
+      "static_outcome": "BLOCKED",
+      "test_count": 140,
+      "test_id_sha256": "3a224c27a60b38668fc831632b98b4d57fd369195495dd347234426496de9be2"
+    },
+    {
+      "category": "API_CONTRACT",
+      "module_count": 12,
+      "modules": [
+        "tests.contract.test_wp12_schemas",
+        "tests.contract.test_wp13_schemas",
+        "tests.contract.test_wp14_schemas",
+        "tests.contract.test_wp15_schemas",
+        "tests.unit.api.test_assessment_flow",
+        "tests.unit.api.test_catalogue_evidence_version",
+        "tests.unit.api.test_contracts",
+        "tests.unit.api.test_errors",
+        "tests.unit.api.test_health",
+        "tests.unit.api.test_openapi",
+        "tests.unit.api.test_request_context",
+        "tests.unit.api.test_wp16_boundaries"
+      ],
+      "static_outcome": "BLOCKED",
+      "test_count": 347,
+      "test_id_sha256": "a07dff6873877d2f86dba55edc10c79b7b4aec93ffd49dd3a808fffb6e246c38"
+    },
+    {
+      "category": "ASGI_RUNTIME",
+      "module_count": 2,
+      "modules": [
+        "tests.integration.api.test_asgi_runtime",
+        "tests.integration.web.test_asgi_web"
+      ],
+      "static_outcome": "BLOCKED",
+      "test_count": 50,
+      "test_id_sha256": "e485bacd0938b438f73e68f8435577dac78732e6698abf6066ed19c599a7a8fd"
+    },
+    {
+      "category": "BROWSER_E2E",
+      "module_count": 1,
+      "modules": [
+        "tests.integration.web.test_browser_e2e"
+      ],
+      "static_outcome": "BLOCKED",
+      "test_count": 13,
+      "test_id_sha256": "329924bac7f214348bd727bc0ac51e18e4367115ffb85651f492091795674271"
+    },
+    {
+      "category": "SNAPSHOT",
+      "module_count": 11,
+      "modules": [
+        "tests.unit.benchmark.test_dashboard",
+        "tests.unit.snapshots.test_acquisition_manifest_io",
+        "tests.unit.snapshots.test_dataset_cli",
+        "tests.unit.snapshots.test_dataset_service",
+        "tests.unit.snapshots.test_legacy_snapshot",
+        "tests.unit.snapshots.test_snapshot_boundaries",
+        "tests.unit.snapshots.test_snapshot_build",
+        "tests.unit.snapshots.test_snapshot_verification",
+        "tests.unit.verification.test_filesystem_capability",
+        "tests.unit.web.test_expert_review_flow",
+        "tests.unit.web.test_snapshots"
+      ],
+      "static_outcome": "BLOCKED",
+      "test_count": 248,
+      "test_id_sha256": "2d94874cf47e0ae10261e28d1c7402b7fc1d6241a1ff0d166ab6cf4ae9aa31a3"
+    },
+    {
+      "category": "ARTIFACT_SCHEMA",
+      "module_count": 19,
+      "modules": [
+        "tests.unit.api.test_runtime_verification",
+        "tests.unit.benchmark.test_report_and_feed",
+        "tests.unit.curation.workflow.test_published_schemas",
+        "tests.unit.deployment.test_schemas_and_persistence",
+        "tests.unit.reporting.test_artifacts",
+        "tests.unit.rules.test_published_schemas",
+        "tests.unit.rules.test_real_gate_status",
+        "tests.unit.safety.test_artifacts",
+        "tests.unit.security.test_artifacts_and_gate",
+        "tests.unit.snapshots.test_snapshot_schema",
+        "tests.unit.test_manifest_amendment",
+        "tests.unit.test_schema_rendering",
+        "tests.unit.test_wp05_schema",
+        "tests.unit.test_wp06_schema",
+        "tests.unit.test_wp07_schema",
+        "tests.unit.test_wp08_schema",
+        "tests.unit.ths6.test_cli_and_schemas",
+        "tests.unit.validation.test_artifacts",
+        "tests.unit.verification.test_artifacts"
+      ],
+      "static_outcome": "BLOCKED",
+      "test_count": 575,
+      "test_id_sha256": "6d0caac7cd730a5e641cea82c08f43fe07791a4f7fe3536799426bbe27460b64"
+    },
+    {
+      "category": "REPRODUCIBILITY",
+      "module_count": 6,
+      "modules": [
+        "tests.unit.application.test_assessment_determinism",
+        "tests.unit.ingestion.test_replay_and_determinism",
+        "tests.unit.reporting.test_determinism",
+        "tests.unit.rules.test_deterministic_artifacts",
+        "tests.unit.snapshots.test_content_identity",
+        "tests.unit.verification.test_reproducibility"
+      ],
+      "static_outcome": "BLOCKED",
+      "test_count": 146,
+      "test_id_sha256": "836c8e8058365b84e24521ef2f5b9b4f0080cbd30d1b967bee3dcec868d9936f"
+    },
+    {
+      "category": "LEGACY_REGRESSION",
+      "module_count": 13,
+      "modules": [
+        "tests.regression.legacy.test_compare_legacy_v2",
+        "tests.regression.legacy.test_legacy_manifest",
+        "tests.regression.legacy.test_legacy_reproduction",
+        "tests.unit.application.test_legacy_baseline",
+        "tests.unit.curation.test_legacy_review",
+        "tests.unit.curation.workflow.test_legacy_migration",
+        "tests.unit.engine.test_coverage_legacy_regression",
+        "tests.unit.engine.test_legacy_regression",
+        "tests.unit.engine.test_risk_legacy_regression",
+        "tests.unit.normalization.test_legacy_differences",
+        "tests.unit.reporting.test_legacy_report_regression",
+        "tests.unit.rules.test_legacy_inventory",
+        "tests.unit.scientific.test_legacy_inventory"
+      ],
+      "static_outcome": "BLOCKED",
+      "test_count": 409,
+      "test_id_sha256": "b1d5c8f7b1b5220f1d95bc1eec2987e4c5c08c29b67364b90403a7f05c6f8738"
+    },
+    {
+      "category": "VALIDATION_PARTITION",
+      "module_count": 9,
+      "modules": [
+        "tests.integration.validation.test_wp18_flow",
+        "tests.unit.expert_review.test_metric_supply",
+        "tests.unit.validation.test_access",
+        "tests.unit.validation.test_cases",
+        "tests.unit.validation.test_fingerprint",
+        "tests.unit.validation.test_manifests_and_catalog",
+        "tests.unit.validation.test_restricted_import",
+        "tests.unit.validation.test_separation",
+        "tests.unit.validation.test_wp18_boundaries"
+      ],
+      "static_outcome": "BLOCKED",
+      "test_count": 204,
+      "test_id_sha256": "0e8a7b43e5448625bb2fcb09c2f4904341d0b2ebdba0e8b94f2c3697d6fa43b7"
+    },
+    {
+      "category": "SECURITY_BOUNDARY",
+      "module_count": 22,
+      "modules": [
+        "tests.unit.api.test_security_boundary",
+        "tests.unit.benchmark.test_wp21_boundaries",
+        "tests.unit.deployment.test_cli_and_ci",
+        "tests.unit.deployment.test_container_and_build",
+        "tests.unit.deployment.test_honest_reporting",
+        "tests.unit.expert_review.test_authorisation",
+        "tests.unit.expert_review.test_payload_access",
+        "tests.unit.infrastructure.test_configuration_policy",
+        "tests.unit.infrastructure.test_seed_and_cleanup_safety",
+        "tests.unit.normalization.test_build_safety",
+        "tests.unit.reporting.test_injection",
+        "tests.unit.safety.test_boundaries",
+        "tests.unit.security.test_csrf_and_rate_limit",
+        "tests.unit.security.test_rbac",
+        "tests.unit.security.test_secret_scan_and_backup",
+        "tests.unit.snapshots.test_snapshot_security",
+        "tests.unit.ths6.test_demo_and_contingency",
+        "tests.unit.ths6.test_gates_and_dod",
+        "tests.unit.ths6.test_integrity_and_pack",
+        "tests.unit.ths6.test_registries",
+        "tests.unit.verification.test_scrub",
+        "tests.unit.web.test_security"
+      ],
+      "static_outcome": "BLOCKED",
+      "test_count": 751,
+      "test_id_sha256": "b061febd0e5ff0ad2e0f4c579e8583b9922bbe80d6c76be8bfbdebc410e5ef60"
+    },
+    {
+      "category": "OFFLINE_INDEPENDENCE",
+      "module_count": 3,
+      "modules": [
+        "tests.unit.curation.workflow.test_offline_operation",
+        "tests.unit.rules.test_offline_operation",
+        "tests.unit.verification.test_offline"
+      ],
+      "static_outcome": "BLOCKED",
+      "test_count": 25,
+      "test_id_sha256": "1be71abc709224ecd0cb92203ca2e9b000275cc7b9aa8030da54bd28d6a48245"
+    }
+  ],
+  "empty_categories": [],
+  "is_complete": true,
+  "matrix_schema_version": "pgx-wp19-requirement-matrix/1",
+  "requirement_registry_version": "pgx-wp19-requirements/1",
+  "requirements": [
+    {
+      "categories": [
+        "DOMAIN_INVARIANT",
+        "FAILURE_NEGATIVE"
+      ],
+      "criticality": "P0_CRITICAL",
+      "is_covered": true,
+      "module_count": 4,
+      "modules": [
+        "tests.adversarial.test_report_claims",
+        "tests.unit.reporting.test_safe_status_rendering",
+        "tests.unit.test_claims",
+        "tests.unit.web.test_safety"
+      ],
+      "note": "Enforcement is verified. Approval of the boundary itself is a human act and is reported as a blocker, never as a test result.",
+      "requirement_id": "VER-REQ-001",
+      "safety_invariants": [
+        "SAFETY-INV-005",
+        "SAFETY-INV-008"
+      ],
+      "selectors": [
+        "tests.unit.test_claims",
+        "tests.adversarial.test_report_claims",
+        "tests.unit.reporting.test_safe_status_rendering",
+        "tests.unit.web.test_safety"
+      ],
+      "source": "docs/architecture/intended-purpose.md (DOC-IP-001); architecture.md sections 2.1-2.3",
+      "test_count": 149,
+      "test_id_sha256": "537deef4398490301c2d3a44f732bf933a3eeceeca786f5a222d66f2138fb1a3",
+      "title": "The claim boundary is enforced in code, not only documented",
+      "work_packages": [
+        "WP-00",
+        "WP-15",
+        "WP-17"
+      ]
+    },
+    {
+      "categories": [
+        "ARTIFACT_SCHEMA",
+        "DOMAIN_INVARIANT",
+        "REPRODUCIBILITY",
+        "SECURITY_BOUNDARY",
+        "SNAPSHOT"
+      ],
+      "criticality": "P0_CRITICAL",
+      "is_covered": true,
+      "module_count": 13,
+      "modules": [
+        "tests.unit.domain.test_immutability",
+        "tests.unit.snapshots.test_acquisition_manifest_io",
+        "tests.unit.snapshots.test_content_identity",
+        "tests.unit.snapshots.test_dataset_cli",
+        "tests.unit.snapshots.test_dataset_service",
+        "tests.unit.snapshots.test_legacy_snapshot",
+        "tests.unit.snapshots.test_snapshot_boundaries",
+        "tests.unit.snapshots.test_snapshot_build",
+        "tests.unit.snapshots.test_snapshot_schema",
+        "tests.unit.snapshots.test_snapshot_security",
+        "tests.unit.snapshots.test_snapshot_verification",
+        "tests.unit.test_wp05_schema",
+        "tests.unit.test_wp06_schema"
+      ],
+      "note": "Includes the portable sealed-tree check repaired by WP-19: mode bits are asserted everywhere chmod is honoured, and the mutation attempt is made by a writer the bits actually govern.",
+      "requirement_id": "VER-REQ-002",
+      "safety_invariants": [
+        "SAFETY-INV-010"
+      ],
+      "selectors": [
+        "tests.unit.snapshots",
+        "tests.unit.test_wp05_schema",
+        "tests.unit.test_wp06_schema",
+        "tests.unit.domain.test_immutability"
+      ],
+      "source": "architecture.md sections 5-6; docs/data/raw-snapshot-format.md",
+      "test_count": 392,
+      "test_id_sha256": "faef343239683aa07b1041cd4fb86ea04f1df008bbf9ed140bae47f0e8f12d38",
+      "title": "Datasets are immutable and carry their provenance",
+      "work_packages": [
+        "WP-05",
+        "WP-06"
+      ]
+    },
+    {
+      "categories": [
+        "ARTIFACT_SCHEMA",
+        "DOMAIN_INVARIANT",
+        "INTEGRATION",
+        "LEGACY_REGRESSION",
+        "MIGRATION",
+        "OFFLINE_INDEPENDENCE",
+        "POSTGRESQL_INTEGRATION",
+        "REPRODUCIBILITY",
+        "UNIT"
+      ],
+      "criticality": "P0_CRITICAL",
+      "is_covered": true,
+      "module_count": 43,
+      "modules": [
+        "tests.integration.db.test_wp11_rules",
+        "tests.integration.engine.test_wp11_integration",
+        "tests.unit.curation.test_conflict_and_insufficiency",
+        "tests.unit.curation.test_curation_boundaries",
+        "tests.unit.curation.test_curation_protocol_cli",
+        "tests.unit.curation.test_curation_records",
+        "tests.unit.curation.test_exercise",
+        "tests.unit.curation.test_legacy_review",
+        "tests.unit.curation.test_protocol_structure",
+        "tests.unit.curation.test_roles_and_cases",
+        "tests.unit.curation.test_wp09_documentation",
+        "tests.unit.curation.workflow.test_audit_and_immutability",
+        "tests.unit.curation.workflow.test_forms_and_cli",
+        "tests.unit.curation.workflow.test_legacy_migration",
+        "tests.unit.curation.workflow.test_migration_0007",
+        "tests.unit.curation.workflow.test_offline_operation",
+        "tests.unit.curation.workflow.test_persistence_adapters",
+        "tests.unit.curation.workflow.test_published_schemas",
+        "tests.unit.curation.workflow.test_roles_and_gates",
+        "tests.unit.curation.workflow.test_rule_approval_envelope",
+        "tests.unit.curation.workflow.test_state_machine",
+        "tests.unit.curation.workflow.test_wp10_boundaries",
+        "tests.unit.curation.workflow.test_wp10_documentation",
+        "tests.unit.rules.test_condition_language",
+        "tests.unit.rules.test_conflicts",
+        "tests.unit.rules.test_deterministic_artifacts",
+        "tests.unit.rules.test_engine_registry",
+        "tests.unit.rules.test_exact_semantics",
+        "tests.unit.rules.test_legacy_inventory",
+        "tests.unit.rules.test_migration_0008",
+        "tests.unit.rules.test_offline_operation",
+        "tests.unit.rules.test_persistence_adapters",
+        "tests.unit.rules.test_published_schemas",
+        "tests.unit.rules.test_real_gate_status",
+        "tests.unit.rules.test_rule_document",
+        "tests.unit.rules.test_rule_lifecycle",
+        "tests.unit.rules.test_rules_cli",
+        "tests.unit.rules.test_ruleset_lifecycle",
+        "tests.unit.rules.test_safety_invariants",
+        "tests.unit.rules.test_synthetic_end_to_end",
+        "tests.unit.rules.test_validator",
+        "tests.unit.rules.test_wp11_boundaries",
+        "tests.unit.rules.test_wp11_documentation"
+      ],
+      "note": "The database half of separation of duties is inside the PostgreSQL skip and is reported BLOCKED where no server ran.",
+      "requirement_id": "VER-REQ-003",
+      "safety_invariants": [
+        "SAFETY-INV-003"
+      ],
+      "selectors": [
+        "tests.unit.curation",
+        "tests.unit.rules",
+        "tests.integration.engine.test_wp11_integration",
+        "tests.integration.db.test_wp11_rules"
+      ],
+      "source": "architecture.md sections 9-11; WP-09/WP-10/WP-11",
+      "test_count": 975,
+      "test_id_sha256": "6607ea223cba31043b26b55204fa728507b4265283543b117f4cb05174cab17a",
+      "title": "Curation and ruleset approval cannot be self-served",
+      "work_packages": [
+        "WP-09",
+        "WP-10",
+        "WP-11"
+      ]
+    },
+    {
+      "categories": [
+        "POSTGRESQL_INTEGRATION",
+        "UNIT"
+      ],
+      "criticality": "P0_CRITICAL",
+      "is_covered": true,
+      "module_count": 8,
+      "modules": [
+        "tests.integration.db.test_release_registry",
+        "tests.unit.application.test_release_boundaries",
+        "tests.unit.application.test_release_cli",
+        "tests.unit.application.test_release_manifest",
+        "tests.unit.application.test_release_pinning",
+        "tests.unit.application.test_release_service",
+        "tests.unit.application.test_release_source_gate",
+        "tests.unit.application.test_rollback"
+      ],
+      "note": "",
+      "requirement_id": "VER-REQ-004",
+      "safety_invariants": [
+        "SAFETY-INV-007",
+        "SAFETY-INV-010"
+      ],
+      "selectors": [
+        "tests.unit.application.test_release_pinning",
+        "tests.unit.application.test_release_manifest",
+        "tests.unit.application.test_release_service",
+        "tests.unit.application.test_release_boundaries",
+        "tests.unit.application.test_rollback",
+        "tests.unit.application.test_release_cli",
+        "tests.unit.application.test_release_source_gate",
+        "tests.integration.db.test_release_registry"
+      ],
+      "source": "architecture.md section 4; docs/architecture/wp03-release-registry.md",
+      "test_count": 244,
+      "test_id_sha256": "fcb66ab3ab6e867d5be7eeee42f89db478aed874d99985a5c6b677394f4f84ec",
+      "title": "A release pins dataset, ruleset and software before assessment",
+      "work_packages": [
+        "WP-03",
+        "WP-14"
+      ]
+    },
+    {
+      "categories": [
+        "API_CONTRACT",
+        "DOMAIN_INVARIANT",
+        "UNIT"
+      ],
+      "criticality": "P0_CRITICAL",
+      "is_covered": true,
+      "module_count": 6,
+      "modules": [
+        "tests.contract.test_wp12_schemas",
+        "tests.unit.engine.test_normalization",
+        "tests.unit.engine.test_phenotype_cli",
+        "tests.unit.engine.test_profile",
+        "tests.unit.engine.test_truth_matrix",
+        "tests.unit.engine.test_wp12_boundaries"
+      ],
+      "note": "",
+      "requirement_id": "VER-REQ-005",
+      "safety_invariants": [
+        "SAFETY-INV-004"
+      ],
+      "selectors": [
+        "tests.unit.engine.test_profile",
+        "tests.unit.engine.test_normalization",
+        "tests.unit.engine.test_phenotype_cli",
+        "tests.unit.engine.test_wp12_boundaries",
+        "tests.unit.engine.test_truth_matrix",
+        "tests.contract.test_wp12_schemas"
+      ],
+      "source": "architecture.md section 9.1; SAFETY-INV-004; LEGACY-BUG-001",
+      "test_count": 166,
+      "test_id_sha256": "aa2ea4da737553ee681a9511f38b00e616e3c1c869eb942fedae9daeffd69bed",
+      "title": "Phenotype matching is exact; RAPID never means ULTRARAPID",
+      "work_packages": [
+        "WP-07",
+        "WP-12"
+      ]
+    },
+    {
+      "categories": [
+        "API_CONTRACT",
+        "DOMAIN_INVARIANT",
+        "FAILURE_NEGATIVE",
+        "INTEGRATION",
+        "UNIT"
+      ],
+      "criticality": "P0_CRITICAL",
+      "is_covered": true,
+      "module_count": 9,
+      "modules": [
+        "tests.contract.test_wp13_schemas",
+        "tests.integration.engine.test_coverage_end_to_end",
+        "tests.safety.test_coverage_safety",
+        "tests.unit.application.test_coverage_cli",
+        "tests.unit.engine.test_coverage_aggregation",
+        "tests.unit.engine.test_coverage_axis",
+        "tests.unit.engine.test_coverage_manifest",
+        "tests.unit.engine.test_failure_modes",
+        "tests.unit.engine.test_wp13_boundaries"
+      ],
+      "note": "",
+      "requirement_id": "VER-REQ-006",
+      "safety_invariants": [
+        "SAFETY-INV-001"
+      ],
+      "selectors": [
+        "tests.unit.engine.test_coverage_aggregation",
+        "tests.unit.engine.test_coverage_axis",
+        "tests.unit.engine.test_coverage_manifest",
+        "tests.unit.engine.test_wp13_boundaries",
+        "tests.unit.engine.test_failure_modes",
+        "tests.unit.application.test_coverage_cli",
+        "tests.safety.test_coverage_safety",
+        "tests.contract.test_wp13_schemas",
+        "tests.integration.engine.test_coverage_end_to_end"
+      ],
+      "source": "architecture.md section 10; SAFETY-INV-001; LEGACY-BUG-002",
+      "test_count": 336,
+      "test_id_sha256": "5f44b1cbf3625654c8d75cedb5ee6b9861a36a5819ee8bb73298b190944fd083",
+      "title": "Coverage is a separate output from attention, and absence never reads as low risk",
+      "work_packages": [
+        "WP-13"
+      ]
+    },
+    {
+      "categories": [
+        "API_CONTRACT",
+        "DOMAIN_INVARIANT",
+        "INTEGRATION",
+        "REPRODUCIBILITY",
+        "UNIT"
+      ],
+      "criticality": "P0_CRITICAL",
+      "is_covered": true,
+      "module_count": 9,
+      "modules": [
+        "tests.contract.test_wp14_schemas",
+        "tests.integration.engine.test_assessment_end_to_end",
+        "tests.safety.test_assessment_safety",
+        "tests.unit.application.test_assessment_cli",
+        "tests.unit.application.test_assessment_determinism",
+        "tests.unit.application.test_assessment_input",
+        "tests.unit.application.test_assessment_preflight",
+        "tests.unit.engine.test_risk_execution",
+        "tests.unit.engine.test_wp14_boundaries"
+      ],
+      "note": "",
+      "requirement_id": "VER-REQ-007",
+      "safety_invariants": [
+        "SAFETY-INV-006",
+        "SAFETY-INV-009"
+      ],
+      "selectors": [
+        "tests.unit.application.test_assessment_determinism",
+        "tests.unit.application.test_assessment_input",
+        "tests.unit.application.test_assessment_preflight",
+        "tests.unit.application.test_assessment_cli",
+        "tests.unit.engine.test_risk_execution",
+        "tests.unit.engine.test_wp14_boundaries",
+        "tests.safety.test_assessment_safety",
+        "tests.contract.test_wp14_schemas",
+        "tests.integration.engine.test_assessment_end_to_end"
+      ],
+      "source": "architecture.md section 12; SAFETY-INV-006, SAFETY-INV-009",
+      "test_count": 354,
+      "test_id_sha256": "e32f17a1f2465443359544d27557e2eae573398a4bf422a62f39efa008a98d93",
+      "title": "The same input and release bundle produce the same assessment",
+      "work_packages": [
+        "WP-14"
+      ]
+    },
+    {
+      "categories": [
+        "API_CONTRACT",
+        "ARTIFACT_SCHEMA",
+        "DOMAIN_INVARIANT",
+        "INTEGRATION",
+        "LEGACY_REGRESSION",
+        "REPRODUCIBILITY",
+        "SECURITY_BOUNDARY",
+        "UNIT"
+      ],
+      "criticality": "P0_CRITICAL",
+      "is_covered": true,
+      "module_count": 13,
+      "modules": [
+        "tests.contract.test_wp15_schemas",
+        "tests.integration.reporting.test_report_end_to_end",
+        "tests.unit.application.test_report_cli",
+        "tests.unit.reporting.test_artifacts",
+        "tests.unit.reporting.test_canonical_result",
+        "tests.unit.reporting.test_determinism",
+        "tests.unit.reporting.test_fact_preservation",
+        "tests.unit.reporting.test_injection",
+        "tests.unit.reporting.test_legacy_report_regression",
+        "tests.unit.reporting.test_safe_status_rendering",
+        "tests.unit.reporting.test_structured_report",
+        "tests.unit.reporting.test_wp15_boundaries",
+        "tests.unit.reporting.test_wp15_documentation"
+      ],
+      "note": "",
+      "requirement_id": "VER-REQ-008",
+      "safety_invariants": [
+        "SAFETY-INV-002",
+        "SAFETY-INV-005",
+        "SAFETY-INV-008"
+      ],
+      "selectors": [
+        "tests.unit.reporting",
+        "tests.unit.application.test_report_cli",
+        "tests.contract.test_wp15_schemas",
+        "tests.integration.reporting.test_report_end_to_end"
+      ],
+      "source": "architecture.md section 12.4; docs/architecture/wp15-deterministic-reporting.md",
+      "test_count": 346,
+      "test_id_sha256": "eb0f79ceb2a558b12eb844e1f150b02e5477bb0ebee89850597701f3bfd15091",
+      "title": "Reporting is deterministic and every claim is scanned",
+      "work_packages": [
+        "WP-15"
+      ]
+    },
+    {
+      "categories": [
+        "API_CONTRACT",
+        "ARTIFACT_SCHEMA",
+        "ASGI_RUNTIME",
+        "DOMAIN_INVARIANT",
+        "SECURITY_BOUNDARY",
+        "UNIT"
+      ],
+      "criticality": "P0_CRITICAL",
+      "is_covered": true,
+      "module_count": 17,
+      "modules": [
+        "tests.contract.test_wp12_schemas",
+        "tests.contract.test_wp13_schemas",
+        "tests.contract.test_wp14_schemas",
+        "tests.contract.test_wp15_schemas",
+        "tests.integration.api.test_asgi_runtime",
+        "tests.unit.api.test_assessment_flow",
+        "tests.unit.api.test_catalogue_evidence_version",
+        "tests.unit.api.test_contracts",
+        "tests.unit.api.test_errors",
+        "tests.unit.api.test_health",
+        "tests.unit.api.test_openapi",
+        "tests.unit.api.test_request_context",
+        "tests.unit.api.test_runtime_verification",
+        "tests.unit.api.test_safety",
+        "tests.unit.api.test_security_boundary",
+        "tests.unit.api.test_wp16_boundaries",
+        "tests.unit.api.test_wp16_documentation"
+      ],
+      "note": "The framework-free half executes everywhere. The ASGI runtime half is reported from a recorded execution, never inferred from an installed package.",
+      "requirement_id": "VER-REQ-009",
+      "safety_invariants": [],
+      "selectors": [
+        "tests.unit.api",
+        "tests.contract",
+        "tests.integration.api"
+      ],
+      "source": "docs/architecture/wp16-fastapi-application.md; schemas/wp16/error-contract.schema.json",
+      "test_count": 505,
+      "test_id_sha256": "99aabbe21ce007ebf9968511b4f0da374792d4c362f0c308c2837a246e2b2139",
+      "title": "The API's error and security contracts hold",
+      "work_packages": [
+        "WP-16"
+      ]
+    },
+    {
+      "categories": [
+        "ASGI_RUNTIME",
+        "BROWSER_E2E",
+        "DOMAIN_INVARIANT",
+        "INTEGRATION",
+        "SECURITY_BOUNDARY",
+        "SNAPSHOT",
+        "UNIT"
+      ],
+      "criticality": "P0_CRITICAL",
+      "is_covered": true,
+      "module_count": 13,
+      "modules": [
+        "tests.integration.web.test_asgi_web",
+        "tests.integration.web.test_browser_e2e",
+        "tests.unit.web.test_accessibility",
+        "tests.unit.web.test_client",
+        "tests.unit.web.test_demo_migration",
+        "tests.unit.web.test_e2e_flow",
+        "tests.unit.web.test_expert_review_flow",
+        "tests.unit.web.test_pages",
+        "tests.unit.web.test_safety",
+        "tests.unit.web.test_security",
+        "tests.unit.web.test_snapshots",
+        "tests.unit.web.test_view_models",
+        "tests.unit.web.test_wp17_boundaries"
+      ],
+      "note": "",
+      "requirement_id": "VER-REQ-010",
+      "safety_invariants": [
+        "SAFETY-INV-001",
+        "SAFETY-INV-005"
+      ],
+      "selectors": [
+        "tests.unit.web",
+        "tests.integration.web"
+      ],
+      "source": "docs/architecture/wp17-server-rendered-web.md",
+      "test_count": 328,
+      "test_id_sha256": "a26011f3b4eb5646b89e5157011eee616a33496496c5b3095447909df65bd4f0",
+      "title": "Every rendered page carries the clinical warning, and access is refused where it must be",
+      "work_packages": [
+        "WP-17"
+      ]
+    },
+    {
+      "categories": [
+        "ARTIFACT_SCHEMA",
+        "FAILURE_NEGATIVE",
+        "VALIDATION_PARTITION"
+      ],
+      "criticality": "P0_CRITICAL",
+      "is_covered": true,
+      "module_count": 10,
+      "modules": [
+        "tests.failure.test_wp18_partition_violations",
+        "tests.integration.validation.test_wp18_flow",
+        "tests.unit.validation.test_access",
+        "tests.unit.validation.test_artifacts",
+        "tests.unit.validation.test_cases",
+        "tests.unit.validation.test_fingerprint",
+        "tests.unit.validation.test_manifests_and_catalog",
+        "tests.unit.validation.test_restricted_import",
+        "tests.unit.validation.test_separation",
+        "tests.unit.validation.test_wp18_boundaries"
+      ],
+      "note": "The separation mechanism is verified. There are zero holdout cases to separate, which is a scientific blocker WP-18 already reports and WP-19 does not resolve.",
+      "requirement_id": "VER-REQ-011",
+      "safety_invariants": [
+        "SAFETY-INV-009"
+      ],
+      "selectors": [
+        "tests.unit.validation",
+        "tests.failure.test_wp18_partition_violations",
+        "tests.integration.validation"
+      ],
+      "source": "docs/validation/holdout-separation-policy.md; docs/architecture/wp18-validation-dataset.md",
+      "test_count": 228,
+      "test_id_sha256": "949ba6d070f76caed82d7b57b5830868c82231487d8ff632cb081a136418e830",
+      "title": "Development and holdout validation cases stay separated",
+      "work_packages": [
+        "WP-18"
+      ]
+    },
+    {
+      "categories": [
+        "ARTIFACT_SCHEMA",
+        "UNIT"
+      ],
+      "criticality": "IMPORTANT",
+      "is_covered": true,
+      "module_count": 11,
+      "modules": [
+        "tests.unit.evidence.test_draft_curation",
+        "tests.unit.evidence.test_evidence_boundaries",
+        "tests.unit.evidence.test_evidence_build",
+        "tests.unit.evidence.test_evidence_cli",
+        "tests.unit.evidence.test_extraction",
+        "tests.unit.evidence.test_identity_and_version",
+        "tests.unit.evidence.test_record_types_and_publications",
+        "tests.unit.evidence.test_source_separation",
+        "tests.unit.evidence.test_traceability",
+        "tests.unit.evidence.test_wp08_documentation",
+        "tests.unit.test_wp08_schema"
+      ],
+      "note": "",
+      "requirement_id": "VER-REQ-012",
+      "safety_invariants": [
+        "SAFETY-INV-006"
+      ],
+      "selectors": [
+        "tests.unit.evidence",
+        "tests.unit.test_wp08_schema"
+      ],
+      "source": "architecture.md section 8; SAFETY-INV-006",
+      "test_count": 212,
+      "test_id_sha256": "81c41c7414ad476399d327d910ff9bec199632ea4d2bcfc39600cf53aeba169f",
+      "title": "Every finding resolves to a real evidence record",
+      "work_packages": [
+        "WP-08"
+      ]
+    },
+    {
+      "categories": [
+        "OFFLINE_INDEPENDENCE",
+        "UNIT"
+      ],
+      "criticality": "IMPORTANT",
+      "is_covered": true,
+      "module_count": 4,
+      "modules": [
+        "tests.unit.curation.workflow.test_offline_operation",
+        "tests.unit.ingestion.test_transport_and_retry",
+        "tests.unit.rules.test_offline_operation",
+        "tests.unit.verification.test_offline"
+      ],
+      "note": "",
+      "requirement_id": "VER-REQ-013",
+      "safety_invariants": [],
+      "selectors": [
+        "tests.unit.curation.workflow.test_offline_operation",
+        "tests.unit.rules.test_offline_operation",
+        "tests.unit.ingestion.test_transport_and_retry",
+        "tests.unit.verification.test_offline"
+      ],
+      "source": "architecture.md section 5.3; WP-19 acceptance A12",
+      "test_count": 71,
+      "test_id_sha256": "29fc321e3365a6b2fd20a6ab698935b8407057ebe3bd1bde0f32ecc5335171d1",
+      "title": "The pipeline runs offline: no live source, no LLM, no index",
+      "work_packages": [
+        "WP-04",
+        "WP-10",
+        "WP-11",
+        "WP-19"
+      ]
+    },
+    {
+      "categories": [
+        "LEGACY_REGRESSION"
+      ],
+      "criticality": "IMPORTANT",
+      "is_covered": true,
+      "module_count": 9,
+      "modules": [
+        "tests.regression.legacy.test_compare_legacy_v2",
+        "tests.regression.legacy.test_legacy_manifest",
+        "tests.regression.legacy.test_legacy_reproduction",
+        "tests.unit.application.test_legacy_baseline",
+        "tests.unit.engine.test_coverage_legacy_regression",
+        "tests.unit.engine.test_legacy_regression",
+        "tests.unit.engine.test_risk_legacy_regression",
+        "tests.unit.normalization.test_legacy_differences",
+        "tests.unit.reporting.test_legacy_report_regression"
+      ],
+      "note": "",
+      "requirement_id": "VER-REQ-014",
+      "safety_invariants": [],
+      "selectors": [
+        "tests.regression.legacy",
+        "tests.unit.engine.test_legacy_regression",
+        "tests.unit.engine.test_coverage_legacy_regression",
+        "tests.unit.engine.test_risk_legacy_regression",
+        "tests.unit.reporting.test_legacy_report_regression",
+        "tests.unit.normalization.test_legacy_differences",
+        "tests.unit.application.test_legacy_baseline"
+      ],
+      "source": "docs/migration/legacy-inventory.md; scripts/legacy_bug_registry.py",
+      "test_count": 325,
+      "test_id_sha256": "8bae1510408dcb635001cb4ca90dc38d12c59a4d6eca33c8420aed881c3041b2",
+      "title": "Known legacy defects stay fixed and the baseline reproduces",
+      "work_packages": [
+        "WP-01"
+      ]
+    },
+    {
+      "categories": [
+        "ARTIFACT_SCHEMA",
+        "OFFLINE_INDEPENDENCE",
+        "REPRODUCIBILITY",
+        "SECURITY_BOUNDARY",
+        "SNAPSHOT",
+        "UNIT"
+      ],
+      "criticality": "P0_CRITICAL",
+      "is_covered": true,
+      "module_count": 12,
+      "modules": [
+        "tests.unit.verification.test_artifacts",
+        "tests.unit.verification.test_cli",
+        "tests.unit.verification.test_coverage_and_database",
+        "tests.unit.verification.test_discovery_and_inventory",
+        "tests.unit.verification.test_filesystem_capability",
+        "tests.unit.verification.test_gate_status",
+        "tests.unit.verification.test_matrix",
+        "tests.unit.verification.test_offline",
+        "tests.unit.verification.test_reproducibility",
+        "tests.unit.verification.test_runner_and_results",
+        "tests.unit.verification.test_scrub",
+        "tests.unit.verification.test_wp19_boundaries"
+      ],
+      "note": "A verifier nobody verifies is a decoration. These tests hold down zero-test execution, unexplained skips, outcome conflation, stale evidence and scrubbing.",
+      "requirement_id": "VER-REQ-015",
+      "safety_invariants": [],
+      "selectors": [
+        "tests.unit.verification"
+      ],
+      "source": "architecture.md WP-19; this package",
+      "test_count": 277,
+      "test_id_sha256": "7e309703995315fb4760c2ad6d51360b73bd23a3eecd742ee3cd89f00252009c",
+      "title": "The verification system itself cannot report a false green",
+      "work_packages": [
+        "WP-19"
+      ]
+    },
+    {
+      "categories": [
+        "DOMAIN_INVARIANT",
+        "FAILURE_NEGATIVE"
+      ],
+      "criticality": "P0_CRITICAL",
+      "is_covered": true,
+      "module_count": 8,
+      "modules": [
+        "tests.failure.test_domain_layer_violations",
+        "tests.unit.domain.test_dependency_boundaries",
+        "tests.unit.domain.test_hashing",
+        "tests.unit.domain.test_identifiers",
+        "tests.unit.domain.test_immutability",
+        "tests.unit.domain.test_models",
+        "tests.unit.domain.test_ports",
+        "tests.unit.domain.test_typed_boundaries"
+      ],
+      "note": "Every layer above depends on these being true, so they are asserted here and re-asserted at each boundary that could leak.",
+      "requirement_id": "VER-REQ-016",
+      "safety_invariants": [
+        "SAFETY-INV-001",
+        "SAFETY-INV-004",
+        "SAFETY-INV-010"
+      ],
+      "selectors": [
+        "tests.unit.domain",
+        "tests.failure.test_domain_layer_violations"
+      ],
+      "source": "architecture.md section 3; docs/architecture/wp02-domain-and-db.md",
+      "test_count": 230,
+      "test_id_sha256": "e0e1ed6b19c9d165dd74e48ab3a1b690717feed5923b7202af5e052972f7786a",
+      "title": "The domain layer is standard-library only, immutable, and carries no ordering it must not have",
+      "work_packages": [
+        "WP-02"
+      ]
+    },
+    {
+      "categories": [
+        "ARTIFACT_SCHEMA",
+        "LEGACY_REGRESSION",
+        "SECURITY_BOUNDARY",
+        "UNIT"
+      ],
+      "criticality": "IMPORTANT",
+      "is_covered": true,
+      "module_count": 15,
+      "modules": [
+        "tests.unit.normalization.test_artifact_extraction",
+        "tests.unit.normalization.test_build_safety",
+        "tests.unit.normalization.test_canonical_build",
+        "tests.unit.normalization.test_canonical_models",
+        "tests.unit.normalization.test_data_quality",
+        "tests.unit.normalization.test_deduplication",
+        "tests.unit.normalization.test_identity_allocation",
+        "tests.unit.normalization.test_legacy_differences",
+        "tests.unit.normalization.test_normalization_boundaries",
+        "tests.unit.normalization.test_normalize_cli",
+        "tests.unit.normalization.test_normalize_rules",
+        "tests.unit.normalization.test_quality_transition",
+        "tests.unit.normalization.test_strict_resolver",
+        "tests.unit.normalization.test_wp07_documentation",
+        "tests.unit.test_wp07_schema"
+      ],
+      "note": "",
+      "requirement_id": "VER-REQ-017",
+      "safety_invariants": [],
+      "selectors": [
+        "tests.unit.normalization",
+        "tests.unit.test_wp07_schema"
+      ],
+      "source": "architecture.md section 7; docs/evidence/wp07-dq-validation.md",
+      "test_count": 402,
+      "test_id_sha256": "4dc5be0494f3c5fc6890a71bb3ccf8abf3d840845e0b5d17a0f1270aa6d6cb37",
+      "title": "Canonicalisation is deterministic and refuses ambiguous input",
+      "work_packages": [
+        "WP-07"
+      ]
+    },
+    {
+      "categories": [
+        "ARTIFACT_SCHEMA",
+        "REPRODUCIBILITY",
+        "UNIT"
+      ],
+      "criticality": "IMPORTANT",
+      "is_covered": true,
+      "module_count": 7,
+      "modules": [
+        "tests.unit.ingestion.test_acquisition",
+        "tests.unit.ingestion.test_clinpgx_catalog",
+        "tests.unit.ingestion.test_ingestion_cli",
+        "tests.unit.ingestion.test_replay_and_determinism",
+        "tests.unit.ingestion.test_request_key_and_cache",
+        "tests.unit.ingestion.test_transport_and_retry",
+        "tests.unit.test_manifest_amendment"
+      ],
+      "note": "",
+      "requirement_id": "VER-REQ-018",
+      "safety_invariants": [
+        "SAFETY-INV-010"
+      ],
+      "selectors": [
+        "tests.unit.ingestion",
+        "tests.unit.test_manifest_amendment"
+      ],
+      "source": "architecture.md sections 4-5; docs/architecture/wp04-ingestion.md",
+      "test_count": 241,
+      "test_id_sha256": "adf0ab00479ded99e2fc782b5933f139ff580f19b6c9bd7f6b3bc8bcfc00879e",
+      "title": "Acquisition is replayable and records where its data came from",
+      "work_packages": [
+        "WP-04"
+      ]
+    },
+    {
+      "categories": [
+        "ARTIFACT_SCHEMA",
+        "DOMAIN_INVARIANT",
+        "LEGACY_REGRESSION",
+        "UNIT"
+      ],
+      "criticality": "IMPORTANT",
+      "is_covered": true,
+      "module_count": 9,
+      "modules": [
+        "tests.unit.scientific.test_conflict_policy",
+        "tests.unit.scientific.test_fail_closed",
+        "tests.unit.scientific.test_legacy_inventory",
+        "tests.unit.scientific.test_publication_gate",
+        "tests.unit.scientific.test_registry_config",
+        "tests.unit.scientific.test_scientific_boundaries",
+        "tests.unit.scientific.test_source_policy_cli",
+        "tests.unit.scientific.test_vocabularies",
+        "tests.unit.test_schema_rendering"
+      ],
+      "note": "",
+      "requirement_id": "VER-REQ-019",
+      "safety_invariants": [],
+      "selectors": [
+        "tests.unit.scientific",
+        "tests.unit.test_schema_rendering"
+      ],
+      "source": "docs/evidence/wp05-validation.md; config/scientific-sources",
+      "test_count": 233,
+      "test_id_sha256": "66896b9f254161ded765a870401af88acc025f705534a5d25e45d2ae78da41a3",
+      "title": "Source policy decides what may be published, and fails closed",
+      "work_packages": [
+        "WP-05"
+      ]
+    },
+    {
+      "categories": [
+        "MIGRATION",
+        "POSTGRESQL_INTEGRATION",
+        "SECURITY_BOUNDARY",
+        "UNIT"
+      ],
+      "criticality": "P0_CRITICAL",
+      "is_covered": true,
+      "module_count": 11,
+      "modules": [
+        "tests.integration.db.test_constraints",
+        "tests.integration.db.test_migrations",
+        "tests.integration.db.test_release_registry",
+        "tests.integration.db.test_repositories",
+        "tests.integration.db.test_seed",
+        "tests.integration.db.test_unit_of_work",
+        "tests.integration.db.test_wp11_rules",
+        "tests.unit.infrastructure.test_assessment_persistence",
+        "tests.unit.infrastructure.test_configuration_policy",
+        "tests.unit.infrastructure.test_packaging_and_environment",
+        "tests.unit.infrastructure.test_seed_and_cleanup_safety"
+      ],
+      "note": "The database half runs only against a disposable PostgreSQL and is reported BLOCKED, with its exact skipped tests, where none was reachable.",
+      "requirement_id": "VER-REQ-020",
+      "safety_invariants": [
+        "SAFETY-INV-007"
+      ],
+      "selectors": [
+        "tests.unit.infrastructure",
+        "tests.integration.db"
+      ],
+      "source": "architecture.md section 6; docs/architecture/wp02-domain-and-db.md",
+      "test_count": 299,
+      "test_id_sha256": "7121289025123abe6867570028db44029937a734136b87ec5df2d046f3ae6456",
+      "title": "Persistence and configuration fail closed, and the seed can never touch a database it was not pointed at",
+      "work_packages": [
+        "WP-02"
+      ]
+    },
+    {
+      "categories": [
+        "ARTIFACT_SCHEMA",
+        "DOMAIN_INVARIANT",
+        "SECURITY_BOUNDARY"
+      ],
+      "criticality": "P0_CRITICAL",
+      "is_covered": true,
+      "module_count": 16,
+      "modules": [
+        "tests.unit.safety.test_artifacts",
+        "tests.unit.safety.test_boundaries",
+        "tests.unit.safety.test_gate",
+        "tests.unit.safety.test_invariant_001",
+        "tests.unit.safety.test_invariant_002",
+        "tests.unit.safety.test_invariant_003",
+        "tests.unit.safety.test_invariant_004",
+        "tests.unit.safety.test_invariant_005",
+        "tests.unit.safety.test_invariant_006",
+        "tests.unit.safety.test_invariant_007",
+        "tests.unit.safety.test_invariant_008",
+        "tests.unit.safety.test_invariant_009",
+        "tests.unit.safety.test_invariant_010",
+        "tests.unit.safety.test_invariant_011",
+        "tests.unit.safety.test_invariant_012",
+        "tests.unit.safety.test_registry"
+      ],
+      "note": "WP-19 maps tests to invariants. WP-20 enforces them, and this requirement covers the gate's own suite: a detector that accepted its mutant would pass every ordinary unit test and fail here.",
+      "requirement_id": "VER-REQ-021",
+      "safety_invariants": [
+        "SAFETY-INV-001",
+        "SAFETY-INV-002",
+        "SAFETY-INV-003",
+        "SAFETY-INV-004",
+        "SAFETY-INV-005",
+        "SAFETY-INV-006",
+        "SAFETY-INV-007",
+        "SAFETY-INV-008",
+        "SAFETY-INV-009",
+        "SAFETY-INV-010",
+        "SAFETY-INV-011",
+        "SAFETY-INV-012"
+      ],
+      "selectors": [
+        "tests.unit.safety"
+      ],
+      "source": "docs/risk-management/safety-contract.md section 2; docs/architecture/wp20-safety-invariants.md",
+      "test_count": 220,
+      "test_id_sha256": "b983a53c05e60aef237dbc28859822a29ce7dc255615bd25adfef5f05d816435",
+      "title": "Every named safety invariant is enforced, and its detector is proven by a negative control",
+      "work_packages": [
+        "WP-20"
+      ]
+    },
+    {
+      "categories": [
+        "ARTIFACT_SCHEMA",
+        "DOMAIN_INVARIANT",
+        "FAILURE_NEGATIVE",
+        "SECURITY_BOUNDARY",
+        "SNAPSHOT",
+        "UNIT"
+      ],
+      "criticality": "P0_CRITICAL",
+      "is_covered": true,
+      "module_count": 8,
+      "modules": [
+        "tests.unit.benchmark.test_benchmark_contract",
+        "tests.unit.benchmark.test_cli",
+        "tests.unit.benchmark.test_dashboard",
+        "tests.unit.benchmark.test_metric_computation",
+        "tests.unit.benchmark.test_metric_definitions",
+        "tests.unit.benchmark.test_metric_values",
+        "tests.unit.benchmark.test_report_and_feed",
+        "tests.unit.benchmark.test_wp21_boundaries"
+      ],
+      "note": "The failure this covers is not a wrong number - it is a number where there should be none. A zero denominator rendered as 0%, or a development case counted as validation evidence, would read as a result to anyone skimming the dashboard. Mapped to SAFETY-INV-009 because pooling roles is the same violation the invariant names, expressed as arithmetic rather than as a case set.",
+      "requirement_id": "VER-REQ-022",
+      "safety_invariants": [
+        "SAFETY-INV-009"
+      ],
+      "selectors": [
+        "tests.unit.benchmark"
+      ],
+      "source": "architecture.md section 12.3; docs/architecture/wp21-validation-metrics.md",
+      "test_count": 185,
+      "test_id_sha256": "c38c4bda89c7a8a5e353c3b34fe6bd0fcc0871b378d74cc13cdd5683c2e8729d",
+      "title": "Every validation metric has a predeclared denominator, and an unavailable metric is never reported as a zero",
+      "work_packages": [
+        "WP-21"
+      ]
+    },
+    {
+      "categories": [
+        "DOMAIN_INVARIANT",
+        "MIGRATION",
+        "SECURITY_BOUNDARY",
+        "SNAPSHOT",
+        "VALIDATION_PARTITION"
+      ],
+      "criticality": "P0_CRITICAL",
+      "is_covered": true,
+      "module_count": 8,
+      "modules": [
+        "tests.unit.expert_review.test_authorisation",
+        "tests.unit.expert_review.test_blinding",
+        "tests.unit.expert_review.test_immutability_and_audit",
+        "tests.unit.expert_review.test_metric_supply",
+        "tests.unit.expert_review.test_payload_access",
+        "tests.unit.expert_review.test_persistence",
+        "tests.unit.expert_review.test_state_machine",
+        "tests.unit.web.test_expert_review_flow"
+      ],
+      "note": "The failure this covers is silent. A reviewer who saw the system's answer first would still produce a complete, well-formed, hash-linked record - and the resulting agreement figure would measure nothing but the reviewer having read the output. So the tests assert structure rather than behaviour: the pre-reveal view has no field a result could occupy, the result port is not consulted before the reveal transition succeeds, and no store in the module has an update or a delete method to call. Mapped to SAFETY-INV-009 because an unblinded review entering a validation denominator is the same contamination the invariant names, expressed as procedure rather than as a case set.",
+      "requirement_id": "VER-REQ-023",
+      "safety_invariants": [
+        "SAFETY-INV-009"
+      ],
+      "selectors": [
+        "tests.unit.expert_review",
+        "tests.unit.web.test_expert_review_flow"
+      ],
+      "source": "docs/validation/expert-protocol.md sections 6-11; docs/architecture/wp22-expert-review.md",
+      "test_count": 177,
+      "test_id_sha256": "f1a224d982af186d2fcf5cf425a8ffe35f09a8ae637d0343bb7543ff8a8a2751",
+      "title": "An expert reviewer records an expectation before seeing any result, and no record is ever edited afterwards",
+      "work_packages": [
+        "WP-22"
+      ]
+    },
+    {
+      "categories": [
+        "ARTIFACT_SCHEMA",
+        "DOMAIN_INVARIANT",
+        "MIGRATION",
+        "SECURITY_BOUNDARY"
+      ],
+      "criticality": "P0_CRITICAL",
+      "is_covered": true,
+      "module_count": 9,
+      "modules": [
+        "tests.unit.audit.test_governed_audit",
+        "tests.unit.security.test_artifacts_and_gate",
+        "tests.unit.security.test_authentication_service",
+        "tests.unit.security.test_csrf_and_rate_limit",
+        "tests.unit.security.test_passwords",
+        "tests.unit.security.test_persistence",
+        "tests.unit.security.test_rbac",
+        "tests.unit.security.test_secret_scan_and_backup",
+        "tests.unit.security.test_users_and_sessions"
+      ],
+      "note": "Two failures, both silent. The first is an audit trail that records an actor nobody authenticated - which looks identical to one that records a person, and is the reason assurance is a governed value rather than a boolean. The second is a trail that can be edited, which answers no question at all: a modified row and a correct one are indistinguishable without a chain. So the tests assert structure rather than behaviour: only a validated session may carry SESSION assurance, the repository has no update or delete method to call, the chain detects all four tamper shapes, and a governed success whose audit append fails rolls back. Mapped to SAFETY-INV-007 and -012 because both name audit completeness as the half WP-23 owed them.",
+      "requirement_id": "VER-REQ-024",
+      "safety_invariants": [
+        "SAFETY-INV-007",
+        "SAFETY-INV-012"
+      ],
+      "selectors": [
+        "tests.unit.security",
+        "tests.unit.audit"
+      ],
+      "source": "architecture.md section 13; docs/architecture/wp23-auth-audit.md; docs/security/audit-policy.md",
+      "test_count": 258,
+      "test_id_sha256": "4cac90a6910ee19e20931f3fc6fce53c12163303aa8d8700e4dc49d18d71cf5c",
+      "title": "Every governed act names an authenticated actor, and the record of it cannot be edited",
+      "work_packages": [
+        "WP-23"
+      ]
+    },
+    {
+      "categories": [
+        "ARTIFACT_SCHEMA",
+        "DOMAIN_INVARIANT",
+        "SECURITY_BOUNDARY"
+      ],
+      "criticality": "P0_CRITICAL",
+      "is_covered": true,
+      "module_count": 5,
+      "modules": [
+        "tests.unit.deployment.test_cli_and_ci",
+        "tests.unit.deployment.test_composition",
+        "tests.unit.deployment.test_container_and_build",
+        "tests.unit.deployment.test_honest_reporting",
+        "tests.unit.deployment.test_schemas_and_persistence"
+      ],
+      "note": "Two failures, and the second is the one this repository is actually exposed to. The first is a runtime that shares a database session between requests or commits a governed change without the record of it - both invisible in a query and both asserted here through transaction shape rather than final state. The second is a report that reads as a success because a measurement nobody took came back as zero, or because a rehearsal on a laptop serialised under a name that means staging. Almost every WP-24 status in this repository is BLOCKED, so the tests that matter are the ones proving BLOCKED cannot be mistaken for anything else: null rather than zero, a rehearsal label that travels into the artifact, and a TEST_ONLY_REHEARSAL that cannot close a gate. Mapped to SAFETY-INV-007 and -012 because atomic audit and repeat-run determinism are the two the WP-20 registry names WP-24 as owing.",
+      "requirement_id": "VER-REQ-025",
+      "safety_invariants": [
+        "SAFETY-INV-007",
+        "SAFETY-INV-012"
+      ],
+      "selectors": [
+        "tests.unit.deployment"
+      ],
+      "source": "architecture.md section 14; docs/architecture/wp24-deployment-reliability.md; docs/evidence/wp24-build-provenance-report.md",
+      "test_count": 163,
+      "test_id_sha256": "2975576aa5014d4ec91e8f17a7f3ec9644e04008ba46e3ed7d5003ef04aec40b",
+      "title": "A deployment reports what it has, and every document says plainly what did not happen",
+      "work_packages": [
+        "WP-24"
+      ]
+    },
+    {
+      "categories": [
+        "ARTIFACT_SCHEMA",
+        "DOMAIN_INVARIANT",
+        "SECURITY_BOUNDARY"
+      ],
+      "criticality": "P0_CRITICAL",
+      "is_covered": true,
+      "module_count": 6,
+      "modules": [
+        "tests.unit.ths6.test_cli_and_schemas",
+        "tests.unit.ths6.test_demo_and_contingency",
+        "tests.unit.ths6.test_gates_and_dod",
+        "tests.unit.ths6.test_integrity_and_pack",
+        "tests.unit.ths6.test_registries",
+        "tests.unit.ths6.test_vocabulary_and_models"
+      ],
+      "note": "One failure, in four disguises, and it is the last one this project is exposed to. A passing test suite presented as scientific evidence; a gate recorded PASS beside its own unmet conditions; a sign-off row carrying a name nobody wrote; an intact evidence pack quoted as an achieved standard. Each is a document that reads as a success while every underlying condition is absent, which is the same shape as WP-24's false-zero and WP-13's missing-data-as-low-risk. So the tests assert structure rather than values: only REAL_EXECUTED and REAL_OBSERVED may support a claim, GateRecord refuses to hold PASS beside an unmet condition, the sign-off schema pins signatory to null, and pack integrity and THS 6 achievement are separate fields with separate exit codes. Mapped to SAFETY-INV-001 because presenting an absence as a result is the same error that invariant forbids when data is missing, and to SAFETY-INV-012 because every gate here is rebuilt from hashed source artifacts rather than asserted.",
+      "requirement_id": "VER-REQ-026",
+      "safety_invariants": [
+        "SAFETY-INV-001",
+        "SAFETY-INV-012"
+      ],
+      "selectors": [
+        "tests.unit.ths6"
+      ],
+      "source": "architecture.md sections 20 and 21; docs/ths6/final/README.md; docs/ths6/final/vocabulary.md",
+      "test_count": 325,
+      "test_id_sha256": "6a85f8d3273995273bc682b456dc6206c1fe5be8a0edec9fd97c6f226abfacb6",
+      "title": "The evidence pack reports what this programme has, and no output can be read as a standard it has not achieved",
+      "work_packages": [
+        "WP-25"
+      ]
+    }
+  ],
+  "safety_invariant_map": {
+    "SAFETY-INV-001": [
+      "tests.safety.test_coverage_safety",
+      "tests.safety.test_assessment_safety",
+      "tests.unit.engine.test_coverage_aggregation",
+      "tests.unit.engine.test_wp13_boundaries",
+      "tests.unit.reporting.test_safe_status_rendering",
+      "tests.unit.web.test_safety",
+      "tests.unit.safety.test_invariant_001"
+    ],
+    "SAFETY-INV-002": [
+      "tests.unit.reporting.test_fact_preservation",
+      "tests.unit.reporting.test_injection",
+      "tests.unit.safety.test_invariant_002"
+    ],
+    "SAFETY-INV-003": [
+      "tests.unit.rules.test_rule_lifecycle",
+      "tests.unit.rules.test_ruleset_lifecycle",
+      "tests.unit.rules.test_engine_registry",
+      "tests.integration.db.test_wp11_rules",
+      "tests.unit.safety.test_invariant_003"
+    ],
+    "SAFETY-INV-004": [
+      "tests.unit.engine.test_profile",
+      "tests.unit.engine.test_truth_matrix",
+      "tests.unit.rules.test_exact_semantics",
+      "tests.unit.safety.test_invariant_004"
+    ],
+    "SAFETY-INV-005": [
+      "tests.adversarial.test_report_claims",
+      "tests.safety.test_coverage_safety",
+      "tests.unit.test_claims",
+      "tests.unit.safety.test_invariant_005"
+    ],
+    "SAFETY-INV-006": [
+      "tests.unit.evidence.test_traceability",
+      "tests.unit.engine.test_risk_execution",
+      "tests.safety.test_assessment_safety",
+      "tests.unit.safety.test_invariant_006"
+    ],
+    "SAFETY-INV-007": [
+      "tests.unit.application.test_release_pinning",
+      "tests.unit.infrastructure.test_assessment_persistence",
+      "tests.integration.db.test_release_registry",
+      "tests.unit.safety.test_invariant_007"
+    ],
+    "SAFETY-INV-008": [
+      "tests.safety.test_coverage_safety",
+      "tests.unit.rules.test_conflicts",
+      "tests.unit.engine.test_coverage_axis",
+      "tests.unit.safety.test_invariant_008"
+    ],
+    "SAFETY-INV-009": [
+      "tests.unit.validation.test_separation",
+      "tests.failure.test_wp18_partition_violations",
+      "tests.unit.validation.test_cases",
+      "tests.unit.safety.test_invariant_009"
+    ],
+    "SAFETY-INV-010": [
+      "tests.unit.test_claims",
+      "tests.adversarial.test_report_claims",
+      "tests.unit.reporting.test_injection",
+      "tests.unit.reporting.test_safe_status_rendering",
+      "tests.unit.safety.test_invariant_010"
+    ],
+    "SAFETY-INV-011": [
+      "tests.unit.test_claims",
+      "tests.unit.api.test_security_boundary",
+      "tests.unit.validation.test_cases",
+      "tests.unit.safety.test_invariant_011"
+    ],
+    "SAFETY-INV-012": [
+      "tests.unit.application.test_assessment_determinism",
+      "tests.unit.reporting.test_determinism",
+      "tests.unit.domain.test_hashing",
+      "tests.unit.snapshots.test_content_identity",
+      "tests.unit.application.test_release_manifest",
+      "tests.unit.safety.test_invariant_012"
+    ]
+  },
+  "safety_map_disclaimer": "This is a map from existing tests to the WP-00 safety invariants, not an assertion that the invariants hold. WP-20 owns the invariant registry and the blocking job; WP-19 has neither and claims neither.",
+  "stale_safety_selectors": [],
+  "uncovered_requirements": [],
+  "unmapped_critical_modules": [],
+  "unmapped_safety_invariants": [],
+  "unmapped_supporting_modules": [
+    "tests.unit.engine.test_wp12_documentation",
+    "tests.unit.engine.test_wp13_documentation",
+    "tests.unit.engine.test_wp14_documentation"
+  ]
+}

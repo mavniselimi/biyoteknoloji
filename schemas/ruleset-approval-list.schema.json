@@ -1,0 +1,109 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pgx-platform.invalid/schemas/ruleset-approval-list.schema.json",
+  "title": "PGx ruleset approval list",
+  "description": "Copied into the frozen artifact so it carries its own evidence of governance rather than pointing at a table that can change afterwards. Each entry names the separated acts behind one member rule: who authored it, who reviewed it, who approved it, and who validated it, together with the revision and envelope hashes those acts were performed against. The schema requires all four names and refuses an entry that supplies one name for several roles, because separation of duties that a document cannot express is separation nobody can audit. A well-formed list is not proof that the people named are real or hold the credentials claimed; that is authentication work this file cannot do.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "approval_list_version",
+    "ruleset_id",
+    "public_id",
+    "entry_count",
+    "entries",
+    "note"
+  ],
+  "properties": {
+    "approval_list_version": {
+      "const": "pgx-ruleset-approval-list/1"
+    },
+    "ruleset_id": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+    },
+    "public_id": {
+      "type": "string",
+      "pattern": "^PGX-RULESET-[0-9]{8}-[0-9]{3}$"
+    },
+    "entry_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "entries": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "rule_id",
+          "family_id",
+          "rule_version",
+          "rule_content_hash",
+          "approval_envelope_hash",
+          "curation_revision_id",
+          "curation_revision_hash",
+          "created_by",
+          "reviewed_by",
+          "approved_by",
+          "validated_by",
+          "validated_at"
+        ],
+        "properties": {
+          "rule_id": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+          },
+          "family_id": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+          },
+          "rule_version": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "rule_content_hash": {
+            "type": "string",
+            "pattern": "^sha256:[0-9a-f]{64}$"
+          },
+          "approval_envelope_hash": {
+            "type": "string",
+            "pattern": "^sha256:[0-9a-f]{64}$"
+          },
+          "curation_revision_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "curation_revision_hash": {
+            "type": "string",
+            "pattern": "^sha256:[0-9a-f]{64}$"
+          },
+          "created_by": {
+            "type": "string",
+            "minLength": 1
+          },
+          "reviewed_by": {
+            "type": "string",
+            "minLength": 1
+          },
+          "approved_by": {
+            "type": "string",
+            "minLength": 1
+          },
+          "validated_by": {
+            "type": "string",
+            "minLength": 1
+          },
+          "validated_at": {
+            "type": "string",
+            "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$"
+          }
+        }
+      }
+    },
+    "note": {
+      "type": "string",
+      "minLength": 100
+    }
+  }
+}

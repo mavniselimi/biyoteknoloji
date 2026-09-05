@@ -1,0 +1,169 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pgx-platform.invalid/schemas/wp13-gate-status.schema.json",
+  "title": "PGx WP-13 real-data coverage gate status",
+  "description": "A machine-readable statement of why no real coverage can be computed and what would have to happen, by whom, before it could. Every blocker names a person or a human process as its owner, because none of them is clearable by writing more code: a coverage manifest declares what a complete assessment of a drug requires, and that is a scientific judgement. The blocker list must be non-empty and every real count is required, so this file cannot be edited into an all-clear by deletion. additionalProperties is false throughout, which is where the separation of coverage from attention is actually enforced: an attention level, an overall_attention, a risk level, a risk score, a severity, a dose, a recommendation, a preferred or safer flag, a suitability score or a treatment cannot be attached to any of these documents by anything downstream, because the schema refuses every property it does not name. WP-13 computes coverage; WP-14 computes attention; a document that could carry both would let one be read as the other.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "gate_status_version",
+    "assessment",
+    "upstream_state",
+    "coverage_state",
+    "blockers",
+    "next_required_human_actions",
+    "note",
+    "content_hash"
+  ],
+  "properties": {
+    "gate_status_version": {
+      "const": "pgx-wp13-gate-status/1"
+    },
+    "assessment": {
+      "type": "string",
+      "minLength": 1
+    },
+    "upstream_state": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "curation_protocol_status",
+        "curation_protocol_approved",
+        "canonical_dataset_state",
+        "canonical_dataset_published",
+        "evidence_build_labels",
+        "evidence_build_approved_for_coverage",
+        "frozen_rulesets",
+        "executable_rulesets_in_default_registry"
+      ],
+      "properties": {
+        "curation_protocol_status": {
+          "type": "string"
+        },
+        "curation_protocol_approved": {
+          "type": "boolean"
+        },
+        "canonical_dataset_state": {
+          "type": "string"
+        },
+        "canonical_dataset_published": {
+          "type": "boolean"
+        },
+        "evidence_build_labels": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "evidence_build_approved_for_coverage": {
+          "type": "boolean"
+        },
+        "frozen_rulesets": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "executable_rulesets_in_default_registry": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "coverage_state": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "real_coverage_manifests",
+        "real_declared_drugs",
+        "real_expected_gene_declarations",
+        "real_supported_axes",
+        "real_evaluable_axes",
+        "real_full_coverage_axes",
+        "real_coverage_executions"
+      ],
+      "properties": {
+        "real_coverage_manifests": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "real_declared_drugs": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "real_expected_gene_declarations": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "real_supported_axes": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "real_evaluable_axes": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "real_full_coverage_axes": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "real_coverage_executions": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "blockers": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "code",
+          "meaning",
+          "owner",
+          "unblocks",
+          "detail"
+        ],
+        "properties": {
+          "code": {
+            "type": "string",
+            "pattern": "^[A-Z][A-Z0-9_]*$"
+          },
+          "meaning": {
+            "type": "string",
+            "minLength": 20
+          },
+          "owner": {
+            "type": "string",
+            "minLength": 5
+          },
+          "unblocks": {
+            "type": "string",
+            "minLength": 20
+          },
+          "detail": {
+            "type": "string",
+            "minLength": 5
+          }
+        }
+      }
+    },
+    "next_required_human_actions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 30
+      }
+    },
+    "note": {
+      "type": "string",
+      "minLength": 100
+    },
+    "content_hash": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    }
+  }
+}

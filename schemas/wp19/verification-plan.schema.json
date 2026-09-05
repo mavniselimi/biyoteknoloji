@@ -1,0 +1,217 @@
+{
+  "$id": "https://pgx.local/schemas/wp19/verification-plan.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Every discovered test suite, with the category, owner, requirements and skip policy assigned to it. Built from unittest's own loader, so this document and the suite that runs are the same enumeration.",
+  "properties": {
+    "category_rule_count": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "discovered_test_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "inventoried_test_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "known_stdout_markers": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "load_failures": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "detail": {
+            "type": "string"
+          },
+          "module": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "module",
+          "detail"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "note": {
+      "type": "string"
+    },
+    "pattern": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "plan_schema_version": {
+      "const": "pgx-wp19-verification-plan/1"
+    },
+    "requirement_registry_version": {
+      "type": "string"
+    },
+    "start_directory": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "stdout_note": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "suite_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "suites": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "assigned_by": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "category": {
+            "enum": [
+              "UNIT",
+              "DOMAIN_INVARIANT",
+              "FAILURE_NEGATIVE",
+              "INTEGRATION",
+              "POSTGRESQL_INTEGRATION",
+              "MIGRATION",
+              "API_CONTRACT",
+              "ASGI_RUNTIME",
+              "BROWSER_E2E",
+              "SNAPSHOT",
+              "ARTIFACT_SCHEMA",
+              "REPRODUCIBILITY",
+              "LEGACY_REGRESSION",
+              "VALIDATION_PARTITION",
+              "SECURITY_BOUNDARY",
+              "OFFLINE_INDEPENDENCE"
+            ]
+          },
+          "command": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "criticality": {
+            "enum": [
+              "P0_CRITICAL",
+              "IMPORTANT",
+              "SUPPORTING"
+            ]
+          },
+          "dependencies": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "evidence": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "module": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "offline": {
+            "type": "boolean"
+          },
+          "permitted_skip_reasons": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "requirements": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "safety_invariants": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "skip_policy": {
+            "enum": [
+              "NEVER",
+              "ENVIRONMENT_DEPENDENCY",
+              "CAPABILITY",
+              "INVERTED"
+            ]
+          },
+          "suite_id": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "synthetic_fixtures": {
+            "type": "boolean"
+          },
+          "test_count": {
+            "minimum": 1,
+            "type": "integer"
+          },
+          "test_id_sha256": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "work_package": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "suite_id",
+          "module",
+          "category",
+          "work_package",
+          "criticality",
+          "requirements",
+          "safety_invariants",
+          "command",
+          "dependencies",
+          "offline",
+          "synthetic_fixtures",
+          "skip_policy",
+          "permitted_skip_reasons",
+          "evidence",
+          "test_count",
+          "test_id_sha256",
+          "assigned_by"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "unmapped_modules": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "plan_schema_version",
+    "start_directory",
+    "pattern",
+    "discovered_test_count",
+    "inventoried_test_count",
+    "suite_count",
+    "suites",
+    "unmapped_modules",
+    "load_failures",
+    "stdout_note"
+  ],
+  "title": "WP-19 verification plan (test inventory)",
+  "type": "object"
+}

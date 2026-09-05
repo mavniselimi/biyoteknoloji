@@ -1,0 +1,68 @@
+{
+  "P1_normal": {
+    "profile_name": "Normal metabolizma profili",
+    "phenotypes": {
+      "CYP2C19": "normal",
+      "CYP2D6": "normal",
+      "CYP2C9": "normal",
+      "CYP3A4": "normal",
+      "CYP1A2": "normal"
+    },
+    "demo_use": "Kontrol senaryosu; risk motorunun normal profilde daha az uyarı üretmesini göstermek için."
+  },
+  "P2_cyp2c19_poor": {
+    "profile_name": "CYP2C19 poor metabolizer profili",
+    "phenotypes": {
+      "CYP2C19": "poor",
+      "CYP2D6": "normal",
+      "CYP2C9": "normal",
+      "CYP3A4": "normal",
+      "CYP1A2": "normal"
+    },
+    "demo_use": "Clopidogrel veya voriconazole gibi CYP2C19 ilişkili ilaçlarda farmakogenetik uyarı göstermek için."
+  },
+  "P3_cyp2d6_poor": {
+    "profile_name": "CYP2D6 poor metabolizer profili",
+    "phenotypes": {
+      "CYP2C19": "normal",
+      "CYP2D6": "poor",
+      "CYP2C9": "normal",
+      "CYP3A4": "normal",
+      "CYP1A2": "normal"
+    },
+    "demo_use": "Codeine, tamoxifen veya amitriptyline gibi CYP2D6 ilişkili ilaçlarda dikkat bayrağı göstermek için."
+  },
+  "P4_cyp2d6_ultrarapid": {
+    "profile_name": "CYP2D6 ultrarapid metabolizer profili",
+    "phenotypes": {
+      "CYP2C19": "normal",
+      "CYP2D6": "ultrarapid",
+      "CYP2C9": "normal",
+      "CYP3A4": "normal",
+      "CYP1A2": "normal"
+    },
+    "demo_use": "Prodrug aktivasyonu ve olası yüksek aktivite senaryosunu göstermek için."
+  },
+  "P5_cyp2c9_decreased": {
+    "profile_name": "CYP2C9 decreased/intermediate fonksiyon profili",
+    "phenotypes": {
+      "CYP2C19": "normal",
+      "CYP2D6": "normal",
+      "CYP2C9": "intermediate",
+      "CYP3A4": "normal",
+      "CYP1A2": "normal"
+    },
+    "demo_use": "Warfarin gibi CYP2C9 ilişkili ilaçlarda maruziyet/duyarlılık dikkat bayrağı göstermek için."
+  },
+  "P6_mixed_high_attention": {
+    "profile_name": "Karışık yüksek dikkat profili",
+    "phenotypes": {
+      "CYP2C19": "poor",
+      "CYP2D6": "poor",
+      "CYP2C9": "intermediate",
+      "CYP3A4": "normal",
+      "CYP1A2": "normal"
+    },
+    "demo_use": "Birden fazla gen–ilaç uyarısının aynı raporda nasıl göründüğünü göstermek için."
+  }
+}

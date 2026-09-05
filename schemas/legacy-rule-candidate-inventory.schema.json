@@ -1,0 +1,279 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pgx-platform.invalid/schemas/legacy-rule-candidate-inventory.schema.json",
+  "title": "PGx legacy rule candidate inventory",
+  "description": "An inventory of legacy rule-like rows and what would have to be true before any of them could become a computable rule. It promotes nothing. The schema enforces that: every candidate must carry eligible_for_rule_creation, and a candidate claiming eligibility must name no blockers. Legacy clinical text is kept only under raw_-prefixed fields, so no reader and no downstream consumer can mistake a legacy severity string for a validated attention level; there is deliberately no field into which such a value could be copied as an outcome.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "inventory_version",
+    "upstream_state",
+    "counts",
+    "blocker_code_meanings",
+    "candidates",
+    "promotion_policy",
+    "note",
+    "content_hash"
+  ],
+  "properties": {
+    "inventory_version": {
+      "const": "pgx-legacy-rule-candidate-inventory/1"
+    },
+    "upstream_state": {
+      "type": "object",
+      "minProperties": 1
+    },
+    "counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "candidates",
+        "linked",
+        "unlinked",
+        "eligible_for_rule_creation",
+        "rules_created",
+        "validated_rules",
+        "frozen_rulesets",
+        "by_curation_status",
+        "by_blocker_code"
+      ],
+      "properties": {
+        "candidates": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "linked": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "unlinked": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "eligible_for_rule_creation": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "rules_created": {
+          "description": "This inventory creates no rule. A non-zero value here would mean the file had done something it is defined not to do.",
+          "const": 0
+        },
+        "validated_rules": {
+          "const": 0
+        },
+        "frozen_rulesets": {
+          "const": 0
+        },
+        "by_curation_status": {
+          "type": "object",
+          "minProperties": 1
+        },
+        "by_blocker_code": {
+          "type": "object",
+          "minProperties": 1
+        }
+      }
+    },
+    "blocker_code_meanings": {
+      "type": "object",
+      "minProperties": 1,
+      "propertyNames": {
+        "pattern": "^[A-Z][A-Z0-9_]*$"
+      }
+    },
+    "candidates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "candidate_id",
+          "work_item_id",
+          "legacy_proposal_id",
+          "source_file",
+          "source_rows",
+          "gene_canonical_key",
+          "drug_canonical_key",
+          "curation_status",
+          "linked",
+          "has_approved_revision",
+          "has_approval_envelope",
+          "evidence_record_uuids",
+          "raw_phenotype_text",
+          "raw_effect_text",
+          "raw_severity_text",
+          "raw_significance_text",
+          "blocker_codes",
+          "eligible_for_rule_creation"
+        ],
+        "properties": {
+          "candidate_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "work_item_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "legacy_proposal_id": {
+            "anyOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "string",
+                "minLength": 1
+              }
+            ]
+          },
+          "source_file": {
+            "anyOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "string",
+                "minLength": 1
+              }
+            ]
+          },
+          "source_rows": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          "gene_canonical_key": {
+            "anyOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "string",
+                "minLength": 1
+              }
+            ]
+          },
+          "drug_canonical_key": {
+            "anyOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "string",
+                "minLength": 1
+              }
+            ]
+          },
+          "curation_status": {
+            "type": "string",
+            "minLength": 1
+          },
+          "linked": {
+            "type": "boolean"
+          },
+          "has_approved_revision": {
+            "type": "boolean"
+          },
+          "has_approval_envelope": {
+            "type": "boolean"
+          },
+          "evidence_record_uuids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "raw_phenotype_text": {
+            "description": "Legacy free text, kept verbatim and namespaced raw_ so it is never mistaken for a canonical Phenotype. Nothing reads it to decide anything.",
+            "anyOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "string"
+              }
+            ]
+          },
+          "raw_effect_text": {
+            "anyOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "string"
+              }
+            ]
+          },
+          "raw_severity_text": {
+            "description": "A legacy severity string. It is not an attention level and there is no field in this document that would let it become one.",
+            "anyOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "string"
+              }
+            ]
+          },
+          "raw_significance_text": {
+            "anyOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "string"
+              }
+            ]
+          },
+          "blocker_codes": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "pattern": "^[A-Z][A-Z0-9_]*$"
+            }
+          },
+          "eligible_for_rule_creation": {
+            "type": "boolean"
+          }
+        },
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "eligible_for_rule_creation": {
+                  "const": true
+                }
+              },
+              "required": [
+                "eligible_for_rule_creation"
+              ]
+            },
+            "then": {
+              "properties": {
+                "blocker_codes": {
+                  "maxItems": 0
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "promotion_policy": {
+      "type": "string",
+      "minLength": 100
+    },
+    "note": {
+      "type": "string",
+      "minLength": 50
+    },
+    "content_hash": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    }
+  }
+}

@@ -1,0 +1,151 @@
+<!-- Rendered template output from the WP-17 development fixtures.
+     Not a screenshot and not a browser capture.
+     Public gene symbols may appear; cases, profiles and assessments
+     are synthetic development fixtures. No real patient data, no real
+     person and no validation evidence is shown.
+     Regenerate: python -m tests.fixtures.wp17.snapshots -->
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Kanıt kaydı - PGx Platform V2</title>
+<link rel="stylesheet" href="/static/css/app.css?v=1">
+</head>
+<body data-route="web.evidence">
+<a class="skip-link" href="#main">İçeriğe geç</a>
+
+<header class="site-header">
+  <p class="site-title">PGx Platform V2</p>
+  <p class="site-subtitle">Araştırma/prototip gösterim arayüzü</p>
+  <dl class="environment">
+    <dt>Ortam</dt>
+    <dd>TEST</dd>
+  </dl>
+</header>
+
+<nav class="site-nav" aria-label="Ana gezinme">
+  <ul>
+    <li>
+      <a href="/">Başlangıç</a>
+    </li>
+    <li>
+      <a href="/cases">Geliştirme vakaları</a>
+    </li>
+    <li>
+      <a href="/validation">Doğrulama panosu</a>
+    </li>
+    <li>
+      <a href="/system">Sistem bilgisi</a>
+    </li>
+    <li>
+      <a href="/login">Oturum</a>
+    </li>
+  </ul>
+</nav>
+
+<main id="main" class="site-main">
+  <h1>Kanıt kaydı</h1>
+
+<aside class="clinical-warning" role="note" aria-labelledby="clinical-warning-heading">
+  <h2 id="clinical-warning-heading">Araştırma/prototip kullanım uyarısı</h2>
+  <p>Bu çıktı klinik karar, tanı, doz önerisi veya tedavi önerisi değildir. PGx Platform V2, araştırma/prototip amaçlı bir karar destek göstericisidir; sentetik veya protokolle tanımlanmış fenotip profillerini sürümlenmiş ve uzman yönetimli bir farmakogenetik kural kümesiyle karşılaştırarak izlenebilir dikkat bulguları ve bunlardan ayrı bir kapsam değerlendirmesi üretir. Eksik veri düşük risk anlamına gelmez. Doz, ilaç değişimi ve tedavi kararı yalnızca yetkili hekim tarafından; klinik tablo, endikasyon, laboratuvar sonuçları ve güncel kılavuzlar dikkate alınarak verilir.</p>
+</aside>
+
+
+<div class="notice notice-scope" role="note">
+  <p>Kaynak metinleri burada gösterilmez. Bu sayfa kimlik, köken ve özet değerlerini gösterir; kaynak ifadelerini yeniden yazmaz ve özetlemez.</p>
+  <p>Kanıt kaydına değişmez kimliğiyle ulaşılır. Etkin sürüm değişse bile bir değerlendirmenin atıf yaptığı kayıt aynı kalır.</p>
+</div>
+
+<h2>Kayıt kimliği</h2>
+<dl class="fact-list">
+  <div><dt>Kanıt referansları</dt><dd><code>aaaaaaaa-0000-4000-8000-000000000001</code></dd></div>
+  <div><dt>Tür</dt><dd><code>GUIDELINE_ANNOTATION</code></dd></div>
+  <div><dt>Konu</dt><dd><code>TEST-SOURCE/record/1</code></dd></div>
+</dl>
+
+<h2>Kaynak kimliği</h2>
+<dl class="fact-list">
+  <div><dt>Kaynak politikası</dt><dd><code>TEST-PROVIDER</code></dd></div>
+  <div><dt>Referanslar</dt><dd><code>TEST-ORIGIN</code></dd></div>
+  <div><dt>Açıklama</dt><dd><code>APPROVED</code></dd></div>
+  <div><dt>Değer</dt><dd><code>2099.01</code> <code class="status-code">PUBLISHED</code></dd></div>
+</dl>
+
+<h2>Köken zinciri</h2>
+<dl class="fact-list">
+  <div><dt>Girdi özeti</dt><dd><code>sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb</code></dd></div>
+  <div><dt>Çıktı özeti</dt><dd><code>sha256:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc</code></dd></div>
+  <div><dt>Kanıt yapısı</dt><dd><code>TEST-EVIDENCE-BUILD/synthetic</code></dd></div>
+  <div><dt>Kodlar</dt><dd><code>sha256:2222222222222222222222222222222222222222222222222222222222222222</code></dd></div>
+  <div><dt>Kaynak metin parçası sayısı</dt><dd class="numeric">1</dd></div>
+</dl>
+
+<h2>Kayıt türü eşlemesi</h2>
+<table class="data-table">
+  <caption>Kayıt türü eşlemesi</caption>
+  <thead><tr><th scope="col">Alan</th><th scope="col">Değer</th></tr></thead>
+  <tbody>
+    <tr><th scope="row"><code>record_type</code></th><td><code>GUIDELINE_ANNOTATION</code></td></tr>
+    <tr><th scope="row"><code>status</code></th><td><code>CONFIRMED</code></td></tr>
+    <tr><th scope="row"><code>map_version</code></th><td><code>pgx-evidence-record-types/1</code></td></tr>
+    <tr><th scope="row"><code>production_eligible</code></th><td><code>True</code></td></tr>
+  </tbody>
+</table>
+
+<h2>Kanonik varlık bağlantıları</h2>
+<table class="data-table">
+  <caption>Bu kaydın bağlandığı kanonik gen ve ilaçlar</caption>
+  <thead><tr><th scope="col">Tür</th><th scope="col">Kodlar</th><th scope="col">Değer</th></tr></thead>
+  <tbody>
+    <tr><th scope="row">Gen</th><td><code>GENE:TESTGENE1</code></td><td>TestGene1</td></tr>
+    <tr><th scope="row">İlaç</th><td><code>DRUG:testdrug-alpha</code></td><td>TestDrug Alpha</td></tr>
+  </tbody>
+</table>
+
+<h2>Yayın tanımlayıcıları</h2>
+<table class="data-table">
+  <caption>Kaynağın belirttiği yayın tanımlayıcıları</caption>
+  <thead><tr><th scope="col">Tür</th><th scope="col">Kodlar</th></tr></thead>
+  <tbody>
+    <tr><th scope="row"><code>PMID</code></th><td><code>99999999</code></td></tr>
+  </tbody>
+</table>
+
+<h2>Konum kayıtları</h2>
+<table class="data-table">
+  <caption>Kaydın ham anlık görüntü içindeki değişmez konumu</caption>
+  <thead>
+    <tr>
+      <th scope="col">Referanslar</th>
+      <th scope="col">Konu</th>
+      <th scope="col">Kodlar</th>
+      <th scope="col">Alan</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row" class="value-cell"><code>sha256:5555555555555555555555555555555555555555555555555555555555555555</code></th>
+      <td><code>TEST-ART-1</code></td>
+      <td class="value-cell"><code>sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd</code></td>
+      <td><code>/items/0</code></td>
+    </tr>
+  </tbody>
+</table>
+</main>
+
+<footer class="site-footer">
+  <p>Bu arayüz sentetik ve geliştirme amaçlı girdiler üzerinde çalışır. Gerçek hasta verisi kabul etmez.</p>
+  <dl class="request-id">
+    <dt>İstek kimliği</dt>
+    <dd><code>11111111-1111-4111-8111-111111111111</code></dd>
+  </dl>
+  <p class="muted">Destek ve denetim için kullanılır. Değerlendirme verisinin parçası değildir ve hiçbir özete karışmaz.</p>
+  <p class="muted">PGx Platform V2 1.0.0</p>
+</footer>
+
+<script src="/static/js/app.js?v=1" defer></script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+{
+  "failure_semantics": "A backend that cannot answer denies. Login and governed mutations fail closed rather than running unmetered, and the refusal carries RATE_LIMIT_UNAVAILABLE so an operator can tell a broken limiter from a busy client.",
+  "key_semantics": "Every key is sha256('pgx-wp23-rate-limit|' + identity). No username, actor identifier or network address is stored, so a leaked rate-limit table names nobody.",
+  "no_performance_claim": "This document declares limits. It reports no throughput, latency or load result: WP-24 owns those.",
+  "policies": [
+    {
+      "limit": 5,
+      "policy_id": "LOGIN_PER_USERNAME",
+      "rationale": "Slows online password guessing against one account. Runs before the user is looked up, so an unknown username is limited exactly like a known one and the limiter cannot be used to enumerate accounts.",
+      "retry_after_seconds": 60,
+      "scope": "username_digest",
+      "title": "Login attempts per username",
+      "window_seconds": 300
+    },
+    {
+      "limit": 20,
+      "policy_id": "LOGIN_PER_ORIGIN",
+      "rationale": "Slows guessing spread across many usernames from one source, which the per-username limit alone does not see.",
+      "retry_after_seconds": 60,
+      "scope": "origin_digest",
+      "title": "Login attempts per origin",
+      "window_seconds": 300
+    },
+    {
+      "limit": 60,
+      "policy_id": "ASSESSMENT_PER_ACTOR",
+      "rationale": "An assessment pins a release and writes a persisted row. Bounded per actor so one authenticated client cannot fill the assessment table.",
+      "retry_after_seconds": 30,
+      "scope": "actor_digest",
+      "title": "Assessments per actor",
+      "window_seconds": 300
+    },
+    {
+      "limit": 30,
+      "policy_id": "EXPERT_REVIEW_MUTATION_PER_ACTOR",
+      "rationale": "Every review mutation appends immutable records that cannot be removed. A loop here is a permanent one.",
+      "retry_after_seconds": 30,
+      "scope": "actor_digest",
+      "title": "Expert-review mutations per actor",
+      "window_seconds": 300
+    },
+    {
+      "limit": 30,
+      "policy_id": "ADMIN_MUTATION_PER_ACTOR",
+      "rationale": "Release activation, user administration and rule governance each move governed state and append audit rows.",
+      "retry_after_seconds": 30,
+      "scope": "actor_digest",
+      "title": "Administrative mutations per actor",
+      "window_seconds": 300
+    }
+  ],
+  "policy_count": 5,
+  "proxy_header_policy": "X-Forwarded-For is not trusted and is not read. Until a trusted-proxy policy is explicitly configured, the origin key is whatever the server itself observed; a spoofable header used as a limit key is a limit an attacker sets.",
+  "rate_limit_policy_version": "pgx-wp23-rate-limit-policy/1",
+  "window_semantics": "Fixed windows aligned to the epoch: a window starts at floor(now / window_seconds) * window_seconds. The count is incremented before the decision, so the attempt that exceeds the limit is itself counted."
+}

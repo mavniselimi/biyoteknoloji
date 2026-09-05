@@ -1,0 +1,189 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pgx-platform.invalid/schemas/phenotype-profile.schema.json",
+  "title": "PGx canonical phenotype profile",
+  "description": "A normalised gene-to-phenotype profile as WP-12 produces it. Every gene supplied appears exactly once, including the genes whose values could not be interpreted: a profile that dropped those would look complete when it is not. The schema refuses everything a downstream reader might mistake for a conclusion - there is no attention level here, no coverage status, no dose, no recommendation, no risk score and no safety statement, and additionalProperties is false so none can be added by a well-meaning producer. Display names and demo prose live under metadata, which is excluded from the content hash because a profile's identity is what was observed, not what somebody called it.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "profile_schema_version",
+    "input_contract_version",
+    "profile_id",
+    "observation_count",
+    "observations",
+    "metadata",
+    "content_hash"
+  ],
+  "properties": {
+    "profile_schema_version": {
+      "const": "pgx-phenotype-profile/1"
+    },
+    "input_contract_version": {
+      "description": "Which normalisation contract produced these verdicts. Stored rather than assumed, so a profile read years from now is interpreted under the rules that made it.",
+      "const": "pgx-phenotype-input/1"
+    },
+    "profile_id": {
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "string",
+          "minLength": 1
+        }
+      ]
+    },
+    "observation_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "observations": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/observation"
+      }
+    },
+    "metadata": {
+      "description": "Display names, demo descriptions and anything else that names the profile without describing what was observed. Nothing that matches reads it, and it is outside the content hash.",
+      "type": "object"
+    },
+    "content_hash": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    }
+  },
+  "$defs": {
+    "observation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "result_schema_version",
+        "input_contract_version",
+        "gene_id",
+        "status",
+        "phenotype",
+        "reason_code",
+        "reason",
+        "raw_value"
+      ],
+      "properties": {
+        "result_schema_version": {
+          "const": "pgx-phenotype-normalization-result/1"
+        },
+        "input_contract_version": {
+          "const": "pgx-phenotype-input/1"
+        },
+        "gene_id": {
+          "type": "string",
+          "pattern": "^GENE:[A-Z0-9][A-Z0-9\\-.@_]*$"
+        },
+        "status": {
+          "description": "Four outcomes, not two. MISSING, INDETERMINATE and UNSUPPORTED are separate because they have different consequences downstream: nobody supplied a value, somebody recorded that none could be determined, and somebody supplied something that is not a phenotype.",
+          "enum": [
+            "NORMALIZED",
+            "MISSING",
+            "INDETERMINATE",
+            "UNSUPPORTED"
+          ]
+        },
+        "phenotype": {
+          "description": "Present only when status is NORMALIZED, and never INDETERMINATE - that is a status, not a value a rule can be compared against.",
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "enum": [
+                "POOR",
+                "INTERMEDIATE",
+                "NORMAL",
+                "RAPID",
+                "ULTRARAPID"
+              ]
+            }
+          ]
+        },
+        "reason_code": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "enum": [
+                "PHENOTYPE_INPUT_MISSING",
+                "PHENOTYPE_INPUT_INDETERMINATE",
+                "PHENOTYPE_INPUT_UNSUPPORTED",
+                "PHENOTYPE_INPUT_INVALID_TYPE",
+                "PHENOTYPE_INPUT_GENOTYPE_NOT_ALLOWED",
+                "PHENOTYPE_INPUT_BROAD_GROUP_NOT_ALLOWED"
+              ]
+            }
+          ]
+        },
+        "reason": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string",
+              "minLength": 10
+            }
+          ]
+        },
+        "raw_value": {
+          "description": "What was supplied, kept for a report to show beside the verdict. Excluded from the hash: two profiles supplying \"POOR\" and \" poor \" observed the same thing.",
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string"
+            }
+          ]
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "NORMALIZED"
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "phenotype": {
+                "enum": [
+                  "POOR",
+                  "INTERMEDIATE",
+                  "NORMAL",
+                  "RAPID",
+                  "ULTRARAPID"
+                ]
+              },
+              "reason_code": {
+                "type": "null"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "phenotype": {
+                "type": "null"
+              },
+              "reason_code": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

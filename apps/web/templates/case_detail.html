@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% block content %}
+<p class="lede">{{ model.label }}</p>
+<p>{{ model.demonstrates }}</p>
+
+<dl class="fact-list">
+  <div><dt>{{ text['cases.case_id'] }}</dt><dd><code>{{ model.case_id }}</code></dd></div>
+  <div><dt>{{ text['cases.case_role'] }}</dt><dd><code class="role-tag">{{ model.case_role }}</code></dd></div>
+  <div><dt>{{ text['cases.legacy_key'] }}</dt><dd>{% if model.legacy_profile_key %}<code>{{ model.legacy_profile_key }}</code>{% else %}<span class="absent">&#8212;</span>{% endif %}</dd></div>
+  {% if model.source_file %}
+  <div><dt>{{ field['kind'] }}</dt><dd><code>{{ model.source_file }}</code></dd></div>
+  <div><dt>{{ field['input_hash'] }}</dt><dd><code>{{ model.source_file_sha256 }}</code></dd></div>
+  {% endif %}
+</dl>
+
+<p class="muted">{{ model.migration_note }}</p>
+<p class="muted">{{ model.no_pii_assertion }}</p>
+
+<h2>{{ text['case.phenotypes'] }}</h2>
+<table class="data-table">
+  <caption>{{ text['case.phenotypes_caption'] }}</caption>
+  <thead>
+    <tr><th scope="col">{{ field['gene'] }}</th><th scope="col">{{ field['phenotype'] }}</th></tr>
+  </thead>
+  <tbody>
+    {% for gene, value in model.observations %}
+    <tr><th scope="row"><code>{{ gene }}</code></th><td><code>{{ value }}</code></td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<h2>{{ text['case.medications'] }}</h2>
+<p>{{ model.medications_note }}</p>
+
+{% if not model.medications_available or not model.medications %}
+<p class="empty-state">{{ model.medications_unavailable_note }}</p>
+{% endif %}
+
+<form class="assess-form" method="post" action="{{ model.submit_url }}">
+  {% if model.csrf_token %}
+  <input type="hidden" name="csrf_token" value="{{ model.csrf_token }}">
+  {% endif %}
+  {% if model.medications_available and model.medications %}
+  <fieldset>
+    <legend>{{ text['case.medications_legend'] }}</legend>
+    {% for choice in model.medications %}
+    <div class="choice">
+      <input type="checkbox" id="drug-{{ loop.index }}" name="medications" value="{{ choice.canonical_key }}"{% if not model.submit_available %} disabled{% endif %}>
+      <label for="drug-{{ loop.index }}">
+        <span class="choice-name">{{ choice.display_name }}</span>
+        <code class="choice-key">{{ choice.canonical_key }}</code>
+      </label>
+    </div>
+    {% endfor %}
+  </fieldset>
+  {% endif %}
+
+  <h2>{{ text['case.submission_preview'] }}</h2>
+  <p>{{ model.submission_note }}</p>
+  <table class="data-table">
+    <caption>{{ text['case.submission_preview'] }}</caption>
+    <thead>
+      <tr><th scope="col">{{ field['field'] }}</th><th scope="col">{{ field['value'] }}</th></tr>
+    </thead>
+    <tbody>
+      {% for name, value in model.submission_fields %}
+      <tr><th scope="row"><code>{{ name }}</code></th><td>{{ value }}</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <p class="muted">{{ model.no_free_text_note }}</p>
+
+  {% if model.submit_available %}
+  <button type="submit" class="primary">{{ text['case.submit'] }}</button>
+  {% else %}
+  <div class="notice notice-unavailable" role="status">
+    <p><strong>{{ text['status.unavailable'] }}.</strong> {{ model.submit_unavailable_note }}</p>
+  </div>
+  <button type="submit" class="primary" disabled aria-describedby="submit-unavailable">{{ text['case.submit'] }}</button>
+  <p id="submit-unavailable" class="muted">{{ model.submit_unavailable_note }}</p>
+  {% endif %}
+</form>
+{% endblock %}

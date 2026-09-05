@@ -1,0 +1,2009 @@
+{
+  "CYP1A2::nortriptyline": {
+    "gene": {
+      "gene": "CYP1A2",
+      "gene_id": "PA27093",
+      "name": "cytochrome P450 family 1 subfamily A member 2",
+      "cpicGene": "False",
+      "pharmVarGene": "True",
+      "alleleFile": "",
+      "alleleFunctionSource": "",
+      "alleleType": "Named Alleles",
+      "vipTier": "Tier 2",
+      "mvp_priority": "low",
+      "mvp_role": "supporting",
+      "notes": "CYP1A2 is an inducible member of the cytochrome P450 (CYP) drug metabolizing gene family, important for metabolism of caffeine and antipsychotics."
+    },
+    "drug": {
+      "objCls": "Chemical",
+      "id": "PA450657",
+      "name": "nortriptyline",
+      "inChi": "InChI=1S/C19H21N/c1-20-14-6-11-19-17-9-4-2-7-15(17)12-13-16-8-3-5-10-18(16)19/h2-5,7-11,20H,6,12-14H2,1H3",
+      "pediatric": false,
+      "smiles": "CNCCC=C1C2=CC=CC=C2CCC3=CC=CC=C31",
+      "types": [
+        "Drug"
+      ]
+    },
+    "guidelineAnnotation": [],
+    "pair": {},
+    "errors": [
+      {
+        "guidelineAnnotation": "api_error: HTTP Error 404: Not Found"
+      },
+      {
+        "guidelineAnnotation": "api_error: HTTP Error 404: Not Found"
+      },
+      {
+        "GuidelineAnnotation": "api_error: HTTP Error 404: Not Found"
+      },
+      {
+        "variantAnnotation": "api_error: HTTP Error 404: Not Found"
+      },
+      {
+        "VariantAnnotation": "api_error: HTTP Error 404: Not Found"
+      },
+      {
+        "label": "api_error: HTTP Error 404: Not Found"
+      },
+      {
+        "DrugLabel": "api_error: HTTP Error 404: Not Found"
+      }
+    ]
+  },
+  "CYP2C19::nortriptyline": {
+    "gene": {
+      "gene": "CYP2C19",
+      "gene_id": "PA124",
+      "name": "cytochrome P450 family 2 subfamily C member 19",
+      "cpicGene": "True",
+      "pharmVarGene": "True",
+      "alleleFile": "CYP2C19_allele_definition_table.xlsx",
+      "alleleFunctionSource": "CPIC",
+      "alleleType": "Named Alleles",
+      "vipTier": "Tier 1",
+      "mvp_priority": "high",
+      "mvp_role": "core",
+      "notes": "CYP2C19 is one of the key pharmacogenes involved in implementation of pharmacogenomics. It is involved in guidelines for antidepressants, clopidogrel and voriconazole ( go to list of all guidelines with CYP2C19 ). the nomenclature has been set by PharmVar , note that the reference sequence for CYP2C19 on hg38 is equivalent to CYP2C19*38 not CYP2C19*1 . the AMP tier 1 alleles are CYP2C19*2 , CYP2C19*3 and CYP2C19*17 see all alleles on the AMP recommended to test list key variant pages are rs4244285 (part of *2), rs4986893 (part of *3) and rs12248560 (part of *17) See the Gene-specific Information Tables for Allele Definitions (for which variants comprise which star alleles), Allele function a..."
+    },
+    "drug": {
+      "objCls": "Chemical",
+      "id": "PA450657",
+      "name": "nortriptyline",
+      "inChi": "InChI=1S/C19H21N/c1-20-14-6-11-19-17-9-4-2-7-15(17)12-13-16-8-3-5-10-18(16)19/h2-5,7-11,20H,6,12-14H2,1H3",
+      "pediatric": false,
+      "smiles": "CNCCC=C1C2=CC=CC=C2CCC3=CC=CC=C31",
+      "types": [
+        "Drug"
+      ]
+    },
+    "guidelineAnnotation": [],
+    "pair": {},
+    "errors": [
+      {
+        "guidelineAnnotation": "api_error: HTTP Error 404: Not Found"
+      },
+      {
+        "guidelineAnnotation": "api_error: HTTP Error 404: Not Found"
+      },
+      {
+        "GuidelineAnnotation": "api_error: HTTP Error 404: Not Found"
+      },
+      {
+        "label": "api_error: HTTP Error 404: Not Found"
+      },
+      {
+        "DrugLabel": "api_error: HTTP Error 404: Not Found"
+      }
+    ]
+  },
+  "CYP2C9::nortriptyline": {
+    "gene": {
+      "gene": "CYP2C9",
+      "gene_id": "PA126",
+      "name": "cytochrome P450 family 2 subfamily C member 9",
+      "cpicGene": "True",
+      "pharmVarGene": "True",
+      "alleleFile": "CYP2C9_allele_definition_table.xlsx",
+      "alleleFunctionSource": "CPIC",
+      "alleleType": "Named Alleles",
+      "vipTier": "Tier 1",
+      "mvp_priority": "high",
+      "mvp_role": "core",
+      "notes": "CYP2C9 is one of the key pharmacogenes involved in implementation of pharmacogenomics. It is involved in guidelines for warfarin , phenytoin and NSAIDs , ( go to list of all guidelines with CYP2C9 ). the nomenclature has been set by PharmVar the AMP tier 1 alleles are CYP2C9*2 , CYP2C9*3 , CYP2C9*5 , CYP2C9*6 , CYP2C9*8 , and CYP2C9*11 , see all alleles on the AMP recommended to test list key variant pages include rs1799853 and rs1057910 See the Gene-specific Information Tables for Allele Definitions (for which variants comprise which star alleles), Allele function assignments (normal function, no function, decreased or increased function etc) and Diplotype-Phenotype Table (for how the allel..."
+    },
+    "drug": {
+      "objCls": "Chemical",
+      "id": "PA450657",
+      "name": "nortriptyline",
+      "inChi": "InChI=1S/C19H21N/c1-20-14-6-11-19-17-9-4-2-7-15(17)12-13-16-8-3-5-10-18(16)19/h2-5,7-11,20H,6,12-14H2,1H3",
+      "pediatric": false,
+      "smiles": "CNCCC=C1C2=CC=CC=C2CCC3=CC=CC=C31",
+      "types": [
+        "Drug"
+      ]
+    },
+    "guidelineAnnotation": [],
+    "pair": {},
+    "errors": [
+      {
+        "guidelineAnnotation": "api_error: HTTP Error 404: Not Found"
+      },
+      {
+        "guidelineAnnotation": "api_error: HTTP Error 404: Not Found"
+      },
+      {
+        "GuidelineAnnotation": "api_error: HTTP Error 404: Not Found"
+      },
+      {
+        "variantAnnotation": "api_error: HTTP Error 404: Not Found"
+      },
+      {
+        "VariantAnnotation": "api_error: HTTP Error 404: Not Found"
+      },
+      {
+        "label": "api_error: HTTP Error 404: Not Found"
+      },
+      {
+        "DrugLabel": "api_error: HTTP Error 404: Not Found"
+      }
+    ]
+  },
+  "CYP2D6::nortriptyline": {
+    "gene": {
+      "gene": "CYP2D6",
+      "gene_id": "PA128",
+      "name": "cytochrome P450 family 2 subfamily D member 6",
+      "cpicGene": "True",
+      "pharmVarGene": "True",
+      "alleleFile": "CYP2D6_allele_definition_table.xlsx",
+      "alleleFunctionSource": "CPIC",
+      "alleleType": "Named Alleles",
+      "vipTier": "Tier 1",
+      "mvp_priority": "high",
+      "mvp_role": "core",
+      "notes": "CYP2D6 is one of the key pharmacogenes involved in implementation of pharmacogenomics. It is highly polymorphic and involved in the metabolism of up to 25% of the drugs that are in common use in the clinic. It is involved in guidelines for codeine and other opioids, antidepressants, and tamoxifen go to list of all guidelines with CYP2D6 . the nomenclature has been set by PharmVar . the AMP tier 1 alleles are CYP2D6*2 , CYP2D6*3 , CYP2D6*4 , CYP2D6*5 , CYP2D6*6 , CYP2D6*9 , CYP2D6*10 , CYP2D6*17 , CYP2D6*29 , CYP2D6*41 , CYP2D6 duplications and other copy number variants see all alleles on the AMP recommended to test list . See the Gene-specific Information Tables for Allele Definitions (for ..."
+    },
+    "drug": {
+      "objCls": "Chemical",
+      "id": "PA450657",
+      "name": "nortriptyline",
+      "inChi": "InChI=1S/C19H21N/c1-20-14-6-11-19-17-9-4-2-7-15(17)12-13-16-8-3-5-10-18(16)19/h2-5,7-11,20H,6,12-14H2,1H3",
+      "pediatric": false,
+      "smiles": "CNCCC=C1C2=CC=CC=C2CCC3=CC=CC=C31",
+      "types": [
+        "Drug"
+      ]
+    },
+    "guidelineAnnotation": [
+      {
+        "objCls": "Guideline Annotation",
+        "id": "PA166104961",
+        "name": "Annotation of DPWG Guideline for nortriptyline and CYP2D6",
+        "alternateDrugAvailable": true,
+        "crossReferences": [],
+        "dosingInformation": true,
+        "hasTestingInfo": true,
+        "history": [
+          {
+            "id": 1183704503,
+            "date": "2011-08-10T00:00:00-07:00",
+            "type": "Create",
+            "version": 0
+          },
+          {
+            "id": 1450414979,
+            "date": "2019-05-23T11:22:02.683-07:00",
+            "description": "Annotation current with November 2018 DPWG Guideline release",
+            "type": "Update",
+            "version": 0
+          },
+          {
+            "id": 1450820969,
+            "date": "2019-10-07T14:32:21.470-07:00",
+            "description": "No changes based on August 2019 guideline",
+            "type": "Update",
+            "version": 0
+          },
+          {
+            "id": 1450956388,
+            "date": "2020-01-31T13:39:56.178-08:00",
+            "description": "Updated link to 2011 DPWG methods",
+            "type": "Update",
+            "version": 0
+          },
+          {
+            "id": 1450963720,
+            "date": "2020-02-11T06:47:31.383-08:00",
+            "description": "Fixed links to 2018 guideline pdfs.",
+            "type": "Update",
+            "version": 0
+          },
+          {
+            "id": 1451431285,
+            "date": "2021-05-04T00:00:00-07:00",
+            "description": "Added extended dosing",
+            "type": "Update",
+            "version": 0
+          },
+          {
+            "id": 1451704213,
+            "date": "2022-03-03T16:33:28.773-08:00",
+            "description": "Annotation current with May 2021 DPWG Guideline release",
+            "type": "Note",
+            "version": 0
+          },
+          {
+            "id": 1451707145,
+            "date": "2022-03-08T09:26:02.353-08:00",
+            "description": "Added information about preemptive genotyping",
+            "type": "Update",
+            "version": 0
+          },
+          {
+            "id": 1451732853,
+            "date": "2022-03-28T09:57:42.531-07:00",
+            "description": "Annotation current with February 2022 DPWG guideline release",
+            "type": "Note",
+            "version": 0
+          },
+          {
+            "id": 1451733420,
+            "date": "2022-03-28T14:49:47.562-07:00",
+            "description": "Updated link to testing guidance page",
+            "type": "Update",
+            "version": 0
+          },
+          {
+            "id": 1451741500,
+            "date": "2022-04-05T11:16:16.717-07:00",
+            "description": "Added testing guidance tag",
+            "type": "Update",
+            "version": 0
+          },
+          {
+            "id": 1451884424,
+            "date": "2022-09-16T10:36:12.100-07:00",
+            "description": "Fixed link to gene information document and added explanatory note",
+            "type": "Update",
+            "version": 0
+          },
+          {
+            "id": 1452084389,
+            "date": "2023-04-28T18:51:44.359-07:00",
+            "description": "Updated allele function assignment",
+            "type": "Update",
+            "version": 0
+          },
+          {
+            "id": 1452084410,
+            "date": "2023-04-28T18:51:57.808-07:00",
+            "description": "Updated allele function assignment",
+            "type": "Update",
+            "version": 0
+          },
+          {
+            "id": 1452084431,
+            "date": "2023-04-28T18:52:08.014-07:00",
+            "description": "Updated allele function assignment",
+            "type": "Update",
+            "version": 0
+          },
+          {
+            "id": 1452084452,
+            "date": "2023-04-28T18:52:19.802-07:00",
+            "description": "Updated allele function assignment",
+            "type": "Update",
+            "version": 0
+          },
+          {
+            "id": 1452084473,
+            "date": "2023-04-28T18:52:49.149-07:00",
+            "description": "Updated allele function assignment",
+            "type": "Update",
+            "version": 0
+          },
+          {
+            "id": 1452084494,
+            "date": "2023-04-28T18:53:07.331-07:00",
+            "description": "Updated allele function assignment",
+            "type": "Update",
+            "version": 0
+          },
+          {
+            "id": 1452084515,
+            "date": "2023-04-28T18:53:23.378-07:00",
+            "description": "Updated allele function assignment",
+            "type": "Update",
+            "version": 0
+          },
+          {
+            "id": 1452084536,
+            "date": "2023-04-28T18:53:40.993-07:00",
+            "description": "Updated allele function assignment",
+            "type": "Update",
+            "version": 0
+          },
+          {
+            "id": 1452084557,
+            "date": "2023-04-28T18:54:03.546-07:00",
+            "description": "Updated allele function assignment",
+            "type": "Update",
+            "version": 0
+          },
+          {
+            "id": 1452084578,
+            "date": "2023-04-28T18:56:19.979-07:00",
+            "description": "Updated allele function assignment",
+            "type": "Update",
+            "version": 0
+          },
+          {
+            "id": 1452084609,
+            "date": "2023-04-28T19:05:03.349-07:00",
+            "description": "Updated allele function assignment",
+            "type": "Update",
+            "version": 0
+          },
+          {
+            "id": 1452146523,
+            "date": "2023-07-03T13:40:11.343-07:00",
+            "description": "Annotation current with May 2023 DPWG Guideline release",
+            "type": "Note",
+            "version": 0
+          },
+          {
+            "id": 1452408300,
+            "date": "2024-03-14T08:21:56.559-07:00",
+            "description": "Updated links for risk analysis pdf and preemptive testing page.",
+            "type": "Update",
+            "version": 0
+          },
+          {
+            "id": 1454439900,
+            "date": "2025-11-11T14:32:31.335-08:00",
+            "description": "updated based on the recommendation file accessed 111125",
+            "type": "Update",
+            "version": 0
+          }
+        ],
+        "literature": [
+          {
+            "id": 7283333,
+            "title": "Pharmacogenetics: from bench to byte--an update of guidelines.",
+            "_sameAs": "https://www.ncbi.nlm.nih.gov/pubmed/21412232",
+            "crossReferences": [
+              {
+                "id": 769250885,
+                "resource": "PubMed",
+                "resourceId": "21412232",
+                "_url": "https://www.ncbi.nlm.nih.gov/pubmed/21412232"
+              },
+              {
+                "id": 1449247827,
+                "resource": "DOI",
+                "resourceId": "10.1038/clpt.2011.34",
+                "_url": "http://dx.doi.org/10.1038%2Fclpt.2011.34"
+              }
+            ],
+            "objCls": "Literature",
+            "pubDate": "2011-05-01T00:00:00-07:00",
+            "terms": [],
+            "type": "Literature"
+          },
+          {
+            "id": 15103288,
+            "title": "Dutch Pharmacogenetics Working Group Guidelines August 2019",
+            "_sameAs": "https://api.pharmgkb.org/v1/preview/download/file/attachment/DPWG_August_2019.pdf",
+            "crossReferences": [
+              {
+                "id": 1450815695,
+                "resource": "URL",
+                "resourceId": "https://api.pharmgkb.org/v1/preview/download/file/attachment/DPWG_August_2019.pdf",
+                "_url": "https://api.pharmgkb.org/v1/preview/download/file/attachment/DPWG_August_2019.pdf"
+              }
+            ],
+            "objCls": "Literature",
+            "terms": [],
+            "type": "Literature"
+          },
+          {
+            "id": 15102465,
+            "title": "Dutch Pharmacogenetics Working Group Guidelines November 2018",
+            "_sameAs": "https://api.pharmgkb.org/v1/preview/download/file/attachment/DPWG_November_2018.pdf",
+            "crossReferences": [
+              {
+                "id": 1450415575,
+                "resource": "URL",
+                "resourceId": "https://api.pharmgkb.org/v1/preview/download/file/attachment/DPWG_November_2018.pdf",
+                "_url": "https://api.pharmgkb.org/v1/preview/download/file/attachment/DPWG_November_2018.pdf"
+              }
+            ],
+            "objCls": "Literature",
+            "terms": [],
+            "type": "Literature"
+          },
+          {
+            "id": 15256422,
+            "title": "Dutch Pharmacogenetics Working Group Guidelines November 2025",
+            "_sameAs": "https://api.clinpgx.org/v1/preview/download/file/attachment/pharmacogenetic_recommendation_text_20240501_downloaded_111125.pdf",
+            "crossReferences": [
+              {
+                "id": 1454439720,
+                "resource": "URL",
+                "resourceId": "https://api.clinpgx.org/v1/preview/download/file/attachment/pharmacogenetic_recommendation_text_20240501_downloaded_111125.pdf",
+                "_url": "https://api.clinpgx.org/v1/preview/download/file/attachment/pharmacogenetic_recommendation_text_20240501_downloaded_111125.pdf"
+              }
+            ],
+            "objCls": "Literature",
+            "terms": [
+              {
+                "id": 1452267780,
+                "resource": "ClinPGx Tags",
+                "term": "Has PGx",
+                "termId": "pgkbTags:1452267780"
+              }
+            ],
+            "type": "Literature"
+          }
+        ],
+        "otherPrescribingGuidance": true,
+        "pediatric": false,
+        "recommendation": true,
+        "relatedAlleles": [],
+        "relatedChemicals": [
+          {
+            "objCls": "Chemical",
+            "id": "PA450657",
+            "name": "nortriptyline"
+          }
+        ],
+        "relatedGenes": [
+          {
+            "objCls": "Gene",
+            "id": "PA128",
+            "symbol": "CYP2D6",
+            "name": "cytochrome P450 family 2 subfamily D member 6"
+          }
+        ],
+        "source": "DPWG",
+        "summaryMarkdown": {
+          "id": 1447981930,
+          "html": "<p>The Dutch Pharmacogenetics Working Group Guideline for nortriptyline recommends a dose reduction for CYP2D6 poor or intermediate metabolizer patients. For CYP2D6 ultrarapid metabolizers, select an alternative drug or use 1.7 times the standard dose. Monitoring of nortriptyline and 10-hydroxynortriptyline plasma concentrations is recommended.</p>\n"
+        },
+        "textMarkdown": {
+          "id": 1447981929,
+          "html": "<h3 id=\"november-2025-update\">November 2025 Update</h3>\n<p>The Royal Dutch Pharmacists Association - Pharmacogenetics Working Group (<a href=\"/page/dpwg\">DPWG</a>) released an updated version of the <a download=\"pharmacogenetic_recommendation_text_20240501_downloaded_111125.pdf\" href=\"https://api.clinpgx.org/v1/download/file/attachment/pharmacogenetic_recommendation_text_20240501_downloaded_111125.pdf\">Pharmacogenetic_recommendation_text</a> dated with 20240501. It includes changes to the wording for the CYP2D6-nortriptyline guidelines which are dated within the document as 08-02-2024. The Table below is updated accordantly.</p>\n<h3 id=\"november-2018-update\">November 2018 Update</h3>\n<p>The Royal Dutch Pharmacists Association - Pharmacogenetics Working Group has evaluated therapeutic dose recommendations for nortriptyline based on CYP2D6 genotype. They recommend a dose increase or use of an alternative antidepressant in CYP2D6 ultrarapid metabolizers (UMs) and a dose reduction in CYP2D6 poor metabolizers (PMs). Monitoring of nortriptyline and Z-10-hydroxynortriptyline plasma concentrations is also recommended.</p>\n<p><em>Wording in table taken from the <a download=\"DPWG_November_2018.pdf\" href=\"https://api.clinpgx.org/v1/download/file/attachment/DPWG_November_2018.pdf\">Dutch guidelines November 2018 update</a> and updated based on <a download=\"pharmacogenetic_recommendation_text_20240501_downloaded_111125.pdf\" href=\"https://api.clinpgx.org/v1/download/file/attachment/pharmacogenetic_recommendation_text_20240501_downloaded_111125.pdf\">Pharmacogenetic_recommendation_text</a> accessed 11112025</em>.</p>\n<table class=\"table\">\n<thead>\n<tr>\n<th>Allele/Genotype/Phenotype</th>\n<th>Drug</th>\n<th>Description</th>\n<th>Recommendation</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>CYP2D6 UM</td>\n<td>nortriptyline</td>\n<td>The risk of ineffectiveness and cardiotoxic effects may be increased. The gene variation leads to a decrease in the plasma concentration of nortriptyline and an increase in the plasma concentration of the cardiotoxic metabolite Z-10-hydroxynortriptyline.</td>\n<td>Use 1.7 times the standard dose and monitor the effect and side effects or the plasma concentration of nortriptyline and be alert to an increase in the plasma concentration of the cardiotoxic metabolite Z-10-hydroxynortriptyline. Plasma concentrations of Z-hydroxynortriptyline exceeding 40 ng/mL are considered toxic.<br/>If a dose increase is not wanted due to the cardiotoxic hydroxy metabolite: avoid nortriptyline. Antidepressants that are not metabolised via CYP2D6 - or to a lesser extent - include, for example, citalopram and sertraline.</td>\n</tr>\n<tr>\n<td>CYP2D6 IM</td>\n<td>nortriptyline</td>\n<td>The risk of side effects may be increased, because the gene variation leads to an increased plasma concentration of nortriptyline.</td>\n<td>Use 60% of the standard dose and monitor the effect and side effects or the plasma concentration of nortriptyline in order to set the maintenance dose.</td>\n</tr>\n<tr>\n<td>CYP2D6 PM</td>\n<td>nortriptyline</td>\n<td>The risk of side effects may be increased, because the gene variation leads to an increased plasma concentration of nortriptyline.</td>\n<td>Use 40% of the standard dose and monitor the effect and side effects or the plasma concentration of nortriptyline in order to set the maintenance dose.</td>\n</tr>\n</tbody>\n</table>\n<p><a download=\"DPWG_CYP2D6_nortriptyline_2403-2405_downloaded_111125.pdf\" href=\"https://api.clinpgx.org/v1/download/file/attachment/DPWG_CYP2D6_nortriptyline_2403-2405_downloaded_111125.pdf\">Read for more information about this recommendation</a></p>\n<h4 id=\"preemptive-genotyping\">Preemptive genotyping</h4>\n<p>Excerpts from the <a download=\"DPWG_CYP2D6_nortriptyline_2403-2405_downloaded_111125.pdf\" href=\"https://api.clinpgx.org/v1/download/file/attachment/DPWG_CYP2D6_nortriptyline_2403-2405_downloaded_111125.pdf\">DPWG risk analysis document</a> for nortriptyline and CYP2D6:</p>\n<blockquote class=\"blockquote\">\n<p>The Dutch Pharmacogenetics Working Group considers genotyping before starting nortriptyline to be potentially beneficial for the prevention of side effects and for drug efficacy. Genotyping can be considered on an individual patient basis. If, however, the genotype is available, the Dutch Pharmacogenetics Working Group recommends adhering to the gene-drug guideline.</p>\n</blockquote>\n<p><a href=\"/page/dpwgPreemptiveGenotyping\">Read more about how DPWG assigns their recommendations for preemptive genotyping.</a></p>\n<h3 id=\"2011-guideline\">2011 Guideline</h3>\n<p>The Royal Dutch Pharmacists Association - Pharmacogenetics Working Group has evaluated therapeutic dose recommendations for nortriptyline based on CYP2D6 genotype [Article:<a href=\"/pmid/21412232\">21412232</a>].  They recommend reducing the dose for poor and intermediate metabolizer patients and selecting an alternative drug or increasing the dose for ultra metabolizers.</p>\n<table class=\"table\">\n<thead>\n<tr>\n<th>Phenotype (Genotype)</th>\n<th>Therapeutic Dose Recommendation</th>\n<th>Level of Evidence</th>\n<th>Clinical Relevance</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>PM (2 inactive alleles)</td>\n<td>Reduce dose by 60% and monitor nortriptyline + 10-hydroxynortriptyline plasma concentrations.</td>\n<td>Published controlled studies of moderate quality* relating to phenotyped and/or genotyped patients or healthy volunteers, and having relevant pharmacokinetic or clinical endpoints.</td>\n<td>Clinical effect (S): long-standing discomfort (48-168 hr) without permanent injury e.g. failure of therapy with tricyclic antidepressants, atypical antipsychotic drugs; extrapyramidal side effects; parkinsonism; ADE resulting from increased bioavailability of tricyclic antidepressants, metoprolol, propafenone (central effects e.g. dizziness); INR 4.5-6.0; neutropenia 1.0-1.5x10<sup>9</sup>/l; leucopenia 2.0-3.0x10<sup>9</sup>/l; thrombocytopenia 50-75x10<sup>9</sup>/l.</td>\n</tr>\n<tr>\n<td>IM (2 decreased activity alleles, or 1 active and 1 inactive allele, or 1 decreased activity and 1 inactive allele)</td>\n<td>Reduce dose by 40% and monitor nortriptyline + 10-hydroxynortriptyline plasma concentrations.</td>\n<td>Published controlled studies of good quality* relating to phenotyped and/or genotyped patients or healthy volunteers, and having relevant pharmacokinetic or clinical endpoints.</td>\n<td>Clinical effect (S): long-standing discomfort (48-168 hr) without permanent injury e.g. failure of therapy with tricyclic antidepressants, atypical antipsychotic drugs; extrapyramidal side effects; parkinsonism; ADE resulting from increased bioavailability of tricyclic antidepressants, metoprolol, propafenone (central effects e.g. dizziness); INR 4.5-6.0; neutropenia 1.0-1.5x10<sup>9</sup>/l; leucopenia 2.0-3.0x10<sup>9</sup>/l; thrombocytopenia 50-75x10<sup>9</sup>/l.</td>\n</tr>\n<tr>\n<td>UM (gene duplication in absence of inactive or decreased activity alleles)</td>\n<td>Select alternative drug (e.g., citalopram, sertraline) or increase dose by 60% and monitor nortriptyline + 10-hydroxynortriptyline plasma concentrations.</td>\n<td>Published controlled studies of moderate quality* relating to phenotyped and/or genotyped patients or healthy volunteers, and having relevant pharmacokinetic or clinical endpoints.</td>\n<td>Clinical effect (S): long-standing discomfort (48-168 hr) without permanent injury e.g. failure of therapy with tricyclic antidepressants, atypical antipsychotic drugs; extrapyramidal side effects; parkinsonism; ADE resulting from increased bioavailability of tricyclic antidepressants, metoprolol, propafenone (central effects e.g. dizziness); INR 4.5-6.0; neutropenia 1.0-1.5x10<sup>9</sup>/l; leucopenia 2.0-3.0x10<sup>9</sup>/l; thrombocytopenia 50-75x10<sup>9</sup>/l.</td>\n</tr>\n</tbody>\n</table>\n<table class=\"table\">\n<thead>\n<tr>\n<th>Allele Type</th>\n<th>Alleles</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>active</td>\n<td>*1, *2, *33, *35</td>\n</tr>\n<tr>\n<td>decreased activity</td>\n<td>*9, *10, *17, *29, *36, *41</td>\n</tr>\n<tr>\n<td>inactive</td>\n<td>*3-*8, *11-*16, *19-*21, *38, *40, *42</td>\n</tr>\n</tbody>\n</table>\n<ul>\n<li>*See <a href=\"/page/dpwg\">Methods </a> or [Article:<a href=\"/pmid/18253145\">18253145</a>] for definition of &quot;good&quot; and &quot;moderate&quot; quality.</li>\n<li>S: statistically significant difference.</li>\n<li>Please see attached PDF for detailed information about the evaluated studies: <a download=\"nortiptyline_CYP2D6_271111.pdf\" href=\"https://api.clinpgx.org/v1/download/file/attachment/nortiptyline_CYP2D6_271111.pdf\">Nortriptyline CYP2D6 </a></li>\n</ul>\n"
+        }
+      },
+      {
+        "objCls": "Guideline Annotation",
+        "id": "PA166104998",
+        "name": "Annotation of CPIC Guideline for nortriptyline and CYP2D6",
+        "alternateDrugAvailable": true,
+        "crossReferences": [],
+        "descriptiveVideoId": "AWYeheV_7_s",
+        "dosingInformation": true,
+        "hasTestingInfo": false,
+        "history": [
+          {
+            "id": 1183699776,
+            "date": "2013-01-16T00:00:00-08:00",
+            "type": "Create",
+            "version": 0
+          },
+          {
+            "id": 1448526127,
+            "date": "2016-12-14T13:55:21.811-08:00",
+            "description": "2016 TCA CPIC guideline update",
+            "type": "Update",
+            "version": 0
+          },
+          {
+            "id": 1450042771,
+            "date": "2018-11-15T19:09:00.873-08:00",
+            "description": "updated *14B to *14 and *14A to *114 based on the Nov 2018 PharmVar release",
+            "type": "Update",
+            "version": 0
+          },
+          {
+            "id": 1450824534,
+            "date": "2019-10-24T18:32:29.535-07:00",
+            "description": "online October 2019 guideline update (G2P project)",
+            "type": "Update",
+            "version": 0
+          },
+          {
+            "id": 1451115180,
+            "date": "2020-04-21T14:55:04.511-07:00",
+            "description": "Removed links to retired allele frequency table",
+            "type": "Update",
+            "version": 0
+          },
+          {
+            "id": 1451223801,
+            "date": "2020-07-08T00:00:00-07:00",
+            "description": "added CYP2D6*115-*139 to allele picker; changed function for *60, *72, *84",
+            "type": "Update",
+            "version": 0
+          },
+          {
+            "id": 1451309740,
+            "date": "2021-01-12T13:37:36.960-08:00",
+            "description": "Updated allele function assignment",
+            "type": "Update",
+            "version": 0
+          },
+          {
+            "id": 1451456680,
+            "date": "2021-06-11T13:37:05.272-07:00",
+            "description": "Added link to video",
+            "type": "Update",
+            "version": 0
+          }
+        ],
+        "literature": [
+          {
+            "id": 15098242,
+            "title": "Clinical pharmacogenetics implementation consortium guideline (CPIC) for CYP2D6 and CYP2C19 genotypes and dosing of tricyclic antidepressants: 2016 update.",
+            "_sameAs": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5478479",
+            "crossReferences": [
+              {
+                "id": 1449293321,
+                "resource": "PubMed Central",
+                "resourceId": "PMC5478479",
+                "_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5478479"
+              },
+              {
+                "id": 1449293320,
+                "resource": "PubMed",
+                "resourceId": "27997040",
+                "_url": "https://www.ncbi.nlm.nih.gov/pubmed/27997040"
+              },
+              {
+                "id": 1449293322,
+                "resource": "DOI",
+                "resourceId": "10.1002/cpt.597",
+                "_url": "http://dx.doi.org/10.1002%2Fcpt.597"
+              }
+            ],
+            "objCls": "Literature",
+            "pubDate": "2017-07-01T00:00:00-07:00",
+            "terms": [
+              {
+                "id": 1454108620,
+                "resource": "ClinPGx Tags",
+                "term": "CPIC",
+                "termId": "pgkbTags:1454108620"
+              },
+              {
+                "id": 1451577480,
+                "resource": "PGx Paper Types",
+                "term": "Implementation",
+                "termId": "pgxPaperTypes:1451577480"
+              }
+            ],
+            "type": "Literature"
+          },
+          {
+            "id": 15051926,
+            "title": "Clinical Pharmacogenetics Implementation Consortium guideline for CYP2D6 and CYP2C19 genotypes and dosing of tricyclic antidepressants.",
+            "_sameAs": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3689226",
+            "crossReferences": [
+              {
+                "id": 1449275357,
+                "resource": "PubMed Central",
+                "resourceId": "PMC3689226",
+                "_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3689226"
+              },
+              {
+                "id": 1449275356,
+                "resource": "PubMed",
+                "resourceId": "23486447",
+                "_url": "https://www.ncbi.nlm.nih.gov/pubmed/23486447"
+              },
+              {
+                "id": 1449275358,
+                "resource": "DOI",
+                "resourceId": "10.1038/clpt.2013.2",
+                "_url": "http://dx.doi.org/10.1038%2Fclpt.2013.2"
+              }
+            ],
+            "objCls": "Literature",
+            "pubDate": "2013-05-01T00:00:00-07:00",
+            "terms": [
+              {
+                "id": 1454108620,
+                "resource": "ClinPGx Tags",
+                "term": "CPIC",
+                "termId": "pgkbTags:1454108620"
+              },
+              {
+                "id": 1451577480,
+                "resource": "PGx Paper Types",
+                "term": "Implementation",
+                "termId": "pgxPaperTypes:1451577480"
+              }
+            ],
+            "type": "Literature"
+          }
+        ],
+        "otherPrescribingGuidance": false,
+        "pediatric": true,
+        "pediatricMarkdown": {
+          "id": 1451266640,
+          "html": "<p>Guideline excerpt: &quot;There are scarce studies focusing solely on CYP2D6 or CYP2C19 genotype and association with pharmacokinetic parameters or treatment outcomes of TCAs in pediatric patients. Although further genomic ontogeny studies are needed, there is a lack of evidence suggesting that this guideline cannot be extrapolated to pediatric patients.&quot;</p>\n"
+        },
+        "recommendation": true,
+        "relatedAlleles": [],
+        "relatedChemicals": [
+          {
+            "objCls": "Chemical",
+            "id": "PA450657",
+            "name": "nortriptyline"
+          }
+        ],
+        "relatedGenes": [
+          {
+            "objCls": "Gene",
+            "id": "PA128",
+            "symbol": "CYP2D6",
+            "name": "cytochrome P450 family 2 subfamily D member 6"
+          }
+        ],
+        "source": "CPIC",
+        "summaryMarkdown": {
+          "id": 1447982024,
+          "html": "<p>The CPIC Dosing Guideline update for nortriptyline recommends a 25% dose reduction for CYP2D6 intermediate metabolizers. For CYP2D6 ultrarapid or poor metabolizers, an alternative drug should be considered. If nortriptyline is warranted, consider a 50% dose reduction in CYP2D6 poor metabolizers. CPIC has updated the CYP2D6 genotype-phenotype translation in all supplemental files since the guideline was published.</p>\n"
+        },
+        "textMarkdown": {
+          "id": 1451433646,
+          "html": "<h3 id=\"october-2019-update\">October 2019 Update</h3>\n<p><a rel=\"noopener noreferrer\" href=\"https://ascpt.onlinelibrary.wiley.com/doi/full/10.1111/cts.12692\" target=\"_blank\">CYP2D6 genotype to phenotype translation changes</a>: Up until August 2019, there were a few inconsistencies in the translation of CYP2D6 genotype to phenotype translation across guidelines (i.e. CPIC and DPWG) and between clinical genetic testing laboratories. CPIC recently conducted a modified-Delphi project to obtain consensus for a uniform system for translating CYP2D6 genotype to phenotype among a panel of international CYP2D6 experts <a href=\"/page/cpicCyp2d6Standardization\">more information</a>. Modifications to CPIC’s prior system include downgrading the value assigned to the CYP2D6*10 allele for activity score calculation from 0.5 to 0.25 and changing the phenotype assignment for an activity score of 1 from normal metabolizer to intermediate metabolizer (<a rel=\"noopener noreferrer\" href=\"http://files.cpicpgx.org/data/gene/CYP2D6/Inferred_CYP2D6_Phenotype10242019.docx\" target=\"_blank\">table of all previous and new phenotype groupings</a>).</p>\n<p>As a result, the following changes have been made in the CYP2D6 allele functionality table and the CYP2D6 genotype to phenotype table (access tables below):</p>\n<ul>\n<li>Diplotypes giving rise to activity scores of 1 changed from CYP2D6 normal metabolizer to CYP2D6 intermediate metabolizer assignments.\n<ul>\n<li><strong>Impact on the recommendations in this guideline:</strong> The recommendation for CYP2D6 IM (reduce starting dose by 25%) should be considered for CYP2D6 AS of 1 (strength of recommendation: optional). The authors of this guideline are in the process of updating this guideline to reflect this change and evaluate new evidence since the publication of this guideline.</li>\n</ul>\n</li>\n<li>All activity scores for diplotypes containing a CYP2D6*10 allele have been updated accordingly (activity scores changed to reflect the lower activity value of 0.25 for CYP2D6*10). See <a rel=\"noopener noreferrer\" href=\"http://files.cpicpgx.org/data/gene/CYP2D6/Inferred_CYP2D6_Phenotype10242019.docx\" target=\"_blank\">table of all previous and new phenotype groupings</a>.\n<ul>\n<li><strong>Impact on the recommendations in this guideline:</strong> Prior to the consensus projects, the combination of a duplicated normal function allele with a CYP2D6*10 allele resulted in an activity score of 2.5 which translates to an ultrarapid metabolizer. The lower value of 0.25 for CYP2D6*10 results in an activity score of 2.25 for these allele combinations, which based on the consensus project translates to a normal metabolizer.</li>\n</ul>\n</li>\n</ul>\n<h3 id=\"december-2016-update\">December 2016 Update</h3>\n<p><em>Advance online publication December 2016.</em></p>\n<ul>\n<li>The 2016 update of CPIC guidelines regarding the use of pharmacogenomic tests in dosing of tricyclic antidepressants (TCAs) have been published in Clinical Pharmacology and Therapeutics by the Clinical Pharmacogenetics Implementation Consortium (CPIC).  Literature up to July 2016 was reviewed, recommendations and supplemental information were updated.</li>\n<li>Excerpt from the 2016 dosing guideline update:\n<ul>\n<li>&quot;There is substantial evidence linking <em>CYP2D6</em> genotypes to phenotypic variability in tricyclic side-effect and pharmacokinetic profiles. Modifying pharmacotherapy for patients who have <em>CYP2D6</em> genomic variants that affect drug efficacy and safety could potentially improve clinical outcomes and reduce the failure rate of initial treatment.&quot;</li>\n<li>&quot; There are scarce studies focusing solely on <em>CYP2D6</em> genotype and association with pharmacokinetic parameters or treatment outcomes of TCAs in pediatric patients. CYP2D6 activity is fully mature by early childhood. Although further genomic ontogeny studies are needed, there is a lack of evidence suggesting that this guideline cannot be extrapolated to pediatric patients.&quot;</li>\n</ul>\n</li>\n<li>Download and read:\n<ul>\n<li><a rel=\"noopener noreferrer\" href=\"https://files.cpicpgx.org/data/guideline/publication/TCA/2016/TCA_2016.pdf\" target=\"_blank\">Clinical Pharmacogenetics Implementation Consortium guideline for CYP2D6 and CYP2C19 genotypes and dosing of tricyclic antidepressants: 2016 Update</a></li>\n<li><a rel=\"noopener noreferrer\" href=\"https://files.cpicpgx.org/data/guideline/publication/TCA/2016/TCA_Supplement_2016.pdf\" target=\"_blank\">2016 supplement</a></li>\n<li><a href=\"/page/cyp2d6RefMaterials\">CYP2D6 Gene-specific Information Tables</a></li>\n<li><a rel=\"noopener noreferrer\" href=\"https://files.cpicpgx.org/data/guideline/publication/TCA/2016/Nortriptyline_Drug_Resource_Mappings.xlsx\" target=\"_blank\">Nortriptyline Drug Resource Mappings</a></li>\n<li><a rel=\"noopener noreferrer\" href=\"https://files.cpicpgx.org/data/guideline/publication/TCA/2016/Nortriptyline_Pre_and_Post_Test_Alerts_and_Flow_Chart.xlsx\" target=\"_blank\">Nortriptyline Pre and Post Test Alerts and Flow Chart</a></li>\n</ul>\n</li>\n</ul>\n<h3 id=\"table-1-dosing-recommendations-for-nortriptyline-based-on-cyp2d6-phenotype\">Table 1: Dosing recommendations for nortriptyline based on CYP2D6 phenotype:</h3>\n<p><em>Adapted from Tables 1 and 2 of the 2016 guideline update.</em></p>\n<table class=\"table\">\n<thead>\n<tr>\n<th>Likely phenotype</th>\n<th>Activity score</th>\n<th>Genotypes</th>\n<th>Examples of diplotypes</th>\n<th>Implications</th>\n<th>Therapeutic Recommendations<sup>b</sup></th>\n<th>Classification of recommendation for amitriptyline and nortriptyline<sup>c</sup></th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>CYP2D6 Ultrarapid metabolizer (~1-20% of patients)<sup>d</sup></td>\n<td>&gt;2.0</td>\n<td>An individual carrying more than two copies of functional alleles</td>\n<td>*1/*1xN, *1/*2xN</td>\n<td>Increased metabolism of TCAs to less active compounds compared to normal metabolizers. Lower plasma concentrations of active drug will increase probability of pharmacotherapy failure.</td>\n<td>Avoid tricyclic use due to potential lack of efficacy. Consider alternative drug not metabolized by CYP2D6.<br/>If a TCA is warranted, consider titrating to a higher target dose (compared to normal metabolizers). Utilize therapeutic drug monitoring to guide dose adjustments.<sup>e</sup></td>\n<td>Strong</td>\n</tr>\n<tr>\n<td>CYP2D6 Normal metabolizer (~72-88% of patients)<sup>d</sup></td>\n<td>1.0-2.0<sup>f</sup></td>\n<td>An individual carrying two normal function alleles or two decreased function alleles or one normal and no function allele or one normal and decreased function allele or combinations of duplicated alleles that result in an activity score of 1.0-2.0</td>\n<td>*1/*1, *1/*2, *2/*2, *1/*9, *1/*41, *41/*41, *1/*4, *1/*5</td>\n<td>Normal metabolism of TCAs.</td>\n<td>Initiate therapy with recommended starting dose.<sup>g</sup></td>\n<td>Strong</td>\n</tr>\n<tr>\n<td>CYP2D6 Intermediate metabolizer (~1-13% of patients)<sup>d</sup></td>\n<td>0.5</td>\n<td>An individual carrying one decreased and one no function allele</td>\n<td>*4/*41, *5/*9, *4/*10</td>\n<td>Reduced metabolism of TCAs to less active compounds when compared to normal metabolizers. Higher plasma concentrations of active drug will increase the probability of side effects.</td>\n<td>Consider 25% reduction of recommended starting dose.<sup>g</sup> Utilize therapeutic drug monitoring to guide dose adjustments.<sup>e</sup></td>\n<td>Moderate</td>\n</tr>\n<tr>\n<td>CYP2D6 Poor metabolizer (~1-10% of patients)<sup>d</sup></td>\n<td>0</td>\n<td>An individual carrying only no function alleles</td>\n<td>*4/*4, *4/*4xN, *3/*4, *5/*5, *5/*6</td>\n<td>Greatly reduced metabolism of  TCAs to less active compounds compared to normal metabolizers. Higher plasma concentrations of active drug will increase the probability of side effects.</td>\n<td>Avoid tricyclic use due to potential for side effects. Consider alternative drug not metabolized by CYP2D6.<br/>If a TCA is warranted, consider 50% reduction of recommended starting dose.<sup>g</sup> Utilize therapeutic drug monitoring to guide dose adjustments.<sup>e</sup></td>\n<td>Strong</td>\n</tr>\n</tbody>\n</table>\n<p><sup>b</sup> Dosing recommendations only apply to higher initial doses of TCAs for treatment of conditions such as depression. See other considerations in the guideline for dosing recommendations for conditions where lower initial doses are used, such as neuropathic pain.</p>\n<p><sup>c</sup> The rating scheme for the recommendation of classification is described in the Supplement.</p>\n<p><sup>d</sup> CYP2D6 metabolizer status frequencies are based on average multi-ethnic frequencies. See the CYP2D6 Frequency Tables for population-specific allele and phenotype frequencies.</p>\n<p><sup>e</sup> Titrate dose to observed clinical response with symptom improvement and minimal (if any) side effects.</p>\n<p><sup>f</sup> Patients with an activity score of 1.0 may be classified as intermediate metabolizers by some reference laboratories.</p>\n<p><sup>g</sup> Patients may receive an initial low dose of a tricyclic, which is then increased over several days to the recommended steady-state dose. The starting dose in this guideline refers to the recommended steady-state dose.</p>\n<h3 id=\"may-2013\">May 2013</h3>\n<p><em>Advance online publication January 2013.</em></p>\n<ul>\n<li>Guidelines regarding the use of pharmacogenomic tests in dosing of amitriptyline and nortriptyline have been published in Clinical Pharmacology and Therapeutics by the Clinical Pharmacogenetics Implementation Consortium (CPIC).</li>\n<li>Download and read:\n<ul>\n<li><a rel=\"noopener noreferrer\" href=\"https://files.cpicpgx.org/data/guideline/publication/TCA/2013/23486447.pdf\" target=\"_blank\">Clinical Pharmacogenetics Implementation Consortium guideline for CYP2D6 and CYP2C19 genotypes and dosing of tricyclic antidepressants</a></li>\n<li><a rel=\"noopener noreferrer\" href=\"https://files.cpicpgx.org/data/guideline/publication/TCA/2013/23486447-supplement.pdf\" target=\"_blank\">2013 supplement</a></li>\n</ul>\n</li>\n</ul>\n"
+        }
+      }
+    ],
+    "pair": {},
+    "errors": []
+  },
+  "CYP3A4::nortriptyline": {
+    "gene": {
+      "gene": "CYP3A4",
+      "gene_id": "PA130",
+      "name": "cytochrome P450 family 3 subfamily A member 4",
+      "cpicGene": "False",
+      "pharmVarGene": "True",
+      "alleleFile": "",
+      "alleleFunctionSource": "ClinPGx",
+      "alleleType": "Named Alleles",
+      "vipTier": "Tier 1",
+      "mvp_priority": "medium",
+      "mvp_role": "supporting",
+      "notes": "CYP3A4 is one of the key pharmacogenes involved in implementation of pharmacogenomics. It is involved in guidelines for quetiapine ( go to list of all guidelines with CYP3A4 ). the nomenclature has been set by PharmVar the AMP tier 1 allele is CYP3A4*22 and tier 2 allele is CYP3A4*20 see all alleles on the AMP recommended to test list . key variant pages are rs35599367 (defining for *22) and rs67666821 (defining for *20). it is involved in many drug label annotations with a larger number of cautions for drug-drug interactions with CYP3A4 inhibitors (such as ketoconazole ) and inducers (such as carbamazepine ), see the Flockhart table for more CYP3A4 inhibitors, inducers and substrates."
+    },
+    "drug": {
+      "objCls": "Chemical",
+      "id": "PA450657",
+      "name": "nortriptyline",
+      "inChi": "InChI=1S/C19H21N/c1-20-14-6-11-19-17-9-4-2-7-15(17)12-13-16-8-3-5-10-18(16)19/h2-5,7-11,20H,6,12-14H2,1H3",
+      "pediatric": false,
+      "smiles": "CNCCC=C1C2=CC=CC=C2CCC3=CC=CC=C31",
+      "types": [
+        "Drug"
+      ]
+    },
+    "guidelineAnnotation": [],
+    "pair": {},
+    "errors": [
+      {
+        "guidelineAnnotation": "api_error: HTTP Error 404: Not Found"
+      },
+      {
+        "guidelineAnnotation": "api_error: HTTP Error 404: Not Found"
+      },
+      {
+        "GuidelineAnnotation": "api_error: HTTP Error 404: Not Found"
+      },
+      {
+        "variantAnnotation": "api_error: HTTP Error 404: Not Found"
+      },
+      {
+        "VariantAnnotation": "api_error: HTTP Error 404: Not Found"
+      },
+      {
+        "label": "api_error: HTTP Error 404: Not Found"
+      },
+      {
+        "DrugLabel": "api_error: HTTP Error 404: Not Found"
+      }
+    ]
+  },
+  "CYP1A2::pantoprazole": {
+    "gene": {
+      "gene": "CYP1A2",
+      "gene_id": "PA27093",
+      "name": "cytochrome P450 family 1 subfamily A member 2",
+      "cpicGene": "False",
+      "pharmVarGene": "True",
+      "alleleFile": "",
+      "alleleFunctionSource": "",
+      "alleleType": "Named Alleles",
+      "vipTier": "Tier 2",
+      "mvp_priority": "low",
+      "mvp_role": "supporting",
+      "notes": "CYP1A2 is an inducible member of the cytochrome P450 (CYP) drug metabolizing gene family, important for metabolism of caffeine and antipsychotics."
+    },
+    "drug": {
+      "objCls": "Chemical",
+      "id": "PA450774",
+      "name": "pantoprazole",
+      "inChi": "InChI=1S/C16H15F2N3O4S/c1-23-13-5-6-19-12(14(13)24-2)8-26(22)16-20-10-4-3-9(25-15(17)18)7-11(10)21-16/h3-7,15H,8H2,1-2H3,(H,20,21)",
+      "pediatric": false,
+      "smiles": "COC1=C(C(=NC=C1)CS(=O)C2=NC3=C(N2)C=C(C=C3)OC(F)F)OC",
+      "types": [
+        "Drug"
+      ]
+    },
+    "guidelineAnnotation": [],
+    "pair": {},
+    "errors": [
+      {
+        "guidelineAnnotation": "api_error: HTTP Error 404: Not Found"
+      },
+      {
+        "guidelineAnnotation": "api_error: HTTP Error 404: Not Found"
+      },
+      {
+        "GuidelineAnnotation": "api_error: HTTP Error 404: Not Found"
+      },
+      {
+        "variantAnnotation": "api_error: HTTP Error 404: Not Found"
+      },
+      {
+        "VariantAnnotation": "api_error: HTTP Error 404: Not Found"
+      },
+      {
+        "label": "api_error: HTTP Error 404: Not Found"
+      },
+      {
+        "DrugLabel": "api_error: HTTP Error 404: Not Found"
+      }
+    ]
+  },
+  "CYP2C19::pantoprazole": {
+    "gene": {
+      "gene": "CYP2C19",
+      "gene_id": "PA124",
+      "name": "cytochrome P450 family 2 subfamily C member 19",
+      "cpicGene": "True",
+      "pharmVarGene": "True",
+      "alleleFile": "CYP2C19_allele_definition_table.xlsx",
+      "alleleFunctionSource": "CPIC",
+      "alleleType": "Named Alleles",
+      "vipTier": "Tier 1",
+      "mvp_priority": "high",
+      "mvp_role": "core",
+      "notes": "CYP2C19 is one of the key pharmacogenes involved in implementation of pharmacogenomics. It is involved in guidelines for antidepressants, clopidogrel and voriconazole ( go to list of all guidelines with CYP2C19 ). the nomenclature has been set by PharmVar , note that the reference sequence for CYP2C19 on hg38 is equivalent to CYP2C19*38 not CYP2C19*1 . the AMP tier 1 alleles are CYP2C19*2 , CYP2C19*3 and CYP2C19*17 see all alleles on the AMP recommended to test list key variant pages are rs4244285 (part of *2), rs4986893 (part of *3) and rs12248560 (part of *17) See the Gene-specific Information Tables for Allele Definitions (for which variants comprise which star alleles), Allele function a..."
+    },
+    "drug": {
+      "objCls": "Chemical",
+      "id": "PA450774",
+      "name": "pantoprazole",
+      "inChi": "InChI=1S/C16H15F2N3O4S/c1-23-13-5-6-19-12(14(13)24-2)8-26(22)16-20-10-4-3-9(25-15(17)18)7-11(10)21-16/h3-7,15H,8H2,1-2H3,(H,20,21)",
+      "pediatric": false,
+      "smiles": "COC1=C(C(=NC=C1)CS(=O)C2=NC3=C(N2)C=C(C=C3)OC(F)F)OC",
+      "types": [
+        "Drug"
+      ]
+    },
+    "guidelineAnnotation": [
+      {
+        "objCls": "Guideline Annotation",
+        "id": "PA166104958",
+        "name": "Annotation of DPWG Guideline for pantoprazole and CYP2C19",
+        "alternateDrugAvailable": false,
+        "crossReferences": [],
+        "dosingInformation": true,
+        "hasTestingInfo": true,
+        "history": [
+          {
+            "id": 1183704511,
+            "date": "2011-08-10T00:00:00-07:00",
+            "type": "Create",
+            "version": 0
+          },
+          {
+            "id": 1450415041,
+            "date": "2019-05-23T15:05:19.630-07:00",
+            "description": "Annotation current with November 2018 DPWG Guideline release",
+            "type": "Update",
+            "version": 0
+          },
+          {
+            "id": 1450821020,
+            "date": "2019-10-07T18:02:32.357-07:00",
+            "description": "No changes based on August 2019 guideline",
+            "type": "Update",
+            "version": 0
+          },
+          {
+            "id": 1450956351,
+            "date": "2020-01-31T13:44:00.384-08:00",
+            "description": "Updated link to 2011 DPWG methods",
+            "type": "Update",
+            "version": 0
+          },
+          {
+            "id": 1450963722,
+            "date": "2020-02-11T07:06:07.421-08:00",
+            "description": "Fixed links to 2018 guideline pdfs.",
+            "type": "Update",
+            "version": 0
+          },
+          {
+            "id": 1451704207,
+            "date": "2022-03-03T16:33:27.649-08:00",
+            "description": "Annotation current with May 2021 DPWG Guideline release",
+            "type": "Note",
+            "version": 0
+          },
+          {
+            "id": 1451707353,
+            "date": "2022-03-08T10:09:21.014-08:00",
+            "description": "Added information about preemptive genotyping",
+            "type": "Update",
+            "version": 0
+          },
+          {
+            "id": 1451732847,
+            "date": "2022-03-28T09:57:41.308-07:00",
+            "description": "Annotation current with February 2022 DPWG guideline release",
+            "type": "Note",
+            "version": 0
+          },
+          {
+            "id": 1451733425,
+            "date": "2022-03-28T14:50:54.989-07:00",
+            "description": "Updated link to testing guidance page",
+            "type": "Update",
+            "version": 0
+          },
+          {
+            "id": 1451741523,
+            "date": "2022-04-05T11:16:58.822-07:00",
+            "description": "Added testing guidance tag",
+            "type": "Update",
+            "version": 0
+          },
+          {
+            "id": 1451884486,
+            "date": "2022-09-16T11:02:19.313-07:00",
+            "description": "Fixed link to gene information document and added explanatory note",
+            "type": "Update",
+            "version": 0
+          },
+          {
+            "id": 1452146517,
+            "date": "2023-07-03T13:40:08.339-07:00",
+            "description": "Annotation current with May 2023 DPWG Guideline release",
+            "type": "Note",
+            "version": 0
+          },
+          {
+            "id": 1452410801,
+            "date": "2024-03-18T07:27:32.229-07:00",
+            "description": "Updated links for risk analysis pdf and preemptive testing page.",
+            "type": "Update",
+            "version": 0
+          },
+          {
+            "id": 1454662260,
+            "date": "2026-02-09T12:46:41.451-08:00",
+            "description": "minor wording update",
+            "type": "Update",
+            "version": 0
+          }
+        ],
+        "literature": [
+          {
+            "id": 7283333,
+            "title": "Pharmacogenetics: from bench to byte--an update of guidelines.",
+            "_sameAs": "https://www.ncbi.nlm.nih.gov/pubmed/21412232",
+            "crossReferences": [
+              {
+                "id": 769250885,
+                "resource": "PubMed",
+                "resourceId": "21412232",
+                "_url": "https://www.ncbi.nlm.nih.gov/pubmed/21412232"
+              },
+              {
+                "id": 1449247827,
+                "resource": "DOI",
+                "resourceId": "10.1038/clpt.2011.34",
+                "_url": "http://dx.doi.org/10.1038%2Fclpt.2011.34"
+              }
+            ],
+            "objCls": "Literature",
+            "pubDate": "2011-05-01T00:00:00-07:00",
+            "terms": [],
+            "type": "Literature"
+          },
+          {
+            "id": 15103288,
+            "title": "Dutch Pharmacogenetics Working Group Guidelines August 2019",
+            "_sameAs": "https://api.pharmgkb.org/v1/preview/download/file/attachment/DPWG_August_2019.pdf",
+            "crossReferences": [
+              {
+                "id": 1450815695,
+                "resource": "URL",
+                "resourceId": "https://api.pharmgkb.org/v1/preview/download/file/attachment/DPWG_August_2019.pdf",
+                "_url": "https://api.pharmgkb.org/v1/preview/download/file/attachment/DPWG_August_2019.pdf"
+              }
+            ],
+            "objCls": "Literature",
+            "terms": [],
+            "type": "Literature"
+          },
+          {
+            "id": 15330502,
+            "title": "Dutch Pharmacogenetics Working Group Guidelines February 2026",
+            "_sameAs": "https://api.pharmgkb.org/v1/preview/download/file/attachment/pharmacogenetic_recommendation_text_20241201_downloaded_010926.pdf",
+            "crossReferences": [
+              {
+                "id": 1454661860,
+                "resource": "URL",
+                "resourceId": "https://api.pharmgkb.org/v1/preview/download/file/attachment/pharmacogenetic_recommendation_text_20241201_downloaded_010926.pdf",
+                "_url": "https://api.pharmgkb.org/v1/preview/download/file/attachment/pharmacogenetic_recommendation_text_20241201_downloaded_010926.pdf"
+              }
+            ],
+            "objCls": "Literature",
+            "terms": [
+              {
+                "id": 1452267780,
+                "resource": "ClinPGx Tags",
+                "term": "Has PGx",
+                "termId": "pgkbTags:1452267780"
+              }
+            ],
+            "type": "Literature"
+          },
+          {
+            "id": 15102465,
+            "title": "Dutch Pharmacogenetics Working Group Guidelines November 2018",
+            "_sameAs": "https://api.pharmgkb.org/v1/preview/download/file/attachment/DPWG_November_2018.pdf",
+            "crossReferences": [
+              {
+                "id": 1450415575,
+                "resource": "URL",
+                "resourceId": "https://api.pharmgkb.org/v1/preview/download/file/attachment/DPWG_November_2018.pdf",
+                "_url": "https://api.pharmgkb.org/v1/preview/download/file/attachment/DPWG_November_2018.pdf"
+              }
+            ],
+            "objCls": "Literature",
+            "terms": [],
+            "type": "Literature"
+          }
+        ],
+        "otherPrescribingGuidance": true,
+        "pediatric": false,
+        "recommendation": true,
+        "relatedAlleles": [],
+        "relatedChemicals": [
+          {
+            "objCls": "Chemical",
+            "id": "PA450774",
+            "name": "pantoprazole"
+          }
+        ],
+        "relatedGenes": [
+          {
+            "objCls": "Gene",
+            "id": "PA124",
+            "symbol": "CYP2C19",
+            "name": "cytochrome P450 family 2 subfamily C member 19"
+          }
+        ],
+        "source": "DPWG",
+        "summaryMarkdown": {
+          "id": 1447981904,
+          "html": "<p>For CYP2C19 ultrarapid metabolizers who are undergoing <em>H. pylori</em> eradication therapy, use a 5-fold higher dose. For CYP2C19 ultrarapid metabolizers with other indications, be alert to reduced effectiveness and, if necessary, use a 5-fold higher dose.</p>\n"
+        },
+        "textMarkdown": {
+          "id": 1447981903,
+          "html": "<h3 id=\"february-2026-update\">February 2026 Update</h3>\n<p>The Royal Dutch Pharmacists Association - Pharmacogenetics Working Group (<a href=\"/page/dpwg\">DPWG</a>) released an updated version of the <a download=\"pharmacogenetic_recommendation_text_20241201_downloaded_010926.pdf\" href=\"https://api.clinpgx.org/v1/download/file/attachment/pharmacogenetic_recommendation_text_20241201_downloaded_010926.pdf\">Pharmacogenetic_recommendation_text</a> dated with 20241201. It includes changes to the wording for the CYP2C19-lansoprazole guidelines which are dated within the document as 10-9-2024. There are minor wording updates for CYP2C19 UM, which are updated accordantly in the table below.</p>\n<h3 id=\"november-2018-update\">November 2018 Update</h3>\n<p>The Royal Dutch Pharmacists Association - Pharmacogenetics Working Group has evaluated therapeutic dose recommendations for pantoprazole based on CYP2C19 genotype. Patients who are CYP2C19 ultrarapid metabolizers who are undergoing <em>H. pylori</em> eradication therapy should receive a 5-fold higher dose. In CYP2C19 ultrarapid metabolizer patients with other indications, be alert to reduced effectiveness, and, if necessary, use a 5-fold higher dose. Patients should be advised to report persisting symptoms of dyspepsia.</p>\n<p><em>Wording in table taken from the <a download=\"DPWG_November_2018.pdf\" href=\"https://api.clinpgx.org/v1/download/file/attachment/DPWG_November_2018.pdf\">Dutch guidelines November 2018 update</a>.</em></p>\n<table class=\"table\">\n<thead>\n<tr>\n<th>Allele/Genotype/Phenotype</th>\n<th>Drug</th>\n<th>Description</th>\n<th>Recommendation</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>CYP2C19 PM</td>\n<td>pantoprazole</td>\n<td>NO action is required for this gene-drug interaction.</td>\n<td>The higher plasma concentration of pantoprazole results in an increase in the therapeutic effectiveness, without an increase in the side effects.</td>\n</tr>\n<tr>\n<td>CYP2C19 IM</td>\n<td>pantoprazole</td>\n<td>NO action is required for this gene-drug interaction.</td>\n<td>The higher plasma concentration of pantoprazole results in an increase in the therapeutic effectiveness, without an increase in the side effects.</td>\n</tr>\n<tr>\n<td>CYP2C19 UM</td>\n<td>pantoprazole</td>\n<td>The genetic variation may lead to a reduced pantoprazole plasma concentration and therefore reduced pantoprazole effectiveness.</td>\n<td><strong>For Helicobacter pylori ERADICATION THERAPY:</strong> 1. use a 5-fold higher dose or choose another PPI. Other PPIs are metabolized to a lesser extent by CYP2C19. 2. advise the patient to report persisting symptoms of dyspepsia.<br/><strong>OTHER INDICATIONS:</strong> 1. be alert to reduced effectiveness. 2. if necessary, use a 5-fold higher dose or choose another PPI. Other PPIs are metabolised to a lesser extent by CYP2C19. 3. advise the patient to report persisting symptoms of dyspepsia.</td>\n</tr>\n</tbody>\n</table>\n<p><a download=\"DPWG_CYP2C19_pantoprazole_2508-2510_downloaded_020926.pdf\" href=\"https://api.clinpgx.org/v1/download/file/attachment/DPWG_CYP2C19_pantoprazole_2508-2510_downloaded_020926.pdf\">Read for more information about this recommendation</a>, <a download=\"CYP2C19.pdf\" href=\"https://api.clinpgx.org/v1/download/file/attachment/CYP2C19.pdf\">Read about gene information from DPWG</a></p>\n<h4 id=\"preemptive-genotyping\">Preemptive genotyping</h4>\n<p>Excerpts from the <a download=\"DPWG_CYP2C19_pantoprazole_2508-2510_downloaded_020926.pdf\" href=\"https://api.clinpgx.org/v1/download/file/attachment/DPWG_CYP2C19_pantoprazole_2508-2510_downloaded_020926.pdf\">DPWG risk analysis document</a> for pantoprazole and CYP2C19:</p>\n<blockquote class=\"blockquote\">\n<p>The Dutch Pharmacogenetics Working Group considers genotyping before starting pantoprazole to be potentially beneficial for drug efficacy. Genotyping can be considered on an individual patient basis. If, however, the genotype is available, the Dutch Pharmacogenetics Working Group recommends adhering to the gene-drug guideline.</p>\n</blockquote>\n<p><a href=\"/page/dpwgPreemptiveGenotyping\">Read more about how DPWG assigns their recommendations for preemptive genotyping.</a></p>\n<h3 id=\"2011-guideline\">2011 Guideline</h3>\n<p>The Royal Dutch Pharmacists Association - Pharmacogenetics Working Group has evaluated therapeutic dose recommendations for pantoprazole based on <em>CYP2C19</em> genotype [Article:<a href=\"/pmid/21412232\">21412232</a>].  For the <em>CYP2C19</em> UM phenotype, they conclude to be extra alert to insufficient response and recommend to consider dose increase by 400%.</p>\n<table class=\"table\">\n<thead>\n<tr>\n<th>Phenotype (Genotype)</th>\n<th>Therapeutic Dose Recommendation</th>\n<th>Level of Evidence</th>\n<th>Clinical Relevance</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><em>CYP2C19</em> PM (*2/*2, *2/*3, *3/*3)</td>\n<td>None</td>\n<td>Published controlled studies of moderate quality# relating to phenotyped and/or genotyped patients or healthy volunteers, and having relevant pharmacokinetic or clinical endpoints</td>\n<td>Positive clinical effects</td>\n</tr>\n<tr>\n<td><em>CYP2C19</em> IM (*1/*2, *1/*3, *17/*2, *17/*3)</td>\n<td>None</td>\n<td>Published controlled studies of moderate quality# relating to phenotyped and/or genotyped patients or healthy volunteers, and having relevant pharmacokinetic or clinical endpoints</td>\n<td>Positive clinical effects</td>\n</tr>\n<tr>\n<td><em>CYP2C19</em> UM (*17/*17)</td>\n<td>Helicobacter pylori eradication: increase dose by 400%. Be extra alert to insufficient response. Other: be extra alert to insufficient response. Consider dose increase by 400%</td>\n<td>Published controlled studies of moderate quality# relating to phenotyped and/or genotyped patients or healthy volunteers, and having relevant pharmacokinetic or clinical endpoints</td>\n<td>Clinical effect (not statistically significant difference); Kinetic effect (not statistically significant difference)</td>\n</tr>\n</tbody>\n</table>\n<ul>\n<li>#See <a href=\"/page/dpwg\">Methods </a> or [Article:<a href=\"/pmid/18253145\">18253145</a>] for definition of &quot;moderate&quot; quality.</li>\n</ul>\n"
+        }
+      },
+      {
+        "objCls": "Guideline Annotation",
+        "id": "PA166219103",
+        "name": "Annotation of CPIC Guideline for lansoprazole, omeprazole, pantoprazole and CYP2C19",
+        "alternateDrugAvailable": false,
+        "crossReferences": [],
+        "descriptiveVideoId": "KgRrti8dIRs",
+        "dosingInformation": true,
+        "hasTestingInfo": false,
+        "history": [
+          {
+            "id": 1451243900,
+            "date": "2020-08-11T13:53:36.705-07:00",
+            "description": "posted",
+            "type": "Update",
+            "version": 0
+          },
+          {
+            "id": 1451612300,
+            "date": "2021-12-09T14:03:12.824-08:00",
+            "description": "Added video",
+            "type": "Update",
+            "version": 0
+          },
+          {
+            "id": 1452137820,
+            "date": "2023-06-22T22:01:00.552-07:00",
+            "description": "Updated supplemental table links",
+            "type": "Update",
+            "version": 0
+          },
+          {
+            "id": 1454720461,
+            "date": "2026-03-27T23:03:34.684-07:00",
+            "description": "modified summary text for RM and NM",
+            "type": "Update",
+            "version": 0
+          }
+        ],
+        "literature": [
+          {
+            "id": 15113542,
+            "title": "Clinical Pharmacogenetics Implementation Consortium (CPIC) Guideline for CYP2C19 and Proton Pump Inhibitor Dosing.",
+            "_sameAs": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7868475",
+            "crossReferences": [
+              {
+                "id": 1451837569,
+                "resource": "PubMed Central",
+                "resourceId": "PMC7868475",
+                "_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7868475"
+              },
+              {
+                "id": 1451242280,
+                "resource": "PubMed",
+                "resourceId": "32770672",
+                "_url": "https://www.ncbi.nlm.nih.gov/pubmed/32770672"
+              },
+              {
+                "id": 1451242281,
+                "resource": "DOI",
+                "resourceId": "10.1002/cpt.2015",
+                "_url": "http://dx.doi.org/10.1002%2Fcpt.2015"
+              }
+            ],
+            "objCls": "Literature",
+            "pubDate": "2021-06-01T00:00:00-07:00",
+            "terms": [
+              {
+                "id": 1454108620,
+                "resource": "ClinPGx Tags",
+                "term": "CPIC",
+                "termId": "pgkbTags:1454108620"
+              },
+              {
+                "id": 1451577480,
+                "resource": "PGx Paper Types",
+                "term": "Implementation",
+                "termId": "pgxPaperTypes:1451577480"
+              }
+            ],
+            "type": "Literature"
+          }
+        ],
+        "otherPrescribingGuidance": false,
+        "pediatric": true,
+        "pediatricMarkdown": {
+          "id": 1451266720,
+          "html": "<p>Guideline excerpt: &quot;The CYP2C19-guided PPI recommendations presented in Table 2 also apply to pediatric patients. ..... A recent pilot study of CYP2C19-genotype-guided dosing of PPIs in children has been promising, and additional studies are ongoing [Articles:<a href=\"/pmid/30341969\">30341969</a>, <a href=\"/pmid/30659924\">30659924</a>]. These reports support genotype-based optimization of PPI therapy for children. However, very low clearance in pre-term infants and infants less than 2-3 months of age [Article:<a href=\"/pmid/20484619\">20484619</a>] makes recommendations in the neonatal population difficult to support.&quot;</p>\n"
+        },
+        "recommendation": true,
+        "relatedAlleles": [],
+        "relatedChemicals": [
+          {
+            "objCls": "Chemical",
+            "id": "PA450180",
+            "name": "lansoprazole"
+          },
+          {
+            "objCls": "Chemical",
+            "id": "PA450704",
+            "name": "omeprazole"
+          },
+          {
+            "objCls": "Chemical",
+            "id": "PA450774",
+            "name": "pantoprazole"
+          }
+        ],
+        "relatedGenes": [
+          {
+            "objCls": "Gene",
+            "id": "PA124",
+            "symbol": "CYP2C19",
+            "name": "cytochrome P450 family 2 subfamily C member 19"
+          }
+        ],
+        "source": "CPIC",
+        "summaryMarkdown": {
+          "id": 1451226172,
+          "html": "<p>The CPIC Dosing Guideline for omeprazole, lansoprazole, pantoprazole recommends to increase the starting daily dose and to monitor efficacy in CYP2C19 ultrarapid metabolizer. For CYP2C19 rapid and normal metabolizers, a dose increase might be considered  for the treatment of H. pylori infection and erosive esophagitis. The recommendations for intermediate and poor metabolizer for chronic therapy (&gt;12 weeks) and efficacy achieved is to consider 50% reduction in daily dose. See full guideline for further details and supporting evidence.</p>\n"
+        },
+        "textMarkdown": {
+          "id": 1451433691,
+          "html": "<h3 id=\"august-2020\">August 2020</h3>\n<p><em>Advance online publication August 2020.</em></p>\n<ul>\n<li>\n<p>The <a rel=\"noopener noreferrer\" href=\"https://ascpt.onlinelibrary.wiley.com/doi/abs/10.1002/cpt.2015\" target=\"_blank\">CPIC Guideline for CYP2C19 and Proton Pump Inhibitor Dosing</a> is published in <em>Clinical Pharmacology and Therapeutics</em>.</p>\n</li>\n<li>\n<p>These guidelines are applicable to:</p>\n<ul>\n<li>pediatric patients</li>\n<li>adult patients</li>\n</ul>\n</li>\n<li>\n<p>Excerpts from the 2020 Proton Pump Inhibitor Dosing dosing guideline:</p>\n<ul>\n<li>\n<p>&quot;<em>CYP2C19</em> genotypes have been linked to PPI exposure, with lower exposure associated with treatment failure and higher exposure associated with improved efficacy. Higher exposure of PPIs has also been associated with adverse effects, as has long-term use.&quot;</p>\n</li>\n<li>\n<p>&quot;The RM and UM phenotypes are driven by the presence of the increased function CYP2C19*17 allele. Due to the relatively recent discovery of this variant and because the majority of studies describing associations between CYP2C19 genotype, pharmacokinetics, and pharmacodynamics of PPIs were conducted in Asian populations in whom the CYP2C19*17 allele occurs less frequently, there are limited data on the relationship between CYP2C19*17, pharmacokinetic parameters, acid secretion indices and therapeutic outcomes in CYP2C19 RMs and UMs.&quot;</p>\n</li>\n<li>\n<p>&quot;Nevertheless, the low PPI exposure documented in patients who are CYP2C19 UMs compared to NMs, IMs, and PMs suggests that these individuals may benefit from higher than standard daily doses of PPIs (Tables S1-S3).&quot;</p>\n</li>\n<li>\n<p>&quot; While CYP2C19 NMs are expected to have normal PPI metabolism and clearance, a large body of literature from studies in Asian populations reported an association between CYP2C19 NMs and decreased therapeutic effectiveness with these PPIs (e.g., failure to eradicate H. pylori infection and lower healing rates of erosive esophagitis) compared to CYP2C19 IMs and PMs (Tables S1-S4). Therefore, for CYP2C19 NMs, initiating these PPIs at standard daily doses (e.g., label recommended doses) is generally recommended; however, for H. pylori infection or erosive esophagitis, clinicians may consider increasing the recommended dose for these indications by 50-100% to optimize therapeutic efficacy.&quot;</p>\n</li>\n<li>\n<p>&quot;CYP2C19 IMs and PMs are considered to be “therapeutically advantaged” compared to NMs in terms of efficacy. However, it has been suggested that continued inhibition of acid secretion in individuals taking PPIs chronically who are genotyped as CYP2C19 IMs or PMs may have a higher risk of PPI-related adverse events compared to NM, RM, or UM phenotypes. While the current data are insufficient to make strong dosing recommendations, potential associations of CYP2C19 phenotype and incidence of adverse events (e.g., infections) are emerging.&quot;</p>\n</li>\n<li>\n<p>&quot;<em><strong>Pediatrics</strong></em>: The CYP2C19-guided PPI recommendations presented in Table 2 also apply to pediatric patients. ...... A recent pilot study of CYP2C19-genotype-guided dosing of PPIs in children has been promising, and additional studies are ongoing. These reports support genotype-based optimization of PPI therapy for children. However, very low clearance in pre-term infants and infants less than 2-3 months of age makes recommendations in the neonatal population difficult to support. Additional pediatric considerations are discussed in the Supplemental Material.&quot;</p>\n</li>\n</ul>\n</li>\n<li>\n<p>Download and read:</p>\n<ul>\n<li><a rel=\"noopener noreferrer\" href=\"https://files.cpicpgx.org/data/guideline/publication/PPI/2020/32770672.pdf\" target=\"_blank\">Clinical Pharmacogenetics Implementation Consortium guideline for <em>CYP2C19</em> and Proton Pump Inhibitors</a></li>\n<li><a rel=\"noopener noreferrer\" href=\"https://files.cpicpgx.org/data/guideline/publication/PPI/2020/32770672-supplement.pdf\" target=\"_blank\">2020 supplement</a></li>\n<li><a href=\"/page/cyp2c19RefMaterials\">CYP2C19 Gene-Specific Information Tables</a></li>\n<li><a rel=\"noopener noreferrer\" href=\"https://files.cpicpgx.org/data/report/current/drug_resource/omeprazole-Drug_Resource_Mappings.xlsx\" target=\"_blank\">Omeprazole Drug Resource Mappings</a></li>\n<li><a rel=\"noopener noreferrer\" href=\"https://files.cpicpgx.org/data/report/current/test_alert/omeprazole_Pre_and_Post_Test_Alerts.xlsx\" target=\"_blank\">Omeprazole Pre and Post Test Alerts</a></li>\n<li><a rel=\"noopener noreferrer\" href=\"https://files.cpicpgx.org/images/flow_chart/Omeprazole_CDS_Flow_Chart.jpg\" target=\"_blank\">Omeprazole Clinical Decision Support Flow Chart</a></li>\n<li><a rel=\"noopener noreferrer\" href=\"https://files.cpicpgx.org/data/report/current/drug_resource/lansoprazole-Drug_Resource_Mappings.xlsx\" target=\"_blank\">Lansoprazole Drug Resource Mappings</a></li>\n<li><a rel=\"noopener noreferrer\" href=\"https://files.cpicpgx.org/data/report/current/test_alert/lansoprazole_Pre_and_Post_Test_Alerts.xlsx\" target=\"_blank\">Lansoprazole Pre and Post Test Alerts</a></li>\n<li><a rel=\"noopener noreferrer\" href=\"https://files.cpicpgx.org/images/flow_chart/Lansoprazole_CDS_Flow_Chart.jpg\" target=\"_blank\">Lansoprazole Clinical Decision Support Flow Chart</a></li>\n<li><a rel=\"noopener noreferrer\" href=\"https://files.cpicpgx.org/data/report/current/drug_resource/pantoprazole-Drug_Resource_Mappings.xlsx\" target=\"_blank\">Pantoprazole Drug Resource Mappings</a></li>\n<li><a rel=\"noopener noreferrer\" href=\"https://files.cpicpgx.org/data/report/current/test_alert/pantoprazole_Pre_and_Post_Test_Alerts.xlsx\" target=\"_blank\">Pantoprazole Pre and Post Test Alerts</a></li>\n<li><a rel=\"noopener noreferrer\" href=\"https://files.cpicpgx.org/images/flow_chart/Pantoprazole_CDS_Flow_Chart.jpg\" target=\"_blank\">Pantoprazole Clinical Decision Support Flow Chart</a></li>\n</ul>\n</li>\n</ul>\n<h3 id=\"table-1-recommended-dosing-of-omeprazole-lansoprazole-pantoprazole-by-cyp2c19-phenotype\">Table 1: Recommended dosing of omeprazole, lansoprazole, pantoprazole by CYP2C19 phenotype</h3>\n<p><em>Adapted from Tables 1 and 2 of the 2020 guideline.</em></p>\n<table class=\"table\">\n<thead>\n<tr>\n<th>Phenotype<sup>a</sup></th>\n<th>Genotype</th>\n<th>Examples of genotypes<sup>b</sup></th>\n<th>Implications</th>\n<th>Therapeutic recommendations</th>\n<th>Classification of recommendations<sup>c</sup></th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>CYP2C19 Ultrarapid metabolizer</td>\n<td>An individual carrying two increased function alleles</td>\n<td><em>*17/*17</em></td>\n<td>Decreased plasma concentrations of PPIs compared to CYP2C19 NMs; increased risk of therapeutic failure</td>\n<td>Increase starting daily dose by 100%. Daily dose may be given in divided doses. Monitor for efficacy.</td>\n<td>Optional</td>\n</tr>\n<tr>\n<td>CYP2C19 Rapid metabolizer</td>\n<td>An individual carrying one normal function allele and one increased function allele</td>\n<td><em>*1/*17</em></td>\n<td>Decreased plasma concentrations of PPIs compared to CYP2C19 NMs; increased risk of therapeutic failure</td>\n<td>Initiate standard starting daily dose. Consider increasing dose by 50-100% for the treatment of <em>H. pylori</em> infection and erosive esophagitis. Daily dose may be given in divided doses. Monitor for efficacy.</td>\n<td>Moderate</td>\n</tr>\n<tr>\n<td>CYP2C19 Normal metabolizer</td>\n<td>An individual carrying two normal function alleles</td>\n<td><em>*1/*1</em></td>\n<td>Normal PPI metabolism; may be at increased risk of therapeutic failure compared to CYP2C19 IMs and PMs</td>\n<td>Initiate standard starting daily dose. Consider increasing dose by 50-100% for the treatment of <em>H. pylori</em> infection and erosive esophagitis. Daily dose may be given in divided doses. Monitor for efficacy.</td>\n<td>Moderate</td>\n</tr>\n<tr>\n<td>CYP2C19 likely intermediate metabolizer <sup>d</sup></td>\n<td>An individual carrying one normal function allele and one decreased function allele or one increased function allele and one decreased function allele or two decreased function alleles</td>\n<td><em>*1/*9, *9/*17, *9/*9</em></td>\n<td>Likely increased plasma concentration of PPI compared to CYP2C19 NMs; likely increased chance of efficacy and potentially toxicity</td>\n<td>Initiate standard starting daily dose. For chronic therapy (&gt;12 weeks) and efficacy achieved, consider 50% reduction in daily dose and monitor for continued efficacy.</td>\n<td>Optional<sup>e</sup></td>\n</tr>\n<tr>\n<td>CYP2C19 intermediate metabolizer</td>\n<td>An individual carrying one normal function allele and one no function allele or one increased function allele and one no function allele</td>\n<td><em>*1/*2, *1/*3, *2/*17, *3/*17</em></td>\n<td>Increased plasma concentration of PPI compared to CYP2C19 NMs; increased chance of efficacy and potentially toxicity</td>\n<td>Initiate standard starting daily dose. For chronic therapy (&gt;12 weeks) and efficacy achieved, consider 50% reduction in daily dose and monitor for continued efficacy.</td>\n<td>Optional</td>\n</tr>\n<tr>\n<td>CYP2C19 likely poor metabolizer <sup>d</sup></td>\n<td>An individual carrying one decreased function allele and one no function allele</td>\n<td><em>*2/*9, *3/*9</em></td>\n<td>Likely increased plasma concentration of PPI compared to CYP2C19 NMs; likely increased chance of efficacy and potentially toxicity</td>\n<td>Initiate standard starting daily dose. For chronic therapy (&gt;12 weeks) and efficacy achieved, consider 50% reduction in daily dose and monitor for continued efficacy.</td>\n<td>Moderate<sup>e</sup></td>\n</tr>\n<tr>\n<td>CYP2C19 poor metabolizer</td>\n<td>An individual carrying two no function alleles</td>\n<td><em>*2/*2, *3/*3, *2/*3</em></td>\n<td>Increased plasma concentration of PPI compared to CYP2C19 NMs; increased chance of efficacy and potentially toxicity</td>\n<td>Initiate standard starting daily dose. For chronic therapy (&gt;12 weeks) and efficacy achieved, consider 50% reduction in daily dose and monitor for continued efficacy.</td>\n<td>Moderate</td>\n</tr>\n<tr>\n<td>Indeterminate</td>\n<td>An individual carrying one or two uncertain function alleles</td>\n<td><em>*1/*12, *2/*12, *12/*14</em></td>\n<td>N/A</td>\n<td>No recommendation</td>\n<td>No recommendation</td>\n</tr>\n</tbody>\n</table>\n<p><sup>a</sup> The online <a href=\"/page/cyp2c19RefMaterials\">CYP2C19 Frequency Table</a> provides phenotype frequencies for major race/ethnic groups, and the online <a href=\"/page/cyp2c19RefMaterials\">CYP2C19 Diplotype-Phenotype Table</a> provides a complete list of possible diplotypes and phenotype assignments .<br />\n<sup>b</sup> For a complete list of CYP2C19 diplotypes and resulting phenotypes, see the <a href=\"/page/cyp2c19RefMaterials\">CYP2C19 genotype to phenotype table</a>.<br />\n<sup>c</sup> Rating scheme described in Supplement.<br />\n<sup>d</sup> There are limited data to characterize the function of decreased function alleles.<br />\n<sup>e</sup> The strength of recommendation for “likely” phenotypes are the same as their respective confirmed phenotypes. “Likely” indicates the uncertainty in the phenotype assignment, but it is reasonable to apply the recommendation for the confirmed phenotype to the corresponding “likely” phenotype.</p>\n"
+        }
+      }
+    ],
+    "pair": {},
+    "errors": []
+  },
+  "CYP2C9::pantoprazole": {
+    "gene": {
+      "gene": "CYP2C9",
+      "gene_id": "PA126",
+      "name": "cytochrome P450 family 2 subfamily C member 9",
+      "cpicGene": "True",
+      "pharmVarGene": "True",
+      "alleleFile": "CYP2C9_allele_definition_table.xlsx",
+      "alleleFunctionSource": "CPIC",
+      "alleleType": "Named Alleles",
+      "vipTier": "Tier 1",
+      "mvp_priority": "high",
+      "mvp_role": "core",
+      "notes": "CYP2C9 is one of the key pharmacogenes involved in implementation of pharmacogenomics. It is involved in guidelines for warfarin , phenytoin and NSAIDs , ( go to list of all guidelines with CYP2C9 ). the nomenclature has been set by PharmVar the AMP tier 1 alleles are CYP2C9*2 , CYP2C9*3 , CYP2C9*5 , CYP2C9*6 , CYP2C9*8 , and CYP2C9*11 , see all alleles on the AMP recommended to test list key variant pages include rs1799853 and rs1057910 See the Gene-specific Information Tables for Allele Definitions (for which variants comprise which star alleles), Allele function assignments (normal function, no function, decreased or increased function etc) and Diplotype-Phenotype Table (for how the allel..."
+    },
+    "drug": {
+      "objCls": "Chemical",
+      "id": "PA450774",
+      "name": "pantoprazole",
+      "inChi": "InChI=1S/C16H15F2N3O4S/c1-23-13-5-6-19-12(14(13)24-2)8-26(22)16-20-10-4-3-9(25-15(17)18)7-11(10)21-16/h3-7,15H,8H2,1-2H3,(H,20,21)",
+      "pediatric": false,
+      "smiles": "COC1=C(C(=NC=C1)CS(=O)C2=NC3=C(N2)C=C(C=C3)OC(F)F)OC",
+      "types": [
+        "Drug"
+      ]
+    },
+    "guidelineAnnotation": [],
+    "pair": {},
+    "errors": [
+      {
+        "guidelineAnnotation": "api_error: HTTP Error 404: Not Found"
+      },
+      {
+        "guidelineAnnotation": "api_error: HTTP Error 404: Not Found"
+      },
+      {
+        "GuidelineAnnotation": "api_error: HTTP Error 404: Not Found"
+      },
+      {
+        "variantAnnotation": "api_error: HTTP Error 404: Not Found"
+      },
+      {
+        "VariantAnnotation": "api_error: HTTP Error 404: Not Found"
+      },
+      {
+        "label": "api_error: HTTP Error 404: Not Found"
+      },
+      {
+        "DrugLabel": "api_error: HTTP Error 404: Not Found"
+      }
+    ]
+  },
+  "CYP2D6::pantoprazole": {
+    "gene": {
+      "gene": "CYP2D6",
+      "gene_id": "PA128",
+      "name": "cytochrome P450 family 2 subfamily D member 6",
+      "cpicGene": "True",
+      "pharmVarGene": "True",
+      "alleleFile": "CYP2D6_allele_definition_table.xlsx",
+      "alleleFunctionSource": "CPIC",
+      "alleleType": "Named Alleles",
+      "vipTier": "Tier 1",
+      "mvp_priority": "high",
+      "mvp_role": "core",
+      "notes": "CYP2D6 is one of the key pharmacogenes involved in implementation of pharmacogenomics. It is highly polymorphic and involved in the metabolism of up to 25% of the drugs that are in common use in the clinic. It is involved in guidelines for codeine and other opioids, antidepressants, and tamoxifen go to list of all guidelines with CYP2D6 . the nomenclature has been set by PharmVar . the AMP tier 1 alleles are CYP2D6*2 , CYP2D6*3 , CYP2D6*4 , CYP2D6*5 , CYP2D6*6 , CYP2D6*9 , CYP2D6*10 , CYP2D6*17 , CYP2D6*29 , CYP2D6*41 , CYP2D6 duplications and other copy number variants see all alleles on the AMP recommended to test list . See the Gene-specific Information Tables for Allele Definitions (for ..."
+    },
+    "drug": {
+      "objCls": "Chemical",
+      "id": "PA450774",
+      "name": "pantoprazole",
+      "inChi": "InChI=1S/C16H15F2N3O4S/c1-23-13-5-6-19-12(14(13)24-2)8-26(22)16-20-10-4-3-9(25-15(17)18)7-11(10)21-16/h3-7,15H,8H2,1-2H3,(H,20,21)",
+      "pediatric": false,
+      "smiles": "COC1=C(C(=NC=C1)CS(=O)C2=NC3=C(N2)C=C(C=C3)OC(F)F)OC",
+      "types": [
+        "Drug"
+      ]
+    },
+    "guidelineAnnotation": [],
+    "pair": {},
+    "errors": [
+      {
+        "guidelineAnnotation": "api_error: HTTP Error 404: Not Found"
+      },
+      {
+        "guidelineAnnotation": "api_error: HTTP Error 404: Not Found"
+      },
+      {
+        "GuidelineAnnotation": "api_error: HTTP Error 404: Not Found"
+      },
+      {
+        "variantAnnotation": "api_error: HTTP Error 404: Not Found"
+      },
+      {
+        "VariantAnnotation": "api_error: HTTP Error 404: Not Found"
+      },
+      {
+        "label": "api_error: HTTP Error 404: Not Found"
+      },
+      {
+        "DrugLabel": "api_error: HTTP Error 404: Not Found"
+      }
+    ]
+  },
+  "CYP3A4::pantoprazole": {
+    "gene": {
+      "gene": "CYP3A4",
+      "gene_id": "PA130",
+      "name": "cytochrome P450 family 3 subfamily A member 4",
+      "cpicGene": "False",
+      "pharmVarGene": "True",
+      "alleleFile": "",
+      "alleleFunctionSource": "ClinPGx",
+      "alleleType": "Named Alleles",
+      "vipTier": "Tier 1",
+      "mvp_priority": "medium",
+      "mvp_role": "supporting",
+      "notes": "CYP3A4 is one of the key pharmacogenes involved in implementation of pharmacogenomics. It is involved in guidelines for quetiapine ( go to list of all guidelines with CYP3A4 ). the nomenclature has been set by PharmVar the AMP tier 1 allele is CYP3A4*22 and tier 2 allele is CYP3A4*20 see all alleles on the AMP recommended to test list . key variant pages are rs35599367 (defining for *22) and rs67666821 (defining for *20). it is involved in many drug label annotations with a larger number of cautions for drug-drug interactions with CYP3A4 inhibitors (such as ketoconazole ) and inducers (such as carbamazepine ), see the Flockhart table for more CYP3A4 inhibitors, inducers and substrates."
+    },
+    "drug": {
+      "objCls": "Chemical",
+      "id": "PA450774",
+      "name": "pantoprazole",
+      "inChi": "InChI=1S/C16H15F2N3O4S/c1-23-13-5-6-19-12(14(13)24-2)8-26(22)16-20-10-4-3-9(25-15(17)18)7-11(10)21-16/h3-7,15H,8H2,1-2H3,(H,20,21)",
+      "pediatric": false,
+      "smiles": "COC1=C(C(=NC=C1)CS(=O)C2=NC3=C(N2)C=C(C=C3)OC(F)F)OC",
+      "types": [
+        "Drug"
+      ]
+    },
+    "guidelineAnnotation": [],
+    "pair": {},
+    "errors": [
+      {
+        "guidelineAnnotation": "api_error: HTTP Error 404: Not Found"
+      },
+      {
+        "guidelineAnnotation": "api_error: HTTP Error 404: Not Found"
+      },
+      {
+        "GuidelineAnnotation": "api_error: HTTP Error 404: Not Found"
+      },
+      {
+        "label": "api_error: HTTP Error 404: Not Found"
+      },
+      {
+        "DrugLabel": "api_error: HTTP Error 404: Not Found"
+      }
+    ]
+  },
+  "CYP1A2::prasugrel": {
+    "gene": {
+      "gene": "CYP1A2",
+      "gene_id": "PA27093",
+      "name": "cytochrome P450 family 1 subfamily A member 2",
+      "cpicGene": "False",
+      "pharmVarGene": "True",
+      "alleleFile": "",
+      "alleleFunctionSource": "",
+      "alleleType": "Named Alleles",
+      "vipTier": "Tier 2",
+      "mvp_priority": "low",
+      "mvp_role": "supporting",
+      "notes": "CYP1A2 is an inducible member of the cytochrome P450 (CYP) drug metabolizing gene family, important for metabolism of caffeine and antipsychotics."
+    },
+    "drug": {
+      "objCls": "Chemical",
+      "id": "PA154410481",
+      "name": "prasugrel",
+      "inChi": "InChI=1S/C20H20FNO3S/c1-12(23)25-18-10-14-11-22(9-8-17(14)26-18)19(20(24)13-6-7-13)15-4-2-3-5-16(15)21/h2-5,10,13,19H,6-9,11H2,1H3",
+      "pediatric": false,
+      "smiles": "CC(=O)OC1=CC2=C(S1)CCN(C2)C(C3=CC=CC=C3F)C(=O)C4CC4",
+      "types": [
+        "Drug"
+      ]
+    },
+    "guidelineAnnotation": [],
+    "pair": {},
+    "errors": [
+      {
+        "guidelineAnnotation": "api_error: HTTP Error 404: Not Found"
+      },
+      {
+        "guidelineAnnotation": "api_error: HTTP Error 404: Not Found"
+      },
+      {
+        "GuidelineAnnotation": "api_error: HTTP Error 404: Not Found"
+      },
+      {
+        "label": "api_error: HTTP Error 404: Not Found"
+      },
+      {
+        "DrugLabel": "api_error: HTTP Error 404: Not Found"
+      }
+    ]
+  },
+  "CYP2C19::prasugrel": {
+    "gene": {
+      "gene": "CYP2C19",
+      "gene_id": "PA124",
+      "name": "cytochrome P450 family 2 subfamily C member 19",
+      "cpicGene": "True",
+      "pharmVarGene": "True",
+      "alleleFile": "CYP2C19_allele_definition_table.xlsx",
+      "alleleFunctionSource": "CPIC",
+      "alleleType": "Named Alleles",
+      "vipTier": "Tier 1",
+      "mvp_priority": "high",
+      "mvp_role": "core",
+      "notes": "CYP2C19 is one of the key pharmacogenes involved in implementation of pharmacogenomics. It is involved in guidelines for antidepressants, clopidogrel and voriconazole ( go to list of all guidelines with CYP2C19 ). the nomenclature has been set by PharmVar , note that the reference sequence for CYP2C19 on hg38 is equivalent to CYP2C19*38 not CYP2C19*1 . the AMP tier 1 alleles are CYP2C19*2 , CYP2C19*3 and CYP2C19*17 see all alleles on the AMP recommended to test list key variant pages are rs4244285 (part of *2), rs4986893 (part of *3) and rs12248560 (part of *17) See the Gene-specific Information Tables for Allele Definitions (for which variants comprise which star alleles), Allele function a..."
+    },
+    "drug": {
+      "objCls": "Chemical",
+      "id": "PA154410481",
+      "name": "prasugrel",
+      "inChi": "InChI=1S/C20H20FNO3S/c1-12(23)25-18-10-14-11-22(9-8-17(14)26-18)19(20(24)13-6-7-13)15-4-2-3-5-16(15)21/h2-5,10,13,19H,6-9,11H2,1H3",
+      "pediatric": false,
+      "smiles": "CC(=O)OC1=CC2=C(S1)CCN(C2)C(C3=CC=CC=C3F)C(=O)C4CC4",
+      "types": [
+        "Drug"
+      ]
+    },
+    "guidelineAnnotation": [
+      {
+        "objCls": "Guideline Annotation",
+        "id": "PA166182820",
+        "name": "Annotation of DPWG Guideline for prasugrel and CYP2C19",
+        "alternateDrugAvailable": false,
+        "crossReferences": [],
+        "dosingInformation": false,
+        "hasTestingInfo": false,
+        "history": [
+          {
+            "id": 1450415045,
+            "date": "2019-05-23T15:07:53.320-07:00",
+            "description": "Annotation current with November 2018 DPWG Guideline release",
+            "type": "Update",
+            "version": 0
+          },
+          {
+            "id": 1450821026,
+            "date": "2019-10-07T18:20:13.348-07:00",
+            "description": "No changes based on August 2019 guideline",
+            "type": "Update",
+            "version": 0
+          },
+          {
+            "id": 1450963820,
+            "date": "2020-02-11T07:36:09.709-08:00",
+            "description": "Fixed links to 2018 guideline pdfs.",
+            "type": "Update",
+            "version": 0
+          },
+          {
+            "id": 1451704178,
+            "date": "2022-03-03T16:33:22.485-08:00",
+            "description": "Annotation current with May 2021 DPWG Guideline release",
+            "type": "Note",
+            "version": 0
+          },
+          {
+            "id": 1451732818,
+            "date": "2022-03-28T09:57:36.150-07:00",
+            "description": "Annotation current with February 2022 DPWG guideline release",
+            "type": "Note",
+            "version": 0
+          },
+          {
+            "id": 1451884560,
+            "date": "2022-09-16T12:18:33.515-07:00",
+            "description": "Fixed link to gene information document and added explanatory note",
+            "type": "Update",
+            "version": 0
+          },
+          {
+            "id": 1452146448,
+            "date": "2023-07-03T13:39:46.904-07:00",
+            "description": "Annotation current with May 2023 DPWG Guideline release",
+            "type": "Note",
+            "version": 0
+          },
+          {
+            "id": 1452411180,
+            "date": "2024-03-18T09:09:55.797-07:00",
+            "description": "Updated links for risk analysis pdf.",
+            "type": "Update",
+            "version": 0
+          },
+          {
+            "id": 1452424668,
+            "date": "2024-03-29T11:52:20.798-07:00",
+            "description": "Removed message about gene information document availability.",
+            "type": "Update",
+            "version": 0
+          }
+        ],
+        "literature": [
+          {
+            "id": 15103288,
+            "title": "Dutch Pharmacogenetics Working Group Guidelines August 2019",
+            "_sameAs": "https://api.pharmgkb.org/v1/preview/download/file/attachment/DPWG_August_2019.pdf",
+            "crossReferences": [
+              {
+                "id": 1450815695,
+                "resource": "URL",
+                "resourceId": "https://api.pharmgkb.org/v1/preview/download/file/attachment/DPWG_August_2019.pdf",
+                "_url": "https://api.pharmgkb.org/v1/preview/download/file/attachment/DPWG_August_2019.pdf"
+              }
+            ],
+            "objCls": "Literature",
+            "terms": [],
+            "type": "Literature"
+          },
+          {
+            "id": 15102465,
+            "title": "Dutch Pharmacogenetics Working Group Guidelines November 2018",
+            "_sameAs": "https://api.pharmgkb.org/v1/preview/download/file/attachment/DPWG_November_2018.pdf",
+            "crossReferences": [
+              {
+                "id": 1450415575,
+                "resource": "URL",
+                "resourceId": "https://api.pharmgkb.org/v1/preview/download/file/attachment/DPWG_November_2018.pdf",
+                "_url": "https://api.pharmgkb.org/v1/preview/download/file/attachment/DPWG_November_2018.pdf"
+              }
+            ],
+            "objCls": "Literature",
+            "terms": [],
+            "type": "Literature"
+          }
+        ],
+        "otherPrescribingGuidance": false,
+        "pediatric": false,
+        "recommendation": false,
+        "relatedAlleles": [],
+        "relatedChemicals": [
+          {
+            "objCls": "Chemical",
+            "id": "PA154410481",
+            "name": "prasugrel"
+          }
+        ],
+        "relatedGenes": [
+          {
+            "objCls": "Gene",
+            "id": "PA124",
+            "symbol": "CYP2C19",
+            "name": "cytochrome P450 family 2 subfamily C member 19"
+          }
+        ],
+        "source": "DPWG",
+        "summaryMarkdown": {
+          "id": 1450415042,
+          "html": "<p>There are currently no dosing recommendations for prasugrel based on CYP2C19 genotypes.</p>\n"
+        },
+        "textMarkdown": {
+          "id": 1450415043,
+          "html": "<h3 id=\"november-2018-guideline\">November 2018 Guideline</h3>\n<p>The Royal Dutch Pharmacists Association - Pharmacogenetics Working Group has evaluated therapeutic dose recommendations for prasugrel based on CYP2C19 genotypes. They conclude that there is not a gene-drug interaction. <em>See the <a download=\"DPWG_November_2018.pdf\" href=\"https://api.clinpgx.org/v1/download/file/attachment/DPWG_November_2018.pdf\">Dutch guidelines November 2018 update</a>.</em></p>\n<p><a download=\"DPWG_CYP2C19_prasugrel_2545-2546-2547.pdf\" href=\"https://api.clinpgx.org/v1/download/file/attachment/DPWG_CYP2C19_prasugrel_2545-2546-2547.pdf\">Read for more information about this recommendation</a>, <a download=\"CYP2C19.pdf\" href=\"https://api.clinpgx.org/v1/download/file/attachment/CYP2C19.pdf\">Read about gene information from DPWG</a></p>\n"
+        }
+      }
+    ],
+    "pair": {},
+    "errors": []
+  },
+  "CYP2C9::prasugrel": {
+    "gene": {
+      "gene": "CYP2C9",
+      "gene_id": "PA126",
+      "name": "cytochrome P450 family 2 subfamily C member 9",
+      "cpicGene": "True",
+      "pharmVarGene": "True",
+      "alleleFile": "CYP2C9_allele_definition_table.xlsx",
+      "alleleFunctionSource": "CPIC",
+      "alleleType": "Named Alleles",
+      "vipTier": "Tier 1",
+      "mvp_priority": "high",
+      "mvp_role": "core",
+      "notes": "CYP2C9 is one of the key pharmacogenes involved in implementation of pharmacogenomics. It is involved in guidelines for warfarin , phenytoin and NSAIDs , ( go to list of all guidelines with CYP2C9 ). the nomenclature has been set by PharmVar the AMP tier 1 alleles are CYP2C9*2 , CYP2C9*3 , CYP2C9*5 , CYP2C9*6 , CYP2C9*8 , and CYP2C9*11 , see all alleles on the AMP recommended to test list key variant pages include rs1799853 and rs1057910 See the Gene-specific Information Tables for Allele Definitions (for which variants comprise which star alleles), Allele function assignments (normal function, no function, decreased or increased function etc) and Diplotype-Phenotype Table (for how the allel..."
+    },
+    "drug": {
+      "objCls": "Chemical",
+      "id": "PA154410481",
+      "name": "prasugrel",
+      "inChi": "InChI=1S/C20H20FNO3S/c1-12(23)25-18-10-14-11-22(9-8-17(14)26-18)19(20(24)13-6-7-13)15-4-2-3-5-16(15)21/h2-5,10,13,19H,6-9,11H2,1H3",
+      "pediatric": false,
+      "smiles": "CC(=O)OC1=CC2=C(S1)CCN(C2)C(C3=CC=CC=C3F)C(=O)C4CC4",
+      "types": [
+        "Drug"
+      ]
+    },
+    "guidelineAnnotation": [],
+    "pair": {},
+    "errors": [
+      {
+        "guidelineAnnotation": "api_error: HTTP Error 404: Not Found"
+      },
+      {
+        "guidelineAnnotation": "api_error: HTTP Error 404: Not Found"
+      },
+      {
+        "GuidelineAnnotation": "api_error: HTTP Error 404: Not Found"
+      }
+    ]
+  },
+  "CYP2D6::prasugrel": {
+    "gene": {
+      "gene": "CYP2D6",
+      "gene_id": "PA128",
+      "name": "cytochrome P450 family 2 subfamily D member 6",
+      "cpicGene": "True",
+      "pharmVarGene": "True",
+      "alleleFile": "CYP2D6_allele_definition_table.xlsx",
+      "alleleFunctionSource": "CPIC",
+      "alleleType": "Named Alleles",
+      "vipTier": "Tier 1",
+      "mvp_priority": "high",
+      "mvp_role": "core",
+      "notes": "CYP2D6 is one of the key pharmacogenes involved in implementation of pharmacogenomics. It is highly polymorphic and involved in the metabolism of up to 25% of the drugs that are in common use in the clinic. It is involved in guidelines for codeine and other opioids, antidepressants, and tamoxifen go to list of all guidelines with CYP2D6 . the nomenclature has been set by PharmVar . the AMP tier 1 alleles are CYP2D6*2 , CYP2D6*3 , CYP2D6*4 , CYP2D6*5 , CYP2D6*6 , CYP2D6*9 , CYP2D6*10 , CYP2D6*17 , CYP2D6*29 , CYP2D6*41 , CYP2D6 duplications and other copy number variants see all alleles on the AMP recommended to test list . See the Gene-specific Information Tables for Allele Definitions (for ..."
+    },
+    "drug": {
+      "objCls": "Chemical",
+      "id": "PA154410481",
+      "name": "prasugrel",
+      "inChi": "InChI=1S/C20H20FNO3S/c1-12(23)25-18-10-14-11-22(9-8-17(14)26-18)19(20(24)13-6-7-13)15-4-2-3-5-16(15)21/h2-5,10,13,19H,6-9,11H2,1H3",
+      "pediatric": false,
+      "smiles": "CC(=O)OC1=CC2=C(S1)CCN(C2)C(C3=CC=CC=C3F)C(=O)C4CC4",
+      "types": [
+        "Drug"
+      ]
+    },
+    "guidelineAnnotation": [],
+    "pair": {},
+    "errors": [
+      {
+        "guidelineAnnotation": "api_error: HTTP Error 404: Not Found"
+      },
+      {
+        "guidelineAnnotation": "api_error: HTTP Error 404: Not Found"
+      },
+      {
+        "GuidelineAnnotation": "api_error: HTTP Error 404: Not Found"
+      },
+      {
+        "variantAnnotation": "api_error: HTTP Error 404: Not Found"
+      },
+      {
+        "VariantAnnotation": "api_error: HTTP Error 404: Not Found"
+      },
+      {
+        "label": "api_error: HTTP Error 404: Not Found"
+      },
+      {
+        "DrugLabel": "api_error: HTTP Error 404: Not Found"
+      }
+    ]
+  },
+  "CYP3A4::prasugrel": {
+    "gene": {
+      "gene": "CYP3A4",
+      "gene_id": "PA130",
+      "name": "cytochrome P450 family 3 subfamily A member 4",
+      "cpicGene": "False",
+      "pharmVarGene": "True",
+      "alleleFile": "",
+      "alleleFunctionSource": "ClinPGx",
+      "alleleType": "Named Alleles",
+      "vipTier": "Tier 1",
+      "mvp_priority": "medium",
+      "mvp_role": "supporting",
+      "notes": "CYP3A4 is one of the key pharmacogenes involved in implementation of pharmacogenomics. It is involved in guidelines for quetiapine ( go to list of all guidelines with CYP3A4 ). the nomenclature has been set by PharmVar the AMP tier 1 allele is CYP3A4*22 and tier 2 allele is CYP3A4*20 see all alleles on the AMP recommended to test list . key variant pages are rs35599367 (defining for *22) and rs67666821 (defining for *20). it is involved in many drug label annotations with a larger number of cautions for drug-drug interactions with CYP3A4 inhibitors (such as ketoconazole ) and inducers (such as carbamazepine ), see the Flockhart table for more CYP3A4 inhibitors, inducers and substrates."
+    },
+    "drug": {
+      "objCls": "Chemical",
+      "id": "PA154410481",
+      "name": "prasugrel",
+      "inChi": "InChI=1S/C20H20FNO3S/c1-12(23)25-18-10-14-11-22(9-8-17(14)26-18)19(20(24)13-6-7-13)15-4-2-3-5-16(15)21/h2-5,10,13,19H,6-9,11H2,1H3",
+      "pediatric": false,
+      "smiles": "CC(=O)OC1=CC2=C(S1)CCN(C2)C(C3=CC=CC=C3F)C(=O)C4CC4",
+      "types": [
+        "Drug"
+      ]
+    },
+    "guidelineAnnotation": [],
+    "pair": {},
+    "errors": [
+      {
+        "guidelineAnnotation": "api_error: HTTP Error 404: Not Found"
+      },
+      {
+        "guidelineAnnotation": "api_error: HTTP Error 404: Not Found"
+      },
+      {
+        "GuidelineAnnotation": "api_error: HTTP Error 404: Not Found"
+      },
+      {
+        "label": "api_error: HTTP Error 404: Not Found"
+      },
+      {
+        "DrugLabel": "api_error: HTTP Error 404: Not Found"
+      }
+    ]
+  },
+  "CYP1A2::ticagrelor": {
+    "gene": {
+      "gene": "CYP1A2",
+      "gene_id": "PA27093",
+      "name": "cytochrome P450 family 1 subfamily A member 2",
+      "cpicGene": "False",
+      "pharmVarGene": "True",
+      "alleleFile": "",
+      "alleleFunctionSource": "",
+      "alleleType": "Named Alleles",
+      "vipTier": "Tier 2",
+      "mvp_priority": "low",
+      "mvp_role": "supporting",
+      "notes": "CYP1A2 is an inducible member of the cytochrome P450 (CYP) drug metabolizing gene family, important for metabolism of caffeine and antipsychotics."
+    },
+    "drug": {
+      "objCls": "Chemical",
+      "id": "PA165374673",
+      "name": "ticagrelor",
+      "inChi": "InChI=1S/C23H28F2N6O4S/c1-2-7-36-23-27-21(26-15-9-12(15)11-3-4-13(24)14(25)8-11)18-22(28-23)31(30-29-18)16-10-17(35-6-5-32)20(34)19(16)33/h3-4,8,12,15-17,19-20,32-34H,2,5-7,9-10H2,1H3,(H,26,27,28)/t12-,15+,16+,17-,19-,20+/m0/s1",
+      "pediatric": false,
+      "smiles": "CCCSC1=NC2=C(C(=N1)N[C@@H]3C[C@H]3C4=CC(=C(C=C4)F)F)N=NN2[C@@H]5C[C@@H]([C@H]([C@H]5O)O)OCCO",
+      "types": [
+        "Drug"
+      ]
+    },
+    "guidelineAnnotation": [],
+    "pair": {},
+    "errors": [
+      {
+        "guidelineAnnotation": "api_error: HTTP Error 404: Not Found"
+      },
+      {
+        "guidelineAnnotation": "api_error: HTTP Error 404: Not Found"
+      },
+      {
+        "GuidelineAnnotation": "api_error: HTTP Error 404: Not Found"
+      },
+      {
+        "variantAnnotation": "api_error: HTTP Error 404: Not Found"
+      },
+      {
+        "VariantAnnotation": "api_error: HTTP Error 404: Not Found"
+      },
+      {
+        "label": "api_error: HTTP Error 404: Not Found"
+      },
+      {
+        "DrugLabel": "api_error: HTTP Error 404: Not Found"
+      }
+    ]
+  },
+  "CYP2C19::ticagrelor": {
+    "gene": {
+      "gene": "CYP2C19",
+      "gene_id": "PA124",
+      "name": "cytochrome P450 family 2 subfamily C member 19",
+      "cpicGene": "True",
+      "pharmVarGene": "True",
+      "alleleFile": "CYP2C19_allele_definition_table.xlsx",
+      "alleleFunctionSource": "CPIC",
+      "alleleType": "Named Alleles",
+      "vipTier": "Tier 1",
+      "mvp_priority": "high",
+      "mvp_role": "core",
+      "notes": "CYP2C19 is one of the key pharmacogenes involved in implementation of pharmacogenomics. It is involved in guidelines for antidepressants, clopidogrel and voriconazole ( go to list of all guidelines with CYP2C19 ). the nomenclature has been set by PharmVar , note that the reference sequence for CYP2C19 on hg38 is equivalent to CYP2C19*38 not CYP2C19*1 . the AMP tier 1 alleles are CYP2C19*2 , CYP2C19*3 and CYP2C19*17 see all alleles on the AMP recommended to test list key variant pages are rs4244285 (part of *2), rs4986893 (part of *3) and rs12248560 (part of *17) See the Gene-specific Information Tables for Allele Definitions (for which variants comprise which star alleles), Allele function a..."
+    },
+    "drug": {
+      "objCls": "Chemical",
+      "id": "PA165374673",
+      "name": "ticagrelor",
+      "inChi": "InChI=1S/C23H28F2N6O4S/c1-2-7-36-23-27-21(26-15-9-12(15)11-3-4-13(24)14(25)8-11)18-22(28-23)31(30-29-18)16-10-17(35-6-5-32)20(34)19(16)33/h3-4,8,12,15-17,19-20,32-34H,2,5-7,9-10H2,1H3,(H,26,27,28)/t12-,15+,16+,17-,19-,20+/m0/s1",
+      "pediatric": false,
+      "smiles": "CCCSC1=NC2=C(C(=N1)N[C@@H]3C[C@H]3C4=CC(=C(C=C4)F)F)N=NN2[C@@H]5C[C@@H]([C@H]([C@H]5O)O)OCCO",
+      "types": [
+        "Drug"
+      ]
+    },
+    "guidelineAnnotation": [
+      {
+        "objCls": "Guideline Annotation",
+        "id": "PA166182807",
+        "name": "Annotation of DPWG Guideline for ticagrelor and CYP2C19",
+        "alternateDrugAvailable": false,
+        "crossReferences": [],
+        "dosingInformation": false,
+        "hasTestingInfo": false,
+        "history": [
+          {
+            "id": 1450414893,
+            "date": "2019-05-22T00:00:00-07:00",
+            "description": "Annotation current with November 2018 DPWG Guideline release",
+            "type": "Update",
+            "version": 0
+          },
+          {
+            "id": 1450820680,
+            "date": "2019-10-03T16:32:34.213-07:00",
+            "description": "No changes based on August 2019 guidelines",
+            "type": "Update",
+            "version": 0
+          },
+          {
+            "id": 1450963921,
+            "date": "2020-02-11T08:09:52.232-08:00",
+            "description": "Fixed links to 2018 guideline pdfs.",
+            "type": "Update",
+            "version": 0
+          },
+          {
+            "id": 1451704165,
+            "date": "2022-03-03T16:33:20.539-08:00",
+            "description": "Annotation current with May 2021 DPWG Guideline release",
+            "type": "Note",
+            "version": 0
+          },
+          {
+            "id": 1451732805,
+            "date": "2022-03-28T09:57:34.349-07:00",
+            "description": "Annotation current with February 2022 DPWG guideline release",
+            "type": "Note",
+            "version": 0
+          },
+          {
+            "id": 1451884740,
+            "date": "2022-09-16T14:47:33.530-07:00",
+            "description": "Fixed link to gene information document and added explanatory note",
+            "type": "Update",
+            "version": 0
+          },
+          {
+            "id": 1452146453,
+            "date": "2023-07-03T13:39:48.521-07:00",
+            "description": "Annotation current with May 2023 DPWG Guideline release",
+            "type": "Note",
+            "version": 0
+          },
+          {
+            "id": 1452411541,
+            "date": "2024-03-18T10:51:11.224-07:00",
+            "description": "Updated links for risk analysis pdf.",
+            "type": "Update",
+            "version": 0
+          },
+          {
+            "id": 1452424747,
+            "date": "2024-03-29T11:55:49.332-07:00",
+            "description": "Removed message about gene information document availability.",
+            "type": "Update",
+            "version": 0
+          }
+        ],
+        "literature": [
+          {
+            "id": 15103288,
+            "title": "Dutch Pharmacogenetics Working Group Guidelines August 2019",
+            "_sameAs": "https://api.pharmgkb.org/v1/preview/download/file/attachment/DPWG_August_2019.pdf",
+            "crossReferences": [
+              {
+                "id": 1450815695,
+                "resource": "URL",
+                "resourceId": "https://api.pharmgkb.org/v1/preview/download/file/attachment/DPWG_August_2019.pdf",
+                "_url": "https://api.pharmgkb.org/v1/preview/download/file/attachment/DPWG_August_2019.pdf"
+              }
+            ],
+            "objCls": "Literature",
+            "terms": [],
+            "type": "Literature"
+          },
+          {
+            "id": 15102465,
+            "title": "Dutch Pharmacogenetics Working Group Guidelines November 2018",
+            "_sameAs": "https://api.pharmgkb.org/v1/preview/download/file/attachment/DPWG_November_2018.pdf",
+            "crossReferences": [
+              {
+                "id": 1450415575,
+                "resource": "URL",
+                "resourceId": "https://api.pharmgkb.org/v1/preview/download/file/attachment/DPWG_November_2018.pdf",
+                "_url": "https://api.pharmgkb.org/v1/preview/download/file/attachment/DPWG_November_2018.pdf"
+              }
+            ],
+            "objCls": "Literature",
+            "terms": [],
+            "type": "Literature"
+          }
+        ],
+        "otherPrescribingGuidance": false,
+        "pediatric": false,
+        "recommendation": false,
+        "relatedAlleles": [],
+        "relatedChemicals": [
+          {
+            "objCls": "Chemical",
+            "id": "PA165374673",
+            "name": "ticagrelor"
+          }
+        ],
+        "relatedGenes": [
+          {
+            "objCls": "Gene",
+            "id": "PA124",
+            "symbol": "CYP2C19",
+            "name": "cytochrome P450 family 2 subfamily C member 19"
+          }
+        ],
+        "source": "DPWG",
+        "summaryMarkdown": {
+          "id": 1450414890,
+          "html": "<p>There are currently no dosing recommendations for ticagrelor based on CYP2C19 genotypes.</p>\n"
+        },
+        "textMarkdown": {
+          "id": 1450414891,
+          "html": "<h3 id=\"november-2018-guideline\">November 2018 Guideline</h3>\n<p>The Royal Dutch Pharmacists Association - Pharmacogenetics Working Group has evaluated therapeutic dose recommendations for ticagrelor based on CYP2C19 genotypes. They conclude that there is not a gene-drug interaction. See the <a download=\"DPWG_November_2018.pdf\" href=\"https://api.clinpgx.org/v1/download/file/attachment/DPWG_November_2018.pdf\">Dutch guidelines November 2018 update</a>.</p>\n<p><a download=\"DPWG_CYP2C19_ticagrelor_3515-to-3517.pdf\" href=\"https://api.clinpgx.org/v1/download/file/attachment/DPWG_CYP2C19_ticagrelor_3515-to-3517.pdf\">Read for more information about this recommendation</a>, <a download=\"CYP2C19.pdf\" href=\"https://api.clinpgx.org/v1/download/file/attachment/CYP2C19.pdf\">Read about gene information from DPWG</a></p>\n"
+        }
+      }
+    ],
+    "pair": {},
+    "errors": []
+  },
+  "CYP2C9::ticagrelor": {
+    "gene": {
+      "gene": "CYP2C9",
+      "gene_id": "PA126",
+      "name": "cytochrome P450 family 2 subfamily C member 9",
+      "cpicGene": "True",
+      "pharmVarGene": "True",
+      "alleleFile": "CYP2C9_allele_definition_table.xlsx",
+      "alleleFunctionSource": "CPIC",
+      "alleleType": "Named Alleles",
+      "vipTier": "Tier 1",
+      "mvp_priority": "high",
+      "mvp_role": "core",
+      "notes": "CYP2C9 is one of the key pharmacogenes involved in implementation of pharmacogenomics. It is involved in guidelines for warfarin , phenytoin and NSAIDs , ( go to list of all guidelines with CYP2C9 ). the nomenclature has been set by PharmVar the AMP tier 1 alleles are CYP2C9*2 , CYP2C9*3 , CYP2C9*5 , CYP2C9*6 , CYP2C9*8 , and CYP2C9*11 , see all alleles on the AMP recommended to test list key variant pages include rs1799853 and rs1057910 See the Gene-specific Information Tables for Allele Definitions (for which variants comprise which star alleles), Allele function assignments (normal function, no function, decreased or increased function etc) and Diplotype-Phenotype Table (for how the allel..."
+    },
+    "drug": {
+      "objCls": "Chemical",
+      "id": "PA165374673",
+      "name": "ticagrelor",
+      "inChi": "InChI=1S/C23H28F2N6O4S/c1-2-7-36-23-27-21(26-15-9-12(15)11-3-4-13(24)14(25)8-11)18-22(28-23)31(30-29-18)16-10-17(35-6-5-32)20(34)19(16)33/h3-4,8,12,15-17,19-20,32-34H,2,5-7,9-10H2,1H3,(H,26,27,28)/t12-,15+,16+,17-,19-,20+/m0/s1",
+      "pediatric": false,
+      "smiles": "CCCSC1=NC2=C(C(=N1)N[C@@H]3C[C@H]3C4=CC(=C(C=C4)F)F)N=NN2[C@@H]5C[C@@H]([C@H]([C@H]5O)O)OCCO",
+      "types": [
+        "Drug"
+      ]
+    },
+    "guidelineAnnotation": [],
+    "pair": {},
+    "errors": [
+      {
+        "guidelineAnnotation": "api_error: HTTP Error 404: Not Found"
+      },
+      {
+        "guidelineAnnotation": "api_error: HTTP Error 404: Not Found"
+      },
+      {
+        "GuidelineAnnotation": "api_error: HTTP Error 404: Not Found"
+      },
+      {
+        "label": "api_error: HTTP Error 404: Not Found"
+      },
+      {
+        "DrugLabel": "api_error: HTTP Error 404: Not Found"
+      }
+    ]
+  },
+  "CYP2D6::ticagrelor": {
+    "gene": {
+      "gene": "CYP2D6",
+      "gene_id": "PA128",
+      "name": "cytochrome P450 family 2 subfamily D member 6",
+      "cpicGene": "True",
+      "pharmVarGene": "True",
+      "alleleFile": "CYP2D6_allele_definition_table.xlsx",
+      "alleleFunctionSource": "CPIC",
+      "alleleType": "Named Alleles",
+      "vipTier": "Tier 1",
+      "mvp_priority": "high",
+      "mvp_role": "core",
+      "notes": "CYP2D6 is one of the key pharmacogenes involved in implementation of pharmacogenomics. It is highly polymorphic and involved in the metabolism of up to 25% of the drugs that are in common use in the clinic. It is involved in guidelines for codeine and other opioids, antidepressants, and tamoxifen go to list of all guidelines with CYP2D6 . the nomenclature has been set by PharmVar . the AMP tier 1 alleles are CYP2D6*2 , CYP2D6*3 , CYP2D6*4 , CYP2D6*5 , CYP2D6*6 , CYP2D6*9 , CYP2D6*10 , CYP2D6*17 , CYP2D6*29 , CYP2D6*41 , CYP2D6 duplications and other copy number variants see all alleles on the AMP recommended to test list . See the Gene-specific Information Tables for Allele Definitions (for ..."
+    },
+    "drug": {
+      "objCls": "Chemical",
+      "id": "PA165374673",
+      "name": "ticagrelor",
+      "inChi": "InChI=1S/C23H28F2N6O4S/c1-2-7-36-23-27-21(26-15-9-12(15)11-3-4-13(24)14(25)8-11)18-22(28-23)31(30-29-18)16-10-17(35-6-5-32)20(34)19(16)33/h3-4,8,12,15-17,19-20,32-34H,2,5-7,9-10H2,1H3,(H,26,27,28)/t12-,15+,16+,17-,19-,20+/m0/s1",
+      "pediatric": false,
+      "smiles": "CCCSC1=NC2=C(C(=N1)N[C@@H]3C[C@H]3C4=CC(=C(C=C4)F)F)N=NN2[C@@H]5C[C@@H]([C@H]([C@H]5O)O)OCCO",
+      "types": [
+        "Drug"
+      ]
+    },
+    "guidelineAnnotation": [],
+    "pair": {},
+    "errors": [
+      {
+        "guidelineAnnotation": "api_error: HTTP Error 404: Not Found"
+      },
+      {
+        "guidelineAnnotation": "api_error: HTTP Error 404: Not Found"
+      },
+      {
+        "GuidelineAnnotation": "api_error: HTTP Error 404: Not Found"
+      },
+      {
+        "variantAnnotation": "api_error: HTTP Error 404: Not Found"
+      },
+      {
+        "VariantAnnotation": "api_error: HTTP Error 404: Not Found"
+      },
+      {
+        "label": "api_error: HTTP Error 404: Not Found"
+      },
+      {
+        "DrugLabel": "api_error: HTTP Error 404: Not Found"
+      }
+    ]
+  },
+  "CYP3A4::ticagrelor": {
+    "gene": {
+      "gene": "CYP3A4",
+      "gene_id": "PA130",
+      "name": "cytochrome P450 family 3 subfamily A member 4",
+      "cpicGene": "False",
+      "pharmVarGene": "True",
+      "alleleFile": "",
+      "alleleFunctionSource": "ClinPGx",
+      "alleleType": "Named Alleles",
+      "vipTier": "Tier 1",
+      "mvp_priority": "medium",
+      "mvp_role": "supporting",
+      "notes": "CYP3A4 is one of the key pharmacogenes involved in implementation of pharmacogenomics. It is involved in guidelines for quetiapine ( go to list of all guidelines with CYP3A4 ). the nomenclature has been set by PharmVar the AMP tier 1 allele is CYP3A4*22 and tier 2 allele is CYP3A4*20 see all alleles on the AMP recommended to test list . key variant pages are rs35599367 (defining for *22) and rs67666821 (defining for *20). it is involved in many drug label annotations with a larger number of cautions for drug-drug interactions with CYP3A4 inhibitors (such as ketoconazole ) and inducers (such as carbamazepine ), see the Flockhart table for more CYP3A4 inhibitors, inducers and substrates."
+    },
+    "drug": {
+      "objCls": "Chemical",
+      "id": "PA165374673",
+      "name": "ticagrelor",
+      "inChi": "InChI=1S/C23H28F2N6O4S/c1-2-7-36-23-27-21(26-15-9-12(15)11-3-4-13(24)14(25)8-11)18-22(28-23)31(30-29-18)16-10-17(35-6-5-32)20(34)19(16)33/h3-4,8,12,15-17,19-20,32-34H,2,5-7,9-10H2,1H3,(H,26,27,28)/t12-,15+,16+,17-,19-,20+/m0/s1",
+      "pediatric": false,
+      "smiles": "CCCSC1=NC2=C(C(=N1)N[C@@H]3C[C@H]3C4=CC(=C(C=C4)F)F)N=NN2[C@@H]5C[C@@H]([C@H]([C@H]5O)O)OCCO",
+      "types": [
+        "Drug"
+      ]
+    },
+    "guidelineAnnotation": [],
+    "pair": {},
+    "errors": [
+      {
+        "guidelineAnnotation": "api_error: HTTP Error 404: Not Found"
+      },
+      {
+        "guidelineAnnotation": "api_error: HTTP Error 404: Not Found"
+      },
+      {
+        "GuidelineAnnotation": "api_error: HTTP Error 404: Not Found"
+      },
+      {
+        "label": "api_error: HTTP Error 404: Not Found"
+      },
+      {
+        "DrugLabel": "api_error: HTTP Error 404: Not Found"
+      }
+    ]
+  }
+}

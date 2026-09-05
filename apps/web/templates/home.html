@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+<p class="lede">{{ text['home.intro'] }}</p>
+
+<h2>{{ text['home.sections'] }}</h2>
+<ul class="section-list">
+  {% for item in page.navigation %}
+  {% if not item.is_current %}
+  <li><a href="{{ item.url }}">{{ item.text }}</a></li>
+  {% endif %}
+  {% endfor %}
+</ul>
+{% endblock %}

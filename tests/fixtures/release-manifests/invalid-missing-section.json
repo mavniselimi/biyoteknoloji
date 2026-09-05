@@ -1,0 +1,19 @@
+{
+  "dataset": {
+    "id": "5ba738c4-6865-46f9-add2-774994e96714",
+    "manifest_hash": "sha256:fbf470908cafd856560b0c8bdbb9ca8d3068b475def541b8736a72c1aeb6176e",
+    "public_id": "PGX-DATA-20260829-001",
+    "status": "PUBLISHED"
+  },
+  "release": {
+    "public_id": "PGX-REL-20260829-001"
+  },
+  "schema_version": "pgx-release-manifest/1",
+  "software": {
+    "id": "d4d461c2-b2bf-43aa-be57-a609b50dfcec",
+    "manifest_hash": "sha256:70f277663e08e7a31013df32a7633a690a08d2ca0ad90afdafb703e4f1a989d3",
+    "source_commit": "0123456789abcdef",
+    "source_tree_hash": "sha256:31dd417f1c10456cefec6f5476c340c056d82c183980fc90581f12a85c73cee9",
+    "version": "0.3.0.dev0"
+  }
+}

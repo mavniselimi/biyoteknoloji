@@ -1,0 +1,713 @@
+{
+  "$defs": {
+    "axisFacts": {
+      "additionalProperties": false,
+      "properties": {
+        "conflict_references": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "coverage_reason_codes": {
+          "items": {
+            "enum": [
+              "DRUG_NOT_IN_CANONICAL_DATASET",
+              "PHENOTYPE_NOT_PROVIDED",
+              "PHENOTYPE_NOT_SUPPORTED",
+              "NO_VALIDATED_RULE_FOR_AXIS",
+              "SOME_AXES_NOT_COVERED",
+              "VALIDATED_RULES_CONFLICT",
+              "DATASET_RULESET_MISMATCH",
+              "EVIDENCE_REFERENCE_MISSING"
+            ]
+          },
+          "type": "array",
+          "uniqueItems": true
+        },
+        "coverage_status": {
+          "enum": [
+            "FULL",
+            "PARTIAL",
+            "INSUFFICIENT",
+            "UNSUPPORTED_DRUG",
+            "UNSUPPORTED_PHENOTYPE",
+            "SOURCE_CONFLICT"
+          ]
+        },
+        "declaration_id": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "minLength": 1,
+              "type": "string"
+            }
+          ]
+        },
+        "drug_canonical_key": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "evidence_references": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "gene_canonical_key": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "observation_state": {
+          "type": "string"
+        },
+        "observed_phenotype": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "enum": [
+                "POOR",
+                "INTERMEDIATE",
+                "NORMAL",
+                "RAPID",
+                "ULTRARAPID"
+              ]
+            }
+          ]
+        },
+        "rule_references": {
+          "items": {
+            "type": "object"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "conflict_references",
+        "coverage_reason_codes",
+        "coverage_status",
+        "drug_canonical_key",
+        "evidence_references",
+        "gene_canonical_key",
+        "rule_references"
+      ],
+      "type": "object"
+    },
+    "findingFacts": {
+      "additionalProperties": false,
+      "description": "A finding always names its rule, that rule's exact content hash, the curation revision behind it and at least one evidence record (SAFETY-INV-006).",
+      "properties": {
+        "attention_level": {
+          "enum": [
+            "NO_ACTIVE_ATTENTION",
+            "LOW",
+            "MEDIUM",
+            "HIGH"
+          ]
+        },
+        "curation_revision_hash": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "curation_revision_id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "drug_canonical_key": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "effect_code": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "minLength": 1,
+              "type": "string"
+            }
+          ]
+        },
+        "evidence_references": {
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "minItems": 1,
+          "type": "array",
+          "uniqueItems": true
+        },
+        "explanation_code": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "minLength": 1,
+              "type": "string"
+            }
+          ]
+        },
+        "gene_canonical_key": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "phenotype": {
+          "enum": [
+            "POOR",
+            "INTERMEDIATE",
+            "NORMAL",
+            "RAPID",
+            "ULTRARAPID"
+          ]
+        },
+        "rationale_reference": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "rule_content_hash": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "rule_family_id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "rule_id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "rule_version": {
+          "minimum": 1,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "attention_level",
+        "curation_revision_hash",
+        "curation_revision_id",
+        "drug_canonical_key",
+        "effect_code",
+        "evidence_references",
+        "explanation_code",
+        "gene_canonical_key",
+        "phenotype",
+        "rationale_reference",
+        "rule_content_hash",
+        "rule_family_id",
+        "rule_id",
+        "rule_version"
+      ],
+      "type": "object"
+    },
+    "medicationFacts": {
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "attention_level": {
+                "const": "NO_ACTIVE_ATTENTION"
+              }
+            },
+            "required": [
+              "attention_level"
+            ]
+          },
+          "then": {
+            "properties": {
+              "coverage_status": {
+                "const": "FULL"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "attention_level": {
+                "const": "NOT_ASSESSED"
+              }
+            },
+            "required": [
+              "attention_level"
+            ]
+          },
+          "then": {
+            "properties": {
+              "findings": {
+                "maxItems": 0
+              }
+            }
+          }
+        },
+        {
+          "else": {
+            "properties": {
+              "coverage_reason_codes": {
+                "minItems": 1
+              }
+            }
+          },
+          "if": {
+            "properties": {
+              "coverage_status": {
+                "const": "FULL"
+              }
+            },
+            "required": [
+              "coverage_status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "coverage_reason_codes": {
+                "maxItems": 0
+              }
+            }
+          }
+        }
+      ],
+      "properties": {
+        "attention_level": {
+          "enum": [
+            "NOT_ASSESSED",
+            "NO_ACTIVE_ATTENTION",
+            "LOW",
+            "MEDIUM",
+            "HIGH"
+          ]
+        },
+        "axes": {
+          "items": {
+            "$ref": "#/$defs/axisFacts"
+          },
+          "type": "array"
+        },
+        "axis_count": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "conflicted_axis_count": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "coverage_reason_codes": {
+          "items": {
+            "enum": [
+              "DRUG_NOT_IN_CANONICAL_DATASET",
+              "PHENOTYPE_NOT_PROVIDED",
+              "PHENOTYPE_NOT_SUPPORTED",
+              "NO_VALIDATED_RULE_FOR_AXIS",
+              "SOME_AXES_NOT_COVERED",
+              "VALIDATED_RULES_CONFLICT",
+              "DATASET_RULESET_MISMATCH",
+              "EVIDENCE_REFERENCE_MISSING"
+            ]
+          },
+          "type": "array",
+          "uniqueItems": true
+        },
+        "coverage_status": {
+          "enum": [
+            "FULL",
+            "PARTIAL",
+            "INSUFFICIENT",
+            "UNSUPPORTED_DRUG",
+            "UNSUPPORTED_PHENOTYPE",
+            "SOURCE_CONFLICT"
+          ]
+        },
+        "drug_canonical_key": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "findings": {
+          "items": {
+            "$ref": "#/$defs/findingFacts"
+          },
+          "type": "array"
+        },
+        "requested_value": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "attention_level",
+        "axes",
+        "coverage_reason_codes",
+        "coverage_status",
+        "drug_canonical_key",
+        "findings",
+        "requested_value"
+      ],
+      "type": "object"
+    },
+    "observation": {
+      "additionalProperties": false,
+      "description": "One phenotype observation as normalisation concluded it. No raw supplied value: what a caller typed is where a genotype or a narrative would arrive, and it is not stored.",
+      "properties": {
+        "gene_id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "phenotype": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "enum": [
+                "POOR",
+                "INTERMEDIATE",
+                "NORMAL",
+                "RAPID",
+                "ULTRARAPID"
+              ]
+            }
+          ]
+        },
+        "reason_code": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "minLength": 1,
+              "type": "string"
+            }
+          ]
+        },
+        "status": {
+          "enum": [
+            "NORMALIZED",
+            "MISSING",
+            "INDETERMINATE",
+            "UNSUPPORTED"
+          ]
+        }
+      },
+      "required": [
+        "gene_id",
+        "phenotype",
+        "reason_code",
+        "status"
+      ],
+      "type": "object"
+    },
+    "pointerAudit": {
+      "additionalProperties": false,
+      "description": "Recorded, and deliberately outside every hash over facts.",
+      "properties": {
+        "active_pointer_generation": {
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "active_pointer_generation"
+      ],
+      "type": "object"
+    },
+    "releaseProvenance": {
+      "additionalProperties": false,
+      "description": "Every version the assessment executed against, by identity and content hash (SAFETY-INV-007). The active pointer generation is not here: it is audit metadata and is carried separately.",
+      "properties": {
+        "canonical_build_content_hash": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "coverage_manifest_hash": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "dataset_public_id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "dataset_version_id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "evidence_build_content_hash": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "evidence_build_key": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "protocol_content_hash": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "protocol_version": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "release_manifest_hash": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "release_public_id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "ruleset_content_hash": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "ruleset_public_id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "ruleset_version_id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "software_source_tree_hash": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "software_version": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "software_version_id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "source_policy_content_hash": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "source_policy_version": {
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "canonical_build_content_hash",
+        "coverage_manifest_hash",
+        "dataset_public_id",
+        "evidence_build_content_hash",
+        "evidence_build_key",
+        "protocol_content_hash",
+        "protocol_version",
+        "release_manifest_hash",
+        "release_public_id",
+        "ruleset_content_hash",
+        "ruleset_public_id",
+        "software_source_tree_hash",
+        "software_version",
+        "source_policy_content_hash",
+        "source_policy_version"
+      ],
+      "type": "object"
+    }
+  },
+  "$id": "https://pgx-platform.invalid/schemas/canonical-assessment-result.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "overall_attention": {
+            "const": "NO_ACTIVE_ATTENTION"
+          }
+        },
+        "required": [
+          "overall_attention"
+        ]
+      },
+      "then": {
+        "properties": {
+          "overall_coverage": {
+            "const": "FULL"
+          }
+        }
+      }
+    }
+  ],
+  "description": "The canonical fact set one report is built from. additionalProperties is false throughout: a dose, a recommendation, a score, a ranking, a suitability label or a rendered sentence cannot be attached to it by anything downstream, because the schema refuses every property it does not name. It carries no raw supplied value, no clinical prose and no model-generated text.",
+  "properties": {
+    "actor": {
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "minLength": 1,
+          "type": "string"
+        }
+      ]
+    },
+    "assessment_engine_contract_version": {
+      "type": "string"
+    },
+    "assessment_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "case_id": {
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "minLength": 1,
+          "type": "string"
+        }
+      ]
+    },
+    "completed_at": {
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "minLength": 1,
+          "type": "string"
+        }
+      ]
+    },
+    "computation_schema_version": {
+      "type": "string"
+    },
+    "content_hash": {
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "coverage_result_hash": {
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "created_at": {
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "minLength": 1,
+          "type": "string"
+        }
+      ]
+    },
+    "finding_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "input_hash": {
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "input_kind": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "medication_count": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "medications": {
+      "items": {
+        "$ref": "#/$defs/medicationFacts"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "mode": {
+      "enum": [
+        "DEMO",
+        "VALIDATION",
+        "PILOT"
+      ]
+    },
+    "output_hash": {
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "overall_attention": {
+      "enum": [
+        "NOT_ASSESSED",
+        "NO_ACTIVE_ATTENTION",
+        "LOW",
+        "MEDIUM",
+        "HIGH"
+      ]
+    },
+    "overall_coverage": {
+      "enum": [
+        "FULL",
+        "PARTIAL",
+        "INSUFFICIENT",
+        "UNSUPPORTED_DRUG",
+        "UNSUPPORTED_PHENOTYPE",
+        "SOURCE_CONFLICT"
+      ]
+    },
+    "overall_coverage_reason_codes": {
+      "items": {
+        "enum": [
+          "DRUG_NOT_IN_CANONICAL_DATASET",
+          "PHENOTYPE_NOT_PROVIDED",
+          "PHENOTYPE_NOT_SUPPORTED",
+          "NO_VALIDATED_RULE_FOR_AXIS",
+          "SOME_AXES_NOT_COVERED",
+          "VALIDATED_RULES_CONFLICT",
+          "DATASET_RULESET_MISMATCH",
+          "EVIDENCE_REFERENCE_MISSING"
+        ]
+      },
+      "type": "array",
+      "uniqueItems": true
+    },
+    "pointer_audit": {
+      "$ref": "#/$defs/pointerAudit"
+    },
+    "profile_observations": {
+      "items": {
+        "$ref": "#/$defs/observation"
+      },
+      "type": "array"
+    },
+    "release_provenance": {
+      "$ref": "#/$defs/releaseProvenance"
+    },
+    "result_schema_version": {
+      "const": "pgx-canonical-assessment-result/1"
+    },
+    "warnings": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "assessment_id",
+    "content_hash",
+    "coverage_result_hash",
+    "finding_count",
+    "input_hash",
+    "input_kind",
+    "medication_count",
+    "medications",
+    "mode",
+    "output_hash",
+    "overall_attention",
+    "overall_coverage",
+    "overall_coverage_reason_codes",
+    "profile_observations",
+    "release_provenance",
+    "result_schema_version",
+    "warnings"
+  ],
+  "title": "PGx canonical assessment result",
+  "type": "object"
+}

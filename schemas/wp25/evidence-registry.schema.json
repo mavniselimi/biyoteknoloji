@@ -1,0 +1,388 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "description": "The whole inventory. Counts are required alongside the items so a reader can check the document against itself.",
+  "properties": {
+    "absent_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "admissible_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "admissible_evidence_ids": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "counts_by_type": {
+      "additionalProperties": {
+        "minimum": 0,
+        "type": "integer"
+      },
+      "type": "object"
+    },
+    "declared_count": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "evidence_registry_version": {
+      "const": "pgx-wp25-evidence-registry/1",
+      "type": "string"
+    },
+    "final_pack_document_prefix": {
+      "type": "string"
+    },
+    "findings": {
+      "items": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "description": "A discrepancy WP-25 noticed: a document, count or artifact that is wrong. Distinct from a blocker, which says a condition is unmet. Every finding names an owner and what WP-25 did in the meantime; 'ignored' is not a resolution.",
+        "properties": {
+          "blocking": {
+            "type": "boolean"
+          },
+          "code": {
+            "enum": [
+              "THS6_AUDIT_CHAIN_UNVERIFIED",
+              "THS6_BACKUP_RESTORE_NOT_VERIFIED",
+              "THS6_BENCHMARK_NOT_EXECUTED",
+              "THS6_CI_NOT_EXECUTED",
+              "THS6_CLAIM_BOUNDARY_NOT_APPROVED",
+              "THS6_CONTAINER_RUNTIME_UNAVAILABLE",
+              "THS6_CURATION_PROTOCOL_NOT_APPROVED",
+              "THS6_DATABASE_UNAVAILABLE",
+              "THS6_DATASET_NOT_PUBLISHED",
+              "THS6_DEMO_NOT_EXECUTED",
+              "THS6_DEPLOYMENT_GATE_BLOCKED",
+              "THS6_DOD_DECLARED_COUNT_MISMATCH",
+              "THS6_EVIDENCE_BUILD_NOT_APPROVED",
+              "THS6_EVIDENCE_INVALID",
+              "THS6_EVIDENCE_STALE",
+              "THS6_EVIDENCE_UNAVAILABLE",
+              "THS6_EXPERT_PROTOCOL_NOT_APPROVED",
+              "THS6_INSUFFICIENT_VALIDATION_CASES",
+              "THS6_LEGACY_WORK_ITEMS_UNLINKED",
+              "THS6_MIGRATION_NOT_EXECUTED",
+              "THS6_NO_ACTIVE_RELEASE",
+              "THS6_NO_APPROVED_RULE",
+              "THS6_NO_APPROVED_SOURCE",
+              "THS6_NO_COMPLETED_REVIEW",
+              "THS6_NO_COMPUTED_METRIC",
+              "THS6_NO_COVERAGE_EXECUTION",
+              "THS6_NO_CURATED_INTERPRETATION",
+              "THS6_NO_EXECUTABLE_RULESET",
+              "THS6_NO_HOLDOUT_SET",
+              "THS6_NO_HUMAN_SIGNOFF",
+              "THS6_NO_NAMED_REVIEWER",
+              "THS6_NO_REAL_ASSESSMENT",
+              "THS6_PROSE_INVENTORY_DISCREPANCY",
+              "THS6_SAFETY_CI_NOT_EXECUTED",
+              "THS6_SAFETY_GATE_BLOCKED",
+              "THS6_SECURITY_GATE_BLOCKED",
+              "THS6_SNAPSHOT_QUARANTINED",
+              "THS6_SOURCE_ARTIFACT_DISAGREEMENT",
+              "THS6_SOURCE_DOCUMENT_UNAVAILABLE",
+              "THS6_STAGING_NOT_DEPLOYED",
+              "THS6_UPSTREAM_GATE_NOT_PASS"
+            ],
+            "type": "string"
+          },
+          "detail": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "owner": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "references": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "resolution": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "code",
+          "detail",
+          "owner",
+          "resolution",
+          "blocking"
+        ],
+        "title": "WP-25 finding",
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "invalid_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "items": {
+      "items": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "may_support_a_ths6_claim": {
+                  "const": true
+                }
+              },
+              "required": [
+                "may_support_a_ths6_claim"
+              ]
+            },
+            "then": {
+              "properties": {
+                "evidence_type": {
+                  "enum": [
+                    "REAL_EXECUTED",
+                    "REAL_OBSERVED"
+                  ]
+                },
+                "test_only": {
+                  "const": false
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "observed_or_executed": {
+                  "const": true
+                }
+              },
+              "required": [
+                "observed_or_executed"
+              ]
+            },
+            "then": {
+              "properties": {
+                "evidence_type": {
+                  "enum": [
+                    "REAL_EXECUTED",
+                    "REAL_OBSERVED"
+                  ]
+                },
+                "present": {
+                  "const": true
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "present": {
+                  "const": false
+                }
+              },
+              "required": [
+                "present"
+              ]
+            },
+            "then": {
+              "properties": {
+                "observed_or_executed": {
+                  "const": false
+                },
+                "sha256": {
+                  "type": "null"
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "test_only": {
+                  "const": true
+                }
+              },
+              "required": [
+                "test_only"
+              ]
+            },
+            "then": {
+              "properties": {
+                "may_support_a_ths6_claim": {
+                  "const": false
+                }
+              }
+            }
+          }
+        ],
+        "description": "One artifact in the pack. The constraints that matter are the refusals: an item may not claim to support a THS 6 claim while typed as a test or marked test-only, an absent item may not carry a digest, and a path may not be absolute.",
+        "properties": {
+          "contains_numeric_claim": {
+            "type": "boolean"
+          },
+          "evidence_id": {
+            "pattern": "^EV-WP[0-2][0-9]-[0-9]{3}$",
+            "type": "string"
+          },
+          "evidence_type": {
+            "enum": [
+              "REAL_EXECUTED",
+              "REAL_OBSERVED",
+              "IMPLEMENTATION_TEST",
+              "CONFIGURED_NOT_EXECUTED",
+              "DOCUMENT_ONLY",
+              "TEST_ONLY_REHEARSAL",
+              "HUMAN_PENDING",
+              "SCIENTIFIC_PENDING",
+              "OPERATIONAL_PENDING",
+              "STALE",
+              "INVALID",
+              "UNAVAILABLE"
+            ],
+            "type": "string"
+          },
+          "freshness_source": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "gap_owner": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "gate_ids": {
+            "items": {
+              "pattern": "^GATE-[A-F]$",
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "generator": {
+            "type": "string"
+          },
+          "limitations": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "may_support_a_ths6_claim": {
+            "type": "boolean"
+          },
+          "media_type": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "observed_or_executed": {
+            "type": "boolean"
+          },
+          "path": {
+            "pattern": "^(?![/~\\\\])(?![A-Za-z]:)[^\\s].*$",
+            "type": "string"
+          },
+          "present": {
+            "type": "boolean"
+          },
+          "schema_path": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "sha256": {
+            "pattern": "^sha256:[0-9a-f]{64}$",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "supported_claim_ids": {
+            "items": {
+              "pattern": "^THS6-CLAIM-[0-9]{3}$",
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "test_only": {
+            "type": "boolean"
+          },
+          "title": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "validation_result": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "work_package": {
+            "pattern": "^WP-[0-9]{2}$",
+            "type": "string"
+          }
+        },
+        "required": [
+          "evidence_id",
+          "title",
+          "work_package",
+          "evidence_type",
+          "path",
+          "present",
+          "sha256",
+          "test_only",
+          "observed_or_executed",
+          "may_support_a_ths6_claim",
+          "contains_numeric_claim",
+          "supported_claim_ids",
+          "gate_ids",
+          "limitations"
+        ],
+        "title": "WP-25 evidence item",
+        "type": "object"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "note": {
+      "type": "string"
+    },
+    "preliminary_ths6_documents": {
+      "items": {
+        "type": "string"
+      },
+      "minItems": 3,
+      "type": "array"
+    },
+    "present_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "resolved_count": {
+      "minimum": 0,
+      "type": "integer"
+    }
+  },
+  "required": [
+    "evidence_registry_version",
+    "declared_count",
+    "present_count",
+    "absent_count",
+    "invalid_count",
+    "admissible_count",
+    "counts_by_type",
+    "items",
+    "findings",
+    "preliminary_ths6_documents"
+  ],
+  "title": "WP-25 evidence registry",
+  "type": "object"
+}

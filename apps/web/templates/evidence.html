@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="notice notice-scope" role="note">
+  <p>{{ model.no_prose_note }}</p>
+  <p>{{ model.immutable_note }}</p>
+</div>
+
+<h2>{{ text['evidence.identity'] }}</h2>
+<dl class="fact-list">
+  <div><dt>{{ field['evidence'] }}</dt><dd><code>{{ model.record_uuid }}</code></dd></div>
+  <div><dt>{{ field['kind'] }}</dt><dd><code>{{ model.record_type }}</code></dd></div>
+  <div><dt>{{ field['subject'] }}</dt><dd><code>{{ model.natural_key }}</code></dd></div>
+</dl>
+
+<h2>{{ text['evidence.source'] }}</h2>
+<dl class="fact-list">
+  <div><dt>{{ field['source_policy'] }}</dt><dd><code>{{ model.provider_source_key }}</code></dd></div>
+  <div><dt>{{ field['references'] }}</dt><dd><code>{{ model.origin_source_key }}</code></dd></div>
+  <div><dt>{{ field['statement'] }}</dt><dd><code>{{ model.origin_status }}</code></dd></div>
+  <div><dt>{{ field['value'] }}</dt><dd><code>{{ model.version_value }}</code> <code class="status-code">{{ model.version_status }}</code></dd></div>
+</dl>
+
+<h2>{{ text['evidence.provenance'] }}</h2>
+<dl class="fact-list">
+  <div><dt>{{ field['input_hash'] }}</dt><dd><code>{{ model.source_payload_hash }}</code></dd></div>
+  <div><dt>{{ field['output_hash'] }}</dt><dd><code>{{ model.content_hash }}</code></dd></div>
+  <div><dt>{{ field['evidence_build'] }}</dt><dd><code>{{ model.evidence_build_key }}</code></dd></div>
+  <div><dt>{{ field['codes'] }}</dt><dd><code>{{ model.evidence_build_content_hash }}</code></dd></div>
+  <div><dt>{{ text['evidence.text_fragments'] }}</dt><dd class="numeric">{{ model.text_fragment_count }}</dd></div>
+</dl>
+
+{% if model.record_type_mapping %}
+<h2>{{ text['evidence.mapping'] }}</h2>
+<table class="data-table">
+  <caption>{{ text['evidence.mapping'] }}</caption>
+  <thead><tr><th scope="col">{{ field['field'] }}</th><th scope="col">{{ field['value'] }}</th></tr></thead>
+  <tbody>
+    {% for name, value in model.record_type_mapping %}
+    <tr><th scope="row"><code>{{ name }}</code></th><td><code>{{ value }}</code></td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endif %}
+
+<h2>{{ text['evidence.entities'] }}</h2>
+<table class="data-table">
+  <caption>{{ text['evidence.entities_caption'] }}</caption>
+  <thead><tr><th scope="col">{{ field['kind'] }}</th><th scope="col">{{ field['codes'] }}</th><th scope="col">{{ field['value'] }}</th></tr></thead>
+  <tbody>
+    {% for key, source_label in model.genes %}
+    <tr><th scope="row">{{ field['gene'] }}</th><td><code>{{ key }}</code></td><td>{{ source_label }}</td></tr>
+    {% endfor %}
+    {% for key, source_label in model.drugs %}
+    <tr><th scope="row">{{ field['drug'] }}</th><td><code>{{ key }}</code></td><td>{{ source_label }}</td></tr>
+    {% endfor %}
+    {% if not model.genes and not model.drugs %}
+    <tr><td colspan="3" class="empty-state">{{ text['app.none_recorded'] }}</td></tr>
+    {% endif %}
+  </tbody>
+</table>
+
+<h2>{{ text['evidence.publications'] }}</h2>
+<table class="data-table">
+  <caption>{{ text['evidence.publications_caption'] }}</caption>
+  <thead><tr><th scope="col">{{ field['kind'] }}</th><th scope="col">{{ field['codes'] }}</th></tr></thead>
+  <tbody>
+    {% for identifier_type, identifier in model.publications %}
+    <tr><th scope="row"><code>{{ identifier_type }}</code></th><td><code>{{ identifier }}</code></td></tr>
+    {% else %}
+    <tr><td colspan="2" class="empty-state">{{ text['app.none_recorded'] }}</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<h2>{{ text['evidence.locators'] }}</h2>
+<table class="data-table">
+  <caption>{{ text['evidence.locators_caption'] }}</caption>
+  <thead>
+    <tr>
+      <th scope="col">{{ field['references'] }}</th>
+      <th scope="col">{{ field['subject'] }}</th>
+      <th scope="col">{{ field['codes'] }}</th>
+      <th scope="col">{{ field['field'] }}</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for snapshot, artifact, digest, pointer in model.locators %}
+    <tr>
+      <th scope="row" class="value-cell"><code>{{ snapshot }}</code></th>
+      <td><code>{{ artifact }}</code></td>
+      <td class="value-cell"><code>{{ digest }}</code></td>
+      <td><code>{{ pointer }}</code></td>
+    </tr>
+    {% else %}
+    <tr><td colspan="4" class="empty-state">{{ text['app.none_recorded'] }}</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

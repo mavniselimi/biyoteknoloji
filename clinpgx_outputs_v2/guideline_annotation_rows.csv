@@ -1,0 +1,586 @@
+source_hint,annotation_id,objCls,sentence,description,related_genes,related_chemicals,location_display,gene_phenotype,metabolizers1,metabolizers2,polarity,significance,phenotype_categories,score,literature_title,literature_pmid,literature_doi,literature_year,query_gene,query_gene_id,query_drug,query_drug_id
+data/guidelineAnnotation,PA166104956,Guideline Annotation,,,CYP2C19,clopidogrel,,,,,,,,,,,,,CYP2C19,PA124,clopidogrel,PA449053
+data/guidelineAnnotation,PA166104948,Guideline Annotation,,,CYP2C19,clopidogrel,,,,,,,,,,,,,CYP2C19,PA124,clopidogrel,PA449053
+data/guidelineAnnotation,PA166202501,Guideline Annotation,,,CYP2C19,clopidogrel,,,,,,,,,,,,,CYP2C19,PA124,clopidogrel,PA449053
+data/guidelineAnnotation,PA166342701,Guideline Annotation,,,CYP2C19,clopidogrel,,,,,,,,,,,,,CYP2C19,PA124,clopidogrel,PA449053
+data/guidelineAnnotation,PA166161537,Guideline Annotation,,,CYP2C19,voriconazole,,,,,,,,,,,,,CYP2C19,PA124,clopidogrel,PA449053
+data/guidelineAnnotation,PA166104958,Guideline Annotation,,,CYP2C19,pantoprazole,,,,,,,,,,,,,CYP2C19,PA124,clopidogrel,PA449053
+data/guidelineAnnotation,PA166104980,Guideline Annotation,,,CYP2C19,sertraline,,,,,,,,,,,,,CYP2C19,PA124,clopidogrel,PA449053
+data/guidelineAnnotation,PA166104987,Guideline Annotation,,,CYP2C19,lansoprazole,,,,,,,,,,,,,CYP2C19,PA124,clopidogrel,PA449053
+data/guidelineAnnotation,PA166182805,Guideline Annotation,,,CYP2C19,mirtazapine,,,,,,,,,,,,,CYP2C19,PA124,clopidogrel,PA449053
+data/guidelineAnnotation,PA166182820,Guideline Annotation,,,CYP2C19,prasugrel,,,,,,,,,,,,,CYP2C19,PA124,clopidogrel,PA449053
+data/guidelineAnnotation,PA166104977,Guideline Annotation,,,CYP2C19,citalopram,,,,,,,,,,,,,CYP2C19,PA124,clopidogrel,PA449053
+data/guidelineAnnotation,PA166104957,Guideline Annotation,,,CYP2C19,omeprazole,,,,,,,,,,,,,CYP2C19,PA124,clopidogrel,PA449053
+data/guidelineAnnotation,PA166182807,Guideline Annotation,,,CYP2C19,ticagrelor,,,,,,,,,,,,,CYP2C19,PA124,clopidogrel,PA449053
+data/guidelineAnnotation,PA166104931,Guideline Annotation,,,CYP2C19,esomeprazole,,,,,,,,,,,,,CYP2C19,PA124,clopidogrel,PA449053
+data/guidelineAnnotation,PA166184526,Guideline Annotation,,,CYP2C19,amitriptyline,,,,,,,,,,,,,CYP2C19,PA124,clopidogrel,PA449053
+data/guidelineAnnotation,PA166182814,Guideline Annotation,,,CYP2C19,fluvoxamine,,,,,,,,,,,,,CYP2C19,PA124,clopidogrel,PA449053
+data/guidelineAnnotation,PA166104975,Guideline Annotation,,,CYP2C19,escitalopram,,,,,,,,,,,,,CYP2C19,PA124,clopidogrel,PA449053
+data/guidelineAnnotation,PA166184529,Guideline Annotation,,,CYP2C19,doxepin,,,,,,,,,,,,,CYP2C19,PA124,clopidogrel,PA449053
+data/guidelineAnnotation,PA166104954,Guideline Annotation,,,CYP2C19,imipramine,,,,,,,,,,,,,CYP2C19,PA124,clopidogrel,PA449053
+data/guidelineAnnotation,PA166104941,Guideline Annotation,,,CYP2C19,moclobemide,,,,,,,,,,,,,CYP2C19,PA124,clopidogrel,PA449053
+data/guidelineAnnotation,PA166104985,Guideline Annotation,,,CYP2C19,rabeprazole,,,,,,,,,,,,,CYP2C19,PA124,clopidogrel,PA449053
+data/guidelineAnnotation,PA166184528,Guideline Annotation,,,CYP2C19,clomipramine,,,,,,,,,,,,,CYP2C19,PA124,clopidogrel,PA449053
+data/guidelineAnnotation,PA166105007,Guideline Annotation,,,CYP2C19; CYP2D6,clomipramine,,,,,,,,,,,,,CYP2C19,PA124,clopidogrel,PA449053
+data/guidelineAnnotation,PA166104999,Guideline Annotation,,,CYP2C19; CYP2D6,imipramine,,,,,,,,,,,,,CYP2C19,PA124,clopidogrel,PA449053
+data/guidelineAnnotation,PA166105000,Guideline Annotation,,,CYP2C19; CYP2D6,doxepin,,,,,,,,,,,,,CYP2C19,PA124,clopidogrel,PA449053
+data/guidelineAnnotation,PA166105001,Guideline Annotation,,,CYP2C19; CYP2D6,trimipramine,,,,,,,,,,,,,CYP2C19,PA124,clopidogrel,PA449053
+data/guidelineAnnotation,PA166105006,Guideline Annotation,,,CYP2C19; CYP2D6,amitriptyline,,,,,,,,,,,,,CYP2C19,PA124,clopidogrel,PA449053
+data/guidelineAnnotation,PA166127638,Guideline Annotation,,,CYP2C19,citalopram; escitalopram,,,,,,,,,,,,,CYP2C19,PA124,clopidogrel,PA449053
+data/guidelineAnnotation,PA166127639,Guideline Annotation,,,CYP2B6; CYP2C19,sertraline,,,,,,,,,,,,,CYP2C19,PA124,clopidogrel,PA449053
+data/guidelineAnnotation,PA166219301,Guideline Annotation,,,CYP2C19,dexlansoprazole,,,,,,,,,,,,,CYP2C19,PA124,clopidogrel,PA449053
+data/guidelineAnnotation,PA166220321,Guideline Annotation,,,CYP2C19,esomeprazole; rabeprazole,,,,,,,,,,,,,CYP2C19,PA124,clopidogrel,PA449053
+data/guidelineAnnotation,PA166219103,Guideline Annotation,,,CYP2C19,lansoprazole; omeprazole; pantoprazole,,,,,,,,,,,,,CYP2C19,PA124,clopidogrel,PA449053
+data/guidelineAnnotation,PA166257241,Guideline Annotation,,,CYP2C19,voriconazole,,,,,,,,,,,,,CYP2C19,PA124,clopidogrel,PA449053
+data/guidelineAnnotation,PA166202701,Guideline Annotation,,,CYP2C19; CYP2D6,antidepressants,,,,,,,,,,,,,CYP2C19,PA124,clopidogrel,PA449053
+data/guidelineAnnotation,PA166104990,Guideline Annotation,,,CYP2C19,voriconazole,,,,,,,,,,,,,CYP2C19,PA124,clopidogrel,PA449053
+data/guidelineAnnotation,PA166360361,Guideline Annotation,,,CYP2C19,mavacamten,,,,,,,,,,,,,CYP2C19,PA124,clopidogrel,PA449053
+data/guidelineAnnotation,PA166418081,Guideline Annotation,,,CYP2C19,mavacamten,,,,,,,,,,,,,CYP2C19,PA124,clopidogrel,PA449053
+data/guidelineAnnotation,PA166161537,Guideline Annotation,,,CYP2C19,voriconazole,,,,,,,,,,,,,CYP2C19,PA124,voriconazole,PA10233
+data/guidelineAnnotation,PA166257241,Guideline Annotation,,,CYP2C19,voriconazole,,,,,,,,,,,,,CYP2C19,PA124,voriconazole,PA10233
+data/guidelineAnnotation,PA166104990,Guideline Annotation,,,CYP2C19,voriconazole,,,,,,,,,,,,,CYP2C19,PA124,voriconazole,PA10233
+data/guidelineAnnotation,PA166104956,Guideline Annotation,,,CYP2C19,clopidogrel,,,,,,,,,,,,,CYP2C19,PA124,voriconazole,PA10233
+data/guidelineAnnotation,PA166104958,Guideline Annotation,,,CYP2C19,pantoprazole,,,,,,,,,,,,,CYP2C19,PA124,voriconazole,PA10233
+data/guidelineAnnotation,PA166104980,Guideline Annotation,,,CYP2C19,sertraline,,,,,,,,,,,,,CYP2C19,PA124,voriconazole,PA10233
+data/guidelineAnnotation,PA166104987,Guideline Annotation,,,CYP2C19,lansoprazole,,,,,,,,,,,,,CYP2C19,PA124,voriconazole,PA10233
+data/guidelineAnnotation,PA166182805,Guideline Annotation,,,CYP2C19,mirtazapine,,,,,,,,,,,,,CYP2C19,PA124,voriconazole,PA10233
+data/guidelineAnnotation,PA166182820,Guideline Annotation,,,CYP2C19,prasugrel,,,,,,,,,,,,,CYP2C19,PA124,voriconazole,PA10233
+data/guidelineAnnotation,PA166104977,Guideline Annotation,,,CYP2C19,citalopram,,,,,,,,,,,,,CYP2C19,PA124,voriconazole,PA10233
+data/guidelineAnnotation,PA166104957,Guideline Annotation,,,CYP2C19,omeprazole,,,,,,,,,,,,,CYP2C19,PA124,voriconazole,PA10233
+data/guidelineAnnotation,PA166182807,Guideline Annotation,,,CYP2C19,ticagrelor,,,,,,,,,,,,,CYP2C19,PA124,voriconazole,PA10233
+data/guidelineAnnotation,PA166104931,Guideline Annotation,,,CYP2C19,esomeprazole,,,,,,,,,,,,,CYP2C19,PA124,voriconazole,PA10233
+data/guidelineAnnotation,PA166184526,Guideline Annotation,,,CYP2C19,amitriptyline,,,,,,,,,,,,,CYP2C19,PA124,voriconazole,PA10233
+data/guidelineAnnotation,PA166182814,Guideline Annotation,,,CYP2C19,fluvoxamine,,,,,,,,,,,,,CYP2C19,PA124,voriconazole,PA10233
+data/guidelineAnnotation,PA166104975,Guideline Annotation,,,CYP2C19,escitalopram,,,,,,,,,,,,,CYP2C19,PA124,voriconazole,PA10233
+data/guidelineAnnotation,PA166184529,Guideline Annotation,,,CYP2C19,doxepin,,,,,,,,,,,,,CYP2C19,PA124,voriconazole,PA10233
+data/guidelineAnnotation,PA166104954,Guideline Annotation,,,CYP2C19,imipramine,,,,,,,,,,,,,CYP2C19,PA124,voriconazole,PA10233
+data/guidelineAnnotation,PA166104941,Guideline Annotation,,,CYP2C19,moclobemide,,,,,,,,,,,,,CYP2C19,PA124,voriconazole,PA10233
+data/guidelineAnnotation,PA166104985,Guideline Annotation,,,CYP2C19,rabeprazole,,,,,,,,,,,,,CYP2C19,PA124,voriconazole,PA10233
+data/guidelineAnnotation,PA166184528,Guideline Annotation,,,CYP2C19,clomipramine,,,,,,,,,,,,,CYP2C19,PA124,voriconazole,PA10233
+data/guidelineAnnotation,PA166105007,Guideline Annotation,,,CYP2C19; CYP2D6,clomipramine,,,,,,,,,,,,,CYP2C19,PA124,voriconazole,PA10233
+data/guidelineAnnotation,PA166104999,Guideline Annotation,,,CYP2C19; CYP2D6,imipramine,,,,,,,,,,,,,CYP2C19,PA124,voriconazole,PA10233
+data/guidelineAnnotation,PA166104948,Guideline Annotation,,,CYP2C19,clopidogrel,,,,,,,,,,,,,CYP2C19,PA124,voriconazole,PA10233
+data/guidelineAnnotation,PA166105000,Guideline Annotation,,,CYP2C19; CYP2D6,doxepin,,,,,,,,,,,,,CYP2C19,PA124,voriconazole,PA10233
+data/guidelineAnnotation,PA166105001,Guideline Annotation,,,CYP2C19; CYP2D6,trimipramine,,,,,,,,,,,,,CYP2C19,PA124,voriconazole,PA10233
+data/guidelineAnnotation,PA166105006,Guideline Annotation,,,CYP2C19; CYP2D6,amitriptyline,,,,,,,,,,,,,CYP2C19,PA124,voriconazole,PA10233
+data/guidelineAnnotation,PA166127638,Guideline Annotation,,,CYP2C19,citalopram; escitalopram,,,,,,,,,,,,,CYP2C19,PA124,voriconazole,PA10233
+data/guidelineAnnotation,PA166127639,Guideline Annotation,,,CYP2B6; CYP2C19,sertraline,,,,,,,,,,,,,CYP2C19,PA124,voriconazole,PA10233
+data/guidelineAnnotation,PA166219301,Guideline Annotation,,,CYP2C19,dexlansoprazole,,,,,,,,,,,,,CYP2C19,PA124,voriconazole,PA10233
+data/guidelineAnnotation,PA166220321,Guideline Annotation,,,CYP2C19,esomeprazole; rabeprazole,,,,,,,,,,,,,CYP2C19,PA124,voriconazole,PA10233
+data/guidelineAnnotation,PA166219103,Guideline Annotation,,,CYP2C19,lansoprazole; omeprazole; pantoprazole,,,,,,,,,,,,,CYP2C19,PA124,voriconazole,PA10233
+data/guidelineAnnotation,PA166202701,Guideline Annotation,,,CYP2C19; CYP2D6,antidepressants,,,,,,,,,,,,,CYP2C19,PA124,voriconazole,PA10233
+data/guidelineAnnotation,PA166202501,Guideline Annotation,,,CYP2C19,clopidogrel,,,,,,,,,,,,,CYP2C19,PA124,voriconazole,PA10233
+data/guidelineAnnotation,PA166360361,Guideline Annotation,,,CYP2C19,mavacamten,,,,,,,,,,,,,CYP2C19,PA124,voriconazole,PA10233
+data/guidelineAnnotation,PA166418081,Guideline Annotation,,,CYP2C19,mavacamten,,,,,,,,,,,,,CYP2C19,PA124,voriconazole,PA10233
+data/guidelineAnnotation,PA166342701,Guideline Annotation,,,CYP2C19,clopidogrel,,,,,,,,,,,,,CYP2C19,PA124,voriconazole,PA10233
+data/guidelineAnnotation,PA166184526,Guideline Annotation,,,CYP2C19,amitriptyline,,,,,,,,,,,,,CYP2C19,PA124,amitriptyline,PA448385
+data/guidelineAnnotation,PA166105006,Guideline Annotation,,,CYP2C19; CYP2D6,amitriptyline,,,,,,,,,,,,,CYP2C19,PA124,amitriptyline,PA448385
+data/guidelineAnnotation,PA166161537,Guideline Annotation,,,CYP2C19,voriconazole,,,,,,,,,,,,,CYP2C19,PA124,amitriptyline,PA448385
+data/guidelineAnnotation,PA166104956,Guideline Annotation,,,CYP2C19,clopidogrel,,,,,,,,,,,,,CYP2C19,PA124,amitriptyline,PA448385
+data/guidelineAnnotation,PA166104958,Guideline Annotation,,,CYP2C19,pantoprazole,,,,,,,,,,,,,CYP2C19,PA124,amitriptyline,PA448385
+data/guidelineAnnotation,PA166104980,Guideline Annotation,,,CYP2C19,sertraline,,,,,,,,,,,,,CYP2C19,PA124,amitriptyline,PA448385
+data/guidelineAnnotation,PA166104987,Guideline Annotation,,,CYP2C19,lansoprazole,,,,,,,,,,,,,CYP2C19,PA124,amitriptyline,PA448385
+data/guidelineAnnotation,PA166182805,Guideline Annotation,,,CYP2C19,mirtazapine,,,,,,,,,,,,,CYP2C19,PA124,amitriptyline,PA448385
+data/guidelineAnnotation,PA166182820,Guideline Annotation,,,CYP2C19,prasugrel,,,,,,,,,,,,,CYP2C19,PA124,amitriptyline,PA448385
+data/guidelineAnnotation,PA166104977,Guideline Annotation,,,CYP2C19,citalopram,,,,,,,,,,,,,CYP2C19,PA124,amitriptyline,PA448385
+data/guidelineAnnotation,PA166104957,Guideline Annotation,,,CYP2C19,omeprazole,,,,,,,,,,,,,CYP2C19,PA124,amitriptyline,PA448385
+data/guidelineAnnotation,PA166182807,Guideline Annotation,,,CYP2C19,ticagrelor,,,,,,,,,,,,,CYP2C19,PA124,amitriptyline,PA448385
+data/guidelineAnnotation,PA166104931,Guideline Annotation,,,CYP2C19,esomeprazole,,,,,,,,,,,,,CYP2C19,PA124,amitriptyline,PA448385
+data/guidelineAnnotation,PA166182814,Guideline Annotation,,,CYP2C19,fluvoxamine,,,,,,,,,,,,,CYP2C19,PA124,amitriptyline,PA448385
+data/guidelineAnnotation,PA166104975,Guideline Annotation,,,CYP2C19,escitalopram,,,,,,,,,,,,,CYP2C19,PA124,amitriptyline,PA448385
+data/guidelineAnnotation,PA166184529,Guideline Annotation,,,CYP2C19,doxepin,,,,,,,,,,,,,CYP2C19,PA124,amitriptyline,PA448385
+data/guidelineAnnotation,PA166104954,Guideline Annotation,,,CYP2C19,imipramine,,,,,,,,,,,,,CYP2C19,PA124,amitriptyline,PA448385
+data/guidelineAnnotation,PA166104941,Guideline Annotation,,,CYP2C19,moclobemide,,,,,,,,,,,,,CYP2C19,PA124,amitriptyline,PA448385
+data/guidelineAnnotation,PA166104985,Guideline Annotation,,,CYP2C19,rabeprazole,,,,,,,,,,,,,CYP2C19,PA124,amitriptyline,PA448385
+data/guidelineAnnotation,PA166184528,Guideline Annotation,,,CYP2C19,clomipramine,,,,,,,,,,,,,CYP2C19,PA124,amitriptyline,PA448385
+data/guidelineAnnotation,PA166105007,Guideline Annotation,,,CYP2C19; CYP2D6,clomipramine,,,,,,,,,,,,,CYP2C19,PA124,amitriptyline,PA448385
+data/guidelineAnnotation,PA166104999,Guideline Annotation,,,CYP2C19; CYP2D6,imipramine,,,,,,,,,,,,,CYP2C19,PA124,amitriptyline,PA448385
+data/guidelineAnnotation,PA166104948,Guideline Annotation,,,CYP2C19,clopidogrel,,,,,,,,,,,,,CYP2C19,PA124,amitriptyline,PA448385
+data/guidelineAnnotation,PA166105000,Guideline Annotation,,,CYP2C19; CYP2D6,doxepin,,,,,,,,,,,,,CYP2C19,PA124,amitriptyline,PA448385
+data/guidelineAnnotation,PA166105001,Guideline Annotation,,,CYP2C19; CYP2D6,trimipramine,,,,,,,,,,,,,CYP2C19,PA124,amitriptyline,PA448385
+data/guidelineAnnotation,PA166127638,Guideline Annotation,,,CYP2C19,citalopram; escitalopram,,,,,,,,,,,,,CYP2C19,PA124,amitriptyline,PA448385
+data/guidelineAnnotation,PA166127639,Guideline Annotation,,,CYP2B6; CYP2C19,sertraline,,,,,,,,,,,,,CYP2C19,PA124,amitriptyline,PA448385
+data/guidelineAnnotation,PA166219301,Guideline Annotation,,,CYP2C19,dexlansoprazole,,,,,,,,,,,,,CYP2C19,PA124,amitriptyline,PA448385
+data/guidelineAnnotation,PA166220321,Guideline Annotation,,,CYP2C19,esomeprazole; rabeprazole,,,,,,,,,,,,,CYP2C19,PA124,amitriptyline,PA448385
+data/guidelineAnnotation,PA166219103,Guideline Annotation,,,CYP2C19,lansoprazole; omeprazole; pantoprazole,,,,,,,,,,,,,CYP2C19,PA124,amitriptyline,PA448385
+data/guidelineAnnotation,PA166257241,Guideline Annotation,,,CYP2C19,voriconazole,,,,,,,,,,,,,CYP2C19,PA124,amitriptyline,PA448385
+data/guidelineAnnotation,PA166202701,Guideline Annotation,,,CYP2C19; CYP2D6,antidepressants,,,,,,,,,,,,,CYP2C19,PA124,amitriptyline,PA448385
+data/guidelineAnnotation,PA166202501,Guideline Annotation,,,CYP2C19,clopidogrel,,,,,,,,,,,,,CYP2C19,PA124,amitriptyline,PA448385
+data/guidelineAnnotation,PA166104990,Guideline Annotation,,,CYP2C19,voriconazole,,,,,,,,,,,,,CYP2C19,PA124,amitriptyline,PA448385
+data/guidelineAnnotation,PA166360361,Guideline Annotation,,,CYP2C19,mavacamten,,,,,,,,,,,,,CYP2C19,PA124,amitriptyline,PA448385
+data/guidelineAnnotation,PA166418081,Guideline Annotation,,,CYP2C19,mavacamten,,,,,,,,,,,,,CYP2C19,PA124,amitriptyline,PA448385
+data/guidelineAnnotation,PA166342701,Guideline Annotation,,,CYP2C19,clopidogrel,,,,,,,,,,,,,CYP2C19,PA124,amitriptyline,PA448385
+data/guidelineAnnotation,PA166104982,Guideline Annotation,,,CYP2D6,amitriptyline,,,,,,,,,,,,,CYP2C19,PA124,amitriptyline,PA448385
+data/guidelineAnnotation,PA166104977,Guideline Annotation,,,CYP2C19,citalopram,,,,,,,,,,,,,CYP2C19,PA124,citalopram,PA449015
+data/guidelineAnnotation,PA166127638,Guideline Annotation,,,CYP2C19,citalopram; escitalopram,,,,,,,,,,,,,CYP2C19,PA124,citalopram,PA449015
+data/guidelineAnnotation,PA166161537,Guideline Annotation,,,CYP2C19,voriconazole,,,,,,,,,,,,,CYP2C19,PA124,citalopram,PA449015
+data/guidelineAnnotation,PA166104956,Guideline Annotation,,,CYP2C19,clopidogrel,,,,,,,,,,,,,CYP2C19,PA124,citalopram,PA449015
+data/guidelineAnnotation,PA166104958,Guideline Annotation,,,CYP2C19,pantoprazole,,,,,,,,,,,,,CYP2C19,PA124,citalopram,PA449015
+data/guidelineAnnotation,PA166104980,Guideline Annotation,,,CYP2C19,sertraline,,,,,,,,,,,,,CYP2C19,PA124,citalopram,PA449015
+data/guidelineAnnotation,PA166104987,Guideline Annotation,,,CYP2C19,lansoprazole,,,,,,,,,,,,,CYP2C19,PA124,citalopram,PA449015
+data/guidelineAnnotation,PA166182805,Guideline Annotation,,,CYP2C19,mirtazapine,,,,,,,,,,,,,CYP2C19,PA124,citalopram,PA449015
+data/guidelineAnnotation,PA166182820,Guideline Annotation,,,CYP2C19,prasugrel,,,,,,,,,,,,,CYP2C19,PA124,citalopram,PA449015
+data/guidelineAnnotation,PA166104957,Guideline Annotation,,,CYP2C19,omeprazole,,,,,,,,,,,,,CYP2C19,PA124,citalopram,PA449015
+data/guidelineAnnotation,PA166182807,Guideline Annotation,,,CYP2C19,ticagrelor,,,,,,,,,,,,,CYP2C19,PA124,citalopram,PA449015
+data/guidelineAnnotation,PA166104931,Guideline Annotation,,,CYP2C19,esomeprazole,,,,,,,,,,,,,CYP2C19,PA124,citalopram,PA449015
+data/guidelineAnnotation,PA166184526,Guideline Annotation,,,CYP2C19,amitriptyline,,,,,,,,,,,,,CYP2C19,PA124,citalopram,PA449015
+data/guidelineAnnotation,PA166182814,Guideline Annotation,,,CYP2C19,fluvoxamine,,,,,,,,,,,,,CYP2C19,PA124,citalopram,PA449015
+data/guidelineAnnotation,PA166104975,Guideline Annotation,,,CYP2C19,escitalopram,,,,,,,,,,,,,CYP2C19,PA124,citalopram,PA449015
+data/guidelineAnnotation,PA166184529,Guideline Annotation,,,CYP2C19,doxepin,,,,,,,,,,,,,CYP2C19,PA124,citalopram,PA449015
+data/guidelineAnnotation,PA166104954,Guideline Annotation,,,CYP2C19,imipramine,,,,,,,,,,,,,CYP2C19,PA124,citalopram,PA449015
+data/guidelineAnnotation,PA166104941,Guideline Annotation,,,CYP2C19,moclobemide,,,,,,,,,,,,,CYP2C19,PA124,citalopram,PA449015
+data/guidelineAnnotation,PA166104985,Guideline Annotation,,,CYP2C19,rabeprazole,,,,,,,,,,,,,CYP2C19,PA124,citalopram,PA449015
+data/guidelineAnnotation,PA166184528,Guideline Annotation,,,CYP2C19,clomipramine,,,,,,,,,,,,,CYP2C19,PA124,citalopram,PA449015
+data/guidelineAnnotation,PA166105007,Guideline Annotation,,,CYP2C19; CYP2D6,clomipramine,,,,,,,,,,,,,CYP2C19,PA124,citalopram,PA449015
+data/guidelineAnnotation,PA166104999,Guideline Annotation,,,CYP2C19; CYP2D6,imipramine,,,,,,,,,,,,,CYP2C19,PA124,citalopram,PA449015
+data/guidelineAnnotation,PA166104948,Guideline Annotation,,,CYP2C19,clopidogrel,,,,,,,,,,,,,CYP2C19,PA124,citalopram,PA449015
+data/guidelineAnnotation,PA166105000,Guideline Annotation,,,CYP2C19; CYP2D6,doxepin,,,,,,,,,,,,,CYP2C19,PA124,citalopram,PA449015
+data/guidelineAnnotation,PA166105001,Guideline Annotation,,,CYP2C19; CYP2D6,trimipramine,,,,,,,,,,,,,CYP2C19,PA124,citalopram,PA449015
+data/guidelineAnnotation,PA166105006,Guideline Annotation,,,CYP2C19; CYP2D6,amitriptyline,,,,,,,,,,,,,CYP2C19,PA124,citalopram,PA449015
+data/guidelineAnnotation,PA166127639,Guideline Annotation,,,CYP2B6; CYP2C19,sertraline,,,,,,,,,,,,,CYP2C19,PA124,citalopram,PA449015
+data/guidelineAnnotation,PA166219301,Guideline Annotation,,,CYP2C19,dexlansoprazole,,,,,,,,,,,,,CYP2C19,PA124,citalopram,PA449015
+data/guidelineAnnotation,PA166220321,Guideline Annotation,,,CYP2C19,esomeprazole; rabeprazole,,,,,,,,,,,,,CYP2C19,PA124,citalopram,PA449015
+data/guidelineAnnotation,PA166219103,Guideline Annotation,,,CYP2C19,lansoprazole; omeprazole; pantoprazole,,,,,,,,,,,,,CYP2C19,PA124,citalopram,PA449015
+data/guidelineAnnotation,PA166257241,Guideline Annotation,,,CYP2C19,voriconazole,,,,,,,,,,,,,CYP2C19,PA124,citalopram,PA449015
+data/guidelineAnnotation,PA166202701,Guideline Annotation,,,CYP2C19; CYP2D6,antidepressants,,,,,,,,,,,,,CYP2C19,PA124,citalopram,PA449015
+data/guidelineAnnotation,PA166202501,Guideline Annotation,,,CYP2C19,clopidogrel,,,,,,,,,,,,,CYP2C19,PA124,citalopram,PA449015
+data/guidelineAnnotation,PA166104990,Guideline Annotation,,,CYP2C19,voriconazole,,,,,,,,,,,,,CYP2C19,PA124,citalopram,PA449015
+data/guidelineAnnotation,PA166360361,Guideline Annotation,,,CYP2C19,mavacamten,,,,,,,,,,,,,CYP2C19,PA124,citalopram,PA449015
+data/guidelineAnnotation,PA166418081,Guideline Annotation,,,CYP2C19,mavacamten,,,,,,,,,,,,,CYP2C19,PA124,citalopram,PA449015
+data/guidelineAnnotation,PA166342701,Guideline Annotation,,,CYP2C19,clopidogrel,,,,,,,,,,,,,CYP2C19,PA124,citalopram,PA449015
+data/guidelineAnnotation,PA166182817,Guideline Annotation,,,CYP2D6,citalopram; escitalopram,,,,,,,,,,,,,CYP2C19,PA124,citalopram,PA449015
+data/guidelineAnnotation,PA166288601,Guideline Annotation,,,SLC6A4,citalopram; desvenlafaxine; duloxetine; escitalopram; fluoxetine; fluvoxamine; levomilnacipran; milnacipran; paroxetine; sertraline; venlafaxine; vilazodone; vortioxetine,,,,,,,,,,,,,CYP2C19,PA124,citalopram,PA449015
+data/guidelineAnnotation,PA166288581,Guideline Annotation,,,HTR2A,citalopram; escitalopram,,,,,,,,,,,,,CYP2C19,PA124,citalopram,PA449015
+data/guidelineAnnotation,PA166104980,Guideline Annotation,,,CYP2C19,sertraline,,,,,,,,,,,,,CYP2C19,PA124,sertraline,PA451333
+data/guidelineAnnotation,PA166127639,Guideline Annotation,,,CYP2B6; CYP2C19,sertraline,,,,,,,,,,,,,CYP2C19,PA124,sertraline,PA451333
+data/guidelineAnnotation,PA166161537,Guideline Annotation,,,CYP2C19,voriconazole,,,,,,,,,,,,,CYP2C19,PA124,sertraline,PA451333
+data/guidelineAnnotation,PA166104956,Guideline Annotation,,,CYP2C19,clopidogrel,,,,,,,,,,,,,CYP2C19,PA124,sertraline,PA451333
+data/guidelineAnnotation,PA166104958,Guideline Annotation,,,CYP2C19,pantoprazole,,,,,,,,,,,,,CYP2C19,PA124,sertraline,PA451333
+data/guidelineAnnotation,PA166104987,Guideline Annotation,,,CYP2C19,lansoprazole,,,,,,,,,,,,,CYP2C19,PA124,sertraline,PA451333
+data/guidelineAnnotation,PA166182805,Guideline Annotation,,,CYP2C19,mirtazapine,,,,,,,,,,,,,CYP2C19,PA124,sertraline,PA451333
+data/guidelineAnnotation,PA166182820,Guideline Annotation,,,CYP2C19,prasugrel,,,,,,,,,,,,,CYP2C19,PA124,sertraline,PA451333
+data/guidelineAnnotation,PA166104977,Guideline Annotation,,,CYP2C19,citalopram,,,,,,,,,,,,,CYP2C19,PA124,sertraline,PA451333
+data/guidelineAnnotation,PA166104957,Guideline Annotation,,,CYP2C19,omeprazole,,,,,,,,,,,,,CYP2C19,PA124,sertraline,PA451333
+data/guidelineAnnotation,PA166182807,Guideline Annotation,,,CYP2C19,ticagrelor,,,,,,,,,,,,,CYP2C19,PA124,sertraline,PA451333
+data/guidelineAnnotation,PA166104931,Guideline Annotation,,,CYP2C19,esomeprazole,,,,,,,,,,,,,CYP2C19,PA124,sertraline,PA451333
+data/guidelineAnnotation,PA166184526,Guideline Annotation,,,CYP2C19,amitriptyline,,,,,,,,,,,,,CYP2C19,PA124,sertraline,PA451333
+data/guidelineAnnotation,PA166182814,Guideline Annotation,,,CYP2C19,fluvoxamine,,,,,,,,,,,,,CYP2C19,PA124,sertraline,PA451333
+data/guidelineAnnotation,PA166104975,Guideline Annotation,,,CYP2C19,escitalopram,,,,,,,,,,,,,CYP2C19,PA124,sertraline,PA451333
+data/guidelineAnnotation,PA166184529,Guideline Annotation,,,CYP2C19,doxepin,,,,,,,,,,,,,CYP2C19,PA124,sertraline,PA451333
+data/guidelineAnnotation,PA166104954,Guideline Annotation,,,CYP2C19,imipramine,,,,,,,,,,,,,CYP2C19,PA124,sertraline,PA451333
+data/guidelineAnnotation,PA166104941,Guideline Annotation,,,CYP2C19,moclobemide,,,,,,,,,,,,,CYP2C19,PA124,sertraline,PA451333
+data/guidelineAnnotation,PA166104985,Guideline Annotation,,,CYP2C19,rabeprazole,,,,,,,,,,,,,CYP2C19,PA124,sertraline,PA451333
+data/guidelineAnnotation,PA166184528,Guideline Annotation,,,CYP2C19,clomipramine,,,,,,,,,,,,,CYP2C19,PA124,sertraline,PA451333
+data/guidelineAnnotation,PA166105007,Guideline Annotation,,,CYP2C19; CYP2D6,clomipramine,,,,,,,,,,,,,CYP2C19,PA124,sertraline,PA451333
+data/guidelineAnnotation,PA166104999,Guideline Annotation,,,CYP2C19; CYP2D6,imipramine,,,,,,,,,,,,,CYP2C19,PA124,sertraline,PA451333
+data/guidelineAnnotation,PA166104948,Guideline Annotation,,,CYP2C19,clopidogrel,,,,,,,,,,,,,CYP2C19,PA124,sertraline,PA451333
+data/guidelineAnnotation,PA166105000,Guideline Annotation,,,CYP2C19; CYP2D6,doxepin,,,,,,,,,,,,,CYP2C19,PA124,sertraline,PA451333
+data/guidelineAnnotation,PA166105001,Guideline Annotation,,,CYP2C19; CYP2D6,trimipramine,,,,,,,,,,,,,CYP2C19,PA124,sertraline,PA451333
+data/guidelineAnnotation,PA166105006,Guideline Annotation,,,CYP2C19; CYP2D6,amitriptyline,,,,,,,,,,,,,CYP2C19,PA124,sertraline,PA451333
+data/guidelineAnnotation,PA166127638,Guideline Annotation,,,CYP2C19,citalopram; escitalopram,,,,,,,,,,,,,CYP2C19,PA124,sertraline,PA451333
+data/guidelineAnnotation,PA166219301,Guideline Annotation,,,CYP2C19,dexlansoprazole,,,,,,,,,,,,,CYP2C19,PA124,sertraline,PA451333
+data/guidelineAnnotation,PA166220321,Guideline Annotation,,,CYP2C19,esomeprazole; rabeprazole,,,,,,,,,,,,,CYP2C19,PA124,sertraline,PA451333
+data/guidelineAnnotation,PA166219103,Guideline Annotation,,,CYP2C19,lansoprazole; omeprazole; pantoprazole,,,,,,,,,,,,,CYP2C19,PA124,sertraline,PA451333
+data/guidelineAnnotation,PA166257241,Guideline Annotation,,,CYP2C19,voriconazole,,,,,,,,,,,,,CYP2C19,PA124,sertraline,PA451333
+data/guidelineAnnotation,PA166202701,Guideline Annotation,,,CYP2C19; CYP2D6,antidepressants,,,,,,,,,,,,,CYP2C19,PA124,sertraline,PA451333
+data/guidelineAnnotation,PA166202501,Guideline Annotation,,,CYP2C19,clopidogrel,,,,,,,,,,,,,CYP2C19,PA124,sertraline,PA451333
+data/guidelineAnnotation,PA166104990,Guideline Annotation,,,CYP2C19,voriconazole,,,,,,,,,,,,,CYP2C19,PA124,sertraline,PA451333
+data/guidelineAnnotation,PA166360361,Guideline Annotation,,,CYP2C19,mavacamten,,,,,,,,,,,,,CYP2C19,PA124,sertraline,PA451333
+data/guidelineAnnotation,PA166418081,Guideline Annotation,,,CYP2C19,mavacamten,,,,,,,,,,,,,CYP2C19,PA124,sertraline,PA451333
+data/guidelineAnnotation,PA166342701,Guideline Annotation,,,CYP2C19,clopidogrel,,,,,,,,,,,,,CYP2C19,PA124,sertraline,PA451333
+data/guidelineAnnotation,PA166182821,Guideline Annotation,,,CYP2D6,sertraline,,,,,,,,,,,,,CYP2C19,PA124,sertraline,PA451333
+data/guidelineAnnotation,PA166288601,Guideline Annotation,,,SLC6A4,citalopram; desvenlafaxine; duloxetine; escitalopram; fluoxetine; fluvoxamine; levomilnacipran; milnacipran; paroxetine; sertraline; venlafaxine; vilazodone; vortioxetine,,,,,,,,,,,,,CYP2C19,PA124,sertraline,PA451333
+data/guidelineAnnotation,PA166288582,Guideline Annotation,,,HTR2A,desvenlafaxine; duloxetine; fluoxetine; fluvoxamine; levomilnacipran; milnacipran; paroxetine; sertraline; venlafaxine; vilazodone; vortioxetine,,,,,,,,,,,,,CYP2C19,PA124,sertraline,PA451333
+data/guidelineAnnotation,PA166104996,Guideline Annotation,,,CYP2D6,codeine,,,,,,,,,,,,,CYP2D6,PA128,codeine,PA449088
+data/guidelineAnnotation,PA166104970,Guideline Annotation,,,CYP2D6,codeine,,,,,,,,,,,,,CYP2D6,PA128,codeine,PA449088
+data/guidelineAnnotation,PA166122666,Guideline Annotation,,,CYP2D6,codeine,,,,,,,,,,,,,CYP2D6,PA128,codeine,PA449088
+data/guidelineAnnotation,PA166104992,Guideline Annotation,,,CYP2D6,zuclopenthixol,,,,,,,,,,,,,CYP2D6,PA128,codeine,PA449088
+data/guidelineAnnotation,PA166104994,Guideline Annotation,,,CYP2D6,doxepin,,,,,,,,,,,,,CYP2D6,PA128,codeine,PA449088
+data/guidelineAnnotation,PA166104995,Guideline Annotation,,,CYP2D6,metoprolol,,,,,,,,,,,,,CYP2D6,PA128,codeine,PA449088
+data/guidelineAnnotation,PA166104998,Guideline Annotation,,,CYP2D6,nortriptyline,,,,,,,,,,,,,CYP2D6,PA128,codeine,PA449088
+data/guidelineAnnotation,PA166104999,Guideline Annotation,,,CYP2C19; CYP2D6,imipramine,,,,,,,,,,,,,CYP2D6,PA128,codeine,PA449088
+data/guidelineAnnotation,PA166105000,Guideline Annotation,,,CYP2C19; CYP2D6,doxepin,,,,,,,,,,,,,CYP2D6,PA128,codeine,PA449088
+data/guidelineAnnotation,PA166105001,Guideline Annotation,,,CYP2C19; CYP2D6,trimipramine,,,,,,,,,,,,,CYP2D6,PA128,codeine,PA449088
+data/guidelineAnnotation,PA166105002,Guideline Annotation,,,CYP2D6,desipramine,,,,,,,,,,,,,CYP2D6,PA128,codeine,PA449088
+data/guidelineAnnotation,PA166105006,Guideline Annotation,,,CYP2C19; CYP2D6,amitriptyline,,,,,,,,,,,,,CYP2D6,PA128,codeine,PA449088
+data/guidelineAnnotation,PA166105007,Guideline Annotation,,,CYP2C19; CYP2D6,clomipramine,,,,,,,,,,,,,CYP2D6,PA128,codeine,PA449088
+data/guidelineAnnotation,PA166127636,Guideline Annotation,,,CYP2D6,paroxetine,,,,,,,,,,,,,CYP2D6,PA128,codeine,PA449088
+data/guidelineAnnotation,PA166127637,Guideline Annotation,,,CYP2D6,fluvoxamine,,,,,,,,,,,,,CYP2D6,PA128,codeine,PA449088
+data/guidelineAnnotation,PA166104935,Guideline Annotation,,,CYP2D6,clozapine,,,,,,,,,,,,,CYP2D6,PA128,codeine,PA449088
+data/guidelineAnnotation,PA166104937,Guideline Annotation,,,CYP2D6,aripiprazole,,,,,,,,,,,,,CYP2D6,PA128,codeine,PA449088
+data/guidelineAnnotation,PA166104942,Guideline Annotation,,,CYP2D6,duloxetine,,,,,,,,,,,,,CYP2D6,PA128,codeine,PA449088
+data/guidelineAnnotation,PA166104943,Guideline Annotation,,,CYP2D6,risperidone,,,,,,,,,,,,,CYP2D6,PA128,codeine,PA449088
+data/guidelineAnnotation,PA166104946,Guideline Annotation,,,CYP2D6,olanzapine,,,,,,,,,,,,,CYP2D6,PA128,codeine,PA449088
+data/guidelineAnnotation,PA166104959,Guideline Annotation,,,CYP2D6,tramadol,,,,,,,,,,,,,CYP2D6,PA128,codeine,PA449088
+data/guidelineAnnotation,PA166104961,Guideline Annotation,,,CYP2D6,nortriptyline,,,,,,,,,,,,,CYP2D6,PA128,codeine,PA449088
+data/guidelineAnnotation,PA166104962,Guideline Annotation,,,CYP2D6,propafenone,,,,,,,,,,,,,CYP2D6,PA128,codeine,PA449088
+data/guidelineAnnotation,PA166104964,Guideline Annotation,,,CYP2D6,clomipramine,,,,,,,,,,,,,CYP2D6,PA128,codeine,PA449088
+data/guidelineAnnotation,PA166104966,Guideline Annotation,,,CYP2D6,tamoxifen,,,,,,,,,,,,,CYP2D6,PA128,codeine,PA449088
+data/guidelineAnnotation,PA166104967,Guideline Annotation,,,CYP2D6,mirtazapine,,,,,,,,,,,,,CYP2D6,PA128,codeine,PA449088
+data/guidelineAnnotation,PA166104968,Guideline Annotation,,,CYP2D6,venlafaxine,,,,,,,,,,,,,CYP2D6,PA128,codeine,PA449088
+data/guidelineAnnotation,PA166104969,Guideline Annotation,,,CYP2D6,flecainide,,,,,,,,,,,,,CYP2D6,PA128,codeine,PA449088
+data/guidelineAnnotation,PA166104972,Guideline Annotation,,,CYP2D6,imipramine,,,,,,,,,,,,,CYP2D6,PA128,codeine,PA449088
+data/guidelineAnnotation,PA166104973,Guideline Annotation,,,CYP2D6,oxycodone,,,,,,,,,,,,,CYP2D6,PA128,codeine,PA449088
+data/guidelineAnnotation,PA166104974,Guideline Annotation,,,CYP2D6,carvedilol,,,,,,,,,,,,,CYP2D6,PA128,codeine,PA449088
+data/guidelineAnnotation,PA166104976,Guideline Annotation,,,CYP2D6,paroxetine,,,,,,,,,,,,,CYP2D6,PA128,codeine,PA449088
+data/guidelineAnnotation,PA166104981,Guideline Annotation,,,CYP2D6,flupenthixol,,,,,,,,,,,,,CYP2D6,PA128,codeine,PA449088
+data/guidelineAnnotation,PA166104982,Guideline Annotation,,,CYP2D6,amitriptyline,,,,,,,,,,,,,CYP2D6,PA128,codeine,PA449088
+data/guidelineAnnotation,PA166104988,Guideline Annotation,,,CYP2D6,haloperidol,,,,,,,,,,,,,CYP2D6,PA128,codeine,PA449088
+data/guidelineAnnotation,PA166104989,Guideline Annotation,,,CYP2D6,atomoxetine,,,,,,,,,,,,,CYP2D6,PA128,codeine,PA449088
+data/guidelineAnnotation,PA166176068,Guideline Annotation,,,CYP2D6,tamoxifen,,,,,,,,,,,,,CYP2D6,PA128,codeine,PA449088
+data/guidelineAnnotation,PA166181721,Guideline Annotation,,,CYP2D6,tamoxifen,,,,,,,,,,,,,CYP2D6,PA128,codeine,PA449088
+data/guidelineAnnotation,PA166181885,Guideline Annotation,,,CYP2D6,atomoxetine,,,,,,,,,,,,,CYP2D6,PA128,codeine,PA449088
+data/guidelineAnnotation,PA166161954,Guideline Annotation,,,CYP2D6,ondansetron,,,,,,,,,,,,,CYP2D6,PA128,codeine,PA449088
+data/guidelineAnnotation,PA166161955,Guideline Annotation,,,CYP2D6,tropisetron,,,,,,,,,,,,,CYP2D6,PA128,codeine,PA449088
+data/guidelineAnnotation,PA166182803,Guideline Annotation,,,CYP2D6,quinidine,,,,,,,,,,,,,CYP2D6,PA128,codeine,PA449088
+data/guidelineAnnotation,PA166182808,Guideline Annotation,,,CYP2D6,methylphenidate,,,,,,,,,,,,,CYP2D6,PA128,codeine,PA449088
+data/guidelineAnnotation,PA166182809,Guideline Annotation,,,CYP2D6,gefitinib,,,,,,,,,,,,,CYP2D6,PA128,codeine,PA449088
+data/guidelineAnnotation,PA166182811,Guideline Annotation,,,CYP2D6,disopyramide,,,,,,,,,,,,,CYP2D6,PA128,codeine,PA449088
+data/guidelineAnnotation,PA166182812,Guideline Annotation,,,CYP2D6,fluphenazine,,,,,,,,,,,,,CYP2D6,PA128,codeine,PA449088
+data/guidelineAnnotation,PA166182813,Guideline Annotation,,,CYP2D6,fluvoxamine,,,,,,,,,,,,,CYP2D6,PA128,codeine,PA449088
+data/guidelineAnnotation,PA166182815,Guideline Annotation,,,CYP2D6,amiodarone,,,,,,,,,,,,,CYP2D6,PA128,codeine,PA449088
+data/guidelineAnnotation,PA166182816,Guideline Annotation,,,CYP2D6,bisoprolol,,,,,,,,,,,,,CYP2D6,PA128,codeine,PA449088
+data/guidelineAnnotation,PA166182817,Guideline Annotation,,,CYP2D6,citalopram; escitalopram,,,,,,,,,,,,,CYP2D6,PA128,codeine,PA449088
+data/guidelineAnnotation,PA166182818,Guideline Annotation,,,CYP2D6,clonidine,,,,,,,,,,,,,CYP2D6,PA128,codeine,PA449088
+data/guidelineAnnotation,PA166182819,Guideline Annotation,,,CYP2D6,pimozide,,,,,,,,,,,,,CYP2D6,PA128,codeine,PA449088
+data/guidelineAnnotation,PA166182821,Guideline Annotation,,,CYP2D6,sertraline,,,,,,,,,,,,,CYP2D6,PA128,codeine,PA449088
+data/guidelineAnnotation,PA166182822,Guideline Annotation,,,CYP2D6,atenolol,,,,,,,,,,,,,CYP2D6,PA128,codeine,PA449088
+data/guidelineAnnotation,PA166182823,Guideline Annotation,,,CYP2D6,eliglustat,,,,,,,,,,,,,CYP2D6,PA128,codeine,PA449088
+data/guidelineAnnotation,PA166182852,Guideline Annotation,,,CYP2D6,fluoxetine,,,,,,,,,,,,,CYP2D6,PA128,codeine,PA449088
+data/guidelineAnnotation,PA166182854,Guideline Annotation,,,CYP2D6,quetiapine,,,,,,,,,,,,,CYP2D6,PA128,codeine,PA449088
+data/guidelineAnnotation,PA166182855,Guideline Annotation,,,CYP2D6,sotalol,,,,,,,,,,,,,CYP2D6,PA128,codeine,PA449088
+data/guidelineAnnotation,PA166184527,Guideline Annotation,,,CYP2D6,brexpiprazole,,,,,,,,,,,,,CYP2D6,PA128,codeine,PA449088
+data/guidelineAnnotation,PA166202801,Guideline Annotation,,,CYP2D6,tamoxifen,,,,,,,,,,,,,CYP2D6,PA128,codeine,PA449088
+data/guidelineAnnotation,PA166202701,Guideline Annotation,,,CYP2C19; CYP2D6,antidepressants,,,,,,,,,,,,,CYP2D6,PA128,codeine,PA449088
+data/guidelineAnnotation,PA166228101,Guideline Annotation,,,CYP2D6,tramadol,,,,,,,,,,,,,CYP2D6,PA128,codeine,PA449088
+data/guidelineAnnotation,PA166228022,Guideline Annotation,,,COMT; CYP2D6; OPRM1,methadone; oxycodone,,,,,,,,,,,,,CYP2D6,PA128,codeine,PA449088
+data/guidelineAnnotation,PA166228121,Guideline Annotation,,,CYP2D6,hydrocodone,,,,,,,,,,,,,CYP2D6,PA128,codeine,PA449088
+data/guidelineAnnotation,PA166288541,Guideline Annotation,,,CYP2D6,fluoxetine,,,,,,,,,,,,,CYP2D6,PA128,codeine,PA449088
+data/guidelineAnnotation,PA166288201,Guideline Annotation,,,CYP2D6,venlafaxine,,,,,,,,,,,,,CYP2D6,PA128,codeine,PA449088
+data/guidelineAnnotation,PA166288221,Guideline Annotation,,,CYP2D6,vortioxetine,,,,,,,,,,,,,CYP2D6,PA128,codeine,PA449088
+data/guidelineAnnotation,PA166288561,Guideline Annotation,,,CYP2D6,duloxetine,,,,,,,,,,,,,CYP2D6,PA128,codeine,PA449088
+data/guidelineAnnotation,PA166341341,Guideline Annotation,,,CYP2D6,acebutolol; betaxolol; bisoprolol; carvedilol; nebivolol; propranolol,,,,,,,,,,,,,CYP2D6,PA128,codeine,PA449088
+data/guidelineAnnotation,PA166341321,Guideline Annotation,,,CYP2D6,metoprolol,,,,,,,,,,,,,CYP2D6,PA128,codeine,PA449088
+data/guidelineAnnotation,PA166436281,Guideline Annotation,,,CYP2D6,dolasetron; palonosetron; ramosetron,,,,,,,,,,,,,CYP2D6,PA128,codeine,PA449088
+data/guidelineAnnotation,PA166227941,Guideline Annotation,,,COMT; OPRM1,alfentanil; buprenorphine; codeine; fentanyl; hydrocodone; hydromorphone; levomethadone; morphine; naltrexone; remifentanil; sufentanil; tramadol,,,,,,,,,,,,,CYP2D6,PA128,codeine,PA449088
+data/guidelineAnnotation,PA166104982,Guideline Annotation,,,CYP2D6,amitriptyline,,,,,,,,,,,,,CYP2D6,PA128,amitriptyline,PA448385
+data/guidelineAnnotation,PA166105006,Guideline Annotation,,,CYP2C19; CYP2D6,amitriptyline,,,,,,,,,,,,,CYP2D6,PA128,amitriptyline,PA448385
+data/guidelineAnnotation,PA166104992,Guideline Annotation,,,CYP2D6,zuclopenthixol,,,,,,,,,,,,,CYP2D6,PA128,amitriptyline,PA448385
+data/guidelineAnnotation,PA166104994,Guideline Annotation,,,CYP2D6,doxepin,,,,,,,,,,,,,CYP2D6,PA128,amitriptyline,PA448385
+data/guidelineAnnotation,PA166104995,Guideline Annotation,,,CYP2D6,metoprolol,,,,,,,,,,,,,CYP2D6,PA128,amitriptyline,PA448385
+data/guidelineAnnotation,PA166104996,Guideline Annotation,,,CYP2D6,codeine,,,,,,,,,,,,,CYP2D6,PA128,amitriptyline,PA448385
+data/guidelineAnnotation,PA166104998,Guideline Annotation,,,CYP2D6,nortriptyline,,,,,,,,,,,,,CYP2D6,PA128,amitriptyline,PA448385
+data/guidelineAnnotation,PA166104999,Guideline Annotation,,,CYP2C19; CYP2D6,imipramine,,,,,,,,,,,,,CYP2D6,PA128,amitriptyline,PA448385
+data/guidelineAnnotation,PA166105000,Guideline Annotation,,,CYP2C19; CYP2D6,doxepin,,,,,,,,,,,,,CYP2D6,PA128,amitriptyline,PA448385
+data/guidelineAnnotation,PA166105001,Guideline Annotation,,,CYP2C19; CYP2D6,trimipramine,,,,,,,,,,,,,CYP2D6,PA128,amitriptyline,PA448385
+data/guidelineAnnotation,PA166105002,Guideline Annotation,,,CYP2D6,desipramine,,,,,,,,,,,,,CYP2D6,PA128,amitriptyline,PA448385
+data/guidelineAnnotation,PA166105007,Guideline Annotation,,,CYP2C19; CYP2D6,clomipramine,,,,,,,,,,,,,CYP2D6,PA128,amitriptyline,PA448385
+data/guidelineAnnotation,PA166122666,Guideline Annotation,,,CYP2D6,codeine,,,,,,,,,,,,,CYP2D6,PA128,amitriptyline,PA448385
+data/guidelineAnnotation,PA166127636,Guideline Annotation,,,CYP2D6,paroxetine,,,,,,,,,,,,,CYP2D6,PA128,amitriptyline,PA448385
+data/guidelineAnnotation,PA166127637,Guideline Annotation,,,CYP2D6,fluvoxamine,,,,,,,,,,,,,CYP2D6,PA128,amitriptyline,PA448385
+data/guidelineAnnotation,PA166104935,Guideline Annotation,,,CYP2D6,clozapine,,,,,,,,,,,,,CYP2D6,PA128,amitriptyline,PA448385
+data/guidelineAnnotation,PA166104937,Guideline Annotation,,,CYP2D6,aripiprazole,,,,,,,,,,,,,CYP2D6,PA128,amitriptyline,PA448385
+data/guidelineAnnotation,PA166104942,Guideline Annotation,,,CYP2D6,duloxetine,,,,,,,,,,,,,CYP2D6,PA128,amitriptyline,PA448385
+data/guidelineAnnotation,PA166104943,Guideline Annotation,,,CYP2D6,risperidone,,,,,,,,,,,,,CYP2D6,PA128,amitriptyline,PA448385
+data/guidelineAnnotation,PA166104946,Guideline Annotation,,,CYP2D6,olanzapine,,,,,,,,,,,,,CYP2D6,PA128,amitriptyline,PA448385
+data/guidelineAnnotation,PA166104959,Guideline Annotation,,,CYP2D6,tramadol,,,,,,,,,,,,,CYP2D6,PA128,amitriptyline,PA448385
+data/guidelineAnnotation,PA166104961,Guideline Annotation,,,CYP2D6,nortriptyline,,,,,,,,,,,,,CYP2D6,PA128,amitriptyline,PA448385
+data/guidelineAnnotation,PA166104962,Guideline Annotation,,,CYP2D6,propafenone,,,,,,,,,,,,,CYP2D6,PA128,amitriptyline,PA448385
+data/guidelineAnnotation,PA166104964,Guideline Annotation,,,CYP2D6,clomipramine,,,,,,,,,,,,,CYP2D6,PA128,amitriptyline,PA448385
+data/guidelineAnnotation,PA166104966,Guideline Annotation,,,CYP2D6,tamoxifen,,,,,,,,,,,,,CYP2D6,PA128,amitriptyline,PA448385
+data/guidelineAnnotation,PA166104967,Guideline Annotation,,,CYP2D6,mirtazapine,,,,,,,,,,,,,CYP2D6,PA128,amitriptyline,PA448385
+data/guidelineAnnotation,PA166104968,Guideline Annotation,,,CYP2D6,venlafaxine,,,,,,,,,,,,,CYP2D6,PA128,amitriptyline,PA448385
+data/guidelineAnnotation,PA166104969,Guideline Annotation,,,CYP2D6,flecainide,,,,,,,,,,,,,CYP2D6,PA128,amitriptyline,PA448385
+data/guidelineAnnotation,PA166104970,Guideline Annotation,,,CYP2D6,codeine,,,,,,,,,,,,,CYP2D6,PA128,amitriptyline,PA448385
+data/guidelineAnnotation,PA166104972,Guideline Annotation,,,CYP2D6,imipramine,,,,,,,,,,,,,CYP2D6,PA128,amitriptyline,PA448385
+data/guidelineAnnotation,PA166104973,Guideline Annotation,,,CYP2D6,oxycodone,,,,,,,,,,,,,CYP2D6,PA128,amitriptyline,PA448385
+data/guidelineAnnotation,PA166104974,Guideline Annotation,,,CYP2D6,carvedilol,,,,,,,,,,,,,CYP2D6,PA128,amitriptyline,PA448385
+data/guidelineAnnotation,PA166104976,Guideline Annotation,,,CYP2D6,paroxetine,,,,,,,,,,,,,CYP2D6,PA128,amitriptyline,PA448385
+data/guidelineAnnotation,PA166104981,Guideline Annotation,,,CYP2D6,flupenthixol,,,,,,,,,,,,,CYP2D6,PA128,amitriptyline,PA448385
+data/guidelineAnnotation,PA166104988,Guideline Annotation,,,CYP2D6,haloperidol,,,,,,,,,,,,,CYP2D6,PA128,amitriptyline,PA448385
+data/guidelineAnnotation,PA166104989,Guideline Annotation,,,CYP2D6,atomoxetine,,,,,,,,,,,,,CYP2D6,PA128,amitriptyline,PA448385
+data/guidelineAnnotation,PA166176068,Guideline Annotation,,,CYP2D6,tamoxifen,,,,,,,,,,,,,CYP2D6,PA128,amitriptyline,PA448385
+data/guidelineAnnotation,PA166181721,Guideline Annotation,,,CYP2D6,tamoxifen,,,,,,,,,,,,,CYP2D6,PA128,amitriptyline,PA448385
+data/guidelineAnnotation,PA166181885,Guideline Annotation,,,CYP2D6,atomoxetine,,,,,,,,,,,,,CYP2D6,PA128,amitriptyline,PA448385
+data/guidelineAnnotation,PA166161954,Guideline Annotation,,,CYP2D6,ondansetron,,,,,,,,,,,,,CYP2D6,PA128,amitriptyline,PA448385
+data/guidelineAnnotation,PA166161955,Guideline Annotation,,,CYP2D6,tropisetron,,,,,,,,,,,,,CYP2D6,PA128,amitriptyline,PA448385
+data/guidelineAnnotation,PA166182803,Guideline Annotation,,,CYP2D6,quinidine,,,,,,,,,,,,,CYP2D6,PA128,amitriptyline,PA448385
+data/guidelineAnnotation,PA166182808,Guideline Annotation,,,CYP2D6,methylphenidate,,,,,,,,,,,,,CYP2D6,PA128,amitriptyline,PA448385
+data/guidelineAnnotation,PA166182809,Guideline Annotation,,,CYP2D6,gefitinib,,,,,,,,,,,,,CYP2D6,PA128,amitriptyline,PA448385
+data/guidelineAnnotation,PA166182811,Guideline Annotation,,,CYP2D6,disopyramide,,,,,,,,,,,,,CYP2D6,PA128,amitriptyline,PA448385
+data/guidelineAnnotation,PA166182812,Guideline Annotation,,,CYP2D6,fluphenazine,,,,,,,,,,,,,CYP2D6,PA128,amitriptyline,PA448385
+data/guidelineAnnotation,PA166182813,Guideline Annotation,,,CYP2D6,fluvoxamine,,,,,,,,,,,,,CYP2D6,PA128,amitriptyline,PA448385
+data/guidelineAnnotation,PA166182815,Guideline Annotation,,,CYP2D6,amiodarone,,,,,,,,,,,,,CYP2D6,PA128,amitriptyline,PA448385
+data/guidelineAnnotation,PA166182816,Guideline Annotation,,,CYP2D6,bisoprolol,,,,,,,,,,,,,CYP2D6,PA128,amitriptyline,PA448385
+data/guidelineAnnotation,PA166182817,Guideline Annotation,,,CYP2D6,citalopram; escitalopram,,,,,,,,,,,,,CYP2D6,PA128,amitriptyline,PA448385
+data/guidelineAnnotation,PA166182818,Guideline Annotation,,,CYP2D6,clonidine,,,,,,,,,,,,,CYP2D6,PA128,amitriptyline,PA448385
+data/guidelineAnnotation,PA166182819,Guideline Annotation,,,CYP2D6,pimozide,,,,,,,,,,,,,CYP2D6,PA128,amitriptyline,PA448385
+data/guidelineAnnotation,PA166182821,Guideline Annotation,,,CYP2D6,sertraline,,,,,,,,,,,,,CYP2D6,PA128,amitriptyline,PA448385
+data/guidelineAnnotation,PA166182822,Guideline Annotation,,,CYP2D6,atenolol,,,,,,,,,,,,,CYP2D6,PA128,amitriptyline,PA448385
+data/guidelineAnnotation,PA166182823,Guideline Annotation,,,CYP2D6,eliglustat,,,,,,,,,,,,,CYP2D6,PA128,amitriptyline,PA448385
+data/guidelineAnnotation,PA166182852,Guideline Annotation,,,CYP2D6,fluoxetine,,,,,,,,,,,,,CYP2D6,PA128,amitriptyline,PA448385
+data/guidelineAnnotation,PA166182854,Guideline Annotation,,,CYP2D6,quetiapine,,,,,,,,,,,,,CYP2D6,PA128,amitriptyline,PA448385
+data/guidelineAnnotation,PA166182855,Guideline Annotation,,,CYP2D6,sotalol,,,,,,,,,,,,,CYP2D6,PA128,amitriptyline,PA448385
+data/guidelineAnnotation,PA166184527,Guideline Annotation,,,CYP2D6,brexpiprazole,,,,,,,,,,,,,CYP2D6,PA128,amitriptyline,PA448385
+data/guidelineAnnotation,PA166202801,Guideline Annotation,,,CYP2D6,tamoxifen,,,,,,,,,,,,,CYP2D6,PA128,amitriptyline,PA448385
+data/guidelineAnnotation,PA166202701,Guideline Annotation,,,CYP2C19; CYP2D6,antidepressants,,,,,,,,,,,,,CYP2D6,PA128,amitriptyline,PA448385
+data/guidelineAnnotation,PA166228101,Guideline Annotation,,,CYP2D6,tramadol,,,,,,,,,,,,,CYP2D6,PA128,amitriptyline,PA448385
+data/guidelineAnnotation,PA166228022,Guideline Annotation,,,COMT; CYP2D6; OPRM1,methadone; oxycodone,,,,,,,,,,,,,CYP2D6,PA128,amitriptyline,PA448385
+data/guidelineAnnotation,PA166228121,Guideline Annotation,,,CYP2D6,hydrocodone,,,,,,,,,,,,,CYP2D6,PA128,amitriptyline,PA448385
+data/guidelineAnnotation,PA166288541,Guideline Annotation,,,CYP2D6,fluoxetine,,,,,,,,,,,,,CYP2D6,PA128,amitriptyline,PA448385
+data/guidelineAnnotation,PA166288201,Guideline Annotation,,,CYP2D6,venlafaxine,,,,,,,,,,,,,CYP2D6,PA128,amitriptyline,PA448385
+data/guidelineAnnotation,PA166288221,Guideline Annotation,,,CYP2D6,vortioxetine,,,,,,,,,,,,,CYP2D6,PA128,amitriptyline,PA448385
+data/guidelineAnnotation,PA166288561,Guideline Annotation,,,CYP2D6,duloxetine,,,,,,,,,,,,,CYP2D6,PA128,amitriptyline,PA448385
+data/guidelineAnnotation,PA166341341,Guideline Annotation,,,CYP2D6,acebutolol; betaxolol; bisoprolol; carvedilol; nebivolol; propranolol,,,,,,,,,,,,,CYP2D6,PA128,amitriptyline,PA448385
+data/guidelineAnnotation,PA166341321,Guideline Annotation,,,CYP2D6,metoprolol,,,,,,,,,,,,,CYP2D6,PA128,amitriptyline,PA448385
+data/guidelineAnnotation,PA166436281,Guideline Annotation,,,CYP2D6,dolasetron; palonosetron; ramosetron,,,,,,,,,,,,,CYP2D6,PA128,amitriptyline,PA448385
+data/guidelineAnnotation,PA166184526,Guideline Annotation,,,CYP2C19,amitriptyline,,,,,,,,,,,,,CYP2D6,PA128,amitriptyline,PA448385
+data/guidelineAnnotation,PA166176068,Guideline Annotation,,,CYP2D6,tamoxifen,,,,,,,,,,,,,CYP2D6,PA128,tamoxifen,PA451581
+data/guidelineAnnotation,PA166181721,Guideline Annotation,,,CYP2D6,tamoxifen,,,,,,,,,,,,,CYP2D6,PA128,tamoxifen,PA451581
+data/guidelineAnnotation,PA166104966,Guideline Annotation,,,CYP2D6,tamoxifen,,,,,,,,,,,,,CYP2D6,PA128,tamoxifen,PA451581
+data/guidelineAnnotation,PA166202801,Guideline Annotation,,,CYP2D6,tamoxifen,,,,,,,,,,,,,CYP2D6,PA128,tamoxifen,PA451581
+data/guidelineAnnotation,PA166104992,Guideline Annotation,,,CYP2D6,zuclopenthixol,,,,,,,,,,,,,CYP2D6,PA128,tamoxifen,PA451581
+data/guidelineAnnotation,PA166104994,Guideline Annotation,,,CYP2D6,doxepin,,,,,,,,,,,,,CYP2D6,PA128,tamoxifen,PA451581
+data/guidelineAnnotation,PA166104995,Guideline Annotation,,,CYP2D6,metoprolol,,,,,,,,,,,,,CYP2D6,PA128,tamoxifen,PA451581
+data/guidelineAnnotation,PA166104996,Guideline Annotation,,,CYP2D6,codeine,,,,,,,,,,,,,CYP2D6,PA128,tamoxifen,PA451581
+data/guidelineAnnotation,PA166104998,Guideline Annotation,,,CYP2D6,nortriptyline,,,,,,,,,,,,,CYP2D6,PA128,tamoxifen,PA451581
+data/guidelineAnnotation,PA166104999,Guideline Annotation,,,CYP2C19; CYP2D6,imipramine,,,,,,,,,,,,,CYP2D6,PA128,tamoxifen,PA451581
+data/guidelineAnnotation,PA166105000,Guideline Annotation,,,CYP2C19; CYP2D6,doxepin,,,,,,,,,,,,,CYP2D6,PA128,tamoxifen,PA451581
+data/guidelineAnnotation,PA166105001,Guideline Annotation,,,CYP2C19; CYP2D6,trimipramine,,,,,,,,,,,,,CYP2D6,PA128,tamoxifen,PA451581
+data/guidelineAnnotation,PA166105002,Guideline Annotation,,,CYP2D6,desipramine,,,,,,,,,,,,,CYP2D6,PA128,tamoxifen,PA451581
+data/guidelineAnnotation,PA166105006,Guideline Annotation,,,CYP2C19; CYP2D6,amitriptyline,,,,,,,,,,,,,CYP2D6,PA128,tamoxifen,PA451581
+data/guidelineAnnotation,PA166105007,Guideline Annotation,,,CYP2C19; CYP2D6,clomipramine,,,,,,,,,,,,,CYP2D6,PA128,tamoxifen,PA451581
+data/guidelineAnnotation,PA166122666,Guideline Annotation,,,CYP2D6,codeine,,,,,,,,,,,,,CYP2D6,PA128,tamoxifen,PA451581
+data/guidelineAnnotation,PA166127636,Guideline Annotation,,,CYP2D6,paroxetine,,,,,,,,,,,,,CYP2D6,PA128,tamoxifen,PA451581
+data/guidelineAnnotation,PA166127637,Guideline Annotation,,,CYP2D6,fluvoxamine,,,,,,,,,,,,,CYP2D6,PA128,tamoxifen,PA451581
+data/guidelineAnnotation,PA166104935,Guideline Annotation,,,CYP2D6,clozapine,,,,,,,,,,,,,CYP2D6,PA128,tamoxifen,PA451581
+data/guidelineAnnotation,PA166104937,Guideline Annotation,,,CYP2D6,aripiprazole,,,,,,,,,,,,,CYP2D6,PA128,tamoxifen,PA451581
+data/guidelineAnnotation,PA166104942,Guideline Annotation,,,CYP2D6,duloxetine,,,,,,,,,,,,,CYP2D6,PA128,tamoxifen,PA451581
+data/guidelineAnnotation,PA166104943,Guideline Annotation,,,CYP2D6,risperidone,,,,,,,,,,,,,CYP2D6,PA128,tamoxifen,PA451581
+data/guidelineAnnotation,PA166104946,Guideline Annotation,,,CYP2D6,olanzapine,,,,,,,,,,,,,CYP2D6,PA128,tamoxifen,PA451581
+data/guidelineAnnotation,PA166104959,Guideline Annotation,,,CYP2D6,tramadol,,,,,,,,,,,,,CYP2D6,PA128,tamoxifen,PA451581
+data/guidelineAnnotation,PA166104961,Guideline Annotation,,,CYP2D6,nortriptyline,,,,,,,,,,,,,CYP2D6,PA128,tamoxifen,PA451581
+data/guidelineAnnotation,PA166104962,Guideline Annotation,,,CYP2D6,propafenone,,,,,,,,,,,,,CYP2D6,PA128,tamoxifen,PA451581
+data/guidelineAnnotation,PA166104964,Guideline Annotation,,,CYP2D6,clomipramine,,,,,,,,,,,,,CYP2D6,PA128,tamoxifen,PA451581
+data/guidelineAnnotation,PA166104967,Guideline Annotation,,,CYP2D6,mirtazapine,,,,,,,,,,,,,CYP2D6,PA128,tamoxifen,PA451581
+data/guidelineAnnotation,PA166104968,Guideline Annotation,,,CYP2D6,venlafaxine,,,,,,,,,,,,,CYP2D6,PA128,tamoxifen,PA451581
+data/guidelineAnnotation,PA166104969,Guideline Annotation,,,CYP2D6,flecainide,,,,,,,,,,,,,CYP2D6,PA128,tamoxifen,PA451581
+data/guidelineAnnotation,PA166104970,Guideline Annotation,,,CYP2D6,codeine,,,,,,,,,,,,,CYP2D6,PA128,tamoxifen,PA451581
+data/guidelineAnnotation,PA166104972,Guideline Annotation,,,CYP2D6,imipramine,,,,,,,,,,,,,CYP2D6,PA128,tamoxifen,PA451581
+data/guidelineAnnotation,PA166104973,Guideline Annotation,,,CYP2D6,oxycodone,,,,,,,,,,,,,CYP2D6,PA128,tamoxifen,PA451581
+data/guidelineAnnotation,PA166104974,Guideline Annotation,,,CYP2D6,carvedilol,,,,,,,,,,,,,CYP2D6,PA128,tamoxifen,PA451581
+data/guidelineAnnotation,PA166104976,Guideline Annotation,,,CYP2D6,paroxetine,,,,,,,,,,,,,CYP2D6,PA128,tamoxifen,PA451581
+data/guidelineAnnotation,PA166104981,Guideline Annotation,,,CYP2D6,flupenthixol,,,,,,,,,,,,,CYP2D6,PA128,tamoxifen,PA451581
+data/guidelineAnnotation,PA166104982,Guideline Annotation,,,CYP2D6,amitriptyline,,,,,,,,,,,,,CYP2D6,PA128,tamoxifen,PA451581
+data/guidelineAnnotation,PA166104988,Guideline Annotation,,,CYP2D6,haloperidol,,,,,,,,,,,,,CYP2D6,PA128,tamoxifen,PA451581
+data/guidelineAnnotation,PA166104989,Guideline Annotation,,,CYP2D6,atomoxetine,,,,,,,,,,,,,CYP2D6,PA128,tamoxifen,PA451581
+data/guidelineAnnotation,PA166181885,Guideline Annotation,,,CYP2D6,atomoxetine,,,,,,,,,,,,,CYP2D6,PA128,tamoxifen,PA451581
+data/guidelineAnnotation,PA166161954,Guideline Annotation,,,CYP2D6,ondansetron,,,,,,,,,,,,,CYP2D6,PA128,tamoxifen,PA451581
+data/guidelineAnnotation,PA166161955,Guideline Annotation,,,CYP2D6,tropisetron,,,,,,,,,,,,,CYP2D6,PA128,tamoxifen,PA451581
+data/guidelineAnnotation,PA166182803,Guideline Annotation,,,CYP2D6,quinidine,,,,,,,,,,,,,CYP2D6,PA128,tamoxifen,PA451581
+data/guidelineAnnotation,PA166182808,Guideline Annotation,,,CYP2D6,methylphenidate,,,,,,,,,,,,,CYP2D6,PA128,tamoxifen,PA451581
+data/guidelineAnnotation,PA166182809,Guideline Annotation,,,CYP2D6,gefitinib,,,,,,,,,,,,,CYP2D6,PA128,tamoxifen,PA451581
+data/guidelineAnnotation,PA166182811,Guideline Annotation,,,CYP2D6,disopyramide,,,,,,,,,,,,,CYP2D6,PA128,tamoxifen,PA451581
+data/guidelineAnnotation,PA166182812,Guideline Annotation,,,CYP2D6,fluphenazine,,,,,,,,,,,,,CYP2D6,PA128,tamoxifen,PA451581
+data/guidelineAnnotation,PA166182813,Guideline Annotation,,,CYP2D6,fluvoxamine,,,,,,,,,,,,,CYP2D6,PA128,tamoxifen,PA451581
+data/guidelineAnnotation,PA166182815,Guideline Annotation,,,CYP2D6,amiodarone,,,,,,,,,,,,,CYP2D6,PA128,tamoxifen,PA451581
+data/guidelineAnnotation,PA166182816,Guideline Annotation,,,CYP2D6,bisoprolol,,,,,,,,,,,,,CYP2D6,PA128,tamoxifen,PA451581
+data/guidelineAnnotation,PA166182817,Guideline Annotation,,,CYP2D6,citalopram; escitalopram,,,,,,,,,,,,,CYP2D6,PA128,tamoxifen,PA451581
+data/guidelineAnnotation,PA166182818,Guideline Annotation,,,CYP2D6,clonidine,,,,,,,,,,,,,CYP2D6,PA128,tamoxifen,PA451581
+data/guidelineAnnotation,PA166182819,Guideline Annotation,,,CYP2D6,pimozide,,,,,,,,,,,,,CYP2D6,PA128,tamoxifen,PA451581
+data/guidelineAnnotation,PA166182821,Guideline Annotation,,,CYP2D6,sertraline,,,,,,,,,,,,,CYP2D6,PA128,tamoxifen,PA451581
+data/guidelineAnnotation,PA166182822,Guideline Annotation,,,CYP2D6,atenolol,,,,,,,,,,,,,CYP2D6,PA128,tamoxifen,PA451581
+data/guidelineAnnotation,PA166182823,Guideline Annotation,,,CYP2D6,eliglustat,,,,,,,,,,,,,CYP2D6,PA128,tamoxifen,PA451581
+data/guidelineAnnotation,PA166182852,Guideline Annotation,,,CYP2D6,fluoxetine,,,,,,,,,,,,,CYP2D6,PA128,tamoxifen,PA451581
+data/guidelineAnnotation,PA166182854,Guideline Annotation,,,CYP2D6,quetiapine,,,,,,,,,,,,,CYP2D6,PA128,tamoxifen,PA451581
+data/guidelineAnnotation,PA166182855,Guideline Annotation,,,CYP2D6,sotalol,,,,,,,,,,,,,CYP2D6,PA128,tamoxifen,PA451581
+data/guidelineAnnotation,PA166184527,Guideline Annotation,,,CYP2D6,brexpiprazole,,,,,,,,,,,,,CYP2D6,PA128,tamoxifen,PA451581
+data/guidelineAnnotation,PA166202701,Guideline Annotation,,,CYP2C19; CYP2D6,antidepressants,,,,,,,,,,,,,CYP2D6,PA128,tamoxifen,PA451581
+data/guidelineAnnotation,PA166228101,Guideline Annotation,,,CYP2D6,tramadol,,,,,,,,,,,,,CYP2D6,PA128,tamoxifen,PA451581
+data/guidelineAnnotation,PA166228022,Guideline Annotation,,,COMT; CYP2D6; OPRM1,methadone; oxycodone,,,,,,,,,,,,,CYP2D6,PA128,tamoxifen,PA451581
+data/guidelineAnnotation,PA166228121,Guideline Annotation,,,CYP2D6,hydrocodone,,,,,,,,,,,,,CYP2D6,PA128,tamoxifen,PA451581
+data/guidelineAnnotation,PA166288541,Guideline Annotation,,,CYP2D6,fluoxetine,,,,,,,,,,,,,CYP2D6,PA128,tamoxifen,PA451581
+data/guidelineAnnotation,PA166288201,Guideline Annotation,,,CYP2D6,venlafaxine,,,,,,,,,,,,,CYP2D6,PA128,tamoxifen,PA451581
+data/guidelineAnnotation,PA166288221,Guideline Annotation,,,CYP2D6,vortioxetine,,,,,,,,,,,,,CYP2D6,PA128,tamoxifen,PA451581
+data/guidelineAnnotation,PA166288561,Guideline Annotation,,,CYP2D6,duloxetine,,,,,,,,,,,,,CYP2D6,PA128,tamoxifen,PA451581
+data/guidelineAnnotation,PA166341341,Guideline Annotation,,,CYP2D6,acebutolol; betaxolol; bisoprolol; carvedilol; nebivolol; propranolol,,,,,,,,,,,,,CYP2D6,PA128,tamoxifen,PA451581
+data/guidelineAnnotation,PA166341321,Guideline Annotation,,,CYP2D6,metoprolol,,,,,,,,,,,,,CYP2D6,PA128,tamoxifen,PA451581
+data/guidelineAnnotation,PA166436281,Guideline Annotation,,,CYP2D6,dolasetron; palonosetron; ramosetron,,,,,,,,,,,,,CYP2D6,PA128,tamoxifen,PA451581
+data/guidelineAnnotation,PA166182852,Guideline Annotation,,,CYP2D6,fluoxetine,,,,,,,,,,,,,CYP2D6,PA128,fluoxetine,PA449673
+data/guidelineAnnotation,PA166288541,Guideline Annotation,,,CYP2D6,fluoxetine,,,,,,,,,,,,,CYP2D6,PA128,fluoxetine,PA449673
+data/guidelineAnnotation,PA166104992,Guideline Annotation,,,CYP2D6,zuclopenthixol,,,,,,,,,,,,,CYP2D6,PA128,fluoxetine,PA449673
+data/guidelineAnnotation,PA166104994,Guideline Annotation,,,CYP2D6,doxepin,,,,,,,,,,,,,CYP2D6,PA128,fluoxetine,PA449673
+data/guidelineAnnotation,PA166104995,Guideline Annotation,,,CYP2D6,metoprolol,,,,,,,,,,,,,CYP2D6,PA128,fluoxetine,PA449673
+data/guidelineAnnotation,PA166104996,Guideline Annotation,,,CYP2D6,codeine,,,,,,,,,,,,,CYP2D6,PA128,fluoxetine,PA449673
+data/guidelineAnnotation,PA166104998,Guideline Annotation,,,CYP2D6,nortriptyline,,,,,,,,,,,,,CYP2D6,PA128,fluoxetine,PA449673
+data/guidelineAnnotation,PA166104999,Guideline Annotation,,,CYP2C19; CYP2D6,imipramine,,,,,,,,,,,,,CYP2D6,PA128,fluoxetine,PA449673
+data/guidelineAnnotation,PA166105000,Guideline Annotation,,,CYP2C19; CYP2D6,doxepin,,,,,,,,,,,,,CYP2D6,PA128,fluoxetine,PA449673
+data/guidelineAnnotation,PA166105001,Guideline Annotation,,,CYP2C19; CYP2D6,trimipramine,,,,,,,,,,,,,CYP2D6,PA128,fluoxetine,PA449673
+data/guidelineAnnotation,PA166105002,Guideline Annotation,,,CYP2D6,desipramine,,,,,,,,,,,,,CYP2D6,PA128,fluoxetine,PA449673
+data/guidelineAnnotation,PA166105006,Guideline Annotation,,,CYP2C19; CYP2D6,amitriptyline,,,,,,,,,,,,,CYP2D6,PA128,fluoxetine,PA449673
+data/guidelineAnnotation,PA166105007,Guideline Annotation,,,CYP2C19; CYP2D6,clomipramine,,,,,,,,,,,,,CYP2D6,PA128,fluoxetine,PA449673
+data/guidelineAnnotation,PA166122666,Guideline Annotation,,,CYP2D6,codeine,,,,,,,,,,,,,CYP2D6,PA128,fluoxetine,PA449673
+data/guidelineAnnotation,PA166127636,Guideline Annotation,,,CYP2D6,paroxetine,,,,,,,,,,,,,CYP2D6,PA128,fluoxetine,PA449673
+data/guidelineAnnotation,PA166127637,Guideline Annotation,,,CYP2D6,fluvoxamine,,,,,,,,,,,,,CYP2D6,PA128,fluoxetine,PA449673
+data/guidelineAnnotation,PA166104935,Guideline Annotation,,,CYP2D6,clozapine,,,,,,,,,,,,,CYP2D6,PA128,fluoxetine,PA449673
+data/guidelineAnnotation,PA166104937,Guideline Annotation,,,CYP2D6,aripiprazole,,,,,,,,,,,,,CYP2D6,PA128,fluoxetine,PA449673
+data/guidelineAnnotation,PA166104942,Guideline Annotation,,,CYP2D6,duloxetine,,,,,,,,,,,,,CYP2D6,PA128,fluoxetine,PA449673
+data/guidelineAnnotation,PA166104943,Guideline Annotation,,,CYP2D6,risperidone,,,,,,,,,,,,,CYP2D6,PA128,fluoxetine,PA449673
+data/guidelineAnnotation,PA166104946,Guideline Annotation,,,CYP2D6,olanzapine,,,,,,,,,,,,,CYP2D6,PA128,fluoxetine,PA449673
+data/guidelineAnnotation,PA166104959,Guideline Annotation,,,CYP2D6,tramadol,,,,,,,,,,,,,CYP2D6,PA128,fluoxetine,PA449673
+data/guidelineAnnotation,PA166104961,Guideline Annotation,,,CYP2D6,nortriptyline,,,,,,,,,,,,,CYP2D6,PA128,fluoxetine,PA449673
+data/guidelineAnnotation,PA166104962,Guideline Annotation,,,CYP2D6,propafenone,,,,,,,,,,,,,CYP2D6,PA128,fluoxetine,PA449673
+data/guidelineAnnotation,PA166104964,Guideline Annotation,,,CYP2D6,clomipramine,,,,,,,,,,,,,CYP2D6,PA128,fluoxetine,PA449673
+data/guidelineAnnotation,PA166104966,Guideline Annotation,,,CYP2D6,tamoxifen,,,,,,,,,,,,,CYP2D6,PA128,fluoxetine,PA449673
+data/guidelineAnnotation,PA166104967,Guideline Annotation,,,CYP2D6,mirtazapine,,,,,,,,,,,,,CYP2D6,PA128,fluoxetine,PA449673
+data/guidelineAnnotation,PA166104968,Guideline Annotation,,,CYP2D6,venlafaxine,,,,,,,,,,,,,CYP2D6,PA128,fluoxetine,PA449673
+data/guidelineAnnotation,PA166104969,Guideline Annotation,,,CYP2D6,flecainide,,,,,,,,,,,,,CYP2D6,PA128,fluoxetine,PA449673
+data/guidelineAnnotation,PA166104970,Guideline Annotation,,,CYP2D6,codeine,,,,,,,,,,,,,CYP2D6,PA128,fluoxetine,PA449673
+data/guidelineAnnotation,PA166104972,Guideline Annotation,,,CYP2D6,imipramine,,,,,,,,,,,,,CYP2D6,PA128,fluoxetine,PA449673
+data/guidelineAnnotation,PA166104973,Guideline Annotation,,,CYP2D6,oxycodone,,,,,,,,,,,,,CYP2D6,PA128,fluoxetine,PA449673
+data/guidelineAnnotation,PA166104974,Guideline Annotation,,,CYP2D6,carvedilol,,,,,,,,,,,,,CYP2D6,PA128,fluoxetine,PA449673
+data/guidelineAnnotation,PA166104976,Guideline Annotation,,,CYP2D6,paroxetine,,,,,,,,,,,,,CYP2D6,PA128,fluoxetine,PA449673
+data/guidelineAnnotation,PA166104981,Guideline Annotation,,,CYP2D6,flupenthixol,,,,,,,,,,,,,CYP2D6,PA128,fluoxetine,PA449673
+data/guidelineAnnotation,PA166104982,Guideline Annotation,,,CYP2D6,amitriptyline,,,,,,,,,,,,,CYP2D6,PA128,fluoxetine,PA449673
+data/guidelineAnnotation,PA166104988,Guideline Annotation,,,CYP2D6,haloperidol,,,,,,,,,,,,,CYP2D6,PA128,fluoxetine,PA449673
+data/guidelineAnnotation,PA166104989,Guideline Annotation,,,CYP2D6,atomoxetine,,,,,,,,,,,,,CYP2D6,PA128,fluoxetine,PA449673
+data/guidelineAnnotation,PA166176068,Guideline Annotation,,,CYP2D6,tamoxifen,,,,,,,,,,,,,CYP2D6,PA128,fluoxetine,PA449673
+data/guidelineAnnotation,PA166181721,Guideline Annotation,,,CYP2D6,tamoxifen,,,,,,,,,,,,,CYP2D6,PA128,fluoxetine,PA449673
+data/guidelineAnnotation,PA166181885,Guideline Annotation,,,CYP2D6,atomoxetine,,,,,,,,,,,,,CYP2D6,PA128,fluoxetine,PA449673
+data/guidelineAnnotation,PA166161954,Guideline Annotation,,,CYP2D6,ondansetron,,,,,,,,,,,,,CYP2D6,PA128,fluoxetine,PA449673
+data/guidelineAnnotation,PA166161955,Guideline Annotation,,,CYP2D6,tropisetron,,,,,,,,,,,,,CYP2D6,PA128,fluoxetine,PA449673
+data/guidelineAnnotation,PA166182803,Guideline Annotation,,,CYP2D6,quinidine,,,,,,,,,,,,,CYP2D6,PA128,fluoxetine,PA449673
+data/guidelineAnnotation,PA166182808,Guideline Annotation,,,CYP2D6,methylphenidate,,,,,,,,,,,,,CYP2D6,PA128,fluoxetine,PA449673
+data/guidelineAnnotation,PA166182809,Guideline Annotation,,,CYP2D6,gefitinib,,,,,,,,,,,,,CYP2D6,PA128,fluoxetine,PA449673
+data/guidelineAnnotation,PA166182811,Guideline Annotation,,,CYP2D6,disopyramide,,,,,,,,,,,,,CYP2D6,PA128,fluoxetine,PA449673
+data/guidelineAnnotation,PA166182812,Guideline Annotation,,,CYP2D6,fluphenazine,,,,,,,,,,,,,CYP2D6,PA128,fluoxetine,PA449673
+data/guidelineAnnotation,PA166182813,Guideline Annotation,,,CYP2D6,fluvoxamine,,,,,,,,,,,,,CYP2D6,PA128,fluoxetine,PA449673
+data/guidelineAnnotation,PA166182815,Guideline Annotation,,,CYP2D6,amiodarone,,,,,,,,,,,,,CYP2D6,PA128,fluoxetine,PA449673
+data/guidelineAnnotation,PA166182816,Guideline Annotation,,,CYP2D6,bisoprolol,,,,,,,,,,,,,CYP2D6,PA128,fluoxetine,PA449673
+data/guidelineAnnotation,PA166182817,Guideline Annotation,,,CYP2D6,citalopram; escitalopram,,,,,,,,,,,,,CYP2D6,PA128,fluoxetine,PA449673
+data/guidelineAnnotation,PA166182818,Guideline Annotation,,,CYP2D6,clonidine,,,,,,,,,,,,,CYP2D6,PA128,fluoxetine,PA449673
+data/guidelineAnnotation,PA166182819,Guideline Annotation,,,CYP2D6,pimozide,,,,,,,,,,,,,CYP2D6,PA128,fluoxetine,PA449673
+data/guidelineAnnotation,PA166182821,Guideline Annotation,,,CYP2D6,sertraline,,,,,,,,,,,,,CYP2D6,PA128,fluoxetine,PA449673
+data/guidelineAnnotation,PA166182822,Guideline Annotation,,,CYP2D6,atenolol,,,,,,,,,,,,,CYP2D6,PA128,fluoxetine,PA449673
+data/guidelineAnnotation,PA166182823,Guideline Annotation,,,CYP2D6,eliglustat,,,,,,,,,,,,,CYP2D6,PA128,fluoxetine,PA449673
+data/guidelineAnnotation,PA166182854,Guideline Annotation,,,CYP2D6,quetiapine,,,,,,,,,,,,,CYP2D6,PA128,fluoxetine,PA449673
+data/guidelineAnnotation,PA166182855,Guideline Annotation,,,CYP2D6,sotalol,,,,,,,,,,,,,CYP2D6,PA128,fluoxetine,PA449673
+data/guidelineAnnotation,PA166184527,Guideline Annotation,,,CYP2D6,brexpiprazole,,,,,,,,,,,,,CYP2D6,PA128,fluoxetine,PA449673
+data/guidelineAnnotation,PA166202801,Guideline Annotation,,,CYP2D6,tamoxifen,,,,,,,,,,,,,CYP2D6,PA128,fluoxetine,PA449673
+data/guidelineAnnotation,PA166202701,Guideline Annotation,,,CYP2C19; CYP2D6,antidepressants,,,,,,,,,,,,,CYP2D6,PA128,fluoxetine,PA449673
+data/guidelineAnnotation,PA166228101,Guideline Annotation,,,CYP2D6,tramadol,,,,,,,,,,,,,CYP2D6,PA128,fluoxetine,PA449673
+data/guidelineAnnotation,PA166228022,Guideline Annotation,,,COMT; CYP2D6; OPRM1,methadone; oxycodone,,,,,,,,,,,,,CYP2D6,PA128,fluoxetine,PA449673
+data/guidelineAnnotation,PA166228121,Guideline Annotation,,,CYP2D6,hydrocodone,,,,,,,,,,,,,CYP2D6,PA128,fluoxetine,PA449673
+data/guidelineAnnotation,PA166288201,Guideline Annotation,,,CYP2D6,venlafaxine,,,,,,,,,,,,,CYP2D6,PA128,fluoxetine,PA449673
+data/guidelineAnnotation,PA166288221,Guideline Annotation,,,CYP2D6,vortioxetine,,,,,,,,,,,,,CYP2D6,PA128,fluoxetine,PA449673
+data/guidelineAnnotation,PA166288561,Guideline Annotation,,,CYP2D6,duloxetine,,,,,,,,,,,,,CYP2D6,PA128,fluoxetine,PA449673
+data/guidelineAnnotation,PA166341341,Guideline Annotation,,,CYP2D6,acebutolol; betaxolol; bisoprolol; carvedilol; nebivolol; propranolol,,,,,,,,,,,,,CYP2D6,PA128,fluoxetine,PA449673
+data/guidelineAnnotation,PA166341321,Guideline Annotation,,,CYP2D6,metoprolol,,,,,,,,,,,,,CYP2D6,PA128,fluoxetine,PA449673
+data/guidelineAnnotation,PA166436281,Guideline Annotation,,,CYP2D6,dolasetron; palonosetron; ramosetron,,,,,,,,,,,,,CYP2D6,PA128,fluoxetine,PA449673
+data/guidelineAnnotation,PA166288601,Guideline Annotation,,,SLC6A4,citalopram; desvenlafaxine; duloxetine; escitalopram; fluoxetine; fluvoxamine; levomilnacipran; milnacipran; paroxetine; sertraline; venlafaxine; vilazodone; vortioxetine,,,,,,,,,,,,,CYP2D6,PA128,fluoxetine,PA449673
+data/guidelineAnnotation,PA166288582,Guideline Annotation,,,HTR2A,desvenlafaxine; duloxetine; fluoxetine; fluvoxamine; levomilnacipran; milnacipran; paroxetine; sertraline; venlafaxine; vilazodone; vortioxetine,,,,,,,,,,,,,CYP2D6,PA128,fluoxetine,PA449673
+data/guidelineAnnotation,PA166104976,Guideline Annotation,,,CYP2D6,paroxetine,,,,,,,,,,,,,CYP2D6,PA128,paroxetine,PA450801
+data/guidelineAnnotation,PA166127636,Guideline Annotation,,,CYP2D6,paroxetine,,,,,,,,,,,,,CYP2D6,PA128,paroxetine,PA450801
+data/guidelineAnnotation,PA166104992,Guideline Annotation,,,CYP2D6,zuclopenthixol,,,,,,,,,,,,,CYP2D6,PA128,paroxetine,PA450801
+data/guidelineAnnotation,PA166104994,Guideline Annotation,,,CYP2D6,doxepin,,,,,,,,,,,,,CYP2D6,PA128,paroxetine,PA450801
+data/guidelineAnnotation,PA166104995,Guideline Annotation,,,CYP2D6,metoprolol,,,,,,,,,,,,,CYP2D6,PA128,paroxetine,PA450801
+data/guidelineAnnotation,PA166104996,Guideline Annotation,,,CYP2D6,codeine,,,,,,,,,,,,,CYP2D6,PA128,paroxetine,PA450801
+data/guidelineAnnotation,PA166104998,Guideline Annotation,,,CYP2D6,nortriptyline,,,,,,,,,,,,,CYP2D6,PA128,paroxetine,PA450801
+data/guidelineAnnotation,PA166104999,Guideline Annotation,,,CYP2C19; CYP2D6,imipramine,,,,,,,,,,,,,CYP2D6,PA128,paroxetine,PA450801
+data/guidelineAnnotation,PA166105000,Guideline Annotation,,,CYP2C19; CYP2D6,doxepin,,,,,,,,,,,,,CYP2D6,PA128,paroxetine,PA450801
+data/guidelineAnnotation,PA166105001,Guideline Annotation,,,CYP2C19; CYP2D6,trimipramine,,,,,,,,,,,,,CYP2D6,PA128,paroxetine,PA450801
+data/guidelineAnnotation,PA166105002,Guideline Annotation,,,CYP2D6,desipramine,,,,,,,,,,,,,CYP2D6,PA128,paroxetine,PA450801
+data/guidelineAnnotation,PA166105006,Guideline Annotation,,,CYP2C19; CYP2D6,amitriptyline,,,,,,,,,,,,,CYP2D6,PA128,paroxetine,PA450801
+data/guidelineAnnotation,PA166105007,Guideline Annotation,,,CYP2C19; CYP2D6,clomipramine,,,,,,,,,,,,,CYP2D6,PA128,paroxetine,PA450801
+data/guidelineAnnotation,PA166122666,Guideline Annotation,,,CYP2D6,codeine,,,,,,,,,,,,,CYP2D6,PA128,paroxetine,PA450801
+data/guidelineAnnotation,PA166127637,Guideline Annotation,,,CYP2D6,fluvoxamine,,,,,,,,,,,,,CYP2D6,PA128,paroxetine,PA450801
+data/guidelineAnnotation,PA166104935,Guideline Annotation,,,CYP2D6,clozapine,,,,,,,,,,,,,CYP2D6,PA128,paroxetine,PA450801
+data/guidelineAnnotation,PA166104937,Guideline Annotation,,,CYP2D6,aripiprazole,,,,,,,,,,,,,CYP2D6,PA128,paroxetine,PA450801
+data/guidelineAnnotation,PA166104942,Guideline Annotation,,,CYP2D6,duloxetine,,,,,,,,,,,,,CYP2D6,PA128,paroxetine,PA450801
+data/guidelineAnnotation,PA166104943,Guideline Annotation,,,CYP2D6,risperidone,,,,,,,,,,,,,CYP2D6,PA128,paroxetine,PA450801
+data/guidelineAnnotation,PA166104946,Guideline Annotation,,,CYP2D6,olanzapine,,,,,,,,,,,,,CYP2D6,PA128,paroxetine,PA450801
+data/guidelineAnnotation,PA166104959,Guideline Annotation,,,CYP2D6,tramadol,,,,,,,,,,,,,CYP2D6,PA128,paroxetine,PA450801
+data/guidelineAnnotation,PA166104961,Guideline Annotation,,,CYP2D6,nortriptyline,,,,,,,,,,,,,CYP2D6,PA128,paroxetine,PA450801
+data/guidelineAnnotation,PA166104962,Guideline Annotation,,,CYP2D6,propafenone,,,,,,,,,,,,,CYP2D6,PA128,paroxetine,PA450801
+data/guidelineAnnotation,PA166104964,Guideline Annotation,,,CYP2D6,clomipramine,,,,,,,,,,,,,CYP2D6,PA128,paroxetine,PA450801
+data/guidelineAnnotation,PA166104966,Guideline Annotation,,,CYP2D6,tamoxifen,,,,,,,,,,,,,CYP2D6,PA128,paroxetine,PA450801
+data/guidelineAnnotation,PA166104967,Guideline Annotation,,,CYP2D6,mirtazapine,,,,,,,,,,,,,CYP2D6,PA128,paroxetine,PA450801
+data/guidelineAnnotation,PA166104968,Guideline Annotation,,,CYP2D6,venlafaxine,,,,,,,,,,,,,CYP2D6,PA128,paroxetine,PA450801
+data/guidelineAnnotation,PA166104969,Guideline Annotation,,,CYP2D6,flecainide,,,,,,,,,,,,,CYP2D6,PA128,paroxetine,PA450801
+data/guidelineAnnotation,PA166104970,Guideline Annotation,,,CYP2D6,codeine,,,,,,,,,,,,,CYP2D6,PA128,paroxetine,PA450801
+data/guidelineAnnotation,PA166104972,Guideline Annotation,,,CYP2D6,imipramine,,,,,,,,,,,,,CYP2D6,PA128,paroxetine,PA450801
+data/guidelineAnnotation,PA166104973,Guideline Annotation,,,CYP2D6,oxycodone,,,,,,,,,,,,,CYP2D6,PA128,paroxetine,PA450801
+data/guidelineAnnotation,PA166104974,Guideline Annotation,,,CYP2D6,carvedilol,,,,,,,,,,,,,CYP2D6,PA128,paroxetine,PA450801
+data/guidelineAnnotation,PA166104981,Guideline Annotation,,,CYP2D6,flupenthixol,,,,,,,,,,,,,CYP2D6,PA128,paroxetine,PA450801
+data/guidelineAnnotation,PA166104982,Guideline Annotation,,,CYP2D6,amitriptyline,,,,,,,,,,,,,CYP2D6,PA128,paroxetine,PA450801
+data/guidelineAnnotation,PA166104988,Guideline Annotation,,,CYP2D6,haloperidol,,,,,,,,,,,,,CYP2D6,PA128,paroxetine,PA450801
+data/guidelineAnnotation,PA166104989,Guideline Annotation,,,CYP2D6,atomoxetine,,,,,,,,,,,,,CYP2D6,PA128,paroxetine,PA450801
+data/guidelineAnnotation,PA166176068,Guideline Annotation,,,CYP2D6,tamoxifen,,,,,,,,,,,,,CYP2D6,PA128,paroxetine,PA450801
+data/guidelineAnnotation,PA166181721,Guideline Annotation,,,CYP2D6,tamoxifen,,,,,,,,,,,,,CYP2D6,PA128,paroxetine,PA450801
+data/guidelineAnnotation,PA166181885,Guideline Annotation,,,CYP2D6,atomoxetine,,,,,,,,,,,,,CYP2D6,PA128,paroxetine,PA450801
+data/guidelineAnnotation,PA166161954,Guideline Annotation,,,CYP2D6,ondansetron,,,,,,,,,,,,,CYP2D6,PA128,paroxetine,PA450801
+data/guidelineAnnotation,PA166161955,Guideline Annotation,,,CYP2D6,tropisetron,,,,,,,,,,,,,CYP2D6,PA128,paroxetine,PA450801
+data/guidelineAnnotation,PA166182803,Guideline Annotation,,,CYP2D6,quinidine,,,,,,,,,,,,,CYP2D6,PA128,paroxetine,PA450801
+data/guidelineAnnotation,PA166182808,Guideline Annotation,,,CYP2D6,methylphenidate,,,,,,,,,,,,,CYP2D6,PA128,paroxetine,PA450801
+data/guidelineAnnotation,PA166182809,Guideline Annotation,,,CYP2D6,gefitinib,,,,,,,,,,,,,CYP2D6,PA128,paroxetine,PA450801
+data/guidelineAnnotation,PA166182811,Guideline Annotation,,,CYP2D6,disopyramide,,,,,,,,,,,,,CYP2D6,PA128,paroxetine,PA450801
+data/guidelineAnnotation,PA166182812,Guideline Annotation,,,CYP2D6,fluphenazine,,,,,,,,,,,,,CYP2D6,PA128,paroxetine,PA450801
+data/guidelineAnnotation,PA166182813,Guideline Annotation,,,CYP2D6,fluvoxamine,,,,,,,,,,,,,CYP2D6,PA128,paroxetine,PA450801
+data/guidelineAnnotation,PA166182815,Guideline Annotation,,,CYP2D6,amiodarone,,,,,,,,,,,,,CYP2D6,PA128,paroxetine,PA450801
+data/guidelineAnnotation,PA166182816,Guideline Annotation,,,CYP2D6,bisoprolol,,,,,,,,,,,,,CYP2D6,PA128,paroxetine,PA450801
+data/guidelineAnnotation,PA166182817,Guideline Annotation,,,CYP2D6,citalopram; escitalopram,,,,,,,,,,,,,CYP2D6,PA128,paroxetine,PA450801
+data/guidelineAnnotation,PA166182818,Guideline Annotation,,,CYP2D6,clonidine,,,,,,,,,,,,,CYP2D6,PA128,paroxetine,PA450801
+data/guidelineAnnotation,PA166182819,Guideline Annotation,,,CYP2D6,pimozide,,,,,,,,,,,,,CYP2D6,PA128,paroxetine,PA450801
+data/guidelineAnnotation,PA166182821,Guideline Annotation,,,CYP2D6,sertraline,,,,,,,,,,,,,CYP2D6,PA128,paroxetine,PA450801
+data/guidelineAnnotation,PA166182822,Guideline Annotation,,,CYP2D6,atenolol,,,,,,,,,,,,,CYP2D6,PA128,paroxetine,PA450801
+data/guidelineAnnotation,PA166182823,Guideline Annotation,,,CYP2D6,eliglustat,,,,,,,,,,,,,CYP2D6,PA128,paroxetine,PA450801
+data/guidelineAnnotation,PA166182852,Guideline Annotation,,,CYP2D6,fluoxetine,,,,,,,,,,,,,CYP2D6,PA128,paroxetine,PA450801
+data/guidelineAnnotation,PA166182854,Guideline Annotation,,,CYP2D6,quetiapine,,,,,,,,,,,,,CYP2D6,PA128,paroxetine,PA450801
+data/guidelineAnnotation,PA166182855,Guideline Annotation,,,CYP2D6,sotalol,,,,,,,,,,,,,CYP2D6,PA128,paroxetine,PA450801
+data/guidelineAnnotation,PA166184527,Guideline Annotation,,,CYP2D6,brexpiprazole,,,,,,,,,,,,,CYP2D6,PA128,paroxetine,PA450801
+data/guidelineAnnotation,PA166202801,Guideline Annotation,,,CYP2D6,tamoxifen,,,,,,,,,,,,,CYP2D6,PA128,paroxetine,PA450801
+data/guidelineAnnotation,PA166202701,Guideline Annotation,,,CYP2C19; CYP2D6,antidepressants,,,,,,,,,,,,,CYP2D6,PA128,paroxetine,PA450801
+data/guidelineAnnotation,PA166228101,Guideline Annotation,,,CYP2D6,tramadol,,,,,,,,,,,,,CYP2D6,PA128,paroxetine,PA450801
+data/guidelineAnnotation,PA166228022,Guideline Annotation,,,COMT; CYP2D6; OPRM1,methadone; oxycodone,,,,,,,,,,,,,CYP2D6,PA128,paroxetine,PA450801
+data/guidelineAnnotation,PA166228121,Guideline Annotation,,,CYP2D6,hydrocodone,,,,,,,,,,,,,CYP2D6,PA128,paroxetine,PA450801
+data/guidelineAnnotation,PA166288541,Guideline Annotation,,,CYP2D6,fluoxetine,,,,,,,,,,,,,CYP2D6,PA128,paroxetine,PA450801
+data/guidelineAnnotation,PA166288201,Guideline Annotation,,,CYP2D6,venlafaxine,,,,,,,,,,,,,CYP2D6,PA128,paroxetine,PA450801
+data/guidelineAnnotation,PA166288221,Guideline Annotation,,,CYP2D6,vortioxetine,,,,,,,,,,,,,CYP2D6,PA128,paroxetine,PA450801
+data/guidelineAnnotation,PA166288561,Guideline Annotation,,,CYP2D6,duloxetine,,,,,,,,,,,,,CYP2D6,PA128,paroxetine,PA450801
+data/guidelineAnnotation,PA166341341,Guideline Annotation,,,CYP2D6,acebutolol; betaxolol; bisoprolol; carvedilol; nebivolol; propranolol,,,,,,,,,,,,,CYP2D6,PA128,paroxetine,PA450801
+data/guidelineAnnotation,PA166341321,Guideline Annotation,,,CYP2D6,metoprolol,,,,,,,,,,,,,CYP2D6,PA128,paroxetine,PA450801
+data/guidelineAnnotation,PA166436281,Guideline Annotation,,,CYP2D6,dolasetron; palonosetron; ramosetron,,,,,,,,,,,,,CYP2D6,PA128,paroxetine,PA450801
+data/guidelineAnnotation,PA166288601,Guideline Annotation,,,SLC6A4,citalopram; desvenlafaxine; duloxetine; escitalopram; fluoxetine; fluvoxamine; levomilnacipran; milnacipran; paroxetine; sertraline; venlafaxine; vilazodone; vortioxetine,,,,,,,,,,,,,CYP2D6,PA128,paroxetine,PA450801
+data/guidelineAnnotation,PA166288582,Guideline Annotation,,,HTR2A,desvenlafaxine; duloxetine; fluoxetine; fluvoxamine; levomilnacipran; milnacipran; paroxetine; sertraline; venlafaxine; vilazodone; vortioxetine,,,,,,,,,,,,,CYP2D6,PA128,paroxetine,PA450801
+data/guidelineAnnotation,PA166182842,Guideline Annotation,,,CYP2C9,warfarin,,,,,,,,,,,,,CYP2C9,PA126,warfarin,PA451906
+data/guidelineAnnotation,PA166104949,Guideline Annotation,,,CYP2C9; CYP4F2; VKORC1,warfarin,,,,,,,,,,,,,CYP2C9,PA126,warfarin,PA451906
+data/guidelineAnnotation,PA166170752,Guideline Annotation,,,CYP2C9; VKORC1,warfarin,,,,,,,,,,,,,CYP2C9,PA126,warfarin,PA451906
+data/guidelineAnnotation,PA166202621,Guideline Annotation,,,CYP2C9; VKORC1,acenocoumarol; fluindione; warfarin,,,,,,,,,,,,,CYP2C9,PA126,warfarin,PA451906
+data/guidelineAnnotation,PA166105004,Guideline Annotation,,,CYP2C9,phenprocoumon,,,,,,,,,,,,,CYP2C9,PA126,warfarin,PA451906
+data/guidelineAnnotation,PA166192321,Guideline Annotation,,,CYP2C9,piroxicam,,,,,,,,,,,,,CYP2C9,PA126,warfarin,PA451906
+data/guidelineAnnotation,PA166104971,Guideline Annotation,,,CYP2C9,gliclazide,,,,,,,,,,,,,CYP2C9,PA126,warfarin,PA451906
+data/guidelineAnnotation,PA166104978,Guideline Annotation,,,CYP2C9,glimepiride,,,,,,,,,,,,,CYP2C9,PA126,warfarin,PA451906
+data/guidelineAnnotation,PA166191841,Guideline Annotation,,,CYP2C9,celecoxib; flurbiprofen; ibuprofen; lornoxicam,,,,,,,,,,,,,CYP2C9,PA126,warfarin,PA451906
+data/guidelineAnnotation,PA166104979,Guideline Annotation,,,CYP2C9,acenocoumarol,,,,,,,,,,,,,CYP2C9,PA126,warfarin,PA451906
+data/guidelineAnnotation,PA166104953,Guideline Annotation,,,CYP2C9,glyburide,,,,,,,,,,,,,CYP2C9,PA126,warfarin,PA451906
+data/guidelineAnnotation,PA166104986,Guideline Annotation,,,CYP2C9,tolbutamide,,,,,,,,,,,,,CYP2C9,PA126,warfarin,PA451906
+data/guidelineAnnotation,PA166122806,Guideline Annotation,,,CYP2C9; HLA-B,fosphenytoin; phenytoin,,,,,,,,,,,,,CYP2C9,PA126,warfarin,PA451906
+data/guidelineAnnotation,PA166104984,Guideline Annotation,,,CYP2C9,phenytoin,,,,,,,,,,,,,CYP2C9,PA126,warfarin,PA451906
+data/guidelineAnnotation,PA166222201,Guideline Annotation,,,CYP2C9,aceclofenac; aspirin; diclofenac; dipyrone; indomethacin; lumiracoxib; nabumetone; naproxen,,,,,,,,,,,,,CYP2C9,PA126,warfarin,PA451906
+data/guidelineAnnotation,PA166192301,Guideline Annotation,,,CYP2C9,meloxicam,,,,,,,,,,,,,CYP2C9,PA126,warfarin,PA451906
+data/guidelineAnnotation,PA166192341,Guideline Annotation,,,CYP2C9,tenoxicam,,,,,,,,,,,,,CYP2C9,PA126,warfarin,PA451906
+data/guidelineAnnotation,PA166262341,Guideline Annotation,,,CYP2C9; SLCO1B1,fluvastatin,,,,,,,,,,,,,CYP2C9,PA126,warfarin,PA451906
+data/guidelineAnnotation,PA166211021,Guideline Annotation,,,CYP2C9,siponimod,,,,,,,,,,,,,CYP2C9,PA126,warfarin,PA451906
+data/guidelineAnnotation,PA166182841,Guideline Annotation,,,VKORC1,warfarin,,,,,,,,,,,,,CYP2C9,PA126,warfarin,PA451906
+data/guidelineAnnotation,PA166202481,Guideline Annotation,,,CYP3A4; CYP3A5,tacrolimus,,,,,,,,,,,,,CYP3A4,PA130,voriconazole,PA10233
+data/guidelineAnnotation,PA166265202,Guideline Annotation,,,CYP3A4,paclitaxel,,,,,,,,,,,,,CYP3A4,PA130,voriconazole,PA10233
+data/guidelineAnnotation,PA166265421,Guideline Annotation,,,CYP3A4,quetiapine,,,,,,,,,,,,,CYP3A4,PA130,voriconazole,PA10233
+data/guidelineAnnotation,PA166273401,Guideline Annotation,,,CYP3A4; CYP3A5; HMGCR,atorvastatin; fluvastatin; lovastatin; pitavastatin; pravastatin; rosuvastatin; simvastatin,,,,,,,,,,,,,CYP3A4,PA130,voriconazole,PA10233
+data/guidelineAnnotation,PA166161537,Guideline Annotation,,,CYP2C19,voriconazole,,,,,,,,,,,,,CYP3A4,PA130,voriconazole,PA10233
+data/guidelineAnnotation,PA166257241,Guideline Annotation,,,CYP2C19,voriconazole,,,,,,,,,,,,,CYP3A4,PA130,voriconazole,PA10233
+data/guidelineAnnotation,PA166104990,Guideline Annotation,,,CYP2C19,voriconazole,,,,,,,,,,,,,CYP3A4,PA130,voriconazole,PA10233
+data/guidelineAnnotation,PA166265221,Guideline Annotation,,,CYP1A2,olanzapine,,,,,,,,,,,,,CYP1A2,PA27093,amitriptyline,PA448385
+data/guidelineAnnotation,PA166265241,Guideline Annotation,,,CYP1A2,clozapine,,,,,,,,,,,,,CYP1A2,PA27093,amitriptyline,PA448385
+data/guidelineAnnotation,PA166104982,Guideline Annotation,,,CYP2D6,amitriptyline,,,,,,,,,,,,,CYP1A2,PA27093,amitriptyline,PA448385
+data/guidelineAnnotation,PA166184526,Guideline Annotation,,,CYP2C19,amitriptyline,,,,,,,,,,,,,CYP1A2,PA27093,amitriptyline,PA448385
+data/guidelineAnnotation,PA166105006,Guideline Annotation,,,CYP2C19; CYP2D6,amitriptyline,,,,,,,,,,,,,CYP1A2,PA27093,amitriptyline,PA448385

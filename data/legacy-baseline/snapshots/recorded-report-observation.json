@@ -1,0 +1,99 @@
+{
+  "description": "Hashes of the previously recorded Gemini report artifacts, plus an offline --no-api fallback observation. No Gemini or other LLM API was called and GEMINI_API_KEY was stripped from the child environment.",
+  "known_issue_ids": [
+    "LEGACY-BUG-003",
+    "LEGACY-BUG-012"
+  ],
+  "legacy_warning_variants_note": "The recorded report carries legacy warning wording. It is preserved as legacy evidence and is explicitly NOT the canonical warning; the canonical text lives in pgx/domain/claims.py (WP-00).",
+  "no_api_call_made": true,
+  "offline_fallback_observation": {
+    "api_key_supplied": false,
+    "artifacts": {
+      "gemini_report.md": {
+        "hashing": "raw_bytes",
+        "sha256": "bc6926374917f10ac19ceac8d549785405f3255b982bcf55dac003094ffb7683",
+        "size_bytes": 5567
+      },
+      "gemini_report_payload.json": {
+        "hashing": "raw_bytes",
+        "sha256": "7c120e3f446cee7db941cdd8e8d301a671620e32321b6dbfbf4ec869f7992bfd",
+        "size_bytes": 5812
+      },
+      "gemini_report_status.json": {
+        "hashing": "normalized_canonical_json",
+        "normalized_json_paths": [
+          "$.created_at",
+          "$.input_file",
+          "$.output_file"
+        ],
+        "normalized_sha256": "96c23c6418f568ba0d12f2b64bd0fd35beaf86f4e27fcd750ee0d30391de854d",
+        "raw_sha256": "4933ab3ec50a2829801977a7c9af3fa98b55644ea06593392d2db7d5e22b465d",
+        "size_bytes": 383
+      }
+    },
+    "executed": true,
+    "network_used": false,
+    "normalization_note": "gemini_report_status.json is hashed AFTER normalising the three documented volatile fields. It is not excluded from hashing: a change to used_api, fallback_used, validation_warnings or metadata changes the recorded hash.",
+    "produced": [
+      "gemini_report.md",
+      "gemini_report_payload.json",
+      "gemini_report_status.json"
+    ],
+    "reason_code": "OFFLINE_FALLBACK_ONLY",
+    "status_non_volatile_fields": {
+      "fallback_used": true,
+      "metadata": {
+        "mode": "fallback_forced",
+        "model": null,
+        "used_api": false
+      },
+      "used_api": false,
+      "validation_warnings": []
+    }
+  },
+  "recorded_artifacts": {
+    "gemini_prompt.txt": {
+      "present": true,
+      "sha256": "052ed7288f4bed3f6c31e5a72ba1108949a2c24f4ef4de87bfdae6e41524e753",
+      "size_bytes": 6881
+    },
+    "gemini_report.md": {
+      "present": true,
+      "sha256": "84d71835057f9bc3ea6207036c3f3ea9054e2cd7bd754692e2b3270c79994df1",
+      "size_bytes": 4536
+    },
+    "gemini_report_payload.json": {
+      "present": true,
+      "sha256": "7c120e3f446cee7db941cdd8e8d301a671620e32321b6dbfbf4ec869f7992bfd",
+      "size_bytes": 5812
+    },
+    "gemini_report_status.json": {
+      "present": true,
+      "sha256": "819cbad38f688e510250305161e70746aa13fa7afce7d9fb2005601b8545ea71",
+      "size_bytes": 371
+    }
+  },
+  "snapshot_id": "recorded-report-observation",
+  "snapshot_kind": "legacy_report_evidence",
+  "volatile_field_rules": [
+    {
+      "artifact": "gemini_report_status.json",
+      "json_path": "$.created_at",
+      "normalized_to": "<NORMALIZED:TIMESTAMP>",
+      "reason": "wall-clock timestamp"
+    },
+    {
+      "artifact": "gemini_report_status.json",
+      "json_path": "$.input_file",
+      "normalized_to": "<NORMALIZED:TEMP_PATH>",
+      "reason": "absolute temporary path"
+    },
+    {
+      "artifact": "gemini_report_status.json",
+      "json_path": "$.output_file",
+      "normalized_to": "<NORMALIZED:TEMP_PATH>",
+      "reason": "absolute temporary path"
+    }
+  ],
+  "volatile_policy": "Only the exact artifact+JSON key pairs listed in volatile_field_rules are normalised. No wildcard, subtree, or 'all text' ignore is used."
+}

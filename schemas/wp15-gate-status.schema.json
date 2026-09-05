@@ -1,0 +1,144 @@
+{
+  "$defs": {
+    "blocker": {
+      "additionalProperties": false,
+      "properties": {
+        "blocking": {
+          "type": "boolean"
+        },
+        "code": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "detail": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "blocking",
+        "code",
+        "detail"
+      ],
+      "type": "object"
+    }
+  },
+  "$id": "https://pgx-platform.invalid/schemas/wp15-gate-status.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Whether real report publication is possible, and what blocks it. Every count here is read from the repository rather than asserted: a status claiming reports exist when none do would be the same class of overclaim the gate exists to prevent.",
+  "properties": {
+    "blocker_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "blockers": {
+      "items": {
+        "$ref": "#/$defs/blocker"
+      },
+      "type": "array"
+    },
+    "claim_boundary_approved": {
+      "type": "boolean"
+    },
+    "claim_boundary_phase": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "claim_boundary_status": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "default_locale": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "gate_status_schema_version": {
+      "const": "pgx-wp15-gate-status/1"
+    },
+    "llm_enabled": {
+      "type": "boolean"
+    },
+    "llm_provider_implemented": {
+      "type": "boolean"
+    },
+    "may_publish_real_reports": {
+      "type": "boolean"
+    },
+    "note": {
+      "minLength": 100,
+      "type": "string"
+    },
+    "published_artifact_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "real_assessment_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "real_report_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "renderer_version": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "report_schema_version": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "scanner_limits": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "scanner_version": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "supported_locales": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "synthetic_only": {
+      "type": "boolean"
+    },
+    "template_version": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "work_package": {
+      "const": "WP-15"
+    }
+  },
+  "required": [
+    "blocker_count",
+    "blockers",
+    "claim_boundary_approved",
+    "claim_boundary_phase",
+    "claim_boundary_status",
+    "default_locale",
+    "gate_status_schema_version",
+    "llm_enabled",
+    "llm_provider_implemented",
+    "may_publish_real_reports",
+    "note",
+    "published_artifact_count",
+    "real_assessment_count",
+    "real_report_count",
+    "renderer_version",
+    "report_schema_version",
+    "scanner_limits",
+    "scanner_version",
+    "supported_locales",
+    "synthetic_only",
+    "template_version",
+    "work_package"
+  ],
+  "title": "PGx WP-15 gate status",
+  "type": "object"
+}

@@ -1,0 +1,76 @@
+{
+  "$id": "https://pgx.local/schemas/wp22/payload-permit.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "A value, never a bearer token: it names the assignment, case, actor, stage, protocol and release it belongs to, so it authorises exactly one reviewer to read exactly one case at one stage.",
+  "properties": {
+    "actor": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "actor_role": {
+      "const": "EXPERT_REVIEWER"
+    },
+    "assignment_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "case_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "case_manifest_hash": {
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "issued_at": {
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9:.]+Z$",
+      "type": "string"
+    },
+    "permit_hash": {
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "permit_version": {
+      "const": "pgx-wp22-payload-permit/1"
+    },
+    "protocol_hash": {
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "release_manifest_hash": {
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "review_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "stage": {
+      "enum": [
+        "ASSIGNED",
+        "EXPECTATION_RECORDED",
+        "RESULT_REVEALED",
+        "COMPLETED",
+        "INVALIDATED"
+      ],
+      "type": "string"
+    }
+  },
+  "required": [
+    "permit_version",
+    "assignment_id",
+    "review_id",
+    "case_id",
+    "actor",
+    "actor_role",
+    "stage",
+    "protocol_hash",
+    "release_manifest_hash",
+    "case_manifest_hash",
+    "issued_at",
+    "permit_hash"
+  ],
+  "title": "WP-22 payload permit",
+  "type": "object"
+}

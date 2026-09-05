@@ -1,0 +1,40 @@
+{
+  "schema_version": "pgx-legacy-expectations/1",
+  "purpose": "Figures this project has previously written down about the legacy pipeline, recorded here as claims to be checked rather than as constants to be reproduced. The WP-07 legacy difference report measures each one against the real artifacts and reports agreement or disagreement. No production module hard-codes any of these numbers.",
+  "reading_rule": "A claim in this file is never evidence. If an observation disagrees with a claim, the observation is reported and the claim is marked as disagreeing; the deduplication key is never reshaped to make a claim come true.",
+  "claims": [
+    {
+      "claim_id": "ARCH-8.3-DEDUP-COLLISIONS",
+      "metric": "pair_container_case_variant_duplicate_observations",
+      "claimed_value": 1572,
+      "cited_from": "architecture.md, WP-07 section, Migration bullet: \"Add regression fixtures for the 1,572 runtime dedup collisions and current candidate-merge drift.\"",
+      "note": "The document does not state which artifact, which container set, or which identity the count was taken over, so the report measures every interpretation it can define precisely and states all of them.",
+      "kind": "documented_expectation",
+      "expected_to_disagree": false
+    },
+    {
+      "claim_id": "SEED-SUMMARY-SUPPORTED-DRUGS",
+      "metric": "legacy_seed_supported_drug_rows",
+      "claimed_value": 11,
+      "cited_from": "clinpgx_mvp_seed/mvp_seed_summary.json, counts.supported_drugs",
+      "note": "LEGACY-BUG-007: the summary was written before candidate onboarding mutated the CSVs beside it and was never regenerated.",
+      "kind": "known_stale_value",
+      "expected_to_disagree": true,
+      "legacy_bug": "LEGACY-BUG-007"
+    },
+    {
+      "claim_id": "SEED-SUMMARY-GUIDELINE-ROWS",
+      "metric": "legacy_seed_guideline_rows",
+      "claimed_value": 30,
+      "cited_from": "clinpgx_mvp_seed/mvp_seed_summary.json, counts.guideline_rows",
+      "note": "LEGACY-BUG-007, same cause.",
+      "kind": "known_stale_value",
+      "expected_to_disagree": true,
+      "legacy_bug": "LEGACY-BUG-007"
+    }
+  ],
+  "claim_kinds": {
+    "documented_expectation": "A figure this project wrote down as what the data should show. A disagreement is a finding about the data or about the document, and needs explaining.",
+    "known_stale_value": "A figure recorded inside a legacy artifact that is already known to be out of date. A disagreement is the defect itself, and is expected."
+  }
+}

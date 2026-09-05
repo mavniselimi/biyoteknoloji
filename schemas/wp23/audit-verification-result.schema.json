@@ -1,0 +1,92 @@
+{
+  "$id": "https://pgx.local/schemas/wp23/audit-verification-result.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "verified": {
+            "const": true
+          }
+        },
+        "required": [
+          "verified"
+        ]
+      },
+      "then": {
+        "properties": {
+          "first_break_sequence": {
+            "type": "null"
+          }
+        }
+      }
+    }
+  ],
+  "description": "Whether the chain is intact and, if not, where it first is not. It carries no event content: a verification report that quoted the offending record would be a way to read the trail through a command that only checks it.",
+  "properties": {
+    "audit_event_schema_version": {
+      "const": "pgx-wp23-governed-audit-event/1"
+    },
+    "event_count": {
+      "anyOf": [
+        {
+          "minimum": 0,
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "first_break_sequence": {
+      "anyOf": [
+        {
+          "minimum": 0,
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "head_sequence": {
+      "anyOf": [
+        {
+          "minimum": 0,
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "reason": {
+      "minLength": 3,
+      "type": "string"
+    },
+    "reports_no_event_content": {
+      "const": true
+    },
+    "verified": {
+      "anyOf": [
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "required": [
+    "audit_event_schema_version",
+    "verified",
+    "event_count",
+    "first_break_sequence",
+    "reason",
+    "reports_no_event_content"
+  ],
+  "title": "WP-23 audit verification result",
+  "type": "object"
+}

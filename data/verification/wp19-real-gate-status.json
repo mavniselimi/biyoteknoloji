@@ -1,0 +1,453 @@
+{
+  "asgi_runtime_status": "BLOCKED",
+  "benchmark_gate_status": "BLOCKED",
+  "blocker_count": 20,
+  "blockers": [
+    {
+      "blocking": true,
+      "code": "VERIFICATION_CATEGORY_NOT_EXERCISED",
+      "detail": "category UNIT has no executed result",
+      "owner": "whoever runs the suite"
+    },
+    {
+      "blocking": true,
+      "code": "VERIFICATION_CATEGORY_NOT_EXERCISED",
+      "detail": "category DOMAIN_INVARIANT has no executed result",
+      "owner": "whoever runs the suite"
+    },
+    {
+      "blocking": true,
+      "code": "VERIFICATION_CATEGORY_NOT_EXERCISED",
+      "detail": "category FAILURE_NEGATIVE has no executed result",
+      "owner": "whoever runs the suite"
+    },
+    {
+      "blocking": true,
+      "code": "VERIFICATION_CATEGORY_NOT_EXERCISED",
+      "detail": "category INTEGRATION has no executed result",
+      "owner": "whoever runs the suite"
+    },
+    {
+      "blocking": true,
+      "code": "VERIFICATION_CATEGORY_NOT_EXERCISED",
+      "detail": "category POSTGRESQL_INTEGRATION has no executed result",
+      "owner": "whoever runs the suite"
+    },
+    {
+      "blocking": true,
+      "code": "VERIFICATION_CATEGORY_NOT_EXERCISED",
+      "detail": "category MIGRATION has no executed result",
+      "owner": "whoever runs the suite"
+    },
+    {
+      "blocking": true,
+      "code": "VERIFICATION_CATEGORY_NOT_EXERCISED",
+      "detail": "category API_CONTRACT has no executed result",
+      "owner": "whoever runs the suite"
+    },
+    {
+      "blocking": true,
+      "code": "VERIFICATION_CATEGORY_NOT_EXERCISED",
+      "detail": "category ASGI_RUNTIME has no executed result",
+      "owner": "whoever runs the suite"
+    },
+    {
+      "blocking": true,
+      "code": "VERIFICATION_CATEGORY_NOT_EXERCISED",
+      "detail": "category BROWSER_E2E has no executed result",
+      "owner": "whoever runs the suite"
+    },
+    {
+      "blocking": true,
+      "code": "VERIFICATION_CATEGORY_NOT_EXERCISED",
+      "detail": "category SNAPSHOT has no executed result",
+      "owner": "whoever runs the suite"
+    },
+    {
+      "blocking": true,
+      "code": "VERIFICATION_CATEGORY_NOT_EXERCISED",
+      "detail": "category ARTIFACT_SCHEMA has no executed result",
+      "owner": "whoever runs the suite"
+    },
+    {
+      "blocking": true,
+      "code": "VERIFICATION_CATEGORY_NOT_EXERCISED",
+      "detail": "category REPRODUCIBILITY has no executed result",
+      "owner": "whoever runs the suite"
+    },
+    {
+      "blocking": true,
+      "code": "VERIFICATION_CATEGORY_NOT_EXERCISED",
+      "detail": "category LEGACY_REGRESSION has no executed result",
+      "owner": "whoever runs the suite"
+    },
+    {
+      "blocking": true,
+      "code": "VERIFICATION_CATEGORY_NOT_EXERCISED",
+      "detail": "category VALIDATION_PARTITION has no executed result",
+      "owner": "whoever runs the suite"
+    },
+    {
+      "blocking": true,
+      "code": "VERIFICATION_CATEGORY_NOT_EXERCISED",
+      "detail": "category SECURITY_BOUNDARY has no executed result",
+      "owner": "whoever runs the suite"
+    },
+    {
+      "blocking": true,
+      "code": "VERIFICATION_CATEGORY_NOT_EXERCISED",
+      "detail": "category OFFLINE_INDEPENDENCE has no executed result",
+      "owner": "whoever runs the suite"
+    },
+    {
+      "blocking": true,
+      "code": "VERIFICATION_CLAIM_BOUNDARY_NOT_APPROVED",
+      "detail": "claim boundary status is DRAFT / AWAITING HUMAN AND SCIENTIFIC REVIEW",
+      "owner": "named human and scientific reviewers"
+    },
+    {
+      "blocking": true,
+      "code": "VERIFICATION_COVERAGE_NOT_MEASURED",
+      "detail": "coverage.py is not importable in this interpreter, so no line or branch percentage has been measured. It is declared in the dev dependency group and configured in pyproject.toml; install it with: .venv/bin/python -m pip install 'coverage[toml]>=7.4,<8.0'",
+      "owner": "deployment (install coverage.py)"
+    },
+    {
+      "blocking": true,
+      "code": "VERIFICATION_RUN_STALE",
+      "detail": "the source or test tree changed after the run was recorded (apps, pgx, tests); the recorded result is about different code",
+      "owner": "whoever runs the suite"
+    },
+    {
+      "blocking": true,
+      "code": "VERIFICATION_SAFETY_GATE_NOT_PASSING",
+      "detail": "the WP-20 safety gate reports BLOCKED with 11 blocker(s)",
+      "owner": "WP-20 safety gate"
+    }
+  ],
+  "browser_e2e_status": "BLOCKED",
+  "category_status": {
+    "API_CONTRACT": {
+      "executed": 0,
+      "inventoried": 340,
+      "outcome": "BLOCKED",
+      "reason": "no executed result for this category in any profile run here"
+    },
+    "ARTIFACT_SCHEMA": {
+      "executed": 0,
+      "inventoried": 469,
+      "outcome": "BLOCKED",
+      "reason": "no executed result for this category in any profile run here"
+    },
+    "ASGI_RUNTIME": {
+      "executed": 0,
+      "inventoried": 50,
+      "outcome": "BLOCKED",
+      "reason": "no executed result for this category in any profile run here"
+    },
+    "BROWSER_E2E": {
+      "executed": 0,
+      "inventoried": 13,
+      "outcome": "BLOCKED",
+      "reason": "no executed result for this category in any profile run here"
+    },
+    "DOMAIN_INVARIANT": {
+      "executed": 0,
+      "inventoried": 729,
+      "outcome": "BLOCKED",
+      "reason": "no executed result for this category in any profile run here"
+    },
+    "FAILURE_NEGATIVE": {
+      "executed": 0,
+      "inventoried": 97,
+      "outcome": "BLOCKED",
+      "reason": "no executed result for this category in any profile run here"
+    },
+    "INTEGRATION": {
+      "executed": 0,
+      "inventoried": 115,
+      "outcome": "BLOCKED",
+      "reason": "no executed result for this category in any profile run here"
+    },
+    "LEGACY_REGRESSION": {
+      "executed": 0,
+      "inventoried": 409,
+      "outcome": "BLOCKED",
+      "reason": "no executed result for this category in any profile run here"
+    },
+    "MIGRATION": {
+      "executed": 0,
+      "inventoried": 67,
+      "outcome": "BLOCKED",
+      "reason": "no executed result for this category in any profile run here"
+    },
+    "OFFLINE_INDEPENDENCE": {
+      "executed": 0,
+      "inventoried": 25,
+      "outcome": "BLOCKED",
+      "reason": "no executed result for this category in any profile run here"
+    },
+    "POSTGRESQL_INTEGRATION": {
+      "executed": 0,
+      "inventoried": 72,
+      "outcome": "BLOCKED",
+      "reason": "no executed result for this category in any profile run here"
+    },
+    "REPRODUCIBILITY": {
+      "executed": 0,
+      "inventoried": 146,
+      "outcome": "BLOCKED",
+      "reason": "no executed result for this category in any profile run here"
+    },
+    "SECURITY_BOUNDARY": {
+      "executed": 0,
+      "inventoried": 323,
+      "outcome": "BLOCKED",
+      "reason": "no executed result for this category in any profile run here"
+    },
+    "SNAPSHOT": {
+      "executed": 0,
+      "inventoried": 240,
+      "outcome": "BLOCKED",
+      "reason": "no executed result for this category in any profile run here"
+    },
+    "UNIT": {
+      "executed": 0,
+      "inventoried": 3098,
+      "outcome": "BLOCKED",
+      "reason": "no executed result for this category in any profile run here"
+    },
+    "VALIDATION_PARTITION": {
+      "executed": 0,
+      "inventoried": 181,
+      "outcome": "BLOCKED",
+      "reason": "no executed result for this category in any profile run here"
+    }
+  },
+  "claim_boundary_approved": false,
+  "claim_boundary_status": "DRAFT / AWAITING HUMAN AND SCIENTIFIC REVIEW",
+  "counts": {
+    "discovered": 6374,
+    "errored": null,
+    "executed": null,
+    "failed": null,
+    "not_executed": null,
+    "passed": null,
+    "skipped": null,
+    "unexplained_skips": null
+  },
+  "coverage": {
+    "branch_percent": null,
+    "coverage_schema_version": "pgx-wp19-coverage-summary/1",
+    "covered_branches": null,
+    "covered_lines": null,
+    "declared_line_threshold": 80.0,
+    "excluded": [
+      "Read from [tool.coverage.run] omit in pyproject.toml. Three groups are excluded: the test code itself, because measuring it reports how much of the suite ran and that is already the test result; the frozen WP-01 baseline scripts and their tooling, because they are a baseline to compare against rather than code under development; and generated revision scripts and data artifacts, because they are executed against a database or are not code at all.",
+      "*/__pycache__/*",
+      "tests/*",
+      "migrations/versions/*",
+      "scripts/legacy_*.py",
+      "scripts/build_legacy_baseline.py",
+      "scripts/compare_legacy_v2.py",
+      "clinpgx_probe.py",
+      "clinpgx_probe_v2.py",
+      "clean_mvp_seed_dataset.py",
+      "risk_engine.py",
+      "gemini_report_generator.py",
+      "candidate_onboarding.py",
+      "alternative_ranker.py"
+    ],
+    "install_command": ".venv/bin/python -m pip install 'coverage[toml]>=7.4,<8.0'",
+    "line_percent": null,
+    "low_coverage_critical_modules": [],
+    "measured_module_count": null,
+    "profile": "full",
+    "reason": "coverage.py is not importable in this interpreter, so no line or branch percentage has been measured. It is declared in the dev dependency group and configured in pyproject.toml; install it with: .venv/bin/python -m pip install 'coverage[toml]>=7.4,<8.0'",
+    "status": "BLOCKED",
+    "tool": "coverage.py",
+    "tool_version": null,
+    "total_branches": null,
+    "total_lines": null
+  },
+  "coverage_tool_available": false,
+  "critical_requirement_count": 16,
+  "discovered_test_count": 6374,
+  "execution_status": "BLOCKED",
+  "flaky": null,
+  "flaky_repeat_status": null,
+  "gate_status_schema_version": "pgx-wp19-gate-status/1",
+  "implementation_status": "IMPLEMENTED",
+  "matrix_is_complete": true,
+  "not_scientific_validation": "Everything in this document is software verification. A green suite means the software behaved as its tests describe. It is not a validated ruleset, a reviewed validation case, an expert opinion, a clinical result, or an approval. Those are produced by people under WP-21 and WP-22 and cannot be produced by running tests.",
+  "numeric_validation_metric_count": 0,
+  "postgresql_test_status": "BLOCKED",
+  "profile_results": {},
+  "profiles_executed": [],
+  "release_may_proceed": false,
+  "reproducibility": null,
+  "reproducibility_status": null,
+  "requirement_status": {
+    "VER-REQ-001": {
+      "criticality": "P0_CRITICAL",
+      "is_covered": true,
+      "test_count": 149,
+      "title": "The claim boundary is enforced in code, not only documented"
+    },
+    "VER-REQ-002": {
+      "criticality": "P0_CRITICAL",
+      "is_covered": true,
+      "test_count": 392,
+      "title": "Datasets are immutable and carry their provenance"
+    },
+    "VER-REQ-003": {
+      "criticality": "P0_CRITICAL",
+      "is_covered": true,
+      "test_count": 975,
+      "title": "Curation and ruleset approval cannot be self-served"
+    },
+    "VER-REQ-004": {
+      "criticality": "P0_CRITICAL",
+      "is_covered": true,
+      "test_count": 244,
+      "title": "A release pins dataset, ruleset and software before assessment"
+    },
+    "VER-REQ-005": {
+      "criticality": "P0_CRITICAL",
+      "is_covered": true,
+      "test_count": 166,
+      "title": "Phenotype matching is exact; RAPID never means ULTRARAPID"
+    },
+    "VER-REQ-006": {
+      "criticality": "P0_CRITICAL",
+      "is_covered": true,
+      "test_count": 336,
+      "title": "Coverage is a separate output from attention, and absence never reads as low risk"
+    },
+    "VER-REQ-007": {
+      "criticality": "P0_CRITICAL",
+      "is_covered": true,
+      "test_count": 354,
+      "title": "The same input and release bundle produce the same assessment"
+    },
+    "VER-REQ-008": {
+      "criticality": "P0_CRITICAL",
+      "is_covered": true,
+      "test_count": 346,
+      "title": "Reporting is deterministic and every claim is scanned"
+    },
+    "VER-REQ-009": {
+      "criticality": "P0_CRITICAL",
+      "is_covered": true,
+      "test_count": 491,
+      "title": "The API's error and security contracts hold"
+    },
+    "VER-REQ-010": {
+      "criticality": "P0_CRITICAL",
+      "is_covered": true,
+      "test_count": 318,
+      "title": "Every rendered page carries the clinical warning, and access is refused where it must be"
+    },
+    "VER-REQ-011": {
+      "criticality": "P0_CRITICAL",
+      "is_covered": true,
+      "test_count": 227,
+      "title": "Development and holdout validation cases stay separated"
+    },
+    "VER-REQ-012": {
+      "criticality": "IMPORTANT",
+      "is_covered": true,
+      "test_count": 212,
+      "title": "Every finding resolves to a real evidence record"
+    },
+    "VER-REQ-013": {
+      "criticality": "IMPORTANT",
+      "is_covered": true,
+      "test_count": 71,
+      "title": "The pipeline runs offline: no live source, no LLM, no index"
+    },
+    "VER-REQ-014": {
+      "criticality": "IMPORTANT",
+      "is_covered": true,
+      "test_count": 325,
+      "title": "Known legacy defects stay fixed and the baseline reproduces"
+    },
+    "VER-REQ-015": {
+      "criticality": "P0_CRITICAL",
+      "is_covered": true,
+      "test_count": 276,
+      "title": "The verification system itself cannot report a false green"
+    },
+    "VER-REQ-016": {
+      "criticality": "P0_CRITICAL",
+      "is_covered": true,
+      "test_count": 228,
+      "title": "The domain layer is standard-library only, immutable, and carries no ordering it must not have"
+    },
+    "VER-REQ-017": {
+      "criticality": "IMPORTANT",
+      "is_covered": true,
+      "test_count": 402,
+      "title": "Canonicalisation is deterministic and refuses ambiguous input"
+    },
+    "VER-REQ-018": {
+      "criticality": "IMPORTANT",
+      "is_covered": true,
+      "test_count": 241,
+      "title": "Acquisition is replayable and records where its data came from"
+    },
+    "VER-REQ-019": {
+      "criticality": "IMPORTANT",
+      "is_covered": true,
+      "test_count": 233,
+      "title": "Source policy decides what may be published, and fails closed"
+    },
+    "VER-REQ-020": {
+      "criticality": "P0_CRITICAL",
+      "is_covered": true,
+      "test_count": 299,
+      "title": "Persistence and configuration fail closed, and the seed can never touch a database it was not pointed at"
+    },
+    "VER-REQ-021": {
+      "criticality": "P0_CRITICAL",
+      "is_covered": true,
+      "test_count": 216,
+      "title": "Every named safety invariant is enforced, and its detector is proven by a negative control"
+    },
+    "VER-REQ-022": {
+      "criticality": "P0_CRITICAL",
+      "is_covered": true,
+      "test_count": 182,
+      "title": "Every validation metric has a predeclared denominator, and an unavailable metric is never reported as a zero"
+    }
+  },
+  "run_evidence_path": "data/verification/wp19-verification-run.json",
+  "run_evidence_reason": "the source or test tree changed after the run was recorded (apps, pgx, tests); the recorded result is about different code",
+  "run_evidence_status": "STALE_EVIDENCE_REJECTED",
+  "safety_gate_note": "WP-19 maps existing tests to the safety invariants so that thin coverage is visible. WP-20 owns the registry, the negative controls and the blocking gate, and this document reports WP-20's *measured* state rather than asserting or inferring one. Where WP-20 has not been run here, the state is reported as absent - never as satisfied.",
+  "safety_gate_reason": "the WP-20 safety gate reports BLOCKED with 11 blocker(s)",
+  "safety_gate_status": "BLOCKED",
+  "safety_invariant_count": 12,
+  "safety_invariant_map_only": false,
+  "safety_negative_control_count": 37,
+  "safety_negative_controls_detected": 37,
+  "scientific_validation_performed": false,
+  "uncovered_requirements": [],
+  "unmapped_critical_modules": [],
+  "validation_evidence_case_count": 0,
+  "validation_metric_definition_count": 15,
+  "validation_metrics_implemented": true,
+  "work_package": "WP-19",
+  "wp20_markers_found": [
+    "docs/architecture/wp20-safety-invariants.md",
+    "pgx/safety"
+  ],
+  "wp20_started": true,
+  "wp21_markers_found": [
+    "docs/architecture/wp21-validation-metrics.md"
+  ],
+  "wp21_started": true,
+  "wp24_markers_found": [
+    ".github/workflows"
+  ],
+  "wp24_started": true
+}

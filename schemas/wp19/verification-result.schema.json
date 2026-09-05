@@ -1,0 +1,235 @@
+{
+  "$id": "https://pgx.local/schemas/wp19/verification-result.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "One profile's outcome. The five outcome words are an enum, so no producer can invent a sixth; the counts are separate integers, so none can be derived from another; and `discovered` is not `executed`, because a class-level skip suppresses tests the runner never reports.",
+  "properties": {
+    "blocked_categories": {
+      "items": {
+        "enum": [
+          "UNIT",
+          "DOMAIN_INVARIANT",
+          "FAILURE_NEGATIVE",
+          "INTEGRATION",
+          "POSTGRESQL_INTEGRATION",
+          "MIGRATION",
+          "API_CONTRACT",
+          "ASGI_RUNTIME",
+          "BROWSER_E2E",
+          "SNAPSHOT",
+          "ARTIFACT_SCHEMA",
+          "REPRODUCIBILITY",
+          "LEGACY_REGRESSION",
+          "VALIDATION_PARTITION",
+          "SECURITY_BOUNDARY",
+          "OFFLINE_INDEPENDENCE"
+        ]
+      },
+      "type": "array"
+    },
+    "blocked_reason": {
+      "type": "string"
+    },
+    "categories": {
+      "additionalProperties": {
+        "additionalProperties": false,
+        "properties": {
+          "errored": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "executed": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "failed": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "inventoried": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "outcome": {
+            "enum": [
+              "PASS",
+              "FAIL",
+              "ERROR",
+              "SKIP",
+              "BLOCKED",
+              "MISSING"
+            ]
+          },
+          "passed": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "reason": {
+            "type": "string"
+          },
+          "skipped": {
+            "minimum": 0,
+            "type": "integer"
+          }
+        },
+        "required": [
+          "outcome",
+          "executed",
+          "passed",
+          "failed",
+          "errored",
+          "skipped"
+        ],
+        "type": "object"
+      },
+      "propertyNames": {
+        "enum": [
+          "UNIT",
+          "DOMAIN_INVARIANT",
+          "FAILURE_NEGATIVE",
+          "INTEGRATION",
+          "POSTGRESQL_INTEGRATION",
+          "MIGRATION",
+          "API_CONTRACT",
+          "ASGI_RUNTIME",
+          "BROWSER_E2E",
+          "SNAPSHOT",
+          "ARTIFACT_SCHEMA",
+          "REPRODUCIBILITY",
+          "LEGACY_REGRESSION",
+          "VALIDATION_PARTITION",
+          "SECURITY_BOUNDARY",
+          "OFFLINE_INDEPENDENCE"
+        ]
+      },
+      "type": "object"
+    },
+    "issue_codes": {
+      "items": {
+        "pattern": "^VERIFY_[A-Z0-9_]+$",
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "outcome": {
+      "enum": [
+        "PASS",
+        "FAIL",
+        "ERROR",
+        "SKIP",
+        "BLOCKED",
+        "MISSING"
+      ]
+    },
+    "outcomes": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "outcome": {
+            "enum": [
+              "PASS",
+              "FAIL",
+              "ERROR",
+              "SKIP",
+              "BLOCKED",
+              "MISSING"
+            ]
+          },
+          "reason": {
+            "type": "string"
+          },
+          "skip_classification": {
+            "enum": [
+              "ALLOWED",
+              "UNEXPLAINED",
+              null
+            ]
+          },
+          "test_id": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "test_id",
+          "outcome",
+          "reason",
+          "skip_classification"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "profile": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "result_schema_version": {
+      "const": "pgx-wp19-verification-result/1"
+    },
+    "stdout_note": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "summary": {
+      "additionalProperties": false,
+      "properties": {
+        "discovered": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "errored": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "executed": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "failed": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "not_executed": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "passed": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "skipped": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "unexplained_skips": {
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "discovered",
+        "executed",
+        "passed",
+        "failed",
+        "errored",
+        "skipped",
+        "unexplained_skips",
+        "not_executed"
+      ],
+      "type": "object"
+    }
+  },
+  "required": [
+    "profile",
+    "outcome",
+    "summary",
+    "issue_codes",
+    "stdout_note",
+    "blocked_reason",
+    "categories",
+    "blocked_categories"
+  ],
+  "title": "WP-19 verification result",
+  "type": "object"
+}

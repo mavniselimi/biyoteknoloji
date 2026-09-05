@@ -1,0 +1,134 @@
+{
+  "drill_count": 13,
+  "drills": [
+    {
+      "drill_id": "REL-001",
+      "expected_behaviour": "liveness answers 200; the process is alive and an orchestrator must not restart it for a dependency's outage",
+      "injected_failure": "the database is stopped or unreachable",
+      "requires": [
+        "a running application"
+      ],
+      "runnable_in_process": true,
+      "title": "Liveness while PostgreSQL is unavailable"
+    },
+    {
+      "drill_id": "REL-002",
+      "expected_behaviour": "readiness answers NOT_READY and names the database component, so traffic stops without the process being killed",
+      "injected_failure": "the database is stopped or unreachable",
+      "requires": [
+        "a running application"
+      ],
+      "runnable_in_process": true,
+      "title": "Readiness while PostgreSQL is unavailable"
+    },
+    {
+      "drill_id": "REL-003",
+      "expected_behaviour": "readiness answers NOT_READY and names migrations; it must not serve an assessment against a schema the build was not written for",
+      "injected_failure": "the database is at a revision other than the expected head",
+      "requires": [
+        "a running application",
+        "a PostgreSQL server"
+      ],
+      "runnable_in_process": true,
+      "title": "Readiness with a migration mismatch"
+    },
+    {
+      "drill_id": "REL-004",
+      "expected_behaviour": "readiness answers NOT_READY and names active_release; no assessment is performed, because an assessment with no pinned release has nothing to be traceable to",
+      "injected_failure": "no release is registered or activated",
+      "requires": [
+        "a running application"
+      ],
+      "runnable_in_process": true,
+      "title": "Readiness with no active release"
+    },
+    {
+      "drill_id": "REL-005",
+      "expected_behaviour": "liveness and readiness are unaffected and no P0 capability degrades; neither is a P0 readiness component and neither may become one",
+      "injected_failure": "ClinPGx and any LLM endpoint are unreachable",
+      "requires": [],
+      "runnable_in_process": true,
+      "title": "External source and model outage"
+    },
+    {
+      "drill_id": "REL-006",
+      "expected_behaviour": "the database volume survives, sessions created before the restart remain valid until their own expiry, and the audit chain verifies across the restart",
+      "injected_failure": "the application container is stopped and started",
+      "requires": [
+        "a container runtime",
+        "a PostgreSQL server"
+      ],
+      "runnable_in_process": false,
+      "title": "Application restart with a persistent database"
+    },
+    {
+      "drill_id": "REL-007",
+      "expected_behaviour": "in-flight requests complete within the grace period and the connection pool is disposed; a pool left open holds connections PostgreSQL will not free until they time out",
+      "injected_failure": "SIGTERM is delivered to the application",
+      "requires": [
+        "a container runtime"
+      ],
+      "runnable_in_process": false,
+      "title": "Graceful stop"
+    },
+    {
+      "drill_id": "REL-008",
+      "expected_behaviour": "the chain verifies, and a chain that does not is reported with the first broken sequence and no event content",
+      "injected_failure": "the governed audit chain is verified against stored rows",
+      "requires": [
+        "a PostgreSQL server",
+        "at least one governed audit event"
+      ],
+      "runnable_in_process": false,
+      "title": "Audit chain verification"
+    },
+    {
+      "drill_id": "REL-009",
+      "expected_behaviour": "login and governed mutations are refused with RATE_LIMIT_UNAVAILABLE; the limiter fails closed, because an unmetered login path is exactly what the limiter exists to prevent",
+      "injected_failure": "the rate-limit store is unreachable",
+      "requires": [],
+      "runnable_in_process": true,
+      "title": "Rate-limit backend failure"
+    },
+    {
+      "drill_id": "REL-010",
+      "expected_behaviour": "the affected page reports the artifact unavailable and no partial assessment is produced; a refusal, never a partial answer",
+      "injected_failure": "a runtime asset named by the manifest is removed",
+      "requires": [],
+      "runnable_in_process": true,
+      "title": "Missing sealed runtime artifact"
+    },
+    {
+      "drill_id": "REL-011",
+      "expected_behaviour": "the governed change is rolled back; a change nobody can account for is worse than a refusal, because the refusal tells the operator something",
+      "injected_failure": "the audit sink raises during a governed mutation",
+      "requires": [],
+      "runnable_in_process": true,
+      "title": "Governed audit append failure"
+    },
+    {
+      "drill_id": "REL-012",
+      "expected_behaviour": "both image identities are recorded, the rollback happens without a database downgrade, and post-rollback liveness and readiness are observed",
+      "injected_failure": "the candidate image is replaced with the previous one",
+      "requires": [
+        "a container runtime",
+        "two built images"
+      ],
+      "runnable_in_process": false,
+      "title": "Image rollback to the previous build"
+    },
+    {
+      "drill_id": "REL-013",
+      "expected_behaviour": "all four runbook conditions hold: a separate target, the exact Alembic head, a verified audit chain whose count matches the separately exported head sequence, and every referenced release manifest hash resolving against restored manifests",
+      "injected_failure": "a backup is taken and restored into a separate database",
+      "requires": [
+        "a PostgreSQL server",
+        "a separate restore target"
+      ],
+      "runnable_in_process": false,
+      "title": "Backup and restore verification"
+    }
+  ],
+  "note": "Declared before execution. A drill catalogue written after the results is a list of the failures that happened to be survived.",
+  "reliability_drill_version": "pgx-wp24-reliability-drill/1"
+}

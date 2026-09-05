@@ -1,0 +1,62 @@
+{
+  "$id": "https://pgx.local/schemas/wp21/failure-path-catalogue.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "description": "The predeclared denominator for failure-path coverage. A run that exercised two paths reports two out of the catalogue size, never two out of two.",
+  "properties": {
+    "denominator_policy": {
+      "minLength": 40,
+      "type": "string"
+    },
+    "failure_path_catalogue_version": {
+      "type": "string"
+    },
+    "failure_path_count": {
+      "minimum": 10,
+      "type": "integer"
+    },
+    "failure_paths": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "expected_refusal": {
+            "minLength": 10,
+            "type": "string"
+          },
+          "meaning": {
+            "minLength": 10,
+            "type": "string"
+          },
+          "path_id": {
+            "pattern": "^FP-[0-9]{3}$",
+            "type": "string"
+          },
+          "title": {
+            "minLength": 3,
+            "type": "string"
+          }
+        },
+        "required": [
+          "path_id",
+          "title",
+          "meaning",
+          "expected_refusal"
+        ],
+        "type": "object"
+      },
+      "minItems": 10,
+      "type": "array"
+    },
+    "schema_version": {
+      "const": "pgx-wp21-failure-paths/1"
+    }
+  },
+  "required": [
+    "schema_version",
+    "failure_path_catalogue_version",
+    "failure_path_count",
+    "failure_paths"
+  ],
+  "title": "WP-21 failure-path catalogue",
+  "type": "object"
+}

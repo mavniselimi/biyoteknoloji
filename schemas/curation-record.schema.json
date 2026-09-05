@@ -1,0 +1,480 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pgx-platform.invalid/schemas/curation-record.schema.json",
+  "title": "PGx curation record",
+  "description": "One curator's answer to one curation question (WP-09). It cites immutable evidence records and adds a human conclusion; it never rewrites source wording, provenance, publication metadata or hashes. It is not a CuratedInterpretation row, is not executable, and carries no risk level, attention level, confidence score, dose or treatment recommendation.",
+  "type": "object",
+  "required": [
+    "curation_record_version",
+    "vocabulary_version",
+    "protocol_version",
+    "record_id",
+    "question",
+    "status",
+    "conclusion_state",
+    "conclusion_text",
+    "applicability",
+    "effect_dimension",
+    "evidence",
+    "conflict",
+    "content_hash",
+    "is_rule_eligible"
+  ],
+  "properties": {
+    "curation_record_version": {
+      "const": "pgx-curation-record/1"
+    },
+    "vocabulary_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "protocol_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "record_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "content_hash": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "note": {
+      "type": "string"
+    },
+    "question": {
+      "type": "object",
+      "description": "The unit of curation. Not a gene/drug pair: a pair-level conclusion applied to every annotation sharing that pair is the legacy defect this protocol exists to stop.",
+      "required": [
+        "question_id",
+        "gene_canonical_key",
+        "drug_canonical_key",
+        "effect_dimension",
+        "question_text"
+      ],
+      "properties": {
+        "question_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "gene_canonical_key": {
+          "type": "string",
+          "pattern": "^GENE:"
+        },
+        "drug_canonical_key": {
+          "type": "string",
+          "pattern": "^DRUG:"
+        },
+        "effect_dimension": {
+          "enum": [
+            "EXPOSURE",
+            "CLEARANCE",
+            "ACTIVATION",
+            "RESPONSE_ASSOCIATION",
+            "ADVERSE_EVENT_ASSOCIATION",
+            "FUNCTIONAL_ACTIVITY",
+            "OTHER",
+            "INSUFFICIENT_TO_CLASSIFY"
+          ]
+        },
+        "question_text": {
+          "type": "string",
+          "minLength": 24
+        },
+        "phenotype_scope": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "POOR",
+              "INTERMEDIATE",
+              "NORMAL",
+              "RAPID",
+              "ULTRARAPID",
+              "INDETERMINATE"
+            ]
+          },
+          "description": "Exact Phenotype members. RAPID and ULTRARAPID are distinct and both must be listed to cover both (SAFETY-INV-004). An empty scope is not a wildcard."
+        },
+        "population_context": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "status": {
+      "enum": [
+        "DRAFT",
+        "UNDER_REVIEW",
+        "CURATED",
+        "REJECTED"
+      ]
+    },
+    "conclusion_state": {
+      "enum": [
+        "SUPPORTED",
+        "CONFLICTING",
+        "INSUFFICIENT",
+        "NOT_INTERPRETABLE",
+        "OUT_OF_SCOPE",
+        "NOT_APPLICABLE"
+      ],
+      "description": "Non-ordered. INSUFFICIENT is not a weak SUPPORTED, and is never low risk, no risk, no effect, safe, normal or negative evidence (SAFETY-INV-001)."
+    },
+    "conclusion_text": {
+      "type": "string",
+      "minLength": 24
+    },
+    "applicability": {
+      "enum": [
+        "APPLICABLE",
+        "PARTIALLY_APPLICABLE",
+        "NOT_APPLICABLE",
+        "UNCLEAR"
+      ]
+    },
+    "effect_dimension": {
+      "enum": [
+        "EXPOSURE",
+        "CLEARANCE",
+        "ACTIVATION",
+        "RESPONSE_ASSOCIATION",
+        "ADVERSE_EVENT_ASSOCIATION",
+        "FUNCTIONAL_ACTIVITY",
+        "OTHER",
+        "INSUFFICIENT_TO_CLASSIFY"
+      ],
+      "description": "What dimension of behaviour differs. Never a treatment instruction and never a direction of patient risk."
+    },
+    "normalized_phenotypes": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "POOR",
+          "INTERMEDIATE",
+          "NORMAL",
+          "RAPID",
+          "ULTRARAPID",
+          "INDETERMINATE"
+        ]
+      }
+    },
+    "is_rule_eligible": {
+      "type": "boolean",
+      "description": "Eligibility is not approval. WP-11 still requires its own review before any rule exists."
+    },
+    "unresolved_references": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "minItems": 1,
+      "description": "Every conclusion cites at least one evidence record. Excluded evidence stays here with a reason rather than disappearing.",
+      "items": {
+        "type": "object",
+        "required": [
+          "evidence_record_uuid",
+          "natural_key",
+          "relationship",
+          "rationale",
+          "source_version_status",
+          "provider_source_key"
+        ],
+        "properties": {
+          "evidence_record_uuid": {
+            "type": "string",
+            "minLength": 1
+          },
+          "natural_key": {
+            "type": "string",
+            "minLength": 1
+          },
+          "relationship": {
+            "enum": [
+              "SUPPORTS",
+              "CONTRADICTS",
+              "CONTEXT_ONLY",
+              "EXCLUDED"
+            ]
+          },
+          "rationale": {
+            "type": "string",
+            "minLength": 24
+          },
+          "source_version_status": {
+            "type": "string",
+            "minLength": 1
+          },
+          "provider_source_key": {
+            "type": "string",
+            "minLength": 1
+          },
+          "origin_source_key": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "origin_status": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "trace_verified": {
+            "type": [
+              "boolean",
+              "null"
+            ],
+            "description": "Null means the trace was not checked, which is not the same as a check that failed, and neither is 'verified'."
+          },
+          "fragment_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "publication_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "exclusion_reason": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Required exactly when relationship is EXCLUDED. Contradictory, older, other-organisation and unknown-version evidence must never be excluded by rule.",
+            "enum": [
+              "WRONG_ENTITY",
+              "WRONG_PHENOTYPE_SCOPE",
+              "WRONG_POPULATION",
+              "DUPLICATE_SOURCE_RECORD",
+              "SUPERSEDED_SOURCE_VERSION",
+              "INSUFFICIENT_DETAIL",
+              "OUT_OF_SCOPE",
+              "UNRESOLVED_PROVENANCE",
+              "OTHER_WITH_RATIONALE",
+              null
+            ]
+          }
+        }
+      }
+    },
+    "source_reported": {
+      "type": "array",
+      "description": "The source's own reported values, held for comparison. significance=yes is not SUPPORTED; a ClinPGx score is not confidence, importance, strength or risk.",
+      "items": {
+        "type": "object",
+        "required": [
+          "evidence_record_uuid",
+          "source_fields"
+        ]
+      }
+    },
+    "conflict": {
+      "type": "object",
+      "required": [
+        "state",
+        "blocks_rule_construction"
+      ],
+      "description": "No precedence field exists. There is no rule that CPIC, DPWG, a label, a newer record or a higher score wins; which statement prevails is decided per disagreement by a named human.",
+      "properties": {
+        "state": {
+          "enum": [
+            "NONE_IDENTIFIED",
+            "PRESENT",
+            "UNRESOLVED",
+            "ADJUDICATION_REQUIRED"
+          ]
+        },
+        "conflicting_evidence_uuids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "disputed_field": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "material": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "curator_analysis": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "adjudication_required": {
+          "type": "boolean"
+        },
+        "blocks_rule_construction": {
+          "type": "boolean"
+        }
+      }
+    },
+    "insufficiency": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "description": "Null means the conclusion is not INSUFFICIENT. It never means sufficiency was established.",
+      "required": [
+        "missing_information",
+        "evidence_reviewed_uuids",
+        "why_no_stronger_conclusion",
+        "unresolved_scope",
+        "additional_evidence_required"
+      ],
+      "properties": {
+        "missing_information": {
+          "type": "string",
+          "minLength": 24
+        },
+        "evidence_reviewed_uuids": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        },
+        "why_no_stronger_conclusion": {
+          "type": "string",
+          "minLength": 24
+        },
+        "unresolved_scope": {
+          "type": "string",
+          "minLength": 24
+        },
+        "additional_evidence_required": {
+          "type": "boolean"
+        },
+        "adjudication_required": {
+          "type": "boolean"
+        }
+      }
+    },
+    "rationale": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "description": "Null means the conclusion has not been argued, so it cannot be CURATED.",
+      "required": [
+        "parts",
+        "protocol_version",
+        "authored_by"
+      ],
+      "properties": {
+        "parts": {
+          "type": "object",
+          "minProperties": 11
+        },
+        "protocol_version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "authored_by": {
+          "type": "object",
+          "required": [
+            "person",
+            "role",
+            "at",
+            "rationale"
+          ]
+        },
+        "reviewed_by": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "description": "Required for CURATED, and must be a different person from the author."
+        }
+      }
+    }
+  },
+  "not": {
+    "anyOf": [
+      {
+        "required": [
+          "risk_level"
+        ]
+      },
+      {
+        "required": [
+          "demo_risk_level"
+        ]
+      },
+      {
+        "required": [
+          "attention_level"
+        ]
+      },
+      {
+        "required": [
+          "confidence"
+        ]
+      },
+      {
+        "required": [
+          "confidence_score"
+        ]
+      },
+      {
+        "required": [
+          "safety_score"
+        ]
+      },
+      {
+        "required": [
+          "condition"
+        ]
+      },
+      {
+        "required": [
+          "rule_condition"
+        ]
+      },
+      {
+        "required": [
+          "dose"
+        ]
+      },
+      {
+        "required": [
+          "recommendation"
+        ]
+      },
+      {
+        "required": [
+          "contraindication"
+        ]
+      },
+      {
+        "required": [
+          "plain_language_mvp"
+        ]
+      },
+      {
+        "required": [
+          "usable_for_mvp"
+        ]
+      }
+    ]
+  }
+}

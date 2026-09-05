@@ -1,0 +1,219 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "description": "Every claim and its support. There is deliberately no 'all_supported' field: a conjunction may only be drawn by a gate.",
+  "properties": {
+    "claim_count": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "claim_registry_version": {
+      "const": "pgx-wp25-claim-registry/1",
+      "type": "string"
+    },
+    "claims": {
+      "items": {
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "support": {
+                  "const": "SUPPORTED"
+                }
+              },
+              "required": [
+                "support"
+              ]
+            },
+            "then": {
+              "properties": {
+                "missing_evidence_ids": {
+                  "maxItems": 0,
+                  "type": "array"
+                },
+                "sufficient": {
+                  "const": true
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "sufficient": {
+                  "const": true
+                }
+              },
+              "required": [
+                "sufficient"
+              ]
+            },
+            "then": {
+              "properties": {
+                "support": {
+                  "const": "SUPPORTED"
+                }
+              }
+            }
+          }
+        ],
+        "properties": {
+          "claim_id": {
+            "pattern": "^THS6-CLAIM-[0-9]{3}$",
+            "type": "string"
+          },
+          "dod_ids": {
+            "items": {
+              "pattern": "^P0-DOD-0(0[1-9]|1[0-5])$",
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "gate_id": {
+            "pattern": "^GATE-[A-F]$",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "missing_evidence_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "notes": {
+            "type": "string"
+          },
+          "origin": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "outward_facing": {
+            "type": "boolean"
+          },
+          "required_evidence_ids": {
+            "items": {
+              "pattern": "^EV-WP[0-2][0-9]-[0-9]{3}$",
+              "type": "string"
+            },
+            "minItems": 1,
+            "type": "array"
+          },
+          "statement": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "sufficient": {
+            "type": "boolean"
+          },
+          "support": {
+            "enum": [
+              "SUPPORTED",
+              "PARTIALLY_SUPPORTED",
+              "UNSUPPORTED",
+              "NOT_EVALUATED",
+              "CONTRADICTED"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "claim_id",
+          "statement",
+          "origin",
+          "required_evidence_ids",
+          "support",
+          "sufficient",
+          "missing_evidence_ids"
+        ],
+        "type": "object"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "contradicted_claim_ids": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "counts_by_support": {
+      "additionalProperties": {
+        "minimum": 0,
+        "type": "integer"
+      },
+      "propertyNames": {
+        "enum": [
+          "SUPPORTED",
+          "PARTIALLY_SUPPORTED",
+          "UNSUPPORTED",
+          "NOT_EVALUATED",
+          "CONTRADICTED"
+        ]
+      },
+      "type": "object"
+    },
+    "note": {
+      "type": "string"
+    },
+    "outward_facing_claim_ids": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "probe_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "probes": {
+      "additionalProperties": {
+        "items": {
+          "properties": {
+            "explanation": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "field": {
+              "type": "string"
+            },
+            "refuting_value": {},
+            "source_path": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "source_path",
+            "field",
+            "explanation"
+          ],
+          "type": "object"
+        },
+        "type": "array"
+      },
+      "type": "object"
+    },
+    "supported_claim_ids": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "unresolvable_probes": {
+      "maxItems": 0,
+      "type": "array"
+    }
+  },
+  "required": [
+    "claim_registry_version",
+    "claim_count",
+    "counts_by_support",
+    "supported_claim_ids",
+    "contradicted_claim_ids",
+    "claims",
+    "probe_count",
+    "unresolvable_probes"
+  ],
+  "title": "WP-25 claim registry",
+  "type": "object"
+}

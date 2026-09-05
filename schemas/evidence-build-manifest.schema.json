@@ -1,0 +1,326 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pgx-platform.invalid/schemas/evidence-build-manifest.schema.json",
+  "title": "PGx evidence build manifest",
+  "description": "The machine-readable account of one sealed evidence build (WP-08). An evidence build records what sources stated and exactly where each statement was found. It is not a curation, not a rule, not an approval and not a publication, and it asserts nothing about whether the statements are scientifically correct. The dataset it describes stays BUILDING. Counts under summary describe what this project extracted from one snapshot under one set of rule versions; they are not validated coverage, clinical coverage, supported treatment, safe alternatives or executable pharmacogenetic rules.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "evidence_build_layout_version",
+    "dataset_public_id",
+    "evidence_build_key",
+    "content_hash",
+    "mode",
+    "snapshot_manifest_hash",
+    "snapshot_content_hash",
+    "snapshot_state",
+    "snapshot_kind",
+    "canonical_build_key",
+    "canonical_build_content_hash",
+    "allocation_content_hash",
+    "rule_versions",
+    "identity_minted_count",
+    "identity_reused_count",
+    "built_at",
+    "dataset_lifecycle_state",
+    "production_eligible",
+    "lifecycle_labels",
+    "lifecycle_note",
+    "summary",
+    "files"
+  ],
+  "properties": {
+    "evidence_build_layout_version": {
+      "description": "Layout shape version. A build declaring another version is refused rather than silently upgraded.",
+      "const": "pgx-evidence-build/1"
+    },
+    "dataset_public_id": {
+      "type": "string",
+      "pattern": "^PGX-DATA-[0-9]{8}-[0-9]{3}$",
+      "description": "The dataset this build belongs to."
+    },
+    "evidence_build_key": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Dataset public id and the first 16 hex characters of the content hash, joined by a slash. Names one build by what it contains."
+    },
+    "content_hash": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "description": "Digest of the build's contents. Excludes built_at, so two runs over identical inputs produce the same value."
+    },
+    "mode": {
+      "enum": [
+        "PRODUCTION",
+        "LEGACY_MIGRATION"
+      ],
+      "description": "PRODUCTION fails closed on any blocking finding. LEGACY_MIGRATION records the same findings, keeps them blocking, and marks the build ineligible. Quarantine stores blockers; it never downgrades them to warnings."
+    },
+    "snapshot_manifest_hash": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "description": "The raw snapshot manifest this build was derived from."
+    },
+    "snapshot_content_hash": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "snapshot_state": {
+      "type": "string",
+      "minLength": 1,
+      "description": "The snapshot's own lifecycle state, carried forward unchanged. QUARANTINED here means the evidence built from it is quarantined too."
+    },
+    "snapshot_kind": {
+      "type": "string",
+      "minLength": 1
+    },
+    "canonical_build_key": {
+      "type": "string",
+      "minLength": 1,
+      "description": "The WP-07 canonical build whose gene and drug identities this build's entity links refer to."
+    },
+    "canonical_build_content_hash": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "allocation_content_hash": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "description": "The identity allocation that supplied every record UUID. Rebuilding with this allocation reproduces the same identities."
+    },
+    "source_policy_status": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The recorded source-policy status, or null when no approval is on record. Null is a statement of absence, not a pending state that anything here may resolve."
+    },
+    "rule_versions": {
+      "type": "object",
+      "description": "Every rule version this build depended on. Two counts produced under different rules are two measurements sharing a name.",
+      "required": [
+        "evidence_build_layout_version",
+        "evidence_record_version",
+        "record_type_map_version",
+        "extraction_rule_version",
+        "publication_parser_version",
+        "allocation_format_version"
+      ],
+      "properties": {
+        "evidence_build_layout_version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evidence_record_version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "record_type_map_version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "extraction_rule_version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "publication_parser_version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "allocation_format_version": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "identity_minted_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "identity_reused_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "built_at": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "When this build was assembled. Deliberately outside content_hash, so a rebuild is comparable."
+    },
+    "build_note": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "dataset_lifecycle_state": {
+      "const": "BUILDING",
+      "description": "Asserted in the schema, not only in prose. Building evidence is not approving it, and nothing in WP-08 can move a dataset out of BUILDING."
+    },
+    "production_eligible": {
+      "type": "boolean",
+      "description": "False for every quarantined or legacy-migration build, whatever its individual records say about themselves."
+    },
+    "lifecycle_labels": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "QUARANTINED",
+          "LEGACY_MIGRATION",
+          "NOT_CURATED",
+          "NOT_EXECUTABLE",
+          "NOT_PUBLICATION_ELIGIBLE",
+          "PRODUCTION_CANDIDATE"
+        ]
+      },
+      "description": "What this build is and is not. A reader who sees only these labels still cannot mistake it for approved science."
+    },
+    "lifecycle_note": {
+      "type": "string",
+      "minLength": 1
+    },
+    "summary": {
+      "type": "object",
+      "required": [
+        "record_count",
+        "locator_count",
+        "issue_count",
+        "blocking_issue_count",
+        "issue_counts",
+        "version_status_counts",
+        "origin_status_counts",
+        "record_counts_by_type",
+        "production_eligible_record_count",
+        "quarantined_record_count"
+      ],
+      "properties": {
+        "dataset_public_id": {
+          "type": "string",
+          "pattern": "^PGX-DATA-[0-9]{8}-[0-9]{3}$"
+        },
+        "evidence_build_key": {
+          "type": "string",
+          "minLength": 1
+        },
+        "content_hash": {
+          "type": "string",
+          "pattern": "^sha256:[0-9a-f]{64}$"
+        },
+        "mode": {
+          "enum": [
+            "PRODUCTION",
+            "LEGACY_MIGRATION"
+          ]
+        },
+        "record_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "record_counts_by_type": {
+          "type": "object",
+          "description": "How many records of each kind. Keyed by resolved record type, not by the container each was requested under."
+        },
+        "record_type_mapping_status_counts": {
+          "type": "object",
+          "description": "How many mappings are CONFIRMED and how many are still PENDING_REVIEW. A non-zero PENDING_REVIEW count is a queue of work for a human, not a defect to be normalised away."
+        },
+        "locator_count": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Every place a record was found, not a deduplicated count of records. Larger than record_count whenever one record was returned under several containers."
+        },
+        "issue_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "blocking_issue_count": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Blocking in every mode. Quarantine stores these; it does not turn them into warnings."
+        },
+        "issue_counts": {
+          "type": "object"
+        },
+        "version_status_counts": {
+          "type": "object",
+          "description": "How many records carry a citable version, and how many honestly record that nobody knows."
+        },
+        "origin_status_counts": {
+          "type": "object",
+          "description": "How many records name the body that asserted them, and how many state no origin at all."
+        },
+        "origin_source_counts": {
+          "type": "object"
+        },
+        "payload_relation_counts": {
+          "type": "object",
+          "description": "How the payloads of one record seen through several containers related: IDENTICAL, PROJECTION, or CONFLICT. A CONFLICT is never resolved by choosing one."
+        },
+        "entity_link_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "gene_link_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "drug_link_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "multi_gene_record_count": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Records naming more than one gene. Each is still one record: duplicating a source record per pair would make one statement look like several."
+        },
+        "multi_drug_record_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "text_fragment_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "publication_reference_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "identified_publication_count": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "References carrying a PMID or DOI. The remainder stay unidentified rather than being matched on title similarity."
+        },
+        "production_eligible_record_count": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Records complete in themselves. A build-level quarantine still makes the whole build ineligible."
+        },
+        "quarantined_record_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "identity_minted_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "identity_reused_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "identity_allocation_size": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "files": {
+      "type": "object",
+      "description": "Digest of every file in the build directory, so a reader can check the directory in front of them.",
+      "additionalProperties": {
+        "type": "string",
+        "pattern": "^sha256:[0-9a-f]{64}$"
+      }
+    }
+  }
+}

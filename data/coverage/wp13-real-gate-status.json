@@ -1,0 +1,97 @@
+{
+  "assessment": "REAL COVERAGE EVALUATION IS BLOCKED",
+  "blockers": [
+    {
+      "code": "CANONICAL_DATASET_NOT_PUBLISHED",
+      "detail": "dataset state is BUILDING",
+      "meaning": "the canonical dataset is still BUILDING, so no manifest can pin a published dataset",
+      "owner": "the dataset quality and publication process (WP-07)",
+      "unblocks": "a manifest can pin a dataset that will not change beneath it"
+    },
+    {
+      "code": "CURATION_PROTOCOL_NOT_APPROVED",
+      "detail": "protocol status is AWAITING_EXPERT_REVIEW",
+      "meaning": "the curation protocol carries no ratification from a named scientific expert",
+      "owner": "a named scientific expert (not code)",
+      "unblocks": "the whole chain beneath coverage: curation, rules, and then a scope declared under an approved protocol"
+    },
+    {
+      "code": "DEFAULT_REGISTRY_EMPTY",
+      "detail": "0 executable rulesets served",
+      "meaning": "the engine-facing registry serves no executable ruleset",
+      "owner": "the same chain: a ruleset reaches the registry by being frozen",
+      "unblocks": "an evaluation has a ruleset to run against"
+    },
+    {
+      "code": "EVIDENCE_BUILD_QUARANTINED",
+      "detail": "evidence build labels are QUARANTINED, LEGACY_MIGRATION, NOT_CURATED, NOT_EXECUTABLE, NOT_PUBLICATION_ELIGIBLE",
+      "meaning": "the evidence build is quarantined and not publication-eligible, so no axis can cite resolvable approved evidence",
+      "owner": "source-policy review, then a re-labelled build",
+      "unblocks": "a supported axis can satisfy SAFETY-INV-006"
+    },
+    {
+      "code": "HUMAN_ROLE_ASSIGNMENTS_MISSING",
+      "detail": "0 identities hold a scientific role",
+      "meaning": "no identity holds a scientific role, so no declaration can be made, reviewed or ratified by anybody",
+      "owner": "WP-23 authentication, then whoever assigns roles",
+      "unblocks": "the three separated acts a coverage declaration requires"
+    },
+    {
+      "code": "NO_APPROVED_COVERAGE_MANIFEST",
+      "detail": "0 coverage manifests found in data/coverage (0 unreadable files)",
+      "meaning": "no coverage manifest has been declared, reviewed and approved for any ruleset",
+      "owner": "a scientific curator to declare the scope, an independent reviewer to check it, and an approver, acting separately",
+      "unblocks": "coverage can be computed for the drugs the manifest declares, and only for those"
+    },
+    {
+      "code": "NO_EXPECTED_SCOPE_DECLARED",
+      "detail": "0 drugs have an approved expected gene scope",
+      "meaning": "no drug has an approved expected gene scope, and expected scope cannot be derived from anything",
+      "owner": "scientific curators, whose judgement it is",
+      "unblocks": "an incompletely covered drug becomes detectable; without it, every drug looks as covered as its rules happen to make it"
+    },
+    {
+      "code": "NO_FROZEN_RULESET",
+      "detail": "0 frozen rulesets in data/rulesets",
+      "meaning": "there is no frozen ruleset for a coverage manifest to describe",
+      "owner": "the WP-11 rule governance chain, which is itself blocked",
+      "unblocks": "a manifest can pin a ruleset by identity and hash"
+    }
+  ],
+  "content_hash": "sha256:b009ed6096b387b301c55e6e7dc15dec2d1647e752f560bb513a2e2c94d0292d",
+  "coverage_state": {
+    "real_coverage_executions": 0,
+    "real_coverage_manifests": 0,
+    "real_declared_drugs": 0,
+    "real_evaluable_axes": 0,
+    "real_expected_gene_declarations": 0,
+    "real_full_coverage_axes": 0,
+    "real_supported_axes": 0
+  },
+  "gate_status_version": "pgx-wp13-gate-status/1",
+  "next_required_human_actions": [
+    "a named scientific expert reads and approves the curation protocol against its content hash",
+    "the canonical dataset is quality-checked and published, so a manifest can pin something that will not change beneath it",
+    "the evidence build is reviewed and its quarantine labels are removed by whoever owns source policy",
+    "WP-23 supplies authentication, and somebody assigns scientific roles to real identities",
+    "curators, a reviewer and an approver, acting separately, declare an expected gene scope for each drug a release intends to cover",
+    "rules are validated and a ruleset is frozen, giving a coverage manifest something to describe"
+  ],
+  "note": "This is an expected governance result, not a test failure. The WP-13 machinery is implemented and verified against synthetic fixtures; what is missing is scientific judgement, and none of the blockers above can be cleared by writing code. In particular the expected gene scope for a drug - which genes a complete assessment would have to consider - cannot be derived from the rules that happen to exist, because a scope derived that way would make every drug look exactly as covered as its rules make it and no gap would ever be visible.",
+  "upstream_state": {
+    "canonical_dataset_published": false,
+    "canonical_dataset_state": "BUILDING",
+    "curation_protocol_approved": false,
+    "curation_protocol_status": "AWAITING_EXPERT_REVIEW",
+    "evidence_build_approved_for_coverage": false,
+    "evidence_build_labels": [
+      "QUARANTINED",
+      "LEGACY_MIGRATION",
+      "NOT_CURATED",
+      "NOT_EXECUTABLE",
+      "NOT_PUBLICATION_ELIGIBLE"
+    ],
+    "executable_rulesets_in_default_registry": 0,
+    "frozen_rulesets": 0
+  }
+}

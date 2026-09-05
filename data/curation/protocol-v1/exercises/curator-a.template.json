@@ -1,0 +1,127 @@
+{
+  "answers": {
+    "CASE-01-GUIDELINE_WITH_STATED_ORIGIN": {
+      "applicability": null,
+      "conclusion_state": null,
+      "conflict_state": null,
+      "effect_dimension": null,
+      "excluded_evidence": [],
+      "exclusion_reasons": {},
+      "included_evidence": [],
+      "insufficiency_reasons": [],
+      "normalized_phenotypes": [],
+      "rationale_notes": null
+    },
+    "CASE-02-VARIANT_ANNOTATION_WITH_PUBLICATION": {
+      "applicability": null,
+      "conclusion_state": null,
+      "conflict_state": null,
+      "effect_dimension": null,
+      "excluded_evidence": [],
+      "exclusion_reasons": {},
+      "included_evidence": [],
+      "insufficiency_reasons": [],
+      "normalized_phenotypes": [],
+      "rationale_notes": null
+    },
+    "CASE-03-MULTIPLE_PUBLICATIONS": {
+      "applicability": null,
+      "conclusion_state": null,
+      "conflict_state": null,
+      "effect_dimension": null,
+      "excluded_evidence": [],
+      "exclusion_reasons": {},
+      "included_evidence": [],
+      "insufficiency_reasons": [],
+      "normalized_phenotypes": [],
+      "rationale_notes": null
+    },
+    "CASE-04-MULTI_GENE_OR_MULTI_DRUG": {
+      "applicability": null,
+      "conclusion_state": null,
+      "conflict_state": null,
+      "effect_dimension": null,
+      "excluded_evidence": [],
+      "exclusion_reasons": {},
+      "included_evidence": [],
+      "insufficiency_reasons": [],
+      "normalized_phenotypes": [],
+      "rationale_notes": null
+    },
+    "CASE-05-UNKNOWN_SOURCE_VERSION": {
+      "applicability": null,
+      "conclusion_state": null,
+      "conflict_state": null,
+      "effect_dimension": null,
+      "excluded_evidence": [],
+      "exclusion_reasons": {},
+      "included_evidence": [],
+      "insufficiency_reasons": [],
+      "normalized_phenotypes": [],
+      "rationale_notes": null
+    },
+    "CASE-06-NO_STATED_ORIGIN": {
+      "applicability": null,
+      "conclusion_state": null,
+      "conflict_state": null,
+      "effect_dimension": null,
+      "excluded_evidence": [],
+      "exclusion_reasons": {},
+      "included_evidence": [],
+      "insufficiency_reasons": [],
+      "normalized_phenotypes": [],
+      "rationale_notes": null
+    },
+    "CASE-07-PENDING_RECORD_TYPE_MAPPING": {
+      "applicability": null,
+      "conclusion_state": null,
+      "conflict_state": null,
+      "effect_dimension": null,
+      "excluded_evidence": [],
+      "exclusion_reasons": {},
+      "included_evidence": [],
+      "insufficiency_reasons": [],
+      "normalized_phenotypes": [],
+      "rationale_notes": null
+    },
+    "CASE-08-MULTIPLE_LOCATORS": {
+      "applicability": null,
+      "conclusion_state": null,
+      "conflict_state": null,
+      "effect_dimension": null,
+      "excluded_evidence": [],
+      "exclusion_reasons": {},
+      "included_evidence": [],
+      "insufficiency_reasons": [],
+      "normalized_phenotypes": [],
+      "rationale_notes": null
+    },
+    "CASE-09-LINKED_LEGACY_HINT": {
+      "applicability": null,
+      "conclusion_state": null,
+      "conflict_state": null,
+      "effect_dimension": null,
+      "excluded_evidence": [],
+      "exclusion_reasons": {},
+      "included_evidence": [],
+      "insufficiency_reasons": [],
+      "normalized_phenotypes": [],
+      "rationale_notes": null
+    }
+  },
+  "completed": false,
+  "completed_at": null,
+  "curator_label": "A",
+  "curator_name": null,
+  "curator_role": "SCIENTIFIC_CURATOR",
+  "exercise_id": "wp09-inter-curator-1",
+  "exercise_version": "pgx-inter-curator-exercise/1",
+  "instructions": [
+    "Answer from the cited evidence alone.",
+    "Do not consult the other curator's response.",
+    "The legacy project's previous conclusion is deliberately withheld; it is revealed only after this response is recorded.",
+    "INSUFFICIENT is a valid answer and is not a weaker form of SUPPORTED.",
+    "If evidence conflicts, say so; do not prefer a source by its organisation, its recency or its score."
+  ],
+  "note": "A blank template is not a response. This file counts as a curator response only when a named person has completed every case."
+}

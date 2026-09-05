@@ -1,0 +1,324 @@
+{
+  "$id": "https://pgx-platform.invalid/schemas/validation-case-manifest.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "One partition's public listing. `case_count` is what exists and `target_case_count` is what the P0 Definition of Done asks for; they are separate fields because rendering the target where the count belongs would be the most misleading thing this document could do.",
+  "not": {
+    "anyOf": [
+      {
+        "required": [
+          "expected_result"
+        ]
+      },
+      {
+        "required": [
+          "expected_attention"
+        ]
+      },
+      {
+        "required": [
+          "expected_coverage"
+        ]
+      },
+      {
+        "required": [
+          "expected_findings"
+        ]
+      },
+      {
+        "required": [
+          "expected_answer"
+        ]
+      },
+      {
+        "required": [
+          "gold_standard"
+        ]
+      },
+      {
+        "required": [
+          "ground_truth"
+        ]
+      },
+      {
+        "required": [
+          "reference_answer"
+        ]
+      },
+      {
+        "required": [
+          "answer_key"
+        ]
+      },
+      {
+        "required": [
+          "score"
+        ]
+      },
+      {
+        "required": [
+          "concordance"
+        ]
+      },
+      {
+        "required": [
+          "accuracy"
+        ]
+      },
+      {
+        "required": [
+          "pass_rate"
+        ]
+      },
+      {
+        "required": [
+          "payload"
+        ]
+      },
+      {
+        "required": [
+          "payload_content"
+        ]
+      },
+      {
+        "required": [
+          "observations"
+        ]
+      },
+      {
+        "required": [
+          "medications"
+        ]
+      },
+      {
+        "required": [
+          "genotype"
+        ]
+      },
+      {
+        "required": [
+          "diplotype"
+        ]
+      },
+      {
+        "required": [
+          "vcf"
+        ]
+      },
+      {
+        "required": [
+          "patient_name"
+        ]
+      },
+      {
+        "required": [
+          "mrn"
+        ]
+      },
+      {
+        "required": [
+          "diagnosis"
+        ]
+      },
+      {
+        "required": [
+          "dose"
+        ]
+      }
+    ]
+  },
+  "properties": {
+    "case_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "cases": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "case_id": {
+            "type": "string"
+          },
+          "citation": {
+            "type": "string"
+          },
+          "classification": {
+            "type": "string"
+          },
+          "compatibility": {
+            "additionalProperties": false,
+            "properties": {
+              "dataset_public_id": {
+                "pattern": "^PGX-DATA-\\d{8}-\\d{3}$",
+                "type": "string"
+              },
+              "is_pinned_to_release": {
+                "type": "boolean"
+              },
+              "note": {
+                "type": "string"
+              },
+              "release_manifest_hash": {
+                "pattern": "^sha256:[0-9a-f]{64}$",
+                "type": "string"
+              },
+              "release_public_id": {
+                "pattern": "^PGX-REL-\\d{8}-\\d{3}$",
+                "type": "string"
+              },
+              "ruleset_public_id": {
+                "pattern": "^PGX-RULESET-\\d{8}-\\d{3}$",
+                "type": "string"
+              },
+              "schema_version": {
+                "type": "string"
+              },
+              "software_version": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "schema_version",
+              "is_pinned_to_release"
+            ],
+            "type": "object"
+          },
+          "content_fingerprint": {
+            "pattern": "^sha256:[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "created_at": {
+            "type": "string"
+          },
+          "derivation_family_fingerprint": {
+            "pattern": "^sha256:[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "derivation_method": {
+            "type": "string"
+          },
+          "derived_from_development": {
+            "type": "boolean"
+          },
+          "is_holdout": {
+            "type": "boolean"
+          },
+          "is_validation_evidence": {
+            "type": "boolean"
+          },
+          "metadata_hash": {
+            "pattern": "^sha256:[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "no_pii_assertion": {
+            "type": "string"
+          },
+          "payload_hash": {
+            "pattern": "^sha256:[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "payload_reference": {
+            "type": "string"
+          },
+          "role": {
+            "enum": [
+              "DEVELOPMENT",
+              "INTERNAL_HOLDOUT",
+              "EXPERT_HOLDOUT"
+            ]
+          },
+          "source_digest": {
+            "pattern": "^sha256:[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "source_identity": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "visibility": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "case_id",
+          "role",
+          "classification",
+          "visibility",
+          "is_holdout",
+          "is_validation_evidence",
+          "content_fingerprint",
+          "derivation_family_fingerprint",
+          "source_identity",
+          "derivation_method",
+          "derived_from_development",
+          "no_pii_assertion",
+          "created_at",
+          "compatibility",
+          "metadata_hash"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "development_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "expert_holdout_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "internal_holdout_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "is_validation_evidence": {
+      "type": "boolean"
+    },
+    "meets_p0_target": {
+      "type": "boolean"
+    },
+    "note": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "partition": {
+      "enum": [
+        "DEVELOPMENT",
+        "HOLDOUT"
+      ]
+    },
+    "payload_availability": {
+      "enum": [
+        "NOT_CONFIGURED",
+        "CONFIGURED_EMPTY",
+        "CONFIGURED_PRESENT"
+      ]
+    },
+    "schema_version": {
+      "const": "pgx-wp18-validation-case-manifest/1"
+    },
+    "target_case_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "target_shortfall": {
+      "minimum": 0,
+      "type": "integer"
+    }
+  },
+  "required": [
+    "schema_version",
+    "partition",
+    "case_count",
+    "is_validation_evidence",
+    "payload_availability",
+    "target_case_count",
+    "cases",
+    "note"
+  ],
+  "title": "WP-18 validation case manifest",
+  "type": "object"
+}

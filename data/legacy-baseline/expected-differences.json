@@ -1,0 +1,309 @@
+{
+  "active_rule_count": 7,
+  "entries": [
+    {
+      "active": false,
+      "artifact_id": null,
+      "bug_id": "LEGACY-BUG-001",
+      "comparison_selector": null,
+      "disposition": "registered_not_allowlisted",
+      "observable_artifacts": [
+        "clinpgx_mvp_seed/risk_outputs/risk_result_full.json"
+      ],
+      "observed_legacy_behavior": "risk_engine.py phenotype matching treats RAPID and ULTRARAPID as interchangeable, so a rule written for one phenotype can fire for the other.",
+      "protected_as_correct": false,
+      "rationale": "The captured P2 CYP2C19-poor case uses POOR/NORMAL phenotypes and does not exercise the RAPID/ULTRARAPID path, so no selector can be observed from the WP-01 baseline without fabricating a case.",
+      "required_v2_behavior": "Exact phenotype matching. A rule applying to several phenotypes must encode an explicit set (architecture.md 9.1, SAFETY-INV-004).",
+      "rule_id": "XDIFF-LEGACY-BUG-001",
+      "scope_note": null,
+      "target_wp": "WP-12",
+      "title": "RAPID and ULTRARAPID implicitly match each other"
+    },
+    {
+      "active": true,
+      "artifact_id": "risk-p2-cyp2c19-poor.json",
+      "bug_id": "LEGACY-BUG-002",
+      "comparison_selector": "$.drug_results[drug=codeine].overall_risk_level",
+      "disposition": "allowlisted_selector",
+      "observable_artifacts": [
+        "data/legacy-baseline/snapshots/risk-p2-cyp2c19-poor.json"
+      ],
+      "observed_legacy_behavior": "Reproduced in the WP-01 baseline: codeine and warfarin return overall_risk_level='none' with finding status 'gene_drug_known_no_profile_match'. RISK_LABEL_TR renders 'none' as 'Dusuk / uyari yok', conflating 'not assessed' with 'low'.",
+      "protected_as_correct": false,
+      "rationale": "Directly observed in the WP-01 rerun. The legacy value 'none' is the defect itself and must change; it is recorded so the change is visible. Each affected drug has its own identity-addressed rule, so a reordered list cannot move the codeine expectation onto another drug.",
+      "required_v2_behavior": "Attention becomes NOT_ASSESSED; coverage and a machine-readable reason code are mandatory and separate (architecture.md 9.2/9.3, SAFETY-INV-001).",
+      "rule_id": "XDIFF-LEGACY-BUG-002-CODEINE",
+      "scope_note": "codeine: legacy 'none' must become NOT_ASSESSED",
+      "target_wp": "WP-13/WP-14",
+      "title": "Missing / no-rule / unsupported drugs receive top-level risk 'none'"
+    },
+    {
+      "active": true,
+      "artifact_id": "risk-p2-cyp2c19-poor.json",
+      "bug_id": "LEGACY-BUG-002",
+      "comparison_selector": "$.drug_results[drug=warfarin].overall_risk_level",
+      "disposition": "allowlisted_selector",
+      "observable_artifacts": [
+        "data/legacy-baseline/snapshots/risk-p2-cyp2c19-poor.json"
+      ],
+      "observed_legacy_behavior": "Reproduced in the WP-01 baseline: codeine and warfarin return overall_risk_level='none' with finding status 'gene_drug_known_no_profile_match'. RISK_LABEL_TR renders 'none' as 'Dusuk / uyari yok', conflating 'not assessed' with 'low'.",
+      "protected_as_correct": false,
+      "rationale": "Directly observed in the WP-01 rerun. The legacy value 'none' is the defect itself and must change; it is recorded so the change is visible. Each affected drug has its own identity-addressed rule, so a reordered list cannot move the codeine expectation onto another drug.",
+      "required_v2_behavior": "Attention becomes NOT_ASSESSED; coverage and a machine-readable reason code are mandatory and separate (architecture.md 9.2/9.3, SAFETY-INV-001).",
+      "rule_id": "XDIFF-LEGACY-BUG-002-WARFARIN",
+      "scope_note": "warfarin: legacy 'none' must become NOT_ASSESSED",
+      "target_wp": "WP-13/WP-14",
+      "title": "Missing / no-rule / unsupported drugs receive top-level risk 'none'"
+    },
+    {
+      "active": true,
+      "artifact_id": "risk-p2-cyp2c19-poor.json",
+      "bug_id": "LEGACY-BUG-003",
+      "comparison_selector": "$.gemini_input_compact_finding_keys",
+      "disposition": "allowlisted_selector",
+      "observable_artifacts": [
+        "data/legacy-baseline/snapshots/risk-p2-cyp2c19-poor.json"
+      ],
+      "observed_legacy_behavior": "risk_engine.build_gemini_payload emits compact findings that omit the per-finding 'status' field, so the LLM input cannot distinguish 'no active flag' from 'not assessed'.",
+      "protected_as_correct": false,
+      "rationale": "The WP-01 snapshot records the compact key set next to the full key set, so the dropped fields are provable rather than asserted.",
+      "required_v2_behavior": "The structured report must preserve coverage, reason code, evidence, and version metadata (architecture.md 10.1, LEGACY-BUG-003).",
+      "rule_id": "XDIFF-LEGACY-BUG-003-COMPACT-KEYS",
+      "scope_note": "the compact LLM payload drops per-finding status",
+      "target_wp": "WP-15",
+      "title": "Gemini compact payload drops status and missing-data reason"
+    },
+    {
+      "active": false,
+      "artifact_id": null,
+      "bug_id": "LEGACY-BUG-004",
+      "comparison_selector": null,
+      "disposition": "registered_not_allowlisted",
+      "observable_artifacts": [
+        "clinpgx_outputs_v2/pair_annotation_rows.csv"
+      ],
+      "observed_legacy_behavior": "clinpgx_probe_v2.py issues case-variant pair queries whose results are concatenated, so clinpgx_outputs_v2/pair_annotation_rows.csv carries duplicate logical rows.",
+      "protected_as_correct": false,
+      "rationale": "The duplicate set is an input-side artifact. A dedup selector belongs to the WP-07 canonicalisation output, which does not exist yet.",
+      "required_v2_behavior": "Canonical dedup before rule construction; duplicates reported as data quality metrics (architecture.md 8.3).",
+      "rule_id": "XDIFF-LEGACY-BUG-004",
+      "scope_note": null,
+      "target_wp": "WP-07",
+      "title": "Pair endpoint case variants produce large duplicate sets"
+    },
+    {
+      "active": false,
+      "artifact_id": null,
+      "bug_id": "LEGACY-BUG-005",
+      "comparison_selector": null,
+      "disposition": "registered_not_allowlisted",
+      "observable_artifacts": [
+        "clinpgx_mvp_seed/phenotype_effect_rules.csv"
+      ],
+      "observed_legacy_behavior": "clean_mvp_seed_dataset.py assigns evidence strength from the existence of a guideline for the drug-gene pair, so unrelated annotation rows inherit 'high_guideline_supported'.",
+      "protected_as_correct": false,
+      "rationale": "Requires the V2 evidence/interpretation split to express a comparable field. No honest selector exists against the legacy CSV alone.",
+      "required_v2_behavior": "Evidence strength belongs to the exact evidence/interpretation record, not to the pair (architecture.md 8.4, SAFETY-INV-006).",
+      "rule_id": "XDIFF-LEGACY-BUG-005",
+      "scope_note": null,
+      "target_wp": "WP-08/WP-11",
+      "title": "Pair-level guideline presence upgrades annotation rows to high_guideline_supported"
+    },
+    {
+      "active": false,
+      "artifact_id": null,
+      "bug_id": "LEGACY-BUG-006",
+      "comparison_selector": null,
+      "disposition": "registered_not_allowlisted",
+      "observable_artifacts": [
+        "clinpgx_mvp_seed/phenotype_effect_rules.csv"
+      ],
+      "observed_legacy_behavior": "clean_mvp_seed_dataset.py contains a hand-written MANUAL_EFFECT_HINTS map that is applied at pair level and lands in the seed with no curation record, reviewer, or approval state.",
+      "protected_as_correct": false,
+      "rationale": "The V2 counterpart is a curation record with an approval state; there is no legacy field to compare it against.",
+      "required_v2_behavior": "Import as unapproved draft curation proposals; never auto-validate (architecture.md 4.4, SAFETY-INV-003).",
+      "rule_id": "XDIFF-LEGACY-BUG-006",
+      "scope_note": null,
+      "target_wp": "WP-09/WP-10",
+      "title": "MANUAL_EFFECT_HINTS applies pair-level effect/severity broadly"
+    },
+    {
+      "active": true,
+      "artifact_id": "mvp_seed_summary.json",
+      "bug_id": "LEGACY-BUG-007",
+      "comparison_selector": "$.counts.guideline_rows",
+      "disposition": "allowlisted_selector",
+      "observable_artifacts": [
+        "clinpgx_mvp_seed/mvp_seed_summary.json",
+        "data/legacy-baseline/snapshots/current-active-seed.json"
+      ],
+      "observed_legacy_behavior": "Proven in the WP-01 baseline: clinpgx_mvp_seed/mvp_seed_summary.json is byte-identical to a freshly rebuilt pre-merge summary and still reports supported_drugs=11 / guideline_rows=30, while the active CSV files hold 15 drugs and 36 guideline rows.",
+      "protected_as_correct": false,
+      "rationale": "Directly measured. The stale 11/30 values must not be carried into V2 and must not be treated as an expected V2 output.",
+      "required_v2_behavior": "V2 artifacts are immutable and counts are generated from the artifact manifest (architecture.md 4.4, SAFETY-INV-007).",
+      "rule_id": "XDIFF-LEGACY-BUG-007-GUIDELINE-ROWS",
+      "scope_note": "stale 30 vs active 36",
+      "target_wp": "WP-03/WP-06",
+      "title": "Summary counts become stale after seed merge"
+    },
+    {
+      "active": true,
+      "artifact_id": "mvp_seed_summary.json",
+      "bug_id": "LEGACY-BUG-007",
+      "comparison_selector": "$.counts.supported_drugs",
+      "disposition": "allowlisted_selector",
+      "observable_artifacts": [
+        "clinpgx_mvp_seed/mvp_seed_summary.json",
+        "data/legacy-baseline/snapshots/current-active-seed.json"
+      ],
+      "observed_legacy_behavior": "Proven in the WP-01 baseline: clinpgx_mvp_seed/mvp_seed_summary.json is byte-identical to a freshly rebuilt pre-merge summary and still reports supported_drugs=11 / guideline_rows=30, while the active CSV files hold 15 drugs and 36 guideline rows.",
+      "protected_as_correct": false,
+      "rationale": "Directly measured. The stale 11/30 values must not be carried into V2 and must not be treated as an expected V2 output.",
+      "required_v2_behavior": "V2 artifacts are immutable and counts are generated from the artifact manifest (architecture.md 4.4, SAFETY-INV-007).",
+      "rule_id": "XDIFF-LEGACY-BUG-007-SUPPORTED-DRUGS",
+      "scope_note": "stale 11 vs active 15",
+      "target_wp": "WP-03/WP-06",
+      "title": "Summary counts become stale after seed merge"
+    },
+    {
+      "active": false,
+      "artifact_id": null,
+      "bug_id": "LEGACY-BUG-008",
+      "comparison_selector": null,
+      "disposition": "registered_not_allowlisted",
+      "observable_artifacts": [
+        "data/legacy-baseline/snapshots/alternative-beta-clopidogrel.json"
+      ],
+      "observed_legacy_behavior": "alternative_ranker.py reads drug_graph_edges.csv as a flat lookup table; no traversal is performed, yet the output is presented as graph-based.",
+      "protected_as_correct": false,
+      "rationale": "This is a naming and capability claim rather than a value difference; no field-level selector would be honest.",
+      "required_v2_behavior": "P1 must either implement real traversal or name the feature a manual lookup (architecture.md 4.4).",
+      "rule_id": "XDIFF-LEGACY-BUG-008",
+      "scope_note": null,
+      "target_wp": "P1-01/P1-02",
+      "title": "Candidate graph is manual lookup plus display context, not traversal"
+    },
+    {
+      "active": true,
+      "artifact_id": "alternative-beta-clopidogrel.json",
+      "bug_id": "LEGACY-BUG-009",
+      "comparison_selector": "$.candidate_results[candidate_drug=prasugrel].legacy_score_unprotected",
+      "disposition": "allowlisted_selector",
+      "observable_artifacts": [
+        "data/legacy-baseline/snapshots/alternative-beta-clopidogrel.json"
+      ],
+      "observed_legacy_behavior": "Reproduced in the WP-01 baseline: prasugrel and ticagrelor both receive score=59 under score_name 'MVP alternatif uygunluk on skoru' while their mvp_data_status is 'insufficient_pgx_rule_data' - a numeric score attached to a candidate with no usable rule.",
+      "protected_as_correct": false,
+      "rationale": "The score's disappearance in V2 is an expected, required difference. It is explicitly NOT a protected scientific result. Prasugrel and ticagrelor each have their own identity-addressed rule.",
+      "required_v2_behavior": "The score is removed from V2 P0/P1; candidates show data status only (architecture.md 4.4, SAFETY-INV-005).",
+      "rule_id": "XDIFF-LEGACY-BUG-009-PRASUGREL-SCORE-REMOVAL",
+      "scope_note": "prasugrel score must disappear in V2",
+      "target_wp": "P1-02",
+      "title": "0-100 candidate score creates an unsupported evaluability/safety impression"
+    },
+    {
+      "active": true,
+      "artifact_id": "alternative-beta-clopidogrel.json",
+      "bug_id": "LEGACY-BUG-009",
+      "comparison_selector": "$.candidate_results[candidate_drug=ticagrelor].legacy_score_unprotected",
+      "disposition": "allowlisted_selector",
+      "observable_artifacts": [
+        "data/legacy-baseline/snapshots/alternative-beta-clopidogrel.json"
+      ],
+      "observed_legacy_behavior": "Reproduced in the WP-01 baseline: prasugrel and ticagrelor both receive score=59 under score_name 'MVP alternatif uygunluk on skoru' while their mvp_data_status is 'insufficient_pgx_rule_data' - a numeric score attached to a candidate with no usable rule.",
+      "protected_as_correct": false,
+      "rationale": "The score's disappearance in V2 is an expected, required difference. It is explicitly NOT a protected scientific result. Prasugrel and ticagrelor each have their own identity-addressed rule.",
+      "required_v2_behavior": "The score is removed from V2 P0/P1; candidates show data status only (architecture.md 4.4, SAFETY-INV-005).",
+      "rule_id": "XDIFF-LEGACY-BUG-009-TICAGRELOR-SCORE-REMOVAL",
+      "scope_note": "ticagrelor score must disappear in V2",
+      "target_wp": "P1-02",
+      "title": "0-100 candidate score creates an unsupported evaluability/safety impression"
+    },
+    {
+      "active": false,
+      "artifact_id": null,
+      "bug_id": "LEGACY-BUG-010",
+      "comparison_selector": null,
+      "disposition": "registered_not_allowlisted",
+      "observable_artifacts": [
+        "clinpgx_mvp_seed/supported_drugs.csv.bak",
+        "clinpgx_mvp_seed/drug_gene_guidelines.csv.bak",
+        "clinpgx_mvp_seed/phenotype_effect_rules.csv.bak"
+      ],
+      "observed_legacy_behavior": "candidate_onboarding.py --merge copies the current CSV to <name>.bak before writing. A second merge overwrites the only backup, so the pre-merge state is unrecoverable. Three .bak files exist today and are the sole surviving pre-merge evidence.",
+      "protected_as_correct": false,
+      "rationale": "A destructive-write behaviour, not a value difference. WP-01 freezes the surviving .bak hashes so the pre-merge state cannot be lost again.",
+      "required_v2_behavior": "No in-place mutation; activate a new immutable dataset/ruleset version (architecture.md 4.4, SAFETY-INV-007).",
+      "rule_id": "XDIFF-LEGACY-BUG-010",
+      "scope_note": null,
+      "target_wp": "WP-03",
+      "title": ".bak files are overwritten on repeated merge"
+    },
+    {
+      "active": false,
+      "artifact_id": null,
+      "bug_id": "LEGACY-BUG-011",
+      "comparison_selector": null,
+      "disposition": "registered_not_allowlisted",
+      "observable_artifacts": [
+        "clinpgx_outputs_v2/pair_probe_raw.json"
+      ],
+      "observed_legacy_behavior": "clinpgx_probe.py and clinpgx_probe_v2.py call https://api.clinpgx.org directly with a third-party 'requests' dependency, no recorded acquisition run, no retry policy, and no completeness assertion.",
+      "protected_as_correct": false,
+      "rationale": "The probes are network-only and were deliberately NOT executed in WP-01 (reason code NETWORK_REQUIRED_NOT_EXECUTED), so no run-level selector can be observed offline.",
+      "required_v2_behavior": "A production adapter must record and verify a complete acquisition run (architecture.md 8.1, WP-04).",
+      "rule_id": "XDIFF-LEGACY-BUG-011",
+      "scope_note": null,
+      "target_wp": "WP-04",
+      "title": "API acquisition lacks pagination, retry, provenance, and failure completeness"
+    },
+    {
+      "active": false,
+      "artifact_id": null,
+      "bug_id": "LEGACY-BUG-012",
+      "comparison_selector": null,
+      "disposition": "registered_not_allowlisted",
+      "observable_artifacts": [
+        "final_report/gemini_report.md",
+        "data/legacy-baseline/snapshots/recorded-report-observation.json"
+      ],
+      "observed_legacy_behavior": "gemini_report_generator.py passes guideline summary text through to the report, and its only guard is a substring check for 'klinik karar' / 'doz onerisi' in the model output.",
+      "protected_as_correct": false,
+      "rationale": "The WP-00 claim scanner exists, but no V2 report artifact exists to compare against. A selector would be fabricated.",
+      "required_v2_behavior": "Evidence may preserve source text, but user-facing summaries must remain neutral and claim-scanned (architecture.md 4.4, SAFETY-INV-010).",
+      "rule_id": "XDIFF-LEGACY-BUG-012",
+      "scope_note": null,
+      "target_wp": "WP-15/P1-06",
+      "title": "Report can surface dosage/replacement language from source summaries"
+    }
+  ],
+  "known_bug_ids": [
+    "LEGACY-BUG-001",
+    "LEGACY-BUG-002",
+    "LEGACY-BUG-003",
+    "LEGACY-BUG-004",
+    "LEGACY-BUG-005",
+    "LEGACY-BUG-006",
+    "LEGACY-BUG-007",
+    "LEGACY-BUG-008",
+    "LEGACY-BUG-009",
+    "LEGACY-BUG-010",
+    "LEGACY-BUG-011",
+    "LEGACY-BUG-012"
+  ],
+  "policy": {
+    "every_entry_requires_a_known_bug_id": true,
+    "exact_artifact_identity_required": true,
+    "identity_addressed_list_selectors": true,
+    "no_basename_or_suffix_matching": true,
+    "no_blanket_text_acceptance": true,
+    "no_whole_file_ignore": true,
+    "no_whole_subtree_ignore": true,
+    "no_wildcard_paths": true,
+    "note": "An entry with disposition 'registered_not_allowlisted' has no selector because no V2 artifact exists yet. WP-01 must not fabricate one; such an entry suppresses nothing. Active entries match one exact artifact_id and one exact selector; list items are addressed by identity (e.g. drug=codeine), never by index.",
+    "unknown_bug_id_is_a_configuration_failure": true,
+    "unused_entries_are_reported_not_silently_passed": true
+  },
+  "registry_rule_count": 7,
+  "schema_version": "wp01-legacy-bugs/1"
+}

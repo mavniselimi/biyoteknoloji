@@ -1,0 +1,272 @@
+{
+  "$id": "https://pgx.local/schemas/wp19/requirement-matrix.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Which tests are claimed to verify which requirement, and everything that is not covered. The gap fields are required so that a document omitting them cannot read as a document with no gaps.",
+  "properties": {
+    "categories": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "category": {
+            "enum": [
+              "UNIT",
+              "DOMAIN_INVARIANT",
+              "FAILURE_NEGATIVE",
+              "INTEGRATION",
+              "POSTGRESQL_INTEGRATION",
+              "MIGRATION",
+              "API_CONTRACT",
+              "ASGI_RUNTIME",
+              "BROWSER_E2E",
+              "SNAPSHOT",
+              "ARTIFACT_SCHEMA",
+              "REPRODUCIBILITY",
+              "LEGACY_REGRESSION",
+              "VALIDATION_PARTITION",
+              "SECURITY_BOUNDARY",
+              "OFFLINE_INDEPENDENCE"
+            ]
+          },
+          "module_count": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "modules": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "static_outcome": {
+            "enum": [
+              "BLOCKED",
+              "MISSING"
+            ]
+          },
+          "test_count": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "test_id_sha256": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          }
+        },
+        "required": [
+          "category",
+          "test_count",
+          "module_count",
+          "modules",
+          "static_outcome",
+          "test_id_sha256"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "empty_categories": {
+      "items": {
+        "enum": [
+          "UNIT",
+          "DOMAIN_INVARIANT",
+          "FAILURE_NEGATIVE",
+          "INTEGRATION",
+          "POSTGRESQL_INTEGRATION",
+          "MIGRATION",
+          "API_CONTRACT",
+          "ASGI_RUNTIME",
+          "BROWSER_E2E",
+          "SNAPSHOT",
+          "ARTIFACT_SCHEMA",
+          "REPRODUCIBILITY",
+          "LEGACY_REGRESSION",
+          "VALIDATION_PARTITION",
+          "SECURITY_BOUNDARY",
+          "OFFLINE_INDEPENDENCE"
+        ]
+      },
+      "type": "array"
+    },
+    "is_complete": {
+      "type": "boolean"
+    },
+    "matrix_schema_version": {
+      "const": "pgx-wp19-requirement-matrix/1"
+    },
+    "requirement_registry_version": {
+      "type": "string"
+    },
+    "requirements": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "categories": {
+            "items": {
+              "enum": [
+                "UNIT",
+                "DOMAIN_INVARIANT",
+                "FAILURE_NEGATIVE",
+                "INTEGRATION",
+                "POSTGRESQL_INTEGRATION",
+                "MIGRATION",
+                "API_CONTRACT",
+                "ASGI_RUNTIME",
+                "BROWSER_E2E",
+                "SNAPSHOT",
+                "ARTIFACT_SCHEMA",
+                "REPRODUCIBILITY",
+                "LEGACY_REGRESSION",
+                "VALIDATION_PARTITION",
+                "SECURITY_BOUNDARY",
+                "OFFLINE_INDEPENDENCE"
+              ]
+            },
+            "type": "array"
+          },
+          "criticality": {
+            "enum": [
+              "P0_CRITICAL",
+              "IMPORTANT",
+              "SUPPORTING"
+            ]
+          },
+          "is_covered": {
+            "type": "boolean"
+          },
+          "module_count": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "modules": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "note": {
+            "type": "string"
+          },
+          "requirement_id": {
+            "pattern": "^VER-REQ-[0-9]{3}$",
+            "type": "string"
+          },
+          "safety_invariants": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "selectors": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "source": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "test_count": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "test_id_sha256": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "title": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "work_packages": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "requirement_id",
+          "title",
+          "source",
+          "work_packages",
+          "selectors",
+          "criticality",
+          "safety_invariants",
+          "is_covered",
+          "test_count",
+          "modules",
+          "module_count",
+          "categories",
+          "test_id_sha256",
+          "note"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "safety_invariant_map": {
+      "additionalProperties": {
+        "items": {
+          "type": "string"
+        },
+        "type": "array"
+      },
+      "propertyNames": {
+        "pattern": "^SAFETY-INV-[0-9]{3}$"
+      },
+      "type": "object"
+    },
+    "safety_map_disclaimer": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "stale_safety_selectors": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "uncovered_requirements": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "unmapped_critical_modules": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "unmapped_safety_invariants": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "unmapped_supporting_modules": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "matrix_schema_version",
+    "requirements",
+    "categories",
+    "uncovered_requirements",
+    "unmapped_critical_modules",
+    "unmapped_supporting_modules",
+    "empty_categories",
+    "unmapped_safety_invariants",
+    "stale_safety_selectors",
+    "is_complete",
+    "safety_invariant_map",
+    "safety_map_disclaimer"
+  ],
+  "title": "WP-19 requirement and category matrix",
+  "type": "object"
+}

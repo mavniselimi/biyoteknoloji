@@ -1,0 +1,156 @@
+{
+  "$id": "https://pgx.local/schemas/wp24/build-provenance.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "description": "What a build was made from. source_revision is null when the repository has no commit - this one has none - and the source-tree manifest hash is then the only content identity the build has. Every field describing something that did not happen is null, never a placeholder string, so two builds cannot match on the word 'unknown'.",
+  "if": {
+    "properties": {
+      "lockfile_present": {
+        "const": true
+      }
+    },
+    "required": [
+      "lockfile_present"
+    ]
+  },
+  "properties": {
+    "base_image": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "base_image_digest": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "build_provenance_version": {
+      "const": "pgx-wp24-build-provenance/1"
+    },
+    "built_at": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "ci_run_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "ci_run_url": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "dockerfile_hash": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "image_digest": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "image_repository": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "image_tag": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "lockfile_hash": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "lockfile_present": {
+      "type": "boolean"
+    },
+    "platform_machine": {
+      "type": "string"
+    },
+    "pyproject_hash": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "python_version": {
+      "type": "string"
+    },
+    "runtime_asset_manifest_hash": {
+      "type": "string"
+    },
+    "sbom_reference": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "sbom_sha256": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "sdist_sha256": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "source_revision": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "source_tree_file_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "source_tree_manifest_hash": {
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "wheel_sha256": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "build_provenance_version",
+    "source_revision",
+    "source_tree_manifest_hash",
+    "pyproject_hash",
+    "lockfile_hash",
+    "python_version",
+    "platform_machine",
+    "image_digest",
+    "built_at"
+  ],
+  "then": {
+    "properties": {
+      "lockfile_hash": {
+        "type": "string"
+      }
+    }
+  },
+  "title": "PGx build provenance (WP-24)",
+  "type": "object"
+}

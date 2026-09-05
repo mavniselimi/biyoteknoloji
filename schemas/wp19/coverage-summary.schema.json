@@ -1,0 +1,145 @@
+{
+  "$id": "https://pgx.local/schemas/wp19/coverage-summary.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Line and branch coverage, or an explicit statement that none was measured. Every percentage may be null, because null is what an unmeasured number looks like and 0.0 is what a measured zero looks like.",
+  "properties": {
+    "branch_percent": {
+      "maximum": 100,
+      "minimum": 0,
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "coverage_schema_version": {
+      "const": "pgx-wp19-coverage-summary/1"
+    },
+    "covered_branches": {
+      "minimum": 0,
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "covered_lines": {
+      "minimum": 0,
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "declared_line_threshold": {
+      "maximum": 100,
+      "minimum": 0,
+      "type": "number"
+    },
+    "excluded": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "install_command": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "line_percent": {
+      "maximum": 100,
+      "minimum": 0,
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "low_coverage_critical_modules": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "line_percent": {
+            "type": "number"
+          },
+          "missing_lines": {
+            "minimum": 0,
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "module": {
+            "type": "string"
+          },
+          "statements": {
+            "minimum": 0,
+            "type": [
+              "integer",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "module",
+          "line_percent"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "measured_module_count": {
+      "minimum": 0,
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "profile": {
+      "type": "string"
+    },
+    "reason": {
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "MEASURED",
+        "BLOCKED"
+      ]
+    },
+    "tool": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "tool_version": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "total_branches": {
+      "minimum": 0,
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "total_lines": {
+      "minimum": 0,
+      "type": [
+        "integer",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "coverage_schema_version",
+    "status",
+    "tool",
+    "line_percent",
+    "branch_percent",
+    "reason",
+    "install_command",
+    "declared_line_threshold",
+    "excluded"
+  ],
+  "title": "WP-19 coverage summary",
+  "type": "object"
+}

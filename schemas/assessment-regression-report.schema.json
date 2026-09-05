@@ -1,0 +1,191 @@
+{
+  "$id": "https://pgx-platform.invalid/schemas/assessment-regression-report.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "The deterministic legacy-versus-V2 assessment comparison. The counts of approved comparable real cases, real V2 assessments and real persisted findings are reported rather than pinned to zero: they are the real state being described, and a schema that fixed them would make the tool refuse its own honest output the day any of them changes. What guarantees they are zero today is the repository, and what guarantees a change cannot pass unnoticed is the allowlist. additionalProperties is false throughout, which is where the boundary is actually enforced: a dose, a recommendation, a preferred or safer flag, a suitability score, a ranking, a treatment or a rendered sentence cannot be attached to any of these documents by anything downstream, because the schema refuses every property it does not name. WP-14 calculates structured facts; WP-15 renders them.",
+  "properties": {
+    "approved_comparable_real_cases": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "case_count": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "cases": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "case_id": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "expected_difference_id": {
+            "anyOf": [
+              {
+                "type": "null"
+              },
+              {
+                "minLength": 1,
+                "type": "string"
+              }
+            ]
+          },
+          "legacy_rendered_as_reassuring": {
+            "type": "boolean"
+          },
+          "legacy_value": {
+            "type": "string"
+          },
+          "source": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "subject": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "v2_attention": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "v2_coverage_is_full": {
+            "type": "boolean"
+          },
+          "v2_emits_low": {
+            "type": "boolean"
+          },
+          "v2_emits_no_active_attention": {
+            "type": "boolean"
+          },
+          "v2_explanation": {
+            "minLength": 20,
+            "type": "string"
+          }
+        },
+        "required": [
+          "case_id",
+          "expected_difference_id",
+          "legacy_rendered_as_reassuring",
+          "legacy_value",
+          "source",
+          "subject",
+          "v2_attention",
+          "v2_coverage_is_full",
+          "v2_emits_low",
+          "v2_emits_no_active_attention",
+          "v2_explanation"
+        ],
+        "type": "object"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "content_hash": {
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "expected_difference_hits": {
+      "type": "object"
+    },
+    "expected_differences": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "comparison_selector": {
+            "type": "object"
+          },
+          "difference_id": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "expected_v2_attention": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "expected_v2_coverage": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "legacy_bug_id": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "observed_legacy_behavior": {
+            "minLength": 40,
+            "type": "string"
+          },
+          "reference": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "required_v2_behavior": {
+            "minLength": 40,
+            "type": "string"
+          },
+          "safety_rationale": {
+            "minLength": 40,
+            "type": "string"
+          }
+        },
+        "required": [
+          "comparison_selector",
+          "difference_id",
+          "expected_v2_attention",
+          "expected_v2_coverage",
+          "legacy_bug_id",
+          "observed_legacy_behavior",
+          "reference",
+          "required_v2_behavior",
+          "safety_rationale"
+        ],
+        "type": "object"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "expected_differences_not_observed": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "note": {
+      "minLength": 100,
+      "type": "string"
+    },
+    "real_findings_persisted": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "real_v2_assessments_executed": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "report_schema_version": {
+      "const": "pgx-assessment-regression-report/1"
+    },
+    "unexpected_differences": {
+      "items": {
+        "type": "object"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "approved_comparable_real_cases",
+    "case_count",
+    "cases",
+    "content_hash",
+    "expected_difference_hits",
+    "expected_differences",
+    "expected_differences_not_observed",
+    "note",
+    "real_findings_persisted",
+    "real_v2_assessments_executed",
+    "report_schema_version",
+    "unexpected_differences"
+  ],
+  "title": "PGx assessment regression report",
+  "type": "object"
+}

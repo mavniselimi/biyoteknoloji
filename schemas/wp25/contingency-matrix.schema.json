@@ -1,0 +1,94 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "description": "Fourteen scenarios. ``substitution_permitted`` must be false: no row may substitute a fixture for governed content, a cached number for a computed one, or a rehearsal for a deployment.",
+  "properties": {
+    "contingency_matrix_version": {
+      "const": "pgx-wp25-contingency-matrix/1",
+      "type": "string"
+    },
+    "continuation_permitted_ids": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "continuation_refused_ids": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "note": {
+      "type": "string"
+    },
+    "scenario_count": {
+      "minimum": 14,
+      "type": "integer"
+    },
+    "scenarios": {
+      "items": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "description": "One failure and its response. ``does_not_prove`` is required and non-empty: a contingency matrix without it reads as resilience and is silent about correctness.",
+        "properties": {
+          "continuation_permitted": {
+            "type": "boolean"
+          },
+          "detection": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "does_not_prove": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "owner": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "proves": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "response": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "scenario_id": {
+            "pattern": "^CONT-[0-9]{2}$",
+            "type": "string"
+          },
+          "title": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "scenario_id",
+          "title",
+          "detection",
+          "response",
+          "proves",
+          "does_not_prove",
+          "continuation_permitted",
+          "owner"
+        ],
+        "title": "WP-25 contingency scenario",
+        "type": "object"
+      },
+      "minItems": 14,
+      "type": "array"
+    },
+    "substitution_permitted": {
+      "const": false,
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "contingency_matrix_version",
+    "scenario_count",
+    "scenarios",
+    "substitution_permitted"
+  ],
+  "title": "WP-25 contingency matrix",
+  "type": "object"
+}

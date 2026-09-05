@@ -1,0 +1,89 @@
+{
+  "$id": "https://pgx.local/schemas/wp16/gate-status.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "description": "What this deployment can actually do, reported as separate answers. Implementation, dependency availability, ASGI runtime status, PostgreSQL status, OpenAPI verification, the claim boundary, authentication, the active release and the real-record counts are nine different questions and are never collapsed into one boolean.",
+  "properties": {
+    "asgi_runtime_test_status": {
+      "enum": [
+        "VERIFIED",
+        "BLOCKED",
+        "VERIFICATION_FAILED",
+        "STALE_EVIDENCE_REJECTED"
+      ]
+    },
+    "asgi_runtime_tests_executed": {
+      "type": "boolean"
+    },
+    "gate_status_schema_version": {
+      "const": "pgx-wp16-gate-status/1"
+    },
+    "implementation_status": {
+      "enum": [
+        "IMPLEMENTED",
+        "PARTIAL",
+        "NOT_STARTED"
+      ]
+    },
+    "may_serve_real_traffic": {
+      "type": "boolean"
+    },
+    "real_api_assessment_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "real_assessment_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "real_report_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "runtime_verification_evidence": {
+      "description": "A summary of the recorded run: schema version, whether it passed, when, the stack it ran on, and each check with its result. Null when no evidence exists.",
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "runtime_verification_evidence_path": {
+      "type": "string"
+    },
+    "runtime_verification_reason": {
+      "type": "string"
+    },
+    "synthetic_fixture_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "work_package": {
+      "const": "WP-16"
+    },
+    "wp17_started": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "gate_status_schema_version",
+    "work_package",
+    "implementation_status",
+    "api_dependencies_available",
+    "asgi_runtime_tests_executed",
+    "postgresql_runtime_available",
+    "openapi",
+    "claim_boundary_approved",
+    "authentication_implemented",
+    "asgi_runtime_test_status",
+    "runtime_verification_reason",
+    "active_release_available",
+    "real_assessment_count",
+    "real_api_assessment_count",
+    "real_report_count",
+    "synthetic_fixture_count",
+    "wp17_started",
+    "blockers",
+    "may_serve_real_traffic"
+  ],
+  "title": "WP-16 API gate status",
+  "type": "object"
+}

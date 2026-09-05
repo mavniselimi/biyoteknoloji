@@ -1,0 +1,176 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pgx-platform.invalid/schemas/inter-curator-exercise.schema.json",
+  "title": "PGx inter-curator exercise packet",
+  "description": "A deterministic set of cases put independently to two named scientists (WP-09). The packet carries no expected answers, and the legacy project's previous conclusion is blinded until after a response is recorded. Status stays AWAITING_HUMAN_CURATORS until two people complete it; nothing in this repository can move it.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "exercise_version",
+    "exercise_id",
+    "evidence_build_key",
+    "evidence_build_content_hash",
+    "cases",
+    "status",
+    "case_count",
+    "content_hash",
+    "note"
+  ],
+  "properties": {
+    "exercise_version": {
+      "const": "pgx-inter-curator-exercise/1"
+    },
+    "exercise_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "evidence_build_key": {
+      "type": "string",
+      "minLength": 1
+    },
+    "evidence_build_content_hash": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "content_hash": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "case_count": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "status": {
+      "enum": [
+        "AWAITING_HUMAN_CURATORS",
+        "IN_PROGRESS",
+        "COMPLETED"
+      ],
+      "description": "COMPLETED requires two named curators. It is not settable by tooling."
+    },
+    "note": {
+      "type": "string",
+      "minLength": 1
+    },
+    "unmatched_selectors": {
+      "type": "array",
+      "description": "Situations the protocol wants covered that this evidence build does not contain. Recorded rather than omitted, because a silently missing situation would make the packet look more representative than it is.",
+      "items": {
+        "type": "object",
+        "required": [
+          "selector",
+          "reason",
+          "note"
+        ]
+      }
+    },
+    "cases": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "case_id",
+          "selector",
+          "selector_reason",
+          "case_role",
+          "evidence_record_uuids",
+          "legacy_hint_blinded"
+        ],
+        "properties": {
+          "case_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "selector": {
+            "type": "string",
+            "minLength": 1
+          },
+          "selector_reason": {
+            "type": "string",
+            "minLength": 1
+          },
+          "case_role": {
+            "const": "INTER_CURATOR_EXERCISE",
+            "description": "One case holds exactly one role (SAFETY-INV-009)."
+          },
+          "evidence_record_uuids": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string"
+            }
+          },
+          "natural_keys": {
+            "type": "array",
+            "items": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "gene_canonical_keys": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "drug_canonical_keys": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "record_types": {
+            "type": "array",
+            "items": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "source_version_statuses": {
+            "type": "array",
+            "items": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "origin_statuses": {
+            "type": "array",
+            "items": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "publication_identities": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "locator_count": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "linked_legacy_proposal_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "legacy_hint_blinded": {
+            "const": true,
+            "description": "A curator who has seen the legacy answer is no longer forming an independent view."
+          }
+        }
+      }
+    }
+  }
+}

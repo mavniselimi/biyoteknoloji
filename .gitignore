@@ -1,0 +1,66 @@
+# WP-01 minimal ignore set.
+# Deliberately does NOT ignore legacy evidence that the baseline depends on:
+#   clinpgx_outputs/, clinpgx_outputs_v2/, clinpgx_mvp_seed/, final_report/,
+#   *.bak legacy files, docs/, data/legacy-baseline/, tests/regression/, scripts/
+
+# OS noise
+.DS_Store
+
+# Python bytecode / caches
+__pycache__/
+*.py[cod]
+
+# Secrets - never commit
+.env
+.env.*
+!.env.example
+
+# Transient scratch produced by regression runs (never a baseline artifact)
+.tmp/
+.cache/
+tmp/
+*.tmp
+.pytest_cache/
+
+# Rendered DDL and other generated evidence. The migration is authoritative and
+# these are derived from it, so they are regenerated rather than committed.
+build/
+
+# WP-24 deployment material. Mounted at deploy time, never committed.
+# The READMEs stay: they are how somebody learns what to create and why there
+# are no working examples.
+deploy/secrets/*
+!deploy/secrets/README.md
+deploy/tls/*
+!deploy/tls/README.md
+
+# WP-24 generated evidence. Environment-specific observations belong to the
+# run that produced them; the committed artifacts under data/deployment/ are
+# the ones that describe this repository rather than one host.
+.deploy-out/
+
+# ---------------------------------------------------------------------------
+# WP-C00 baseline freeze (Execution Wave 1). Three classes were reaching the
+# prospective tracked set and none of them belongs in project history.
+#
+# Nothing here is deleted. Every path below stays on disk exactly as it is;
+# these rules only keep them out of Git.
+# ---------------------------------------------------------------------------
+
+# Delivery archives and superseded snapshots. 344 files, ~34 MB, mostly
+# .tar.gz sync bundles from earlier work packages. They are a staging area,
+# not a baseline: committing them would put every intermediate delivery of the
+# project into the first commit of its history.
+_to_delete/
+data/_to_delete/
+
+# Generated documents. `output/` currently holds a rendered assessment PDF
+# that is derived from repository content, so the repository already contains
+# its inputs. A generated PDF in an initial commit is the kind of artifact
+# nobody removes afterwards.
+output/
+
+# Editor and OS metadata that the existing rules miss at nested depths.
+.idea/
+.vscode/
+*.swp

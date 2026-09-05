@@ -1,0 +1,84 @@
+{
+  "$id": "https://pgx.local/schemas/wp24/performance-targets.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "description": "Declared before any measurement exists. A target chosen after the numbers is not a target, it is a description.",
+  "properties": {
+    "declared_before_measurement": {
+      "const": true
+    },
+    "not_a_clinical_claim": {
+      "minLength": 40,
+      "type": "string"
+    },
+    "percentile_definition": {
+      "minLength": 40,
+      "type": "string"
+    },
+    "performance_target_registry_version": {
+      "const": "pgx-wp24-performance-targets/1"
+    },
+    "required_attempts": {
+      "const": 1000
+    },
+    "targets": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "comparator": {
+            "enum": [
+              "<=",
+              ">=",
+              "=="
+            ],
+            "type": "string"
+          },
+          "metric": {
+            "type": "string"
+          },
+          "rationale": {
+            "minLength": 40,
+            "type": "string"
+          },
+          "target_id": {
+            "type": "string"
+          },
+          "unit": {
+            "type": "string"
+          },
+          "value": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "target_id",
+          "metric",
+          "comparator",
+          "value",
+          "unit",
+          "rationale"
+        ],
+        "type": "object"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "warmup_attempts": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "zero_denominator_behaviour": {
+      "minLength": 40,
+      "type": "string"
+    }
+  },
+  "required": [
+    "performance_target_registry_version",
+    "declared_before_measurement",
+    "required_attempts",
+    "percentile_definition",
+    "zero_denominator_behaviour",
+    "targets"
+  ],
+  "title": "PGx performance target registry (WP-24)",
+  "type": "object"
+}

@@ -1,0 +1,219 @@
+{
+  "$id": "https://pgx.local/schemas/wp22/wp22-gate-status.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "expert_review_gate_status": {
+            "const": "PASS"
+          }
+        },
+        "required": [
+          "expert_review_gate_status"
+        ]
+      },
+      "then": {
+        "properties": {
+          "active_release_available": {
+            "const": true
+          },
+          "completed_review_count": {
+            "minimum": 1,
+            "type": "integer"
+          },
+          "expert_holdout_case_count": {
+            "minimum": 1,
+            "type": "integer"
+          },
+          "named_reviewer_count": {
+            "minimum": 1,
+            "type": "integer"
+          },
+          "production_authentication_available": {
+            "const": true
+          },
+          "protocol_approved": {
+            "const": true
+          },
+          "restricted_storage_configured": {
+            "const": true
+          }
+        }
+      }
+    }
+  ],
+  "description": "Two separate answers: the review machinery is implemented, and no expert has reviewed anything. The if/then below makes PASS demand every precondition at once.",
+  "properties": {
+    "active_release_available": {
+      "type": "boolean"
+    },
+    "assigned_review_count": {
+      "anyOf": [
+        {
+          "minimum": 0,
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "authentication_boundary_note": {
+      "minLength": 20,
+      "type": "string"
+    },
+    "blockers": {
+      "items": {
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "blocking_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "claim_boundary_approved": {
+      "type": "boolean"
+    },
+    "clinical_validation_performed": {
+      "const": false
+    },
+    "completed_review_count": {
+      "anyOf": [
+        {
+          "minimum": 0,
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "development_case_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "expert_holdout_case_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "expert_review_gate_status": {
+      "enum": [
+        "PASS",
+        "BLOCKED",
+        "FAILED"
+      ],
+      "type": "string"
+    },
+    "expert_review_module_implemented": {
+      "type": "boolean"
+    },
+    "expert_review_performed": {
+      "const": false
+    },
+    "gate_status_schema_version": {
+      "const": "pgx-wp22-gate-status/1"
+    },
+    "implementation_status": {
+      "enum": [
+        "IMPLEMENTED",
+        "NOT_IMPLEMENTED"
+      ],
+      "type": "string"
+    },
+    "missing_signatory_roles": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "module_marker_paths": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "module_marker_present_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "named_reviewer_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "not_clinical_validation": {
+      "minLength": 20,
+      "type": "string"
+    },
+    "production_authentication_available": {
+      "type": "boolean"
+    },
+    "protocol": {
+      "type": "object"
+    },
+    "protocol_approved": {
+      "type": "boolean"
+    },
+    "protocol_documented": {
+      "type": "boolean"
+    },
+    "protocol_signatory_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "protocol_status": {
+      "minLength": 3,
+      "type": "string"
+    },
+    "release_may_proceed": {
+      "type": "boolean"
+    },
+    "required_signatory_roles": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "restricted_storage_configured": {
+      "type": "boolean"
+    },
+    "review_count_source": {
+      "type": "string"
+    },
+    "scientific_validation_performed": {
+      "const": false
+    },
+    "work_package": {
+      "const": "WP-22"
+    }
+  },
+  "required": [
+    "gate_status_schema_version",
+    "work_package",
+    "implementation_status",
+    "expert_review_gate_status",
+    "release_may_proceed",
+    "expert_review_module_implemented",
+    "protocol_documented",
+    "protocol_approved",
+    "protocol_status",
+    "expert_review_performed",
+    "clinical_validation_performed",
+    "scientific_validation_performed",
+    "completed_review_count",
+    "assigned_review_count",
+    "named_reviewer_count",
+    "expert_holdout_case_count",
+    "active_release_available",
+    "restricted_storage_configured",
+    "production_authentication_available",
+    "authentication_boundary_note",
+    "blockers",
+    "blocking_count",
+    "not_clinical_validation"
+  ],
+  "title": "WP-22 gate status",
+  "type": "object"
+}

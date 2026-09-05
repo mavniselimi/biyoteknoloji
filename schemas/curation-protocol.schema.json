@@ -1,0 +1,262 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pgx-platform.invalid/schemas/curation-protocol.schema.json",
+  "title": "PGx scientific curation protocol",
+  "description": "The versioned protocol governing how a human turns evidence records into a reviewed conclusion (WP-09). This document is NOT scientifically approved: every vocabulary and definition in it is DRAFT / AWAITING EXPERT REVIEW until a named scientist records an approval against its content hash. It defines a contract; it does not perform curation, create CuratedInterpretation rows, generate rules, or produce risk, attention or treatment output.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "protocol_version",
+    "status",
+    "vocabulary_version",
+    "vocabulary_status",
+    "field_dictionary_version",
+    "requirements",
+    "roles",
+    "case_rules",
+    "vocabularies",
+    "content_hash",
+    "expert_approved",
+    "note"
+  ],
+  "properties": {
+    "protocol_version": {
+      "const": "pgx-curation-protocol/1"
+    },
+    "vocabulary_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "vocabulary_status": {
+      "const": "DRAFT_AWAITING_EXPERT_REVIEW",
+      "description": "Asserted in the schema, not only in prose. A protocol claiming approved vocabularies would not validate."
+    },
+    "field_dictionary_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "enum": [
+        "DRAFT",
+        "AWAITING_EXPERT_REVIEW",
+        "APPROVED",
+        "REJECTED",
+        "SUPERSEDED"
+      ]
+    },
+    "supersedes": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "generated_at": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Operational only. Excluded from content_hash so two identical protocols hash alike."
+    },
+    "content_hash": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "expert_approved": {
+      "type": "boolean"
+    },
+    "note": {
+      "type": "string",
+      "minLength": 1
+    },
+    "requirements": {
+      "type": "array",
+      "minItems": 1,
+      "description": "Each obligation mapped to where it is implemented, which schema field carries it, which validation code reports its absence, which test proves it, and which checklist line a reviewer reads. A requirement missing any of those is a principle nobody enforces.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "requirement_id",
+          "title",
+          "statement",
+          "implementation",
+          "schema_field",
+          "validation_code",
+          "test_reference",
+          "checklist_item"
+        ],
+        "properties": {
+          "requirement_id": {
+            "type": "string",
+            "pattern": "^CUR-PROT-[0-9]{3}$"
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1
+          },
+          "statement": {
+            "type": "string",
+            "minLength": 1
+          },
+          "implementation": {
+            "type": "string",
+            "minLength": 1
+          },
+          "schema_field": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "validation_code": {
+            "type": "string",
+            "pattern": "^CUR_[A-Z0-9_]+$"
+          },
+          "test_reference": {
+            "type": "string",
+            "minLength": 1
+          },
+          "checklist_item": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "roles": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "role",
+          "responsibility",
+          "may_author_conclusion",
+          "may_review_conclusion",
+          "may_approve_science",
+          "may_adjudicate",
+          "notes"
+        ],
+        "properties": {
+          "role": {
+            "enum": [
+              "PROTOCOL_OWNER",
+              "SCIENTIFIC_CURATOR",
+              "INDEPENDENT_SCIENTIFIC_REVIEWER",
+              "ADJUDICATOR",
+              "DATA_PROVENANCE_STEWARD",
+              "ENGINEERING_OBSERVER"
+            ]
+          },
+          "responsibility": {
+            "type": "string",
+            "minLength": 1
+          },
+          "may_author_conclusion": {
+            "type": "boolean"
+          },
+          "may_review_conclusion": {
+            "type": "boolean"
+          },
+          "may_approve_science": {
+            "type": "boolean",
+            "description": "True only for a scientific role. An engineering or provenance role confirming the pipeline is sound is making a different claim from the science being right."
+          },
+          "may_adjudicate": {
+            "type": "boolean"
+          },
+          "notes": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "case_rules": {
+      "type": "object",
+      "minProperties": 1,
+      "description": "How cases are kept apart. SAFETY-INV-009: once a holdout informs development, the metric measures memory."
+    },
+    "vocabularies": {
+      "type": "object",
+      "minProperties": 1,
+      "description": "Every controlled vocabulary, checked against the code by the validator so a published list cannot drift from the enum it claims to publish."
+    },
+    "approval": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false,
+      "description": "Null means no named scientist has approved this protocol. Null is the checked-in state.",
+      "required": [
+        "protocol_version",
+        "protocol_content_hash",
+        "protocol_owner",
+        "approver",
+        "approval_evidence_reference",
+        "effective_date",
+        "review_due_date"
+      ],
+      "properties": {
+        "protocol_version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "protocol_content_hash": {
+          "type": "string",
+          "pattern": "^sha256:[0-9a-f]{64}$"
+        },
+        "protocol_owner": {
+          "type": "string",
+          "minLength": 1
+        },
+        "approver": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "person",
+            "role",
+            "at",
+            "rationale"
+          ],
+          "properties": {
+            "person": {
+              "type": "string",
+              "minLength": 2
+            },
+            "role": {
+              "enum": [
+                "SCIENTIFIC_CURATOR",
+                "INDEPENDENT_SCIENTIFIC_REVIEWER",
+                "ADJUDICATOR"
+              ],
+              "description": "Only a scientific role may approve. PROTOCOL_OWNER, DATA_PROVENANCE_STEWARD and ENGINEERING_OBSERVER are absent by design."
+            },
+            "at": {
+              "type": "string",
+              "minLength": 1
+            },
+            "rationale": {
+              "type": "string",
+              "minLength": 24
+            }
+          }
+        },
+        "approval_evidence_reference": {
+          "type": "string",
+          "minLength": 1
+        },
+        "effective_date": {
+          "type": "string",
+          "minLength": 1
+        },
+        "review_due_date": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    }
+  }
+}

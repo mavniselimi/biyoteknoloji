@@ -1,0 +1,91 @@
+{
+  "$id": "https://pgx-platform.invalid/schemas/validation-separation-audit.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Whether development and holdout are kept apart, and where they are not. Carries identifiers and issue codes and no content: an audit is read by people who may not read the cases it describes, so one that quoted a duplicated payload in order to explain the duplicate would publish it.",
+  "properties": {
+    "audit_version": {
+      "const": "pgx-wp18-separation-audit/1"
+    },
+    "checked_case_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "checked_rules": {
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "development_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "expert_holdout_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "internal_holdout_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "is_clean": {
+      "type": "boolean"
+    },
+    "issue_codes": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "issue_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "issues": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "case_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "code": {
+            "type": "string"
+          },
+          "detail": {
+            "type": "string"
+          },
+          "meaning": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "code",
+          "case_ids",
+          "meaning",
+          "detail"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "audit_version",
+    "is_clean",
+    "checked_case_count",
+    "development_count",
+    "internal_holdout_count",
+    "expert_holdout_count",
+    "issue_count",
+    "issue_codes",
+    "issues",
+    "checked_rules"
+  ],
+  "title": "WP-18 separation audit",
+  "type": "object"
+}

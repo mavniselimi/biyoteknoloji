@@ -1,0 +1,141 @@
+{
+  "source_drug": "clopidogrel",
+  "profile_id": "P2_cyp2c19_poor",
+  "profile": {
+    "profile_name": "CYP2C19 poor metabolizer profili",
+    "phenotypes": {
+      "CYP2C19": "poor",
+      "CYP2D6": "normal",
+      "CYP2C9": "normal",
+      "CYP3A4": "normal",
+      "CYP1A2": "normal"
+    },
+    "demo_use": "Clopidogrel veya voriconazole gibi CYP2C19 ilişkili ilaçlarda farmakogenetik uyarı göstermek için."
+  },
+  "current_drugs": [
+    "clopidogrel",
+    "voriconazole",
+    "codeine",
+    "warfarin",
+    "amitriptyline"
+  ],
+  "source_result_summary": {
+    "source_drug": "clopidogrel",
+    "overall_risk_level": "high",
+    "overall_risk_label_tr": "Yüksek dikkat",
+    "risk_flag_count": 1,
+    "source_specific_risk_level": "high",
+    "source_specific_risk_label_tr": "Yüksek dikkat",
+    "source_specific_risk_flag_count": 1,
+    "source_findings": [
+      {
+        "gene": "CYP2C19",
+        "user_phenotype": "poor",
+        "risk_level": "high",
+        "effect_direction": "decreased_activation",
+        "risk_meaning": "reduced_response_attention",
+        "plain_language": "CYP2C19 aktivitesi düşük olduğunda clopidogrel aktif metabolite daha az dönüşebilir; bu durum antiplatelet yanıtın azalması açısından dikkat gerektirir."
+      }
+    ],
+    "current_list_overall_risk_level": "high",
+    "current_list_risk_flag_count": 3
+  },
+  "candidate_results": [
+    {
+      "source_drug": "clopidogrel",
+      "candidate_drug": "prasugrel",
+      "reason": "same_therapeutic_context",
+      "evidence_level": "manual_demo",
+      "notes": "P2Y12 inhibitor / antiplatelet context",
+      "candidate_drugs": [
+        "prasugrel",
+        "voriconazole",
+        "codeine",
+        "warfarin",
+        "amitriptyline"
+      ],
+      "mvp_data_status": "unsupported_candidate",
+      "is_supported_in_seed": false,
+      "has_phenotype_rules": false,
+      "max_score_cap": 49,
+      "score": 49,
+      "score_name": "MVP alternatif uygunluk ön skoru",
+      "score_label": "yüksek MVP dikkat veya veri kısıtı / düşük öncelikli aday",
+      "candidate_overall_risk_level": "high",
+      "candidate_overall_risk_label_tr": "Yüksek dikkat",
+      "candidate_risk_flag_count": 2,
+      "candidate_specific_risk_level": "not_evaluable",
+      "candidate_specific_risk_label_tr": "Veri yetersiz / değerlendirilemedi",
+      "candidate_specific_risk_flag_count": 0,
+      "same_gene_attention_count": 0,
+      "same_gene_attention": [],
+      "penalties": [
+        "aday supported_drugs.csv içinde yok",
+        "aday için phenotype_effect_rules.csv içinde gene-drug veri yok"
+      ],
+      "graph_context": {
+        "has_ingredient": [
+          "prasugrel"
+        ],
+        "belongs_to_class": [
+          "P2Y12_inhibitor"
+        ],
+        "used_for": [
+          "antiplatelet_therapy"
+        ]
+      },
+      "candidate_specific_findings": [],
+      "rank": 1
+    },
+    {
+      "source_drug": "clopidogrel",
+      "candidate_drug": "ticagrelor",
+      "reason": "same_therapeutic_context",
+      "evidence_level": "manual_demo",
+      "notes": "P2Y12 inhibitor / antiplatelet context",
+      "candidate_drugs": [
+        "ticagrelor",
+        "voriconazole",
+        "codeine",
+        "warfarin",
+        "amitriptyline"
+      ],
+      "mvp_data_status": "unsupported_candidate",
+      "is_supported_in_seed": false,
+      "has_phenotype_rules": false,
+      "max_score_cap": 49,
+      "score": 49,
+      "score_name": "MVP alternatif uygunluk ön skoru",
+      "score_label": "yüksek MVP dikkat veya veri kısıtı / düşük öncelikli aday",
+      "candidate_overall_risk_level": "high",
+      "candidate_overall_risk_label_tr": "Yüksek dikkat",
+      "candidate_risk_flag_count": 2,
+      "candidate_specific_risk_level": "not_evaluable",
+      "candidate_specific_risk_label_tr": "Veri yetersiz / değerlendirilemedi",
+      "candidate_specific_risk_flag_count": 0,
+      "same_gene_attention_count": 0,
+      "same_gene_attention": [],
+      "penalties": [
+        "aday supported_drugs.csv içinde yok",
+        "aday için phenotype_effect_rules.csv içinde gene-drug veri yok"
+      ],
+      "graph_context": {
+        "has_ingredient": [
+          "ticagrelor"
+        ],
+        "belongs_to_class": [
+          "P2Y12_inhibitor"
+        ],
+        "used_for": [
+          "antiplatelet_therapy"
+        ]
+      },
+      "candidate_specific_findings": [],
+      "rank": 2
+    }
+  ],
+  "safety_notice": "Bu bölümde listelenen alternatifler tedavi önerisi değildir. Aday ilaçlar yalnızca aynı terapötik bağlam veya ilaç sınıfı üzerinden farmakogenetik risk açısından ön sıralama yapmak amacıyla gösterilmiştir. Doz, ilaç değişimi veya tedavi kararı yalnızca hekim tarafından klinik tablo, endikasyon, laboratuvar değerleri ve güncel kılavuzlar dikkate alınarak verilmelidir.",
+  "score_name": "MVP alternatif uygunluk ön skoru",
+  "candidate_file": "candidate_alternatives.csv",
+  "graph_file": "drug_graph_edges.csv"
+}

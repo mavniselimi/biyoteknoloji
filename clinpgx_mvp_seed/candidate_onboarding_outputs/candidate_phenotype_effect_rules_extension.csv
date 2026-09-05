@@ -1,0 +1,1 @@
+gene,gene_id,drug,drug_id,phenotype_or_genotype,normalized_phenotype_group,drug_behavior_hint,effect_direction,risk_meaning,demo_risk_level,effect_polarity,phenotype_category,significance,score,evidence_strength,source_container,annotation_id,objCls,evidence_sentence,plain_language_mvp,literature_titles,pmids,dois,years,usable_for_mvp

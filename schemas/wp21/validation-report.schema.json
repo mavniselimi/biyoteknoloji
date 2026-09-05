@@ -1,0 +1,455 @@
+{
+  "$id": "https://pgx.local/schemas/wp21/validation-report.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "benchmark_executed": {
+            "const": true
+          }
+        },
+        "required": [
+          "benchmark_executed"
+        ]
+      },
+      "then": {
+        "properties": {
+          "pinned_release": {
+            "type": "object"
+          },
+          "plan_hash": {
+            "pattern": "^sha256:[0-9a-f]{64}$",
+            "type": "string"
+          }
+        }
+      }
+    }
+  ],
+  "description": "Partition-level aggregates only. No case identifier, observation, expected answer or expert response, and no combined development-plus-holdout figure.",
+  "properties": {
+    "active_release_available": {
+      "type": "boolean"
+    },
+    "benchmark_executed": {
+      "type": "boolean"
+    },
+    "blocker_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "blockers": {
+      "items": {
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "case_manifest_hashes": {
+      "type": "object"
+    },
+    "clinical_validation_performed": {
+      "const": false
+    },
+    "combined_overall_metric": {
+      "type": "null"
+    },
+    "combined_overall_note": {
+      "minLength": 40,
+      "type": "string"
+    },
+    "declared_metric_ids": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "expert_review_performed": {
+      "const": false
+    },
+    "metric_registry_digest": {
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "metric_registry_version": {
+      "const": "pgx-wp21-metric-registry/1"
+    },
+    "not_clinical_validation": {
+      "minLength": 60,
+      "type": "string"
+    },
+    "numeric_validation_metric_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "partitions": {
+      "items": {
+        "additionalProperties": true,
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "section": {
+                  "const": "DEVELOPMENT_REGRESSION"
+                }
+              },
+              "required": [
+                "section"
+              ]
+            },
+            "then": {
+              "properties": {
+                "is_validation_evidence": {
+                  "const": false
+                },
+                "role": {
+                  "const": "DEVELOPMENT"
+                }
+              }
+            }
+          }
+        ],
+        "properties": {
+          "available_metric_count": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "case_count": {
+            "anyOf": [
+              {
+                "minimum": 0,
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "evidence_note": {
+            "type": "string"
+          },
+          "is_validation_evidence": {
+            "type": "boolean"
+          },
+          "metric_count": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "metrics": {
+            "items": {
+              "additionalProperties": true,
+              "allOf": [
+                {
+                  "else": {
+                    "properties": {
+                      "unavailable_reason": {
+                        "minLength": 3,
+                        "type": "string"
+                      },
+                      "value": {
+                        "type": "null"
+                      }
+                    }
+                  },
+                  "if": {
+                    "properties": {
+                      "status": {
+                        "const": "AVAILABLE"
+                      }
+                    },
+                    "required": [
+                      "status"
+                    ]
+                  },
+                  "then": {
+                    "properties": {
+                      "denominator": {
+                        "minimum": 0,
+                        "type": "integer"
+                      },
+                      "unavailable_reason": {
+                        "type": "null"
+                      }
+                    }
+                  }
+                },
+                {
+                  "if": {
+                    "properties": {
+                      "status": {
+                        "const": "NOT_EXECUTED"
+                      }
+                    },
+                    "required": [
+                      "status"
+                    ]
+                  },
+                  "then": {
+                    "properties": {
+                      "denominator": {
+                        "type": "null"
+                      },
+                      "numerator": {
+                        "type": "null"
+                      }
+                    }
+                  }
+                }
+              ],
+              "properties": {
+                "categories": {
+                  "type": "object"
+                },
+                "denominator": {
+                  "anyOf": [
+                    {
+                      "minimum": 0,
+                      "type": "integer"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "detail": {
+                  "type": "string"
+                },
+                "is_validation_evidence": {
+                  "type": "boolean"
+                },
+                "kind": {
+                  "enum": [
+                    "COUNT",
+                    "RATE",
+                    "DISTRIBUTION"
+                  ],
+                  "type": "string"
+                },
+                "metric_id": {
+                  "enum": [
+                    "PGX-VAL-001",
+                    "PGX-VAL-002",
+                    "PGX-VAL-003",
+                    "PGX-VAL-004",
+                    "PGX-VAL-005",
+                    "PGX-VAL-006",
+                    "PGX-VAL-007",
+                    "PGX-VAL-008",
+                    "PGX-VAL-009",
+                    "PGX-VAL-010",
+                    "PGX-VAL-011",
+                    "PGX-VAL-012",
+                    "PGX-VAL-013",
+                    "PGX-VAL-014",
+                    "PGX-VAL-015"
+                  ],
+                  "type": "string"
+                },
+                "numerator": {
+                  "anyOf": [
+                    {
+                      "minimum": 0,
+                      "type": "integer"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "role": {
+                  "enum": [
+                    "DEVELOPMENT",
+                    "INTERNAL_HOLDOUT",
+                    "EXPERT_HOLDOUT"
+                  ],
+                  "type": "string"
+                },
+                "status": {
+                  "enum": [
+                    "AVAILABLE",
+                    "UNAVAILABLE",
+                    "NOT_EXECUTED",
+                    "BLOCKED",
+                    "NOT_APPLICABLE"
+                  ],
+                  "type": "string"
+                },
+                "unavailable_reason": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "value": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                }
+              },
+              "required": [
+                "metric_id",
+                "role",
+                "status",
+                "kind",
+                "numerator",
+                "denominator",
+                "value",
+                "unavailable_reason",
+                "is_validation_evidence"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "observation_count": {
+            "anyOf": [
+              {
+                "minimum": 0,
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "role": {
+            "enum": [
+              "DEVELOPMENT",
+              "INTERNAL_HOLDOUT",
+              "EXPERT_HOLDOUT"
+            ],
+            "type": "string"
+          },
+          "section": {
+            "enum": [
+              "DEVELOPMENT_REGRESSION",
+              "INTERNAL_HOLDOUT",
+              "EXPERT_HOLDOUT"
+            ],
+            "type": "string"
+          },
+          "status_counts": {
+            "type": "object"
+          }
+        },
+        "required": [
+          "section",
+          "role",
+          "is_validation_evidence",
+          "case_count",
+          "observation_count",
+          "metrics"
+        ],
+        "type": "object"
+      },
+      "minItems": 3,
+      "type": "array"
+    },
+    "pinned_release": {
+      "anyOf": [
+        {
+          "type": "object"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "plan_hash": {
+      "anyOf": [
+        {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "plan_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "protocol_version": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "repeat_count": {
+      "anyOf": [
+        {
+          "minimum": 0,
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "report_schema_version": {
+      "const": "pgx-wp21-validation-report/1"
+    },
+    "restricted_case_evidence_artifact": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "run_scientific_digest": {
+      "anyOf": [
+        {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "separation_audit": {
+      "type": "object"
+    },
+    "work_package": {
+      "const": "WP-21"
+    }
+  },
+  "required": [
+    "report_schema_version",
+    "work_package",
+    "benchmark_executed",
+    "active_release_available",
+    "pinned_release",
+    "partitions",
+    "combined_overall_metric",
+    "clinical_validation_performed",
+    "expert_review_performed",
+    "restricted_case_evidence_artifact",
+    "blockers"
+  ],
+  "title": "WP-21 public validation report",
+  "type": "object"
+}

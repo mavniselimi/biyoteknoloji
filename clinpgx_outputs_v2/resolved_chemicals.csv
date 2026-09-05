@@ -1,0 +1,12 @@
+id,name,objCls,types,pediatric,smiles
+PA449053,clopidogrel,Chemical,Prodrug,False,COC(=O)[C@H](C1=CC=CC=C1Cl)N2CCC3=C(C2)C=CS3
+PA448385,amitriptyline,Chemical,Drug,False,CN(C)CCC=C1C2=CC=CC=C2CCC3=CC=CC=C31
+PA10233,voriconazole,Chemical,Drug,False,C[C@@H](C1=NC=NC=C1F)[C@](CN2C=NC=N2)(C3=C(C=C(C=C3)F)F)O
+PA449088,codeine,Chemical,Prodrug,False,CN1CC[C@]23[C@@H]4[C@H]1CC5=C2C(=C(C=C5)OC)O[C@H]3[C@H](C=C4)O
+PA451581,tamoxifen,Chemical,Drug,False,CC/C(=C(\C1=CC=CC=C1)/C2=CC=C(C=C2)OCCN(C)C)/C3=CC=CC=C3
+PA449015,citalopram,Chemical,Drug,False,CN(C)CCCC1(C2=C(CO1)C=C(C=C2)C#N)C3=CC=C(C=C3)F
+PA451333,sertraline,Chemical,Drug,True,CN[C@H]1CC[C@H](C2=CC=CC=C12)C3=CC(=C(C=C3)Cl)Cl
+PA449673,fluoxetine,Chemical,Drug,False,CNCCC(C1=CC=CC=C1)OC2=CC=C(C=C2)C(F)(F)F
+PA450801,paroxetine,Chemical,Drug,False,C1CNC[C@H]([C@@H]1C2=CC=C(C=C2)F)COC3=CC4=C(C=C3)OCO4
+PA451906,warfarin,Chemical,Drug,True,CC(=O)CC(C1=CC=CC=C1)C2=C(OC3=CC=CC=C3C2=O)O
+PA450704,omeprazole,Chemical,Drug,False,CC1=CN=C(C(=C1OC)C)CS(=O)C2=NC3=C(N2)C=C(C=C3)OC

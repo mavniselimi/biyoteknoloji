@@ -1,0 +1,3 @@
+rank,source_drug,candidate_drug,reason,evidence_level,mvp_data_status,score,score_label,candidate_overall_risk_level,candidate_risk_flag_count,candidate_specific_risk_level,same_gene_attention_count,notes
+1,clopidogrel,prasugrel,same_therapeutic_context,manual_demo,insufficient_pgx_rule_data,59,veri sınırlı / yorum dikkatli yapılmalı,high,2,unknown,0,P2Y12 inhibitor / antiplatelet context
+2,clopidogrel,ticagrelor,same_therapeutic_context,manual_demo,insufficient_pgx_rule_data,59,veri sınırlı / yorum dikkatli yapılmalı,high,2,unknown,0,P2Y12 inhibitor / antiplatelet context

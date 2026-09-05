@@ -1,0 +1,226 @@
+{
+  "$id": "https://pgx.local/schemas/wp20/safety-execution-result.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "description": "One run of the safety gate. `complete` is required: a document that omitted it could not be told from a finished run, and an interrupted build must never leave a passing artifact behind.",
+  "properties": {
+    "complete": {
+      "type": "boolean"
+    },
+    "environment": {
+      "type": "object"
+    },
+    "inputs": {
+      "additionalProperties": {
+        "type": "string"
+      },
+      "type": "object"
+    },
+    "invalidated": {
+      "type": "boolean"
+    },
+    "invalidation_reason": {
+      "type": "string"
+    },
+    "invariants": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "all_controls_satisfied": {
+            "type": "boolean"
+          },
+          "blockers": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "code": {
+                  "pattern": "^SAFETY_[A-Z0-9_]+$",
+                  "type": "string"
+                },
+                "detail": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "owner": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "code",
+                "owner",
+                "detail"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "compliance_state": {
+            "enum": [
+              "COMPLIANT",
+              "VIOLATED",
+              "NOT_PRESENT",
+              "DEFERRED_TO_LATER_WP",
+              "UNKNOWN"
+            ]
+          },
+          "control_count": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "controls": {
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "control_id": {
+                  "pattern": "^(NC|SC)-.+$",
+                  "type": "string"
+                },
+                "detail": {
+                  "type": "string"
+                },
+                "detected": {
+                  "type": [
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "expected_refusal_code": {
+                  "type": "string"
+                },
+                "kind": {
+                  "enum": [
+                    "SAFE",
+                    "NEGATIVE"
+                  ]
+                },
+                "observed_refusal_code": {
+                  "type": "string"
+                },
+                "satisfied": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "control_id",
+                "kind",
+                "detected",
+                "satisfied",
+                "expected_refusal_code",
+                "observed_refusal_code",
+                "detail"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "detected_negative_controls": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "execution_state": {
+            "enum": [
+              "PASS",
+              "FAIL",
+              "ERROR",
+              "BLOCKED",
+              "NOT_EXECUTED",
+              "STALE"
+            ]
+          },
+          "invariant_id": {
+            "pattern": "^SAFETY-INV-0(0[1-9]|1[0-2])$",
+            "type": "string"
+          },
+          "negative_control_count": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "reason": {
+            "type": "string"
+          },
+          "refusal_code": {
+            "type": "string"
+          },
+          "registered": {
+            "type": "boolean"
+          },
+          "severity": {
+            "enum": [
+              "CRITICAL_PATIENT_FACING",
+              "CRITICAL_EVIDENTIAL",
+              "CRITICAL_SCOPE"
+            ]
+          },
+          "tests": {
+            "additionalProperties": false,
+            "properties": {
+              "errored": {
+                "minimum": 0,
+                "type": "integer"
+              },
+              "executed": {
+                "minimum": 0,
+                "type": "integer"
+              },
+              "failed": {
+                "minimum": 0,
+                "type": "integer"
+              },
+              "passed": {
+                "minimum": 0,
+                "type": "integer"
+              },
+              "skipped": {
+                "minimum": 0,
+                "type": "integer"
+              },
+              "unexplained_skips": {
+                "minimum": 0,
+                "type": "integer"
+              }
+            },
+            "required": [
+              "executed",
+              "passed",
+              "failed",
+              "errored",
+              "skipped",
+              "unexplained_skips"
+            ],
+            "type": "object"
+          }
+        },
+        "required": [
+          "invariant_id",
+          "registered",
+          "execution_state",
+          "compliance_state",
+          "severity",
+          "tests",
+          "controls",
+          "control_count",
+          "negative_control_count",
+          "detected_negative_controls",
+          "all_controls_satisfied",
+          "blockers",
+          "refusal_code",
+          "reason"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "note": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "complete",
+    "invariants",
+    "inputs",
+    "environment"
+  ],
+  "title": "WP-20 safety execution result",
+  "type": "object"
+}

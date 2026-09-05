@@ -1,0 +1,51 @@
+{
+  "declared_before_measurement": true,
+  "not_a_clinical_claim": "These are engineering and prototype targets for a demonstration deployment. They are not clinical performance claims, not a service level, and not evidence that any assessment is correct.",
+  "percentile_definition": "Nearest-rank on the sorted sample of COMPLETED observations: index = ceil(p/100 * n), clamped to [1, n]. Failed attempts are counted in error_rate and excluded from latency, because a request that errored in 2 ms is not evidence of speed.",
+  "performance_target_registry_version": "pgx-wp24-performance-targets/1",
+  "required_attempts": 1000,
+  "targets": [
+    {
+      "comparator": "<=",
+      "metric": "latency_p50_ms",
+      "rationale": "A demonstration is conducted by a person clicking through cases. Median latency above a quarter of a second is felt as lag, and the assessment is a deterministic rule evaluation with no model call, so there is nothing that should take longer.",
+      "target_id": "PERF-001",
+      "unit": "milliseconds",
+      "value": 250.0
+    },
+    {
+      "comparator": "<=",
+      "metric": "latency_p95_ms",
+      "rationale": "The tail is what a demonstration trips over. One second bounds the worst case a reviewer is likely to hit in a session; a slower tail usually means a connection-pool wait rather than computation.",
+      "target_id": "PERF-002",
+      "unit": "milliseconds",
+      "value": 1000.0
+    },
+    {
+      "comparator": ">=",
+      "metric": "throughput_rps",
+      "rationale": "A prototype target for a single container with the CPU and memory limits recorded beside the result. It is not a capacity claim and does not extrapolate to any other configuration.",
+      "target_id": "PERF-003",
+      "unit": "requests per second",
+      "value": 20.0
+    },
+    {
+      "comparator": "<=",
+      "metric": "error_rate",
+      "rationale": "One failure in a thousand deterministic evaluations of committed inputs is already one too many: a deterministic engine given permitted input has no legitimate reason to fail, so any error here is a defect rather than a load characteristic.",
+      "target_id": "PERF-004",
+      "unit": "fraction of attempts",
+      "value": 0.001
+    },
+    {
+      "comparator": "==",
+      "metric": "output_determinism",
+      "rationale": "Every repeat of an identical input against the same release must produce a byte-identical result. This is separate from latency on purpose - latency varies legitimately, output does not, and a report that mixed them could hide a nondeterministic result inside a spread of timings.",
+      "target_id": "PERF-005",
+      "unit": "fraction of repeats",
+      "value": 1.0
+    }
+  ],
+  "warmup_attempts": 50,
+  "zero_denominator_behaviour": "With no completed observation every percentile and the throughput are null. Never zero: zero milliseconds reads as instantaneous and zero requests per second reads as measured."
+}

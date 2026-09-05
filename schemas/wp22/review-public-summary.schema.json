@@ -1,0 +1,127 @@
+{
+  "$id": "https://pgx.local/schemas/wp22/review-public-summary.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "completed_review_count": {
+            "const": 0
+          }
+        },
+        "required": [
+          "completed_review_count"
+        ]
+      },
+      "then": {
+        "properties": {
+          "agreement_distribution": {
+            "type": "null"
+          },
+          "likert_summaries": {
+            "type": "null"
+          },
+          "reviewer_count": {
+            "const": 0
+          }
+        }
+      }
+    }
+  ],
+  "description": "The aggregate that may be shown outside the review system. Zero completed reviews forces every summary to null: a distribution over an empty set is not a distribution, and a percentage over nobody is a claim about nobody.",
+  "properties": {
+    "agreement_distribution": {
+      "anyOf": [
+        {
+          "type": "object"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "clinical_validation_performed": {
+      "const": false
+    },
+    "completed_review_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "expert_holdout_case_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "expert_review_performed": {
+      "const": false
+    },
+    "free_text_included": {
+      "const": false
+    },
+    "generated_note": {
+      "minLength": 20,
+      "type": "string"
+    },
+    "invalidated_review_count": {
+      "anyOf": [
+        {
+          "minimum": 0,
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "likert_summaries": {
+      "anyOf": [
+        {
+          "type": "object"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "not_clinical_validation": {
+      "minLength": 20,
+      "type": "string"
+    },
+    "protocol_approved": {
+      "type": "boolean"
+    },
+    "protocol_version": {
+      "const": "pgx-wp22-expert-protocol/1"
+    },
+    "reviewer_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "reviewer_identities_included": {
+      "const": false
+    },
+    "schema_version": {
+      "minLength": 3,
+      "type": "string"
+    },
+    "scientific_validation_performed": {
+      "const": false
+    }
+  },
+  "required": [
+    "schema_version",
+    "protocol_version",
+    "generated_note",
+    "completed_review_count",
+    "reviewer_count",
+    "expert_holdout_case_count",
+    "agreement_distribution",
+    "likert_summaries",
+    "expert_review_performed",
+    "clinical_validation_performed",
+    "scientific_validation_performed",
+    "not_clinical_validation"
+  ],
+  "title": "WP-22 public review summary",
+  "type": "object"
+}

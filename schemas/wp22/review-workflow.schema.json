@@ -1,0 +1,156 @@
+{
+  "$id": "https://pgx.local/schemas/wp22/review-workflow.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "description": "States, permitted transitions, refusal codes and the ordering the protocol depends on. Published so the order is auditable without reading the implementation.",
+  "properties": {
+    "audit_actions": {
+      "items": {
+        "enum": [
+          "REVIEW_ASSIGNED",
+          "REVIEW_EXPECTATION_RECORDED",
+          "REVIEW_RESULT_REVEALED",
+          "REVIEW_COMPLETED",
+          "REVIEW_INVALIDATED",
+          "REVIEW_CORRECTION_APPENDED",
+          "REVIEW_PERMIT_ISSUED",
+          "REVIEW_PERMIT_REFUSED"
+        ],
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "correction_kinds": {
+      "items": {
+        "enum": [
+          "TYPOGRAPHIC",
+          "RATIONALE_AMENDED",
+          "EXPECTATION_AMENDED",
+          "DECISION_ANNOTATED",
+          "RATING_ANNOTATED",
+          "WITHDRAWN_BY_REVIEWER"
+        ],
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "decisions": {
+      "items": {
+        "enum": [
+          "AGREE",
+          "PARTIAL",
+          "DISAGREE"
+        ],
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "error_code_count": {
+      "minimum": 18,
+      "type": "integer"
+    },
+    "error_codes": {
+      "type": "object"
+    },
+    "invalidation_reasons": {
+      "items": {
+        "enum": [
+          "RELEASE_CHANGED",
+          "CASE_MANIFEST_CHANGED",
+          "PROTOCOL_APPROVAL_WITHDRAWN",
+          "BLINDING_COMPROMISED",
+          "REVIEWER_CONFLICT_DECLARED",
+          "ASSIGNMENT_SUPERSEDED"
+        ],
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "likert_dimensions": {
+      "items": {
+        "enum": [
+          "CLARITY",
+          "TRACEABILITY",
+          "CLINICAL_USEFULNESS",
+          "SAFETY_FRAMING"
+        ],
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "likert_maximum": {
+      "const": 5
+    },
+    "likert_minimum": {
+      "const": 1
+    },
+    "ordering_note": {
+      "minLength": 20,
+      "type": "string"
+    },
+    "rationale_codes": {
+      "items": {
+        "enum": [
+          "GUIDELINE_DIRECT",
+          "GUIDELINE_EXTRAPOLATED",
+          "PHENOTYPE_DETERMINATIVE",
+          "INSUFFICIENT_INPUT",
+          "NO_APPLICABLE_RULE",
+          "SOURCE_CONFLICT",
+          "EVIDENCE_INSUFFICIENT",
+          "OUT_OF_SCOPE"
+        ],
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "schema_version": {
+      "minLength": 3,
+      "type": "string"
+    },
+    "states": {
+      "items": {
+        "enum": [
+          "ASSIGNED",
+          "EXPECTATION_RECORDED",
+          "RESULT_REVEALED",
+          "COMPLETED",
+          "INVALIDATED"
+        ],
+        "type": "string"
+      },
+      "minItems": 5,
+      "type": "array"
+    },
+    "terminal_states": {
+      "items": {
+        "enum": [
+          "ASSIGNED",
+          "EXPECTATION_RECORDED",
+          "RESULT_REVEALED",
+          "COMPLETED",
+          "INVALIDATED"
+        ],
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "transitions": {
+      "type": "object"
+    },
+    "vocabulary_version": {
+      "const": "pgx-wp22-expert-review-vocabulary/1"
+    }
+  },
+  "required": [
+    "schema_version",
+    "vocabulary_version",
+    "states",
+    "transitions",
+    "terminal_states",
+    "error_codes",
+    "ordering_note"
+  ],
+  "title": "WP-22 blind review workflow",
+  "type": "object"
+}

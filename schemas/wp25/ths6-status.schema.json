@@ -1,0 +1,249 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "ths6_achieved": {
+            "const": true
+          }
+        },
+        "required": [
+          "ths6_achieved"
+        ]
+      },
+      "then": {
+        "properties": {
+          "demo_preflight_state": {
+            "const": "READY"
+          },
+          "ths6_achievement_conditions": {
+            "properties": {
+              "all_definition_of_done_items_satisfied": {
+                "const": true
+              },
+              "all_gates_pass": {
+                "const": true
+              },
+              "all_signoff_roles_signed": {
+                "const": true
+              },
+              "representative_demonstration_executed": {
+                "const": true
+              }
+            }
+          },
+          "unmet_conditions": {
+            "maxItems": 0,
+            "type": "array"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "release_may_proceed": {
+            "const": true
+          }
+        },
+        "required": [
+          "release_may_proceed"
+        ]
+      },
+      "then": {
+        "properties": {
+          "ths6_achieved": {
+            "const": true
+          }
+        }
+      }
+    }
+  ],
+  "description": "Pack integrity and THS 6 achievement, as separate fields. ``ths6_achieved: true`` requires all four achievement conditions true; ``release_may_proceed: true`` requires ``ths6_achieved`` true. Neither may be derived from pack integrity.",
+  "properties": {
+    "admissible_evidence_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "blocker_owners": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "claim_count": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "contingency_scenario_count": {
+      "minimum": 14,
+      "type": "integer"
+    },
+    "contradicted_claim_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "definition_of_done_declared_count_in_prose": {
+      "type": "integer"
+    },
+    "definition_of_done_enumerated_count": {
+      "const": 15,
+      "type": "integer"
+    },
+    "definition_of_done_satisfied_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "demo_preflight_state": {
+      "enum": [
+        "READY",
+        "BLOCKED"
+      ],
+      "type": "string"
+    },
+    "demo_stopped_at_step_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "evidence_item_count": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "evidence_pack_integrity": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "evidence_pack_integrity_note": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "gate_count": {
+      "minimum": 6,
+      "type": "integer"
+    },
+    "gate_results": {
+      "additionalProperties": {
+        "enum": [
+          "PASS",
+          "BLOCKED",
+          "FAIL",
+          "NOT_EVALUATED",
+          "STALE"
+        ],
+        "type": "string"
+      },
+      "propertyNames": {
+        "pattern": "^GATE-[A-F]$"
+      },
+      "type": "object"
+    },
+    "implementation_note": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "implementation_status": {
+      "enum": [
+        "IMPLEMENTED",
+        "PARTIAL"
+      ],
+      "type": "string"
+    },
+    "not_clinical_validation": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "note": {
+      "type": "string"
+    },
+    "override_available": {
+      "const": false,
+      "type": "boolean"
+    },
+    "passing_gate_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "release_condition_release_validation_permits": {
+      "type": "boolean"
+    },
+    "release_may_proceed": {
+      "type": "boolean"
+    },
+    "signed_signoff_count": {
+      "const": 0,
+      "type": "integer"
+    },
+    "signoff_role_count": {
+      "const": 9,
+      "type": "integer"
+    },
+    "source_artifact_disagreement_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "supported_claim_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "ths6_achieved": {
+      "type": "boolean"
+    },
+    "ths6_achievement_conditions": {
+      "additionalProperties": {
+        "type": "boolean"
+      },
+      "required": [
+        "all_gates_pass",
+        "all_definition_of_done_items_satisfied",
+        "representative_demonstration_executed",
+        "all_signoff_roles_signed"
+      ],
+      "type": "object"
+    },
+    "ths6_status_version": {
+      "const": "pgx-wp25-ths6-status/1",
+      "type": "string"
+    },
+    "total_gate_blocker_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "traceability_has_dangling_reference": {
+      "type": "boolean"
+    },
+    "traceability_row_count": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "unmet_conditions": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "work_package": {
+      "const": "WP-25",
+      "type": "string"
+    }
+  },
+  "required": [
+    "ths6_status_version",
+    "work_package",
+    "implementation_status",
+    "evidence_pack_integrity",
+    "ths6_achieved",
+    "release_may_proceed",
+    "ths6_achievement_conditions",
+    "unmet_conditions",
+    "gate_results",
+    "override_available",
+    "not_clinical_validation"
+  ],
+  "title": "WP-25 THS 6 status",
+  "type": "object"
+}

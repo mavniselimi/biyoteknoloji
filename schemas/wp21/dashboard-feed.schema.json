@@ -1,0 +1,406 @@
+{
+  "$id": "https://pgx.local/schemas/wp21/dashboard-feed.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "description": "The public aggregate feed the validation page reads. The web layer sees this and nothing else.",
+  "properties": {
+    "active_release_available": {
+      "type": "boolean"
+    },
+    "benchmark_executed": {
+      "type": "boolean"
+    },
+    "blocker_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "blockers": {
+      "items": {
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "clinical_validation_performed": {
+      "const": false
+    },
+    "combined_overall_metric": {
+      "type": "null"
+    },
+    "dataset_public_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "expert_review_performed": {
+      "const": false
+    },
+    "feed_schema_version": {
+      "const": "pgx-wp21-dashboard-feed/1"
+    },
+    "metric_registry_digest": {
+      "anyOf": [
+        {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "metric_registry_version": {
+      "const": "pgx-wp21-metric-registry/1"
+    },
+    "numeric_validation_metric_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "plan_hash": {
+      "anyOf": [
+        {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "release_manifest_hash": {
+      "anyOf": [
+        {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "release_public_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "report_digest": {
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "ruleset_public_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "run_scientific_digest": {
+      "anyOf": [
+        {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "sections": {
+      "items": {
+        "additionalProperties": true,
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "is_development_regression": {
+                  "const": true
+                }
+              },
+              "required": [
+                "is_development_regression"
+              ]
+            },
+            "then": {
+              "properties": {
+                "is_validation_evidence": {
+                  "const": false
+                }
+              }
+            }
+          }
+        ],
+        "properties": {
+          "available_metric_count": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "case_count": {
+            "anyOf": [
+              {
+                "minimum": 0,
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "is_development_regression": {
+            "type": "boolean"
+          },
+          "is_validation_evidence": {
+            "type": "boolean"
+          },
+          "metric_count": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "metrics": {
+            "items": {
+              "additionalProperties": true,
+              "allOf": [
+                {
+                  "else": {
+                    "properties": {
+                      "unavailable_reason": {
+                        "minLength": 3,
+                        "type": "string"
+                      },
+                      "value": {
+                        "type": "null"
+                      }
+                    }
+                  },
+                  "if": {
+                    "properties": {
+                      "status": {
+                        "const": "AVAILABLE"
+                      }
+                    },
+                    "required": [
+                      "status"
+                    ]
+                  },
+                  "then": {
+                    "properties": {
+                      "denominator": {
+                        "minimum": 0,
+                        "type": "integer"
+                      },
+                      "unavailable_reason": {
+                        "type": "null"
+                      }
+                    }
+                  }
+                },
+                {
+                  "if": {
+                    "properties": {
+                      "status": {
+                        "const": "NOT_EXECUTED"
+                      }
+                    },
+                    "required": [
+                      "status"
+                    ]
+                  },
+                  "then": {
+                    "properties": {
+                      "denominator": {
+                        "type": "null"
+                      },
+                      "numerator": {
+                        "type": "null"
+                      }
+                    }
+                  }
+                }
+              ],
+              "properties": {
+                "categories": {
+                  "type": "object"
+                },
+                "denominator": {
+                  "anyOf": [
+                    {
+                      "minimum": 0,
+                      "type": "integer"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "detail": {
+                  "type": "string"
+                },
+                "is_validation_evidence": {
+                  "type": "boolean"
+                },
+                "kind": {
+                  "enum": [
+                    "COUNT",
+                    "RATE",
+                    "DISTRIBUTION"
+                  ],
+                  "type": "string"
+                },
+                "metric_id": {
+                  "enum": [
+                    "PGX-VAL-001",
+                    "PGX-VAL-002",
+                    "PGX-VAL-003",
+                    "PGX-VAL-004",
+                    "PGX-VAL-005",
+                    "PGX-VAL-006",
+                    "PGX-VAL-007",
+                    "PGX-VAL-008",
+                    "PGX-VAL-009",
+                    "PGX-VAL-010",
+                    "PGX-VAL-011",
+                    "PGX-VAL-012",
+                    "PGX-VAL-013",
+                    "PGX-VAL-014",
+                    "PGX-VAL-015"
+                  ],
+                  "type": "string"
+                },
+                "numerator": {
+                  "anyOf": [
+                    {
+                      "minimum": 0,
+                      "type": "integer"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "role": {
+                  "enum": [
+                    "DEVELOPMENT",
+                    "INTERNAL_HOLDOUT",
+                    "EXPERT_HOLDOUT"
+                  ],
+                  "type": "string"
+                },
+                "status": {
+                  "enum": [
+                    "AVAILABLE",
+                    "UNAVAILABLE",
+                    "NOT_EXECUTED",
+                    "BLOCKED",
+                    "NOT_APPLICABLE"
+                  ],
+                  "type": "string"
+                },
+                "unavailable_reason": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "value": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                }
+              },
+              "required": [
+                "metric_id",
+                "role",
+                "status",
+                "kind",
+                "numerator",
+                "denominator",
+                "value",
+                "unavailable_reason",
+                "is_validation_evidence"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "observation_count": {
+            "anyOf": [
+              {
+                "minimum": 0,
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "role": {
+            "enum": [
+              "DEVELOPMENT",
+              "INTERNAL_HOLDOUT",
+              "EXPERT_HOLDOUT"
+            ],
+            "type": "string"
+          },
+          "section": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "section",
+          "role",
+          "is_validation_evidence",
+          "is_development_regression",
+          "metrics"
+        ],
+        "type": "object"
+      },
+      "minItems": 3,
+      "type": "array"
+    },
+    "software_version": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "work_package": {
+      "const": "WP-21"
+    }
+  },
+  "required": [
+    "feed_schema_version",
+    "work_package",
+    "benchmark_executed",
+    "active_release_available",
+    "sections",
+    "combined_overall_metric",
+    "clinical_validation_performed",
+    "expert_review_performed"
+  ],
+  "title": "WP-21 dashboard feed",
+  "type": "object"
+}

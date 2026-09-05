@@ -1,0 +1,68 @@
+{
+  "allowlist_schema_version": "pgx-phenotype-regression-allowlist/1",
+  "entries": [
+    {
+      "comparison_selector": {
+        "declared": [
+          "ULTRARAPID"
+        ],
+        "observed": "RAPID",
+        "operator": "EXACT"
+      },
+      "difference_id": "LEGACY-BUG-001-RAPID-TO-ULTRARAPID",
+      "expected_status": "NO_MATCH",
+      "legacy_bug_id": "LEGACY-BUG-001",
+      "observed_legacy_behavior": "a RAPID profile value satisfies a rule group written for ULTRARAPID, because PROFILE_MATCH_GROUPS['rapid'] contains 'ultrarapid'",
+      "reference": "SAFETY-INV-004; architecture.md 9.1",
+      "required_v2_behavior": "NO_MATCH. A rule covering both phenotypes must declare both in a ONE_OF set",
+      "safety_rationale": "implicit equivalence applies a rule outside the evidence it was written from, which is an unreviewed scientific claim"
+    },
+    {
+      "comparison_selector": {
+        "declared": [
+          "RAPID"
+        ],
+        "observed": "ULTRARAPID",
+        "operator": "EXACT"
+      },
+      "difference_id": "LEGACY-BUG-001-ULTRARAPID-TO-RAPID",
+      "expected_status": "NO_MATCH",
+      "legacy_bug_id": "LEGACY-BUG-001",
+      "observed_legacy_behavior": "an ULTRARAPID profile value satisfies a rule group written for RAPID, because PROFILE_MATCH_GROUPS['ultrarapid'] contains 'rapid'",
+      "reference": "SAFETY-INV-004; architecture.md 9.1",
+      "required_v2_behavior": "NO_MATCH. The reverse direction is a separate entry because the legacy table states it separately, and a fix that closed only one direction would satisfy a single-entry allowlist",
+      "safety_rationale": "same defect, opposite direction; both must be closed or a rule still fires for a phenotype nobody reviewed it against"
+    },
+    {
+      "comparison_selector": {
+        "declared": [
+          "NORMAL"
+        ],
+        "observed": "NORMAL",
+        "operator": "EXACT"
+      },
+      "difference_id": "LEGACY-NORMAL-PHENOTYPE-SUPPRESSED",
+      "expected_status": "MATCH",
+      "legacy_bug_id": "LEGACY-BUG-001",
+      "observed_legacy_behavior": "PROFILE_MATCH_GROUPS['normal'] is the empty set, so a NORMAL profile value satisfies no rule at all - including a rule written for NORMAL",
+      "reference": "SAFETY-INV-001; architecture.md 9.1, 9.3",
+      "required_v2_behavior": "MATCH. NORMAL equals NORMAL; whether a matched rule warrants any attention is carried by the rule's own outcome, which may be NO_ACTIVE_ATTENTION, and is decided downstream",
+      "safety_rationale": "the legacy table answers 'should this raise a flag?' inside a function that is asked 'is this the same phenotype?'. Suppressing the match makes an evaluated rule indistinguishable from an axis no rule covered, which is the false-reassurance failure SAFETY-INV-001 exists to prevent. V2 separates the two: equality here, attention in WP-14"
+    },
+    {
+      "comparison_selector": {
+        "expected_normalization_status": "UNSUPPORTED",
+        "observed_raw": "decreased_function"
+      },
+      "difference_id": "LEGACY-BROAD-DECREASED-FUNCTION-GROUPING",
+      "expected_status": "UNSUPPORTED",
+      "legacy_bug_id": "LEGACY-BUG-001",
+      "observed_legacy_behavior": "POOR and INTERMEDIATE both satisfy a rule group written for the invented group 'decreased_function', and a supplied value containing 'decreased' becomes that group",
+      "reference": "architecture.md 9.1; SAFETY-INV-004",
+      "required_v2_behavior": "'decreased_function' is not a phenotype and is not a rule vocabulary member: as an input it is UNSUPPORTED, and no condition can declare it",
+      "safety_rationale": "the P0 phenotype model has six members and this is not one of them; expanding a broad functional group into POOR or INTERMEDIATE invents a mapping no curator made"
+    }
+  ],
+  "entry_count": 4,
+  "policy": "An entry records a difference between legacy and V2 matcher semantics that is intended. The harness fails if an entry's difference stops appearing, if a difference appears that no entry covers, or if the report is not reproducible byte for byte. An allowlist that could absorb a new difference silently would be a way of hiding a regression rather than a record of a decision."
+}

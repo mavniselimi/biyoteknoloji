@@ -1,0 +1,123 @@
+{
+  "clopidogrel": {
+    "objCls": "Chemical",
+    "id": "PA449053",
+    "name": "clopidogrel",
+    "inChi": "InChI=1S/C16H16ClNO2S/c1-20-16(19)15(12-4-2-3-5-13(12)17)18-8-6-14-11(10-18)7-9-21-14/h2-5,7,9,15H,6,8,10H2,1H3/t15-/m0/s1",
+    "pediatric": false,
+    "smiles": "COC(=O)[C@H](C1=CC=CC=C1Cl)N2CCC3=C(C2)C=CS3",
+    "types": [
+      "Prodrug"
+    ]
+  },
+  "amitriptyline": {
+    "objCls": "Chemical",
+    "id": "PA448385",
+    "name": "amitriptyline",
+    "inChi": "InChI=1S/C20H23N/c1-21(2)15-7-12-20-18-10-5-3-8-16(18)13-14-17-9-4-6-11-19(17)20/h3-6,8-12H,7,13-15H2,1-2H3",
+    "pediatric": false,
+    "smiles": "CN(C)CCC=C1C2=CC=CC=C2CCC3=CC=CC=C31",
+    "types": [
+      "Drug"
+    ]
+  },
+  "voriconazole": {
+    "objCls": "Chemical",
+    "id": "PA10233",
+    "name": "voriconazole",
+    "inChi": "InChI=1S/C16H14F3N5O/c1-10(15-14(19)5-20-7-22-15)16(25,6-24-9-21-8-23-24)12-3-2-11(17)4-13(12)18/h2-5,7-10,25H,6H2,1H3/t10-,16+/m0/s1",
+    "pediatric": false,
+    "smiles": "C[C@@H](C1=NC=NC=C1F)[C@](CN2C=NC=N2)(C3=C(C=C(C=C3)F)F)O",
+    "types": [
+      "Drug"
+    ]
+  },
+  "codeine": {
+    "objCls": "Chemical",
+    "id": "PA449088",
+    "name": "codeine",
+    "inChi": "InChI=1S/C18H21NO3/c1-19-8-7-18-11-4-5-13(20)17(18)22-16-14(21-2)6-3-10(15(16)18)9-12(11)19/h3-6,11-13,17,20H,7-9H2,1-2H3/t11-,12+,13-,17-,18-/m0/s1",
+    "pediatric": false,
+    "smiles": "CN1CC[C@]23[C@@H]4[C@H]1CC5=C2C(=C(C=C5)OC)O[C@H]3[C@H](C=C4)O",
+    "types": [
+      "Prodrug"
+    ]
+  },
+  "tamoxifen": {
+    "objCls": "Chemical",
+    "id": "PA451581",
+    "name": "tamoxifen",
+    "inChi": "InChI=1S/C26H29NO/c1-4-25(21-11-7-5-8-12-21)26(22-13-9-6-10-14-22)23-15-17-24(18-16-23)28-20-19-27(2)3/h5-18H,4,19-20H2,1-3H3/b26-25-",
+    "pediatric": false,
+    "smiles": "CC/C(=C(\\C1=CC=CC=C1)/C2=CC=C(C=C2)OCCN(C)C)/C3=CC=CC=C3",
+    "types": [
+      "Drug"
+    ]
+  },
+  "citalopram": {
+    "objCls": "Chemical",
+    "id": "PA449015",
+    "name": "citalopram",
+    "inChi": "InChI=1S/C20H21FN2O/c1-23(2)11-3-10-20(17-5-7-18(21)8-6-17)19-9-4-15(13-22)12-16(19)14-24-20/h4-9,12H,3,10-11,14H2,1-2H3",
+    "pediatric": false,
+    "smiles": "CN(C)CCCC1(C2=C(CO1)C=C(C=C2)C#N)C3=CC=C(C=C3)F",
+    "types": [
+      "Drug"
+    ]
+  },
+  "sertraline": {
+    "objCls": "Chemical",
+    "id": "PA451333",
+    "name": "sertraline",
+    "inChi": "InChI=1S/C17H17Cl2N/c1-20-17-9-7-12(13-4-2-3-5-14(13)17)11-6-8-15(18)16(19)10-11/h2-6,8,10,12,17,20H,7,9H2,1H3/t12-,17-/m0/s1",
+    "pediatric": true,
+    "smiles": "CN[C@H]1CC[C@H](C2=CC=CC=C12)C3=CC(=C(C=C3)Cl)Cl",
+    "types": [
+      "Drug"
+    ]
+  },
+  "fluoxetine": {
+    "objCls": "Chemical",
+    "id": "PA449673",
+    "name": "fluoxetine",
+    "inChi": "InChI=1S/C17H18F3NO/c1-21-12-11-16(13-5-3-2-4-6-13)22-15-9-7-14(8-10-15)17(18,19)20/h2-10,16,21H,11-12H2,1H3",
+    "pediatric": false,
+    "smiles": "CNCCC(C1=CC=CC=C1)OC2=CC=C(C=C2)C(F)(F)F",
+    "types": [
+      "Drug"
+    ]
+  },
+  "paroxetine": {
+    "objCls": "Chemical",
+    "id": "PA450801",
+    "name": "paroxetine",
+    "inChi": "InChI=1S/C19H20FNO3/c20-15-3-1-13(2-4-15)17-7-8-21-10-14(17)11-22-16-5-6-18-19(9-16)24-12-23-18/h1-6,9,14,17,21H,7-8,10-12H2/t14-,17-/m0/s1",
+    "pediatric": false,
+    "smiles": "C1CNC[C@H]([C@@H]1C2=CC=C(C=C2)F)COC3=CC4=C(C=C3)OCO4",
+    "types": [
+      "Drug"
+    ]
+  },
+  "warfarin": {
+    "objCls": "Chemical",
+    "id": "PA451906",
+    "name": "warfarin",
+    "inChi": "InChI=1S/C19H16O4/c1-12(20)11-15(13-7-3-2-4-8-13)17-18(21)14-9-5-6-10-16(14)23-19(17)22/h2-10,15,22H,11H2,1H3",
+    "pediatric": true,
+    "smiles": "CC(=O)CC(C1=CC=CC=C1)C2=C(OC3=CC=CC=C3C2=O)O",
+    "types": [
+      "Drug"
+    ]
+  },
+  "omeprazole": {
+    "objCls": "Chemical",
+    "id": "PA450704",
+    "name": "omeprazole",
+    "inChi": "InChI=1S/C17H19N3O3S/c1-10-8-18-15(11(2)16(10)23-4)9-24(21)17-19-13-6-5-12(22-3)7-14(13)20-17/h5-8H,9H2,1-4H3,(H,19,20)",
+    "pediatric": false,
+    "smiles": "CC1=CN=C(C(=C1OC)C)CS(=O)C2=NC3=C(N2)C=C(C=C3)OC",
+    "types": [
+      "Drug"
+    ]
+  }
+}

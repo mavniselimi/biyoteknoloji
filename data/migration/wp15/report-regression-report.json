@@ -1,0 +1,174 @@
+{
+  "allowlist": {
+    "allowlist_schema_version": "pgx-report-regression-allowlist/1",
+    "difference_count": 5,
+    "differences": [
+      {
+        "difference_id": "REPORT-ABSENCE-NOT-RENDERED-AS-LOW",
+        "legacy_bug_id": "LEGACY-BUG-002",
+        "observed_legacy_behavior": "risk_engine.RISK_LABEL_TR maps the level 'none' to a phrase meaning low with no warning, and render_markdown_report prints it for a drug that is unknown, for a drug no rule matched, and for a drug with nothing to report",
+        "reference": "docs/risk-management/safety-contract.md",
+        "required_v2_behavior": "WP-15 renders those three situations as three different coverage statuses, each with its own machine-readable reason code, beside an attention level of NOT_ASSESSED and a controlled sentence stating that the item was not assessed and that this carries no level and no assurance",
+        "safety_rationale": "SAFETY-INV-001: missing data is not a low result. A reader who sees a reassuring phrase where nothing was evaluated has been told something the system never computed"
+      },
+      {
+        "difference_id": "REPORT-NO-COVERAGE-CONCEPT-IN-LEGACY",
+        "legacy_bug_id": "LEGACY-BUG-002",
+        "observed_legacy_behavior": "the legacy documents contain no coverage status, no coverage reason code and no statement of what was outside scope; a reader cannot tell a complete evaluation from a partial one",
+        "reference": "architecture.md sections 9.2 and 9.3",
+        "required_v2_behavior": "every WP-15 report displays coverage beside attention at every level, with reason codes, an explicit not-assessed block per medication and an uncertainty section",
+        "safety_rationale": "coverage and attention are separate first-class outputs; a document showing one without the other lets absence be read as a result"
+      },
+      {
+        "difference_id": "REPORT-NO-MODEL-IN-THE-CANONICAL-PATH",
+        "legacy_bug_id": "LEGACY-BUG-003",
+        "observed_legacy_behavior": "gemini_report_generator compacts the result into a prompt payload, sends it to an external model and renders the returned text, falling back to a deterministic renderer when it cannot",
+        "reference": "docs/migration/legacy-inventory.md C.5",
+        "required_v2_behavior": "WP-15 implements no provider, imports no SDK, reads no API key and opens no socket; the offline document is the report rather than a fallback",
+        "safety_rationale": "a model restates a not-assessed medication as fluent reassurance, invents a mechanism where a rule carries no effect code, and drops a partial-coverage caveat that reads badly - and none of that is visible in a hash"
+      },
+      {
+        "difference_id": "REPORT-NO-FREE-SCIENTIFIC-PROSE",
+        "legacy_bug_id": "LEGACY-BUG-012",
+        "observed_legacy_behavior": "the legacy renderer prints plain_language, guideline summaries, effect_direction and risk_meaning straight from the seed rows; source summaries in that data carry dosing language",
+        "reference": "docs/risk-management/safety-contract.md",
+        "required_v2_behavior": "WP-15 renders no free scientific text. A finding shows its governed rationale reference and its evidence references; where the ruleset carries no effect or explanation code, a controlled sentence says so",
+        "safety_rationale": "SAFETY-INV-010: text nobody governs is text nobody reviewed, and a dosing sentence copied out of a source summary is a dose recommendation whatever the surrounding layout says"
+      },
+      {
+        "difference_id": "REPORT-NO-SCORE-NO-RANKING",
+        "legacy_bug_id": "LEGACY-BUG-009",
+        "observed_legacy_behavior": "the legacy candidate path computes and prints a 0-100 suitability score beside drug names",
+        "reference": "docs/architecture/intended-purpose.md",
+        "required_v2_behavior": "no WP-15 report carries a score, a rank, a preference, a comparison between medications or a suitability label; the report types have nowhere to put one",
+        "safety_rationale": "SAFETY-INV-005: a number beside a drug name is read as a recommendation however it is captioned"
+      }
+    ],
+    "note": "Each entry is a difference this work package intends. A difference outside this list is a regression, not a decision."
+  },
+  "case_count": 6,
+  "cases": [
+    {
+      "case_id": "GENERATOR-model-call",
+      "expected_difference_id": "REPORT-NO-MODEL-IN-THE-CANONICAL-PATH",
+      "legacy_behaviour_present": true,
+      "legacy_rendered_as_reassuring": false,
+      "legacy_symbols": [
+        "GEMINI_API_KEY",
+        "build_prompt",
+        "call_gemini_api",
+        "render_fallback_report"
+      ],
+      "source": "gemini_report_generator.py",
+      "subject": "external model call",
+      "v2_behaviour": "no provider is implemented; 0 of 8 WP-15 reporting modules import the legacy generator",
+      "v2_modules_importing_the_legacy_generator": []
+    },
+    {
+      "api_call_made": false,
+      "case_id": "GENERATOR-recorded-observation",
+      "expected_difference_id": null,
+      "legacy_behaviour_present": true,
+      "legacy_rendered_as_reassuring": false,
+      "network_used": false,
+      "source": "data/legacy-baseline/snapshots/recorded-report-observation.json",
+      "subject": "recorded legacy report artifacts",
+      "used_api": false,
+      "v2_behaviour": "WP-15 reads this observation as evidence and calls nothing; the recorded artifacts were produced with the key stripped from the environment"
+    },
+    {
+      "case_id": "RENDERER-absence-label",
+      "expected_difference_id": "REPORT-ABSENCE-NOT-RENDERED-AS-LOW",
+      "legacy_behaviour_present": true,
+      "legacy_rendered_as_reassuring": true,
+      "source": "risk_engine.py",
+      "subject": "RISK_LABEL_TR['none']",
+      "v2_behaviour": "NOT_ASSESSED with a coverage status, a reason code and the controlled not-assessed sentence"
+    },
+    {
+      "case_id": "RENDERER-coverage-absent",
+      "expected_difference_id": "REPORT-NO-COVERAGE-CONCEPT-IN-LEGACY",
+      "legacy_behaviour_present": true,
+      "legacy_rendered_as_reassuring": false,
+      "source": "risk_engine.py",
+      "status_loss": "a legacy document cannot be upgraded into a WP-15 report: coverage, reason codes, rule identity, rule content hash, curation revision and evidence references were never computed or recorded by the legacy path",
+      "subject": "coverage",
+      "v2_behaviour": "coverage is displayed beside attention at every level, with reason codes and an explicit not-assessed block"
+    },
+    {
+      "case_id": "RENDERER-free-prose",
+      "expected_difference_id": "REPORT-NO-FREE-SCIENTIFIC-PROSE",
+      "legacy_behaviour_present": true,
+      "legacy_fields": [
+        "effect_direction",
+        "guideline_summaries",
+        "plain_language",
+        "risk_meaning"
+      ],
+      "legacy_rendered_as_reassuring": false,
+      "source": "risk_engine.py",
+      "subject": "free scientific text fields",
+      "v2_behaviour": "governed rationale reference and evidence references only; a controlled sentence where the ruleset carries no effect or explanation code"
+    },
+    {
+      "case_id": "RENDERER-numeric-score",
+      "expected_difference_id": "REPORT-NO-SCORE-NO-RANKING",
+      "legacy_behaviour_present": true,
+      "legacy_rendered_as_reassuring": false,
+      "source": "risk_engine.py",
+      "subject": "risk_score",
+      "v2_behaviour": "no numeric value, no ordering, no preference and no comparison between medications"
+    }
+  ],
+  "content_hash": "sha256:39999b197b692747b590797be8ad88214e287c5b7463faba1a0a0826ef5d6341",
+  "difference_coverage": {
+    "REPORT-ABSENCE-NOT-RENDERED-AS-LOW": 1,
+    "REPORT-NO-COVERAGE-CONCEPT-IN-LEGACY": 1,
+    "REPORT-NO-FREE-SCIENTIFIC-PROSE": 1,
+    "REPORT-NO-MODEL-IN-THE-CANONICAL-PATH": 1,
+    "REPORT-NO-SCORE-NO-RANKING": 1
+  },
+  "live_model_calls": 0,
+  "network_used": false,
+  "not_ported": [
+    {
+      "concept": "risk_label_table",
+      "reason": "the legacy label table maps the absence of a rule to a reassuring phrase; the compaction is the defect (LEGACY-BUG-002)"
+    },
+    {
+      "concept": "numeric_score",
+      "reason": "the legacy candidate path prints a 0-100 suitability score (LEGACY-BUG-009); WP-15 prints no score, no ranking and no preference"
+    },
+    {
+      "concept": "free_prose_fields",
+      "reason": "plain_language, guideline_summaries, effect_direction and risk_meaning are free scientific text no governed rule carries; WP-15 renders the governed rationale reference and evidence references instead"
+    },
+    {
+      "concept": "model_generated_narration",
+      "reason": "the Gemini path sends a compacted payload to a model and renders what comes back (LEGACY-BUG-003, LEGACY-BUG-012); WP-15 calls no model"
+    }
+  ],
+  "note": "A deterministic, offline comparison of the legacy report path with WP-15. No model was called and no key was read. The legacy values recorded here are the evidence that something needed correcting; none of them is described as validated, approved or clinically meaningful.",
+  "ported_layout_concepts": [
+    {
+      "concept": "warning_near_the_top",
+      "description": "the canonical warning is rendered as a block quote before anything else, so a reader meets it before a finding"
+    },
+    {
+      "concept": "section_per_medication",
+      "description": "one section per requested medication, in canonical order"
+    },
+    {
+      "concept": "gene_phenotype_table",
+      "description": "a table of genes and observed phenotypes"
+    },
+    {
+      "concept": "finding_detail_rows",
+      "description": "a labelled row per attribute of a finding rather than a paragraph"
+    }
+  ],
+  "report_version": "pgx-report-regression-report/1",
+  "uncovered_expected_differences": [],
+  "unexpected_difference_count": 0,
+  "unexpected_differences": []
+}

@@ -1,0 +1,56 @@
+# TLS termination for the WP-24 staging topology.
+#
+# The proxy exists so the session cookie's `Secure` attribute is satisfiable.
+# WP-23's SessionPolicy raises if `Secure` or `HttpOnly` is false and refuses
+# SameSite=None, deliberately: a flag that could turn either off is a flag
+# somebody sets while testing and never sets back. The answer to "the cookie
+# will not be sent over plain HTTP" is a terminator, not a flag.
+#
+# `tls` names a mounted certificate and key. There is no `tls internal` here
+# and no automatic issuance: an internal CA is a rehearsal, and a rehearsal
+# must be labelled LOCAL_STAGING_REHEARSAL rather than configured by default
+# into something a document could later call staging TLS.
+
+{
+	admin off
+	# No automatic HTTPS: certificates are supplied, never obtained. A proxy
+	# that reached out to an ACME endpoint would make a deployment depend on
+	# the internet at start-up, which P0 offline capability forbids.
+	auto_https off
+	servers {
+		# The application sees the real scheme and client address through
+		# these, which is what lets it emit a Secure cookie and what makes a
+		# rate-limit origin key mean something.
+		trusted_proxies static private_ranges
+	}
+}
+
+:8443 {
+	tls {$PGX_TLS_CERT} {$PGX_TLS_KEY} {
+		# TLS 1.2 floor. Not 1.0/1.1, which have no remaining use, and not
+		# 1.3-only, which would refuse clients this prototype is demonstrated
+		# on.
+		protocols tls1.2 tls1.3
+	}
+
+	header {
+		Strict-Transport-Security "max-age=31536000; includeSubDomains"
+		X-Content-Type-Options "nosniff"
+		X-Frame-Options "DENY"
+		Referrer-Policy "no-referrer"
+		-Server
+	}
+
+	# Health routes are proxied like everything else. They are not special-
+	# cased to bypass TLS: a health check that used a different path into the
+	# application would be checking a path no user takes.
+	reverse_proxy app:8000 {
+		header_up X-Forwarded-Proto {scheme}
+		header_up X-Forwarded-For {remote_host}
+		# A bounded read so a slow upstream cannot hold a worker open.
+		transport http {
+			dial_timeout 5s
+			response_header_timeout 30s
+		}
+	}
+}

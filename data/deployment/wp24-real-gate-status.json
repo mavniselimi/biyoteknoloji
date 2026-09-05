@@ -1,0 +1,172 @@
+{
+  "argon2_available": false,
+  "backup_operational_status": null,
+  "backup_state": null,
+  "blockers": [
+    {
+      "blocking": true,
+      "code": "DEPLOY_LOCKFILE_ABSENT",
+      "detail": "lockfile: read from the lock result",
+      "owner": "the build environment"
+    },
+    {
+      "blocking": true,
+      "code": "DEPLOY_BUILD_BACKEND_UNAVAILABLE",
+      "detail": "distributions: wheel and sdist double-build comparison",
+      "owner": "the build environment"
+    },
+    {
+      "blocking": true,
+      "code": "DEPLOY_IMAGE_NOT_BUILT",
+      "detail": "image_build: the application image",
+      "owner": "a host with a container runtime"
+    },
+    {
+      "blocking": true,
+      "code": "DEPLOY_IMAGE_NOT_BUILT",
+      "detail": "image_contents: no secret, restricted payload, test fixture or legacy entry point in the built filesystem",
+      "owner": "a host with a container runtime"
+    },
+    {
+      "blocking": true,
+      "code": "DEPLOY_MIGRATION_NOT_EXECUTED",
+      "detail": "migration: alembic upgrade head executed against a real server, at one head",
+      "owner": "an operator"
+    },
+    {
+      "blocking": true,
+      "code": "DEPLOY_STAGING_NOT_DEPLOYED",
+      "detail": "staging_smoke: a deployed system answered liveness and readiness",
+      "owner": "WP-24 operation"
+    },
+    {
+      "blocking": true,
+      "code": "DEPLOY_TLS_NOT_OBSERVED",
+      "detail": "tls_termination: HTTPS terminated at a staging ingress and verified against a chain the client did not generate. A local rehearsal CA does not satisfy this and is not meant to.",
+      "owner": "whoever provisions the staging ingress"
+    },
+    {
+      "blocking": true,
+      "code": "DEPLOY_SAFETY_GATE_BLOCKED",
+      "detail": "safety_gate: WP-20 safety gate: BLOCKED",
+      "owner": "WP-20 and the scientific track"
+    },
+    {
+      "blocking": true,
+      "code": "DEPLOY_NO_HOLDOUT_EVIDENCE",
+      "detail": "holdout_regression: 0 authorized holdout cases exist. Development fixtures may not stand in for them: a regression run against the cases the rules were built from measures nothing.",
+      "owner": "scientific curators"
+    },
+    {
+      "blocking": true,
+      "code": "DEPLOY_EXPERT_REVIEW_NOT_PERFORMED",
+      "detail": "expert_review: blind expert review completed under the approved protocol",
+      "owner": "named expert reviewers"
+    },
+    {
+      "blocking": true,
+      "code": "DEPLOY_CLAIM_BOUNDARY_NOT_APPROVED",
+      "detail": "claim_boundary: claim boundary approved by the named human and scientific reviewers",
+      "owner": "named human and scientific reviewers"
+    },
+    {
+      "blocking": true,
+      "code": "DEPLOY_SAFETY_GATE_BLOCKED",
+      "detail": "security_gate: WP-23 security gate: BLOCKED",
+      "owner": "the deployment"
+    },
+    {
+      "blocking": true,
+      "code": "DEPLOY_VULNERABILITY_SCANNER_UNAVAILABLE",
+      "detail": "vulnerability_scan: a real scanner, at a named version, against a named advisory database",
+      "owner": "the build host"
+    },
+    {
+      "blocking": true,
+      "code": "DEPLOY_SBOM_NOT_GENERATED",
+      "detail": "sbom: a bill of materials from real installed contents",
+      "owner": "the build host"
+    },
+    {
+      "blocking": true,
+      "code": "DEPLOY_RESTORE_NOT_VERIFIED",
+      "detail": "backup_restore: a backup taken to a real destination and a restore satisfying all four runbook conditions",
+      "owner": "WP-24 operation"
+    },
+    {
+      "blocking": true,
+      "code": "DEPLOY_ROLLBACK_NOT_EXERCISED",
+      "detail": "rollback_drill: a rollback performed between two identified images without a database downgrade",
+      "owner": "WP-24 operation"
+    },
+    {
+      "blocking": true,
+      "code": "DEPLOY_PERFORMANCE_NOT_EXECUTED",
+      "detail": "performance: 1,000 assessments against one eligible release",
+      "owner": "WP-24 operation against an eligible release"
+    }
+  ],
+  "ci_action_pins_resolved": false,
+  "ci_executed": null,
+  "ci_workflows_present": [
+    ".github/workflows/build-and-verify.yml",
+    ".github/workflows/release-validation.yml",
+    ".github/workflows/safety-gate.yml"
+  ],
+  "compose_topology_present": true,
+  "container_runtime_available": false,
+  "database_url_configured": false,
+  "deploy_cli_present": true,
+  "deployment_gate_status": "BLOCKED",
+  "deployment_package_present": true,
+  "distribution_build_state": null,
+  "dockerfile_present": true,
+  "dockerignore_present": true,
+  "gate_status_schema_version": "pgx-wp24-gate-status/1",
+  "generated_at": "2026-09-05T11:21:16.126470+00:00",
+  "image_build_state": null,
+  "image_digest": null,
+  "implementation_status": "IMPLEMENTED",
+  "lockfile_present": false,
+  "lockfile_state": null,
+  "migration_executed": false,
+  "migration_state": null,
+  "missing_markers": [],
+  "module_markers_expected": 30,
+  "module_markers_found": 30,
+  "note": "Implemented, configured and executed are three groups and they are allowed to disagree. In this repository the first is complete and the other two are almost entirely absent, which is the finding rather than a formatting choice.",
+  "package_index_reachable": false,
+  "performance_completed": null,
+  "performance_state": null,
+  "release_may_proceed": false,
+  "reliability_executed_count": null,
+  "reliability_state": null,
+  "restore_verified": false,
+  "rollback_state": null,
+  "runtime_composition_implemented": true,
+  "sbom_state": null,
+  "staging_environment_kind": null,
+  "staging_smoke_state": null,
+  "tls_observed": false,
+  "unmet_required_gates": [
+    "lockfile",
+    "distributions",
+    "image_build",
+    "image_contents",
+    "migration",
+    "staging_smoke",
+    "tls_termination",
+    "safety_gate",
+    "holdout_regression",
+    "expert_review",
+    "claim_boundary",
+    "security_gate",
+    "vulnerability_scan",
+    "sbom",
+    "backup_restore",
+    "rollback_drill",
+    "performance"
+  ],
+  "vulnerability_scan_state": null,
+  "work_package": "WP-24"
+}

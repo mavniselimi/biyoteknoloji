@@ -1,0 +1,147 @@
+{
+  "$id": "https://pgx.local/schemas/wp23/backup-restore-status.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "operational_status": {
+            "const": "EXECUTED_VERIFIED"
+          }
+        },
+        "required": [
+          "operational_status"
+        ]
+      },
+      "then": {
+        "properties": {
+          "backup_executed": {
+            "const": true
+          },
+          "restore_executed": {
+            "const": true
+          },
+          "restore_verified": {
+            "const": true
+          }
+        }
+      }
+    }
+  ],
+  "description": "The documented plan and what has actually run. Nothing has: the three execution flags are const false, so a document claiming a verified restore cannot be published without changing this file.",
+  "properties": {
+    "backup_executed": {
+      "const": false
+    },
+    "backup_plan_version": {
+      "const": "pgx-wp23-backup-restore/1"
+    },
+    "backup_procedure_documented": {
+      "type": "boolean"
+    },
+    "encrypted_storage_required": {
+      "type": "boolean"
+    },
+    "operational_status": {
+      "enum": [
+        "NOT_EXECUTED",
+        "BLOCKED",
+        "EXECUTED_UNVERIFIED",
+        "EXECUTED_VERIFIED"
+      ],
+      "type": "string"
+    },
+    "owner_split": {
+      "minLength": 40,
+      "type": "string"
+    },
+    "preflight": {
+      "type": "object"
+    },
+    "restore_executed": {
+      "const": false
+    },
+    "restore_verification_procedure": {
+      "minLength": 40,
+      "type": "string"
+    },
+    "restore_verified": {
+      "const": false
+    },
+    "runbook": {
+      "minLength": 5,
+      "type": "string"
+    },
+    "scope": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "encrypted_at_rest_required": {
+            "type": "boolean"
+          },
+          "item_id": {
+            "minLength": 3,
+            "type": "string"
+          },
+          "kind": {
+            "enum": [
+              "POSTGRESQL",
+              "ARTIFACT",
+              "RESTRICTED"
+            ],
+            "type": "string"
+          },
+          "loss_consequence": {
+            "minLength": 40,
+            "type": "string"
+          },
+          "retention_days": {
+            "minimum": 1,
+            "type": "integer"
+          },
+          "rotation": {
+            "minLength": 3,
+            "type": "string"
+          },
+          "title": {
+            "minLength": 3,
+            "type": "string"
+          }
+        },
+        "required": [
+          "item_id",
+          "title",
+          "kind",
+          "encrypted_at_rest_required",
+          "retention_days",
+          "rotation",
+          "loss_consequence"
+        ],
+        "type": "object"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "scope_item_count": {
+      "minimum": 1,
+      "type": "integer"
+    }
+  },
+  "required": [
+    "backup_plan_version",
+    "backup_procedure_documented",
+    "runbook",
+    "scope_item_count",
+    "scope",
+    "encrypted_storage_required",
+    "backup_executed",
+    "restore_executed",
+    "restore_verified",
+    "operational_status",
+    "owner_split",
+    "restore_verification_procedure"
+  ],
+  "title": "WP-23 backup and restore status",
+  "type": "object"
+}

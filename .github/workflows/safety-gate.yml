@@ -1,0 +1,86 @@
+# WP-20 - the safety-invariant blocking job.
+#
+# This is a safety-only job. It is NOT the build and deploy pipeline: WP-24
+# owns that, and adding steps here would quietly take work that belongs to a
+# later package.
+#
+# What it does, and the reasoning behind each choice:
+#
+#   * It calls `pgx-safety check`, which is the authoritative gate. Nothing in
+#     this file re-implements a safety rule; if the rules and the job could
+#     disagree, one of them would be wrong and nobody would know which.
+#
+#   * It branches on the **exit code**, never on output. Several tests in this
+#     repository print `CONFIGURATION_FAILURE` on purpose while passing, so a
+#     job grepping stdout would fail a green suite. The codes are:
+#         0  PASS
+#         1  FAIL          - an invariant failed, or a mutant was not detected
+#         2  BLOCKED       - blocked, unexecuted, or the evidence is stale
+#         3  usage/registry error
+#     Only 0 continues. `set -e` plus a bare invocation is all that takes,
+#     which is why there is no `if` here to get wrong.
+#
+#   * It runs offline. No package index, no database, no model. The gate is
+#     built to work that way, and a job that needed the network would be
+#     testing the network.
+#
+#   * It uploads the machine-readable report so a failure can be read after the
+#     fact rather than reconstructed from a log.
+#
+# Reported as CONFIGURED, not EXECUTED. This file existing proves somebody
+# wrote a job; it proves nothing about a CI provider having run one, and
+# `data/safety/wp20-real-gate-status.json` keeps `ci_job_executed` false until
+# an actual run is recorded.
+
+name: safety-gate
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  safety:
+    name: WP-20 safety invariants
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      # No `pip install` of third-party packages. pgx/safety is standard
+      # library only by construction, and tests/unit/safety needs nothing else.
+      # A dependency here would mean the gate could not run in the environment
+      # where a release is actually built.
+      - name: Confirm the gate needs nothing installed
+        run: python -c "import pgx.safety; print(pgx.safety.REGISTRY_VERSION)"
+
+      - name: Validate the invariant registry
+        run: python -m pgx.application.safety_cli registry
+
+      - name: Drive every negative control through its evaluator
+        run: python -m pgx.application.safety_cli negative-controls
+
+      # The blocking step. Non-zero on FAIL, BLOCKED, NOT_EXECUTED or STALE.
+      - name: Safety gate
+        run: python -m pgx.application.safety_cli check --format json
+
+      - name: Upload the safety report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: wp20-safety-report
+          path: |
+            data/safety/wp20-safety-report.json
+            data/safety/wp20-safety-execution.json
+            data/safety/wp20-real-gate-status.json
+          if-no-files-found: warn

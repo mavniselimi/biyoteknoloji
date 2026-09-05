@@ -1,0 +1,729 @@
+{
+  "counts_by_result": {
+    "SUPPORTED": 1,
+    "UNSUPPORTED": 20
+  },
+  "dangling": {
+    "missing_paths": [],
+    "unknown_claim_ids": [],
+    "unknown_dod_ids": [],
+    "unknown_evidence_ids": [],
+    "unknown_gate_ids": []
+  },
+  "every_claim_names_required_evidence": true,
+  "gap_owners": [
+    "curation lead",
+    "expert review chair",
+    "expert reviewer",
+    "platform owner",
+    "release approver",
+    "scientific source approver",
+    "security owner",
+    "validation owner"
+  ],
+  "has_dangling_reference": false,
+  "note": "A row is SUPPORTED only when its Definition of Done item is satisfied and every gate it feeds passes.",
+  "p0_dod_014_basis": "satisfied exactly when the matrix resolves with no dangling identifier or path and every claim names required evidence; this is the one Definition of Done item WP-25 can discharge by itself, and discharging it says nothing about the other fourteen",
+  "p0_dod_014_satisfied": true,
+  "row_count": 21,
+  "rows": [
+    {
+      "claim_ids": [
+        "THS6-CLAIM-001"
+      ],
+      "dod_ids": [
+        "P0-DOD-001"
+      ],
+      "evidence_ids": [
+        "EV-WP16-001",
+        "EV-WP16-003",
+        "EV-WP17-001",
+        "EV-WP17-002"
+      ],
+      "gap": "the prototype exists and renders; what it has never rendered is a result computed from an approved dataset and ruleset",
+      "gap_owner": "platform owner",
+      "gate_ids": [
+        "GATE-C"
+      ],
+      "implementation_paths": [
+        "apps/web/main.py",
+        "apps/api/main.py",
+        "pgx/application/assessment_service.py"
+      ],
+      "requirement": "One integrated web prototype runs the representative workflow.",
+      "requirement_source": "architecture.md section 21",
+      "result": "UNSUPPORTED",
+      "row_id": "TRACE-P0-DOD-001",
+      "test_paths": [
+        "tests/unit/web/test_e2e_flow.py",
+        "tests/unit/api/test_assessment_flow.py"
+      ]
+    },
+    {
+      "claim_ids": [
+        "THS6-CLAIM-002"
+      ],
+      "dod_ids": [
+        "P0-DOD-002"
+      ],
+      "evidence_ids": [
+        "EV-WP14-001",
+        "EV-WP14-002",
+        "EV-WP15-003"
+      ],
+      "gap": "determinism is demonstrated over fixtures; 'for the same release' has no referent while no release is active",
+      "gap_owner": "release approver",
+      "gate_ids": [
+        "GATE-C"
+      ],
+      "implementation_paths": [
+        "pgx/engine/",
+        "pgx/application/assessment_snapshot.py"
+      ],
+      "requirement": "Assessment facts are deterministic for the same release and input.",
+      "requirement_source": "architecture.md section 21",
+      "result": "UNSUPPORTED",
+      "row_id": "TRACE-P0-DOD-002",
+      "test_paths": [
+        "tests/unit/reporting/test_determinism.py"
+      ]
+    },
+    {
+      "claim_ids": [
+        "THS6-CLAIM-003"
+      ],
+      "dod_ids": [
+        "P0-DOD-003"
+      ],
+      "evidence_ids": [
+        "EV-WP08-002",
+        "EV-WP15-001",
+        "EV-WP15-005"
+      ],
+      "gap": "no report has been produced, so the property holds vacuously and is recorded as unsatisfied rather than as met",
+      "gap_owner": "curation lead",
+      "gate_ids": [
+        "GATE-C"
+      ],
+      "implementation_paths": [
+        "pgx/reporting/",
+        "pgx/evidence/build.py"
+      ],
+      "requirement": "Every finding has traceable evidence.",
+      "requirement_source": "architecture.md section 21",
+      "result": "UNSUPPORTED",
+      "row_id": "TRACE-P0-DOD-003",
+      "test_paths": [
+        "tests/unit/reporting/test_fact_preservation.py"
+      ]
+    },
+    {
+      "claim_ids": [
+        "THS6-CLAIM-004"
+      ],
+      "dod_ids": [
+        "P0-DOD-004"
+      ],
+      "evidence_ids": [
+        "EV-WP13-002",
+        "EV-WP13-003",
+        "EV-WP20-005"
+      ],
+      "gap": "the invariant is implemented and proven over fixtures; it has never been exercised over governed content because none exists",
+      "gap_owner": "curation lead",
+      "gate_ids": [
+        "GATE-C"
+      ],
+      "implementation_paths": [
+        "pgx/engine/coverage_validator.py",
+        "pgx/safety/"
+      ],
+      "requirement": "Missing data is never shown as low/no risk; coverage is separate.",
+      "requirement_source": "architecture.md section 21",
+      "result": "UNSUPPORTED",
+      "row_id": "TRACE-P0-DOD-004",
+      "test_paths": [
+        "tests/unit/engine/test_coverage_aggregation.py",
+        "tests/unit/safety/test_invariant_001.py"
+      ]
+    },
+    {
+      "claim_ids": [
+        "THS6-CLAIM-005",
+        "THS6-CLAIM-006"
+      ],
+      "dod_ids": [
+        "P0-DOD-005"
+      ],
+      "evidence_ids": [
+        "EV-WP03-003",
+        "EV-WP06-002",
+        "EV-WP11-001",
+        "EV-WP24-003",
+        "EV-WP24-004",
+        "EV-WP24-016"
+      ],
+      "gap": "the registry design is implemented; no dataset is published, no ruleset is frozen, and no rollback has been executed",
+      "gap_owner": "release approver",
+      "gate_ids": [
+        "GATE-A",
+        "GATE-B",
+        "GATE-E"
+      ],
+      "implementation_paths": [
+        "pgx/application/release_service.py",
+        "pgx/deployment/provenance.py",
+        "pgx/deployment/rollback.py"
+      ],
+      "requirement": "Software, dataset, and ruleset are independently versioned and rollback works.",
+      "requirement_source": "architecture.md section 21",
+      "result": "UNSUPPORTED",
+      "row_id": "TRACE-P0-DOD-005",
+      "test_paths": [
+        "tests/unit/deployment/test_container_and_build.py"
+      ]
+    },
+    {
+      "claim_ids": [
+        "THS6-CLAIM-007"
+      ],
+      "dod_ids": [
+        "P0-DOD-006"
+      ],
+      "evidence_ids": [
+        "EV-WP18-001",
+        "EV-WP18-003",
+        "EV-WP21-002"
+      ],
+      "gap": "zero exist; the seven development cases are excluded by contract and must never be counted towards this bullet",
+      "gap_owner": "validation owner",
+      "gate_ids": [
+        "GATE-D"
+      ],
+      "implementation_paths": [
+        "pgx/validation/"
+      ],
+      "requirement": "At least 50 serious validation cases exist, with a preference for 100+.",
+      "requirement_source": "architecture.md section 21",
+      "result": "UNSUPPORTED",
+      "row_id": "TRACE-P0-DOD-006",
+      "test_paths": [
+        "tests/unit/validation/test_cases.py",
+        "tests/unit/validation/test_manifests_and_catalog.py"
+      ]
+    },
+    {
+      "claim_ids": [
+        "THS6-CLAIM-008"
+      ],
+      "dod_ids": [
+        "P0-DOD-007"
+      ],
+      "evidence_ids": [
+        "EV-WP18-002",
+        "EV-WP18-003",
+        "EV-WP18-006"
+      ],
+      "gap": "the separation audit runs and passes over seven development cases, which is a check with nothing to separate them from",
+      "gap_owner": "validation owner",
+      "gate_ids": [
+        "GATE-D"
+      ],
+      "implementation_paths": [
+        "pgx/validation/"
+      ],
+      "requirement": "An independent holdout set was not used for rule development.",
+      "requirement_source": "architecture.md section 21",
+      "result": "UNSUPPORTED",
+      "row_id": "TRACE-P0-DOD-007",
+      "test_paths": [
+        "tests/unit/validation/test_separation.py"
+      ]
+    },
+    {
+      "claim_ids": [
+        "THS6-CLAIM-009"
+      ],
+      "dod_ids": [
+        "P0-DOD-008"
+      ],
+      "evidence_ids": [
+        "EV-WP20-001",
+        "EV-WP20-004",
+        "EV-WP20-007"
+      ],
+      "gap": "twelve invariants execute locally and pass; the workflow file is configured and has never been run by a provider",
+      "gap_owner": "platform owner",
+      "gate_ids": [
+        "GATE-C"
+      ],
+      "implementation_paths": [
+        "pgx/safety/",
+        ".github/workflows/safety-gate.yml"
+      ],
+      "requirement": "All safety invariants pass in CI.",
+      "requirement_source": "architecture.md section 21",
+      "result": "UNSUPPORTED",
+      "row_id": "TRACE-P0-DOD-008",
+      "test_paths": [
+        "tests/unit/safety/test_gate.py"
+      ]
+    },
+    {
+      "claim_ids": [
+        "THS6-CLAIM-010"
+      ],
+      "dod_ids": [
+        "P0-DOD-009"
+      ],
+      "evidence_ids": [
+        "EV-WP22-001",
+        "EV-WP22-002",
+        "EV-WP22-006"
+      ],
+      "gap": "the review machinery is implemented and empty; no protocol signatory and no named reviewer exist",
+      "gap_owner": "expert review chair",
+      "gate_ids": [
+        "GATE-D"
+      ],
+      "implementation_paths": [
+        "pgx/expert_review/"
+      ],
+      "requirement": "Blind-first expert review is completed under the approved protocol.",
+      "requirement_source": "architecture.md section 21",
+      "result": "UNSUPPORTED",
+      "row_id": "TRACE-P0-DOD-009",
+      "test_paths": [
+        "tests/unit/expert_review/test_state_machine.py",
+        "tests/unit/expert_review/test_blinding.py"
+      ]
+    },
+    {
+      "claim_ids": [
+        "THS6-CLAIM-011"
+      ],
+      "dod_ids": [
+        "P0-DOD-010"
+      ],
+      "evidence_ids": [
+        "EV-WP17-001",
+        "EV-WP22-001",
+        "EV-WP22-003"
+      ],
+      "gap": "an eight-step workflow is implemented; nobody has walked it",
+      "gap_owner": "expert review chair",
+      "gate_ids": [
+        "GATE-D"
+      ],
+      "implementation_paths": [
+        "pgx/expert_review/",
+        "apps/web/main.py"
+      ],
+      "requirement": "Experts use the representative workflow, not only static reports.",
+      "requirement_source": "architecture.md section 21",
+      "result": "UNSUPPORTED",
+      "row_id": "TRACE-P0-DOD-010",
+      "test_paths": [
+        "tests/unit/web/test_expert_review_flow.py"
+      ]
+    },
+    {
+      "claim_ids": [
+        "THS6-CLAIM-012"
+      ],
+      "dod_ids": [
+        "P0-DOD-011"
+      ],
+      "evidence_ids": [
+        "EV-WP21-001",
+        "EV-WP21-002",
+        "EV-WP21-003"
+      ],
+      "gap": "fifteen metric definitions exist and no metric has a value; a definition is not a measurement",
+      "gap_owner": "validation owner",
+      "gate_ids": [
+        "GATE-D"
+      ],
+      "implementation_paths": [
+        "pgx/validation/",
+        "pgx/application/benchmark_schema.py"
+      ],
+      "requirement": "Benchmark metrics are release-specific.",
+      "requirement_source": "architecture.md section 21",
+      "result": "UNSUPPORTED",
+      "row_id": "TRACE-P0-DOD-011",
+      "test_paths": [
+        "tests/unit/validation/test_artifacts.py"
+      ]
+    },
+    {
+      "claim_ids": [
+        "THS6-CLAIM-013"
+      ],
+      "dod_ids": [
+        "P0-DOD-012"
+      ],
+      "evidence_ids": [
+        "EV-WP23-001",
+        "EV-WP23-003",
+        "EV-WP23-009"
+      ],
+      "gap": "41 governed actions and the chain structure are implemented; no audit store has ever existed to write one",
+      "gap_owner": "platform owner",
+      "gate_ids": [
+        "GATE-E"
+      ],
+      "implementation_paths": [
+        "pgx/infrastructure/audit/",
+        "pgx/security/"
+      ],
+      "requirement": "Audit records actor/time/input hash/version bundle/output hash.",
+      "requirement_source": "architecture.md section 21",
+      "result": "UNSUPPORTED",
+      "row_id": "TRACE-P0-DOD-012",
+      "test_paths": [
+        "tests/unit/security/test_persistence.py",
+        "tests/unit/security/test_rbac.py"
+      ]
+    },
+    {
+      "claim_ids": [
+        "THS6-CLAIM-014",
+        "THS6-CLAIM-015"
+      ],
+      "dod_ids": [
+        "P0-DOD-013"
+      ],
+      "evidence_ids": [
+        "EV-WP24-001",
+        "EV-WP24-006",
+        "EV-WP24-010",
+        "EV-WP24-014",
+        "EV-WP24-015"
+      ],
+      "gap": "the Dockerfile, compose topology, health endpoints and drill catalogue are implemented; no runtime answered, so nothing was deployed or measured",
+      "gap_owner": "platform owner",
+      "gate_ids": [
+        "GATE-E"
+      ],
+      "implementation_paths": [
+        "pgx/deployment/smoke.py",
+        "pgx/deployment/reliability.py",
+        "Dockerfile"
+      ],
+      "requirement": "A staging prototype, health checks, and basic reliability report exist.",
+      "requirement_source": "architecture.md section 21",
+      "result": "UNSUPPORTED",
+      "row_id": "TRACE-P0-DOD-013",
+      "test_paths": [
+        "tests/unit/deployment/test_honest_reporting.py"
+      ]
+    },
+    {
+      "claim_ids": [
+        "THS6-CLAIM-016"
+      ],
+      "dod_ids": [
+        "P0-DOD-014"
+      ],
+      "evidence_ids": [
+        "EV-WP00-001",
+        "EV-WP19-005"
+      ],
+      "gap": "",
+      "gap_owner": null,
+      "gate_ids": [
+        "GATE-F"
+      ],
+      "implementation_paths": [
+        "pgx/ths6/claim_registry.py",
+        "pgx/ths6/traceability.py",
+        "pgx/ths6/evidence_registry.py"
+      ],
+      "requirement": "Every THS 6 claim links to a concrete artifact or metric.",
+      "requirement_source": "architecture.md section 21",
+      "result": "SUPPORTED",
+      "row_id": "TRACE-P0-DOD-014",
+      "test_paths": [
+        "tests/unit/ths6/test_registries.py"
+      ]
+    },
+    {
+      "claim_ids": [
+        "THS6-CLAIM-017"
+      ],
+      "dod_ids": [
+        "P0-DOD-015"
+      ],
+      "evidence_ids": [
+        "EV-WP16-001",
+        "EV-WP17-001",
+        "EV-WP17-002"
+      ],
+      "gap": "the interface renders offline with the model off, which is half the bullet; it renders an empty state because there is no governed content to display",
+      "gap_owner": "platform owner",
+      "gate_ids": [
+        "GATE-F"
+      ],
+      "implementation_paths": [
+        "pgx/ths6/demo.py",
+        "apps/web/main.py"
+      ],
+      "requirement": "Core demo completes with network unavailable, LLM off, and every P1 feature off.",
+      "requirement_source": "architecture.md section 21",
+      "result": "UNSUPPORTED",
+      "row_id": "TRACE-P0-DOD-015",
+      "test_paths": [
+        "tests/unit/ths6/test_demo_and_contingency.py"
+      ]
+    },
+    {
+      "claim_ids": [
+        "THS6-CLAIM-018",
+        "THS6-CLAIM-019"
+      ],
+      "dod_ids": [
+        "P0-DOD-005"
+      ],
+      "evidence_ids": [
+        "EV-WP04-002",
+        "EV-WP05-002",
+        "EV-WP05-005",
+        "EV-WP06-002"
+      ],
+      "gap": "5 of 5 mandatory conditions unmet: A1, A2, A3, A4, A5",
+      "gap_owner": "scientific source approver",
+      "gate_ids": [
+        "GATE-A"
+      ],
+      "implementation_paths": [
+        "pgx/ingestion/",
+        "pgx/normalization/",
+        "pgx/evidence/"
+      ],
+      "requirement": "Gate A - Scientific Data passes its PASS condition",
+      "requirement_source": "architecture.md section 20",
+      "result": "UNSUPPORTED",
+      "row_id": "TRACE-GATE-A",
+      "test_paths": [
+        "tests/unit/ths6/test_gates_and_dod.py"
+      ]
+    },
+    {
+      "claim_ids": [
+        "THS6-CLAIM-020"
+      ],
+      "dod_ids": [
+        "P0-DOD-005"
+      ],
+      "evidence_ids": [
+        "EV-WP11-001",
+        "EV-WP11-002"
+      ],
+      "gap": "7 of 7 mandatory conditions unmet: B1, B2, B3, B4, B5, B6, B7",
+      "gap_owner": "expert reviewer",
+      "gate_ids": [
+        "GATE-B"
+      ],
+      "implementation_paths": [
+        "pgx/curation/",
+        "pgx/rules/"
+      ],
+      "requirement": "Gate B - Rules passes its PASS condition",
+      "requirement_source": "architecture.md section 20",
+      "result": "UNSUPPORTED",
+      "row_id": "TRACE-GATE-B",
+      "test_paths": [
+        "tests/unit/ths6/test_gates_and_dod.py"
+      ]
+    },
+    {
+      "claim_ids": [
+        "THS6-CLAIM-001",
+        "THS6-CLAIM-002",
+        "THS6-CLAIM-003",
+        "THS6-CLAIM-004",
+        "THS6-CLAIM-009",
+        "THS6-CLAIM-021",
+        "THS6-CLAIM-022"
+      ],
+      "dod_ids": [
+        "P0-DOD-001",
+        "P0-DOD-002",
+        "P0-DOD-003",
+        "P0-DOD-004",
+        "P0-DOD-008"
+      ],
+      "evidence_ids": [
+        "EV-WP00-003",
+        "EV-WP08-002",
+        "EV-WP13-001",
+        "EV-WP13-002",
+        "EV-WP13-003",
+        "EV-WP14-001",
+        "EV-WP14-002",
+        "EV-WP15-001",
+        "EV-WP15-002",
+        "EV-WP15-003",
+        "EV-WP15-005",
+        "EV-WP16-001",
+        "EV-WP16-003",
+        "EV-WP17-001",
+        "EV-WP17-002",
+        "EV-WP20-001",
+        "EV-WP20-004",
+        "EV-WP20-005",
+        "EV-WP20-007"
+      ],
+      "gap": "9 of 9 mandatory conditions unmet: C1, C2, C3, C4, C5, C6, C7, C8, C9",
+      "gap_owner": "curation lead",
+      "gate_ids": [
+        "GATE-C"
+      ],
+      "implementation_paths": [
+        "pgx/engine/",
+        "pgx/reporting/",
+        "pgx/safety/"
+      ],
+      "requirement": "Gate C - Core Safety passes its PASS condition",
+      "requirement_source": "architecture.md section 20",
+      "result": "UNSUPPORTED",
+      "row_id": "TRACE-GATE-C",
+      "test_paths": [
+        "tests/unit/ths6/test_gates_and_dod.py"
+      ]
+    },
+    {
+      "claim_ids": [
+        "THS6-CLAIM-007",
+        "THS6-CLAIM-008",
+        "THS6-CLAIM-010",
+        "THS6-CLAIM-011",
+        "THS6-CLAIM-012"
+      ],
+      "dod_ids": [
+        "P0-DOD-006",
+        "P0-DOD-007",
+        "P0-DOD-009",
+        "P0-DOD-010",
+        "P0-DOD-011"
+      ],
+      "evidence_ids": [
+        "EV-WP17-001",
+        "EV-WP18-001",
+        "EV-WP18-002",
+        "EV-WP18-003",
+        "EV-WP18-006",
+        "EV-WP21-001",
+        "EV-WP21-002",
+        "EV-WP21-003",
+        "EV-WP22-001",
+        "EV-WP22-002",
+        "EV-WP22-003",
+        "EV-WP22-006"
+      ],
+      "gap": "9 of 9 mandatory conditions unmet: D1, D2, D3, D4, D5, D6, D7, D8, D9",
+      "gap_owner": "validation owner",
+      "gate_ids": [
+        "GATE-D"
+      ],
+      "implementation_paths": [
+        "pgx/validation/",
+        "pgx/expert_review/"
+      ],
+      "requirement": "Gate D - Validation passes its PASS condition",
+      "requirement_source": "architecture.md section 20",
+      "result": "UNSUPPORTED",
+      "row_id": "TRACE-GATE-D",
+      "test_paths": [
+        "tests/unit/ths6/test_gates_and_dod.py"
+      ]
+    },
+    {
+      "claim_ids": [
+        "THS6-CLAIM-006",
+        "THS6-CLAIM-013",
+        "THS6-CLAIM-014",
+        "THS6-CLAIM-015",
+        "THS6-CLAIM-023"
+      ],
+      "dod_ids": [
+        "P0-DOD-005",
+        "P0-DOD-012",
+        "P0-DOD-013"
+      ],
+      "evidence_ids": [
+        "EV-WP23-001",
+        "EV-WP23-002",
+        "EV-WP23-003",
+        "EV-WP23-005",
+        "EV-WP23-009",
+        "EV-WP24-001",
+        "EV-WP24-003",
+        "EV-WP24-006",
+        "EV-WP24-010",
+        "EV-WP24-014",
+        "EV-WP24-015",
+        "EV-WP24-016"
+      ],
+      "gap": "10 of 10 mandatory conditions unmet: E1, E2, E3, E4, E5, E6, E7, E8, E9, E10",
+      "gap_owner": "security owner",
+      "gate_ids": [
+        "GATE-E"
+      ],
+      "implementation_paths": [
+        "pgx/security/",
+        "pgx/deployment/"
+      ],
+      "requirement": "Gate E - Operational passes its PASS condition",
+      "requirement_source": "architecture.md section 20",
+      "result": "UNSUPPORTED",
+      "row_id": "TRACE-GATE-E",
+      "test_paths": [
+        "tests/unit/ths6/test_gates_and_dod.py"
+      ]
+    },
+    {
+      "claim_ids": [
+        "THS6-CLAIM-005",
+        "THS6-CLAIM-016",
+        "THS6-CLAIM-017",
+        "THS6-CLAIM-024"
+      ],
+      "dod_ids": [
+        "P0-DOD-014",
+        "P0-DOD-015"
+      ],
+      "evidence_ids": [
+        "EV-WP00-001",
+        "EV-WP03-003",
+        "EV-WP06-002",
+        "EV-WP11-001",
+        "EV-WP16-001",
+        "EV-WP17-001",
+        "EV-WP17-002",
+        "EV-WP19-005",
+        "EV-WP24-003",
+        "EV-WP24-004",
+        "EV-WP24-012"
+      ],
+      "gap": "5 of 5 mandatory conditions unmet: F1, F2, F3, F4, F5",
+      "gap_owner": "release approver",
+      "gate_ids": [
+        "GATE-F"
+      ],
+      "implementation_paths": [
+        "pgx/ths6/gate_matrix.py",
+        "pgx/ths6/status.py"
+      ],
+      "requirement": "Gate F - THS 6 passes its PASS condition",
+      "requirement_source": "architecture.md section 20",
+      "result": "UNSUPPORTED",
+      "row_id": "TRACE-GATE-F",
+      "test_paths": [
+        "tests/unit/ths6/test_gates_and_dod.py"
+      ]
+    }
+  ],
+  "traceability_version": "pgx-wp25-traceability/1"
+}

@@ -1,0 +1,2464 @@
+{
+  "$defs": {
+    "AssessmentCreateRequest": {
+      "additionalProperties": false,
+      "description": "One assessment question. Everything the service needs and nothing it determines for itself: no actor, no role, no hash, no release provenance and no calculated value.",
+      "properties": {
+        "case_id": {
+          "anyOf": [
+            {
+              "maxLength": 64,
+              "pattern": "^[^\\x00-\\x1f\\x7f-\\x9f]{1,256}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Optional label for the run. Deliberately outside the semantic input hash."
+        },
+        "input_kind": {
+          "description": "What kind of input this is. Checked against the claim boundary.",
+          "enum": [
+            "SYNTHETIC_PHENOTYPE_PROFILE",
+            "PROTOCOL_DEFINED_PHENOTYPE_PROFILE",
+            "PUBLIC_DEMO_PROFILE",
+            "VERSIONED_VALIDATION_CASE",
+            "MEDICATION_NAME_LIST"
+          ],
+          "type": "string"
+        },
+        "medications": {
+          "description": "Canonical drug keys. Free text is not resolved here: turning a brand name into a canonical drug is WP-07's work, and a medication the pinned dataset does not contain is reported as unsupported rather than dropped.",
+          "items": {
+            "maxLength": 64,
+            "pattern": "^DRUG:[a-z0-9][a-z0-9\\-.+_]{0,48}$",
+            "type": "string"
+          },
+          "maxItems": 32,
+          "minItems": 1,
+          "type": "array",
+          "uniqueItems": true
+        },
+        "mode": {
+          "description": "Operation mode. Checked against the claim boundary before anything is read.",
+          "enum": [
+            "DEMO",
+            "VALIDATION",
+            "PILOT"
+          ],
+          "type": "string"
+        },
+        "profile": {
+          "$ref": "#/components/schemas/PhenotypeProfileRequest",
+          "description": "The supplied phenotype profile."
+        },
+        "requested_release_public_id": {
+          "anyOf": [
+            {
+              "maxLength": 32,
+              "pattern": "^PGX-[A-Z]+-[0-9]{8}-[0-9]{3}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Optional release to pin. It must be the active one; naming a different release is refused rather than honoured."
+        }
+      },
+      "required": [
+        "input_kind",
+        "medications",
+        "mode",
+        "profile"
+      ],
+      "title": "AssessmentCreateRequest",
+      "type": "object"
+    },
+    "AssessmentResponse": {
+      "additionalProperties": false,
+      "description": "One immutable assessment, exactly as it was calculated and stored. Nothing here is recomputed at serialisation time, and the canonical warning is imported from the claim boundary rather than written here.",
+      "properties": {
+        "assessment_id": {
+          "format": "uuid",
+          "maxLength": 36,
+          "type": "string"
+        },
+        "case_id": {
+          "anyOf": [
+            {
+              "maxLength": 64,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "clinical_warning": {
+          "description": "The canonical clinical warning, imported verbatim from pgx.domain.claims. Never written here and never paraphrased.",
+          "maxLength": 2048,
+          "type": "string"
+        },
+        "contract_version": {
+          "maxLength": 64,
+          "type": "string"
+        },
+        "coverage_result_hash": {
+          "maxLength": 71,
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "created_at": {
+          "anyOf": [
+            {
+              "maxLength": 40,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "UTC instant the run was recorded. Excluded from every hash."
+        },
+        "input_hash": {
+          "maxLength": 71,
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "input_kind": {
+          "enum": [
+            "SYNTHETIC_PHENOTYPE_PROFILE",
+            "PROTOCOL_DEFINED_PHENOTYPE_PROFILE",
+            "PUBLIC_DEMO_PROFILE",
+            "VERSIONED_VALIDATION_CASE",
+            "MEDICATION_NAME_LIST"
+          ],
+          "type": "string"
+        },
+        "medications": {
+          "items": {
+            "$ref": "#/components/schemas/MedicationResponse"
+          },
+          "maxItems": 32,
+          "minItems": 1,
+          "type": "array"
+        },
+        "mode": {
+          "enum": [
+            "DEMO",
+            "VALIDATION",
+            "PILOT"
+          ],
+          "type": "string"
+        },
+        "observations": {
+          "items": {
+            "$ref": "#/components/schemas/ObservationResponse"
+          },
+          "maxItems": 64,
+          "type": "array"
+        },
+        "output_hash": {
+          "maxLength": 71,
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "persisted": {
+          "description": "True only when a transaction committed.",
+          "type": "boolean"
+        },
+        "release": {
+          "$ref": "#/components/schemas/ReleaseProvenanceResponse"
+        },
+        "status": {
+          "$ref": "#/components/schemas/StatusBlock"
+        },
+        "warnings": {
+          "items": {
+            "maxLength": 512,
+            "type": "string"
+          },
+          "maxItems": 20,
+          "type": "array"
+        }
+      },
+      "required": [
+        "assessment_id",
+        "case_id",
+        "clinical_warning",
+        "contract_version",
+        "coverage_result_hash",
+        "created_at",
+        "input_hash",
+        "input_kind",
+        "medications",
+        "mode",
+        "observations",
+        "output_hash",
+        "persisted",
+        "release",
+        "status",
+        "warnings"
+      ],
+      "title": "AssessmentResponse",
+      "type": "object"
+    },
+    "AxisResponse": {
+      "additionalProperties": false,
+      "description": "One drug-gene axis as coverage reported it. Present whether or not it could be evaluated: an axis dropped for being uncovered would make a partial assessment look complete.",
+      "properties": {
+        "conflict_references": {
+          "description": "Unresolved source conflicts, preserved and never adjudicated (SAFETY-INV-008).",
+          "items": {
+            "maxLength": 128,
+            "type": "string"
+          },
+          "maxItems": 200,
+          "type": "array"
+        },
+        "coverage": {
+          "enum": [
+            "FULL",
+            "PARTIAL",
+            "INSUFFICIENT",
+            "UNSUPPORTED_DRUG",
+            "UNSUPPORTED_PHENOTYPE",
+            "SOURCE_CONFLICT"
+          ],
+          "type": "string"
+        },
+        "coverage_reason_codes": {
+          "items": {
+            "enum": [
+              "DRUG_NOT_IN_CANONICAL_DATASET",
+              "PHENOTYPE_NOT_PROVIDED",
+              "PHENOTYPE_NOT_SUPPORTED",
+              "NO_VALIDATED_RULE_FOR_AXIS",
+              "SOME_AXES_NOT_COVERED",
+              "VALIDATED_RULES_CONFLICT",
+              "DATASET_RULESET_MISMATCH",
+              "EVIDENCE_REFERENCE_MISSING"
+            ],
+            "type": "string"
+          },
+          "maxItems": 200,
+          "type": "array"
+        },
+        "declaration_id": {
+          "anyOf": [
+            {
+              "maxLength": 128,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "drug": {
+          "maxLength": 64,
+          "pattern": "^DRUG:[a-z0-9][a-z0-9\\-.+_]{0,48}$",
+          "type": "string"
+        },
+        "evidence_references": {
+          "items": {
+            "format": "uuid",
+            "maxLength": 36,
+            "type": "string"
+          },
+          "maxItems": 200,
+          "type": "array"
+        },
+        "gene": {
+          "maxLength": 64,
+          "pattern": "^GENE:[A-Z0-9][A-Z0-9\\-.@_]{0,48}$",
+          "type": "string"
+        },
+        "observation_state": {
+          "maxLength": 64,
+          "type": "string"
+        },
+        "observed_phenotype": {
+          "anyOf": [
+            {
+              "enum": [
+                "POOR",
+                "INTERMEDIATE",
+                "NORMAL",
+                "RAPID",
+                "ULTRARAPID",
+                "INDETERMINATE"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "conflict_references",
+        "coverage",
+        "coverage_reason_codes",
+        "declaration_id",
+        "drug",
+        "evidence_references",
+        "gene",
+        "observation_state",
+        "observed_phenotype"
+      ],
+      "title": "AxisResponse",
+      "type": "object"
+    },
+    "CatalogueContext": {
+      "additionalProperties": false,
+      "description": "The release, dataset and manifest a catalogue page was read from. A cursor is only valid inside one of these.",
+      "properties": {
+        "coverage_manifest_hash": {
+          "maxLength": 71,
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "dataset_public_id": {
+          "maxLength": 32,
+          "type": "string"
+        },
+        "release_public_id": {
+          "maxLength": 32,
+          "type": "string"
+        },
+        "ruleset_public_id": {
+          "maxLength": 32,
+          "type": "string"
+        }
+      },
+      "required": [
+        "coverage_manifest_hash",
+        "dataset_public_id",
+        "release_public_id",
+        "ruleset_public_id"
+      ],
+      "title": "CatalogueContext",
+      "type": "object"
+    },
+    "ComponentStatus": {
+      "additionalProperties": false,
+      "description": "One readiness component. ``detail`` is a controlled phrase from a fixed catalogue - never an exception message, a DSN, a path or a stack frame.",
+      "properties": {
+        "blocking": {
+          "description": "Whether this component blocks readiness.",
+          "type": "boolean"
+        },
+        "component": {
+          "maxLength": 64,
+          "type": "string"
+        },
+        "detail": {
+          "maxLength": 512,
+          "type": "string"
+        },
+        "ready": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "blocking",
+        "component",
+        "detail",
+        "ready"
+      ],
+      "title": "ComponentStatus",
+      "type": "object"
+    },
+    "DrugCollectionResponse": {
+      "additionalProperties": false,
+      "description": "A bounded, deterministically ordered page of canonical drugs.",
+      "properties": {
+        "contract_version": {
+          "maxLength": 64,
+          "type": "string"
+        },
+        "items": {
+          "items": {
+            "$ref": "#/components/schemas/DrugSummary"
+          },
+          "maxItems": 100,
+          "type": "array"
+        },
+        "page": {
+          "$ref": "#/components/schemas/PageInfo"
+        },
+        "release": {
+          "$ref": "#/components/schemas/CatalogueContext"
+        }
+      },
+      "required": [
+        "contract_version",
+        "items",
+        "page",
+        "release"
+      ],
+      "title": "DrugCollectionResponse",
+      "type": "object"
+    },
+    "DrugSummary": {
+      "additionalProperties": false,
+      "description": "One canonical drug and what the governed coverage manifest declares about it. Carries no safety statement, no suitability, no score and no ordering by attention.",
+      "properties": {
+        "aliases": {
+          "items": {
+            "maxLength": 256,
+            "type": "string"
+          },
+          "maxItems": 20,
+          "type": "array"
+        },
+        "declaration_id": {
+          "anyOf": [
+            {
+              "maxLength": 128,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "declared": {
+          "description": "Whether the coverage manifest declares a scope for this drug.",
+          "type": "boolean"
+        },
+        "display_name": {
+          "maxLength": 256,
+          "type": "string"
+        },
+        "drug": {
+          "maxLength": 64,
+          "pattern": "^DRUG:[a-z0-9][a-z0-9\\-.+_]{0,48}$",
+          "type": "string"
+        },
+        "expected_gene_keys": {
+          "description": "Genes a complete assessment of this drug would have to consider.",
+          "items": {
+            "maxLength": 64,
+            "pattern": "^GENE:[A-Z0-9][A-Z0-9\\-.@_]{0,48}$",
+            "type": "string"
+          },
+          "maxItems": 200,
+          "type": "array"
+        },
+        "supported_axis_count": {
+          "maximum": 1000000,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "verified_axis_count": {
+          "description": "Axes whose declared rule and evidence were checked against the frozen artifact.",
+          "maximum": 1000000,
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "aliases",
+        "declaration_id",
+        "declared",
+        "display_name",
+        "drug",
+        "expected_gene_keys",
+        "supported_axis_count",
+        "verified_axis_count"
+      ],
+      "title": "DrugSummary",
+      "type": "object"
+    },
+    "ErrorBody": {
+      "additionalProperties": false,
+      "description": "The one error shape this API returns.",
+      "properties": {
+        "code": {
+          "description": "Stable machine-readable code.",
+          "maxLength": 64,
+          "type": "string"
+        },
+        "details": {
+          "$ref": "#/components/schemas/ErrorDetails",
+          "description": "Bounded machine-readable metadata."
+        },
+        "message": {
+          "description": "Controlled message from a fixed catalogue. Never the text of an unexpected exception.",
+          "maxLength": 512,
+          "type": "string"
+        },
+        "request_id": {
+          "description": "The same identifier the response header carries.",
+          "format": "uuid",
+          "maxLength": 36,
+          "type": "string"
+        }
+      },
+      "required": [
+        "code",
+        "details",
+        "message",
+        "request_id"
+      ],
+      "title": "ErrorBody",
+      "type": "object"
+    },
+    "ErrorDetails": {
+      "additionalProperties": false,
+      "description": "Bounded safe metadata about a failure. Carries locations and codes; never a rejected value, a phenotype, a medication list, a path, a query or a stack frame.",
+      "properties": {
+        "components": {
+          "description": "Named components that were not ready.",
+          "items": {
+            "maxLength": 64,
+            "type": "string"
+          },
+          "maxItems": 20,
+          "type": "array"
+        },
+        "issues": {
+          "description": "One entry per contract violation.",
+          "items": {
+            "$ref": "#/components/schemas/ErrorIssue"
+          },
+          "maxItems": 20,
+          "type": "array"
+        },
+        "limit": {
+          "anyOf": [
+            {
+              "maximum": 1000000,
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "The bound a request exceeded."
+        },
+        "required_role": {
+          "anyOf": [
+            {
+              "enum": [
+                "DEMO_USER",
+                "EXPERT_REVIEWER",
+                "ADMIN"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "The role a forbidden request would have needed."
+        },
+        "work_package": {
+          "anyOf": [
+            {
+              "maxLength": 64,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "The work package that will implement a not-implemented route."
+        }
+      },
+      "required": [],
+      "title": "ErrorDetails",
+      "type": "object"
+    },
+    "ErrorEnvelope": {
+      "additionalProperties": false,
+      "description": "Every failure response, for every status, has this shape.",
+      "properties": {
+        "error": {
+          "$ref": "#/components/schemas/ErrorBody",
+          "description": "The failure."
+        }
+      },
+      "required": [
+        "error"
+      ],
+      "title": "ErrorEnvelope",
+      "type": "object"
+    },
+    "ErrorIssue": {
+      "additionalProperties": false,
+      "description": "One contract violation. ``location`` is a normalised JSON pointer and ``code`` is stable; neither the supplied value nor any text derived from it appears.",
+      "properties": {
+        "code": {
+          "description": "Stable violation code.",
+          "maxLength": 64,
+          "type": "string"
+        },
+        "location": {
+          "description": "Normalised JSON pointer, for example $.profile.observations[0].value.",
+          "maxLength": 128,
+          "type": "string"
+        }
+      },
+      "required": [
+        "code",
+        "location"
+      ],
+      "title": "ErrorIssue",
+      "type": "object"
+    },
+    "EvidenceDetailResponse": {
+      "additionalProperties": false,
+      "description": "One evidence record's identity and provenance chain. Deliberately carries no source prose, no summary this system authored, and no clinical advice: it says where a fact came from, not what to do about it.",
+      "properties": {
+        "content_hash": {
+          "anyOf": [
+            {
+              "maxLength": 128,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "contract_version": {
+          "maxLength": 64,
+          "type": "string"
+        },
+        "drugs": {
+          "items": {
+            "$ref": "#/components/schemas/EvidenceEntityLink"
+          },
+          "maxItems": 200,
+          "type": "array"
+        },
+        "evidence_build_content_hash": {
+          "anyOf": [
+            {
+              "maxLength": 128,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "evidence_build_key": {
+          "maxLength": 128,
+          "type": "string"
+        },
+        "genes": {
+          "items": {
+            "$ref": "#/components/schemas/EvidenceEntityLink"
+          },
+          "maxItems": 200,
+          "type": "array"
+        },
+        "locators": {
+          "items": {
+            "$ref": "#/components/schemas/EvidenceLocator"
+          },
+          "maxItems": 200,
+          "type": "array"
+        },
+        "natural_key": {
+          "maxLength": 128,
+          "type": "string"
+        },
+        "origin_source_key": {
+          "anyOf": [
+            {
+              "maxLength": 128,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "origin_status": {
+          "anyOf": [
+            {
+              "maxLength": 64,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "production_eligible": {
+          "type": "boolean"
+        },
+        "provider_source_key": {
+          "anyOf": [
+            {
+              "maxLength": 128,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "publications": {
+          "items": {
+            "$ref": "#/components/schemas/EvidencePublicationReference"
+          },
+          "maxItems": 200,
+          "type": "array"
+        },
+        "record_type": {
+          "maxLength": 64,
+          "type": "string"
+        },
+        "record_type_mapping": {
+          "anyOf": [
+            {
+              "$ref": "#/components/schemas/EvidenceRecordTypeMapping"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "The raw-to-canonical record-type step of the provenance trace."
+        },
+        "record_uuid": {
+          "format": "uuid",
+          "maxLength": 36,
+          "type": "string"
+        },
+        "source_payload_hash": {
+          "anyOf": [
+            {
+              "maxLength": 128,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "text_fragment_count": {
+          "description": "How many source text fragments the record carries. The fragments themselves are source prose and are not served.",
+          "maximum": 1000000,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "version_status": {
+          "anyOf": [
+            {
+              "maxLength": 64,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "version_value": {
+          "anyOf": [
+            {
+              "maxLength": 128,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "content_hash",
+        "contract_version",
+        "drugs",
+        "evidence_build_content_hash",
+        "evidence_build_key",
+        "genes",
+        "locators",
+        "natural_key",
+        "origin_source_key",
+        "origin_status",
+        "production_eligible",
+        "provider_source_key",
+        "publications",
+        "record_type",
+        "record_type_mapping",
+        "record_uuid",
+        "source_payload_hash",
+        "text_fragment_count",
+        "version_status",
+        "version_value"
+      ],
+      "title": "EvidenceDetailResponse",
+      "type": "object"
+    },
+    "EvidenceEntityLink": {
+      "additionalProperties": false,
+      "description": "One canonical entity this evidence record is linked to.",
+      "properties": {
+        "canonical_key": {
+          "anyOf": [
+            {
+              "maxLength": 64,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "entity_type": {
+          "enum": [
+            "GENE",
+            "DRUG"
+          ],
+          "type": "string"
+        },
+        "source_label": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "canonical_key",
+        "entity_type",
+        "source_label"
+      ],
+      "title": "EvidenceEntityLink",
+      "type": "object"
+    },
+    "EvidenceLocator": {
+      "additionalProperties": false,
+      "description": "Where this record came from inside the sealed snapshot, by artifact identity and digest. No filesystem path leaves the server.",
+      "properties": {
+        "artifact_digest": {
+          "anyOf": [
+            {
+              "maxLength": 128,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "artifact_id": {
+          "anyOf": [
+            {
+              "maxLength": 128,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "json_pointer": {
+          "anyOf": [
+            {
+              "maxLength": 128,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "snapshot_id": {
+          "anyOf": [
+            {
+              "maxLength": 128,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "artifact_digest",
+        "artifact_id",
+        "json_pointer",
+        "snapshot_id"
+      ],
+      "title": "EvidenceLocator",
+      "type": "object"
+    },
+    "EvidencePublicationReference": {
+      "additionalProperties": false,
+      "description": "A publication identifier the source cited.",
+      "properties": {
+        "identifier": {
+          "maxLength": 128,
+          "type": "string"
+        },
+        "identifier_type": {
+          "maxLength": 64,
+          "type": "string"
+        }
+      },
+      "required": [
+        "identifier",
+        "identifier_type"
+      ],
+      "title": "EvidencePublicationReference",
+      "type": "object"
+    },
+    "EvidenceRecordTypeMapping": {
+      "additionalProperties": false,
+      "description": "How the source's own record type became a canonical one. Identifiers and a status; the curation rationale behind the mapping is prose and is not published here.",
+      "properties": {
+        "map_version": {
+          "anyOf": [
+            {
+              "maxLength": 64,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "The version of the mapping rules that produced this."
+        },
+        "production_eligible": {
+          "description": "Whether this mapping permits the record to support production evidence.",
+          "type": "boolean"
+        },
+        "record_type": {
+          "anyOf": [
+            {
+              "maxLength": 64,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "The canonical record type."
+        },
+        "status": {
+          "anyOf": [
+            {
+              "maxLength": 64,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "CONFIRMED, PENDING_REVIEW or another governed mapping status."
+        }
+      },
+      "required": [
+        "map_version",
+        "production_eligible",
+        "record_type",
+        "status"
+      ],
+      "title": "EvidenceRecordTypeMapping",
+      "type": "object"
+    },
+    "ExpertReviewAssignmentListResponse": {
+      "additionalProperties": false,
+      "description": "The calling reviewer's assignments and nobody else's. A reviewer who could list another's would learn which cases exist and who holds them.",
+      "properties": {
+        "assignments": {
+          "items": {
+            "$ref": "#/components/schemas/ExpertReviewAssignmentSummary"
+          },
+          "maxItems": 20,
+          "type": "array"
+        },
+        "count": {
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "assignments",
+        "count"
+      ],
+      "title": "ExpertReviewAssignmentListResponse",
+      "type": "object"
+    },
+    "ExpertReviewAssignmentSummary": {
+      "additionalProperties": false,
+      "description": "One of the calling reviewer's own assignments.",
+      "properties": {
+        "blinded": {
+          "type": "boolean"
+        },
+        "case_id": {
+          "maxLength": 64,
+          "type": "string"
+        },
+        "release_public_id": {
+          "maxLength": 64,
+          "type": "string"
+        },
+        "review_id": {
+          "maxLength": 64,
+          "type": "string"
+        },
+        "state": {
+          "maxLength": 64,
+          "type": "string"
+        }
+      },
+      "required": [
+        "blinded",
+        "case_id",
+        "release_public_id",
+        "review_id",
+        "state"
+      ],
+      "title": "ExpertReviewAssignmentSummary",
+      "type": "object"
+    },
+    "ExpertReviewCompleteRequest": {
+      "additionalProperties": false,
+      "description": "The post-reveal comparison. Exactly one decision from three, plus optional structured ratings. This is not the expected response and cannot be used as one.",
+      "properties": {
+        "decision": {
+          "description": "AGREE, PARTIAL or DISAGREE. PARTIAL is a third answer, not a midpoint; these are never ordered or averaged.",
+          "enum": [
+            "AGREE",
+            "PARTIAL",
+            "DISAGREE"
+          ],
+          "type": "string"
+        },
+        "ratings": {
+          "description": "Optional ratings, at most one per dimension.",
+          "items": {
+            "$ref": "#/components/schemas/ExpertReviewRatingRequest"
+          },
+          "maxItems": 4,
+          "type": "array"
+        },
+        "reviewer_note": {
+          "anyOf": [
+            {
+              "maxLength": 512,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Bounded note explaining the decision."
+        }
+      },
+      "required": [
+        "decision"
+      ],
+      "title": "ExpertReviewCompleteRequest",
+      "type": "object"
+    },
+    "ExpertReviewCompleteResponse": {
+      "additionalProperties": false,
+      "description": "The immutable completion record.",
+      "properties": {
+        "completed_at": {
+          "maxLength": 64,
+          "type": "string"
+        },
+        "completion_hash": {
+          "maxLength": 71,
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "completion_id": {
+          "maxLength": 64,
+          "type": "string"
+        },
+        "decision": {
+          "enum": [
+            "AGREE",
+            "PARTIAL",
+            "DISAGREE"
+          ],
+          "type": "string"
+        },
+        "rated_dimensions": {
+          "description": "Which dimensions were rated. The values themselves belong to the reviewer's record, not to a receipt.",
+          "items": {
+            "maxLength": 64,
+            "type": "string"
+          },
+          "maxItems": 4,
+          "type": "array"
+        },
+        "review_id": {
+          "maxLength": 64,
+          "type": "string"
+        },
+        "state": {
+          "maxLength": 64,
+          "type": "string"
+        }
+      },
+      "required": [
+        "completed_at",
+        "completion_hash",
+        "completion_id",
+        "decision",
+        "rated_dimensions",
+        "review_id",
+        "state"
+      ],
+      "title": "ExpertReviewCompleteResponse",
+      "type": "object"
+    },
+    "ExpertReviewCorrectionRequest": {
+      "additionalProperties": false,
+      "description": "An appended amendment. The record it refers to is never touched, and a correction appended after a reveal is annotation only.",
+      "properties": {
+        "kind": {
+          "description": "What kind of amendment this is.",
+          "enum": [
+            "TYPOGRAPHIC",
+            "RATIONALE_AMENDED",
+            "EXPECTATION_AMENDED",
+            "DECISION_ANNOTATED",
+            "RATING_ANNOTATED",
+            "WITHDRAWN_BY_REVIEWER"
+          ],
+          "type": "string"
+        },
+        "reason_code": {
+          "description": "Why the amendment was made.",
+          "maxLength": 64,
+          "pattern": "^[^\\x00-\\x1f\\x7f-\\x9f]{1,256}$",
+          "type": "string"
+        },
+        "replacement": {
+          "anyOf": [
+            {
+              "$ref": "#/components/schemas/ExpertReviewReplacementRequest"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "The replacement value, where the kind carries one. A declared shape rather than an open object: an open one would be the hole through which a treatment recommendation eventually arrives."
+        },
+        "target_hash": {
+          "description": "The hash of the record being corrected.",
+          "maxLength": 71,
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "reason_code",
+        "target_hash"
+      ],
+      "title": "ExpertReviewCorrectionRequest",
+      "type": "object"
+    },
+    "ExpertReviewCorrectionResponse": {
+      "additionalProperties": false,
+      "description": "The appended amendment's receipt.",
+      "properties": {
+        "after_reveal": {
+          "description": "True when this correction is annotation only and cannot change the reference a metric consumes.",
+          "type": "boolean"
+        },
+        "correction_hash": {
+          "maxLength": 71,
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "correction_id": {
+          "maxLength": 64,
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "TYPOGRAPHIC",
+            "RATIONALE_AMENDED",
+            "EXPECTATION_AMENDED",
+            "DECISION_ANNOTATED",
+            "RATING_ANNOTATED",
+            "WITHDRAWN_BY_REVIEWER"
+          ],
+          "type": "string"
+        },
+        "recorded_at": {
+          "maxLength": 64,
+          "type": "string"
+        },
+        "review_id": {
+          "maxLength": 64,
+          "type": "string"
+        }
+      },
+      "required": [
+        "after_reveal",
+        "correction_hash",
+        "correction_id",
+        "kind",
+        "recorded_at",
+        "review_id"
+      ],
+      "title": "ExpertReviewCorrectionResponse",
+      "type": "object"
+    },
+    "ExpertReviewExpectedRequest": {
+      "additionalProperties": false,
+      "description": "What the reviewer expects the system to output, recorded before anything is revealed. Every field the server owns - actor, role, timestamps, status and every hash - is absent by construction: this shape has nowhere to put one, and a body carrying one is refused rather than having it stripped.",
+      "properties": {
+        "expected_attention_level": {
+          "description": "The attention level the reviewer expects.",
+          "maxLength": 64,
+          "pattern": "^[^\\x00-\\x1f\\x7f-\\x9f]{1,256}$",
+          "type": "string"
+        },
+        "expected_coverage_reason": {
+          "anyOf": [
+            {
+              "maxLength": 64,
+              "pattern": "^[^\\x00-\\x1f\\x7f-\\x9f]{1,256}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Optional expected coverage reason code."
+        },
+        "expected_coverage_status": {
+          "description": "The coverage status the reviewer expects.",
+          "maxLength": 64,
+          "pattern": "^[^\\x00-\\x1f\\x7f-\\x9f]{1,256}$",
+          "type": "string"
+        },
+        "expected_rule_id": {
+          "anyOf": [
+            {
+              "maxLength": 64,
+              "pattern": "^[^\\x00-\\x1f\\x7f-\\x9f]{1,256}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Optional expected firing rule identifier."
+        },
+        "rationale_codes": {
+          "description": "Why the reviewer expects this. A controlled list rather than prose, because free text in a blinded expectation is where a dose instruction would eventually appear.",
+          "items": {
+            "enum": [
+              "GUIDELINE_DIRECT",
+              "GUIDELINE_EXTRAPOLATED",
+              "PHENOTYPE_DETERMINATIVE",
+              "INSUFFICIENT_INPUT",
+              "NO_APPLICABLE_RULE",
+              "SOURCE_CONFLICT",
+              "EVIDENCE_INSUFFICIENT",
+              "OUT_OF_SCOPE"
+            ],
+            "type": "string"
+          },
+          "maxItems": 20,
+          "type": "array",
+          "uniqueItems": true
+        },
+        "requires_traceable_evidence": {
+          "description": "Whether the reviewer expects the finding to carry resolvable evidence. Defaults to true.",
+          "type": "boolean"
+        },
+        "reviewer_note": {
+          "anyOf": [
+            {
+              "maxLength": 512,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "A bounded note about the reasoning. Never a treatment recommendation, dose or clinical directive; a body containing one is refused."
+        }
+      },
+      "required": [
+        "expected_attention_level",
+        "expected_coverage_status"
+      ],
+      "title": "ExpertReviewExpectedRequest",
+      "type": "object"
+    },
+    "ExpertReviewExpectedResponse": {
+      "additionalProperties": false,
+      "description": "The receipt for a locked expectation. Carries the revision hash a later reveal will pin, and the server-generated timestamp - so a reviewer can verify what was recorded without being able to have chosen it.",
+      "properties": {
+        "content_hash": {
+          "maxLength": 71,
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "recorded_at": {
+          "description": "Server-generated UTC timestamp.",
+          "maxLength": 64,
+          "type": "string"
+        },
+        "review_id": {
+          "maxLength": 64,
+          "type": "string"
+        },
+        "revision": {
+          "minimum": 1,
+          "type": "integer"
+        },
+        "revision_hash": {
+          "maxLength": 71,
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "revision_id": {
+          "maxLength": 64,
+          "type": "string"
+        },
+        "state": {
+          "maxLength": 64,
+          "type": "string"
+        }
+      },
+      "required": [
+        "content_hash",
+        "recorded_at",
+        "review_id",
+        "revision",
+        "revision_hash",
+        "revision_id",
+        "state"
+      ],
+      "title": "ExpertReviewExpectedResponse",
+      "type": "object"
+    },
+    "ExpertReviewRatingRequest": {
+      "additionalProperties": false,
+      "description": "One optional Likert rating on one declared dimension.",
+      "properties": {
+        "dimension": {
+          "description": "A dimension declared before any review existed.",
+          "enum": [
+            "CLARITY",
+            "TRACEABILITY",
+            "CLINICAL_USEFULNESS",
+            "SAFETY_FRAMING"
+          ],
+          "type": "string"
+        },
+        "value": {
+          "description": "1 to 5 inclusive.",
+          "maximum": 5,
+          "minimum": 1,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "dimension",
+        "value"
+      ],
+      "title": "ExpertReviewRatingRequest",
+      "type": "object"
+    },
+    "ExpertReviewReplacementRequest": {
+      "additionalProperties": false,
+      "description": "The governed fields a correction may replace. Exactly the expected response's structured fields and nothing else - a correction cannot introduce a field the original record could not have held.",
+      "properties": {
+        "expected_attention_level": {
+          "anyOf": [
+            {
+              "maxLength": 64,
+              "pattern": "^[^\\x00-\\x1f\\x7f-\\x9f]{1,256}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "expected_coverage_reason": {
+          "anyOf": [
+            {
+              "maxLength": 64,
+              "pattern": "^[^\\x00-\\x1f\\x7f-\\x9f]{1,256}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "expected_coverage_status": {
+          "anyOf": [
+            {
+              "maxLength": 64,
+              "pattern": "^[^\\x00-\\x1f\\x7f-\\x9f]{1,256}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "expected_rule_id": {
+          "anyOf": [
+            {
+              "maxLength": 64,
+              "pattern": "^[^\\x00-\\x1f\\x7f-\\x9f]{1,256}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "rationale_codes": {
+          "items": {
+            "enum": [
+              "GUIDELINE_DIRECT",
+              "GUIDELINE_EXTRAPOLATED",
+              "PHENOTYPE_DETERMINATIVE",
+              "INSUFFICIENT_INPUT",
+              "NO_APPLICABLE_RULE",
+              "SOURCE_CONFLICT",
+              "EVIDENCE_INSUFFICIENT",
+              "OUT_OF_SCOPE"
+            ],
+            "type": "string"
+          },
+          "maxItems": 20,
+          "type": "array",
+          "uniqueItems": true
+        },
+        "requires_traceable_evidence": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "reviewer_note": {
+          "anyOf": [
+            {
+              "maxLength": 512,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [],
+      "title": "ExpertReviewReplacementRequest",
+      "type": "object"
+    },
+    "ExpertReviewResultBlock": {
+      "additionalProperties": false,
+      "description": "The deterministic system result. Present only in a reveal response and in a post-reveal state response.",
+      "properties": {
+        "attention_level": {
+          "maxLength": 64,
+          "type": "string"
+        },
+        "coverage_reason": {
+          "anyOf": [
+            {
+              "maxLength": 64,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "coverage_status": {
+          "maxLength": 64,
+          "type": "string"
+        },
+        "finding_count": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "firing_rule_id": {
+          "anyOf": [
+            {
+              "maxLength": 64,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "output_hash": {
+          "maxLength": 71,
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "traceable_finding_count": {
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "attention_level",
+        "coverage_status",
+        "finding_count",
+        "output_hash",
+        "traceable_finding_count"
+      ],
+      "title": "ExpertReviewResultBlock",
+      "type": "object"
+    },
+    "ExpertReviewRevealRequest": {
+      "additionalProperties": false,
+      "description": "Reveal takes no reviewer input. The body exists so the operation has a declared shape, and it is empty because everything reveal needs - which expectation to pin, which release to read - comes from the stored assignment rather than from the caller.",
+      "properties": {
+        "acknowledged": {
+          "description": "Optional confirmation that the reviewer understands the reveal is irreversible. Recorded nowhere; the irreversibility does not depend on it.",
+          "type": "boolean"
+        }
+      },
+      "required": [],
+      "title": "ExpertReviewRevealRequest",
+      "type": "object"
+    },
+    "ExpertReviewRevealResponse": {
+      "additionalProperties": false,
+      "description": "The one-way door, and what it pinned. The expectation revision hash here is the reference every downstream metric consumes; a later correction cannot move it.",
+      "properties": {
+        "expectation_revision_hash": {
+          "maxLength": 71,
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "expectation_revision_id": {
+          "maxLength": 64,
+          "type": "string"
+        },
+        "result": {
+          "$ref": "#/components/schemas/ExpertReviewResultBlock"
+        },
+        "reveal_hash": {
+          "maxLength": 71,
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "reveal_id": {
+          "maxLength": 64,
+          "type": "string"
+        },
+        "revealed_at": {
+          "maxLength": 64,
+          "type": "string"
+        },
+        "review_id": {
+          "maxLength": 64,
+          "type": "string"
+        },
+        "state": {
+          "maxLength": 64,
+          "type": "string"
+        }
+      },
+      "required": [
+        "expectation_revision_hash",
+        "expectation_revision_id",
+        "result",
+        "reveal_hash",
+        "reveal_id",
+        "revealed_at",
+        "review_id",
+        "state"
+      ],
+      "title": "ExpertReviewRevealResponse",
+      "type": "object"
+    },
+    "ExpertReviewStateResponse": {
+      "additionalProperties": false,
+      "description": "The reviewer's own view of their assignment while blinded. There is no result field in this shape - not an optional one, not a nullable one. A hidden value is still disclosure, so the pre-reveal response has nowhere to put one.",
+      "properties": {
+        "assignment_id": {
+          "maxLength": 64,
+          "type": "string"
+        },
+        "blinded": {
+          "description": "True until a reveal record exists.",
+          "type": "boolean"
+        },
+        "case_id": {
+          "maxLength": 64,
+          "type": "string"
+        },
+        "correction_count": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "expectation_recorded": {
+          "type": "boolean"
+        },
+        "expectation_revision": {
+          "anyOf": [
+            {
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "expectation_revision_hash": {
+          "anyOf": [
+            {
+              "maxLength": 64,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "protocol_version": {
+          "maxLength": 64,
+          "type": "string"
+        },
+        "release_public_id": {
+          "maxLength": 64,
+          "type": "string"
+        },
+        "review_id": {
+          "maxLength": 64,
+          "type": "string"
+        },
+        "state": {
+          "description": "ASSIGNED, EXPECTATION_RECORDED, RESULT_REVEALED, COMPLETED or INVALIDATED.",
+          "maxLength": 64,
+          "type": "string"
+        }
+      },
+      "required": [
+        "assignment_id",
+        "blinded",
+        "case_id",
+        "correction_count",
+        "expectation_recorded",
+        "protocol_version",
+        "release_public_id",
+        "review_id",
+        "state"
+      ],
+      "title": "ExpertReviewStateResponse",
+      "type": "object"
+    },
+    "FindingResponse": {
+      "additionalProperties": false,
+      "description": "One calculated finding with its whole traceability chain. ``effect_code`` and ``explanation_code`` are null wherever the governed ruleset carries none, and no text is authored to stand in for them.",
+      "properties": {
+        "attention": {
+          "enum": [
+            "NO_ACTIVE_ATTENTION",
+            "LOW",
+            "MEDIUM",
+            "HIGH"
+          ],
+          "type": "string"
+        },
+        "curation_revision_hash": {
+          "maxLength": 71,
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "curation_revision_id": {
+          "maxLength": 128,
+          "type": "string"
+        },
+        "drug": {
+          "maxLength": 64,
+          "pattern": "^DRUG:[a-z0-9][a-z0-9\\-.+_]{0,48}$",
+          "type": "string"
+        },
+        "effect_code": {
+          "anyOf": [
+            {
+              "maxLength": 64,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "evidence_references": {
+          "items": {
+            "format": "uuid",
+            "maxLength": 36,
+            "type": "string"
+          },
+          "maxItems": 200,
+          "minItems": 1,
+          "type": "array"
+        },
+        "explanation_code": {
+          "anyOf": [
+            {
+              "maxLength": 64,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "gene": {
+          "maxLength": 64,
+          "pattern": "^GENE:[A-Z0-9][A-Z0-9\\-.@_]{0,48}$",
+          "type": "string"
+        },
+        "phenotype": {
+          "enum": [
+            "POOR",
+            "INTERMEDIATE",
+            "NORMAL",
+            "RAPID",
+            "ULTRARAPID",
+            "INDETERMINATE"
+          ],
+          "type": "string"
+        },
+        "rationale_reference": {
+          "maxLength": 128,
+          "type": "string"
+        },
+        "rule_content_hash": {
+          "maxLength": 71,
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "rule_family_id": {
+          "maxLength": 128,
+          "type": "string"
+        },
+        "rule_id": {
+          "format": "uuid",
+          "maxLength": 36,
+          "type": "string"
+        },
+        "rule_version": {
+          "maximum": 1000000,
+          "minimum": 1,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "attention",
+        "curation_revision_hash",
+        "curation_revision_id",
+        "drug",
+        "effect_code",
+        "evidence_references",
+        "explanation_code",
+        "gene",
+        "phenotype",
+        "rationale_reference",
+        "rule_content_hash",
+        "rule_family_id",
+        "rule_id",
+        "rule_version"
+      ],
+      "title": "FindingResponse",
+      "type": "object"
+    },
+    "GeneCollectionResponse": {
+      "additionalProperties": false,
+      "description": "Governed canonical genes and their declared phenotype scope.",
+      "properties": {
+        "contract_version": {
+          "maxLength": 64,
+          "type": "string"
+        },
+        "items": {
+          "items": {
+            "$ref": "#/components/schemas/GeneSummary"
+          },
+          "maxItems": 100,
+          "type": "array"
+        },
+        "page": {
+          "$ref": "#/components/schemas/PageInfo"
+        },
+        "phenotype_vocabulary": {
+          "description": "The governed phenotype vocabulary in force.",
+          "items": {
+            "enum": [
+              "POOR",
+              "INTERMEDIATE",
+              "NORMAL",
+              "RAPID",
+              "ULTRARAPID",
+              "INDETERMINATE"
+            ],
+            "type": "string"
+          },
+          "maxItems": 20,
+          "type": "array"
+        },
+        "release": {
+          "$ref": "#/components/schemas/CatalogueContext"
+        }
+      },
+      "required": [
+        "contract_version",
+        "items",
+        "page",
+        "phenotype_vocabulary",
+        "release"
+      ],
+      "title": "GeneCollectionResponse",
+      "type": "object"
+    },
+    "GeneSummary": {
+      "additionalProperties": false,
+      "description": "One canonical gene and the phenotypes the governed manifest declares axes for. Listing a gene is not a claim that it is fully covered; the declared axes are what says how much of it is.",
+      "properties": {
+        "display_name": {
+          "maxLength": 256,
+          "type": "string"
+        },
+        "expected_for_drugs": {
+          "description": "Drugs whose declared scope includes this gene.",
+          "items": {
+            "maxLength": 64,
+            "pattern": "^DRUG:[a-z0-9][a-z0-9\\-.+_]{0,48}$",
+            "type": "string"
+          },
+          "maxItems": 200,
+          "type": "array"
+        },
+        "fully_declared": {
+          "description": "True only when every drug expecting this gene also declares at least one supported axis for it. False is the honest answer whenever the manifest is silent.",
+          "type": "boolean"
+        },
+        "gene": {
+          "maxLength": 64,
+          "pattern": "^GENE:[A-Z0-9][A-Z0-9\\-.@_]{0,48}$",
+          "type": "string"
+        },
+        "supported_axis_count": {
+          "maximum": 1000000,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "supported_phenotypes": {
+          "description": "Phenotypes a governed rule is declared for.",
+          "items": {
+            "enum": [
+              "POOR",
+              "INTERMEDIATE",
+              "NORMAL",
+              "RAPID",
+              "ULTRARAPID",
+              "INDETERMINATE"
+            ],
+            "type": "string"
+          },
+          "maxItems": 20,
+          "type": "array"
+        }
+      },
+      "required": [
+        "display_name",
+        "expected_for_drugs",
+        "fully_declared",
+        "gene",
+        "supported_axis_count",
+        "supported_phenotypes"
+      ],
+      "title": "GeneSummary",
+      "type": "object"
+    },
+    "LivenessResponse": {
+      "additionalProperties": false,
+      "description": "Process liveness only. Makes no claim it did not verify: there is no version, no release and no dependency here, because checking any of them would make liveness fail for a reason liveness is not about.",
+      "properties": {
+        "status": {
+          "enum": [
+            "LIVE"
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "status"
+      ],
+      "title": "LivenessResponse",
+      "type": "object"
+    },
+    "MedicationResponse": {
+      "additionalProperties": false,
+      "description": "Everything the assessment recorded about one medication.",
+      "properties": {
+        "axes": {
+          "items": {
+            "$ref": "#/components/schemas/AxisResponse"
+          },
+          "maxItems": 200,
+          "type": "array"
+        },
+        "axis_count": {
+          "maximum": 1000000,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "conflicted_axis_count": {
+          "maximum": 1000000,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "drug": {
+          "maxLength": 64,
+          "pattern": "^DRUG:[a-z0-9][a-z0-9\\-.+_]{0,48}$",
+          "type": "string"
+        },
+        "findings": {
+          "items": {
+            "$ref": "#/components/schemas/FindingResponse"
+          },
+          "maxItems": 200,
+          "type": "array"
+        },
+        "requested_value": {
+          "maxLength": 64,
+          "type": "string"
+        },
+        "status": {
+          "$ref": "#/components/schemas/StatusBlock"
+        }
+      },
+      "required": [
+        "axes",
+        "axis_count",
+        "conflicted_axis_count",
+        "drug",
+        "findings",
+        "requested_value",
+        "status"
+      ],
+      "title": "MedicationResponse",
+      "type": "object"
+    },
+    "ObservationResponse": {
+      "additionalProperties": false,
+      "description": "One normalised phenotype observation as stored. Carries the verdict and never the raw supplied value.",
+      "properties": {
+        "gene": {
+          "maxLength": 64,
+          "pattern": "^GENE:[A-Z0-9][A-Z0-9\\-.@_]{0,48}$",
+          "type": "string"
+        },
+        "phenotype": {
+          "anyOf": [
+            {
+              "enum": [
+                "POOR",
+                "INTERMEDIATE",
+                "NORMAL",
+                "RAPID",
+                "ULTRARAPID",
+                "INDETERMINATE"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "reason_code": {
+          "anyOf": [
+            {
+              "maxLength": 64,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "status": {
+          "enum": [
+            "NORMALIZED",
+            "MISSING",
+            "INDETERMINATE",
+            "UNSUPPORTED"
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "gene",
+        "phenotype",
+        "reason_code",
+        "status"
+      ],
+      "title": "ObservationResponse",
+      "type": "object"
+    },
+    "PageInfo": {
+      "additionalProperties": false,
+      "description": "Deterministic cursor pagination. The cursor is bound to the release and dataset it was created for; one made for another release is refused rather than silently applied to a different catalogue.",
+      "properties": {
+        "next_cursor": {
+          "anyOf": [
+            {
+              "maxLength": 512,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "page_size": {
+          "maximum": 100,
+          "minimum": 1,
+          "type": "integer"
+        },
+        "returned": {
+          "maximum": 100,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "total": {
+          "maximum": 1000000,
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "next_cursor",
+        "page_size",
+        "returned",
+        "total"
+      ],
+      "title": "PageInfo",
+      "type": "object"
+    },
+    "PhenotypeObservationRequest": {
+      "additionalProperties": false,
+      "description": "One supplied gene-to-phenotype observation. The value is a phenotype token; it is normalised by the governed WP-12 normaliser, which records what it could not interpret rather than guessing.",
+      "properties": {
+        "gene": {
+          "description": "Canonical gene key, for example GENE:EXAMPLE1.",
+          "maxLength": 64,
+          "minLength": 6,
+          "pattern": "^GENE:[A-Z0-9][A-Z0-9\\-.@_]{0,48}$",
+          "type": "string"
+        },
+        "value": {
+          "description": "The supplied phenotype token. A token this contract version does not recognise is recorded as an uninterpretable observation, never guessed at.",
+          "maxLength": 64,
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "gene",
+        "value"
+      ],
+      "title": "PhenotypeObservationRequest",
+      "type": "object"
+    },
+    "PhenotypeProfileRequest": {
+      "additionalProperties": false,
+      "description": "A phenotype profile as supplied. Carries observations only: no genotype, no variant file, no identifiable field.",
+      "properties": {
+        "input_contract_version": {
+          "description": "The phenotype input contract this profile claims to follow.",
+          "maxLength": 64,
+          "type": "string"
+        },
+        "observations": {
+          "description": "One entry per gene. Every supplied gene produces an observation, including one that could not be interpreted.",
+          "items": {
+            "$ref": "#/components/schemas/PhenotypeObservationRequest"
+          },
+          "maxItems": 64,
+          "minItems": 1,
+          "type": "array"
+        },
+        "profile_id": {
+          "anyOf": [
+            {
+              "maxLength": 64,
+              "pattern": "^[^\\x00-\\x1f\\x7f-\\x9f]{1,256}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Optional label for the profile. Not part of any hash."
+        }
+      },
+      "required": [
+        "input_contract_version",
+        "observations"
+      ],
+      "title": "PhenotypeProfileRequest",
+      "type": "object"
+    },
+    "ReadinessResponse": {
+      "additionalProperties": false,
+      "description": "Bounded per-component readiness. External ClinPGx and language-model availability are absent by construction: neither is a P0 dependency, and letting either affect this would make an outage elsewhere look like an outage here.",
+      "properties": {
+        "blocking_failures": {
+          "items": {
+            "maxLength": 64,
+            "type": "string"
+          },
+          "maxItems": 20,
+          "type": "array"
+        },
+        "components": {
+          "items": {
+            "$ref": "#/components/schemas/ComponentStatus"
+          },
+          "maxItems": 20,
+          "type": "array"
+        },
+        "status": {
+          "enum": [
+            "READY",
+            "NOT_READY"
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "blocking_failures",
+        "components",
+        "status"
+      ],
+      "title": "ReadinessResponse",
+      "type": "object"
+    },
+    "ReleaseProvenanceResponse": {
+      "additionalProperties": false,
+      "description": "Every version the assessment executed against, by identity and content hash (SAFETY-INV-007). Complete, or the assessment was not persistable.",
+      "properties": {
+        "canonical_build_content_hash": {
+          "maxLength": 71,
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "coverage_manifest_hash": {
+          "maxLength": 71,
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "dataset_public_id": {
+          "maxLength": 32,
+          "type": "string"
+        },
+        "evidence_build_content_hash": {
+          "maxLength": 71,
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "evidence_build_key": {
+          "maxLength": 128,
+          "type": "string"
+        },
+        "protocol_content_hash": {
+          "maxLength": 71,
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "protocol_version": {
+          "maxLength": 64,
+          "type": "string"
+        },
+        "release_manifest_hash": {
+          "maxLength": 71,
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "release_public_id": {
+          "maxLength": 32,
+          "type": "string"
+        },
+        "ruleset_content_hash": {
+          "maxLength": 71,
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "ruleset_public_id": {
+          "maxLength": 32,
+          "type": "string"
+        },
+        "software_source_tree_hash": {
+          "maxLength": 71,
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "software_version": {
+          "maxLength": 64,
+          "type": "string"
+        },
+        "source_policy_content_hash": {
+          "maxLength": 71,
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "source_policy_version": {
+          "maxLength": 64,
+          "type": "string"
+        }
+      },
+      "required": [
+        "canonical_build_content_hash",
+        "coverage_manifest_hash",
+        "dataset_public_id",
+        "evidence_build_content_hash",
+        "evidence_build_key",
+        "protocol_content_hash",
+        "protocol_version",
+        "release_manifest_hash",
+        "release_public_id",
+        "ruleset_content_hash",
+        "ruleset_public_id",
+        "software_source_tree_hash",
+        "software_version",
+        "source_policy_content_hash",
+        "source_policy_version"
+      ],
+      "title": "ReleaseProvenanceResponse",
+      "type": "object"
+    },
+    "StatusBlock": {
+      "additionalProperties": false,
+      "description": "Attention and coverage together, always. One object rather than two sibling fields, so no serialisation of this contract can carry one without the other (SAFETY-INV-001). NOT_ASSESSED is emitted verbatim; it is never mapped to LOW, to safe, or to an absence of warning.",
+      "properties": {
+        "attention": {
+          "description": "Calculated attention level.",
+          "enum": [
+            "NOT_ASSESSED",
+            "NO_ACTIVE_ATTENTION",
+            "LOW",
+            "MEDIUM",
+            "HIGH"
+          ],
+          "type": "string"
+        },
+        "coverage": {
+          "description": "Calculated coverage status.",
+          "enum": [
+            "FULL",
+            "PARTIAL",
+            "INSUFFICIENT",
+            "UNSUPPORTED_DRUG",
+            "UNSUPPORTED_PHENOTYPE",
+            "SOURCE_CONFLICT"
+          ],
+          "type": "string"
+        },
+        "coverage_reason_codes": {
+          "description": "Machine-readable reasons. Empty only when coverage is FULL; unexplained absence is how absence becomes reassurance.",
+          "items": {
+            "enum": [
+              "DRUG_NOT_IN_CANONICAL_DATASET",
+              "PHENOTYPE_NOT_PROVIDED",
+              "PHENOTYPE_NOT_SUPPORTED",
+              "NO_VALIDATED_RULE_FOR_AXIS",
+              "SOME_AXES_NOT_COVERED",
+              "VALIDATED_RULES_CONFLICT",
+              "DATASET_RULESET_MISMATCH",
+              "EVIDENCE_REFERENCE_MISSING"
+            ],
+            "type": "string"
+          },
+          "maxItems": 200,
+          "type": "array"
+        }
+      },
+      "required": [
+        "attention",
+        "coverage",
+        "coverage_reason_codes"
+      ],
+      "title": "StatusBlock",
+      "type": "object"
+    },
+    "SystemVersionResponse": {
+      "additionalProperties": false,
+      "description": "The active release pointer and the exact version set it names, read once. Fields are never combined from two releases.",
+      "properties": {
+        "active_pointer_generation": {
+          "maximum": 1000000,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "api_version": {
+          "maxLength": 64,
+          "type": "string"
+        },
+        "canonical_build_content_hash": {
+          "maxLength": 71,
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "claim_boundary_approved": {
+          "type": "boolean"
+        },
+        "claim_boundary_phase": {
+          "maxLength": 64,
+          "type": "string"
+        },
+        "contract_version": {
+          "maxLength": 64,
+          "type": "string"
+        },
+        "coverage_manifest_hash": {
+          "maxLength": 71,
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "dataset_public_id": {
+          "maxLength": 32,
+          "type": "string"
+        },
+        "evidence_build_content_hash": {
+          "maxLength": 71,
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "evidence_build_key": {
+          "maxLength": 128,
+          "type": "string"
+        },
+        "protocol_version": {
+          "maxLength": 64,
+          "type": "string"
+        },
+        "release_manifest_hash": {
+          "maxLength": 71,
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "release_public_id": {
+          "maxLength": 32,
+          "type": "string"
+        },
+        "ruleset_content_hash": {
+          "maxLength": 71,
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "ruleset_public_id": {
+          "maxLength": 32,
+          "type": "string"
+        },
+        "software_source_tree_hash": {
+          "maxLength": 71,
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "software_version": {
+          "maxLength": 64,
+          "type": "string"
+        },
+        "source_policy_version": {
+          "maxLength": 64,
+          "type": "string"
+        }
+      },
+      "required": [
+        "active_pointer_generation",
+        "api_version",
+        "canonical_build_content_hash",
+        "claim_boundary_approved",
+        "claim_boundary_phase",
+        "contract_version",
+        "coverage_manifest_hash",
+        "dataset_public_id",
+        "evidence_build_content_hash",
+        "evidence_build_key",
+        "protocol_version",
+        "release_manifest_hash",
+        "release_public_id",
+        "ruleset_content_hash",
+        "ruleset_public_id",
+        "software_source_tree_hash",
+        "software_version",
+        "source_policy_version"
+      ],
+      "title": "SystemVersionResponse",
+      "type": "object"
+    }
+  },
+  "$id": "https://pgx.local/schemas/wp16/api-contract.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "description": "Every request and response document this API exchanges, generated from apps/api/contracts/spec.py - the same declaration that produces the runtime validator, the Pydantic models and the OpenAPI document. Published so a consumer can validate against the contract without running the application.",
+  "title": "PGx API transport contract (WP-16)",
+  "x-pgx-contract-version": "pgx-api-contract/1",
+  "x-pgx-control-character-ranges": [
+    [
+      0,
+      8
+    ],
+    [
+      10,
+      31
+    ],
+    [
+      127,
+      159
+    ],
+    [
+      8232,
+      8233
+    ]
+  ],
+  "x-pgx-limits": {
+    "default_page_size": 25,
+    "max_body_bytes": 65536,
+    "max_collection_items": 200,
+    "max_cursor_length": 512,
+    "max_detail_entries": 20,
+    "max_identifier_length": 64,
+    "max_medications": 32,
+    "max_message_length": 512,
+    "max_observations": 64,
+    "max_page_size": 100,
+    "max_reference_length": 128,
+    "max_string_length": 256
+  }
+}

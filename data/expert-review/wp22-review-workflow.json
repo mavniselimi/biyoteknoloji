@@ -1,0 +1,112 @@
+{
+  "audit_actions": [
+    "REVIEW_ASSIGNED",
+    "REVIEW_EXPECTATION_RECORDED",
+    "REVIEW_RESULT_REVEALED",
+    "REVIEW_COMPLETED",
+    "REVIEW_INVALIDATED",
+    "REVIEW_CORRECTION_APPENDED",
+    "REVIEW_PERMIT_ISSUED",
+    "REVIEW_PERMIT_REFUSED"
+  ],
+  "blinding_note": "Before a reveal record exists there is no field in the view, the page model or the API response in which a system result could sit, including a hidden one. The result port is not consulted until the reveal transition succeeds.",
+  "correction_kinds": [
+    "TYPOGRAPHIC",
+    "RATIONALE_AMENDED",
+    "EXPECTATION_AMENDED",
+    "DECISION_ANNOTATED",
+    "RATING_ANNOTATED",
+    "WITHDRAWN_BY_REVIEWER"
+  ],
+  "decisions": [
+    "AGREE",
+    "PARTIAL",
+    "DISAGREE"
+  ],
+  "error_code_count": 18,
+  "error_codes": {
+    "EXPERT_REVIEW_ALREADY_COMPLETED": "this review is complete and immutable",
+    "EXPERT_REVIEW_AUDIT_FAILED": "the audit event could not be appended, so the governed action was rolled back",
+    "EXPERT_REVIEW_CASE_MANIFEST_MISMATCH": "the case manifest hash no longer matches the pinned one",
+    "EXPERT_REVIEW_CASE_NOT_ELIGIBLE": "only an EXPERT_HOLDOUT case may be assigned for blind review",
+    "EXPERT_REVIEW_EXPECTATION_ALREADY_LOCKED": "an expected response is already recorded; it cannot be replaced, only corrected by appending",
+    "EXPERT_REVIEW_EXPECTATION_REQUIRED": "the expected response must be recorded before anything is revealed",
+    "EXPERT_REVIEW_FORGED_FIELD": "the request supplied a field the server owns",
+    "EXPERT_REVIEW_INVALIDATED": "this review was invalidated and cannot be continued",
+    "EXPERT_REVIEW_INVALID_TRANSITION": "the requested move is not permitted from the current state",
+    "EXPERT_REVIEW_NOT_ASSIGNED": "this reviewer holds no active assignment for this case; returned identically whether or not the case exists",
+    "EXPERT_REVIEW_NOT_AVAILABLE": "the review service, its store or its dependencies are unavailable",
+    "EXPERT_REVIEW_PERMIT_INVALID": "no assignment-scoped permit authorises this actor to read this case's payload at this stage",
+    "EXPERT_REVIEW_PROTOCOL_MISMATCH": "the protocol hash no longer matches the pinned one",
+    "EXPERT_REVIEW_PROTOCOL_NOT_APPROVED": "the blind review protocol has not been approved by named human and scientific reviewers",
+    "EXPERT_REVIEW_RELEASE_MISMATCH": "the pinned release no longer matches the one this review began under",
+    "EXPERT_REVIEW_RESULT_ALREADY_REVEALED": "the result was revealed once; a second reveal cannot recalculate it",
+    "EXPERT_REVIEW_REVEAL_REQUIRED": "the system result must be revealed before a decision is recorded",
+    "EXPERT_REVIEW_ROLE_REQUIRED": "only the exact EXPERT_REVIEWER role may act; ADMIN does not imply it"
+  },
+  "initial_state": "ASSIGNED",
+  "invalidation_reasons": [
+    "RELEASE_CHANGED",
+    "CASE_MANIFEST_CHANGED",
+    "PROTOCOL_APPROVAL_WITHDRAWN",
+    "BLINDING_COMPROMISED",
+    "REVIEWER_CONFLICT_DECLARED",
+    "ASSIGNMENT_SUPERSEDED"
+  ],
+  "likert_dimensions": [
+    "CLARITY",
+    "TRACEABILITY",
+    "CLINICAL_USEFULNESS",
+    "SAFETY_FRAMING"
+  ],
+  "likert_maximum": 5,
+  "likert_minimum": 1,
+  "not_clinical_validation": "This document describes a workflow. It is not clinical validation, scientific validation or evidence of either.",
+  "ordering_note": "The order is enforced by referential integrity rather than by rules a caller could skip. A reveal row must name an expectation revision that exists; a completion row must name a reveal that exists. There is no identifier to supply for a record that was never written, so the out-of-order operation is not refused - it is unexpressible.",
+  "permitted_permit_stages": [
+    "ASSIGNED",
+    "EXPECTATION_RECORDED",
+    "RESULT_REVEALED"
+  ],
+  "protocol_version": "pgx-wp22-expert-protocol/1",
+  "rationale_codes": [
+    "GUIDELINE_DIRECT",
+    "GUIDELINE_EXTRAPOLATED",
+    "PHENOTYPE_DETERMINATIVE",
+    "INSUFFICIENT_INPUT",
+    "NO_APPLICABLE_RULE",
+    "SOURCE_CONFLICT",
+    "EVIDENCE_INSUFFICIENT",
+    "OUT_OF_SCOPE"
+  ],
+  "schema_version": "pgx-wp22-review-workflow/1",
+  "single_refusal_note": "An unknown case, a case that is not expert-holdout and a case assigned to another reviewer all return EXPERT_REVIEW_NOT_ASSIGNED with empty details. Distinguishing them would enumerate the holdout set.",
+  "states": [
+    "ASSIGNED",
+    "EXPECTATION_RECORDED",
+    "RESULT_REVEALED",
+    "COMPLETED",
+    "INVALIDATED"
+  ],
+  "terminal_states": [
+    "COMPLETED",
+    "INVALIDATED"
+  ],
+  "transitions": {
+    "ASSIGNED": [
+      "EXPECTATION_RECORDED",
+      "INVALIDATED"
+    ],
+    "COMPLETED": [],
+    "EXPECTATION_RECORDED": [
+      "INVALIDATED",
+      "RESULT_REVEALED"
+    ],
+    "INVALIDATED": [],
+    "RESULT_REVEALED": [
+      "COMPLETED",
+      "INVALIDATED"
+    ]
+  },
+  "vocabulary_version": "pgx-wp22-expert-review-vocabulary/1"
+}

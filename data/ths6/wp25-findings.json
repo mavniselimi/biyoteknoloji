@@ -1,0 +1,130 @@
+{
+  "blocking_finding_count": 1,
+  "dangling_traceability_references": {
+    "missing_paths": [],
+    "unknown_claim_ids": [],
+    "unknown_dod_ids": [],
+    "unknown_evidence_ids": [],
+    "unknown_gate_ids": []
+  },
+  "disagreement_count": 4,
+  "finding_count": 6,
+  "findings": [
+    {
+      "blocking": false,
+      "code": "THS6_DOD_DECLARED_COUNT_MISMATCH",
+      "detail": "WP-25's own prose declares 14 Definition of Done items; architecture.md, section 21, Definition of Done for the complete P0 program enumerates 15. The two counts disagree.",
+      "owner": "architecture/document owner",
+      "references": [
+        "architecture.md"
+      ],
+      "resolution": "all 15 enumerated bullets are implemented as P0-DOD-001 through P0-DOD-015 and evaluated separately. No bullet was merged, renumbered or discarded to reach the declared count. The discrepancy is visible and it permits no item to be ignored."
+    },
+    {
+      "blocking": true,
+      "code": "THS6_EVIDENCE_INVALID",
+      "detail": "1 artifact(s) failed schema validation, resolved through a symlink, or contained credential-shaped content: EV-WP17-001 (data/web/wp17-real-gate-status.json) INVALID: 1 error(s)",
+      "owner": "platform owner",
+      "references": [
+        "EV-WP17-001"
+      ],
+      "resolution": "typed INVALID and excluded from supporting any claim. WP-25 does not repair another work package's artifact or its schema. Where a gate reads a different, well-formed field of such an artifact, it still reads it, and this finding is why a reader should treat that gate's evidence as provisional."
+    },
+    {
+      "blocking": false,
+      "code": "THS6_EVIDENCE_STALE",
+      "detail": "3 artifact(s) record values their own source has since changed: EV-WP19-001, EV-WP19-002, EV-WP19-003",
+      "owner": "verification owner",
+      "references": [
+        "EV-WP19-001",
+        "EV-WP19-002",
+        "EV-WP19-003"
+      ],
+      "resolution": "typed STALE; a stale artifact supports no claim"
+    },
+    {
+      "blocking": false,
+      "code": "THS6_EVIDENCE_UNAVAILABLE",
+      "detail": "1 declared artifact(s) are not present in the working tree: EV-WP16-005",
+      "owner": "repository maintainer",
+      "references": [
+        "EV-WP16-005"
+      ],
+      "resolution": "recorded as UNAVAILABLE; no digest is invented and no gate treats an absent artifact as satisfied"
+    },
+    {
+      "blocking": false,
+      "code": "THS6_PROSE_INVENTORY_DISCREPANCY",
+      "detail": "WP-24's closing prose stated that no docs/ths6 directory existed. Three preliminary WP-local evidence notes were already committed there.",
+      "owner": "WP-24 author",
+      "references": [
+        "docs/ths6/wp02-foundation-evidence.md",
+        "docs/ths6/wp03-release-evidence.md",
+        "docs/ths6/wp04-ingestion-evidence.md"
+      ],
+      "resolution": "the three notes are preserved unchanged, inventoried as DOCUMENT_ONLY, and kept disjoint from the final pack under docs/ths6/final/"
+    },
+    {
+      "blocking": false,
+      "code": "THS6_SOURCE_DOCUMENT_UNAVAILABLE",
+      "detail": "Two requirement documents named by the WP-25 brief were not readable from the environment this pack was built in, so their contents contributed nothing to this registry.",
+      "owner": "work package author",
+      "references": [
+        "architecture.md"
+      ],
+      "resolution": "requirements were taken from architecture.md, which is in the repository and is hashed as EV-WP00-001; nothing was inferred about the unread documents"
+    }
+  ],
+  "findings_version": "pgx-wp25-findings/1",
+  "note": "A finding says a document, a count or an artifact is wrong. A blocker says a condition is unmet. They are different things and are counted separately.",
+  "source_artifact_disagreements": [
+    {
+      "explanation": "WP-17's interface gate status says the expert review workflow is NOT_IMPLEMENTED; WP-22 reports its own module IMPLEMENTED with a delivered review workflow. One of the two artifacts is out of date.",
+      "fact": "whether the expert review workflow is implemented",
+      "left_field": "expert_review_workflow_status",
+      "left_path": "data/web/wp17-real-gate-status.json",
+      "left_value": "NOT_IMPLEMENTED",
+      "owner": "platform owner",
+      "resolution": "recorded; WP-25 does not choose between them",
+      "right_field": "implementation_status",
+      "right_path": "data/expert-review/wp22-real-gate-status.json",
+      "right_value": "IMPLEMENTED"
+    },
+    {
+      "explanation": "WP-17 records null, meaning no count was taken; WP-18 records 0, meaning a count was taken and found none. Both are honest and they are not the same statement.",
+      "fact": "the number of holdout validation cases",
+      "left_field": "holdout_case_count",
+      "left_path": "data/web/wp17-real-gate-status.json",
+      "left_value": null,
+      "owner": "validation owner",
+      "resolution": "recorded; WP-25 does not choose between them",
+      "right_field": "holdout_case_count",
+      "right_path": "data/validation/wp18-real-gate-status.json",
+      "right_value": 0
+    },
+    {
+      "explanation": "WP-20's artifact reports that WP-24 had not started; WP-19's reports that it had. WP-20's was generated before the deployment package existed.",
+      "fact": "whether WP-24 has started",
+      "left_field": "wp24_started",
+      "left_path": "data/safety/wp20-real-gate-status.json",
+      "left_value": false,
+      "owner": "safety owner",
+      "resolution": "recorded; WP-25 does not choose between them",
+      "right_field": "wp24_started",
+      "right_path": "data/verification/wp19-real-gate-status.json",
+      "right_value": true
+    },
+    {
+      "explanation": "WP-19's recorded discovery count is lower than the number of test functions the tree now defines, so the recorded count predates later work packages. A recorded count can legitimately be lower than the defined count only through skips, which reduce execution rather than discovery.",
+      "fact": "how many tests this repository has",
+      "left_field": "discovered_test_count",
+      "left_path": "data/verification/wp19-real-gate-status.json",
+      "left_value": 6374,
+      "owner": "verification owner",
+      "resolution": "recorded; WP-25 does not regenerate another work package's artifact",
+      "right_field": "test functions defined (counted by parsing)",
+      "right_path": "tests/",
+      "right_value": 7323
+    }
+  ]
+}

@@ -1,0 +1,215 @@
+{
+  "$id": "https://pgx.local/schemas/wp24/backup-restore-execution.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "restore_verified": {
+            "const": true
+          }
+        },
+        "required": [
+          "restore_verified"
+        ]
+      },
+      "then": {
+        "properties": {
+          "restore_verification": {
+            "properties": {
+              "all_satisfied": {
+                "const": true
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "operational_status": {
+            "const": "VERIFIED"
+          }
+        },
+        "required": [
+          "operational_status"
+        ]
+      },
+      "then": {
+        "properties": {
+          "destination_kind": {
+            "enum": [
+              "local_path",
+              "remote"
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "description": "A successor to WP-23's status artifact, never a replacement. A restore is verified only when all four runbook conditions hold; pg_restore exiting zero satisfies none of them.",
+  "properties": {
+    "backup_executed": {
+      "type": "boolean"
+    },
+    "backup_execution_version": {
+      "const": "pgx-wp24-backup-execution/1"
+    },
+    "blockers": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "blocking": {
+            "type": "boolean"
+          },
+          "code": {
+            "enum": [
+              "DEPLOY_ADVISORY_DATABASE_UNAVAILABLE",
+              "DEPLOY_ARGON2_UNAVAILABLE",
+              "DEPLOY_BACKUP_NOT_EXECUTED",
+              "DEPLOY_BUILD_BACKEND_UNAVAILABLE",
+              "DEPLOY_CI_NOT_EXECUTED",
+              "DEPLOY_CLAIM_BOUNDARY_NOT_APPROVED",
+              "DEPLOY_COMPOSITION_INCOMPLETE",
+              "DEPLOY_CONTAINER_RUNTIME_UNAVAILABLE",
+              "DEPLOY_DATABASE_UNAVAILABLE",
+              "DEPLOY_EXPERT_REVIEW_NOT_PERFORMED",
+              "DEPLOY_IMAGE_NOT_BUILT",
+              "DEPLOY_LOCKFILE_ABSENT",
+              "DEPLOY_LOCKFILE_UNVERIFIED",
+              "DEPLOY_MIGRATION_HEAD_MISMATCH",
+              "DEPLOY_MIGRATION_NOT_EXECUTED",
+              "DEPLOY_NO_ELIGIBLE_RELEASE",
+              "DEPLOY_NO_HOLDOUT_EVIDENCE",
+              "DEPLOY_NO_REAL_USERS",
+              "DEPLOY_PACKAGE_INDEX_UNAVAILABLE",
+              "DEPLOY_PERFORMANCE_NOT_EXECUTED",
+              "DEPLOY_RESTORE_NOT_VERIFIED",
+              "DEPLOY_ROLLBACK_NOT_EXERCISED",
+              "DEPLOY_RUNTIME_ASSET_MISSING",
+              "DEPLOY_SAFETY_GATE_BLOCKED",
+              "DEPLOY_SBOM_NOT_GENERATED",
+              "DEPLOY_SMOKE_NOT_EXECUTED",
+              "DEPLOY_STAGING_NOT_DEPLOYED",
+              "DEPLOY_TLS_NOT_OBSERVED",
+              "DEPLOY_VULNERABILITY_SCANNER_UNAVAILABLE"
+            ],
+            "type": "string"
+          },
+          "detail": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "owner": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "code",
+          "detail",
+          "owner",
+          "blocking"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "destination_kind": {
+      "enum": [
+        "none",
+        "temporary",
+        "local_path",
+        "remote"
+      ],
+      "type": "string"
+    },
+    "encrypted_at_rest": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "local_rehearsal": {
+      "type": "boolean"
+    },
+    "observed_at": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "operational_status": {
+      "enum": [
+        "BLOCKED",
+        "VERIFIED",
+        "LOCAL_REHEARSAL_VERIFIED"
+      ],
+      "type": "string"
+    },
+    "restore_verification": {
+      "properties": {
+        "all_satisfied": {
+          "type": "boolean"
+        },
+        "condition_count": {
+          "const": 4
+        },
+        "conditions": {
+          "minItems": 4,
+          "type": "array"
+        },
+        "satisfied_count": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "unevaluated_count": {
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "conditions",
+        "condition_count",
+        "satisfied_count",
+        "all_satisfied"
+      ],
+      "type": "object"
+    },
+    "restore_verified": {
+      "type": "boolean"
+    },
+    "scope": {
+      "type": "object"
+    },
+    "state": {
+      "enum": [
+        "CONFIGURED",
+        "EXECUTED",
+        "OBSERVED",
+        "VERIFIED",
+        "BLOCKED",
+        "NOT_EXECUTED",
+        "STALE",
+        "NOT_APPLICABLE",
+        "TEST_ONLY_REHEARSAL"
+      ],
+      "type": "string"
+    },
+    "supersedes": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "backup_execution_version",
+    "state",
+    "operational_status",
+    "backup_executed",
+    "restore_verified",
+    "destination_kind",
+    "restore_verification"
+  ],
+  "title": "PGx backup and restore execution (WP-24)",
+  "type": "object"
+}

@@ -1,0 +1,151 @@
+{
+  "description": "CLI surface of the legacy modules. --help is captured for offline-safe argparse modules; network-only probes are inspected statically.",
+  "modules": {
+    "alternative_ranker.py": {
+      "declared_options": [
+        "--candidate-file",
+        "--current-drugs",
+        "--graph-file",
+        "--help",
+        "--out-dir",
+        "--profile-id",
+        "--seed-dir",
+        "--source-drug"
+      ],
+      "exit_code": 0,
+      "help_line_count": 22,
+      "help_sha256": "b49371881be0377ad42b5daf611b614d06d6530c439b5233fbae42759144c1df",
+      "network_used": false,
+      "reason_code": "OFFLINE_HELP_OK",
+      "status": "CAPTURED"
+    },
+    "candidate_onboarding.py": {
+      "declared_options": [
+        "--candidate-file",
+        "--clinpgx-outputs-dir",
+        "--dry-run",
+        "--genes",
+        "--help",
+        "--merge",
+        "--out-dir",
+        "--seed-dir"
+      ],
+      "exit_code": 0,
+      "help_line_count": 17,
+      "help_sha256": "b9436db6617f87cba434ecd1b7c8b981bdb38b4485a827d87b49e3b22d105d41",
+      "network_used": false,
+      "reason_code": "OFFLINE_HELP_OK",
+      "status": "CAPTURED"
+    },
+    "clean_mvp_seed_dataset.py": {
+      "declared_options": [
+        "--help",
+        "--input-dir",
+        "--out-dir"
+      ],
+      "exit_code": 0,
+      "help_line_count": 12,
+      "help_sha256": "1a36d0004245552280c47f8a2dd4b50fbef08fb0253deba85f8b64b206c7bbdb",
+      "network_used": false,
+      "reason_code": "OFFLINE_HELP_OK",
+      "status": "CAPTURED"
+    },
+    "clinpgx_probe.py": {
+      "cli_argument_mechanism": "none (hardcoded constants)",
+      "expected_output_filenames": [
+        "first_probe_results.json",
+        "Çıktı dosyası: clinpgx_outputs/first_probe_results.json"
+      ],
+      "has_main_entrypoint": true,
+      "main_function_present": true,
+      "network_base_urls": [
+        "https://api.clinpgx.org/openapi.json",
+        "https://api.clinpgx.org/swagger/openapi.json",
+        "https://api.clinpgx.org/v1"
+      ],
+      "network_used": false,
+      "reason": "Module performs live ClinPGx HTTP retrieval and requires the third-party 'requests' package; executing it would make a network call, which WP-01 forbids.",
+      "reason_code": "NETWORK_REQUIRED_NOT_EXECUTED",
+      "status": "NOT_EXECUTED",
+      "third_party_imports": [
+        "requests"
+      ]
+    },
+    "clinpgx_probe_v2.py": {
+      "cli_argument_mechanism": "none (hardcoded constants)",
+      "expected_output_filenames": [
+        " - guideline_annotation_rows.csv",
+        " - mvp_candidate_drug_gene_edges.csv",
+        " - pair_annotation_rows.csv",
+        " - resolved_chemicals.csv",
+        " - resolved_genes.csv",
+        " - variant_annotation_filtered_rows.csv",
+        "guideline_annotation_rows.csv",
+        "mvp_candidate_drug_gene_edges.csv",
+        "mvp_candidate_drug_gene_edges.json",
+        "openapi_snapshot.json",
+        "pair_annotation_rows.csv",
+        "pair_probe_raw.json",
+        "resolved_chemicals.csv",
+        "resolved_chemicals.json",
+        "resolved_genes.csv",
+        "resolved_genes.json",
+        "variant_annotation_filtered_raw.json",
+        "variant_annotation_filtered_rows.csv"
+      ],
+      "has_main_entrypoint": true,
+      "main_function_present": true,
+      "network_base_urls": [
+        "https://api.clinpgx.org/openapi.json",
+        "https://api.clinpgx.org/v1"
+      ],
+      "network_used": false,
+      "reason": "Module performs live ClinPGx HTTP retrieval and requires the third-party 'requests' package; executing it would make a network call, which WP-01 forbids.",
+      "reason_code": "NETWORK_REQUIRED_NOT_EXECUTED",
+      "status": "NOT_EXECUTED",
+      "third_party_imports": [
+        "requests"
+      ]
+    },
+    "gemini_report_generator.py": {
+      "declared_options": [
+        "--api-key",
+        "--help",
+        "--input",
+        "--model",
+        "--no-api",
+        "--out-dir",
+        "--save-prompt",
+        "--temperature"
+      ],
+      "exit_code": 0,
+      "help_line_count": 17,
+      "help_sha256": "8751a8e3fb45d295e518e8e5fc96421ccd4423ee84dc4eb93efdcdb1814118e4",
+      "network_used": false,
+      "reason_code": "OFFLINE_HELP_OK",
+      "status": "CAPTURED"
+    },
+    "risk_engine.py": {
+      "declared_options": [
+        "--drugs",
+        "--help",
+        "--list-drugs",
+        "--list-profiles",
+        "--max-evidence",
+        "--out-dir",
+        "--profile-id",
+        "--profile-json",
+        "--seed-dir"
+      ],
+      "exit_code": 0,
+      "help_line_count": 21,
+      "help_sha256": "978783bdc29eab2e4a4bad84376578b3b9e289455719a39e7423dba8cd98e20e",
+      "network_used": false,
+      "reason_code": "OFFLINE_HELP_OK",
+      "status": "CAPTURED"
+    }
+  },
+  "not_executed_is_not_a_failure": "A module recorded as NETWORK_REQUIRED_NOT_EXECUTED is a deliberate WP-01 boundary, not a baseline failure.",
+  "snapshot_id": "cli-contracts",
+  "snapshot_kind": "legacy_interface_contract"
+}

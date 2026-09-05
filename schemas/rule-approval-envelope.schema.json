@@ -1,0 +1,148 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pgx-platform.invalid/schemas/rule-approval-envelope.schema.json",
+  "title": "PGx rule approval envelope",
+  "description": "What a WP-11 rule approval must carry, validated by WP-10 and granted by nobody. A valid envelope is a well-formed claim, not an approval: the parties it names must be real people holding real credentials, which requires the authentication work owned by WP-23. Validating one creates no ComputableRule and transitions nothing.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "envelope_version",
+    "rule_public_id",
+    "rule_version",
+    "rule_content_hash",
+    "curated_interpretation_id",
+    "curated_interpretation_status",
+    "curation_work_item_id",
+    "curation_revision_id",
+    "curation_revision_content_hash",
+    "protocol_version",
+    "protocol_content_hash",
+    "evidence_record_uuids",
+    "evidence_build_content_hash",
+    "source_versions",
+    "created_by",
+    "created_at",
+    "reviewed_by",
+    "reviewed_at",
+    "approved_by",
+    "approved_at",
+    "approval_rationale"
+  ],
+  "properties": {
+    "envelope_version": {
+      "const": "pgx-rule-approval-envelope/1"
+    },
+    "rule_public_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "rule_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "rule_content_hash": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "curated_interpretation_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "curated_interpretation_status": {
+      "const": "CURATED",
+      "description": "A rule may only encode an accepted conclusion. Encoding a draft is encoding an opinion nobody accepted."
+    },
+    "curation_work_item_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "curation_revision_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "curation_revision_content_hash": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "protocol_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "protocol_content_hash": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "evidence_record_uuids": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    },
+    "evidence_build_content_hash": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "source_versions": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "string",
+        "minLength": 1
+      },
+      "description": "Which version of each upstream source was in play. 'the current one' is not reconstructible later."
+    },
+    "created_by": {
+      "type": "string",
+      "minLength": 1
+    },
+    "created_at": {
+      "type": "string",
+      "minLength": 1
+    },
+    "reviewed_by": {
+      "type": "string",
+      "minLength": 1
+    },
+    "reviewed_at": {
+      "type": "string",
+      "minLength": 1
+    },
+    "approved_by": {
+      "type": "string",
+      "minLength": 1
+    },
+    "approved_at": {
+      "type": "string",
+      "minLength": 1
+    },
+    "approval_rationale": {
+      "type": "string",
+      "minLength": 24
+    }
+  },
+  "not": {
+    "anyOf": [
+      {
+        "required": [
+          "rule_status"
+        ]
+      },
+      {
+        "required": [
+          "computable_rule"
+        ]
+      },
+      {
+        "required": [
+          "auto_approve"
+        ]
+      },
+      {
+        "required": [
+          "bypass_gates"
+        ]
+      }
+    ]
+  }
+}

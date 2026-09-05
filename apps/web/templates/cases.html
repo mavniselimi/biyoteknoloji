@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="notice notice-scope" role="note">
+  <p>{{ model.development_only_note }}</p>
+</div>
+
+{% if not model.catalog_available or not model.cases %}
+<p class="empty-state">{{ model.empty_note }}</p>
+{% else %}
+<table class="data-table case-table">
+  <caption>{{ text['cases.caption'] }}</caption>
+  <thead>
+    <tr>
+      <th scope="col">{{ text['cases.case_id'] }}</th>
+      <th scope="col">{{ field['subject'] }}</th>
+      <th scope="col">{{ text['cases.case_role'] }}</th>
+      <th scope="col">{{ text['cases.legacy_key'] }}</th>
+      <th scope="col">{{ text['cases.observation_count'] }}</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for case in model.cases %}
+    <tr>
+      <th scope="row"><a href="{{ case.url }}"><code>{{ case.case_id }}</code></a></th>
+      <td>
+        <span class="case-label">{{ case.label }}</span>
+        <span class="muted case-demonstrates">{{ case.demonstrates }}</span>
+      </td>
+      <td><code class="role-tag">{{ case.case_role }}</code></td>
+      <td>{% if case.legacy_profile_key %}<code>{{ case.legacy_profile_key }}</code>{% else %}<span class="absent" aria-label="{{ text['app.none_recorded'] }}">&#8212;</span>{% endif %}</td>
+      <td class="numeric">{{ case.observation_count }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endif %}
+{% endblock %}

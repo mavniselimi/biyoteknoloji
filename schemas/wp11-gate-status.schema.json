@@ -1,0 +1,203 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pgx-platform.invalid/schemas/wp11-gate-status.schema.json",
+  "title": "PGx WP-11 real-data gate status",
+  "description": "A machine-readable statement of why no real computable rule exists and what would have to happen, by whom, before one could. Every blocker names an owner who is a person rather than a process, because the missing thing is a human scientific judgement and no amount of further implementation can supply it. The schema requires the blocker list to be non-empty and every real count to be present, so this file cannot be edited into an all-clear by deletion: an empty blocker list is refused, and a count that has been removed is refused with it. A gate status that reported readiness would be the single most dangerous document in the repository.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "gate_status_version",
+    "assessment",
+    "upstream_state",
+    "curation_state",
+    "rule_state",
+    "blockers",
+    "next_required_human_actions",
+    "note",
+    "content_hash"
+  ],
+  "properties": {
+    "gate_status_version": {
+      "const": "pgx-wp11-gate-status/1"
+    },
+    "assessment": {
+      "type": "string",
+      "minLength": 1
+    },
+    "upstream_state": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "curation_protocol_status",
+        "curation_protocol_approved",
+        "canonical_dataset_state",
+        "canonical_dataset_published",
+        "evidence_build_labels",
+        "evidence_build_approved_for_rules",
+        "source_registry_entries",
+        "source_registry_approved"
+      ],
+      "properties": {
+        "curation_protocol_status": {
+          "type": "string",
+          "minLength": 1
+        },
+        "curation_protocol_approved": {
+          "type": "boolean"
+        },
+        "canonical_dataset_state": {
+          "type": "string",
+          "minLength": 1
+        },
+        "canonical_dataset_published": {
+          "type": "boolean"
+        },
+        "evidence_build_labels": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "evidence_build_approved_for_rules": {
+          "type": "boolean"
+        },
+        "source_registry_entries": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "source_registry_approved": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "curation_state": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "legacy_work_items",
+        "linked_work_items",
+        "unlinked_work_items",
+        "curated_interpretations",
+        "eligible_rule_approval_envelopes"
+      ],
+      "properties": {
+        "legacy_work_items": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "linked_work_items": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "unlinked_work_items": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "curated_interpretations": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "eligible_rule_approval_envelopes": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "rule_state": {
+      "description": "Every count is required and every one is expected to be zero while the blockers stand. Requiring them all means a future non-zero value has to be written deliberately rather than appearing by omission.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "real_draft_rules",
+        "real_curated_rules",
+        "real_validated_rules",
+        "real_deprecated_rules",
+        "real_frozen_rulesets",
+        "executable_rulesets_in_default_registry"
+      ],
+      "properties": {
+        "real_draft_rules": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "real_curated_rules": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "real_validated_rules": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "real_deprecated_rules": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "real_frozen_rulesets": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "executable_rulesets_in_default_registry": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "blockers": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "code",
+          "meaning",
+          "owner",
+          "unblocks",
+          "detail"
+        ],
+        "properties": {
+          "code": {
+            "type": "string",
+            "pattern": "^[A-Z][A-Z0-9_]*$"
+          },
+          "meaning": {
+            "type": "string",
+            "minLength": 1
+          },
+          "owner": {
+            "description": "Who can clear this. Every value names people, because none of these blockers is clearable by writing more code.",
+            "type": "string",
+            "minLength": 1
+          },
+          "unblocks": {
+            "type": "string",
+            "minLength": 1
+          },
+          "detail": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "next_required_human_actions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "note": {
+      "type": "string",
+      "minLength": 100
+    },
+    "content_hash": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    }
+  }
+}

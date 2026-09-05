@@ -1,0 +1,255 @@
+{
+  "demo_manifest_version": "pgx-wp25-demo-manifest/1",
+  "environment_requirements": [
+    {
+      "condition_id": "DEMO-ENV-01",
+      "description": "the network is unavailable to the demonstration",
+      "note": "reachability of a package index is the strongest network signal this repository records; it is evidence about the environment, not proof that a running demo made no outbound request",
+      "required": false,
+      "source": "data/deployment/wp24-real-gate-status.json.package_index_reachable"
+    },
+    {
+      "condition_id": "DEMO-ENV-02",
+      "description": "the language model is off",
+      "note": "read from the module constant rather than asserted; the reporting layer refuses with REPORT_LLM_DISABLED when it is off",
+      "required": false,
+      "source": "pgx/reporting/llm.py:LLM_ENABLED"
+    },
+    {
+      "condition_id": "DEMO-ENV-03",
+      "description": "every P1 feature is off",
+      "note": "checked by looking for the modules that would implement each P1 surface, not by reading a flag: a default-off flag in a build that ships the feature is a flag somebody can turn on",
+      "required": "NOT_PRESENT",
+      "source": "pgx/safety/definitions.py: absence markers of every invariant whose blocker is owned by P1"
+    }
+  ],
+  "force_available": false,
+  "note": "The preflight stops at the first unmet precondition and does not execute the step it guards. There is no force flag and no fixture mode.",
+  "step_count": 10,
+  "steps": [
+    {
+      "observable_outcome": "the case selection page renders from local templates and local assets, with no outbound request attempted",
+      "precondition_count": 2,
+      "preconditions": [
+        {
+          "blocker_code": "THS6_DEMO_NOT_EXECUTED",
+          "description": "the interface templates are present and render here",
+          "owner": "platform owner",
+          "required": true,
+          "source_field": "template_runtime_available",
+          "source_path": "data/web/wp17-real-gate-status.json"
+        },
+        {
+          "blocker_code": "THS6_DEMO_NOT_EXECUTED",
+          "description": "the declared templates match the allowlist",
+          "owner": "platform owner",
+          "required": true,
+          "source_field": "templates_match_allowlist",
+          "source_path": "data/web/wp17-real-gate-status.json"
+        }
+      ],
+      "step_id": "DEMO-01",
+      "title": "Serve the interface with no network available"
+    },
+    {
+      "observable_outcome": "a case drawn from approved, governed content is listed and selectable - not a development fixture",
+      "precondition_count": 2,
+      "preconditions": [
+        {
+          "blocker_code": "THS6_NO_APPROVED_SOURCE",
+          "description": "at least one approved scientific source exists",
+          "owner": "scientific source approver",
+          "required": "at least one",
+          "source_field": "upstream_state.source_registry_approved",
+          "source_path": "data/rulesets/wp11-real-gate-status.json"
+        },
+        {
+          "blocker_code": "THS6_DATASET_NOT_PUBLISHED",
+          "description": "a canonical dataset is published",
+          "owner": "data owner",
+          "required": true,
+          "source_field": "upstream_state.canonical_dataset_published",
+          "source_path": "data/rulesets/wp11-real-gate-status.json"
+        }
+      ],
+      "step_id": "DEMO-02",
+      "title": "Choose a case from the governed catalogue"
+    },
+    {
+      "observable_outcome": "the page names the software version, the dataset version and the ruleset version the result will be computed against",
+      "precondition_count": 2,
+      "preconditions": [
+        {
+          "blocker_code": "THS6_NO_ACTIVE_RELEASE",
+          "description": "a release is active",
+          "owner": "release approver",
+          "required": true,
+          "source_field": "active_release_available",
+          "source_path": "data/safety/wp20-real-gate-status.json"
+        },
+        {
+          "blocker_code": "THS6_NO_EXECUTABLE_RULESET",
+          "description": "the default registry holds an executable ruleset",
+          "owner": "curation lead",
+          "required": "at least one",
+          "source_field": "rule_state.executable_rulesets_in_default_registry",
+          "source_path": "data/rulesets/wp11-real-gate-status.json"
+        }
+      ],
+      "step_id": "DEMO-03",
+      "title": "Resolve the active release version bundle"
+    },
+    {
+      "observable_outcome": "the submitted profile is accepted, normalised and echoed back with its exact interpretation",
+      "precondition_count": 1,
+      "preconditions": [
+        {
+          "blocker_code": "THS6_NO_APPROVED_RULE",
+          "description": "at least one rule is validated",
+          "owner": "curation lead",
+          "required": "at least one",
+          "source_field": "rule_state.real_validated_rules",
+          "source_path": "data/rulesets/wp11-real-gate-status.json"
+        }
+      ],
+      "step_id": "DEMO-04",
+      "title": "Submit a phenotype profile"
+    },
+    {
+      "observable_outcome": "coverage is shown separately from risk, and anything not covered is shown as not covered rather than as low risk",
+      "precondition_count": 2,
+      "preconditions": [
+        {
+          "blocker_code": "THS6_NO_COVERAGE_EXECUTION",
+          "description": "at least one coverage execution exists over governed content",
+          "owner": "curation lead",
+          "required": "at least one",
+          "source_field": "coverage_state.real_coverage_executions",
+          "source_path": "data/coverage/wp13-real-gate-status.json"
+        },
+        {
+          "blocker_code": "THS6_NO_COVERAGE_EXECUTION",
+          "description": "at least one axis is supported",
+          "owner": "curation lead",
+          "required": "at least one",
+          "source_field": "coverage_state.real_supported_axes",
+          "source_path": "data/coverage/wp13-real-gate-status.json"
+        }
+      ],
+      "step_id": "DEMO-05",
+      "title": "Compute coverage and display it as its own axis"
+    },
+    {
+      "observable_outcome": "the assessment completes and the same input recomputed yields byte-identical facts",
+      "precondition_count": 1,
+      "preconditions": [
+        {
+          "blocker_code": "THS6_NO_REAL_ASSESSMENT",
+          "description": "at least one assessment has been computed from governed content",
+          "owner": "curation lead",
+          "required": "at least one",
+          "source_field": "assessment_state.real_completed_assessments",
+          "source_path": "data/assessments/wp14-real-gate-status.json"
+        }
+      ],
+      "step_id": "DEMO-06",
+      "title": "Compute the assessment deterministically"
+    },
+    {
+      "observable_outcome": "each finding in the report links to the governed evidence record it came from",
+      "precondition_count": 2,
+      "preconditions": [
+        {
+          "blocker_code": "THS6_NO_REAL_ASSESSMENT",
+          "description": "at least one report exists",
+          "owner": "curation lead",
+          "required": "at least one",
+          "source_field": "real_report_count",
+          "source_path": "data/reports/wp15-real-gate-status.json"
+        },
+        {
+          "blocker_code": "THS6_CLAIM_BOUNDARY_NOT_APPROVED",
+          "description": "the claim boundary is approved",
+          "owner": "clinical safety authority",
+          "required": true,
+          "source_field": "claim_boundary_approved",
+          "source_path": "data/safety/wp20-real-gate-status.json"
+        }
+      ],
+      "step_id": "DEMO-07",
+      "title": "Render the report with evidence links"
+    },
+    {
+      "observable_outcome": "an audit event with actor, time, input hash, version bundle and output hash is written and the chain verifies",
+      "precondition_count": 2,
+      "preconditions": [
+        {
+          "blocker_code": "THS6_DATABASE_UNAVAILABLE",
+          "description": "an audit store is available",
+          "owner": "platform owner",
+          "required": true,
+          "source_field": "audit_store_available",
+          "source_path": "data/security/wp23-real-gate-status.json"
+        },
+        {
+          "blocker_code": "THS6_AUDIT_CHAIN_UNVERIFIED",
+          "description": "the audit chain has been verified",
+          "owner": "platform owner",
+          "required": true,
+          "source_field": "audit_chain_verified",
+          "source_path": "data/security/wp23-real-gate-status.json"
+        }
+      ],
+      "step_id": "DEMO-08",
+      "title": "Record the governed audit event"
+    },
+    {
+      "observable_outcome": "the dashboard shows metric values attributed to the active release, not an empty state",
+      "precondition_count": 2,
+      "preconditions": [
+        {
+          "blocker_code": "THS6_NO_COMPUTED_METRIC",
+          "description": "at least one metric has a computed value",
+          "owner": "validation owner",
+          "required": "at least one",
+          "source_field": "computed_metric_value_count",
+          "source_path": "data/validation/wp21-real-gate-status.json"
+        },
+        {
+          "blocker_code": "THS6_NO_COMPUTED_METRIC",
+          "description": "the dashboard is populated rather than empty",
+          "owner": "validation owner",
+          "required": "POPULATED",
+          "source_field": "validation_dashboard_status",
+          "source_path": "data/web/wp17-real-gate-status.json"
+        }
+      ],
+      "step_id": "DEMO-09",
+      "title": "Show the validation dashboard with release metrics"
+    },
+    {
+      "observable_outcome": "the demonstration is performed against a deployed environment answering health checks, not a developer's laptop",
+      "precondition_count": 2,
+      "preconditions": [
+        {
+          "blocker_code": "THS6_CONTAINER_RUNTIME_UNAVAILABLE",
+          "description": "a container runtime is available",
+          "owner": "platform owner",
+          "required": true,
+          "source_field": "container_runtime_available",
+          "source_path": "data/deployment/wp24-real-gate-status.json"
+        },
+        {
+          "blocker_code": "THS6_NO_REAL_ASSESSMENT",
+          "description": "the API has served a real assessment",
+          "owner": "platform owner",
+          "required": "at least one",
+          "source_field": "real_api_assessment_count",
+          "source_path": "data/api/wp16-real-gate-status.json"
+        }
+      ],
+      "step_id": "DEMO-10",
+      "title": "Serve the whole run from a deployed staging prototype"
+    }
+  ]
+}

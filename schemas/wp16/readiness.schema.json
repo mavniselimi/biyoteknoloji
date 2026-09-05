@@ -1,0 +1,47 @@
+{
+  "$id": "https://pgx.local/schemas/wp16/readiness.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "allOf": [
+    {
+      "$ref": "api-contract.schema.json#/$defs/ReadinessResponse"
+    }
+  ],
+  "description": "Independent component checks. READY only when every blocking component is ready. Details are drawn from a fixed catalogue: no connection string, path or exception text can appear here.",
+  "title": "PGx API readiness report (WP-16)",
+  "x-pgx-advisory-components": [
+    "evidence_build"
+  ],
+  "x-pgx-blocking-components": [
+    "configuration",
+    "database",
+    "migrations",
+    "active_release",
+    "claim_boundary",
+    "authentication",
+    "service_composition"
+  ],
+  "x-pgx-detail-catalogue": {
+    "argon2_missing": "Argon2id password hashing is unavailable, and there is no weaker algorithm to fall back to.",
+    "audit_chain_unverified": "The governed audit chain has not been verified in this deployment.",
+    "audit_sink_missing": "No canonical governed audit sink is composed, so no governed state change may proceed.",
+    "auth_not_configured": "No authentication provider is configured.",
+    "auth_not_permitted": "The configured authentication provider is not permitted in this environment.",
+    "claim_boundary_not_approved": "The claim boundary has not been approved by the named human and scientific reviewers. This is a governance gate, not a fault.",
+    "composition_incomplete": "A service this environment requires is not configured.",
+    "config_invalid": "Application configuration is incomplete or refused.",
+    "database_not_configured": "No database connection is configured.",
+    "database_unreachable": "The database did not answer within the probe budget.",
+    "driver_missing": "The database driver is not installed in this deployment.",
+    "evidence_build_missing": "No evidence build is configured, so evidence records cannot be read.",
+    "migrations_behind": "The database schema is not at the revision this build expects.",
+    "migrations_unknown": "The schema revision could not be determined.",
+    "not_checked": "Not checked in this deployment.",
+    "ok": "Ready.",
+    "probe_failed": "The check did not complete.",
+    "rate_limiter_missing": "No rate-limit backend is composed; login and governed mutations fail closed.",
+    "release_invalid": "The active release did not verify against its recorded hashes.",
+    "release_missing": "No active release is registered.",
+    "session_store_missing": "No server-side session store is composed, so no session can be created or validated."
+  },
+  "x-pgx-external-services-excluded": "No third-party service is a component. P0 readiness must not depend on anyone else's availability."
+}

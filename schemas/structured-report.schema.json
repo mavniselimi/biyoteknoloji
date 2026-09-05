@@ -1,0 +1,782 @@
+{
+  "$defs": {
+    "answer": {
+      "additionalProperties": false,
+      "properties": {
+        "codes": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "references": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "statements": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "values": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "codes",
+        "references",
+        "statements",
+        "values"
+      ],
+      "type": "object"
+    },
+    "axisLine": {
+      "additionalProperties": false,
+      "properties": {
+        "conflict_references": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "coverage_code": {
+          "enum": [
+            "FULL",
+            "PARTIAL",
+            "INSUFFICIENT",
+            "UNSUPPORTED_DRUG",
+            "UNSUPPORTED_PHENOTYPE",
+            "SOURCE_CONFLICT"
+          ]
+        },
+        "coverage_label": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "declaration_id": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "minLength": 1,
+              "type": "string"
+            }
+          ]
+        },
+        "drug_canonical_key": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "evidence_references": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "gene_canonical_key": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "observation_state_code": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "observation_state_label": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "observed_phenotype": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "enum": [
+                "POOR",
+                "INTERMEDIATE",
+                "NORMAL",
+                "RAPID",
+                "ULTRARAPID"
+              ]
+            }
+          ]
+        },
+        "reason_codes": {
+          "items": {
+            "enum": [
+              "DRUG_NOT_IN_CANONICAL_DATASET",
+              "PHENOTYPE_NOT_PROVIDED",
+              "PHENOTYPE_NOT_SUPPORTED",
+              "NO_VALIDATED_RULE_FOR_AXIS",
+              "SOME_AXES_NOT_COVERED",
+              "VALIDATED_RULES_CONFLICT",
+              "DATASET_RULESET_MISMATCH",
+              "EVIDENCE_REFERENCE_MISSING"
+            ]
+          },
+          "type": "array",
+          "uniqueItems": true
+        },
+        "reason_labels": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "rule_references": {
+          "items": {
+            "type": "object"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "conflict_references",
+        "coverage_code",
+        "coverage_label",
+        "declaration_id",
+        "drug_canonical_key",
+        "evidence_references",
+        "gene_canonical_key",
+        "observation_state_code",
+        "observation_state_label",
+        "observed_phenotype",
+        "reason_codes",
+        "reason_labels",
+        "rule_references"
+      ],
+      "type": "object"
+    },
+    "findingLine": {
+      "additionalProperties": false,
+      "description": "Where the governed ruleset carries no effect or explanation code, both are null and codes_absent_statement carries the controlled sentence saying so. Nothing is invented to fill the gap.",
+      "properties": {
+        "attention_code": {
+          "enum": [
+            "NO_ACTIVE_ATTENTION",
+            "LOW",
+            "MEDIUM",
+            "HIGH"
+          ]
+        },
+        "attention_label": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "codes_absent_statement": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "minLength": 1,
+              "type": "string"
+            }
+          ]
+        },
+        "curation_revision_hash": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "curation_revision_id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "drug_canonical_key": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "effect_code": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "minLength": 1,
+              "type": "string"
+            }
+          ]
+        },
+        "evidence_references": {
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "minItems": 1,
+          "type": "array",
+          "uniqueItems": true
+        },
+        "explanation_code": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "minLength": 1,
+              "type": "string"
+            }
+          ]
+        },
+        "gene_canonical_key": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "phenotype": {
+          "enum": [
+            "POOR",
+            "INTERMEDIATE",
+            "NORMAL",
+            "RAPID",
+            "ULTRARAPID"
+          ]
+        },
+        "rationale_reference": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "rule_content_hash": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "rule_family_id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "rule_id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "rule_version": {
+          "minimum": 1,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "attention_code",
+        "attention_label",
+        "codes_absent_statement",
+        "curation_revision_hash",
+        "curation_revision_id",
+        "drug_canonical_key",
+        "effect_code",
+        "evidence_references",
+        "explanation_code",
+        "gene_canonical_key",
+        "phenotype",
+        "rationale_reference",
+        "rule_content_hash",
+        "rule_family_id",
+        "rule_id",
+        "rule_version"
+      ],
+      "type": "object"
+    },
+    "observation": {
+      "additionalProperties": false,
+      "properties": {
+        "gene_id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "phenotype": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "enum": [
+                "POOR",
+                "INTERMEDIATE",
+                "NORMAL",
+                "RAPID",
+                "ULTRARAPID"
+              ]
+            }
+          ]
+        },
+        "reason_code": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "minLength": 1,
+              "type": "string"
+            }
+          ]
+        },
+        "status": {
+          "enum": [
+            "NORMALIZED",
+            "MISSING",
+            "INDETERMINATE",
+            "UNSUPPORTED"
+          ]
+        }
+      },
+      "required": [
+        "gene_id",
+        "phenotype",
+        "reason_code",
+        "status"
+      ],
+      "type": "object"
+    },
+    "section": {
+      "additionalProperties": false,
+      "properties": {
+        "answers": {
+          "additionalProperties": false,
+          "description": "The eight questions every medication section answers. All eight are required: a section that answered seven would leave the reader to supply the eighth.",
+          "properties": {
+            "attention_level": {
+              "$ref": "#/$defs/answer"
+            },
+            "coverage": {
+              "$ref": "#/$defs/answer"
+            },
+            "evidence": {
+              "$ref": "#/$defs/answer"
+            },
+            "limits": {
+              "$ref": "#/$defs/answer"
+            },
+            "not_assessed": {
+              "$ref": "#/$defs/answer"
+            },
+            "rules": {
+              "$ref": "#/$defs/answer"
+            },
+            "versions": {
+              "$ref": "#/$defs/answer"
+            },
+            "which_medication": {
+              "$ref": "#/$defs/answer"
+            }
+          },
+          "required": [
+            "attention_level",
+            "coverage",
+            "evidence",
+            "limits",
+            "not_assessed",
+            "rules",
+            "versions",
+            "which_medication"
+          ],
+          "type": "object"
+        },
+        "axes": {
+          "items": {
+            "$ref": "#/$defs/axisLine"
+          },
+          "type": "array"
+        },
+        "axis_count": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "conflict_axes": {
+          "items": {
+            "$ref": "#/$defs/axisLine"
+          },
+          "type": "array"
+        },
+        "conflict_references": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "conflicted_axis_count": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "drug_canonical_key": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "evidence_references": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "findings": {
+          "items": {
+            "$ref": "#/$defs/findingLine"
+          },
+          "type": "array"
+        },
+        "not_assessed_axes": {
+          "items": {
+            "$ref": "#/$defs/axisLine"
+          },
+          "type": "array"
+        },
+        "requested_value": {
+          "type": "string"
+        },
+        "rule_references": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "status": {
+          "$ref": "#/$defs/status"
+        }
+      },
+      "required": [
+        "answers",
+        "axes",
+        "axis_count",
+        "conflict_axes",
+        "conflict_references",
+        "conflicted_axis_count",
+        "drug_canonical_key",
+        "evidence_references",
+        "findings",
+        "not_assessed_axes",
+        "requested_value",
+        "rule_references",
+        "status"
+      ],
+      "type": "object"
+    },
+    "status": {
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "attention_code": {
+                "const": "NO_ACTIVE_ATTENTION"
+              }
+            },
+            "required": [
+              "attention_code"
+            ]
+          },
+          "then": {
+            "properties": {
+              "coverage_code": {
+                "const": "FULL"
+              }
+            }
+          }
+        },
+        {
+          "else": {
+            "properties": {
+              "reason_codes": {
+                "minItems": 1
+              }
+            }
+          },
+          "if": {
+            "properties": {
+              "coverage_code": {
+                "const": "FULL"
+              }
+            },
+            "required": [
+              "coverage_code"
+            ]
+          },
+          "then": {
+            "properties": {
+              "reason_codes": {
+                "maxItems": 0
+              }
+            }
+          }
+        }
+      ],
+      "description": "Attention and coverage in one block. Every code is displayed beside its controlled label, never replaced by it, and neither half can be present without the other.",
+      "properties": {
+        "adjacency_note": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "attention_code": {
+          "enum": [
+            "NOT_ASSESSED",
+            "NO_ACTIVE_ATTENTION",
+            "LOW",
+            "MEDIUM",
+            "HIGH"
+          ]
+        },
+        "attention_label": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "coverage_code": {
+          "enum": [
+            "FULL",
+            "PARTIAL",
+            "INSUFFICIENT",
+            "UNSUPPORTED_DRUG",
+            "UNSUPPORTED_PHENOTYPE",
+            "SOURCE_CONFLICT"
+          ]
+        },
+        "coverage_label": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "qualifier_statements": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "type": "array"
+        },
+        "reason_codes": {
+          "items": {
+            "enum": [
+              "DRUG_NOT_IN_CANONICAL_DATASET",
+              "PHENOTYPE_NOT_PROVIDED",
+              "PHENOTYPE_NOT_SUPPORTED",
+              "NO_VALIDATED_RULE_FOR_AXIS",
+              "SOME_AXES_NOT_COVERED",
+              "VALIDATED_RULES_CONFLICT",
+              "DATASET_RULESET_MISMATCH",
+              "EVIDENCE_REFERENCE_MISSING"
+            ]
+          },
+          "type": "array",
+          "uniqueItems": true
+        },
+        "reason_labels": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "adjacency_note",
+        "attention_code",
+        "attention_label",
+        "coverage_code",
+        "coverage_label",
+        "qualifier_statements",
+        "reason_codes",
+        "reason_labels"
+      ],
+      "type": "object"
+    },
+    "uncertaintyItem": {
+      "additionalProperties": false,
+      "properties": {
+        "codes": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "kind": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "references": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "statement_text": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "subject": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "codes",
+        "kind",
+        "references",
+        "statement_text",
+        "subject"
+      ],
+      "type": "object"
+    }
+  },
+  "$id": "https://pgx-platform.invalid/schemas/structured-report.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "One report before it is rendered into any format. A presentation projection: every value in it came from the assessment or from a fixed label table, and additionalProperties is false throughout, so a dose, a recommendation, a score, a ranking or an authored sentence cannot be attached to it. report_hash covers the validated content plus the template version, the locale and the report schema version, which is exactly how it differs from output_hash.",
+  "properties": {
+    "adjacency_note": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "assessment_engine_contract_version": {
+      "type": "string"
+    },
+    "assessment_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "canonical_result_hash": {
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "canonical_warning": {
+      "minLength": 200,
+      "type": "string"
+    },
+    "case_id": {
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "minLength": 1,
+          "type": "string"
+        }
+      ]
+    },
+    "computation_schema_version": {
+      "type": "string"
+    },
+    "coverage_result_hash": {
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "disclaimer": {
+      "minLength": 100,
+      "type": "string"
+    },
+    "input_hash": {
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "input_kind_code": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "input_kind_label": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "locale": {
+      "enum": [
+        "tr",
+        "en"
+      ]
+    },
+    "medication_count": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "medications": {
+      "items": {
+        "$ref": "#/$defs/section"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "mode_code": {
+      "enum": [
+        "DEMO",
+        "VALIDATION",
+        "PILOT"
+      ]
+    },
+    "mode_label": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "output_hash": {
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "overall": {
+      "$ref": "#/$defs/status"
+    },
+    "pointer_audit": {
+      "type": "object"
+    },
+    "profile_note": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "profile_observations": {
+      "items": {
+        "$ref": "#/$defs/observation"
+      },
+      "type": "array"
+    },
+    "question_labels": {
+      "type": "object"
+    },
+    "release_provenance": {
+      "type": "object"
+    },
+    "report_hash": {
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "report_schema_version": {
+      "const": "pgx-structured-report/1"
+    },
+    "section_titles": {
+      "type": "object"
+    },
+    "template_version": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "uncertainty": {
+      "items": {
+        "$ref": "#/$defs/uncertaintyItem"
+      },
+      "type": "array"
+    },
+    "warnings": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "adjacency_note",
+    "assessment_id",
+    "canonical_result_hash",
+    "canonical_warning",
+    "coverage_result_hash",
+    "disclaimer",
+    "input_hash",
+    "input_kind_code",
+    "input_kind_label",
+    "locale",
+    "medication_count",
+    "medications",
+    "mode_code",
+    "mode_label",
+    "output_hash",
+    "overall",
+    "pointer_audit",
+    "profile_observations",
+    "release_provenance",
+    "report_hash",
+    "report_schema_version",
+    "template_version",
+    "uncertainty",
+    "warnings"
+  ],
+  "title": "PGx structured report",
+  "type": "object"
+}

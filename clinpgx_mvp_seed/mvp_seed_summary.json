@@ -1,0 +1,57 @@
+{
+  "created_by": "clean_mvp_seed_dataset.py",
+  "purpose": "ClinPGx V2 probe çıktılarından MVP için temiz seed dataset üretimi",
+  "clinical_warning": "Bu çıktılar klinik karar, doz önerisi veya tedavi önerisi değildir. MVP içinde kaynaklı farmakogenetik dikkat bayrağı üretmek için kullanılmalıdır.",
+  "counts": {
+    "supported_genes": 5,
+    "supported_drugs": 11,
+    "guideline_rows": 30,
+    "effect_rule_rows": 3084,
+    "guideline_gene_drug_pairs": 11,
+    "usable_effect_gene_drug_pairs": 11
+  },
+  "guideline_pairs": [
+    "CYP2C19::amitriptyline",
+    "CYP2C19::citalopram",
+    "CYP2C19::clopidogrel",
+    "CYP2C19::sertraline",
+    "CYP2C19::voriconazole",
+    "CYP2C9::warfarin",
+    "CYP2D6::amitriptyline",
+    "CYP2D6::codeine",
+    "CYP2D6::fluoxetine",
+    "CYP2D6::paroxetine",
+    "CYP2D6::tamoxifen"
+  ],
+  "effect_pairs": [
+    "CYP1A2::amitriptyline",
+    "CYP2C19::amitriptyline",
+    "CYP2C19::citalopram",
+    "CYP2C19::clopidogrel",
+    "CYP2C19::sertraline",
+    "CYP2C19::voriconazole",
+    "CYP2C9::warfarin",
+    "CYP2D6::amitriptyline",
+    "CYP2D6::codeine",
+    "CYP2D6::tamoxifen",
+    "CYP3A4::voriconazole"
+  ],
+  "risk_counts": {
+    "high": 2393,
+    "medium": 683,
+    "low": 8
+  },
+  "evidence_counts": {
+    "high_guideline_supported": 3076,
+    "manual_mvp_rule": 2,
+    "medium_variant_annotation": 6
+  },
+  "recommended_mvp_core": [
+    "CYP2C19 + clopidogrel",
+    "CYP2C19 + voriconazole",
+    "CYP2D6 + codeine",
+    "CYP2D6 + amitriptyline",
+    "CYP2C9 + warfarin"
+  ],
+  "next_step": "Bu seed dosyalarını risk_engine.py veya Streamlit/Django arayüzüne bağla: profile phenotypes + selected drugs -> phenotype_effect_rules eşleşmesi -> risk report."
+}

@@ -1,0 +1,148 @@
+{
+  "argon2_available": false,
+  "argon2_dependency_declared": true,
+  "argon2_unavailable_reason": "the argon2-cffi package is not installed, so no password can be hashed or verified",
+  "audit_chain_verified": null,
+  "audit_event_schema_version": "pgx-wp23-governed-audit-event/1",
+  "audit_store_available": false,
+  "authentication_configured": false,
+  "authentication_software_implemented": true,
+  "backup_executed": false,
+  "backup_operational_status": "BLOCKED",
+  "backup_procedure_documented": true,
+  "blockers": [
+    {
+      "blocking": true,
+      "code": "SECURITY_ARGON2_UNAVAILABLE",
+      "detail": "the argon2-cffi package is not installed, so no password can be hashed or verified",
+      "owner": "deployment"
+    },
+    {
+      "blocking": true,
+      "code": "SECURITY_AUDIT_CHAIN_NOT_VERIFIED",
+      "detail": "no audit store was inspected, so no chain was verified",
+      "owner": "deployment"
+    },
+    {
+      "blocking": true,
+      "code": "SECURITY_AUTHENTICATION_NOT_CONFIGURED",
+      "detail": "no authentication service is composed in this deployment",
+      "owner": "deployment"
+    },
+    {
+      "blocking": true,
+      "code": "SECURITY_BACKUP_NOT_EXECUTED",
+      "detail": "the procedure is documented; no backup or restore has run",
+      "owner": "WP-24 operation"
+    },
+    {
+      "blocking": true,
+      "code": "SECURITY_CLAIM_BOUNDARY_NOT_APPROVED",
+      "detail": "claim boundary status is DRAFT / AWAITING HUMAN AND SCIENTIFIC REVIEW",
+      "owner": "named human and scientific reviewers"
+    },
+    {
+      "blocking": true,
+      "code": "SECURITY_DATABASE_UNAVAILABLE",
+      "detail": "DATABASE_URL is unset; no user, session or audit store exists",
+      "owner": "deployment"
+    },
+    {
+      "blocking": true,
+      "code": "SECURITY_HTTPS_NOT_OBSERVED",
+      "detail": "no HTTPS termination has been observed; WP-24 owns staging",
+      "owner": "WP-24 staging deployment"
+    },
+    {
+      "blocking": true,
+      "code": "SECURITY_MIGRATION_NOT_EXECUTED",
+      "detail": "migration 0011 is written and has not been executed against any PostgreSQL server",
+      "owner": "deployment"
+    },
+    {
+      "blocking": true,
+      "code": "SECURITY_NO_REAL_USERS",
+      "detail": "no user store was inspected, so no account was counted",
+      "owner": "an administrator running pgx-auth bootstrap-admin"
+    }
+  ],
+  "blocking_count": 9,
+  "canonical_audit_implemented": true,
+  "claim_boundary_approved": false,
+  "claim_boundary_status": "DRAFT / AWAITING HUMAN AND SCIENTIFIC REVIEW",
+  "clinical_validation_performed": false,
+  "csrf_implemented": true,
+  "csrf_operational": false,
+  "database_available": false,
+  "expert_review_performed": false,
+  "gate_status_schema_version": "pgx-wp23-gate-status/1",
+  "governed_audit_action_count": 41,
+  "governed_audit_event_count": null,
+  "https_termination_observed": false,
+  "implementation_note": "Argon2id hashing, local user lifecycle, server-side sessions, session-bound CSRF, the explicit RBAC registry, declared rate limits, the hash-linked canonical audit trail, the secret scanner and the backup plan are implemented. That is a statement about software. Whether this deployment is running any of it is the separate question below, and the answer is no.",
+  "implementation_status": "IMPLEMENTED",
+  "implemented_is_not_operational": "Every field above is one of three kinds: what the software can do, what this deployment has composed, and what has actually happened. They are separate because collapsing any two produces the sentence this work package exists to avoid - a reader shown the first answer while being told the third.",
+  "migration_0011_executed": false,
+  "migration_0011_present": true,
+  "module_marker_paths": [
+    "pgx/security/passwords.py",
+    "pgx/security/users.py",
+    "pgx/security/sessions.py",
+    "pgx/security/csrf.py",
+    "pgx/security/rbac.py",
+    "pgx/security/rate_limit.py",
+    "pgx/security/service.py",
+    "pgx/security/secret_scan.py",
+    "pgx/security/backup.py",
+    "pgx/infrastructure/audit/models.py",
+    "pgx/infrastructure/audit/service.py",
+    "pgx/infrastructure/db/security.py",
+    "migrations/versions/0011_wp23_auth_audit.py",
+    "apps/api/auth.py",
+    "docs/architecture/wp23-auth-audit.md"
+  ],
+  "module_marker_present_count": 15,
+  "not_a_security_certification": "This document describes an authentication, authorisation and audit implementation and its current unconfigured state. It is not a penetration test, a security audit, a certification or evidence that this system is safe to expose. No such assessment has been performed.",
+  "password_policy": {
+    "algorithm": "argon2id",
+    "hash_length": 32,
+    "memory_cost_kib": 65536,
+    "parallelism": 4,
+    "password_policy_version": "pgx-wp23-password-policy/1",
+    "salt_length": 16,
+    "time_cost": 3
+  },
+  "permission_count": 25,
+  "provider_capabilities": {},
+  "rate_limit_policy_count": 5,
+  "rate_limit_policy_version": "pgx-wp23-rate-limit-policy/1",
+  "rate_limiting_implemented": true,
+  "rate_limiting_operational": false,
+  "rbac_registry_digest": "sha256:37066296b81cc60563550d9f7bd1ec36c903a7a8d1427d3b3be9e43002a7bde0",
+  "rbac_registry_version": "pgx-wp23-rbac-registry/1",
+  "real_user_count_source": "null rather than zero: no user store was inspected, so no account was counted",
+  "real_users_configured": null,
+  "release_may_proceed": false,
+  "restore_executed": false,
+  "restore_verified": false,
+  "role_hierarchy": null,
+  "secret_scan_classified_count": 31,
+  "secret_scan_finding_count": 0,
+  "secret_scan_status": "CLEAN",
+  "secret_scan_version": "pgx-wp23-secret-scan/1",
+  "security_gate_status": "BLOCKED",
+  "security_software_implemented": true,
+  "security_vocabulary_version": "pgx-wp23-security-vocabulary/1",
+  "session_authentication_exercised_operationally": false,
+  "session_management_implemented": true,
+  "session_policy": {
+    "absolute_seconds": 43200,
+    "cookie_http_only": true,
+    "cookie_path": "/",
+    "cookie_same_site": "Strict",
+    "cookie_secure": true,
+    "idle_seconds": 1800
+  },
+  "session_store_available": false,
+  "work_package": "WP-23"
+}

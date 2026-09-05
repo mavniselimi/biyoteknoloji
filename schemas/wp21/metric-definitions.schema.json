@@ -1,0 +1,133 @@
+{
+  "$id": "https://pgx.local/schemas/wp21/metric-definitions.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "description": "Every metric defined before any result exists. No definition carries a threshold; a threshold without predeclared provenance is an implementer's opinion.",
+  "properties": {
+    "metric_count": {
+      "minimum": 10,
+      "type": "integer"
+    },
+    "metric_registry_digest": {
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "metric_registry_version": {
+      "const": "pgx-wp21-metric-registry/1"
+    },
+    "metrics": {
+      "items": {
+        "additionalProperties": true,
+        "properties": {
+          "categories": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "decimal_places": {
+            "maximum": 8,
+            "minimum": 0,
+            "type": "integer"
+          },
+          "denominator": {
+            "minLength": 5,
+            "type": "string"
+          },
+          "eligible_roles": {
+            "items": {
+              "enum": [
+                "DEVELOPMENT",
+                "INTERNAL_HOLDOUT",
+                "EXPERT_HOLDOUT"
+              ],
+              "type": "string"
+            },
+            "minItems": 1,
+            "type": "array"
+          },
+          "is_validation_evidence": {
+            "type": "boolean"
+          },
+          "kind": {
+            "enum": [
+              "COUNT",
+              "RATE",
+              "DISTRIBUTION"
+            ],
+            "type": "string"
+          },
+          "metric_id": {
+            "pattern": "^PGX-VAL-[0-9]{3}$",
+            "type": "string"
+          },
+          "numerator": {
+            "minLength": 5,
+            "type": "string"
+          },
+          "plain_meaning": {
+            "minLength": 10,
+            "type": "string"
+          },
+          "requires_expert_review": {
+            "type": "boolean"
+          },
+          "threshold": {
+            "type": "null"
+          },
+          "threshold_provenance": {
+            "type": "null"
+          },
+          "title": {
+            "minLength": 3,
+            "type": "string"
+          },
+          "unavailable_when": {
+            "items": {
+              "type": "string"
+            },
+            "minItems": 1,
+            "type": "array"
+          }
+        },
+        "required": [
+          "metric_id",
+          "title",
+          "kind",
+          "numerator",
+          "denominator",
+          "eligible_roles",
+          "is_validation_evidence",
+          "threshold",
+          "unavailable_when"
+        ],
+        "type": "object"
+      },
+      "minItems": 10,
+      "type": "array"
+    },
+    "schema_version": {
+      "const": "pgx-wp21-metric-definitions/1"
+    },
+    "threshold_policy": {
+      "minLength": 40,
+      "type": "string"
+    },
+    "thresholds_declared": {
+      "const": 0
+    },
+    "unavailable_reasons": {
+      "type": "object"
+    }
+  },
+  "required": [
+    "schema_version",
+    "metric_registry_version",
+    "metric_registry_digest",
+    "metric_count",
+    "thresholds_declared",
+    "metrics"
+  ],
+  "title": "WP-21 metric definitions",
+  "type": "object"
+}

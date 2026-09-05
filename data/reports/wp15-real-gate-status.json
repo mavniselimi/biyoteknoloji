@@ -1,0 +1,64 @@
+{
+  "blocker_count": 6,
+  "blockers": [
+    {
+      "blocking": true,
+      "code": "REPORT_CLAIM_BOUNDARY_NOT_APPROVED",
+      "detail": "claim boundary status is DRAFT / AWAITING HUMAN AND SCIENTIFIC REVIEW"
+    },
+    {
+      "blocking": true,
+      "code": "REPORT_NO_APPROVED_RULESET_OR_RELEASE",
+      "detail": "0 frozen rulesets, 0 active releases, 0 approved coverage manifests"
+    },
+    {
+      "blocking": true,
+      "code": "REPORT_NO_DATABASE_RUNTIME",
+      "detail": "the SQLAlchemy read port could not be constructed in this environment; the read model was exercised in memory instead"
+    },
+    {
+      "blocking": true,
+      "code": "REPORT_NO_HUMAN_ROLE_ASSIGNMENTS",
+      "detail": "0 identities hold a scientific role"
+    },
+    {
+      "blocking": true,
+      "code": "REPORT_NO_REAL_ASSESSMENT",
+      "detail": "0 real assessments are stored in this repository"
+    },
+    {
+      "blocking": true,
+      "code": "REPORT_TEMPLATES_NOT_REVIEWED",
+      "detail": "0 named humans have approved template pgx-report-template/1 or the tr, en label sets"
+    }
+  ],
+  "claim_boundary_approved": false,
+  "claim_boundary_phase": "P0",
+  "claim_boundary_status": "DRAFT / AWAITING HUMAN AND SCIENTIFIC REVIEW",
+  "default_locale": "tr",
+  "gate_status_schema_version": "pgx-wp15-gate-status/1",
+  "llm_enabled": false,
+  "llm_provider_implemented": false,
+  "may_publish_real_reports": false,
+  "note": "This is an expected governance result, not a test failure. The WP-15 reporting pipeline is implemented and verified against synthetic fixtures; every report produced so far is synthetic and is flagged as such. No report of a real assessment has been produced, no artifact has been published to the production directory, no language model was called, and no count above was asserted rather than read from this repository.",
+  "published_artifact_count": 0,
+  "real_assessment_count": 0,
+  "real_report_count": 0,
+  "renderer_version": "pgx-report-renderer/1",
+  "report_schema_version": "pgx-structured-report/1",
+  "scanner_limits": [
+    "lexical only: it matches patterns over folded text and performs no semantic analysis",
+    "a prohibited claim phrased outside the published patterns is not detected",
+    "safe-context suppression is broad: a sentence containing an English negation such as 'no' or 'not' suppresses negatable matches inside it",
+    "it scans the rendered text, so a claim carried only in structured data that no template renders is out of its reach",
+    "a clean scan is evidence that no published pattern matched, and is never evidence that a document is safe"
+  ],
+  "scanner_version": "claim-scanner/0.1.0",
+  "supported_locales": [
+    "tr",
+    "en"
+  ],
+  "synthetic_only": true,
+  "template_version": "pgx-report-template/1",
+  "work_package": "WP-15"
+}

@@ -1,0 +1,307 @@
+{
+  "blockers": [
+    {
+      "blocking": true,
+      "code": "DEPLOY_LOCKFILE_ABSENT",
+      "detail": "lockfile: read from the lock result",
+      "owner": "the build environment"
+    },
+    {
+      "blocking": true,
+      "code": "DEPLOY_BUILD_BACKEND_UNAVAILABLE",
+      "detail": "distributions: wheel and sdist double-build comparison",
+      "owner": "the build environment"
+    },
+    {
+      "blocking": true,
+      "code": "DEPLOY_IMAGE_NOT_BUILT",
+      "detail": "image_build: the application image",
+      "owner": "a host with a container runtime"
+    },
+    {
+      "blocking": true,
+      "code": "DEPLOY_IMAGE_NOT_BUILT",
+      "detail": "image_contents: no secret, restricted payload, test fixture or legacy entry point in the built filesystem",
+      "owner": "a host with a container runtime"
+    },
+    {
+      "blocking": true,
+      "code": "DEPLOY_MIGRATION_NOT_EXECUTED",
+      "detail": "migration: alembic upgrade head executed against a real server, at one head",
+      "owner": "an operator"
+    },
+    {
+      "blocking": true,
+      "code": "DEPLOY_STAGING_NOT_DEPLOYED",
+      "detail": "staging_smoke: a deployed system answered liveness and readiness",
+      "owner": "WP-24 operation"
+    },
+    {
+      "blocking": true,
+      "code": "DEPLOY_TLS_NOT_OBSERVED",
+      "detail": "tls_termination: HTTPS terminated at a staging ingress and verified against a chain the client did not generate. A local rehearsal CA does not satisfy this and is not meant to.",
+      "owner": "whoever provisions the staging ingress"
+    },
+    {
+      "blocking": true,
+      "code": "DEPLOY_SAFETY_GATE_BLOCKED",
+      "detail": "safety_gate: WP-20 safety gate: BLOCKED",
+      "owner": "WP-20 and the scientific track"
+    },
+    {
+      "blocking": true,
+      "code": "DEPLOY_NO_HOLDOUT_EVIDENCE",
+      "detail": "holdout_regression: 0 authorized holdout cases exist. Development fixtures may not stand in for them: a regression run against the cases the rules were built from measures nothing.",
+      "owner": "scientific curators"
+    },
+    {
+      "blocking": true,
+      "code": "DEPLOY_EXPERT_REVIEW_NOT_PERFORMED",
+      "detail": "expert_review: blind expert review completed under the approved protocol",
+      "owner": "named expert reviewers"
+    },
+    {
+      "blocking": true,
+      "code": "DEPLOY_CLAIM_BOUNDARY_NOT_APPROVED",
+      "detail": "claim_boundary: claim boundary approved by the named human and scientific reviewers",
+      "owner": "named human and scientific reviewers"
+    },
+    {
+      "blocking": true,
+      "code": "DEPLOY_SAFETY_GATE_BLOCKED",
+      "detail": "security_gate: WP-23 security gate: BLOCKED",
+      "owner": "the deployment"
+    },
+    {
+      "blocking": true,
+      "code": "DEPLOY_VULNERABILITY_SCANNER_UNAVAILABLE",
+      "detail": "vulnerability_scan: a real scanner, at a named version, against a named advisory database",
+      "owner": "the build host"
+    },
+    {
+      "blocking": true,
+      "code": "DEPLOY_SBOM_NOT_GENERATED",
+      "detail": "sbom: a bill of materials from real installed contents",
+      "owner": "the build host"
+    },
+    {
+      "blocking": true,
+      "code": "DEPLOY_RESTORE_NOT_VERIFIED",
+      "detail": "backup_restore: a backup taken to a real destination and a restore satisfying all four runbook conditions",
+      "owner": "WP-24 operation"
+    },
+    {
+      "blocking": true,
+      "code": "DEPLOY_ROLLBACK_NOT_EXERCISED",
+      "detail": "rollback_drill: a rollback performed between two identified images without a database downgrade",
+      "owner": "WP-24 operation"
+    },
+    {
+      "blocking": true,
+      "code": "DEPLOY_PERFORMANCE_NOT_EXECUTED",
+      "detail": "performance: 1,000 assessments against one eligible release",
+      "owner": "WP-24 operation against an eligible release"
+    }
+  ],
+  "evaluated_at": "2026-09-05T11:21:16.126234+00:00",
+  "fixture_note": "TEST_ONLY_REHEARSAL never closes a gate. That is enforced by ExecutionState.may_close_a_release_gate rather than by a condition here that somebody could forget.",
+  "gate_count": 21,
+  "gates": [
+    {
+      "detail": "read from the lock result",
+      "gate": "lockfile",
+      "may_close_gate": false,
+      "required": true,
+      "source": "pgx.deployment.packaging",
+      "state": "BLOCKED"
+    },
+    {
+      "detail": "wheel and sdist double-build comparison",
+      "gate": "distributions",
+      "may_close_gate": false,
+      "required": true,
+      "source": "pgx.deployment.packaging",
+      "state": "BLOCKED"
+    },
+    {
+      "detail": "the application image",
+      "gate": "image_build",
+      "may_close_gate": false,
+      "required": true,
+      "source": "pgx.deployment.image",
+      "state": "BLOCKED"
+    },
+    {
+      "detail": "no secret, restricted payload, test fixture or legacy entry point in the built filesystem",
+      "gate": "image_contents",
+      "may_close_gate": false,
+      "required": true,
+      "source": "pgx.deployment.image",
+      "state": "BLOCKED"
+    },
+    {
+      "detail": "every sealed runtime artifact present with a matching checksum",
+      "gate": "runtime_assets",
+      "may_close_gate": true,
+      "required": true,
+      "source": "pgx.deployment.runtime_assets",
+      "state": "VERIFIED"
+    },
+    {
+      "detail": "alembic upgrade head executed against a real server, at one head",
+      "gate": "migration",
+      "may_close_gate": false,
+      "required": true,
+      "source": "pgx.deployment.migration",
+      "state": "BLOCKED"
+    },
+    {
+      "detail": "a deployed system answered liveness and readiness",
+      "gate": "staging_smoke",
+      "may_close_gate": false,
+      "required": true,
+      "source": "pgx.deployment.smoke",
+      "state": "BLOCKED"
+    },
+    {
+      "detail": "HTTPS terminated at a staging ingress and verified against a chain the client did not generate. A local rehearsal CA does not satisfy this and is not meant to.",
+      "gate": "tls_termination",
+      "may_close_gate": false,
+      "required": true,
+      "source": "pgx.deployment.smoke",
+      "state": "BLOCKED"
+    },
+    {
+      "detail": "WP-20 safety gate: BLOCKED",
+      "gate": "safety_gate",
+      "may_close_gate": false,
+      "required": true,
+      "source": "data/safety/wp20-real-gate-status.json",
+      "state": "BLOCKED"
+    },
+    {
+      "detail": "0 authorized holdout cases exist. Development fixtures may not stand in for them: a regression run against the cases the rules were built from measures nothing.",
+      "gate": "holdout_regression",
+      "may_close_gate": false,
+      "required": true,
+      "source": "data/safety/wp20-real-gate-status.json",
+      "state": "BLOCKED"
+    },
+    {
+      "detail": "blind expert review completed under the approved protocol",
+      "gate": "expert_review",
+      "may_close_gate": false,
+      "required": true,
+      "source": "data/expert-review/wp22-real-gate-status.json",
+      "state": "BLOCKED"
+    },
+    {
+      "detail": "claim boundary approved by the named human and scientific reviewers",
+      "gate": "claim_boundary",
+      "may_close_gate": false,
+      "required": true,
+      "source": "data/safety/wp20-real-gate-status.json",
+      "state": "BLOCKED"
+    },
+    {
+      "detail": "WP-23 security gate: BLOCKED",
+      "gate": "security_gate",
+      "may_close_gate": false,
+      "required": true,
+      "source": "data/security/wp23-real-gate-status.json",
+      "state": "BLOCKED"
+    },
+    {
+      "detail": "repository secret scan: CLEAN, 0 findings",
+      "gate": "secret_scan",
+      "may_close_gate": true,
+      "required": true,
+      "source": "data/security/wp23-secret-scan-report.json",
+      "state": "VERIFIED"
+    },
+    {
+      "detail": "a real scanner, at a named version, against a named advisory database",
+      "gate": "vulnerability_scan",
+      "may_close_gate": false,
+      "required": true,
+      "source": "pgx.deployment.supply_chain",
+      "state": "BLOCKED"
+    },
+    {
+      "detail": "a bill of materials from real installed contents",
+      "gate": "sbom",
+      "may_close_gate": false,
+      "required": true,
+      "source": "pgx.deployment.supply_chain",
+      "state": "BLOCKED"
+    },
+    {
+      "detail": "a backup taken to a real destination and a restore satisfying all four runbook conditions",
+      "gate": "backup_restore",
+      "may_close_gate": false,
+      "required": true,
+      "source": "pgx.deployment.backup_execution",
+      "state": "BLOCKED"
+    },
+    {
+      "detail": "a rollback performed between two identified images without a database downgrade",
+      "gate": "rollback_drill",
+      "may_close_gate": false,
+      "required": true,
+      "source": "pgx.deployment.rollback",
+      "state": "BLOCKED"
+    },
+    {
+      "detail": "1,000 assessments against one eligible release",
+      "gate": "performance",
+      "may_close_gate": false,
+      "required": true,
+      "source": "pgx.deployment.performance",
+      "state": "BLOCKED"
+    },
+    {
+      "detail": "workflows exist; a provider running them is a separate fact",
+      "gate": "ci_execution",
+      "may_close_gate": false,
+      "required": false,
+      "source": ".github/workflows",
+      "state": "CONFIGURED"
+    },
+    {
+      "detail": "the declared failure drills",
+      "gate": "reliability_drills",
+      "may_close_gate": false,
+      "required": false,
+      "source": "pgx.deployment.reliability",
+      "state": "BLOCKED"
+    }
+  ],
+  "image_built": false,
+  "image_note": "An image may be built for implementation verification without being released. released and published are separate fields and both stay false while any required gate is unmet, so a built image cannot become a release by being tagged.",
+  "image_published": false,
+  "image_released": false,
+  "no_override_note": "There is no force flag, no warn-only mode and no override. release_may_proceed is the conjunction of the required gates.",
+  "release_may_proceed": false,
+  "release_validation_version": "pgx-wp24-release-validation/1",
+  "required_gate_count": 19,
+  "satisfied_required_count": 2,
+  "unmet_required_gates": [
+    "lockfile",
+    "distributions",
+    "image_build",
+    "image_contents",
+    "migration",
+    "staging_smoke",
+    "tls_termination",
+    "safety_gate",
+    "holdout_regression",
+    "expert_review",
+    "claim_boundary",
+    "security_gate",
+    "vulnerability_scan",
+    "sbom",
+    "backup_restore",
+    "rollback_drill",
+    "performance"
+  ]
+}

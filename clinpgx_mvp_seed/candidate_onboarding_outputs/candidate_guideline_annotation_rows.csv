@@ -1,0 +1,7 @@
+source_hint,annotation_id,objCls,sentence,description,related_genes,related_chemicals,location_display,gene_phenotype,metabolizers1,metabolizers2,polarity,significance,phenotype_categories,score,literature_title,literature_pmid,literature_doi,literature_year,query_gene,query_gene_id,query_drug,query_drug_id
+data/guidelineAnnotation,PA166104961,Guideline Annotation,,,CYP2D6,nortriptyline,,,,,,,,,,,,,CYP2D6,PA128,nortriptyline,PA450657
+data/guidelineAnnotation,PA166104998,Guideline Annotation,,,CYP2D6,nortriptyline,,,,,,,,,,,,,CYP2D6,PA128,nortriptyline,PA450657
+data/guidelineAnnotation,PA166104958,Guideline Annotation,,,CYP2C19,pantoprazole,,,,,,,,,,,,,CYP2C19,PA124,pantoprazole,PA450774
+data/guidelineAnnotation,PA166219103,Guideline Annotation,,,CYP2C19,lansoprazole; omeprazole; pantoprazole,,,,,,,,,,,,,CYP2C19,PA124,pantoprazole,PA450774
+data/guidelineAnnotation,PA166182820,Guideline Annotation,,,CYP2C19,prasugrel,,,,,,,,,,,,,CYP2C19,PA124,prasugrel,PA154410481
+data/guidelineAnnotation,PA166182807,Guideline Annotation,,,CYP2C19,ticagrelor,,,,,,,,,,,,,CYP2C19,PA124,ticagrelor,PA165374673

@@ -1,0 +1,1282 @@
+{
+  "all_gates_pass": false,
+  "blocker_owners": [
+    "clinical safety authority",
+    "curation lead",
+    "data owner",
+    "expert review chair",
+    "expert reviewer",
+    "platform owner",
+    "release approver",
+    "safety owner",
+    "scientific source approver",
+    "security owner",
+    "validation owner",
+    "verification owner"
+  ],
+  "blocking_gate_ids": [
+    "GATE-A",
+    "GATE-B",
+    "GATE-C",
+    "GATE-D",
+    "GATE-E",
+    "GATE-F"
+  ],
+  "disagreement_count": 4,
+  "failing_gate_ids": [],
+  "gate_count": 6,
+  "gate_matrix_version": "pgx-wp25-gate-matrix/1",
+  "gates": [
+    {
+      "blockers": [
+        {
+          "blocking": true,
+          "code": "THS6_NO_APPROVED_SOURCE",
+          "detail": "A1: at least one scientific source is approved (observed 0, required >= 1)",
+          "gate_id": "GATE-A",
+          "owner": "scientific source approver"
+        },
+        {
+          "blocking": true,
+          "code": "THS6_DATASET_NOT_PUBLISHED",
+          "detail": "A2: a canonical dataset is published (observed False, required is true)",
+          "gate_id": "GATE-A",
+          "owner": "data owner"
+        },
+        {
+          "blocking": true,
+          "code": "THS6_SNAPSHOT_QUARANTINED",
+          "detail": "A3: the raw snapshot behind the dataset is complete (observed False, required is true)",
+          "gate_id": "GATE-A",
+          "owner": "data owner"
+        },
+        {
+          "blocking": true,
+          "code": "THS6_SNAPSHOT_QUARANTINED",
+          "detail": "A4: the raw snapshot is SEALED, which for a QUARANTINED snapshot requires re-ingestion under a new dataset id because the lifecycle has no transition out of quarantine (observed 'QUARANTINED', required == 'SEALED')",
+          "gate_id": "GATE-A",
+          "owner": "data owner"
+        },
+        {
+          "blocking": true,
+          "code": "THS6_EVIDENCE_BUILD_NOT_APPROVED",
+          "detail": "A5: the evidence build is approved for rule construction (observed False, required is true)",
+          "gate_id": "GATE-A",
+          "owner": "curation lead"
+        }
+      ],
+      "condition_count": 5,
+      "conditions": [
+        {
+          "blocker": {
+            "blocking": true,
+            "code": "THS6_NO_APPROVED_SOURCE",
+            "detail": "A1: at least one scientific source is approved (observed 0, required >= 1)",
+            "gate_id": "GATE-A",
+            "owner": "scientific source approver"
+          },
+          "condition_id": "A1",
+          "description": "at least one scientific source is approved",
+          "expected": ">= 1",
+          "met": false,
+          "observed": "0",
+          "source_field": "upstream_state.source_registry_approved",
+          "source_path": "data/rulesets/wp11-real-gate-status.json"
+        },
+        {
+          "blocker": {
+            "blocking": true,
+            "code": "THS6_DATASET_NOT_PUBLISHED",
+            "detail": "A2: a canonical dataset is published (observed False, required is true)",
+            "gate_id": "GATE-A",
+            "owner": "data owner"
+          },
+          "condition_id": "A2",
+          "description": "a canonical dataset is published",
+          "expected": "is true",
+          "met": false,
+          "observed": "False",
+          "source_field": "upstream_state.canonical_dataset_published",
+          "source_path": "data/rulesets/wp11-real-gate-status.json"
+        },
+        {
+          "blocker": {
+            "blocking": true,
+            "code": "THS6_SNAPSHOT_QUARANTINED",
+            "detail": "A3: the raw snapshot behind the dataset is complete (observed False, required is true)",
+            "gate_id": "GATE-A",
+            "owner": "data owner"
+          },
+          "condition_id": "A3",
+          "description": "the raw snapshot behind the dataset is complete",
+          "expected": "is true",
+          "met": false,
+          "observed": "False",
+          "source_field": "snapshot_complete",
+          "source_path": "data/canonical/PGX-DATA-20260830-900/manifest.json"
+        },
+        {
+          "blocker": {
+            "blocking": true,
+            "code": "THS6_SNAPSHOT_QUARANTINED",
+            "detail": "A4: the raw snapshot is SEALED, which for a QUARANTINED snapshot requires re-ingestion under a new dataset id because the lifecycle has no transition out of quarantine (observed 'QUARANTINED', required == 'SEALED')",
+            "gate_id": "GATE-A",
+            "owner": "data owner"
+          },
+          "condition_id": "A4",
+          "description": "the raw snapshot is SEALED, which for a QUARANTINED snapshot requires re-ingestion under a new dataset id because the lifecycle has no transition out of quarantine",
+          "expected": "== 'SEALED'",
+          "met": false,
+          "observed": "'QUARANTINED'",
+          "source_field": "snapshot_state",
+          "source_path": "data/canonical/PGX-DATA-20260830-900/manifest.json"
+        },
+        {
+          "blocker": {
+            "blocking": true,
+            "code": "THS6_EVIDENCE_BUILD_NOT_APPROVED",
+            "detail": "A5: the evidence build is approved for rule construction (observed False, required is true)",
+            "gate_id": "GATE-A",
+            "owner": "curation lead"
+          },
+          "condition_id": "A5",
+          "description": "the evidence build is approved for rule construction",
+          "expected": "is true",
+          "met": false,
+          "observed": "False",
+          "source_field": "upstream_state.evidence_build_approved_for_rules",
+          "source_path": "data/rulesets/wp11-real-gate-status.json"
+        }
+      ],
+      "depends_on": [],
+      "findings": [],
+      "gate_id": "GATE-A",
+      "is_pass": false,
+      "met_condition_count": 0,
+      "notes": "every condition names the artifact and field it was read from; the result is their conjunction and nothing else",
+      "result": "BLOCKED",
+      "title": "Gate A - Scientific Data",
+      "unmet_condition_ids": [
+        "A1",
+        "A2",
+        "A3",
+        "A4",
+        "A5"
+      ]
+    },
+    {
+      "blockers": [
+        {
+          "blocking": true,
+          "code": "THS6_CURATION_PROTOCOL_NOT_APPROVED",
+          "detail": "B1: the curation protocol is approved (observed False, required is true)",
+          "gate_id": "GATE-B",
+          "owner": "expert reviewer"
+        },
+        {
+          "blocking": true,
+          "code": "THS6_NO_CURATED_INTERPRETATION",
+          "detail": "B2: at least one interpretation has been curated (observed 0, required >= 1)",
+          "gate_id": "GATE-B",
+          "owner": "curation lead"
+        },
+        {
+          "blocking": true,
+          "code": "THS6_NO_APPROVED_RULE",
+          "detail": "B3: at least one rule approval envelope is eligible (observed 0, required >= 1)",
+          "gate_id": "GATE-B",
+          "owner": "curation lead"
+        },
+        {
+          "blocking": true,
+          "code": "THS6_NO_APPROVED_RULE",
+          "detail": "B4: at least one rule is validated (observed 0, required >= 1)",
+          "gate_id": "GATE-B",
+          "owner": "curation lead"
+        },
+        {
+          "blocking": true,
+          "code": "THS6_NO_EXECUTABLE_RULESET",
+          "detail": "B5: at least one ruleset is frozen (observed 0, required >= 1)",
+          "gate_id": "GATE-B",
+          "owner": "curation lead"
+        },
+        {
+          "blocking": true,
+          "code": "THS6_NO_EXECUTABLE_RULESET",
+          "detail": "B6: the default registry holds an executable ruleset (observed 0, required >= 1)",
+          "gate_id": "GATE-B",
+          "owner": "curation lead"
+        },
+        {
+          "blocking": true,
+          "code": "THS6_LEGACY_WORK_ITEMS_UNLINKED",
+          "detail": "B7: no legacy rule candidate is left unlinked (observed 33, required == 0)",
+          "gate_id": "GATE-B",
+          "owner": "curation lead"
+        }
+      ],
+      "condition_count": 7,
+      "conditions": [
+        {
+          "blocker": {
+            "blocking": true,
+            "code": "THS6_CURATION_PROTOCOL_NOT_APPROVED",
+            "detail": "B1: the curation protocol is approved (observed False, required is true)",
+            "gate_id": "GATE-B",
+            "owner": "expert reviewer"
+          },
+          "condition_id": "B1",
+          "description": "the curation protocol is approved",
+          "expected": "is true",
+          "met": false,
+          "observed": "False",
+          "source_field": "upstream_state.curation_protocol_approved",
+          "source_path": "data/rulesets/wp11-real-gate-status.json"
+        },
+        {
+          "blocker": {
+            "blocking": true,
+            "code": "THS6_NO_CURATED_INTERPRETATION",
+            "detail": "B2: at least one interpretation has been curated (observed 0, required >= 1)",
+            "gate_id": "GATE-B",
+            "owner": "curation lead"
+          },
+          "condition_id": "B2",
+          "description": "at least one interpretation has been curated",
+          "expected": ">= 1",
+          "met": false,
+          "observed": "0",
+          "source_field": "curation_state.curated_interpretations",
+          "source_path": "data/rulesets/wp11-real-gate-status.json"
+        },
+        {
+          "blocker": {
+            "blocking": true,
+            "code": "THS6_NO_APPROVED_RULE",
+            "detail": "B3: at least one rule approval envelope is eligible (observed 0, required >= 1)",
+            "gate_id": "GATE-B",
+            "owner": "curation lead"
+          },
+          "condition_id": "B3",
+          "description": "at least one rule approval envelope is eligible",
+          "expected": ">= 1",
+          "met": false,
+          "observed": "0",
+          "source_field": "curation_state.eligible_rule_approval_envelopes",
+          "source_path": "data/rulesets/wp11-real-gate-status.json"
+        },
+        {
+          "blocker": {
+            "blocking": true,
+            "code": "THS6_NO_APPROVED_RULE",
+            "detail": "B4: at least one rule is validated (observed 0, required >= 1)",
+            "gate_id": "GATE-B",
+            "owner": "curation lead"
+          },
+          "condition_id": "B4",
+          "description": "at least one rule is validated",
+          "expected": ">= 1",
+          "met": false,
+          "observed": "0",
+          "source_field": "rule_state.real_validated_rules",
+          "source_path": "data/rulesets/wp11-real-gate-status.json"
+        },
+        {
+          "blocker": {
+            "blocking": true,
+            "code": "THS6_NO_EXECUTABLE_RULESET",
+            "detail": "B5: at least one ruleset is frozen (observed 0, required >= 1)",
+            "gate_id": "GATE-B",
+            "owner": "curation lead"
+          },
+          "condition_id": "B5",
+          "description": "at least one ruleset is frozen",
+          "expected": ">= 1",
+          "met": false,
+          "observed": "0",
+          "source_field": "rule_state.real_frozen_rulesets",
+          "source_path": "data/rulesets/wp11-real-gate-status.json"
+        },
+        {
+          "blocker": {
+            "blocking": true,
+            "code": "THS6_NO_EXECUTABLE_RULESET",
+            "detail": "B6: the default registry holds an executable ruleset (observed 0, required >= 1)",
+            "gate_id": "GATE-B",
+            "owner": "curation lead"
+          },
+          "condition_id": "B6",
+          "description": "the default registry holds an executable ruleset",
+          "expected": ">= 1",
+          "met": false,
+          "observed": "0",
+          "source_field": "rule_state.executable_rulesets_in_default_registry",
+          "source_path": "data/rulesets/wp11-real-gate-status.json"
+        },
+        {
+          "blocker": {
+            "blocking": true,
+            "code": "THS6_LEGACY_WORK_ITEMS_UNLINKED",
+            "detail": "B7: no legacy rule candidate is left unlinked (observed 33, required == 0)",
+            "gate_id": "GATE-B",
+            "owner": "curation lead"
+          },
+          "condition_id": "B7",
+          "description": "no legacy rule candidate is left unlinked",
+          "expected": "== 0",
+          "met": false,
+          "observed": "33",
+          "source_field": "curation_state.unlinked_work_items",
+          "source_path": "data/rulesets/wp11-real-gate-status.json"
+        }
+      ],
+      "depends_on": [],
+      "findings": [],
+      "gate_id": "GATE-B",
+      "is_pass": false,
+      "met_condition_count": 0,
+      "notes": "every condition names the artifact and field it was read from; the result is their conjunction and nothing else",
+      "result": "BLOCKED",
+      "title": "Gate B - Rules",
+      "unmet_condition_ids": [
+        "B1",
+        "B2",
+        "B3",
+        "B4",
+        "B5",
+        "B6",
+        "B7"
+      ]
+    },
+    {
+      "blockers": [
+        {
+          "blocking": true,
+          "code": "THS6_NO_REAL_ASSESSMENT",
+          "detail": "C1: at least one assessment has been computed from governed content (observed 0, required >= 1)",
+          "gate_id": "GATE-C",
+          "owner": "curation lead"
+        },
+        {
+          "blocking": true,
+          "code": "THS6_NO_COVERAGE_EXECUTION",
+          "detail": "C2: at least one coverage manifest has been executed (observed 0, required >= 1)",
+          "gate_id": "GATE-C",
+          "owner": "curation lead"
+        },
+        {
+          "blocking": true,
+          "code": "THS6_NO_COVERAGE_EXECUTION",
+          "detail": "C3: at least one axis is supported by governed coverage (observed 0, required >= 1)",
+          "gate_id": "GATE-C",
+          "owner": "curation lead"
+        },
+        {
+          "blocking": true,
+          "code": "THS6_NO_REAL_ASSESSMENT",
+          "detail": "C4: at least one report has been produced (observed 0, required >= 1)",
+          "gate_id": "GATE-C",
+          "owner": "curation lead"
+        },
+        {
+          "blocking": true,
+          "code": "THS6_SAFETY_GATE_BLOCKED",
+          "detail": "C5: the safety gate reports PASS in its own artifact (observed 'BLOCKED', required == 'PASS')",
+          "gate_id": "GATE-C",
+          "owner": "safety owner"
+        },
+        {
+          "blocking": true,
+          "code": "THS6_SAFETY_CI_NOT_EXECUTED",
+          "detail": "C6: the safety invariants have been executed by a CI provider (observed False, required is true)",
+          "gate_id": "GATE-C",
+          "owner": "platform owner"
+        },
+        {
+          "blocking": true,
+          "code": "THS6_CLAIM_BOUNDARY_NOT_APPROVED",
+          "detail": "C7: the claim boundary is approved (observed False, required is true)",
+          "gate_id": "GATE-C",
+          "owner": "clinical safety authority"
+        },
+        {
+          "blocking": true,
+          "code": "THS6_NO_ACTIVE_RELEASE",
+          "detail": "C8: a release is active (observed False, required is true)",
+          "gate_id": "GATE-C",
+          "owner": "release approver"
+        },
+        {
+          "blocking": true,
+          "code": "THS6_NO_REAL_ASSESSMENT",
+          "detail": "C9: the API has served at least one real assessment (observed 0, required >= 1)",
+          "gate_id": "GATE-C",
+          "owner": "platform owner"
+        }
+      ],
+      "condition_count": 9,
+      "conditions": [
+        {
+          "blocker": {
+            "blocking": true,
+            "code": "THS6_NO_REAL_ASSESSMENT",
+            "detail": "C1: at least one assessment has been computed from governed content (observed 0, required >= 1)",
+            "gate_id": "GATE-C",
+            "owner": "curation lead"
+          },
+          "condition_id": "C1",
+          "description": "at least one assessment has been computed from governed content",
+          "expected": ">= 1",
+          "met": false,
+          "observed": "0",
+          "source_field": "assessment_state.real_completed_assessments",
+          "source_path": "data/assessments/wp14-real-gate-status.json"
+        },
+        {
+          "blocker": {
+            "blocking": true,
+            "code": "THS6_NO_COVERAGE_EXECUTION",
+            "detail": "C2: at least one coverage manifest has been executed (observed 0, required >= 1)",
+            "gate_id": "GATE-C",
+            "owner": "curation lead"
+          },
+          "condition_id": "C2",
+          "description": "at least one coverage manifest has been executed",
+          "expected": ">= 1",
+          "met": false,
+          "observed": "0",
+          "source_field": "coverage_state.real_coverage_executions",
+          "source_path": "data/coverage/wp13-real-gate-status.json"
+        },
+        {
+          "blocker": {
+            "blocking": true,
+            "code": "THS6_NO_COVERAGE_EXECUTION",
+            "detail": "C3: at least one axis is supported by governed coverage (observed 0, required >= 1)",
+            "gate_id": "GATE-C",
+            "owner": "curation lead"
+          },
+          "condition_id": "C3",
+          "description": "at least one axis is supported by governed coverage",
+          "expected": ">= 1",
+          "met": false,
+          "observed": "0",
+          "source_field": "coverage_state.real_supported_axes",
+          "source_path": "data/coverage/wp13-real-gate-status.json"
+        },
+        {
+          "blocker": {
+            "blocking": true,
+            "code": "THS6_NO_REAL_ASSESSMENT",
+            "detail": "C4: at least one report has been produced (observed 0, required >= 1)",
+            "gate_id": "GATE-C",
+            "owner": "curation lead"
+          },
+          "condition_id": "C4",
+          "description": "at least one report has been produced",
+          "expected": ">= 1",
+          "met": false,
+          "observed": "0",
+          "source_field": "real_report_count",
+          "source_path": "data/reports/wp15-real-gate-status.json"
+        },
+        {
+          "blocker": {
+            "blocking": true,
+            "code": "THS6_SAFETY_GATE_BLOCKED",
+            "detail": "C5: the safety gate reports PASS in its own artifact (observed 'BLOCKED', required == 'PASS')",
+            "gate_id": "GATE-C",
+            "owner": "safety owner"
+          },
+          "condition_id": "C5",
+          "description": "the safety gate reports PASS in its own artifact",
+          "expected": "== 'PASS'",
+          "met": false,
+          "observed": "'BLOCKED'",
+          "source_field": "safety_gate_status",
+          "source_path": "data/safety/wp20-real-gate-status.json"
+        },
+        {
+          "blocker": {
+            "blocking": true,
+            "code": "THS6_SAFETY_CI_NOT_EXECUTED",
+            "detail": "C6: the safety invariants have been executed by a CI provider (observed False, required is true)",
+            "gate_id": "GATE-C",
+            "owner": "platform owner"
+          },
+          "condition_id": "C6",
+          "description": "the safety invariants have been executed by a CI provider",
+          "expected": "is true",
+          "met": false,
+          "observed": "False",
+          "source_field": "ci_job_executed",
+          "source_path": "data/safety/wp20-real-gate-status.json"
+        },
+        {
+          "blocker": {
+            "blocking": true,
+            "code": "THS6_CLAIM_BOUNDARY_NOT_APPROVED",
+            "detail": "C7: the claim boundary is approved (observed False, required is true)",
+            "gate_id": "GATE-C",
+            "owner": "clinical safety authority"
+          },
+          "condition_id": "C7",
+          "description": "the claim boundary is approved",
+          "expected": "is true",
+          "met": false,
+          "observed": "False",
+          "source_field": "claim_boundary_approved",
+          "source_path": "data/safety/wp20-real-gate-status.json"
+        },
+        {
+          "blocker": {
+            "blocking": true,
+            "code": "THS6_NO_ACTIVE_RELEASE",
+            "detail": "C8: a release is active (observed False, required is true)",
+            "gate_id": "GATE-C",
+            "owner": "release approver"
+          },
+          "condition_id": "C8",
+          "description": "a release is active",
+          "expected": "is true",
+          "met": false,
+          "observed": "False",
+          "source_field": "active_release_available",
+          "source_path": "data/safety/wp20-real-gate-status.json"
+        },
+        {
+          "blocker": {
+            "blocking": true,
+            "code": "THS6_NO_REAL_ASSESSMENT",
+            "detail": "C9: the API has served at least one real assessment (observed 0, required >= 1)",
+            "gate_id": "GATE-C",
+            "owner": "platform owner"
+          },
+          "condition_id": "C9",
+          "description": "the API has served at least one real assessment",
+          "expected": ">= 1",
+          "met": false,
+          "observed": "0",
+          "source_field": "real_api_assessment_count",
+          "source_path": "data/api/wp16-real-gate-status.json"
+        }
+      ],
+      "depends_on": [],
+      "findings": [],
+      "gate_id": "GATE-C",
+      "is_pass": false,
+      "met_condition_count": 0,
+      "notes": "every condition names the artifact and field it was read from; the result is their conjunction and nothing else",
+      "result": "BLOCKED",
+      "title": "Gate C - Core Safety",
+      "unmet_condition_ids": [
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8",
+        "C9"
+      ]
+    },
+    {
+      "blockers": [
+        {
+          "blocking": true,
+          "code": "THS6_INSUFFICIENT_VALIDATION_CASES",
+          "detail": "D1: at least fifty validation cases exist (observed 0, required >= 50)",
+          "gate_id": "GATE-D",
+          "owner": "validation owner"
+        },
+        {
+          "blocking": true,
+          "code": "THS6_NO_HOLDOUT_SET",
+          "detail": "D2: an independent holdout set exists (observed 0, required >= 1)",
+          "gate_id": "GATE-D",
+          "owner": "validation owner"
+        },
+        {
+          "blocking": true,
+          "code": "THS6_NO_COMPUTED_METRIC",
+          "detail": "D3: at least one validation metric has a computed value (observed 0, required >= 1)",
+          "gate_id": "GATE-D",
+          "owner": "validation owner"
+        },
+        {
+          "blocking": true,
+          "code": "THS6_NO_COMPUTED_METRIC",
+          "detail": "D4: at least one reference judgment exists (observed 0, required >= 1)",
+          "gate_id": "GATE-D",
+          "owner": "validation owner"
+        },
+        {
+          "blocking": true,
+          "code": "THS6_BENCHMARK_NOT_EXECUTED",
+          "detail": "D5: a benchmark has been executed against the active release (observed False, required is true)",
+          "gate_id": "GATE-D",
+          "owner": "validation owner"
+        },
+        {
+          "blocking": true,
+          "code": "THS6_EXPERT_PROTOCOL_NOT_APPROVED",
+          "detail": "D6: the expert review protocol has a signatory (observed 0, required >= 1)",
+          "gate_id": "GATE-D",
+          "owner": "expert review chair"
+        },
+        {
+          "blocking": true,
+          "code": "THS6_NO_NAMED_REVIEWER",
+          "detail": "D7: at least one expert reviewer is named (observed 0, required >= 1)",
+          "gate_id": "GATE-D",
+          "owner": "expert review chair"
+        },
+        {
+          "blocking": true,
+          "code": "THS6_NO_COMPLETED_REVIEW",
+          "detail": "D8: at least one expert review is completed (observed null (no measurement was taken), required >= 1)",
+          "gate_id": "GATE-D",
+          "owner": "expert review chair"
+        },
+        {
+          "blocking": true,
+          "code": "THS6_NO_COMPLETED_REVIEW",
+          "detail": "D9: the expert review gate reports PASS in its own artifact (observed 'BLOCKED', required == 'PASS')",
+          "gate_id": "GATE-D",
+          "owner": "expert review chair"
+        }
+      ],
+      "condition_count": 9,
+      "conditions": [
+        {
+          "blocker": {
+            "blocking": true,
+            "code": "THS6_INSUFFICIENT_VALIDATION_CASES",
+            "detail": "D1: at least fifty validation cases exist (observed 0, required >= 50)",
+            "gate_id": "GATE-D",
+            "owner": "validation owner"
+          },
+          "condition_id": "D1",
+          "description": "at least fifty validation cases exist",
+          "expected": ">= 50",
+          "met": false,
+          "observed": "0",
+          "source_field": "real_patient_case_count",
+          "source_path": "data/validation/wp18-real-gate-status.json"
+        },
+        {
+          "blocker": {
+            "blocking": true,
+            "code": "THS6_NO_HOLDOUT_SET",
+            "detail": "D2: an independent holdout set exists (observed 0, required >= 1)",
+            "gate_id": "GATE-D",
+            "owner": "validation owner"
+          },
+          "condition_id": "D2",
+          "description": "an independent holdout set exists",
+          "expected": ">= 1",
+          "met": false,
+          "observed": "0",
+          "source_field": "holdout_case_count",
+          "source_path": "data/validation/wp18-real-gate-status.json"
+        },
+        {
+          "blocker": {
+            "blocking": true,
+            "code": "THS6_NO_COMPUTED_METRIC",
+            "detail": "D3: at least one validation metric has a computed value (observed 0, required >= 1)",
+            "gate_id": "GATE-D",
+            "owner": "validation owner"
+          },
+          "condition_id": "D3",
+          "description": "at least one validation metric has a computed value",
+          "expected": ">= 1",
+          "met": false,
+          "observed": "0",
+          "source_field": "computed_metric_value_count",
+          "source_path": "data/validation/wp21-real-gate-status.json"
+        },
+        {
+          "blocker": {
+            "blocking": true,
+            "code": "THS6_NO_COMPUTED_METRIC",
+            "detail": "D4: at least one reference judgment exists (observed 0, required >= 1)",
+            "gate_id": "GATE-D",
+            "owner": "validation owner"
+          },
+          "condition_id": "D4",
+          "description": "at least one reference judgment exists",
+          "expected": ">= 1",
+          "met": false,
+          "observed": "0",
+          "source_field": "reference_judgment_count",
+          "source_path": "data/validation/wp21-real-gate-status.json"
+        },
+        {
+          "blocker": {
+            "blocking": true,
+            "code": "THS6_BENCHMARK_NOT_EXECUTED",
+            "detail": "D5: a benchmark has been executed against the active release (observed False, required is true)",
+            "gate_id": "GATE-D",
+            "owner": "validation owner"
+          },
+          "condition_id": "D5",
+          "description": "a benchmark has been executed against the active release",
+          "expected": "is true",
+          "met": false,
+          "observed": "False",
+          "source_field": "benchmark_executed_against_active_release",
+          "source_path": "data/validation/wp21-real-gate-status.json"
+        },
+        {
+          "blocker": {
+            "blocking": true,
+            "code": "THS6_EXPERT_PROTOCOL_NOT_APPROVED",
+            "detail": "D6: the expert review protocol has a signatory (observed 0, required >= 1)",
+            "gate_id": "GATE-D",
+            "owner": "expert review chair"
+          },
+          "condition_id": "D6",
+          "description": "the expert review protocol has a signatory",
+          "expected": ">= 1",
+          "met": false,
+          "observed": "0",
+          "source_field": "protocol_signatory_count",
+          "source_path": "data/expert-review/wp22-real-gate-status.json"
+        },
+        {
+          "blocker": {
+            "blocking": true,
+            "code": "THS6_NO_NAMED_REVIEWER",
+            "detail": "D7: at least one expert reviewer is named (observed 0, required >= 1)",
+            "gate_id": "GATE-D",
+            "owner": "expert review chair"
+          },
+          "condition_id": "D7",
+          "description": "at least one expert reviewer is named",
+          "expected": ">= 1",
+          "met": false,
+          "observed": "0",
+          "source_field": "named_reviewer_count",
+          "source_path": "data/expert-review/wp22-real-gate-status.json"
+        },
+        {
+          "blocker": {
+            "blocking": true,
+            "code": "THS6_NO_COMPLETED_REVIEW",
+            "detail": "D8: at least one expert review is completed (observed null (no measurement was taken), required >= 1)",
+            "gate_id": "GATE-D",
+            "owner": "expert review chair"
+          },
+          "condition_id": "D8",
+          "description": "at least one expert review is completed",
+          "expected": ">= 1",
+          "met": false,
+          "observed": "null (no measurement was taken)",
+          "source_field": "completed_review_count",
+          "source_path": "data/expert-review/wp22-real-gate-status.json"
+        },
+        {
+          "blocker": {
+            "blocking": true,
+            "code": "THS6_NO_COMPLETED_REVIEW",
+            "detail": "D9: the expert review gate reports PASS in its own artifact (observed 'BLOCKED', required == 'PASS')",
+            "gate_id": "GATE-D",
+            "owner": "expert review chair"
+          },
+          "condition_id": "D9",
+          "description": "the expert review gate reports PASS in its own artifact",
+          "expected": "== 'PASS'",
+          "met": false,
+          "observed": "'BLOCKED'",
+          "source_field": "expert_review_gate_status",
+          "source_path": "data/expert-review/wp22-real-gate-status.json"
+        }
+      ],
+      "depends_on": [],
+      "findings": [],
+      "gate_id": "GATE-D",
+      "is_pass": false,
+      "met_condition_count": 0,
+      "notes": "every condition names the artifact and field it was read from; the result is their conjunction and nothing else",
+      "result": "BLOCKED",
+      "title": "Gate D - Validation",
+      "unmet_condition_ids": [
+        "D1",
+        "D2",
+        "D3",
+        "D4",
+        "D5",
+        "D6",
+        "D7",
+        "D8",
+        "D9"
+      ]
+    },
+    {
+      "blockers": [
+        {
+          "blocking": true,
+          "code": "THS6_SECURITY_GATE_BLOCKED",
+          "detail": "E1: the security gate reports PASS in its own artifact (observed 'BLOCKED', required == 'PASS')",
+          "gate_id": "GATE-E",
+          "owner": "security owner"
+        },
+        {
+          "blocking": true,
+          "code": "THS6_DATABASE_UNAVAILABLE",
+          "detail": "E2: a governed database is reachable (observed False, required is true)",
+          "gate_id": "GATE-E",
+          "owner": "platform owner"
+        },
+        {
+          "blocking": true,
+          "code": "THS6_MIGRATION_NOT_EXECUTED",
+          "detail": "E3: the governed schema migration has been applied (observed False, required is true)",
+          "gate_id": "GATE-E",
+          "owner": "platform owner"
+        },
+        {
+          "blocking": true,
+          "code": "THS6_AUDIT_CHAIN_UNVERIFIED",
+          "detail": "E4: the audit chain has been verified against a real store (observed None, required is true)",
+          "gate_id": "GATE-E",
+          "owner": "platform owner"
+        },
+        {
+          "blocking": true,
+          "code": "THS6_BACKUP_RESTORE_NOT_VERIFIED",
+          "detail": "E5: a restore has been executed and verified (observed False, required is true)",
+          "gate_id": "GATE-E",
+          "owner": "platform owner"
+        },
+        {
+          "blocking": true,
+          "code": "THS6_DEPLOYMENT_GATE_BLOCKED",
+          "detail": "E6: the deployment gate reports PASS in its own artifact (observed 'BLOCKED', required == 'PASS')",
+          "gate_id": "GATE-E",
+          "owner": "platform owner"
+        },
+        {
+          "blocking": true,
+          "code": "THS6_CONTAINER_RUNTIME_UNAVAILABLE",
+          "detail": "E7: a container runtime is available (observed False, required is true)",
+          "gate_id": "GATE-E",
+          "owner": "platform owner"
+        },
+        {
+          "blocking": true,
+          "code": "THS6_CI_NOT_EXECUTED",
+          "detail": "E8: a CI provider has executed the configured workflows (observed None, required is true)",
+          "gate_id": "GATE-E",
+          "owner": "platform owner"
+        },
+        {
+          "blocking": true,
+          "code": "THS6_STAGING_NOT_DEPLOYED",
+          "detail": "E9: a staging environment has been deployed (observed False, required is true)",
+          "gate_id": "GATE-E",
+          "owner": "platform owner"
+        },
+        {
+          "blocking": true,
+          "code": "THS6_DEPLOYMENT_GATE_BLOCKED",
+          "detail": "E10: the combined Gate E artifact reports PASS (observed 'BLOCKED', required == 'PASS')",
+          "gate_id": "GATE-E",
+          "owner": "platform owner"
+        }
+      ],
+      "condition_count": 10,
+      "conditions": [
+        {
+          "blocker": {
+            "blocking": true,
+            "code": "THS6_SECURITY_GATE_BLOCKED",
+            "detail": "E1: the security gate reports PASS in its own artifact (observed 'BLOCKED', required == 'PASS')",
+            "gate_id": "GATE-E",
+            "owner": "security owner"
+          },
+          "condition_id": "E1",
+          "description": "the security gate reports PASS in its own artifact",
+          "expected": "== 'PASS'",
+          "met": false,
+          "observed": "'BLOCKED'",
+          "source_field": "security_gate_status",
+          "source_path": "data/security/wp23-real-gate-status.json"
+        },
+        {
+          "blocker": {
+            "blocking": true,
+            "code": "THS6_DATABASE_UNAVAILABLE",
+            "detail": "E2: a governed database is reachable (observed False, required is true)",
+            "gate_id": "GATE-E",
+            "owner": "platform owner"
+          },
+          "condition_id": "E2",
+          "description": "a governed database is reachable",
+          "expected": "is true",
+          "met": false,
+          "observed": "False",
+          "source_field": "database_available",
+          "source_path": "data/security/wp23-real-gate-status.json"
+        },
+        {
+          "blocker": {
+            "blocking": true,
+            "code": "THS6_MIGRATION_NOT_EXECUTED",
+            "detail": "E3: the governed schema migration has been applied (observed False, required is true)",
+            "gate_id": "GATE-E",
+            "owner": "platform owner"
+          },
+          "condition_id": "E3",
+          "description": "the governed schema migration has been applied",
+          "expected": "is true",
+          "met": false,
+          "observed": "False",
+          "source_field": "migration_0011_executed",
+          "source_path": "data/security/wp23-real-gate-status.json"
+        },
+        {
+          "blocker": {
+            "blocking": true,
+            "code": "THS6_AUDIT_CHAIN_UNVERIFIED",
+            "detail": "E4: the audit chain has been verified against a real store (observed None, required is true)",
+            "gate_id": "GATE-E",
+            "owner": "platform owner"
+          },
+          "condition_id": "E4",
+          "description": "the audit chain has been verified against a real store",
+          "expected": "is true",
+          "met": false,
+          "observed": "None",
+          "source_field": "audit_chain_verified",
+          "source_path": "data/security/wp23-real-gate-status.json"
+        },
+        {
+          "blocker": {
+            "blocking": true,
+            "code": "THS6_BACKUP_RESTORE_NOT_VERIFIED",
+            "detail": "E5: a restore has been executed and verified (observed False, required is true)",
+            "gate_id": "GATE-E",
+            "owner": "platform owner"
+          },
+          "condition_id": "E5",
+          "description": "a restore has been executed and verified",
+          "expected": "is true",
+          "met": false,
+          "observed": "False",
+          "source_field": "restore_verified",
+          "source_path": "data/security/wp23-real-gate-status.json"
+        },
+        {
+          "blocker": {
+            "blocking": true,
+            "code": "THS6_DEPLOYMENT_GATE_BLOCKED",
+            "detail": "E6: the deployment gate reports PASS in its own artifact (observed 'BLOCKED', required == 'PASS')",
+            "gate_id": "GATE-E",
+            "owner": "platform owner"
+          },
+          "condition_id": "E6",
+          "description": "the deployment gate reports PASS in its own artifact",
+          "expected": "== 'PASS'",
+          "met": false,
+          "observed": "'BLOCKED'",
+          "source_field": "deployment_gate_status",
+          "source_path": "data/deployment/wp24-real-gate-status.json"
+        },
+        {
+          "blocker": {
+            "blocking": true,
+            "code": "THS6_CONTAINER_RUNTIME_UNAVAILABLE",
+            "detail": "E7: a container runtime is available (observed False, required is true)",
+            "gate_id": "GATE-E",
+            "owner": "platform owner"
+          },
+          "condition_id": "E7",
+          "description": "a container runtime is available",
+          "expected": "is true",
+          "met": false,
+          "observed": "False",
+          "source_field": "container_runtime_available",
+          "source_path": "data/deployment/wp24-real-gate-status.json"
+        },
+        {
+          "blocker": {
+            "blocking": true,
+            "code": "THS6_CI_NOT_EXECUTED",
+            "detail": "E8: a CI provider has executed the configured workflows (observed None, required is true)",
+            "gate_id": "GATE-E",
+            "owner": "platform owner"
+          },
+          "condition_id": "E8",
+          "description": "a CI provider has executed the configured workflows",
+          "expected": "is true",
+          "met": false,
+          "observed": "None",
+          "source_field": "ci_executed",
+          "source_path": "data/deployment/wp24-real-gate-status.json"
+        },
+        {
+          "blocker": {
+            "blocking": true,
+            "code": "THS6_STAGING_NOT_DEPLOYED",
+            "detail": "E9: a staging environment has been deployed (observed False, required is true)",
+            "gate_id": "GATE-E",
+            "owner": "platform owner"
+          },
+          "condition_id": "E9",
+          "description": "a staging environment has been deployed",
+          "expected": "is true",
+          "met": false,
+          "observed": "False",
+          "source_field": "staging_deployed",
+          "source_path": "data/deployment/wp24-gate-e-status.json"
+        },
+        {
+          "blocker": {
+            "blocking": true,
+            "code": "THS6_DEPLOYMENT_GATE_BLOCKED",
+            "detail": "E10: the combined Gate E artifact reports PASS (observed 'BLOCKED', required == 'PASS')",
+            "gate_id": "GATE-E",
+            "owner": "platform owner"
+          },
+          "condition_id": "E10",
+          "description": "the combined Gate E artifact reports PASS",
+          "expected": "== 'PASS'",
+          "met": false,
+          "observed": "'BLOCKED'",
+          "source_field": "gate_e_status",
+          "source_path": "data/deployment/wp24-gate-e-status.json"
+        }
+      ],
+      "depends_on": [],
+      "findings": [],
+      "gate_id": "GATE-E",
+      "is_pass": false,
+      "met_condition_count": 0,
+      "notes": "every condition names the artifact and field it was read from; the result is their conjunction and nothing else",
+      "result": "BLOCKED",
+      "title": "Gate E - Operational",
+      "unmet_condition_ids": [
+        "E1",
+        "E2",
+        "E3",
+        "E4",
+        "E5",
+        "E6",
+        "E7",
+        "E8",
+        "E9",
+        "E10"
+      ]
+    },
+    {
+      "blockers": [
+        {
+          "blocking": true,
+          "code": "THS6_UPSTREAM_GATE_NOT_PASS",
+          "detail": "F1: the release validation aggregate permits a release (observed False, required is true)",
+          "gate_id": "GATE-F",
+          "owner": "release approver"
+        },
+        {
+          "blocking": true,
+          "code": "THS6_UPSTREAM_GATE_NOT_PASS",
+          "detail": "F2: every required release gate is satisfied (observed 2, required >= 19)",
+          "gate_id": "GATE-F",
+          "owner": "release approver"
+        },
+        {
+          "blocking": true,
+          "code": "THS6_UPSTREAM_GATE_NOT_PASS",
+          "detail": "F3: the safety gate permits a release (observed False, required is true)",
+          "gate_id": "GATE-F",
+          "owner": "safety owner"
+        },
+        {
+          "blocking": true,
+          "code": "THS6_DEMO_NOT_EXECUTED",
+          "detail": "F4: the interface reports a populated validation dashboard (observed 'EMPTY_STATE_ONLY', required == 'POPULATED')",
+          "gate_id": "GATE-F",
+          "owner": "platform owner"
+        },
+        {
+          "blocking": true,
+          "code": "THS6_EVIDENCE_STALE",
+          "detail": "F5: the verification suite's recorded run is not stale (observed 'STALE_EVIDENCE_REJECTED', required == 'FRESH')",
+          "gate_id": "GATE-F",
+          "owner": "verification owner"
+        }
+      ],
+      "condition_count": 5,
+      "conditions": [
+        {
+          "blocker": {
+            "blocking": true,
+            "code": "THS6_UPSTREAM_GATE_NOT_PASS",
+            "detail": "F1: the release validation aggregate permits a release (observed False, required is true)",
+            "gate_id": "GATE-F",
+            "owner": "release approver"
+          },
+          "condition_id": "F1",
+          "description": "the release validation aggregate permits a release",
+          "expected": "is true",
+          "met": false,
+          "observed": "False",
+          "source_field": "release_may_proceed",
+          "source_path": "data/deployment/wp24-release-validation.json"
+        },
+        {
+          "blocker": {
+            "blocking": true,
+            "code": "THS6_UPSTREAM_GATE_NOT_PASS",
+            "detail": "F2: every required release gate is satisfied (observed 2, required >= 19)",
+            "gate_id": "GATE-F",
+            "owner": "release approver"
+          },
+          "condition_id": "F2",
+          "description": "every required release gate is satisfied",
+          "expected": ">= 19",
+          "met": false,
+          "observed": "2",
+          "source_field": "satisfied_required_count",
+          "source_path": "data/deployment/wp24-release-validation.json"
+        },
+        {
+          "blocker": {
+            "blocking": true,
+            "code": "THS6_UPSTREAM_GATE_NOT_PASS",
+            "detail": "F3: the safety gate permits a release (observed False, required is true)",
+            "gate_id": "GATE-F",
+            "owner": "safety owner"
+          },
+          "condition_id": "F3",
+          "description": "the safety gate permits a release",
+          "expected": "is true",
+          "met": false,
+          "observed": "False",
+          "source_field": "release_may_proceed",
+          "source_path": "data/safety/wp20-real-gate-status.json"
+        },
+        {
+          "blocker": {
+            "blocking": true,
+            "code": "THS6_DEMO_NOT_EXECUTED",
+            "detail": "F4: the interface reports a populated validation dashboard (observed 'EMPTY_STATE_ONLY', required == 'POPULATED')",
+            "gate_id": "GATE-F",
+            "owner": "platform owner"
+          },
+          "condition_id": "F4",
+          "description": "the interface reports a populated validation dashboard",
+          "expected": "== 'POPULATED'",
+          "met": false,
+          "observed": "'EMPTY_STATE_ONLY'",
+          "source_field": "validation_dashboard_status",
+          "source_path": "data/web/wp17-real-gate-status.json"
+        },
+        {
+          "blocker": {
+            "blocking": true,
+            "code": "THS6_EVIDENCE_STALE",
+            "detail": "F5: the verification suite's recorded run is not stale (observed 'STALE_EVIDENCE_REJECTED', required == 'FRESH')",
+            "gate_id": "GATE-F",
+            "owner": "verification owner"
+          },
+          "condition_id": "F5",
+          "description": "the verification suite's recorded run is not stale",
+          "expected": "== 'FRESH'",
+          "met": false,
+          "observed": "'STALE_EVIDENCE_REJECTED'",
+          "source_field": "run_evidence_status",
+          "source_path": "data/verification/wp19-real-gate-status.json"
+        }
+      ],
+      "depends_on": [
+        "GATE-A",
+        "GATE-B",
+        "GATE-C",
+        "GATE-D",
+        "GATE-E"
+      ],
+      "findings": [],
+      "gate_id": "GATE-F",
+      "is_pass": false,
+      "met_condition_count": 0,
+      "notes": "every condition names the artifact and field it was read from; the result is their conjunction and nothing else",
+      "result": "BLOCKED",
+      "title": "Gate F - THS 6",
+      "unmet_condition_ids": [
+        "F1",
+        "F2",
+        "F3",
+        "F4",
+        "F5"
+      ]
+    }
+  ],
+  "note": "A gate passes only when every mandatory condition is met. BLOCKED and NOT_EVALUATED never count towards a pass, Gate F cannot pass while any of A to E is not PASS, and there is no override.",
+  "override_available": false,
+  "passing_gate_count": 0,
+  "passing_gate_ids": [],
+  "results": {
+    "GATE-A": "BLOCKED",
+    "GATE-B": "BLOCKED",
+    "GATE-C": "BLOCKED",
+    "GATE-D": "BLOCKED",
+    "GATE-E": "BLOCKED",
+    "GATE-F": "BLOCKED"
+  },
+  "source_artifact_disagreements": [
+    {
+      "explanation": "WP-17's interface gate status says the expert review workflow is NOT_IMPLEMENTED; WP-22 reports its own module IMPLEMENTED with a delivered review workflow. One of the two artifacts is out of date.",
+      "fact": "whether the expert review workflow is implemented",
+      "left_field": "expert_review_workflow_status",
+      "left_path": "data/web/wp17-real-gate-status.json",
+      "left_value": "NOT_IMPLEMENTED",
+      "owner": "platform owner",
+      "resolution": "recorded; WP-25 does not choose between them",
+      "right_field": "implementation_status",
+      "right_path": "data/expert-review/wp22-real-gate-status.json",
+      "right_value": "IMPLEMENTED"
+    },
+    {
+      "explanation": "WP-17 records null, meaning no count was taken; WP-18 records 0, meaning a count was taken and found none. Both are honest and they are not the same statement.",
+      "fact": "the number of holdout validation cases",
+      "left_field": "holdout_case_count",
+      "left_path": "data/web/wp17-real-gate-status.json",
+      "left_value": null,
+      "owner": "validation owner",
+      "resolution": "recorded; WP-25 does not choose between them",
+      "right_field": "holdout_case_count",
+      "right_path": "data/validation/wp18-real-gate-status.json",
+      "right_value": 0
+    },
+    {
+      "explanation": "WP-20's artifact reports that WP-24 had not started; WP-19's reports that it had. WP-20's was generated before the deployment package existed.",
+      "fact": "whether WP-24 has started",
+      "left_field": "wp24_started",
+      "left_path": "data/safety/wp20-real-gate-status.json",
+      "left_value": false,
+      "owner": "safety owner",
+      "resolution": "recorded; WP-25 does not choose between them",
+      "right_field": "wp24_started",
+      "right_path": "data/verification/wp19-real-gate-status.json",
+      "right_value": true
+    },
+    {
+      "explanation": "WP-19's recorded discovery count is lower than the number of test functions the tree now defines, so the recorded count predates later work packages. A recorded count can legitimately be lower than the defined count only through skips, which reduce execution rather than discovery.",
+      "fact": "how many tests this repository has",
+      "left_field": "discovered_test_count",
+      "left_path": "data/verification/wp19-real-gate-status.json",
+      "left_value": 6374,
+      "owner": "verification owner",
+      "resolution": "recorded; WP-25 does not regenerate another work package's artifact",
+      "right_field": "test functions defined (counted by parsing)",
+      "right_path": "tests/",
+      "right_value": 7323
+    }
+  ],
+  "total_blocker_count": 45
+}

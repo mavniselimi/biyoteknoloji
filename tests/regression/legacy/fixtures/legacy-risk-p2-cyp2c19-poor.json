@@ -1,0 +1,37 @@
+{
+  "_fixture_note": "Frozen legacy regression fixture captured by WP-01. Reproduces legacy behaviour INCLUDING known defects (LEGACY-BUG-002). Not clinical validation and not a protected expected V2 result.",
+  "drug_results": [
+    {
+      "active_flag_count": 1,
+      "drug": "clopidogrel",
+      "overall_risk_level": "high"
+    },
+    {
+      "active_flag_count": 1,
+      "drug": "voriconazole",
+      "overall_risk_level": "high"
+    },
+    {
+      "active_flag_count": 0,
+      "drug": "codeine",
+      "overall_risk_level": "none"
+    },
+    {
+      "active_flag_count": 0,
+      "drug": "warfarin",
+      "overall_risk_level": "none"
+    },
+    {
+      "active_flag_count": 1,
+      "drug": "amitriptyline",
+      "overall_risk_level": "medium"
+    }
+  ],
+  "overall": {
+    "overall_risk_label_tr": "Yüksek dikkat",
+    "overall_risk_level": "high",
+    "overall_risk_score": 3,
+    "risk_flag_count": 3,
+    "same_gene_attention_count": 2
+  }
+}

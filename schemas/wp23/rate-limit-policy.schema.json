@@ -1,0 +1,94 @@
+{
+  "$id": "https://pgx.local/schemas/wp23/rate-limit-policy.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "description": "Declared limits, before any result is observed. Reports no throughput, latency or load figure: WP-24 owns those.",
+  "properties": {
+    "failure_semantics": {
+      "minLength": 40,
+      "type": "string"
+    },
+    "key_semantics": {
+      "minLength": 40,
+      "type": "string"
+    },
+    "policies": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "limit": {
+            "minimum": 1,
+            "type": "integer"
+          },
+          "policy_id": {
+            "minLength": 3,
+            "type": "string"
+          },
+          "rationale": {
+            "minLength": 40,
+            "type": "string"
+          },
+          "retry_after_seconds": {
+            "maximum": 3600,
+            "minimum": 1,
+            "type": "integer"
+          },
+          "scope": {
+            "enum": [
+              "username_digest",
+              "origin_digest",
+              "actor_digest"
+            ],
+            "type": "string"
+          },
+          "title": {
+            "minLength": 3,
+            "type": "string"
+          },
+          "window_seconds": {
+            "minimum": 1,
+            "type": "integer"
+          }
+        },
+        "required": [
+          "policy_id",
+          "title",
+          "scope",
+          "limit",
+          "window_seconds",
+          "retry_after_seconds",
+          "rationale"
+        ],
+        "type": "object"
+      },
+      "minItems": 3,
+      "type": "array"
+    },
+    "policy_count": {
+      "minimum": 3,
+      "type": "integer"
+    },
+    "proxy_header_policy": {
+      "minLength": 40,
+      "type": "string"
+    },
+    "rate_limit_policy_version": {
+      "const": "pgx-wp23-rate-limit-policy/1"
+    },
+    "window_semantics": {
+      "minLength": 40,
+      "type": "string"
+    }
+  },
+  "required": [
+    "rate_limit_policy_version",
+    "policy_count",
+    "policies",
+    "window_semantics",
+    "key_semantics",
+    "failure_semantics",
+    "proxy_header_policy"
+  ],
+  "title": "WP-23 rate-limit policy",
+  "type": "object"
+}

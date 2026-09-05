@@ -1,0 +1,11 @@
+{
+  "case_count": 9,
+  "content_hash": "sha256:7831e1ee275fe0bbae81b66ec66f3dd6f4337661178db70b28e161221307d9ac",
+  "evidence_build_content_hash": "sha256:5a58c030d00dc6495d69c3ff9e1d76c6d6230caf7795871e4dfc4e8774fcb83e",
+  "evidence_build_key": "PGX-DATA-20260830-900/5a58c030d00dc649",
+  "exercise_id": "wp09-inter-curator-1",
+  "exercise_version": "pgx-inter-curator-exercise/1",
+  "note": "Two named scientists complete this independently. Agreement between them is not evidence that either is correct, and this packet contains no expected answers.",
+  "status": "AWAITING_HUMAN_CURATORS",
+  "unmatched_selectors": []
+}

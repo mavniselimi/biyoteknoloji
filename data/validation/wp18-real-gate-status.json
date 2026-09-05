@@ -1,0 +1,106 @@
+{
+  "active_release_available": false,
+  "active_release_note": "No release is registered in this repository. A case may declare which release it is compatible with; nothing here activates or invents one.",
+  "benchmark_executed": false,
+  "benchmark_gate_status": "BLOCKED",
+  "blocker_count": 7,
+  "blockers": [
+    {
+      "blocking": true,
+      "code": "VALIDATION_BELOW_P0_CASE_TARGET",
+      "detail": "0 of at least 50 serious validation cases exist; the gap is 50 and is scientific work, not code.",
+      "owner": "scientific curators"
+    },
+    {
+      "blocking": true,
+      "code": "VALIDATION_BENCHMARK_NOT_PASSING",
+      "detail": "WP-21 benchmark gate is BLOCKED: 0 validation-evidence case(s), 0 numeric validation metric(s)",
+      "owner": "WP-21 operation once a release and holdout cases exist"
+    },
+    {
+      "blocking": true,
+      "code": "VALIDATION_CLAIM_BOUNDARY_NOT_APPROVED",
+      "detail": "claim boundary status is DRAFT / AWAITING HUMAN AND SCIENTIFIC REVIEW",
+      "owner": "the people named in docs/architecture/intended-purpose.md"
+    },
+    {
+      "blocking": true,
+      "code": "VALIDATION_NO_ACTIVE_RELEASE",
+      "detail": "no release is registered or active in this repository",
+      "owner": "WP-03 operation once artifacts exist"
+    },
+    {
+      "blocking": true,
+      "code": "VALIDATION_NO_COMPLETED_EXPERT_REVIEWS",
+      "detail": "the WP-22 review module is implemented; the protocol is a draft, no expert-holdout case exists and no review has been completed",
+      "owner": "named experts under the approved protocol"
+    },
+    {
+      "blocking": true,
+      "code": "VALIDATION_NO_HOLDOUT_CASES",
+      "detail": "internal holdout: 0, expert holdout: 0. The seven development cases are fixtures that shaped the software and are not validation evidence.",
+      "owner": "scientific curators; a holdout case cannot be generated"
+    },
+    {
+      "blocking": true,
+      "code": "VALIDATION_RESTRICTED_STORAGE_NOT_CONFIGURED",
+      "detail": "PGX_VALIDATION_RESTRICTED_ROOT is unset or does not name a directory",
+      "owner": "deployment"
+    }
+  ],
+  "claim_boundary_approved": false,
+  "claim_boundary_phase": "P0",
+  "claim_boundary_status": "DRAFT / AWAITING HUMAN AND SCIENTIFIC REVIEW",
+  "development_case_count": 7,
+  "development_case_source": "data/demo/wp17-development-cases.json",
+  "expert_holdout_case_count": 0,
+  "expert_review_implemented": true,
+  "expert_review_performed": false,
+  "expert_review_protocol_approved": false,
+  "expert_reviewed_case_count": null,
+  "expert_reviewed_case_count_source": "null rather than zero: WP-22's review module is implemented but no review store was inspected, so no review was counted",
+  "gate_status_schema_version": "pgx-wp18-gate-status/1",
+  "holdout_case_count": 0,
+  "holdout_case_count_source": "counted from the committed case set; zero because no holdout case has been authored, not because a lookup failed",
+  "implementation_status": "IMPLEMENTED",
+  "internal_holdout_case_count": 0,
+  "may_report_validation_result": false,
+  "note": "WP-18 builds the partition, not the dataset. Development, internal holdout and expert holdout are structurally distinct and cannot be mixed silently; that is what is implemented. What is absent is every holdout case, because authoring one is scientific work and generating one would be the fabrication this architecture exists to prevent. No metric, rate or percentage appears in this document, no case carries an expected answer, and no count above was asserted rather than measured.",
+  "numeric_validation_metric_count": 0,
+  "p0_target_case_count": 50,
+  "p0_target_met": false,
+  "p0_target_shortfall": 50,
+  "real_patient_case_count": 0,
+  "real_patient_case_count_source": "structurally zero: the case model refuses every real-patient, genotype and raw-sequencing field at any depth, so there is no path by which one could exist. Real-patient ingestion is P2-03/P2-04 and is not implemented.",
+  "restricted_payload_availability": "NOT_CONFIGURED",
+  "restricted_payload_count": null,
+  "restricted_payload_count_source": "no restricted storage root is configured, so no count was taken; null rather than zero",
+  "separation_audit_checked_case_count": 7,
+  "separation_audit_clean": true,
+  "separation_audit_issue_codes": [],
+  "separation_rules_checked": 10,
+  "validation_metric_count": null,
+  "validation_metric_count_source": "null rather than zero: metrics are implemented and no benchmark has been executed against a release, so none was computed. A zero here would say a run produced no metrics; nothing ran.",
+  "validation_metric_definition_count": 15,
+  "validation_metrics_implemented": true,
+  "vocabulary_version": "pgx-wp18-validation-vocabulary/1",
+  "work_package": "WP-18",
+  "wp19_markers_found": [
+    "pgx/verification",
+    "docs/architecture/wp19-verification.md"
+  ],
+  "wp19_started": true,
+  "wp21_markers_found": [
+    "pgx/validation/benchmark.py",
+    "pgx/validation/metrics.py",
+    "docs/architecture/wp21-validation-metrics.md"
+  ],
+  "wp21_started": true,
+  "wp22_markers_found": [
+    "pgx/expert_review/service.py",
+    "pgx/expert_review/protocol.py",
+    "docs/validation/expert-protocol.md",
+    "docs/architecture/wp22-expert-review.md"
+  ],
+  "wp22_started": true
+}

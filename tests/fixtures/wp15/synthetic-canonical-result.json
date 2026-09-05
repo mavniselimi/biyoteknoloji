@@ -1,0 +1,208 @@
+{
+  "actor": "TEST-assessment-actor-1",
+  "assessment_engine_contract_version": "pgx-assessment-engine/2",
+  "assessment_id": "927563d7-bdf6-4de6-8a71-1bd665a0c98a",
+  "case_id": "SYNTHETIC-TEST-ONLY-NOT-A-REAL-CASE",
+  "completed_at": "2099-01-04T10:00:00Z",
+  "computation_schema_version": "pgx-assessment-computation/2",
+  "content_hash": "sha256:a387f6022bdaf8a17a002f8aab5c9988e3079d0ba7bf2955044128faca318f12",
+  "coverage_result_hash": "sha256:5138a7d36deb8042cdbf3c512c9d71aac4d634d2f3866042237dceb50e34ecd5",
+  "created_at": "2099-01-04T10:00:00Z",
+  "finding_count": 2,
+  "input_hash": "sha256:c2655fc8d11b1ddd9360a4be589426f3f14b4333d3430d06f1cce3ee759ffd6a",
+  "input_kind": "SYNTHETIC_PHENOTYPE_PROFILE",
+  "medication_count": 3,
+  "medications": [
+    {
+      "attention_level": "MEDIUM",
+      "axes": [
+        {
+          "conflict_references": [],
+          "coverage_reason_codes": [],
+          "coverage_status": "FULL",
+          "declaration_id": "TEST-COVERAGE-DECL-1",
+          "drug_canonical_key": "DRUG:testdrug-alpha",
+          "evidence_references": [
+            "aaaaaaaa-0000-4000-8000-000000000001",
+            "aaaaaaaa-0000-4000-8000-000000000002"
+          ],
+          "gene_canonical_key": "GENE:TESTGENE1",
+          "observation_state": "NORMALIZED",
+          "observed_phenotype": "POOR",
+          "rule_references": [
+            {
+              "rule_content_hash": "sha256:85d8ad390a975f640cd8e944db8d454bf9439da95b5581764449cc116d2be841",
+              "rule_id": "599ffc50-590c-406b-b293-83bf3a4e476f",
+              "rule_version": 1
+            }
+          ]
+        },
+        {
+          "conflict_references": [],
+          "coverage_reason_codes": [],
+          "coverage_status": "FULL",
+          "declaration_id": "TEST-COVERAGE-DECL-1",
+          "drug_canonical_key": "DRUG:testdrug-alpha",
+          "evidence_references": [
+            "aaaaaaaa-0000-4000-8000-000000000001",
+            "aaaaaaaa-0000-4000-8000-000000000002"
+          ],
+          "gene_canonical_key": "GENE:TESTGENE2",
+          "observation_state": "NORMALIZED",
+          "observed_phenotype": "POOR",
+          "rule_references": [
+            {
+              "rule_content_hash": "sha256:22eca8934088f770aef3c1a874afe435ca2018eb4202327966289a38e8d5049b",
+              "rule_id": "94fb77a7-974b-4e12-90f6-1cb2e6b0f864",
+              "rule_version": 1
+            }
+          ]
+        },
+        {
+          "conflict_references": [],
+          "coverage_reason_codes": [
+            "PHENOTYPE_NOT_SUPPORTED"
+          ],
+          "coverage_status": "UNSUPPORTED_PHENOTYPE",
+          "declaration_id": null,
+          "drug_canonical_key": "DRUG:testdrug-alpha",
+          "evidence_references": [],
+          "gene_canonical_key": "GENE:TESTGENE3",
+          "observation_state": "UNSUPPORTED",
+          "observed_phenotype": null,
+          "rule_references": []
+        }
+      ],
+      "axis_count": 3,
+      "conflicted_axis_count": 0,
+      "coverage_reason_codes": [
+        "PHENOTYPE_NOT_SUPPORTED",
+        "SOME_AXES_NOT_COVERED"
+      ],
+      "coverage_status": "PARTIAL",
+      "drug_canonical_key": "DRUG:testdrug-alpha",
+      "findings": [
+        {
+          "attention_level": "MEDIUM",
+          "curation_revision_hash": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+          "curation_revision_id": "TEST-REV-000001",
+          "drug_canonical_key": "DRUG:testdrug-alpha",
+          "effect_code": null,
+          "evidence_references": [
+            "aaaaaaaa-0000-4000-8000-000000000001",
+            "aaaaaaaa-0000-4000-8000-000000000002"
+          ],
+          "explanation_code": null,
+          "gene_canonical_key": "GENE:TESTGENE1",
+          "phenotype": "POOR",
+          "rationale_reference": "TEST-WI-SYNTHETIC-1/TEST-REV-000001",
+          "rule_content_hash": "sha256:85d8ad390a975f640cd8e944db8d454bf9439da95b5581764449cc116d2be841",
+          "rule_family_id": "66019d14-2885-4e74-9715-c91714c20512",
+          "rule_id": "599ffc50-590c-406b-b293-83bf3a4e476f",
+          "rule_version": 1
+        },
+        {
+          "attention_level": "MEDIUM",
+          "curation_revision_hash": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+          "curation_revision_id": "TEST-REV-000001",
+          "drug_canonical_key": "DRUG:testdrug-alpha",
+          "effect_code": null,
+          "evidence_references": [
+            "aaaaaaaa-0000-4000-8000-000000000001",
+            "aaaaaaaa-0000-4000-8000-000000000002"
+          ],
+          "explanation_code": null,
+          "gene_canonical_key": "GENE:TESTGENE2",
+          "phenotype": "POOR",
+          "rationale_reference": "TEST-WI-SYNTHETIC-1/TEST-REV-000001",
+          "rule_content_hash": "sha256:22eca8934088f770aef3c1a874afe435ca2018eb4202327966289a38e8d5049b",
+          "rule_family_id": "9f2f7008-a1da-466e-b149-1af4053346a2",
+          "rule_id": "94fb77a7-974b-4e12-90f6-1cb2e6b0f864",
+          "rule_version": 1
+        }
+      ],
+      "requested_value": "DRUG:testdrug-alpha"
+    },
+    {
+      "attention_level": "NOT_ASSESSED",
+      "axes": [],
+      "axis_count": 0,
+      "conflicted_axis_count": 0,
+      "coverage_reason_codes": [
+        "NO_VALIDATED_RULE_FOR_AXIS"
+      ],
+      "coverage_status": "INSUFFICIENT",
+      "drug_canonical_key": "DRUG:testdrug-beta",
+      "findings": [],
+      "requested_value": "DRUG:testdrug-beta"
+    },
+    {
+      "attention_level": "NOT_ASSESSED",
+      "axes": [],
+      "axis_count": 0,
+      "conflicted_axis_count": 0,
+      "coverage_reason_codes": [
+        "DRUG_NOT_IN_CANONICAL_DATASET"
+      ],
+      "coverage_status": "UNSUPPORTED_DRUG",
+      "drug_canonical_key": "DRUG:testdrug-omega",
+      "findings": [],
+      "requested_value": "DRUG:testdrug-omega"
+    }
+  ],
+  "mode": "DEMO",
+  "output_hash": "sha256:bb644fe6e189ec201d3f6bcc3bf010fa85c62edcb6dcc25c09b3fcfed6d1e866",
+  "overall_attention": "MEDIUM",
+  "overall_coverage": "PARTIAL",
+  "overall_coverage_reason_codes": [
+    "DRUG_NOT_IN_CANONICAL_DATASET",
+    "PHENOTYPE_NOT_SUPPORTED",
+    "NO_VALIDATED_RULE_FOR_AXIS",
+    "SOME_AXES_NOT_COVERED"
+  ],
+  "pointer_audit": {
+    "active_pointer_generation": 1
+  },
+  "profile_observations": [
+    {
+      "gene_id": "GENE:TESTGENE1",
+      "phenotype": "POOR",
+      "reason_code": null,
+      "status": "NORMALIZED"
+    },
+    {
+      "gene_id": "GENE:TESTGENE2",
+      "phenotype": "POOR",
+      "reason_code": null,
+      "status": "NORMALIZED"
+    },
+    {
+      "gene_id": "GENE:TESTGENE3",
+      "phenotype": null,
+      "reason_code": "PHENOTYPE_INPUT_UNSUPPORTED",
+      "status": "UNSUPPORTED"
+    }
+  ],
+  "release_provenance": {
+    "canonical_build_content_hash": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+    "coverage_manifest_hash": "sha256:e758c5398d0cf13472e240288e73da6b5058e2d2537ed842747a6ac76ba03b8e",
+    "dataset_public_id": "PGX-DATA-29991231-001",
+    "dataset_version_id": "e633c262-45bb-467e-80e0-a29f8202132b",
+    "evidence_build_content_hash": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+    "evidence_build_key": "TEST-EVIDENCE-BUILD/synthetic",
+    "protocol_content_hash": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+    "protocol_version": "test-protocol/9.9.9-synthetic",
+    "release_manifest_hash": "sha256:150a291cc041cb4bc7110a3c4563ccca0d9b91844a6b8bcda5e4b276e65d3e61",
+    "release_public_id": "PGX-REL-29991231-001",
+    "ruleset_content_hash": "sha256:4b34c935f8477677f24058c9132d4bb01703ace29e7ec5d500e4ab25a1a814dc",
+    "ruleset_public_id": "PGX-RULESET-29991231-001",
+    "ruleset_version_id": "62202e98-3d6e-477e-a881-899451c36e76",
+    "software_source_tree_hash": "sha256:7777777777777777777777777777777777777777777777777777777777777777",
+    "software_version": "0.0.0-test-synthetic",
+    "software_version_id": "4c412000-a144-4553-a414-de34b4f9cd45",
+    "source_policy_content_hash": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+    "source_policy_version": "test-source-policy/9.9.9-synthetic"
+  },
+  "result_schema_version": "pgx-canonical-assessment-result/1",
+  "warnings": []
+}

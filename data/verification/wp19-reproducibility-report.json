@@ -1,0 +1,61 @@
+{
+  "generators": [
+    {
+      "artifact_count": 9,
+      "excluded_from_committed_comparison": [
+        "data/validation/wp18-real-gate-status.json"
+      ],
+      "generator": "validation",
+      "missing_committed_artifacts": [],
+      "module": "pgx.application.validation_cli",
+      "reason": "Schemas, case manifests and the separation audit are built from committed inputs alone, so a fresh build must match the committed bytes. The WP-18 gate status is built by the same CLI but is excluded from the committed comparison below, because it measures the filesystem.",
+      "stale_committed_artifacts": [],
+      "status": "REPRODUCIBLE",
+      "unstable_artifacts": []
+    },
+    {
+      "artifact_count": 8,
+      "excluded_from_committed_comparison": [
+        "data/api/wp16-real-gate-status.json"
+      ],
+      "generator": "api",
+      "missing_committed_artifacts": [],
+      "module": "apps.api.artifacts",
+      "reason": "The OpenAPI document and the WP-16 contracts are generated from the declarative route table and depend on nothing outside it.",
+      "stale_committed_artifacts": [],
+      "status": "REPRODUCIBLE",
+      "unstable_artifacts": []
+    },
+    {
+      "artifact_count": 10,
+      "excluded_from_committed_comparison": [],
+      "generator": "verification",
+      "missing_committed_artifacts": [],
+      "module": "pgx.verification.artifacts",
+      "reason": "The test inventory, the requirement matrix, the profile registry and the seven published WP-19 schemas. All are functions of the repository, so a fresh build must match the committed bytes - and when it does not, the committed inventory is describing a suite that no longer exists.",
+      "stale_committed_artifacts": [],
+      "status": "REPRODUCIBLE",
+      "unstable_artifacts": []
+    },
+    {
+      "artifact_count": 6,
+      "excluded_from_committed_comparison": [
+        "data/web/wp17-real-gate-status.json"
+      ],
+      "generator": "web",
+      "missing_committed_artifacts": [],
+      "module": "apps.web.artifacts",
+      "reason": "Route surface, catalogue schema and demo catalogue, all derived from committed sources.",
+      "stale_committed_artifacts": [],
+      "status": "REPRODUCIBLE",
+      "unstable_artifacts": []
+    }
+  ],
+  "hash_seeds": [
+    "1",
+    "524287"
+  ],
+  "note": "Each generator was built twice, in two fresh interpreters, under two different PYTHONHASHSEED values. Artifacts that record the environment they were produced in are compared with each other and not with the committed copy, because a gate status is supposed to differ between machines.",
+  "reproducibility_schema_version": "pgx-wp19-reproducibility-report/1",
+  "status": "REPRODUCIBLE"
+}

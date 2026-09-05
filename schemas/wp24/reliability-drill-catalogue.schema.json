@@ -1,0 +1,63 @@
+{
+  "$id": "https://pgx.local/schemas/wp24/reliability-drill-catalogue.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "description": "Declared before execution. A drill catalogue written after the results is a list of the failures that happened to be survived.",
+  "properties": {
+    "drill_count": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "drills": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "drill_id": {
+            "type": "string"
+          },
+          "expected_behaviour": {
+            "minLength": 20,
+            "type": "string"
+          },
+          "injected_failure": {
+            "minLength": 10,
+            "type": "string"
+          },
+          "requires": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "runnable_in_process": {
+            "type": "boolean"
+          },
+          "title": {
+            "minLength": 5,
+            "type": "string"
+          }
+        },
+        "required": [
+          "drill_id",
+          "title",
+          "injected_failure",
+          "expected_behaviour",
+          "requires",
+          "runnable_in_process"
+        ],
+        "type": "object"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "reliability_drill_version": {
+      "const": "pgx-wp24-reliability-drill/1"
+    }
+  },
+  "required": [
+    "reliability_drill_version",
+    "drill_count",
+    "drills"
+  ],
+  "title": "PGx reliability drill catalogue (WP-24)",
+  "type": "object"
+}

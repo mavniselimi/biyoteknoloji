@@ -1,0 +1,103 @@
+{
+  "accessibility_structural_test_note": "Structural checks parse the rendered HTML with the standard library, so they run wherever the templates render. No axe or browser-based audit has been performed.",
+  "accessibility_structural_tests_available": true,
+  "active_release_available": false,
+  "api_asgi_runtime_tests_executed": false,
+  "api_dependencies_available": true,
+  "api_implementation_status": "IMPLEMENTED",
+  "api_runtime_verification": "BLOCKED",
+  "asgi_runtime_available": true,
+  "asgi_runtime_note": "tests/integration/web/test_asgi_web.py runs when the ASGI stack imports and skips, naming the missing packages, when it does not. This flag reports whether the stack imports here; it is not a record of a particular run.",
+  "asgi_runtime_tests_executed": true,
+  "authentication_implemented": false,
+  "authored_case_count": 1,
+  "blocker_count": 5,
+  "blockers": [
+    {
+      "blocking": true,
+      "code": "WEB_AUTHENTICATION_NOT_IMPLEMENTED",
+      "detail": "the login screen is an honest shell; authentication, sessions and CSRF belong to WP-23"
+    },
+    {
+      "blocking": true,
+      "code": "WEB_CLAIM_BOUNDARY_NOT_APPROVED",
+      "detail": "claim boundary status is DRAFT / AWAITING HUMAN AND SCIENTIFIC REVIEW"
+    },
+    {
+      "blocking": true,
+      "code": "WEB_EXPERT_REVIEW_FORMS_DISABLED",
+      "detail": "the expert-review workflow renders, and its forms cannot submit: authentication and CSRF belong to WP-23, so no reviewer can be identified and no control is enabled"
+    },
+    {
+      "blocking": true,
+      "code": "WEB_NO_ACTIVE_RELEASE",
+      "detail": "no release is active, so no page can show a pinned version or run an assessment"
+    },
+    {
+      "blocking": true,
+      "code": "WEB_VALIDATION_ARCHITECTURE_UNAVAILABLE",
+      "detail": "the validation dashboard shows an empty state only; the dataset architecture and the metrics belong to WP-18 and WP-21"
+    }
+  ],
+  "browser_binaries_found": [],
+  "browser_runtime_available": true,
+  "case_catalog_available": true,
+  "case_catalog_schema_version": "pgx-wp17-development-cases/1",
+  "claim_boundary_approved": false,
+  "claim_boundary_phase": "P0",
+  "claim_boundary_status": "DRAFT / AWAITING HUMAN AND SCIENTIFIC REVIEW",
+  "claim_scan_clean": true,
+  "claim_scan_executed": true,
+  "csrf_implemented": false,
+  "declared_route_count": 15,
+  "declared_template_count": 14,
+  "development_case_count": 7,
+  "development_case_count_source": "read from the sealed catalogue under data/demo/",
+  "expert_review_workflow_status": "NOT_IMPLEMENTED",
+  "gate_status_schema_version": "pgx-wp17-ui-gate-status/1",
+  "holdout_case_count": null,
+  "holdout_case_count_note": "null rather than zero: holdout storage is not implemented, so no count was taken",
+  "html_gate_version": "pgx-web-html-gate/1",
+  "implementation_status": "IMPLEMENTED",
+  "login_is_shell_only": true,
+  "managed_browser_exists": true,
+  "managed_browser_launchable": true,
+  "managed_browser_probe_error": null,
+  "managed_browser_version": "141.0.7390.37",
+  "may_serve_real_traffic": false,
+  "migrated_case_count": 6,
+  "note": "An expected governance and environment result, not a test failure. The interface is implemented and its templates really render in this environment - the HTML is produced, scanned for prohibited claims and parsed for structure by the test suite. What is blocked is everything needing a package index, a browser, a database or a human approval. No count above was asserted rather than measured, no missing dependency was replaced with a stand-in, and no synthetic artifact is presented as real.",
+  "playwright_importable": true,
+  "postgresql_runtime_available": false,
+  "present_template_count": 14,
+  "real_api_assessment_count": 0,
+  "real_assessment_count": 0,
+  "real_report_count": 0,
+  "real_validation_case_count": 0,
+  "real_validation_case_count_source": "no validation case architecture exists, so there is nothing to count; development cases are not validation cases",
+  "scanned_page_bytes": 2629,
+  "screenshot_evidence_count": 7,
+  "screenshot_evidence_files": [
+    "case-detail.png",
+    "cases.png",
+    "expert-review.png",
+    "home.png",
+    "login.png",
+    "system.png",
+    "validation.png"
+  ],
+  "screenshot_evidence_note": "7 browser capture(s) under tests/fixtures/wp17/browser/, written by tests/integration/web/test_browser_e2e.py while a launched browser was serving the pages. The HTML snapshots under tests/fixtures/wp17/snapshots/ are a different thing: rendered template output, labelled as such, not captures.",
+  "screenshot_evidence_status": "CAPTURED",
+  "session_management_implemented": false,
+  "state_changing_route_count": 6,
+  "template_runtime_available": true,
+  "templates_match_allowlist": true,
+  "validation_dashboard_status": "EMPTY_STATE_ONLY",
+  "web_version": "1.0.0",
+  "work_package": "WP-17",
+  "wp18_markers_found": [
+    "pgx/validation",
+    "docs/architecture/wp18-validation-dataset.md"
+  ],
+  "wp18_started": true
+}

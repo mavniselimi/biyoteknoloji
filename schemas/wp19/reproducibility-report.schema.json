@@ -1,0 +1,107 @@
+{
+  "$id": "https://pgx.local/schemas/wp19/reproducibility-report.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Each deterministic generator rebuilt twice under two different hash seeds, and compared with the committed bytes. Artifacts that record their environment are listed as excluded rather than silently skipped.",
+  "properties": {
+    "generators": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "artifact_count": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "excluded_from_committed_comparison": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "generator": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "missing_committed_artifacts": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "module": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "reason": {
+            "type": "string"
+          },
+          "stale_committed_artifacts": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "status": {
+            "enum": [
+              "REPRODUCIBLE",
+              "MISMATCH",
+              "STALE",
+              "BLOCKED"
+            ]
+          },
+          "unstable_artifacts": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "generator",
+          "module",
+          "status",
+          "artifact_count",
+          "unstable_artifacts",
+          "stale_committed_artifacts",
+          "excluded_from_committed_comparison",
+          "missing_committed_artifacts"
+        ],
+        "type": "object"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "hash_seeds": {
+      "items": {
+        "type": "string"
+      },
+      "maxItems": 2,
+      "minItems": 2,
+      "type": "array"
+    },
+    "note": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "reproducibility_schema_version": {
+      "const": "pgx-wp19-reproducibility-report/1"
+    },
+    "status": {
+      "enum": [
+        "REPRODUCIBLE",
+        "MISMATCH",
+        "STALE",
+        "BLOCKED"
+      ]
+    }
+  },
+  "required": [
+    "reproducibility_schema_version",
+    "status",
+    "generators",
+    "hash_seeds",
+    "note"
+  ],
+  "title": "WP-19 reproducibility report",
+  "type": "object"
+}

@@ -1,0 +1,947 @@
+{
+  "schema_version": "pgx-scientific-source-registry/1",
+  "generated_note": "Hand-authored candidate registry (WP-05). Every entry is PENDING_REVIEW with every reuse dimension UNKNOWN and no licence identifier, because no official terms document has been retrieved and no named human has reviewed any source. This is the correct default state, not an unfinished one: the project publishes nothing until these records are completed and reviewed. Do not set an approving status here - a record claiming approval without a review naming a human, an instant and cited evidence is refused at load time.",
+  "policy_owner": "PGx Platform maintainers (document owner; not an approver)",
+  "sources": [
+    {
+      "source_key": "aha.publications",
+      "display_name": "AHA scientific statements",
+      "role": "PRIMARY_GUIDELINE",
+      "status": "PENDING_REVIEW",
+      "acquisition_mode": "NOT_DETERMINED",
+      "provider": "American Heart Association",
+      "jurisdiction": null,
+      "version_policy": null,
+      "citation_policy": null,
+      "license_identifier": null,
+      "reuse": {
+        "LOCAL_STORAGE": "UNKNOWN",
+        "INTERNAL_ANALYSIS": "UNKNOWN",
+        "DERIVED_WORK_CREATION": "UNKNOWN",
+        "AGGREGATED_REDISTRIBUTION": "UNKNOWN",
+        "VERBATIM_REDISTRIBUTION": "UNKNOWN",
+        "COMMERCIAL_USE": "UNKNOWN",
+        "AUTOMATED_ACQUISITION": "UNKNOWN",
+        "BULK_DOWNLOAD": "UNKNOWN",
+        "THIRD_PARTY_SHARING": "UNKNOWN",
+        "PUBLIC_DISPLAY": "UNKNOWN"
+      },
+      "permitted_claim_categories": [],
+      "evidence": [
+        {
+          "evidence_type": "NOT_OBTAINED",
+          "official_url": null,
+          "retrieved_at": null,
+          "content_hash": null,
+          "summary": null,
+          "verification": "NOT_ATTEMPTED",
+          "blocked_reason": null
+        }
+      ],
+      "interpretation": null,
+      "review": null,
+      "legacy_aliases": [
+        "AHA"
+      ],
+      "blocking_reasons": [
+        "Every reuse dimension is UNKNOWN.",
+        "No acquisition mode has been decided.",
+        "No named human reviewer has made a decision.",
+        "No official terms, licence or use-conditions document has been retrieved.",
+        "No project interpretation of this source's terms has been written."
+      ],
+      "notes": "1 legacy guideline row carries the string 'AHA'.",
+      "active": true
+    },
+    {
+      "source_key": "ausnz.publications",
+      "display_name": "AusNZ consensus recommendations",
+      "role": "PRIMARY_GUIDELINE",
+      "status": "PENDING_REVIEW",
+      "acquisition_mode": "NOT_DETERMINED",
+      "provider": "Australian and New Zealand consensus group",
+      "jurisdiction": null,
+      "version_policy": null,
+      "citation_policy": null,
+      "license_identifier": null,
+      "reuse": {
+        "LOCAL_STORAGE": "UNKNOWN",
+        "INTERNAL_ANALYSIS": "UNKNOWN",
+        "DERIVED_WORK_CREATION": "UNKNOWN",
+        "AGGREGATED_REDISTRIBUTION": "UNKNOWN",
+        "VERBATIM_REDISTRIBUTION": "UNKNOWN",
+        "COMMERCIAL_USE": "UNKNOWN",
+        "AUTOMATED_ACQUISITION": "UNKNOWN",
+        "BULK_DOWNLOAD": "UNKNOWN",
+        "THIRD_PARTY_SHARING": "UNKNOWN",
+        "PUBLIC_DISPLAY": "UNKNOWN"
+      },
+      "permitted_claim_categories": [],
+      "evidence": [
+        {
+          "evidence_type": "NOT_OBTAINED",
+          "official_url": null,
+          "retrieved_at": null,
+          "content_hash": null,
+          "summary": null,
+          "verification": "NOT_ATTEMPTED",
+          "blocked_reason": null
+        }
+      ],
+      "interpretation": null,
+      "review": null,
+      "legacy_aliases": [
+        "AusNZ"
+      ],
+      "blocking_reasons": [
+        "Every reuse dimension is UNKNOWN.",
+        "No acquisition mode has been decided.",
+        "No named human reviewer has made a decision.",
+        "No official terms, licence or use-conditions document has been retrieved.",
+        "No project interpretation of this source's terms has been written."
+      ],
+      "notes": "1 legacy guideline row carries the string 'AusNZ'. Which group published it is not recorded in the legacy data.",
+      "active": true
+    },
+    {
+      "source_key": "clinpgx.api",
+      "display_name": "ClinPGx public API",
+      "role": "SUPPORTING_ANNOTATION",
+      "status": "PENDING_REVIEW",
+      "acquisition_mode": "NOT_DETERMINED",
+      "provider": "ClinPGx",
+      "jurisdiction": null,
+      "version_policy": null,
+      "citation_policy": null,
+      "license_identifier": null,
+      "reuse": {
+        "LOCAL_STORAGE": "UNKNOWN",
+        "INTERNAL_ANALYSIS": "UNKNOWN",
+        "DERIVED_WORK_CREATION": "UNKNOWN",
+        "AGGREGATED_REDISTRIBUTION": "UNKNOWN",
+        "VERBATIM_REDISTRIBUTION": "UNKNOWN",
+        "COMMERCIAL_USE": "UNKNOWN",
+        "AUTOMATED_ACQUISITION": "UNKNOWN",
+        "BULK_DOWNLOAD": "UNKNOWN",
+        "THIRD_PARTY_SHARING": "UNKNOWN",
+        "PUBLIC_DISPLAY": "UNKNOWN"
+      },
+      "permitted_claim_categories": [],
+      "evidence": [
+        {
+          "evidence_type": "NOT_OBTAINED",
+          "official_url": "https://api.clinpgx.org/",
+          "retrieved_at": null,
+          "content_hash": null,
+          "summary": null,
+          "verification": "BLOCKED",
+          "blocked_reason": "Attempted 2026-08-30 from the WP-05 working environment; the request did not leave the network: URLError <urlopen error Tunnel connection failed: 403 Forbidden>. No terms, licence or API-conditions document has been read. This entry records an outstanding obligation, not a permission."
+        }
+      ],
+      "interpretation": null,
+      "review": null,
+      "legacy_aliases": [
+        "ClinPGx"
+      ],
+      "blocking_reasons": [
+        "Every reuse dimension is UNKNOWN.",
+        "No acquisition mode has been decided.",
+        "No named human reviewer has made a decision.",
+        "No official terms, licence or use-conditions document has been retrieved.",
+        "No project interpretation of this source's terms has been written.",
+        "Whether programmatic access is permitted at all, and under what rate and attribution conditions, is unknown."
+      ],
+      "notes": "The interface the frozen WP-01/WP-02 probes were written against. WP-04 built an adapter for it and made no live call; no call may be made until this record is approved.",
+      "active": true
+    },
+    {
+      "source_key": "clinpgx.website",
+      "display_name": "ClinPGx web database",
+      "role": "SUPPORTING_ANNOTATION",
+      "status": "PENDING_REVIEW",
+      "acquisition_mode": "NOT_DETERMINED",
+      "provider": "ClinPGx",
+      "jurisdiction": null,
+      "version_policy": null,
+      "citation_policy": null,
+      "license_identifier": null,
+      "reuse": {
+        "LOCAL_STORAGE": "UNKNOWN",
+        "INTERNAL_ANALYSIS": "UNKNOWN",
+        "DERIVED_WORK_CREATION": "UNKNOWN",
+        "AGGREGATED_REDISTRIBUTION": "UNKNOWN",
+        "VERBATIM_REDISTRIBUTION": "UNKNOWN",
+        "COMMERCIAL_USE": "UNKNOWN",
+        "AUTOMATED_ACQUISITION": "UNKNOWN",
+        "BULK_DOWNLOAD": "UNKNOWN",
+        "THIRD_PARTY_SHARING": "UNKNOWN",
+        "PUBLIC_DISPLAY": "UNKNOWN"
+      },
+      "permitted_claim_categories": [],
+      "evidence": [
+        {
+          "evidence_type": "NOT_OBTAINED",
+          "official_url": "https://www.clinpgx.org/",
+          "retrieved_at": null,
+          "content_hash": null,
+          "summary": null,
+          "verification": "BLOCKED",
+          "blocked_reason": "Attempted 2026-08-30 from the WP-05 working environment; the request did not leave the network: URLError <urlopen error Tunnel connection failed: 403 Forbidden>. No terms, licence or API-conditions document has been read. This entry records an outstanding obligation, not a permission."
+        }
+      ],
+      "interpretation": null,
+      "review": null,
+      "legacy_aliases": [],
+      "blocking_reasons": [
+        "Every reuse dimension is UNKNOWN.",
+        "No acquisition mode has been decided.",
+        "No named human reviewer has made a decision.",
+        "No official terms, licence or use-conditions document has been retrieved.",
+        "No project interpretation of this source's terms has been written.",
+        "Scraping is prohibited by this project's own rules regardless of what the source permits; only an approved mechanism may be used."
+      ],
+      "notes": "The human-facing database behind the same provider's data. Registered separately from the API because a provider may publish different conditions for each.",
+      "active": true
+    },
+    {
+      "source_key": "cpic.api",
+      "display_name": "CPIC API",
+      "role": "PRIMARY_GUIDELINE",
+      "status": "PENDING_REVIEW",
+      "acquisition_mode": "NOT_DETERMINED",
+      "provider": "Clinical Pharmacogenetics Implementation Consortium",
+      "jurisdiction": null,
+      "version_policy": null,
+      "citation_policy": null,
+      "license_identifier": null,
+      "reuse": {
+        "LOCAL_STORAGE": "UNKNOWN",
+        "INTERNAL_ANALYSIS": "UNKNOWN",
+        "DERIVED_WORK_CREATION": "UNKNOWN",
+        "AGGREGATED_REDISTRIBUTION": "UNKNOWN",
+        "VERBATIM_REDISTRIBUTION": "UNKNOWN",
+        "COMMERCIAL_USE": "UNKNOWN",
+        "AUTOMATED_ACQUISITION": "UNKNOWN",
+        "BULK_DOWNLOAD": "UNKNOWN",
+        "THIRD_PARTY_SHARING": "UNKNOWN",
+        "PUBLIC_DISPLAY": "UNKNOWN"
+      },
+      "permitted_claim_categories": [],
+      "evidence": [
+        {
+          "evidence_type": "NOT_OBTAINED",
+          "official_url": null,
+          "retrieved_at": null,
+          "content_hash": null,
+          "summary": null,
+          "verification": "NOT_ATTEMPTED",
+          "blocked_reason": null
+        }
+      ],
+      "interpretation": null,
+      "review": null,
+      "legacy_aliases": [],
+      "blocking_reasons": [
+        "Every reuse dimension is UNKNOWN.",
+        "No acquisition mode has been decided.",
+        "No named human reviewer has made a decision.",
+        "No official terms, licence or use-conditions document has been retrieved.",
+        "No project interpretation of this source's terms has been written."
+      ],
+      "notes": "Registered as a candidate so that any future automated acquisition has a policy record to fail against.",
+      "active": true
+    },
+    {
+      "source_key": "cpic.database",
+      "display_name": "CPIC guideline database",
+      "role": "PRIMARY_GUIDELINE",
+      "status": "PENDING_REVIEW",
+      "acquisition_mode": "NOT_DETERMINED",
+      "provider": "Clinical Pharmacogenetics Implementation Consortium",
+      "jurisdiction": null,
+      "version_policy": null,
+      "citation_policy": null,
+      "license_identifier": null,
+      "reuse": {
+        "LOCAL_STORAGE": "UNKNOWN",
+        "INTERNAL_ANALYSIS": "UNKNOWN",
+        "DERIVED_WORK_CREATION": "UNKNOWN",
+        "AGGREGATED_REDISTRIBUTION": "UNKNOWN",
+        "VERBATIM_REDISTRIBUTION": "UNKNOWN",
+        "COMMERCIAL_USE": "UNKNOWN",
+        "AUTOMATED_ACQUISITION": "UNKNOWN",
+        "BULK_DOWNLOAD": "UNKNOWN",
+        "THIRD_PARTY_SHARING": "UNKNOWN",
+        "PUBLIC_DISPLAY": "UNKNOWN"
+      },
+      "permitted_claim_categories": [],
+      "evidence": [
+        {
+          "evidence_type": "NOT_OBTAINED",
+          "official_url": null,
+          "retrieved_at": null,
+          "content_hash": null,
+          "summary": null,
+          "verification": "NOT_ATTEMPTED",
+          "blocked_reason": null
+        }
+      ],
+      "interpretation": null,
+      "review": null,
+      "legacy_aliases": [
+        "CPIC"
+      ],
+      "blocking_reasons": [
+        "Every reuse dimension is UNKNOWN.",
+        "No acquisition mode has been decided.",
+        "No named human reviewer has made a decision.",
+        "No official terms, licence or use-conditions document has been retrieved.",
+        "No project interpretation of this source's terms has been written."
+      ],
+      "notes": "The legacy seed attributes 13 guideline rows and 3 allele-function assignments to the string 'CPIC'. Which CPIC product those came from is not recorded in the legacy data and has not been established.",
+      "active": true
+    },
+    {
+      "source_key": "cpic.publications",
+      "display_name": "CPIC peer-reviewed guidelines",
+      "role": "PRIMARY_GUIDELINE",
+      "status": "PENDING_REVIEW",
+      "acquisition_mode": "NOT_DETERMINED",
+      "provider": "Clinical Pharmacogenetics Implementation Consortium",
+      "jurisdiction": null,
+      "version_policy": null,
+      "citation_policy": null,
+      "license_identifier": null,
+      "reuse": {
+        "LOCAL_STORAGE": "UNKNOWN",
+        "INTERNAL_ANALYSIS": "UNKNOWN",
+        "DERIVED_WORK_CREATION": "UNKNOWN",
+        "AGGREGATED_REDISTRIBUTION": "UNKNOWN",
+        "VERBATIM_REDISTRIBUTION": "UNKNOWN",
+        "COMMERCIAL_USE": "UNKNOWN",
+        "AUTOMATED_ACQUISITION": "UNKNOWN",
+        "BULK_DOWNLOAD": "UNKNOWN",
+        "THIRD_PARTY_SHARING": "UNKNOWN",
+        "PUBLIC_DISPLAY": "UNKNOWN"
+      },
+      "permitted_claim_categories": [],
+      "evidence": [
+        {
+          "evidence_type": "NOT_OBTAINED",
+          "official_url": null,
+          "retrieved_at": null,
+          "content_hash": null,
+          "summary": null,
+          "verification": "NOT_ATTEMPTED",
+          "blocked_reason": null
+        }
+      ],
+      "interpretation": null,
+      "review": null,
+      "legacy_aliases": [],
+      "blocking_reasons": [
+        "Every reuse dimension is UNKNOWN.",
+        "No acquisition mode has been decided.",
+        "No named human reviewer has made a decision.",
+        "No official terms, licence or use-conditions document has been retrieved.",
+        "No project interpretation of this source's terms has been written."
+      ],
+      "notes": "Published guideline articles, cited by DOI or PMID. Separate from the database because a publisher's reuse terms are not the consortium's.",
+      "active": true
+    },
+    {
+      "source_key": "cpnds.publications",
+      "display_name": "CPNDS recommendations",
+      "role": "PRIMARY_GUIDELINE",
+      "status": "PENDING_REVIEW",
+      "acquisition_mode": "NOT_DETERMINED",
+      "provider": "Canadian Pharmacogenomics Network for Drug Safety (CPNDS)",
+      "jurisdiction": null,
+      "version_policy": null,
+      "citation_policy": null,
+      "license_identifier": null,
+      "reuse": {
+        "LOCAL_STORAGE": "UNKNOWN",
+        "INTERNAL_ANALYSIS": "UNKNOWN",
+        "DERIVED_WORK_CREATION": "UNKNOWN",
+        "AGGREGATED_REDISTRIBUTION": "UNKNOWN",
+        "VERBATIM_REDISTRIBUTION": "UNKNOWN",
+        "COMMERCIAL_USE": "UNKNOWN",
+        "AUTOMATED_ACQUISITION": "UNKNOWN",
+        "BULK_DOWNLOAD": "UNKNOWN",
+        "THIRD_PARTY_SHARING": "UNKNOWN",
+        "PUBLIC_DISPLAY": "UNKNOWN"
+      },
+      "permitted_claim_categories": [],
+      "evidence": [
+        {
+          "evidence_type": "NOT_OBTAINED",
+          "official_url": null,
+          "retrieved_at": null,
+          "content_hash": null,
+          "summary": null,
+          "verification": "NOT_ATTEMPTED",
+          "blocked_reason": null
+        }
+      ],
+      "interpretation": null,
+      "review": null,
+      "legacy_aliases": [
+        "CPNDS"
+      ],
+      "blocking_reasons": [
+        "Every reuse dimension is UNKNOWN.",
+        "No acquisition mode has been decided.",
+        "No named human reviewer has made a decision.",
+        "No official terms, licence or use-conditions document has been retrieved.",
+        "No project interpretation of this source's terms has been written."
+      ],
+      "notes": "3 legacy guideline rows carry the string 'CPNDS'.",
+      "active": true
+    },
+    {
+      "source_key": "dpwg.knmp",
+      "display_name": "DPWG (KNMP) pharmacogenetics recommendations",
+      "role": "PRIMARY_GUIDELINE",
+      "status": "PENDING_REVIEW",
+      "acquisition_mode": "NOT_DETERMINED",
+      "provider": "Royal Dutch Pharmacists Association (KNMP)",
+      "jurisdiction": null,
+      "version_policy": null,
+      "citation_policy": null,
+      "license_identifier": null,
+      "reuse": {
+        "LOCAL_STORAGE": "UNKNOWN",
+        "INTERNAL_ANALYSIS": "UNKNOWN",
+        "DERIVED_WORK_CREATION": "UNKNOWN",
+        "AGGREGATED_REDISTRIBUTION": "UNKNOWN",
+        "VERBATIM_REDISTRIBUTION": "UNKNOWN",
+        "COMMERCIAL_USE": "UNKNOWN",
+        "AUTOMATED_ACQUISITION": "UNKNOWN",
+        "BULK_DOWNLOAD": "UNKNOWN",
+        "THIRD_PARTY_SHARING": "UNKNOWN",
+        "PUBLIC_DISPLAY": "UNKNOWN"
+      },
+      "permitted_claim_categories": [],
+      "evidence": [
+        {
+          "evidence_type": "NOT_OBTAINED",
+          "official_url": null,
+          "retrieved_at": null,
+          "content_hash": null,
+          "summary": null,
+          "verification": "NOT_ATTEMPTED",
+          "blocked_reason": null
+        }
+      ],
+      "interpretation": null,
+      "review": null,
+      "legacy_aliases": [
+        "DPWG"
+      ],
+      "blocking_reasons": [
+        "Every reuse dimension is UNKNOWN.",
+        "No acquisition mode has been decided.",
+        "No named human reviewer has made a decision.",
+        "No official terms, licence or use-conditions document has been retrieved.",
+        "No project interpretation of this source's terms has been written."
+      ],
+      "notes": "15 legacy guideline rows carry the string 'DPWG'. The route by which those recommendations reached the legacy CSV is not recorded and has not been established.",
+      "active": true
+    },
+    {
+      "source_key": "druglabel.ema",
+      "display_name": "EMA product information",
+      "role": "PRIMARY_GUIDELINE",
+      "status": "PENDING_REVIEW",
+      "acquisition_mode": "NOT_DETERMINED",
+      "provider": "European Medicines Agency",
+      "jurisdiction": "European Union",
+      "version_policy": null,
+      "citation_policy": null,
+      "license_identifier": null,
+      "reuse": {
+        "LOCAL_STORAGE": "UNKNOWN",
+        "INTERNAL_ANALYSIS": "UNKNOWN",
+        "DERIVED_WORK_CREATION": "UNKNOWN",
+        "AGGREGATED_REDISTRIBUTION": "UNKNOWN",
+        "VERBATIM_REDISTRIBUTION": "UNKNOWN",
+        "COMMERCIAL_USE": "UNKNOWN",
+        "AUTOMATED_ACQUISITION": "UNKNOWN",
+        "BULK_DOWNLOAD": "UNKNOWN",
+        "THIRD_PARTY_SHARING": "UNKNOWN",
+        "PUBLIC_DISPLAY": "UNKNOWN"
+      },
+      "permitted_claim_categories": [],
+      "evidence": [
+        {
+          "evidence_type": "NOT_OBTAINED",
+          "official_url": null,
+          "retrieved_at": null,
+          "content_hash": null,
+          "summary": null,
+          "verification": "NOT_ATTEMPTED",
+          "blocked_reason": null
+        }
+      ],
+      "interpretation": null,
+      "review": null,
+      "legacy_aliases": [],
+      "blocking_reasons": [
+        "Every reuse dimension is UNKNOWN.",
+        "No acquisition mode has been decided.",
+        "No named human reviewer has made a decision.",
+        "No official terms, licence or use-conditions document has been retrieved.",
+        "No project interpretation of this source's terms has been written."
+      ],
+      "notes": null,
+      "active": true
+    },
+    {
+      "source_key": "druglabel.fda",
+      "display_name": "US FDA prescribing information",
+      "role": "PRIMARY_GUIDELINE",
+      "status": "PENDING_REVIEW",
+      "acquisition_mode": "NOT_DETERMINED",
+      "provider": "U.S. Food and Drug Administration",
+      "jurisdiction": "United States",
+      "version_policy": null,
+      "citation_policy": null,
+      "license_identifier": null,
+      "reuse": {
+        "LOCAL_STORAGE": "UNKNOWN",
+        "INTERNAL_ANALYSIS": "UNKNOWN",
+        "DERIVED_WORK_CREATION": "UNKNOWN",
+        "AGGREGATED_REDISTRIBUTION": "UNKNOWN",
+        "VERBATIM_REDISTRIBUTION": "UNKNOWN",
+        "COMMERCIAL_USE": "UNKNOWN",
+        "AUTOMATED_ACQUISITION": "UNKNOWN",
+        "BULK_DOWNLOAD": "UNKNOWN",
+        "THIRD_PARTY_SHARING": "UNKNOWN",
+        "PUBLIC_DISPLAY": "UNKNOWN"
+      },
+      "permitted_claim_categories": [],
+      "evidence": [
+        {
+          "evidence_type": "NOT_OBTAINED",
+          "official_url": null,
+          "retrieved_at": null,
+          "content_hash": null,
+          "summary": null,
+          "verification": "NOT_ATTEMPTED",
+          "blocked_reason": null
+        }
+      ],
+      "interpretation": null,
+      "review": null,
+      "legacy_aliases": [],
+      "blocking_reasons": [
+        "Every reuse dimension is UNKNOWN.",
+        "No acquisition mode has been decided.",
+        "No named human reviewer has made a decision.",
+        "No official terms, licence or use-conditions document has been retrieved.",
+        "No project interpretation of this source's terms has been written."
+      ],
+      "notes": "Regulator-approved labelling. Registered per jurisdiction because a label statement is authoritative only where its regulator has authority.",
+      "active": true
+    },
+    {
+      "source_key": "druglabel.hcsc",
+      "display_name": "Health Canada product monographs",
+      "role": "PRIMARY_GUIDELINE",
+      "status": "PENDING_REVIEW",
+      "acquisition_mode": "NOT_DETERMINED",
+      "provider": "Health Canada",
+      "jurisdiction": "Canada",
+      "version_policy": null,
+      "citation_policy": null,
+      "license_identifier": null,
+      "reuse": {
+        "LOCAL_STORAGE": "UNKNOWN",
+        "INTERNAL_ANALYSIS": "UNKNOWN",
+        "DERIVED_WORK_CREATION": "UNKNOWN",
+        "AGGREGATED_REDISTRIBUTION": "UNKNOWN",
+        "VERBATIM_REDISTRIBUTION": "UNKNOWN",
+        "COMMERCIAL_USE": "UNKNOWN",
+        "AUTOMATED_ACQUISITION": "UNKNOWN",
+        "BULK_DOWNLOAD": "UNKNOWN",
+        "THIRD_PARTY_SHARING": "UNKNOWN",
+        "PUBLIC_DISPLAY": "UNKNOWN"
+      },
+      "permitted_claim_categories": [],
+      "evidence": [
+        {
+          "evidence_type": "NOT_OBTAINED",
+          "official_url": null,
+          "retrieved_at": null,
+          "content_hash": null,
+          "summary": null,
+          "verification": "NOT_ATTEMPTED",
+          "blocked_reason": null
+        }
+      ],
+      "interpretation": null,
+      "review": null,
+      "legacy_aliases": [],
+      "blocking_reasons": [
+        "Every reuse dimension is UNKNOWN.",
+        "No acquisition mode has been decided.",
+        "No named human reviewer has made a decision.",
+        "No official terms, licence or use-conditions document has been retrieved.",
+        "No project interpretation of this source's terms has been written."
+      ],
+      "notes": null,
+      "active": true
+    },
+    {
+      "source_key": "druglabel.pmda",
+      "display_name": "PMDA package inserts",
+      "role": "PRIMARY_GUIDELINE",
+      "status": "PENDING_REVIEW",
+      "acquisition_mode": "NOT_DETERMINED",
+      "provider": "Pharmaceuticals and Medical Devices Agency",
+      "jurisdiction": "Japan",
+      "version_policy": null,
+      "citation_policy": null,
+      "license_identifier": null,
+      "reuse": {
+        "LOCAL_STORAGE": "UNKNOWN",
+        "INTERNAL_ANALYSIS": "UNKNOWN",
+        "DERIVED_WORK_CREATION": "UNKNOWN",
+        "AGGREGATED_REDISTRIBUTION": "UNKNOWN",
+        "VERBATIM_REDISTRIBUTION": "UNKNOWN",
+        "COMMERCIAL_USE": "UNKNOWN",
+        "AUTOMATED_ACQUISITION": "UNKNOWN",
+        "BULK_DOWNLOAD": "UNKNOWN",
+        "THIRD_PARTY_SHARING": "UNKNOWN",
+        "PUBLIC_DISPLAY": "UNKNOWN"
+      },
+      "permitted_claim_categories": [],
+      "evidence": [
+        {
+          "evidence_type": "NOT_OBTAINED",
+          "official_url": null,
+          "retrieved_at": null,
+          "content_hash": null,
+          "summary": null,
+          "verification": "NOT_ATTEMPTED",
+          "blocked_reason": null
+        }
+      ],
+      "interpretation": null,
+      "review": null,
+      "legacy_aliases": [],
+      "blocking_reasons": [
+        "Every reuse dimension is UNKNOWN.",
+        "No acquisition mode has been decided.",
+        "No named human reviewer has made a decision.",
+        "No official terms, licence or use-conditions document has been retrieved.",
+        "No project interpretation of this source's terms has been written."
+      ],
+      "notes": null,
+      "active": true
+    },
+    {
+      "source_key": "druglabel.swissmedic",
+      "display_name": "Swissmedic product information",
+      "role": "PRIMARY_GUIDELINE",
+      "status": "PENDING_REVIEW",
+      "acquisition_mode": "NOT_DETERMINED",
+      "provider": "Swissmedic",
+      "jurisdiction": "Switzerland",
+      "version_policy": null,
+      "citation_policy": null,
+      "license_identifier": null,
+      "reuse": {
+        "LOCAL_STORAGE": "UNKNOWN",
+        "INTERNAL_ANALYSIS": "UNKNOWN",
+        "DERIVED_WORK_CREATION": "UNKNOWN",
+        "AGGREGATED_REDISTRIBUTION": "UNKNOWN",
+        "VERBATIM_REDISTRIBUTION": "UNKNOWN",
+        "COMMERCIAL_USE": "UNKNOWN",
+        "AUTOMATED_ACQUISITION": "UNKNOWN",
+        "BULK_DOWNLOAD": "UNKNOWN",
+        "THIRD_PARTY_SHARING": "UNKNOWN",
+        "PUBLIC_DISPLAY": "UNKNOWN"
+      },
+      "permitted_claim_categories": [],
+      "evidence": [
+        {
+          "evidence_type": "NOT_OBTAINED",
+          "official_url": null,
+          "retrieved_at": null,
+          "content_hash": null,
+          "summary": null,
+          "verification": "NOT_ATTEMPTED",
+          "blocked_reason": null
+        }
+      ],
+      "interpretation": null,
+      "review": null,
+      "legacy_aliases": [],
+      "blocking_reasons": [
+        "Every reuse dimension is UNKNOWN.",
+        "No acquisition mode has been decided.",
+        "No named human reviewer has made a decision.",
+        "No official terms, licence or use-conditions document has been retrieved.",
+        "No project interpretation of this source's terms has been written."
+      ],
+      "notes": null,
+      "active": true
+    },
+    {
+      "source_key": "druglabel.titck",
+      "display_name": "TITCK kisa urun bilgisi (SmPC)",
+      "role": "PRIMARY_GUIDELINE",
+      "status": "PENDING_REVIEW",
+      "acquisition_mode": "NOT_DETERMINED",
+      "provider": "Turkiye Ilac ve Tibbi Cihaz Kurumu",
+      "jurisdiction": "Turkiye",
+      "version_policy": null,
+      "citation_policy": null,
+      "license_identifier": null,
+      "reuse": {
+        "LOCAL_STORAGE": "UNKNOWN",
+        "INTERNAL_ANALYSIS": "UNKNOWN",
+        "DERIVED_WORK_CREATION": "UNKNOWN",
+        "AGGREGATED_REDISTRIBUTION": "UNKNOWN",
+        "VERBATIM_REDISTRIBUTION": "UNKNOWN",
+        "COMMERCIAL_USE": "UNKNOWN",
+        "AUTOMATED_ACQUISITION": "UNKNOWN",
+        "BULK_DOWNLOAD": "UNKNOWN",
+        "THIRD_PARTY_SHARING": "UNKNOWN",
+        "PUBLIC_DISPLAY": "UNKNOWN"
+      },
+      "permitted_claim_categories": [],
+      "evidence": [
+        {
+          "evidence_type": "NOT_OBTAINED",
+          "official_url": null,
+          "retrieved_at": null,
+          "content_hash": null,
+          "summary": null,
+          "verification": "NOT_ATTEMPTED",
+          "blocked_reason": null
+        }
+      ],
+      "interpretation": null,
+      "review": null,
+      "legacy_aliases": [],
+      "blocking_reasons": [
+        "Every reuse dimension is UNKNOWN.",
+        "No acquisition mode has been decided.",
+        "No named human reviewer has made a decision.",
+        "No official terms, licence or use-conditions document has been retrieved.",
+        "No project interpretation of this source's terms has been written."
+      ],
+      "notes": "The jurisdiction this project is being built in. A US or EU label statement is not a Turkish one, and this record exists so the difference cannot be glossed over.",
+      "active": true
+    },
+    {
+      "source_key": "internal.legacy_mvp_seed",
+      "display_name": "Legacy MVP seed CSVs (frozen)",
+      "role": "INTERNAL_SYSTEM",
+      "status": "PENDING_REVIEW",
+      "acquisition_mode": "INTERNAL_DERIVATION",
+      "provider": "PGx Platform (this project)",
+      "jurisdiction": null,
+      "version_policy": null,
+      "citation_policy": null,
+      "license_identifier": null,
+      "reuse": {
+        "LOCAL_STORAGE": "UNKNOWN",
+        "INTERNAL_ANALYSIS": "UNKNOWN",
+        "DERIVED_WORK_CREATION": "UNKNOWN",
+        "AGGREGATED_REDISTRIBUTION": "UNKNOWN",
+        "VERBATIM_REDISTRIBUTION": "UNKNOWN",
+        "COMMERCIAL_USE": "UNKNOWN",
+        "AUTOMATED_ACQUISITION": "UNKNOWN",
+        "BULK_DOWNLOAD": "UNKNOWN",
+        "THIRD_PARTY_SHARING": "UNKNOWN",
+        "PUBLIC_DISPLAY": "UNKNOWN"
+      },
+      "permitted_claim_categories": [],
+      "evidence": [],
+      "interpretation": null,
+      "review": null,
+      "legacy_aliases": [],
+      "blocking_reasons": [
+        "INTERNAL_SYSTEM: technical bookkeeping only. This record exists so that legacy rows carrying this marker resolve to a policy rather than to nothing; it can never become scientific evidence.",
+        "No named human reviewer has confirmed the scope of this marker."
+      ],
+      "notes": "The frozen WP-01 baseline files under clinpgx_mvp_seed/. A row originating here is a project artefact, not an external publication, whatever the row's own 'source' column says.",
+      "active": true
+    },
+    {
+      "source_key": "internal.legacy_probe_outputs",
+      "display_name": "Legacy probe outputs (clinpgx_outputs_v2, frozen)",
+      "role": "INTERNAL_SYSTEM",
+      "status": "PENDING_REVIEW",
+      "acquisition_mode": "INTERNAL_DERIVATION",
+      "provider": "PGx Platform (this project)",
+      "jurisdiction": null,
+      "version_policy": null,
+      "citation_policy": null,
+      "license_identifier": null,
+      "reuse": {
+        "LOCAL_STORAGE": "UNKNOWN",
+        "INTERNAL_ANALYSIS": "UNKNOWN",
+        "DERIVED_WORK_CREATION": "UNKNOWN",
+        "AGGREGATED_REDISTRIBUTION": "UNKNOWN",
+        "VERBATIM_REDISTRIBUTION": "UNKNOWN",
+        "COMMERCIAL_USE": "UNKNOWN",
+        "AUTOMATED_ACQUISITION": "UNKNOWN",
+        "BULK_DOWNLOAD": "UNKNOWN",
+        "THIRD_PARTY_SHARING": "UNKNOWN",
+        "PUBLIC_DISPLAY": "UNKNOWN"
+      },
+      "permitted_claim_categories": [],
+      "evidence": [],
+      "interpretation": null,
+      "review": null,
+      "legacy_aliases": [],
+      "blocking_reasons": [
+        "INTERNAL_SYSTEM: technical bookkeeping only. This record exists so that legacy rows carrying this marker resolve to a policy rather than to nothing; it can never become scientific evidence.",
+        "No named human reviewer has confirmed the scope of this marker."
+      ],
+      "notes": "Raw probe output kept as a WP-01 baseline. It has no complete retrieval metadata; WP-06 will package it as a legacy snapshot with its limitations recorded.",
+      "active": true
+    },
+    {
+      "source_key": "internal.manual_normalization",
+      "display_name": "Manual normalisation performed by the legacy cleaner",
+      "role": "INTERNAL_SYSTEM",
+      "status": "PENDING_REVIEW",
+      "acquisition_mode": "INTERNAL_DERIVATION",
+      "provider": "PGx Platform (this project)",
+      "jurisdiction": null,
+      "version_policy": null,
+      "citation_policy": null,
+      "license_identifier": null,
+      "reuse": {
+        "LOCAL_STORAGE": "UNKNOWN",
+        "INTERNAL_ANALYSIS": "UNKNOWN",
+        "DERIVED_WORK_CREATION": "UNKNOWN",
+        "AGGREGATED_REDISTRIBUTION": "UNKNOWN",
+        "VERBATIM_REDISTRIBUTION": "UNKNOWN",
+        "COMMERCIAL_USE": "UNKNOWN",
+        "AUTOMATED_ACQUISITION": "UNKNOWN",
+        "BULK_DOWNLOAD": "UNKNOWN",
+        "THIRD_PARTY_SHARING": "UNKNOWN",
+        "PUBLIC_DISPLAY": "UNKNOWN"
+      },
+      "permitted_claim_categories": [],
+      "evidence": [],
+      "interpretation": null,
+      "review": null,
+      "legacy_aliases": [
+        "manual_normalization_from_clinpgx_outputs"
+      ],
+      "blocking_reasons": [
+        "INTERNAL_SYSTEM: technical bookkeeping only. This record exists so that legacy rows carrying this marker resolve to a policy rather than to nothing; it can never become scientific evidence.",
+        "No named human reviewer has confirmed the scope of this marker."
+      ],
+      "notes": "22 legacy phenotype-effect rows record this marker in place of a provider container. It marks a transformation this project performed, so it can never be cited as evidence for the value it produced.",
+      "active": true
+    },
+    {
+      "source_key": "pubmed.literature",
+      "display_name": "Literature cited by other sources",
+      "role": "REFERENCE_ONLY",
+      "status": "PENDING_REVIEW",
+      "acquisition_mode": "NOT_DETERMINED",
+      "provider": "Various publishers",
+      "jurisdiction": null,
+      "version_policy": null,
+      "citation_policy": null,
+      "license_identifier": null,
+      "reuse": {
+        "LOCAL_STORAGE": "UNKNOWN",
+        "INTERNAL_ANALYSIS": "UNKNOWN",
+        "DERIVED_WORK_CREATION": "UNKNOWN",
+        "AGGREGATED_REDISTRIBUTION": "UNKNOWN",
+        "VERBATIM_REDISTRIBUTION": "UNKNOWN",
+        "COMMERCIAL_USE": "UNKNOWN",
+        "AUTOMATED_ACQUISITION": "UNKNOWN",
+        "BULK_DOWNLOAD": "UNKNOWN",
+        "THIRD_PARTY_SHARING": "UNKNOWN",
+        "PUBLIC_DISPLAY": "UNKNOWN"
+      },
+      "permitted_claim_categories": [],
+      "evidence": [
+        {
+          "evidence_type": "NOT_OBTAINED",
+          "official_url": null,
+          "retrieved_at": null,
+          "content_hash": null,
+          "summary": null,
+          "verification": "NOT_ATTEMPTED",
+          "blocked_reason": null
+        }
+      ],
+      "interpretation": null,
+      "review": null,
+      "legacy_aliases": [],
+      "blocking_reasons": [
+        "Every reuse dimension is UNKNOWN.",
+        "No acquisition mode has been decided.",
+        "No named human reviewer has made a decision.",
+        "No official terms, licence or use-conditions document has been retrieved.",
+        "No project interpretation of this source's terms has been written."
+      ],
+      "notes": "The legacy seed carries PMIDs, DOIs and article titles. Those are citations belonging to a guideline source, not a source this project acquires from. Registered as REFERENCE_ONLY so that a bibliographic reference can be recorded without implying the article's content may be reused.",
+      "active": true
+    },
+    {
+      "source_key": "rnpgx.publications",
+      "display_name": "RNPGx recommendations",
+      "role": "PRIMARY_GUIDELINE",
+      "status": "PENDING_REVIEW",
+      "acquisition_mode": "NOT_DETERMINED",
+      "provider": "French National Network of Pharmacogenetics (RNPGx)",
+      "jurisdiction": null,
+      "version_policy": null,
+      "citation_policy": null,
+      "license_identifier": null,
+      "reuse": {
+        "LOCAL_STORAGE": "UNKNOWN",
+        "INTERNAL_ANALYSIS": "UNKNOWN",
+        "DERIVED_WORK_CREATION": "UNKNOWN",
+        "AGGREGATED_REDISTRIBUTION": "UNKNOWN",
+        "VERBATIM_REDISTRIBUTION": "UNKNOWN",
+        "COMMERCIAL_USE": "UNKNOWN",
+        "AUTOMATED_ACQUISITION": "UNKNOWN",
+        "BULK_DOWNLOAD": "UNKNOWN",
+        "THIRD_PARTY_SHARING": "UNKNOWN",
+        "PUBLIC_DISPLAY": "UNKNOWN"
+      },
+      "permitted_claim_categories": [],
+      "evidence": [
+        {
+          "evidence_type": "NOT_OBTAINED",
+          "official_url": null,
+          "retrieved_at": null,
+          "content_hash": null,
+          "summary": null,
+          "verification": "NOT_ATTEMPTED",
+          "blocked_reason": null
+        }
+      ],
+      "interpretation": null,
+      "review": null,
+      "legacy_aliases": [
+        "RNPGx"
+      ],
+      "blocking_reasons": [
+        "Every reuse dimension is UNKNOWN.",
+        "No acquisition mode has been decided.",
+        "No named human reviewer has made a decision.",
+        "No official terms, licence or use-conditions document has been retrieved.",
+        "No project interpretation of this source's terms has been written."
+      ],
+      "notes": "3 legacy guideline rows carry the string 'RNPGx'.",
+      "active": true
+    }
+  ],
+  "conflicts": []
+}

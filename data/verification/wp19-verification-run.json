@@ -1,0 +1,191 @@
+{
+  "categories": {
+    "API_CONTRACT": {
+      "errored": 0,
+      "executed": 340,
+      "failed": 0,
+      "outcome": "PASS",
+      "passed": 340,
+      "reason": "",
+      "skipped": 0
+    },
+    "ARTIFACT_SCHEMA": {
+      "errored": 0,
+      "executed": 398,
+      "failed": 0,
+      "outcome": "PASS",
+      "passed": 398,
+      "reason": "",
+      "skipped": 0
+    },
+    "ASGI_RUNTIME": {
+      "errored": 0,
+      "executed": 50,
+      "failed": 0,
+      "outcome": "PASS",
+      "passed": 49,
+      "reason": "",
+      "skipped": 1
+    },
+    "BROWSER_E2E": {
+      "errored": 0,
+      "executed": 13,
+      "failed": 0,
+      "outcome": "PASS",
+      "passed": 12,
+      "reason": "",
+      "skipped": 1
+    },
+    "DOMAIN_INVARIANT": {
+      "errored": 0,
+      "executed": 497,
+      "failed": 0,
+      "outcome": "PASS",
+      "passed": 497,
+      "reason": "",
+      "skipped": 0
+    },
+    "FAILURE_NEGATIVE": {
+      "errored": 0,
+      "executed": 79,
+      "failed": 0,
+      "outcome": "PASS",
+      "passed": 79,
+      "reason": "",
+      "skipped": 0
+    },
+    "INTEGRATION": {
+      "errored": 0,
+      "executed": 115,
+      "failed": 0,
+      "outcome": "PASS",
+      "passed": 115,
+      "reason": "",
+      "skipped": 0
+    },
+    "LEGACY_REGRESSION": {
+      "errored": 0,
+      "executed": 409,
+      "failed": 0,
+      "outcome": "PASS",
+      "passed": 409,
+      "reason": "",
+      "skipped": 0
+    },
+    "MIGRATION": {
+      "errored": 0,
+      "executed": 67,
+      "failed": 0,
+      "outcome": "PASS",
+      "passed": 62,
+      "reason": "",
+      "skipped": 5
+    },
+    "OFFLINE_INDEPENDENCE": {
+      "errored": 0,
+      "executed": 25,
+      "failed": 0,
+      "outcome": "PASS",
+      "passed": 25,
+      "reason": "",
+      "skipped": 0
+    },
+    "POSTGRESQL_INTEGRATION": {
+      "errored": 0,
+      "executed": 72,
+      "failed": 0,
+      "outcome": "BLOCKED",
+      "passed": 0,
+      "reason": "PostgreSQL integration tests require psycopg, which is not installed in this environment. Install the project with `uv sync`, start the disposable database with `docker compose --profile test up -d postgres-test`, and retry. This skip is NOT a pass: the WP-02 acceptance report records the PostgreSQL criteria as BLOCKED.",
+      "skipped": 72
+    },
+    "REPRODUCIBILITY": {
+      "errored": 0,
+      "executed": 146,
+      "failed": 0,
+      "outcome": "PASS",
+      "passed": 146,
+      "reason": "",
+      "skipped": 0
+    },
+    "SECURITY_BOUNDARY": {
+      "errored": 0,
+      "executed": 286,
+      "failed": 0,
+      "outcome": "PASS",
+      "passed": 286,
+      "reason": "",
+      "skipped": 0
+    },
+    "SNAPSHOT": {
+      "errored": 0,
+      "executed": 211,
+      "failed": 0,
+      "outcome": "PASS",
+      "passed": 210,
+      "reason": "",
+      "skipped": 1
+    },
+    "UNIT": {
+      "errored": 0,
+      "executed": 3076,
+      "failed": 0,
+      "outcome": "PASS",
+      "passed": 3074,
+      "reason": "",
+      "skipped": 2
+    },
+    "VALIDATION_PARTITION": {
+      "errored": 0,
+      "executed": 180,
+      "failed": 0,
+      "outcome": "PASS",
+      "passed": 180,
+      "reason": "",
+      "skipped": 0
+    }
+  },
+  "environment": {
+    "implementation": "CPython",
+    "machine": "x86_64",
+    "packages": {
+      "coverage": null,
+      "fastapi": "0.141.1",
+      "httpx": "0.28.1",
+      "jinja2": "3.1.6",
+      "lxml": "6.1.0",
+      "playwright": "present",
+      "psycopg": null,
+      "pydantic": "2.13.3",
+      "sqlalchemy": "2.0.52",
+      "starlette": "1.6.0",
+      "uvicorn": "0.46.0"
+    },
+    "python": "3.11.15",
+    "system": "Linux"
+  },
+  "hash_seed": "20260904",
+  "inputs": {
+    "apps_sha256": "8a925ac49e3ede351740c599cd070d00e35874a3361baf05bdac4982448c9397",
+    "combined_sha256": "7710578007aea315336053817787e22c5c39724168886915c2d8d043a2c0cba1",
+    "pgx_sha256": "cff54daee591e422cac5c98f5c6415fedcb5f31cf31b2c45cbd809250cc6b4a5",
+    "tests_sha256": "e92b81875d6533295500ca939b4016ef3aa9cb1f38634ae9ac58b954b21a4ab2"
+  },
+  "issue_codes": [
+    "VERIFY_CATEGORY_BLOCKED"
+  ],
+  "outcome": "PASS",
+  "passed": true,
+  "profile": "full",
+  "schema_version": "pgx-wp19-verification-run/1",
+  "summary": {
+    "discovered": 5964,
+    "errored": 0,
+    "executed": 5964,
+    "failed": 0,
+    "not_executed": 0,
+    "passed": 5882,
+    "skipped": 82,
+    "unexplained_skips": 0
+  }
+}

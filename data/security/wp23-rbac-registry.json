@@ -1,0 +1,433 @@
+{
+  "admin_is_not_a_reviewer": "ADMIN holds no expert_review.* permission. An administrator who must review holds a separate account whose exact role is EXPERT_REVIEWER, and WP-22's assignment check and payload permit still apply to it.",
+  "authentication_does_not_grant_curation_authority": "curation.administer permits operating the curation tooling. It is not authority to author, review or adjudicate a revision: WP-09's separation-of-duty rules govern those and no application role overrides them.",
+  "matrix": {
+    "assessment.create": {
+      "ADMIN": true,
+      "DEMO_USER": true,
+      "EXPERT_REVIEWER": true
+    },
+    "assessment.read": {
+      "ADMIN": true,
+      "DEMO_USER": true,
+      "EXPERT_REVIEWER": true
+    },
+    "audit.read": {
+      "ADMIN": true,
+      "DEMO_USER": false,
+      "EXPERT_REVIEWER": false
+    },
+    "audit.verify": {
+      "ADMIN": true,
+      "DEMO_USER": false,
+      "EXPERT_REVIEWER": false
+    },
+    "catalogue.read": {
+      "ADMIN": true,
+      "DEMO_USER": true,
+      "EXPERT_REVIEWER": true
+    },
+    "curation.administer": {
+      "ADMIN": true,
+      "DEMO_USER": false,
+      "EXPERT_REVIEWER": false
+    },
+    "evidence.read": {
+      "ADMIN": true,
+      "DEMO_USER": true,
+      "EXPERT_REVIEWER": true
+    },
+    "expert_review.append_correction": {
+      "ADMIN": false,
+      "DEMO_USER": false,
+      "EXPERT_REVIEWER": true
+    },
+    "expert_review.complete_assigned": {
+      "ADMIN": false,
+      "DEMO_USER": false,
+      "EXPERT_REVIEWER": true
+    },
+    "expert_review.list_assigned": {
+      "ADMIN": false,
+      "DEMO_USER": false,
+      "EXPERT_REVIEWER": true
+    },
+    "expert_review.read_assigned": {
+      "ADMIN": false,
+      "DEMO_USER": false,
+      "EXPERT_REVIEWER": true
+    },
+    "expert_review.reveal_assigned": {
+      "ADMIN": false,
+      "DEMO_USER": false,
+      "EXPERT_REVIEWER": true
+    },
+    "expert_review.submit_expected": {
+      "ADMIN": false,
+      "DEMO_USER": false,
+      "EXPERT_REVIEWER": true
+    },
+    "release.activate": {
+      "ADMIN": true,
+      "DEMO_USER": false,
+      "EXPERT_REVIEWER": false
+    },
+    "release.register": {
+      "ADMIN": true,
+      "DEMO_USER": false,
+      "EXPERT_REVIEWER": false
+    },
+    "release.retire": {
+      "ADMIN": true,
+      "DEMO_USER": false,
+      "EXPERT_REVIEWER": false
+    },
+    "release.rollback": {
+      "ADMIN": true,
+      "DEMO_USER": false,
+      "EXPERT_REVIEWER": false
+    },
+    "rule.administer": {
+      "ADMIN": true,
+      "DEMO_USER": false,
+      "EXPERT_REVIEWER": false
+    },
+    "ruleset.administer": {
+      "ADMIN": true,
+      "DEMO_USER": false,
+      "EXPERT_REVIEWER": false
+    },
+    "session.login": {
+      "ADMIN": true,
+      "DEMO_USER": true,
+      "EXPERT_REVIEWER": true
+    },
+    "session.logout": {
+      "ADMIN": true,
+      "DEMO_USER": true,
+      "EXPERT_REVIEWER": true
+    },
+    "session.read_self": {
+      "ADMIN": true,
+      "DEMO_USER": true,
+      "EXPERT_REVIEWER": true
+    },
+    "source_policy.administer": {
+      "ADMIN": true,
+      "DEMO_USER": false,
+      "EXPERT_REVIEWER": false
+    },
+    "user.administer": {
+      "ADMIN": true,
+      "DEMO_USER": false,
+      "EXPERT_REVIEWER": false
+    },
+    "validation.read_public": {
+      "ADMIN": true,
+      "DEMO_USER": true,
+      "EXPERT_REVIEWER": true
+    }
+  },
+  "permission_count": 25,
+  "permissions": [
+    {
+      "area": "session",
+      "holders": [
+        "ADMIN",
+        "DEMO_USER",
+        "EXPERT_REVIEWER"
+      ],
+      "permission_id": "session.login",
+      "rationale": "Every role may hold an account. Refusing this to a role would make the account unusable rather than restricted.",
+      "title": "Authenticate and start a session"
+    },
+    {
+      "area": "session",
+      "holders": [
+        "ADMIN",
+        "DEMO_USER",
+        "EXPERT_REVIEWER"
+      ],
+      "permission_id": "session.logout",
+      "rationale": "A user must always be able to end their own session; a logout that could be forbidden is a session that cannot be revoked by the person most likely to notice it was stolen.",
+      "title": "End one's own session"
+    },
+    {
+      "area": "session",
+      "holders": [
+        "ADMIN",
+        "DEMO_USER",
+        "EXPERT_REVIEWER"
+      ],
+      "permission_id": "session.read_self",
+      "rationale": "Bounded to the actor string and the role. There is no personal detail to read, because none is stored.",
+      "title": "Read one's own actor identifier and role"
+    },
+    {
+      "area": "assessment",
+      "holders": [
+        "ADMIN",
+        "DEMO_USER",
+        "EXPERT_REVIEWER"
+      ],
+      "permission_id": "assessment.create",
+      "rationale": "The representative workflow. Permitted to every role because the input is a synthetic or development case, never a patient.",
+      "title": "Run a demo assessment"
+    },
+    {
+      "area": "assessment",
+      "holders": [
+        "ADMIN",
+        "DEMO_USER",
+        "EXPERT_REVIEWER"
+      ],
+      "permission_id": "assessment.read",
+      "rationale": "Reading a result the same deployment produced. Holdout payloads are not reachable through this permission; WP-18's access policy governs those separately and refuses regardless of role.",
+      "title": "Read an assessment result"
+    },
+    {
+      "area": "catalogue",
+      "holders": [
+        "ADMIN",
+        "DEMO_USER",
+        "EXPERT_REVIEWER"
+      ],
+      "permission_id": "catalogue.read",
+      "rationale": "Public scientific nomenclature. Refusing it would not protect anything and would make the interface unusable.",
+      "title": "Read the gene and drug catalogue"
+    },
+    {
+      "area": "catalogue",
+      "holders": [
+        "ADMIN",
+        "DEMO_USER",
+        "EXPERT_REVIEWER"
+      ],
+      "permission_id": "evidence.read",
+      "rationale": "Traceability is the product. A finding whose citation cannot be opened is an assertion.",
+      "title": "Read an evidence record"
+    },
+    {
+      "area": "validation",
+      "holders": [
+        "ADMIN",
+        "DEMO_USER",
+        "EXPERT_REVIEWER"
+      ],
+      "permission_id": "validation.read_public",
+      "rationale": "The dashboard publishes counts and empty states, never a holdout case or an expert response.",
+      "title": "Read the public validation dashboard"
+    },
+    {
+      "area": "expert_review",
+      "holders": [
+        "EXPERT_REVIEWER"
+      ],
+      "permission_id": "expert_review.list_assigned",
+      "rationale": "Only assignments belonging to the caller. ADMIN is excluded: an administrator who could enumerate assignments could enumerate the expert-holdout set.",
+      "title": "List one's own review assignments"
+    },
+    {
+      "area": "expert_review",
+      "holders": [
+        "EXPERT_REVIEWER"
+      ],
+      "permission_id": "expert_review.read_assigned",
+      "rationale": "Holding this permission does not produce an assignment. WP-22 refuses an unassigned case with the same answer it gives for a case that does not exist.",
+      "title": "Open an assigned review"
+    },
+    {
+      "area": "expert_review",
+      "holders": [
+        "EXPERT_REVIEWER"
+      ],
+      "permission_id": "expert_review.submit_expected",
+      "rationale": "The blinded half of the protocol. An administrator recording an expectation would be the system predicting its own output.",
+      "title": "Record a blinded expected response"
+    },
+    {
+      "area": "expert_review",
+      "holders": [
+        "EXPERT_REVIEWER"
+      ],
+      "permission_id": "expert_review.reveal_assigned",
+      "rationale": "The one-way door. No role may pass it without an assignment and a locked expectation, and no permission here can substitute for either.",
+      "title": "Reveal the system result"
+    },
+    {
+      "area": "expert_review",
+      "holders": [
+        "EXPERT_REVIEWER"
+      ],
+      "permission_id": "expert_review.complete_assigned",
+      "rationale": "Records AGREE, PARTIAL or DISAGREE against a revealed result.",
+      "title": "Close an assigned review"
+    },
+    {
+      "area": "expert_review",
+      "holders": [
+        "EXPERT_REVIEWER"
+      ],
+      "permission_id": "expert_review.append_correction",
+      "rationale": "Append-only amendment by the reviewer who made the record.",
+      "title": "Append a review correction"
+    },
+    {
+      "area": "release",
+      "holders": [
+        "ADMIN"
+      ],
+      "permission_id": "release.register",
+      "rationale": "Release identity is what every audit row and every assessment pins.",
+      "title": "Register a release bundle"
+    },
+    {
+      "area": "release",
+      "holders": [
+        "ADMIN"
+      ],
+      "permission_id": "release.activate",
+      "rationale": "Moves the pointer every subsequent assessment reads.",
+      "title": "Activate a release"
+    },
+    {
+      "area": "release",
+      "holders": [
+        "ADMIN"
+      ],
+      "permission_id": "release.rollback",
+      "rationale": "The recovery path. Audited with both sides of the pointer move.",
+      "title": "Roll back to a previous release"
+    },
+    {
+      "area": "release",
+      "holders": [
+        "ADMIN"
+      ],
+      "permission_id": "release.retire",
+      "rationale": "Ends a release's eligibility without deleting its evidence.",
+      "title": "Retire a release"
+    },
+    {
+      "area": "curation",
+      "holders": [
+        "ADMIN"
+      ],
+      "permission_id": "source_policy.administer",
+      "rationale": "Which sources may be published from. A scientific decision recorded by an operator, not made by one.",
+      "title": "Administer the scientific source policy"
+    },
+    {
+      "area": "curation",
+      "holders": [
+        "ADMIN"
+      ],
+      "permission_id": "curation.administer",
+      "rationale": "Operating the tooling. This is NOT authority to author, review or adjudicate a revision: WP-09's separation of duty governs those and is unchanged by any application role.",
+      "title": "Operate the curation workflow"
+    },
+    {
+      "area": "rules",
+      "holders": [
+        "ADMIN"
+      ],
+      "permission_id": "rule.administer",
+      "rationale": "Validation and deprecation of rules under the approved protocol.",
+      "title": "Administer computable rules"
+    },
+    {
+      "area": "rules",
+      "holders": [
+        "ADMIN"
+      ],
+      "permission_id": "ruleset.administer",
+      "rationale": "Freeze, reopen and retire. A frozen ruleset is what a release pins.",
+      "title": "Administer ruleset versions"
+    },
+    {
+      "area": "administration",
+      "holders": [
+        "ADMIN"
+      ],
+      "permission_id": "user.administer",
+      "rationale": "Account lifecycle. Never deletion: a deleted user takes the subject of their own audit history with them.",
+      "title": "Create, disable, lock and re-role local users"
+    },
+    {
+      "area": "administration",
+      "holders": [
+        "ADMIN"
+      ],
+      "permission_id": "audit.read",
+      "rationale": "Safe projections only. The reader exposes no payload, no expected response and no secret.",
+      "title": "Read the governed audit trail"
+    },
+    {
+      "area": "administration",
+      "holders": [
+        "ADMIN"
+      ],
+      "permission_id": "audit.verify",
+      "rationale": "Reports the first break and its position, never the content of any event.",
+      "title": "Verify the audit hash chain"
+    }
+  ],
+  "permissions_by_role": {
+    "ADMIN": [
+      "assessment.create",
+      "assessment.read",
+      "audit.read",
+      "audit.verify",
+      "catalogue.read",
+      "curation.administer",
+      "evidence.read",
+      "release.activate",
+      "release.register",
+      "release.retire",
+      "release.rollback",
+      "rule.administer",
+      "ruleset.administer",
+      "session.login",
+      "session.logout",
+      "session.read_self",
+      "source_policy.administer",
+      "user.administer",
+      "validation.read_public"
+    ],
+    "DEMO_USER": [
+      "assessment.create",
+      "assessment.read",
+      "catalogue.read",
+      "evidence.read",
+      "session.login",
+      "session.logout",
+      "session.read_self",
+      "validation.read_public"
+    ],
+    "EXPERT_REVIEWER": [
+      "assessment.create",
+      "assessment.read",
+      "catalogue.read",
+      "evidence.read",
+      "expert_review.append_correction",
+      "expert_review.complete_assigned",
+      "expert_review.list_assigned",
+      "expert_review.read_assigned",
+      "expert_review.reveal_assigned",
+      "expert_review.submit_expected",
+      "session.login",
+      "session.logout",
+      "session.read_self",
+      "validation.read_public"
+    ]
+  },
+  "rbac_registry_version": "pgx-wp23-rbac-registry/1",
+  "registry_digest": "sha256:37066296b81cc60563550d9f7bd1ec36c903a7a8d1427d3b3be9e43002a7bde0",
+  "role_hierarchy": null,
+  "role_hierarchy_note": "null, and not an empty list: there is no hierarchy to describe. Every permission names its holders explicitly, so adding a role adds a column of decisions rather than inheriting a set.",
+  "roles": [
+    "ADMIN",
+    "DEMO_USER",
+    "EXPERT_REVIEWER"
+  ]
+}

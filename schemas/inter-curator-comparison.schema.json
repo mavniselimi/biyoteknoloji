@@ -1,0 +1,155 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pgx-platform.invalid/schemas/inter-curator-comparison.schema.json",
+  "title": "PGx inter-curator comparison",
+  "description": "Field-level agreement between two independently completed curator responses (WP-09). It reports what each said and where they differ. It does not decide who is correct, merge the responses, produce a consensus, or adjudicate. Agreement is not evidence of correctness: two curators may agree and both be wrong.",
+  "type": "object",
+  "required": [
+    "comparison_version",
+    "exercise_id",
+    "status"
+  ],
+  "properties": {
+    "comparison_version": {
+      "const": "pgx-inter-curator-comparison/1"
+    },
+    "exercise_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "enum": [
+        "PENDING_TWO_COMPLETED_RESPONSES",
+        "COMPLETED"
+      ]
+    },
+    "blocked_by": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "note": {
+      "type": "string",
+      "minLength": 1
+    },
+    "curators": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "minItems": 2,
+      "maxItems": 2,
+      "items": {
+        "type": "object",
+        "required": [
+          "label",
+          "name"
+        ],
+        "properties": {
+          "label": {
+            "type": "string",
+            "minLength": 1
+          },
+          "name": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "minLength": 2
+          }
+        }
+      }
+    },
+    "curator_a": {
+      "type": [
+        "object",
+        "string",
+        "null"
+      ]
+    },
+    "curator_b": {
+      "type": [
+        "object",
+        "string",
+        "null"
+      ]
+    },
+    "cases": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": "object",
+        "required": [
+          "case_id",
+          "fields",
+          "fields_differing"
+        ],
+        "properties": {
+          "case_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "selector": {
+            "type": "string"
+          },
+          "fields": {
+            "type": "object",
+            "minProperties": 1,
+            "description": "Both values are reported even where they agree. A report showing only differences would let a reader assume the rest was verified, when what happened is that two people said the same thing."
+          },
+          "fields_differing": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "summary": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "description": "Counts of fields, not a measure of correctness. There is no score, no percentage agreement presented as validity, and no verdict."
+    }
+  },
+  "not": {
+    "anyOf": [
+      {
+        "required": [
+          "winner"
+        ]
+      },
+      {
+        "required": [
+          "correct_response"
+        ]
+      },
+      {
+        "required": [
+          "consensus"
+        ]
+      },
+      {
+        "required": [
+          "merged_response"
+        ]
+      },
+      {
+        "required": [
+          "agreement_score"
+        ]
+      },
+      {
+        "required": [
+          "validity"
+        ]
+      }
+    ]
+  }
+}

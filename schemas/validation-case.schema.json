@@ -1,0 +1,284 @@
+{
+  "$id": "https://pgx-platform.invalid/schemas/validation-case.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "The publishable half of a validation case. It carries identity, role, provenance and fingerprints, and it refuses every field an expected answer could be written into - so a document that leaked one fails validation rather than passing with an extra key. The inputs a case presents live in a restricted payload that is never published and never committed beside the rules it tests.",
+  "not": {
+    "anyOf": [
+      {
+        "required": [
+          "expected_result"
+        ]
+      },
+      {
+        "required": [
+          "expected_attention"
+        ]
+      },
+      {
+        "required": [
+          "expected_coverage"
+        ]
+      },
+      {
+        "required": [
+          "expected_findings"
+        ]
+      },
+      {
+        "required": [
+          "expected_answer"
+        ]
+      },
+      {
+        "required": [
+          "gold_standard"
+        ]
+      },
+      {
+        "required": [
+          "ground_truth"
+        ]
+      },
+      {
+        "required": [
+          "reference_answer"
+        ]
+      },
+      {
+        "required": [
+          "answer_key"
+        ]
+      },
+      {
+        "required": [
+          "score"
+        ]
+      },
+      {
+        "required": [
+          "concordance"
+        ]
+      },
+      {
+        "required": [
+          "accuracy"
+        ]
+      },
+      {
+        "required": [
+          "pass_rate"
+        ]
+      },
+      {
+        "required": [
+          "payload"
+        ]
+      },
+      {
+        "required": [
+          "payload_content"
+        ]
+      },
+      {
+        "required": [
+          "observations"
+        ]
+      },
+      {
+        "required": [
+          "medications"
+        ]
+      },
+      {
+        "required": [
+          "genotype"
+        ]
+      },
+      {
+        "required": [
+          "diplotype"
+        ]
+      },
+      {
+        "required": [
+          "vcf"
+        ]
+      },
+      {
+        "required": [
+          "patient_name"
+        ]
+      },
+      {
+        "required": [
+          "mrn"
+        ]
+      },
+      {
+        "required": [
+          "diagnosis"
+        ]
+      },
+      {
+        "required": [
+          "dose"
+        ]
+      }
+    ]
+  },
+  "properties": {
+    "case_id": {
+      "pattern": "^PGX-VAL-[A-Z0-9][A-Z0-9\\-]{2,46}[A-Z0-9]$",
+      "type": "string"
+    },
+    "classification": {
+      "enum": [
+        "SYNTHETIC",
+        "PUBLISHED_LITERATURE_DERIVED"
+      ]
+    },
+    "compatibility": {
+      "additionalProperties": false,
+      "properties": {
+        "dataset_public_id": {
+          "pattern": "^PGX-DATA-\\d{8}-\\d{3}$",
+          "type": "string"
+        },
+        "is_pinned_to_release": {
+          "type": "boolean"
+        },
+        "note": {
+          "type": "string"
+        },
+        "release_manifest_hash": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "release_public_id": {
+          "pattern": "^PGX-REL-\\d{8}-\\d{3}$",
+          "type": "string"
+        },
+        "ruleset_public_id": {
+          "pattern": "^PGX-RULESET-\\d{8}-\\d{3}$",
+          "type": "string"
+        },
+        "schema_version": {
+          "type": "string"
+        },
+        "software_version": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "schema_version",
+        "is_pinned_to_release"
+      ],
+      "type": "object"
+    },
+    "content_fingerprint": {
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "created_at": {
+      "minLength": 20,
+      "type": "string"
+    },
+    "extra": {
+      "type": "object"
+    },
+    "is_holdout": {
+      "type": "boolean"
+    },
+    "is_validation_evidence": {
+      "type": "boolean"
+    },
+    "no_pii_assertion": {
+      "minLength": 16,
+      "type": "string"
+    },
+    "notes": {
+      "type": "string"
+    },
+    "payload_hash": {
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "payload_reference": {
+      "type": "string"
+    },
+    "provenance": {
+      "additionalProperties": false,
+      "properties": {
+        "author": {
+          "type": "string"
+        },
+        "citation": {
+          "type": "string"
+        },
+        "derivation_family_fingerprint": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "derivation_method": {
+          "minLength": 3,
+          "type": "string"
+        },
+        "derived_from_development": {
+          "type": "boolean"
+        },
+        "source_digest": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "source_identity": {
+          "minLength": 3,
+          "type": "string"
+        }
+      },
+      "required": [
+        "source_identity",
+        "derivation_method",
+        "derived_from_development",
+        "derivation_family_fingerprint"
+      ],
+      "type": "object"
+    },
+    "role": {
+      "enum": [
+        "DEVELOPMENT",
+        "INTERNAL_HOLDOUT",
+        "EXPERT_HOLDOUT"
+      ]
+    },
+    "schema_version": {
+      "const": "pgx-wp18-validation-case/1"
+    },
+    "title": {
+      "type": "string"
+    },
+    "visibility": {
+      "enum": [
+        "PUBLIC_METADATA",
+        "AUTHOR_VISIBLE",
+        "RESTRICTED"
+      ]
+    }
+  },
+  "required": [
+    "schema_version",
+    "case_id",
+    "role",
+    "classification",
+    "visibility",
+    "is_holdout",
+    "is_validation_evidence",
+    "content_fingerprint",
+    "no_pii_assertion",
+    "created_at",
+    "provenance",
+    "compatibility"
+  ],
+  "title": "WP-18 validation case (public metadata)",
+  "type": "object"
+}

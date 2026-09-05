@@ -1,0 +1,46 @@
+{
+  "content_hash": "sha256:5296fcc10794718ced36691c18c195460ccdacf15ae1618d624ded0e00067ee4",
+  "counts": {
+    "approvals": 0,
+    "by_status": {
+      "RAW": 1559
+    },
+    "curated": 0,
+    "curated_interpretations": 0,
+    "evidence_links": 1526,
+    "linked_work_items": 1526,
+    "rejected": 0,
+    "reviewers": 0,
+    "revisions": 0,
+    "under_review": 0,
+    "unlinked_work_items": 33,
+    "work_items": 1559
+  },
+  "excluded_sources": [
+    "mvp_candidate_drug_gene_edges"
+  ],
+  "files": {
+    "legacy-work-item-allocation.json": "sha256:508fff3bf1d601f77e1733952d5a6071eb1ce2440460d60e3950ac56064c44d4",
+    "legacy-work-item-evidence-links.ndjson": "sha256:f2500a66393a37c9219998e9746cb01a2db94a66e2dfc3b5f626acb7f06124c2",
+    "legacy-work-items.ndjson": "sha256:ddadb3f664035b948d2a2248538c9e9cad1f60d4cac86f3d2541cbed9c325d55",
+    "migration-issues.ndjson": "sha256:9b01ee9f1fb786f51b57aa40a49c59561dcd742f3cd8cceb636fe95bb6ff5cc0"
+  },
+  "generated_from": "data/migration/wp08/draft-curation-proposals.ndjson",
+  "imported_at": "2026-01-01T15:32:31Z",
+  "imported_by": "pgx-curation-workflow/import-legacy",
+  "invariants": [
+    "every imported work item is RAW",
+    "no work item is UNDER_REVIEW, CURATED or REJECTED",
+    "no revision, review, adjudication or approval is created",
+    "no CuratedInterpretation is created",
+    "every work item carries the LEGACY_MIGRATION tag",
+    "every legacy field is namespaced legacy. and is unreviewed input",
+    "P1 candidate data is excluded by name, not by omission",
+    "work item ids are allocated explicitly and are stable"
+  ],
+  "legacy_value_namespace": "legacy.",
+  "migration_version": "pgx-legacy-work-item-migration/1",
+  "note": "1,559 questions on a queue. The legacy values travel with them as upstream text so a curator can see what the old project claimed; none of it has been reviewed and none of it is a conclusion of this project.",
+  "source_content_hash": "sha256:c8b5460f254756eac422c6d78940cd376913389c28d676eafce9892ccfb36c7a",
+  "tag": "LEGACY_MIGRATION"
+}

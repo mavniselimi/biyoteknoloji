@@ -1,0 +1,166 @@
+{
+  "contingency_matrix_version": "pgx-wp25-contingency-matrix/1",
+  "continuation_permitted_ids": [
+    "CONT-01",
+    "CONT-02",
+    "CONT-03",
+    "CONT-09",
+    "CONT-10",
+    "CONT-11",
+    "CONT-12"
+  ],
+  "continuation_refused_ids": [
+    "CONT-04",
+    "CONT-05",
+    "CONT-06",
+    "CONT-07",
+    "CONT-08",
+    "CONT-13",
+    "CONT-14"
+  ],
+  "note": "No row substitutes a fixture for governed content, a cached number for a computed one, or a local rehearsal for a deployment. Where the honest response is to stop, the row says stop.",
+  "scenario_count": 14,
+  "scenarios": [
+    {
+      "continuation_permitted": true,
+      "detection": "an outbound request times out, or the operator is told in advance",
+      "does_not_prove": "anything about the correctness of what is displayed",
+      "owner": "platform owner",
+      "proves": "that the demonstration does not depend on a network",
+      "response": "continue unchanged: the demonstration is specified to run offline and every asset is served locally",
+      "scenario_id": "CONT-01",
+      "title": "The venue has no network"
+    },
+    {
+      "continuation_permitted": true,
+      "detection": "no image reaches the screen",
+      "does_not_prove": "that a run seen by fewer people is a different run",
+      "owner": "presenter",
+      "proves": "nothing about the system either way",
+      "response": "continue on the operator's screen and read the steps aloud; the run is unchanged",
+      "scenario_id": "CONT-02",
+      "title": "The projector or display fails"
+    },
+    {
+      "continuation_permitted": true,
+      "detection": "the page renders unstyled",
+      "does_not_prove": "anything about the science; a stylesheet is not a finding",
+      "owner": "platform owner",
+      "proves": "that the interface degrades without hiding anything",
+      "response": "continue: the content is the same and the interface says which assets are missing",
+      "scenario_id": "CONT-03",
+      "title": "A stylesheet or font fails to load"
+    },
+    {
+      "continuation_permitted": false,
+      "detection": "readiness reports the database component blocking",
+      "does_not_prove": "that an assessment was computed; nothing was",
+      "owner": "platform owner",
+      "proves": "that the system fails closed and names what is missing",
+      "response": "stop the affected step and show the readiness page naming the missing component. Do not display a previously computed result as though it were computed now",
+      "scenario_id": "CONT-04",
+      "title": "The database is unavailable mid-run"
+    },
+    {
+      "continuation_permitted": false,
+      "detection": "the runtime returns an error or no daemon answers",
+      "does_not_prove": "that a local process is a deployment. LOCAL_STAGING_REHEARSAL is not staging and must never be presented as it",
+      "owner": "platform owner",
+      "proves": "nothing; a failed start is a failed start",
+      "response": "stop. Announce that the deployed path is unavailable and do not substitute a local process while describing it as staging",
+      "scenario_id": "CONT-05",
+      "title": "The container runtime will not start the image"
+    },
+    {
+      "continuation_permitted": false,
+      "detection": "the source registry reports zero approved sources, or the canonical dataset is not published",
+      "does_not_prove": "that the pipeline works on real data; it has not been asked to",
+      "owner": "scientific source approver",
+      "proves": "that the system refuses to compute from unapproved content",
+      "response": "stop before the case selection step. State that the corpus is unapproved and that no governed result can be produced",
+      "scenario_id": "CONT-06",
+      "title": "No approved dataset is available"
+    },
+    {
+      "continuation_permitted": false,
+      "detection": "the default registry reports zero executable rulesets",
+      "does_not_prove": "that any rule is correct; none has been approved to be wrong",
+      "owner": "curation lead",
+      "proves": "that the engine refuses to run without governed rules",
+      "response": "stop before the assessment step and say that no approved rule exists to evaluate",
+      "scenario_id": "CONT-07",
+      "title": "No executable ruleset is registered"
+    },
+    {
+      "continuation_permitted": false,
+      "detection": "the safety gate reports a failing invariant",
+      "does_not_prove": "nothing that would justify continuing",
+      "owner": "safety owner",
+      "proves": "that the invariant fires",
+      "response": "stop the entire demonstration immediately. A failing safety invariant is not a presentation problem",
+      "scenario_id": "CONT-08",
+      "title": "A safety invariant fails during the run"
+    },
+    {
+      "continuation_permitted": true,
+      "detection": "the result is empty rather than absent",
+      "does_not_prove": "that the case has no pharmacogenomic implication",
+      "owner": "curation lead",
+      "proves": "that missing data is not shown as low risk",
+      "response": "show the empty result with its coverage axis. An empty finding set with full coverage and an empty one with no coverage are different answers and the interface distinguishes them",
+      "scenario_id": "CONT-09",
+      "title": "The assessment produces no findings"
+    },
+    {
+      "continuation_permitted": true,
+      "detection": "a spoken request during the demonstration",
+      "does_not_prove": "that the system could handle such a case safely if asked",
+      "owner": "presenter",
+      "proves": "that the boundary is structural rather than a policy somebody follows",
+      "response": "decline. The case model refuses real-patient, genotype and raw sequencing fields at any depth, and no such ingestion exists",
+      "scenario_id": "CONT-10",
+      "title": "The audience asks for a real patient case"
+    },
+    {
+      "continuation_permitted": true,
+      "detection": "a spoken question during the demonstration",
+      "does_not_prove": "any softened version of the answer. There is no partial clinical validation here to describe",
+      "owner": "presenter",
+      "proves": "nothing; it is an answer, not a result",
+      "response": "answer that none has been performed, without qualification, and name what is missing: zero validation cases, no holdout set, no computed metric, no completed expert review",
+      "scenario_id": "CONT-11",
+      "title": "The audience asks about clinical validation"
+    },
+    {
+      "continuation_permitted": true,
+      "detection": "the named reviewer does not attend",
+      "does_not_prove": "that a review would have happened but for the absence",
+      "owner": "expert review chair",
+      "proves": "nothing",
+      "response": "state that no expert review has been completed at all, which is the standing position and not a consequence of their absence",
+      "scenario_id": "CONT-12",
+      "title": "The expert reviewer is unavailable"
+    },
+    {
+      "continuation_permitted": false,
+      "detection": "verify-pack exits non-zero",
+      "does_not_prove": "that the underlying evidence was ever different from what the failure says",
+      "owner": "WP-25 evidence owner",
+      "proves": "that the pack is self-checking",
+      "response": "stop and show the failure. Do not rebuild the pack during the demonstration to make the check pass",
+      "scenario_id": "CONT-13",
+      "title": "The evidence pack fails its own integrity check"
+    },
+    {
+      "continuation_permitted": false,
+      "detection": "a gate reports PASS where the recorded state is BLOCKED",
+      "does_not_prove": "that the programme advanced. An unexplained PASS is the most likely shape of a bug in this software",
+      "owner": "WP-25 evidence owner",
+      "proves": "nothing until the disagreement is resolved",
+      "response": "stop and treat it as a defect in the pack, not as good news. Re-run the gate from source artifacts and compare",
+      "scenario_id": "CONT-14",
+      "title": "A gate appears to pass unexpectedly"
+    }
+  ],
+  "substitution_permitted": false
+}

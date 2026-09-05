@@ -1,0 +1,762 @@
+{
+  "claim_count": 24,
+  "claim_registry_version": "pgx-wp25-claim-registry/1",
+  "claims": [
+    {
+      "claim_id": "THS6-CLAIM-001",
+      "dod_ids": [
+        "P0-DOD-001"
+      ],
+      "gate_id": "GATE-C",
+      "missing_evidence_ids": [
+        "EV-WP16-001",
+        "EV-WP16-003",
+        "EV-WP17-001"
+      ],
+      "notes": "refuted by this repository's own artifacts: data/api/wp16-real-gate-status.json.real_api_assessment_count: the API has never computed an assessment, so no workflow has run end to end through it",
+      "origin": "architecture.md \u00a721 bullet 1",
+      "outward_facing": true,
+      "required_evidence_ids": [
+        "EV-WP16-001",
+        "EV-WP17-001",
+        "EV-WP17-002",
+        "EV-WP16-003"
+      ],
+      "statement": "One integrated web prototype runs the representative workflow from input to report.",
+      "sufficient": false,
+      "support": "CONTRADICTED"
+    },
+    {
+      "claim_id": "THS6-CLAIM-002",
+      "dod_ids": [
+        "P0-DOD-002"
+      ],
+      "gate_id": "GATE-C",
+      "missing_evidence_ids": [
+        "EV-WP14-001",
+        "EV-WP14-002",
+        "EV-WP15-003"
+      ],
+      "notes": "refuted by this repository's own artifacts: data/safety/wp20-real-gate-status.json.active_release_available: no release exists, so 'for the same release' has no referent",
+      "origin": "architecture.md \u00a721 bullet 2",
+      "outward_facing": true,
+      "required_evidence_ids": [
+        "EV-WP14-001",
+        "EV-WP14-002",
+        "EV-WP15-003"
+      ],
+      "statement": "Assessment facts are deterministic for the same release and the same input.",
+      "sufficient": false,
+      "support": "CONTRADICTED"
+    },
+    {
+      "claim_id": "THS6-CLAIM-003",
+      "dod_ids": [
+        "P0-DOD-003"
+      ],
+      "gate_id": "GATE-C",
+      "missing_evidence_ids": [
+        "EV-WP08-002",
+        "EV-WP15-001",
+        "EV-WP15-005"
+      ],
+      "notes": "refuted by this repository's own artifacts: data/reports/wp15-real-gate-status.json.real_report_count: no report has been produced, so no finding exists to trace",
+      "origin": "architecture.md \u00a721 bullet 3",
+      "outward_facing": true,
+      "required_evidence_ids": [
+        "EV-WP08-002",
+        "EV-WP15-001",
+        "EV-WP15-005"
+      ],
+      "statement": "Every finding in a report carries traceable evidence back to a governed source record.",
+      "sufficient": false,
+      "support": "CONTRADICTED"
+    },
+    {
+      "claim_id": "THS6-CLAIM-004",
+      "dod_ids": [
+        "P0-DOD-004"
+      ],
+      "gate_id": "GATE-C",
+      "missing_evidence_ids": [
+        "EV-WP13-002",
+        "EV-WP13-003",
+        "EV-WP20-005"
+      ],
+      "notes": "no required item resolves to a real executed or observed artifact",
+      "origin": "architecture.md \u00a721 bullet 4",
+      "outward_facing": true,
+      "required_evidence_ids": [
+        "EV-WP13-002",
+        "EV-WP13-003",
+        "EV-WP20-005"
+      ],
+      "statement": "Missing data is never presented as low or no risk, and coverage is reported separately from risk.",
+      "sufficient": false,
+      "support": "UNSUPPORTED"
+    },
+    {
+      "claim_id": "THS6-CLAIM-005",
+      "dod_ids": [
+        "P0-DOD-005"
+      ],
+      "gate_id": "GATE-F",
+      "missing_evidence_ids": [
+        "EV-WP03-003",
+        "EV-WP06-002",
+        "EV-WP11-001",
+        "EV-WP24-004"
+      ],
+      "notes": "refuted by this repository's own artifacts: data/canonical/PGX-DATA-20260830-900/manifest.json.dataset_lifecycle_state: the canonical dataset is still being built, so no published dataset version exists to pin",
+      "origin": "architecture.md \u00a721 bullet 5",
+      "outward_facing": false,
+      "required_evidence_ids": [
+        "EV-WP03-003",
+        "EV-WP24-004",
+        "EV-WP06-002",
+        "EV-WP11-001"
+      ],
+      "statement": "Software, dataset and ruleset are versioned independently of one another.",
+      "sufficient": false,
+      "support": "CONTRADICTED"
+    },
+    {
+      "claim_id": "THS6-CLAIM-006",
+      "dod_ids": [
+        "P0-DOD-005"
+      ],
+      "gate_id": "GATE-E",
+      "missing_evidence_ids": [
+        "EV-WP24-003",
+        "EV-WP24-016"
+      ],
+      "notes": "refuted by this repository's own artifacts: data/deployment/wp24-release-validation.json.release_may_proceed: no release may proceed, so there is no released version to roll back from or to",
+      "origin": "architecture.md \u00a721 bullet 5",
+      "outward_facing": false,
+      "required_evidence_ids": [
+        "EV-WP24-016",
+        "EV-WP24-003"
+      ],
+      "statement": "Rollback between released versions works and has been exercised.",
+      "sufficient": false,
+      "support": "CONTRADICTED"
+    },
+    {
+      "claim_id": "THS6-CLAIM-007",
+      "dod_ids": [
+        "P0-DOD-006"
+      ],
+      "gate_id": "GATE-D",
+      "missing_evidence_ids": [
+        "EV-WP18-001",
+        "EV-WP18-003",
+        "EV-WP21-002"
+      ],
+      "notes": "refuted by this repository's own artifacts: data/validation/wp18-real-gate-status.json.real_patient_case_count: zero validation cases exist against a stated P0 target of fifty",
+      "origin": "architecture.md \u00a721 bullet 6",
+      "outward_facing": true,
+      "required_evidence_ids": [
+        "EV-WP18-001",
+        "EV-WP18-003",
+        "EV-WP21-002"
+      ],
+      "statement": "At least fifty serious validation cases exist.",
+      "sufficient": false,
+      "support": "CONTRADICTED"
+    },
+    {
+      "claim_id": "THS6-CLAIM-008",
+      "dod_ids": [
+        "P0-DOD-007"
+      ],
+      "gate_id": "GATE-D",
+      "missing_evidence_ids": [
+        "EV-WP18-003",
+        "EV-WP18-006"
+      ],
+      "notes": "refuted by this repository's own artifacts: data/validation/wp18-real-gate-status.json.holdout_case_count: no holdout case exists, so separation is vacuous rather than demonstrated",
+      "origin": "architecture.md \u00a721 bullet 7",
+      "outward_facing": true,
+      "required_evidence_ids": [
+        "EV-WP18-002",
+        "EV-WP18-003",
+        "EV-WP18-006"
+      ],
+      "statement": "An independent holdout set exists and was not used to develop the rules.",
+      "sufficient": false,
+      "support": "CONTRADICTED"
+    },
+    {
+      "claim_id": "THS6-CLAIM-009",
+      "dod_ids": [
+        "P0-DOD-008"
+      ],
+      "gate_id": "GATE-C",
+      "missing_evidence_ids": [
+        "EV-WP20-001",
+        "EV-WP20-004",
+        "EV-WP20-007"
+      ],
+      "notes": "refuted by this repository's own artifacts: data/safety/wp20-real-gate-status.json.ci_job_executed: the workflow is configured but no CI provider has run it, so no invariant has passed in CI",
+      "origin": "architecture.md \u00a721 bullet 8",
+      "outward_facing": true,
+      "required_evidence_ids": [
+        "EV-WP20-001",
+        "EV-WP20-004",
+        "EV-WP20-007"
+      ],
+      "statement": "All safety invariants pass in continuous integration.",
+      "sufficient": false,
+      "support": "CONTRADICTED"
+    },
+    {
+      "claim_id": "THS6-CLAIM-010",
+      "dod_ids": [
+        "P0-DOD-009"
+      ],
+      "gate_id": "GATE-D",
+      "missing_evidence_ids": [
+        "EV-WP22-001",
+        "EV-WP22-002",
+        "EV-WP22-006"
+      ],
+      "notes": "refuted by this repository's own artifacts: data/expert-review/wp22-real-gate-status.json.expert_review_performed: the gate status states in its own words that no expert review has been performed; data/expert-review/wp22-real-gate-status.json.protocol_approved: the protocol has no signatory, so there is no approved protocol to review under",
+      "origin": "architecture.md \u00a721 bullet 9",
+      "outward_facing": true,
+      "required_evidence_ids": [
+        "EV-WP22-001",
+        "EV-WP22-002",
+        "EV-WP22-006"
+      ],
+      "statement": "A blind-first expert review has been completed under an approved protocol.",
+      "sufficient": false,
+      "support": "CONTRADICTED"
+    },
+    {
+      "claim_id": "THS6-CLAIM-011",
+      "dod_ids": [
+        "P0-DOD-010"
+      ],
+      "gate_id": "GATE-D",
+      "missing_evidence_ids": [
+        "EV-WP17-001",
+        "EV-WP22-001",
+        "EV-WP22-003"
+      ],
+      "notes": "refuted by this repository's own artifacts: data/expert-review/wp22-real-gate-status.json.named_reviewer_count: no expert has been named, so none has used anything",
+      "origin": "architecture.md \u00a721 bullet 10",
+      "outward_facing": true,
+      "required_evidence_ids": [
+        "EV-WP22-003",
+        "EV-WP17-001",
+        "EV-WP22-001"
+      ],
+      "statement": "Experts used the representative workflow, not only static reports.",
+      "sufficient": false,
+      "support": "CONTRADICTED"
+    },
+    {
+      "claim_id": "THS6-CLAIM-012",
+      "dod_ids": [
+        "P0-DOD-011"
+      ],
+      "gate_id": "GATE-D",
+      "missing_evidence_ids": [
+        "EV-WP21-001",
+        "EV-WP21-002",
+        "EV-WP21-003"
+      ],
+      "notes": "refuted by this repository's own artifacts: data/validation/wp21-real-gate-status.json.computed_metric_value_count: definitions exist and values do not; a definition is not a metric",
+      "origin": "architecture.md \u00a721 bullet 11",
+      "outward_facing": true,
+      "required_evidence_ids": [
+        "EV-WP21-001",
+        "EV-WP21-002",
+        "EV-WP21-003"
+      ],
+      "statement": "Benchmark metrics are computed per release and are release-specific.",
+      "sufficient": false,
+      "support": "CONTRADICTED"
+    },
+    {
+      "claim_id": "THS6-CLAIM-013",
+      "dod_ids": [
+        "P0-DOD-012"
+      ],
+      "gate_id": "GATE-E",
+      "missing_evidence_ids": [
+        "EV-WP23-001",
+        "EV-WP23-003",
+        "EV-WP23-009"
+      ],
+      "notes": "refuted by this repository's own artifacts: data/security/wp23-real-gate-status.json.audit_store_available: no audit store exists, so no governed action has ever been recorded",
+      "origin": "architecture.md \u00a721 bullet 12",
+      "outward_facing": true,
+      "required_evidence_ids": [
+        "EV-WP23-001",
+        "EV-WP23-003",
+        "EV-WP23-009"
+      ],
+      "statement": "Every governed action is audited with actor, time, input hash, version bundle and output hash.",
+      "sufficient": false,
+      "support": "CONTRADICTED"
+    },
+    {
+      "claim_id": "THS6-CLAIM-014",
+      "dod_ids": [
+        "P0-DOD-013"
+      ],
+      "gate_id": "GATE-E",
+      "missing_evidence_ids": [
+        "EV-WP24-001",
+        "EV-WP24-010",
+        "EV-WP24-015"
+      ],
+      "notes": "refuted by this repository's own artifacts: data/deployment/wp24-real-gate-status.json.container_runtime_available: no container runtime answered, so no image was built and nothing was deployed to observe",
+      "origin": "architecture.md \u00a721 bullet 13",
+      "outward_facing": false,
+      "required_evidence_ids": [
+        "EV-WP24-001",
+        "EV-WP24-010",
+        "EV-WP24-015"
+      ],
+      "statement": "A staging prototype is deployed and answers health checks.",
+      "sufficient": false,
+      "support": "CONTRADICTED"
+    },
+    {
+      "claim_id": "THS6-CLAIM-015",
+      "dod_ids": [
+        "P0-DOD-013"
+      ],
+      "gate_id": "GATE-E",
+      "missing_evidence_ids": [
+        "EV-WP24-001",
+        "EV-WP24-006",
+        "EV-WP24-014"
+      ],
+      "notes": "refuted by this repository's own artifacts: data/deployment/wp24-real-gate-status.json.reliability_executed_count: the executed drill count is null - not zero - because no drill run was ever attempted",
+      "origin": "architecture.md \u00a721 bullet 13",
+      "outward_facing": false,
+      "required_evidence_ids": [
+        "EV-WP24-006",
+        "EV-WP24-014",
+        "EV-WP24-001"
+      ],
+      "statement": "A basic reliability report exists, produced from executed drills.",
+      "sufficient": false,
+      "support": "CONTRADICTED"
+    },
+    {
+      "claim_id": "THS6-CLAIM-016",
+      "dod_ids": [
+        "P0-DOD-014"
+      ],
+      "gate_id": "GATE-F",
+      "missing_evidence_ids": [
+        "EV-WP00-001",
+        "EV-WP19-005"
+      ],
+      "notes": "no required item resolves to a real executed or observed artifact",
+      "origin": "architecture.md \u00a721 bullet 14",
+      "outward_facing": false,
+      "required_evidence_ids": [
+        "EV-WP00-001",
+        "EV-WP19-005"
+      ],
+      "statement": "Every THS 6 claim links to a concrete artifact or metric.",
+      "sufficient": false,
+      "support": "UNSUPPORTED"
+    },
+    {
+      "claim_id": "THS6-CLAIM-017",
+      "dod_ids": [
+        "P0-DOD-015"
+      ],
+      "gate_id": "GATE-F",
+      "missing_evidence_ids": [
+        "EV-WP16-001",
+        "EV-WP17-001"
+      ],
+      "notes": "refuted by this repository's own artifacts: data/web/wp17-real-gate-status.json.validation_dashboard_status: the interface renders an empty state because there is no governed content behind it",
+      "origin": "architecture.md \u00a721 bullet 15",
+      "outward_facing": true,
+      "required_evidence_ids": [
+        "EV-WP17-001",
+        "EV-WP17-002",
+        "EV-WP16-001"
+      ],
+      "statement": "The core demonstration completes with the network unavailable, the LLM off and every P1 feature off.",
+      "sufficient": false,
+      "support": "CONTRADICTED"
+    },
+    {
+      "claim_id": "THS6-CLAIM-018",
+      "dod_ids": [],
+      "gate_id": "GATE-A",
+      "missing_evidence_ids": [
+        "EV-WP05-002",
+        "EV-WP05-005"
+      ],
+      "notes": "refuted by this repository's own artifacts: data/rulesets/wp11-real-gate-status.json.upstream_state.source_registry_approved: every registered source is still PENDING_REVIEW",
+      "origin": "Gate A",
+      "outward_facing": false,
+      "required_evidence_ids": [
+        "EV-WP05-002",
+        "EV-WP05-005"
+      ],
+      "statement": "The scientific source registry contains sources approved by a named reviewer.",
+      "sufficient": false,
+      "support": "CONTRADICTED"
+    },
+    {
+      "claim_id": "THS6-CLAIM-019",
+      "dod_ids": [],
+      "gate_id": "GATE-A",
+      "missing_evidence_ids": [
+        "EV-WP06-002"
+      ],
+      "notes": "refuted by this repository's own artifacts: data/canonical/PGX-DATA-20260830-900/manifest.json.snapshot_complete: the snapshot behind the dataset is incomplete and quarantined",
+      "origin": "Gate A",
+      "outward_facing": false,
+      "required_evidence_ids": [
+        "EV-WP06-002",
+        "EV-WP04-002"
+      ],
+      "statement": "A canonical dataset has been published and is immutable.",
+      "sufficient": false,
+      "support": "CONTRADICTED"
+    },
+    {
+      "claim_id": "THS6-CLAIM-020",
+      "dod_ids": [],
+      "gate_id": "GATE-B",
+      "missing_evidence_ids": [
+        "EV-WP11-001"
+      ],
+      "notes": "refuted by this repository's own artifacts: data/rulesets/wp11-real-gate-status.json.rule_state.executable_rulesets_in_default_registry: the default registry contains no executable ruleset",
+      "origin": "Gate B",
+      "outward_facing": false,
+      "required_evidence_ids": [
+        "EV-WP11-001",
+        "EV-WP11-002"
+      ],
+      "statement": "An executable ruleset built from curated content is registered and usable.",
+      "sufficient": false,
+      "support": "CONTRADICTED"
+    },
+    {
+      "claim_id": "THS6-CLAIM-021",
+      "dod_ids": [],
+      "gate_id": "GATE-C",
+      "missing_evidence_ids": [
+        "EV-WP13-001",
+        "EV-WP13-002"
+      ],
+      "notes": "refuted by this repository's own artifacts: data/coverage/wp13-real-gate-status.json.coverage_state.real_coverage_executions: no coverage execution has been performed over governed content",
+      "origin": "Gate C",
+      "outward_facing": false,
+      "required_evidence_ids": [
+        "EV-WP13-001",
+        "EV-WP13-002"
+      ],
+      "statement": "Coverage is computed over governed content and reported separately from risk.",
+      "sufficient": false,
+      "support": "CONTRADICTED"
+    },
+    {
+      "claim_id": "THS6-CLAIM-022",
+      "dod_ids": [],
+      "gate_id": "GATE-C",
+      "missing_evidence_ids": [
+        "EV-WP00-003",
+        "EV-WP15-002",
+        "EV-WP20-001"
+      ],
+      "notes": "refuted by this repository's own artifacts: data/safety/wp20-real-gate-status.json.claim_boundary_approved: the boundary is a draft awaiting human and scientific review",
+      "origin": "Gate C",
+      "outward_facing": true,
+      "required_evidence_ids": [
+        "EV-WP20-001",
+        "EV-WP15-002",
+        "EV-WP00-003"
+      ],
+      "statement": "The claim boundary has been approved by a named clinical safety authority.",
+      "sufficient": false,
+      "support": "CONTRADICTED"
+    },
+    {
+      "claim_id": "THS6-CLAIM-023",
+      "dod_ids": [],
+      "gate_id": "GATE-E",
+      "missing_evidence_ids": [
+        "EV-WP23-001",
+        "EV-WP23-002"
+      ],
+      "notes": "refuted by this repository's own artifacts: data/security/wp23-real-gate-status.json.database_available: no database is reachable, so no control has been exercised against a real store",
+      "origin": "Gate E",
+      "outward_facing": false,
+      "required_evidence_ids": [
+        "EV-WP23-001",
+        "EV-WP23-002",
+        "EV-WP23-005"
+      ],
+      "statement": "The security control set has been exercised against real governed stores.",
+      "sufficient": false,
+      "support": "CONTRADICTED"
+    },
+    {
+      "claim_id": "THS6-CLAIM-024",
+      "dod_ids": [],
+      "gate_id": "GATE-F",
+      "missing_evidence_ids": [
+        "EV-WP24-003",
+        "EV-WP24-012"
+      ],
+      "notes": "refuted by this repository's own artifacts: data/deployment/wp24-release-validation.json.release_may_proceed: the release validation aggregate states that no release may proceed",
+      "origin": "Gate F",
+      "outward_facing": true,
+      "required_evidence_ids": [
+        "EV-WP24-003",
+        "EV-WP24-012"
+      ],
+      "statement": "A release has been validated and may proceed.",
+      "sufficient": false,
+      "support": "CONTRADICTED"
+    }
+  ],
+  "contradicted_claim_ids": [
+    "THS6-CLAIM-001",
+    "THS6-CLAIM-002",
+    "THS6-CLAIM-003",
+    "THS6-CLAIM-005",
+    "THS6-CLAIM-006",
+    "THS6-CLAIM-007",
+    "THS6-CLAIM-008",
+    "THS6-CLAIM-009",
+    "THS6-CLAIM-010",
+    "THS6-CLAIM-011",
+    "THS6-CLAIM-012",
+    "THS6-CLAIM-013",
+    "THS6-CLAIM-014",
+    "THS6-CLAIM-015",
+    "THS6-CLAIM-017",
+    "THS6-CLAIM-018",
+    "THS6-CLAIM-019",
+    "THS6-CLAIM-020",
+    "THS6-CLAIM-021",
+    "THS6-CLAIM-022",
+    "THS6-CLAIM-023",
+    "THS6-CLAIM-024"
+  ],
+  "counts_by_support": {
+    "CONTRADICTED": 22,
+    "UNSUPPORTED": 2
+  },
+  "note": "A claim is SUPPORTED only when every required item resolves to a real executed or observed artifact. CONTRADICTED means an artifact in this repository states the opposite.",
+  "outward_facing_claim_ids": [
+    "THS6-CLAIM-001",
+    "THS6-CLAIM-002",
+    "THS6-CLAIM-003",
+    "THS6-CLAIM-004",
+    "THS6-CLAIM-007",
+    "THS6-CLAIM-008",
+    "THS6-CLAIM-009",
+    "THS6-CLAIM-010",
+    "THS6-CLAIM-011",
+    "THS6-CLAIM-012",
+    "THS6-CLAIM-013",
+    "THS6-CLAIM-017",
+    "THS6-CLAIM-022",
+    "THS6-CLAIM-024"
+  ],
+  "probe_count": 23,
+  "probes": {
+    "THS6-CLAIM-001": [
+      {
+        "explanation": "the API has never computed an assessment, so no workflow has run end to end through it",
+        "field": "real_api_assessment_count",
+        "refuting_value": 0,
+        "source_path": "data/api/wp16-real-gate-status.json"
+      }
+    ],
+    "THS6-CLAIM-002": [
+      {
+        "explanation": "no release exists, so 'for the same release' has no referent",
+        "field": "active_release_available",
+        "refuting_value": false,
+        "source_path": "data/safety/wp20-real-gate-status.json"
+      }
+    ],
+    "THS6-CLAIM-003": [
+      {
+        "explanation": "no report has been produced, so no finding exists to trace",
+        "field": "real_report_count",
+        "refuting_value": 0,
+        "source_path": "data/reports/wp15-real-gate-status.json"
+      }
+    ],
+    "THS6-CLAIM-004": [],
+    "THS6-CLAIM-005": [
+      {
+        "explanation": "the canonical dataset is still being built, so no published dataset version exists to pin",
+        "field": "dataset_lifecycle_state",
+        "refuting_value": "BUILDING",
+        "source_path": "data/canonical/PGX-DATA-20260830-900/manifest.json"
+      }
+    ],
+    "THS6-CLAIM-006": [
+      {
+        "explanation": "no release may proceed, so there is no released version to roll back from or to",
+        "field": "release_may_proceed",
+        "refuting_value": false,
+        "source_path": "data/deployment/wp24-release-validation.json"
+      }
+    ],
+    "THS6-CLAIM-007": [
+      {
+        "explanation": "zero validation cases exist against a stated P0 target of fifty",
+        "field": "real_patient_case_count",
+        "refuting_value": 0,
+        "source_path": "data/validation/wp18-real-gate-status.json"
+      }
+    ],
+    "THS6-CLAIM-008": [
+      {
+        "explanation": "no holdout case exists, so separation is vacuous rather than demonstrated",
+        "field": "holdout_case_count",
+        "refuting_value": 0,
+        "source_path": "data/validation/wp18-real-gate-status.json"
+      }
+    ],
+    "THS6-CLAIM-009": [
+      {
+        "explanation": "the workflow is configured but no CI provider has run it, so no invariant has passed in CI",
+        "field": "ci_job_executed",
+        "refuting_value": false,
+        "source_path": "data/safety/wp20-real-gate-status.json"
+      }
+    ],
+    "THS6-CLAIM-010": [
+      {
+        "explanation": "the gate status states in its own words that no expert review has been performed",
+        "field": "expert_review_performed",
+        "refuting_value": false,
+        "source_path": "data/expert-review/wp22-real-gate-status.json"
+      },
+      {
+        "explanation": "the protocol has no signatory, so there is no approved protocol to review under",
+        "field": "protocol_approved",
+        "refuting_value": false,
+        "source_path": "data/expert-review/wp22-real-gate-status.json"
+      }
+    ],
+    "THS6-CLAIM-011": [
+      {
+        "explanation": "no expert has been named, so none has used anything",
+        "field": "named_reviewer_count",
+        "refuting_value": 0,
+        "source_path": "data/expert-review/wp22-real-gate-status.json"
+      }
+    ],
+    "THS6-CLAIM-012": [
+      {
+        "explanation": "definitions exist and values do not; a definition is not a metric",
+        "field": "computed_metric_value_count",
+        "refuting_value": 0,
+        "source_path": "data/validation/wp21-real-gate-status.json"
+      }
+    ],
+    "THS6-CLAIM-013": [
+      {
+        "explanation": "no audit store exists, so no governed action has ever been recorded",
+        "field": "audit_store_available",
+        "refuting_value": false,
+        "source_path": "data/security/wp23-real-gate-status.json"
+      }
+    ],
+    "THS6-CLAIM-014": [
+      {
+        "explanation": "no container runtime answered, so no image was built and nothing was deployed to observe",
+        "field": "container_runtime_available",
+        "refuting_value": false,
+        "source_path": "data/deployment/wp24-real-gate-status.json"
+      }
+    ],
+    "THS6-CLAIM-015": [
+      {
+        "explanation": "the executed drill count is null - not zero - because no drill run was ever attempted",
+        "field": "reliability_executed_count",
+        "refuting_value": null,
+        "source_path": "data/deployment/wp24-real-gate-status.json"
+      }
+    ],
+    "THS6-CLAIM-016": [],
+    "THS6-CLAIM-017": [
+      {
+        "explanation": "the interface renders an empty state because there is no governed content behind it",
+        "field": "validation_dashboard_status",
+        "refuting_value": "EMPTY_STATE_ONLY",
+        "source_path": "data/web/wp17-real-gate-status.json"
+      }
+    ],
+    "THS6-CLAIM-018": [
+      {
+        "explanation": "every registered source is still PENDING_REVIEW",
+        "field": "upstream_state.source_registry_approved",
+        "refuting_value": 0,
+        "source_path": "data/rulesets/wp11-real-gate-status.json"
+      }
+    ],
+    "THS6-CLAIM-019": [
+      {
+        "explanation": "the snapshot behind the dataset is incomplete and quarantined",
+        "field": "snapshot_complete",
+        "refuting_value": false,
+        "source_path": "data/canonical/PGX-DATA-20260830-900/manifest.json"
+      }
+    ],
+    "THS6-CLAIM-020": [
+      {
+        "explanation": "the default registry contains no executable ruleset",
+        "field": "rule_state.executable_rulesets_in_default_registry",
+        "refuting_value": 0,
+        "source_path": "data/rulesets/wp11-real-gate-status.json"
+      }
+    ],
+    "THS6-CLAIM-021": [
+      {
+        "explanation": "no coverage execution has been performed over governed content",
+        "field": "coverage_state.real_coverage_executions",
+        "refuting_value": 0,
+        "source_path": "data/coverage/wp13-real-gate-status.json"
+      }
+    ],
+    "THS6-CLAIM-022": [
+      {
+        "explanation": "the boundary is a draft awaiting human and scientific review",
+        "field": "claim_boundary_approved",
+        "refuting_value": false,
+        "source_path": "data/safety/wp20-real-gate-status.json"
+      }
+    ],
+    "THS6-CLAIM-023": [
+      {
+        "explanation": "no database is reachable, so no control has been exercised against a real store",
+        "field": "database_available",
+        "refuting_value": false,
+        "source_path": "data/security/wp23-real-gate-status.json"
+      }
+    ],
+    "THS6-CLAIM-024": [
+      {
+        "explanation": "the release validation aggregate states that no release may proceed",
+        "field": "release_may_proceed",
+        "refuting_value": false,
+        "source_path": "data/deployment/wp24-release-validation.json"
+      }
+    ]
+  },
+  "supported_claim_ids": [],
+  "unresolvable_probes": []
+}

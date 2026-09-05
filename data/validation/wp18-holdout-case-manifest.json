@@ -1,0 +1,15 @@
+{
+  "case_count": 0,
+  "cases": [],
+  "development_count": 0,
+  "expert_holdout_count": 0,
+  "internal_holdout_count": 0,
+  "is_validation_evidence": true,
+  "meets_p0_target": false,
+  "note": "No holdout case exists in this repository. Authoring one is scientific work: it needs a source, a derivation a reviewer can follow, and - for an expert holdout - a named expert working it under the WP-22 protocol. None of that can be generated, and generating it would produce exactly the fabricated evidence this architecture exists to make impossible. The count below is zero and the P0 target is 50; the gap is reported, not closed.",
+  "partition": "HOLDOUT",
+  "payload_availability": "NOT_CONFIGURED",
+  "schema_version": "pgx-wp18-validation-case-manifest/1",
+  "target_case_count": 50,
+  "target_shortfall": 50
+}

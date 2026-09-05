@@ -1,0 +1,3789 @@
+{
+  "absent_count": 1,
+  "admissible_count": 17,
+  "admissible_evidence_ids": [
+    "EV-WP01-001",
+    "EV-WP01-002",
+    "EV-WP04-002",
+    "EV-WP06-004",
+    "EV-WP07-002",
+    "EV-WP10-003",
+    "EV-WP10-004",
+    "EV-WP11-002",
+    "EV-WP11-003",
+    "EV-WP12-002",
+    "EV-WP13-004",
+    "EV-WP14-004",
+    "EV-WP17-002",
+    "EV-WP18-002",
+    "EV-WP19-004",
+    "EV-WP23-005",
+    "EV-WP24-008"
+  ],
+  "counts_by_type": {
+    "CONFIGURED_NOT_EXECUTED": 19,
+    "DOCUMENT_ONLY": 53,
+    "HUMAN_PENDING": 7,
+    "IMPLEMENTATION_TEST": 23,
+    "INVALID": 1,
+    "OPERATIONAL_PENDING": 6,
+    "REAL_EXECUTED": 16,
+    "REAL_OBSERVED": 1,
+    "SCIENTIFIC_PENDING": 12,
+    "STALE": 3,
+    "TEST_ONLY_REHEARSAL": 3,
+    "UNAVAILABLE": 1
+  },
+  "declared_count": 145,
+  "evidence_registry_version": "pgx-wp25-evidence-registry/1",
+  "final_pack_document_prefix": "docs/ths6/final/",
+  "findings": [
+    {
+      "blocking": false,
+      "code": "THS6_EVIDENCE_UNAVAILABLE",
+      "detail": "1 declared artifact(s) are not present in the working tree: EV-WP16-005",
+      "owner": "repository maintainer",
+      "references": [
+        "EV-WP16-005"
+      ],
+      "resolution": "recorded as UNAVAILABLE; no digest is invented and no gate treats an absent artifact as satisfied"
+    },
+    {
+      "blocking": true,
+      "code": "THS6_EVIDENCE_INVALID",
+      "detail": "1 artifact(s) failed schema validation, resolved through a symlink, or contained credential-shaped content: EV-WP17-001 (data/web/wp17-real-gate-status.json) INVALID: 1 error(s)",
+      "owner": "platform owner",
+      "references": [
+        "EV-WP17-001"
+      ],
+      "resolution": "typed INVALID and excluded from supporting any claim. WP-25 does not repair another work package's artifact or its schema. Where a gate reads a different, well-formed field of such an artifact, it still reads it, and this finding is why a reader should treat that gate's evidence as provisional."
+    },
+    {
+      "blocking": false,
+      "code": "THS6_EVIDENCE_STALE",
+      "detail": "3 artifact(s) record values their own source has since changed: EV-WP19-001, EV-WP19-002, EV-WP19-003",
+      "owner": "verification owner",
+      "references": [
+        "EV-WP19-001",
+        "EV-WP19-002",
+        "EV-WP19-003"
+      ],
+      "resolution": "typed STALE; a stale artifact supports no claim"
+    },
+    {
+      "blocking": false,
+      "code": "THS6_PROSE_INVENTORY_DISCREPANCY",
+      "detail": "WP-24's closing prose stated that no docs/ths6 directory existed. Three preliminary WP-local evidence notes were already committed there.",
+      "owner": "WP-24 author",
+      "references": [
+        "docs/ths6/wp02-foundation-evidence.md",
+        "docs/ths6/wp03-release-evidence.md",
+        "docs/ths6/wp04-ingestion-evidence.md"
+      ],
+      "resolution": "the three notes are preserved unchanged, inventoried as DOCUMENT_ONLY, and kept disjoint from the final pack under docs/ths6/final/"
+    },
+    {
+      "blocking": false,
+      "code": "THS6_SOURCE_DOCUMENT_UNAVAILABLE",
+      "detail": "Two requirement documents named by the WP-25 brief were not readable from the environment this pack was built in, so their contents contributed nothing to this registry.",
+      "owner": "work package author",
+      "references": [
+        "architecture.md"
+      ],
+      "resolution": "requirements were taken from architecture.md, which is in the repository and is hashed as EV-WP00-001; nothing was inferred about the unread documents"
+    }
+  ],
+  "invalid_count": 1,
+  "items": [
+    {
+      "contains_numeric_claim": false,
+      "evidence_id": "EV-WP00-001",
+      "evidence_type": "DOCUMENT_ONLY",
+      "freshness_source": null,
+      "gap_owner": "architecture owner",
+      "gate_ids": [],
+      "generator": "architecture owner",
+      "limitations": [
+        "states requirements; records no result"
+      ],
+      "may_support_a_ths6_claim": false,
+      "media_type": "text/markdown",
+      "observed_or_executed": false,
+      "path": "architecture.md",
+      "present": true,
+      "schema_path": null,
+      "sha256": "sha256:4faef6e8eb5097297da12a9ece9a6b4871cd5f1518a6f57987bbe3ec83cd4f56",
+      "supported_claim_ids": [
+        "THS6-CLAIM-016"
+      ],
+      "test_only": false,
+      "title": "System architecture, including the P0 Definition of Done",
+      "validation_result": null,
+      "work_package": "WP-00"
+    },
+    {
+      "contains_numeric_claim": false,
+      "evidence_id": "EV-WP00-002",
+      "evidence_type": "DOCUMENT_ONLY",
+      "freshness_source": null,
+      "gap_owner": "repository maintainer",
+      "gate_ids": [],
+      "generator": "repository maintainer",
+      "limitations": [
+        "summarises status; is not a status source"
+      ],
+      "may_support_a_ths6_claim": false,
+      "media_type": "text/markdown",
+      "observed_or_executed": false,
+      "path": "README.md",
+      "present": true,
+      "schema_path": null,
+      "sha256": "sha256:ffe3285d497e06f93e39bea7332154f989bfed3dcfc7241ae85ba693ea2e84c7",
+      "supported_claim_ids": [],
+      "test_only": false,
+      "title": "Repository overview and work package table",
+      "validation_result": null,
+      "work_package": "WP-00"
+    },
+    {
+      "contains_numeric_claim": false,
+      "evidence_id": "EV-WP00-003",
+      "evidence_type": "DOCUMENT_ONLY",
+      "freshness_source": null,
+      "gap_owner": "clinical safety authority",
+      "gate_ids": [
+        "GATE-C"
+      ],
+      "generator": "architecture owner",
+      "limitations": [
+        "declares intent; no approval recorded"
+      ],
+      "may_support_a_ths6_claim": false,
+      "media_type": "text/markdown",
+      "observed_or_executed": false,
+      "path": "docs/architecture/intended-purpose.md",
+      "present": true,
+      "schema_path": null,
+      "sha256": "sha256:8e3e756df37e236736cbeda172b79b1ed6219a67cda3839506dd9a830160d130",
+      "supported_claim_ids": [
+        "THS6-CLAIM-022"
+      ],
+      "test_only": false,
+      "title": "Intended purpose and out-of-scope statement",
+      "validation_result": null,
+      "work_package": "WP-00"
+    },
+    {
+      "contains_numeric_claim": false,
+      "evidence_id": "EV-WP00-004",
+      "evidence_type": "DOCUMENT_ONLY",
+      "freshness_source": null,
+      "gap_owner": "safety owner",
+      "gate_ids": [
+        "GATE-C"
+      ],
+      "generator": "safety owner",
+      "limitations": [
+        "a contract, not an execution"
+      ],
+      "may_support_a_ths6_claim": false,
+      "media_type": "text/markdown",
+      "observed_or_executed": false,
+      "path": "docs/risk-management/safety-contract.md",
+      "present": true,
+      "schema_path": null,
+      "sha256": "sha256:ef605e04cc65152c547c201a8d5637396db8307590019f942313c78cda7b99d5",
+      "supported_claim_ids": [
+        "THS6-CLAIM-004"
+      ],
+      "test_only": false,
+      "title": "Safety contract",
+      "validation_result": null,
+      "work_package": "WP-00"
+    },
+    {
+      "contains_numeric_claim": true,
+      "evidence_id": "EV-WP01-001",
+      "evidence_type": "REAL_EXECUTED",
+      "freshness_source": null,
+      "gap_owner": "data owner",
+      "gate_ids": [],
+      "generator": "pgx legacy baseline capture",
+      "limitations": [
+        "describes the pre-P0 prototype, not governed content"
+      ],
+      "may_support_a_ths6_claim": true,
+      "media_type": "application/json",
+      "observed_or_executed": true,
+      "path": "data/legacy-baseline/manifest.json",
+      "present": true,
+      "schema_path": null,
+      "sha256": "sha256:7da8273155d571358f2498e558759e8c130e2509376a9cbf12a71ba6760ad3f8",
+      "supported_claim_ids": [],
+      "test_only": false,
+      "title": "Legacy baseline manifest",
+      "validation_result": null,
+      "work_package": "WP-01"
+    },
+    {
+      "contains_numeric_claim": true,
+      "evidence_id": "EV-WP01-002",
+      "evidence_type": "REAL_EXECUTED",
+      "freshness_source": null,
+      "gap_owner": "data owner",
+      "gate_ids": [],
+      "generator": "pgx legacy baseline capture",
+      "limitations": [
+        "reproduces the legacy prototype only"
+      ],
+      "may_support_a_ths6_claim": true,
+      "media_type": "application/json",
+      "observed_or_executed": true,
+      "path": "data/legacy-baseline/reproduction-run-log.json",
+      "present": true,
+      "schema_path": null,
+      "sha256": "sha256:16bc2386a9bfe6b3b0ad437d3723def09873ff6187c357111b02950e14847116",
+      "supported_claim_ids": [],
+      "test_only": false,
+      "title": "Legacy reproduction run log",
+      "validation_result": null,
+      "work_package": "WP-01"
+    },
+    {
+      "contains_numeric_claim": false,
+      "evidence_id": "EV-WP01-003",
+      "evidence_type": "DOCUMENT_ONLY",
+      "freshness_source": null,
+      "gap_owner": "migration owner",
+      "gate_ids": [],
+      "generator": "migration owner",
+      "limitations": [
+        "an allowlist of known differences"
+      ],
+      "may_support_a_ths6_claim": false,
+      "media_type": "application/json",
+      "observed_or_executed": false,
+      "path": "data/legacy-baseline/expected-differences.json",
+      "present": true,
+      "schema_path": null,
+      "sha256": "sha256:50d860fda1c7183deb2066f68e31f73cac45d3ea6c010f69b98aea18f660b234",
+      "supported_claim_ids": [],
+      "test_only": false,
+      "title": "Expected legacy differences",
+      "validation_result": null,
+      "work_package": "WP-01"
+    },
+    {
+      "contains_numeric_claim": false,
+      "evidence_id": "EV-WP01-004",
+      "evidence_type": "DOCUMENT_ONLY",
+      "freshness_source": null,
+      "gap_owner": null,
+      "gate_ids": [],
+      "generator": "migration owner",
+      "limitations": [],
+      "may_support_a_ths6_claim": false,
+      "media_type": "text/markdown",
+      "observed_or_executed": false,
+      "path": "docs/migration/legacy-inventory.md",
+      "present": true,
+      "schema_path": null,
+      "sha256": "sha256:f39a41abeb23e43c5e9230fec29134117bb673d65cb9e6c53ce9287336c262e8",
+      "supported_claim_ids": [],
+      "test_only": false,
+      "title": "Legacy inventory",
+      "validation_result": null,
+      "work_package": "WP-01"
+    },
+    {
+      "contains_numeric_claim": false,
+      "evidence_id": "EV-WP01-005",
+      "evidence_type": "DOCUMENT_ONLY",
+      "freshness_source": null,
+      "gap_owner": null,
+      "gate_ids": [],
+      "generator": "migration owner",
+      "limitations": [],
+      "may_support_a_ths6_claim": false,
+      "media_type": "text/markdown",
+      "observed_or_executed": false,
+      "path": "docs/migration/legacy-reproducibility.md",
+      "present": true,
+      "schema_path": null,
+      "sha256": "sha256:7f7c29808fe585278c26aaa2fef520059979c7b889b43bb4c4a64a76084497ea",
+      "supported_claim_ids": [],
+      "test_only": false,
+      "title": "Legacy reproducibility notes",
+      "validation_result": null,
+      "work_package": "WP-01"
+    },
+    {
+      "contains_numeric_claim": false,
+      "evidence_id": "EV-WP02-001",
+      "evidence_type": "DOCUMENT_ONLY",
+      "freshness_source": null,
+      "gap_owner": "WP-25 evidence owner",
+      "gate_ids": [],
+      "generator": "WP-02 author",
+      "limitations": [
+        "a preliminary WP-local note predating this pack"
+      ],
+      "may_support_a_ths6_claim": false,
+      "media_type": "text/markdown",
+      "observed_or_executed": false,
+      "path": "docs/ths6/wp02-foundation-evidence.md",
+      "present": true,
+      "schema_path": null,
+      "sha256": "sha256:d28f17094c8c80b941f73eea7eb28904a5d47d278567e6bd662b1ad836da69b6",
+      "supported_claim_ids": [],
+      "test_only": false,
+      "title": "Preliminary WP-02 foundation evidence note (WP-local, not part of the final pack)",
+      "validation_result": null,
+      "work_package": "WP-02"
+    },
+    {
+      "contains_numeric_claim": false,
+      "evidence_id": "EV-WP02-002",
+      "evidence_type": "DOCUMENT_ONLY",
+      "freshness_source": null,
+      "gap_owner": null,
+      "gate_ids": [],
+      "generator": "architecture owner",
+      "limitations": [],
+      "may_support_a_ths6_claim": false,
+      "media_type": "text/markdown",
+      "observed_or_executed": false,
+      "path": "docs/architecture/wp02-domain-and-db.md",
+      "present": true,
+      "schema_path": null,
+      "sha256": "sha256:c053b09fc769e77d5ed971d80b63e8f944e750f0df4f1cf5ea8ea5bab1ec9e8c",
+      "supported_claim_ids": [],
+      "test_only": false,
+      "title": "Domain model and database design",
+      "validation_result": null,
+      "work_package": "WP-02"
+    },
+    {
+      "contains_numeric_claim": false,
+      "evidence_id": "EV-WP02-003",
+      "evidence_type": "DOCUMENT_ONLY",
+      "freshness_source": null,
+      "gap_owner": null,
+      "gate_ids": [],
+      "generator": "architecture owner",
+      "limitations": [],
+      "may_support_a_ths6_claim": false,
+      "media_type": "text/markdown",
+      "observed_or_executed": false,
+      "path": "docs/architecture/wp02-er-diagram.md",
+      "present": true,
+      "schema_path": null,
+      "sha256": "sha256:f8d9964c7acf9b065e0b0be13e1f4d6240cb6ee905f828b7741f1dda3bb61d72",
+      "supported_claim_ids": [],
+      "test_only": false,
+      "title": "Entity relationship diagram",
+      "validation_result": null,
+      "work_package": "WP-02"
+    },
+    {
+      "contains_numeric_claim": false,
+      "evidence_id": "EV-WP03-001",
+      "evidence_type": "DOCUMENT_ONLY",
+      "freshness_source": null,
+      "gap_owner": "WP-25 evidence owner",
+      "gate_ids": [],
+      "generator": "WP-03 author",
+      "limitations": [
+        "a preliminary WP-local note predating this pack"
+      ],
+      "may_support_a_ths6_claim": false,
+      "media_type": "text/markdown",
+      "observed_or_executed": false,
+      "path": "docs/ths6/wp03-release-evidence.md",
+      "present": true,
+      "schema_path": null,
+      "sha256": "sha256:32b59c3dc3a99d91a4ef285b5adf46480f7d6f28c782dc9e0092ec1c0b19be21",
+      "supported_claim_ids": [
+        "THS6-CLAIM-005"
+      ],
+      "test_only": false,
+      "title": "Preliminary WP-03 release evidence note (WP-local, not part of the final pack)",
+      "validation_result": null,
+      "work_package": "WP-03"
+    },
+    {
+      "contains_numeric_claim": false,
+      "evidence_id": "EV-WP03-002",
+      "evidence_type": "DOCUMENT_ONLY",
+      "freshness_source": null,
+      "gap_owner": null,
+      "gate_ids": [
+        "GATE-F"
+      ],
+      "generator": "architecture owner",
+      "limitations": [],
+      "may_support_a_ths6_claim": false,
+      "media_type": "text/markdown",
+      "observed_or_executed": false,
+      "path": "docs/architecture/wp03-release-registry.md",
+      "present": true,
+      "schema_path": null,
+      "sha256": "sha256:2e5e5bba006827a46871464ceba5aacbc763e7a86787864356eb897453480170",
+      "supported_claim_ids": [
+        "THS6-CLAIM-005"
+      ],
+      "test_only": false,
+      "title": "Release registry design",
+      "validation_result": null,
+      "work_package": "WP-03"
+    },
+    {
+      "contains_numeric_claim": false,
+      "evidence_id": "EV-WP03-003",
+      "evidence_type": "DOCUMENT_ONLY",
+      "freshness_source": null,
+      "gap_owner": "release approver",
+      "gate_ids": [],
+      "generator": "pgx-release",
+      "limitations": [
+        "a shape, not an instance; no release is active"
+      ],
+      "may_support_a_ths6_claim": false,
+      "media_type": "application/json",
+      "observed_or_executed": false,
+      "path": "schemas/release-manifest.schema.json",
+      "present": true,
+      "schema_path": null,
+      "sha256": "sha256:5b4c969f238fe94288aff55560ed0284054047fbdfcf60ca01035c33c4bf7424",
+      "supported_claim_ids": [
+        "THS6-CLAIM-005"
+      ],
+      "test_only": false,
+      "title": "Release manifest schema",
+      "validation_result": null,
+      "work_package": "WP-03"
+    },
+    {
+      "contains_numeric_claim": false,
+      "evidence_id": "EV-WP03-004",
+      "evidence_type": "DOCUMENT_ONLY",
+      "freshness_source": null,
+      "gap_owner": null,
+      "gate_ids": [],
+      "generator": "WP-03 author",
+      "limitations": [],
+      "may_support_a_ths6_claim": false,
+      "media_type": "text/markdown",
+      "observed_or_executed": false,
+      "path": "docs/handoffs/wp03-open-items.md",
+      "present": true,
+      "schema_path": null,
+      "sha256": "sha256:c3bfd2c434cb59a5fefe33f0954554ee47e839ba78c3eb47d84c0462eae7f5e5",
+      "supported_claim_ids": [],
+      "test_only": false,
+      "title": "WP-03 open items",
+      "validation_result": null,
+      "work_package": "WP-03"
+    },
+    {
+      "contains_numeric_claim": false,
+      "evidence_id": "EV-WP04-001",
+      "evidence_type": "DOCUMENT_ONLY",
+      "freshness_source": null,
+      "gap_owner": "WP-25 evidence owner",
+      "gate_ids": [],
+      "generator": "WP-04 author",
+      "limitations": [
+        "a preliminary WP-local note predating this pack"
+      ],
+      "may_support_a_ths6_claim": false,
+      "media_type": "text/markdown",
+      "observed_or_executed": false,
+      "path": "docs/ths6/wp04-ingestion-evidence.md",
+      "present": true,
+      "schema_path": null,
+      "sha256": "sha256:91ef136e9bcfaa828b6e611ebc20e45f117f34944536af66ca9b7428b4aabe38",
+      "supported_claim_ids": [],
+      "test_only": false,
+      "title": "Preliminary WP-04 ingestion evidence note (WP-local, not part of the final pack)",
+      "validation_result": null,
+      "work_package": "WP-04"
+    },
+    {
+      "contains_numeric_claim": true,
+      "evidence_id": "EV-WP04-002",
+      "evidence_type": "REAL_EXECUTED",
+      "freshness_source": null,
+      "gap_owner": "data owner",
+      "gate_ids": [
+        "GATE-A"
+      ],
+      "generator": "pgx-ingest-clinpgx",
+      "limitations": [
+        "the snapshot is quarantined and incomplete"
+      ],
+      "may_support_a_ths6_claim": true,
+      "media_type": "application/json",
+      "observed_or_executed": true,
+      "path": "data/raw/clinpgx-legacy-v2/PGX-DATA-20260830-900/manifest.json",
+      "present": true,
+      "schema_path": "schemas/raw-snapshot-manifest.schema.json",
+      "sha256": "sha256:ed83b3eb456cad35ffd5b4127593b67abd87a1e0188c741a9d02eecfdf2abf65",
+      "supported_claim_ids": [
+        "THS6-CLAIM-019"
+      ],
+      "test_only": false,
+      "title": "Raw ClinPGx snapshot manifest",
+      "validation_result": "VALID",
+      "work_package": "WP-04"
+    },
+    {
+      "contains_numeric_claim": false,
+      "evidence_id": "EV-WP04-003",
+      "evidence_type": "DOCUMENT_ONLY",
+      "freshness_source": null,
+      "gap_owner": null,
+      "gate_ids": [],
+      "generator": "pgx-ingest-clinpgx",
+      "limitations": [],
+      "may_support_a_ths6_claim": false,
+      "media_type": "application/json",
+      "observed_or_executed": false,
+      "path": "schemas/raw-snapshot-manifest.schema.json",
+      "present": true,
+      "schema_path": null,
+      "sha256": "sha256:ad62d3a665d4107a7c268146b62b0ee59f58d3a9f7ea25426407524792c49fd0",
+      "supported_claim_ids": [],
+      "test_only": false,
+      "title": "Raw snapshot manifest schema",
+      "validation_result": null,
+      "work_package": "WP-04"
+    },
+    {
+      "contains_numeric_claim": false,
+      "evidence_id": "EV-WP04-004",
+      "evidence_type": "DOCUMENT_ONLY",
+      "freshness_source": null,
+      "gap_owner": null,
+      "gate_ids": [],
+      "generator": "architecture owner",
+      "limitations": [],
+      "may_support_a_ths6_claim": false,
+      "media_type": "text/markdown",
+      "observed_or_executed": false,
+      "path": "docs/architecture/wp04-ingestion.md",
+      "present": true,
+      "schema_path": null,
+      "sha256": "sha256:ef9e128be5894c62568e9f9edaab9cd4eb34ce8a1ebaa132c07405e6bb297889",
+      "supported_claim_ids": [],
+      "test_only": false,
+      "title": "Ingestion architecture",
+      "validation_result": null,
+      "work_package": "WP-04"
+    },
+    {
+      "contains_numeric_claim": false,
+      "evidence_id": "EV-WP05-001",
+      "evidence_type": "IMPLEMENTATION_TEST",
+      "freshness_source": null,
+      "gap_owner": "scientific source approver",
+      "gate_ids": [],
+      "generator": "WP-05 author",
+      "limitations": [
+        "records schema and policy checks, not approvals"
+      ],
+      "may_support_a_ths6_claim": false,
+      "media_type": "text/markdown",
+      "observed_or_executed": false,
+      "path": "docs/evidence/wp05-validation.md",
+      "present": true,
+      "schema_path": null,
+      "sha256": "sha256:56cbbfd95e9994095f105008658e64f81b4f2f6dc2c1c1f7be4fa2d3d187169f",
+      "supported_claim_ids": [],
+      "test_only": false,
+      "title": "WP-05 source policy validation evidence",
+      "validation_result": null,
+      "work_package": "WP-05"
+    },
+    {
+      "contains_numeric_claim": true,
+      "evidence_id": "EV-WP05-002",
+      "evidence_type": "SCIENTIFIC_PENDING",
+      "freshness_source": null,
+      "gap_owner": "scientific source approver",
+      "gate_ids": [
+        "GATE-A"
+      ],
+      "generator": "pgx-source-policy",
+      "limitations": [
+        "every registered source is still PENDING_REVIEW; none is approved"
+      ],
+      "may_support_a_ths6_claim": false,
+      "media_type": "application/json",
+      "observed_or_executed": false,
+      "path": "config/scientific-sources.json",
+      "present": true,
+      "schema_path": "schemas/scientific-source-registry.schema.json",
+      "sha256": "sha256:1765ef403cf704aa1af4f5709d79c95bc559ca3079a2b6daaffcd2fd0ab9c574",
+      "supported_claim_ids": [
+        "THS6-CLAIM-018"
+      ],
+      "test_only": false,
+      "title": "Scientific source registry",
+      "validation_result": "VALID",
+      "work_package": "WP-05"
+    },
+    {
+      "contains_numeric_claim": false,
+      "evidence_id": "EV-WP05-003",
+      "evidence_type": "DOCUMENT_ONLY",
+      "freshness_source": null,
+      "gap_owner": null,
+      "gate_ids": [],
+      "generator": "pgx-source-policy",
+      "limitations": [],
+      "may_support_a_ths6_claim": false,
+      "media_type": "application/json",
+      "observed_or_executed": false,
+      "path": "schemas/scientific-source-registry.schema.json",
+      "present": true,
+      "schema_path": null,
+      "sha256": "sha256:8d73ee92391781ddddbd3f688b158b4927235101e2da0dc0c9bc002fa3bea6ae",
+      "supported_claim_ids": [],
+      "test_only": false,
+      "title": "Source registry schema",
+      "validation_result": null,
+      "work_package": "WP-05"
+    },
+    {
+      "contains_numeric_claim": false,
+      "evidence_id": "EV-WP05-004",
+      "evidence_type": "DOCUMENT_ONLY",
+      "freshness_source": null,
+      "gap_owner": null,
+      "gate_ids": [],
+      "generator": "scientific owner",
+      "limitations": [],
+      "may_support_a_ths6_claim": false,
+      "media_type": "text/markdown",
+      "observed_or_executed": false,
+      "path": "docs/scientific/source-strategy.md",
+      "present": true,
+      "schema_path": null,
+      "sha256": "sha256:49133e2ade53314e8275324f9c3fccd772d4d361a82d913d6e094baef8a5e3ce",
+      "supported_claim_ids": [],
+      "test_only": false,
+      "title": "Source strategy",
+      "validation_result": null,
+      "work_package": "WP-05"
+    },
+    {
+      "contains_numeric_claim": false,
+      "evidence_id": "EV-WP05-005",
+      "evidence_type": "HUMAN_PENDING",
+      "freshness_source": null,
+      "gap_owner": "scientific source approver",
+      "gate_ids": [
+        "GATE-A"
+      ],
+      "generator": "scientific owner",
+      "limitations": [
+        "a checklist nobody has completed for any source"
+      ],
+      "may_support_a_ths6_claim": false,
+      "media_type": "text/markdown",
+      "observed_or_executed": false,
+      "path": "docs/scientific/source-review-checklist.md",
+      "present": true,
+      "schema_path": null,
+      "sha256": "sha256:05d8087237367fbaf7e4b2cf4cf07664ede6a5c94d26bb3e3c6b3d5b5dbbd2f1",
+      "supported_claim_ids": [],
+      "test_only": false,
+      "title": "Source review checklist",
+      "validation_result": null,
+      "work_package": "WP-05"
+    },
+    {
+      "contains_numeric_claim": false,
+      "evidence_id": "EV-WP06-001",
+      "evidence_type": "IMPLEMENTATION_TEST",
+      "freshness_source": null,
+      "gap_owner": "data owner",
+      "gate_ids": [],
+      "generator": "WP-06 author",
+      "limitations": [
+        "verifies the build machinery, not the corpus"
+      ],
+      "may_support_a_ths6_claim": false,
+      "media_type": "text/markdown",
+      "observed_or_executed": false,
+      "path": "docs/evidence/wp06-snapshot-verification.md",
+      "present": true,
+      "schema_path": null,
+      "sha256": "sha256:a646a9e86929e255fc0281483ba84a6645cf05367a8cc633318e566882c8825f",
+      "supported_claim_ids": [],
+      "test_only": false,
+      "title": "WP-06 snapshot verification evidence",
+      "validation_result": null,
+      "work_package": "WP-06"
+    },
+    {
+      "contains_numeric_claim": true,
+      "evidence_id": "EV-WP06-002",
+      "evidence_type": "SCIENTIFIC_PENDING",
+      "freshness_source": null,
+      "gap_owner": "data owner",
+      "gate_ids": [
+        "GATE-A"
+      ],
+      "generator": "pgx-dataset",
+      "limitations": [
+        "state is BUILDING and the dataset is not published"
+      ],
+      "may_support_a_ths6_claim": false,
+      "media_type": "application/json",
+      "observed_or_executed": false,
+      "path": "data/canonical/PGX-DATA-20260830-900/manifest.json",
+      "present": true,
+      "schema_path": "schemas/canonical-dataset-manifest.schema.json",
+      "sha256": "sha256:e798f634c653ca0d1b9ae41b6c0b7b9e16d29c195a587b34825a7f038bd95350",
+      "supported_claim_ids": [
+        "THS6-CLAIM-019"
+      ],
+      "test_only": false,
+      "title": "Canonical dataset manifest",
+      "validation_result": "VALID",
+      "work_package": "WP-06"
+    },
+    {
+      "contains_numeric_claim": false,
+      "evidence_id": "EV-WP06-003",
+      "evidence_type": "DOCUMENT_ONLY",
+      "freshness_source": null,
+      "gap_owner": null,
+      "gate_ids": [],
+      "generator": "pgx-dataset",
+      "limitations": [],
+      "may_support_a_ths6_claim": false,
+      "media_type": "application/json",
+      "observed_or_executed": false,
+      "path": "schemas/canonical-dataset-manifest.schema.json",
+      "present": true,
+      "schema_path": null,
+      "sha256": "sha256:e23810217cbce474e0542f811f20032b9603b0df947ae6addb8264b3d66d1ee6",
+      "supported_claim_ids": [],
+      "test_only": false,
+      "title": "Canonical dataset manifest schema",
+      "validation_result": null,
+      "work_package": "WP-06"
+    },
+    {
+      "contains_numeric_claim": true,
+      "evidence_id": "EV-WP06-004",
+      "evidence_type": "REAL_EXECUTED",
+      "freshness_source": null,
+      "gap_owner": "data owner",
+      "gate_ids": [],
+      "generator": "pgx-dataset",
+      "limitations": [
+        "identity allocation only; says nothing about content approval"
+      ],
+      "may_support_a_ths6_claim": true,
+      "media_type": "application/json",
+      "observed_or_executed": true,
+      "path": "data/canonical/PGX-DATA-20260830-900/identity-allocation.json",
+      "present": true,
+      "schema_path": null,
+      "sha256": "sha256:07864c3508d2c58276f95c8903ba537d927b3cedc15a7f317cbf536e6cdc0428",
+      "supported_claim_ids": [],
+      "test_only": false,
+      "title": "Identity allocation record",
+      "validation_result": null,
+      "work_package": "WP-06"
+    },
+    {
+      "contains_numeric_claim": false,
+      "evidence_id": "EV-WP07-001",
+      "evidence_type": "IMPLEMENTATION_TEST",
+      "freshness_source": null,
+      "gap_owner": "data owner",
+      "gate_ids": [],
+      "generator": "WP-07 author",
+      "limitations": [
+        "checks the quality machinery, not scientific fitness"
+      ],
+      "may_support_a_ths6_claim": false,
+      "media_type": "text/markdown",
+      "observed_or_executed": false,
+      "path": "docs/evidence/wp07-dq-validation.md",
+      "present": true,
+      "schema_path": null,
+      "sha256": "sha256:0bfecd4b1d018ad5936aa5c629865e1cfde503a45ca96526c5ef8f5e1cd9ab2b",
+      "supported_claim_ids": [],
+      "test_only": false,
+      "title": "WP-07 data quality validation evidence",
+      "validation_result": null,
+      "work_package": "WP-07"
+    },
+    {
+      "contains_numeric_claim": true,
+      "evidence_id": "EV-WP07-002",
+      "evidence_type": "REAL_EXECUTED",
+      "freshness_source": null,
+      "gap_owner": "data owner",
+      "gate_ids": [
+        "GATE-A"
+      ],
+      "generator": "pgx-dataset",
+      "limitations": [
+        "computed over a quarantined snapshot"
+      ],
+      "may_support_a_ths6_claim": true,
+      "media_type": "application/json",
+      "observed_or_executed": true,
+      "path": "data/canonical/PGX-DATA-20260830-900/dq-report.json",
+      "present": true,
+      "schema_path": "schemas/data-quality-report.schema.json",
+      "sha256": "sha256:1902e81cb8ef14e517fb8eebbfa31ed469c77b4e2d0ae6959deeecb07630dae1",
+      "supported_claim_ids": [],
+      "test_only": false,
+      "title": "Data quality report",
+      "validation_result": "VALID",
+      "work_package": "WP-07"
+    },
+    {
+      "contains_numeric_claim": false,
+      "evidence_id": "EV-WP07-003",
+      "evidence_type": "DOCUMENT_ONLY",
+      "freshness_source": null,
+      "gap_owner": null,
+      "gate_ids": [],
+      "generator": "pgx-dataset",
+      "limitations": [],
+      "may_support_a_ths6_claim": false,
+      "media_type": "application/json",
+      "observed_or_executed": false,
+      "path": "schemas/data-quality-report.schema.json",
+      "present": true,
+      "schema_path": null,
+      "sha256": "sha256:a9f51f8f16399cc091a4b22e594a6a3c1e36fb33d5cb230ed10541bd982bca00",
+      "supported_claim_ids": [],
+      "test_only": false,
+      "title": "Data quality report schema",
+      "validation_result": null,
+      "work_package": "WP-07"
+    },
+    {
+      "contains_numeric_claim": false,
+      "evidence_id": "EV-WP08-001",
+      "evidence_type": "IMPLEMENTATION_TEST",
+      "freshness_source": null,
+      "gap_owner": "curation lead",
+      "gate_ids": [],
+      "generator": "WP-08 author",
+      "limitations": [
+        "traces the machinery over legacy content"
+      ],
+      "may_support_a_ths6_claim": false,
+      "media_type": "text/markdown",
+      "observed_or_executed": false,
+      "path": "docs/evidence/wp08-trace-validation.md",
+      "present": true,
+      "schema_path": null,
+      "sha256": "sha256:09b999b174e148e9b73d9163ddaa5c0b4381ed85e1b898a3f27a97bb8e76b144",
+      "supported_claim_ids": [
+        "THS6-CLAIM-003"
+      ],
+      "test_only": false,
+      "title": "WP-08 trace validation evidence",
+      "validation_result": null,
+      "work_package": "WP-08"
+    },
+    {
+      "contains_numeric_claim": true,
+      "evidence_id": "EV-WP08-002",
+      "evidence_type": "SCIENTIFIC_PENDING",
+      "freshness_source": null,
+      "gap_owner": "curation lead",
+      "gate_ids": [
+        "GATE-A"
+      ],
+      "generator": "pgx-evidence",
+      "limitations": [
+        "labelled QUARANTINED, NOT_CURATED and NOT_PUBLICATION_ELIGIBLE; not approved for rules"
+      ],
+      "may_support_a_ths6_claim": false,
+      "media_type": "application/json",
+      "observed_or_executed": false,
+      "path": "data/evidence/PGX-DATA-20260830-900/manifest.json",
+      "present": true,
+      "schema_path": "schemas/evidence-build-manifest.schema.json",
+      "sha256": "sha256:9754b59f8f1ac7e8e1bc0b499aecab0fa629ee40d3eca4890e475b9faf2a86a4",
+      "supported_claim_ids": [
+        "THS6-CLAIM-003"
+      ],
+      "test_only": false,
+      "title": "Evidence build manifest",
+      "validation_result": "VALID",
+      "work_package": "WP-08"
+    },
+    {
+      "contains_numeric_claim": false,
+      "evidence_id": "EV-WP08-003",
+      "evidence_type": "DOCUMENT_ONLY",
+      "freshness_source": null,
+      "gap_owner": null,
+      "gate_ids": [],
+      "generator": "pgx-evidence",
+      "limitations": [],
+      "may_support_a_ths6_claim": false,
+      "media_type": "application/json",
+      "observed_or_executed": false,
+      "path": "schemas/evidence-build-manifest.schema.json",
+      "present": true,
+      "schema_path": null,
+      "sha256": "sha256:c1bb2b63683193b99d687bf770e78ee607e5cd24a964f42d8cd3dc17fbb027af",
+      "supported_claim_ids": [],
+      "test_only": false,
+      "title": "Evidence build manifest schema",
+      "validation_result": null,
+      "work_package": "WP-08"
+    },
+    {
+      "contains_numeric_claim": false,
+      "evidence_id": "EV-WP08-004",
+      "evidence_type": "DOCUMENT_ONLY",
+      "freshness_source": null,
+      "gap_owner": null,
+      "gate_ids": [],
+      "generator": "data owner",
+      "limitations": [],
+      "may_support_a_ths6_claim": false,
+      "media_type": "text/markdown",
+      "observed_or_executed": false,
+      "path": "docs/data/evidence-provenance-chain.md",
+      "present": true,
+      "schema_path": null,
+      "sha256": "sha256:b7eed11f79c05dc5903f4835e7bb1204912dfee4357f5f928c82e714ece0540a",
+      "supported_claim_ids": [
+        "THS6-CLAIM-003"
+      ],
+      "test_only": false,
+      "title": "Evidence provenance chain policy",
+      "validation_result": null,
+      "work_package": "WP-08"
+    },
+    {
+      "contains_numeric_claim": false,
+      "evidence_id": "EV-WP09-001",
+      "evidence_type": "IMPLEMENTATION_TEST",
+      "freshness_source": null,
+      "gap_owner": "curation lead",
+      "gate_ids": [],
+      "generator": "WP-09 author",
+      "limitations": [
+        "validates the protocol document's structure"
+      ],
+      "may_support_a_ths6_claim": false,
+      "media_type": "text/markdown",
+      "observed_or_executed": false,
+      "path": "docs/evidence/wp09-protocol-validation.md",
+      "present": true,
+      "schema_path": null,
+      "sha256": "sha256:f48c7cca83754d641fe10119a080206dc4caf58182b6a12cda24bd0c8d37c2b6",
+      "supported_claim_ids": [],
+      "test_only": false,
+      "title": "WP-09 protocol validation evidence",
+      "validation_result": null,
+      "work_package": "WP-09"
+    },
+    {
+      "contains_numeric_claim": false,
+      "evidence_id": "EV-WP09-002",
+      "evidence_type": "HUMAN_PENDING",
+      "freshness_source": null,
+      "gap_owner": "expert reviewer",
+      "gate_ids": [
+        "GATE-B"
+      ],
+      "generator": "curation lead",
+      "limitations": [
+        "awaiting expert review; unapproved"
+      ],
+      "may_support_a_ths6_claim": false,
+      "media_type": "text/markdown",
+      "observed_or_executed": false,
+      "path": "docs/scientific/curation-protocol-v1.md",
+      "present": true,
+      "schema_path": null,
+      "sha256": "sha256:99043601f7b18996d11ffe2a9a7534d1022277ab2f727b442dd6892cb673ca9c",
+      "supported_claim_ids": [],
+      "test_only": false,
+      "title": "Curation protocol v1",
+      "validation_result": null,
+      "work_package": "WP-09"
+    },
+    {
+      "contains_numeric_claim": true,
+      "evidence_id": "EV-WP09-003",
+      "evidence_type": "HUMAN_PENDING",
+      "freshness_source": null,
+      "gap_owner": "curation lead",
+      "gate_ids": [
+        "GATE-B"
+      ],
+      "generator": "pgx-curation-protocol",
+      "limitations": [
+        "templates only; no curator has completed an exercise"
+      ],
+      "may_support_a_ths6_claim": false,
+      "media_type": "application/json",
+      "observed_or_executed": false,
+      "path": "data/curation/protocol-v1/exercises/status.json",
+      "present": true,
+      "schema_path": null,
+      "sha256": "sha256:db0fcc7d9bb5408c891d4a1e283ac1efe240a738b6fa19f9d266f97aa8761b09",
+      "supported_claim_ids": [],
+      "test_only": false,
+      "title": "Inter-curator exercise status",
+      "validation_result": null,
+      "work_package": "WP-09"
+    },
+    {
+      "contains_numeric_claim": false,
+      "evidence_id": "EV-WP09-004",
+      "evidence_type": "DOCUMENT_ONLY",
+      "freshness_source": null,
+      "gap_owner": null,
+      "gate_ids": [],
+      "generator": "pgx-curation-protocol",
+      "limitations": [],
+      "may_support_a_ths6_claim": false,
+      "media_type": "application/json",
+      "observed_or_executed": false,
+      "path": "schemas/curation-protocol.schema.json",
+      "present": true,
+      "schema_path": null,
+      "sha256": "sha256:709e12dbb5e5350158712846d329c9799c54a410de7454c9c3441090540db604",
+      "supported_claim_ids": [],
+      "test_only": false,
+      "title": "Curation protocol schema",
+      "validation_result": null,
+      "work_package": "WP-09"
+    },
+    {
+      "contains_numeric_claim": false,
+      "evidence_id": "EV-WP09-005",
+      "evidence_type": "DOCUMENT_ONLY",
+      "freshness_source": null,
+      "gap_owner": null,
+      "gate_ids": [
+        "GATE-B"
+      ],
+      "generator": "curation lead",
+      "limitations": [],
+      "may_support_a_ths6_claim": false,
+      "media_type": "text/markdown",
+      "observed_or_executed": false,
+      "path": "docs/scientific/curation-approval-gates.md",
+      "present": true,
+      "schema_path": null,
+      "sha256": "sha256:cf0b2e4b84318f1e3dedb4438913d336c97ba798be9e9ec2fafe5524628f6191",
+      "supported_claim_ids": [],
+      "test_only": false,
+      "title": "Curation approval gates",
+      "validation_result": null,
+      "work_package": "WP-09"
+    },
+    {
+      "contains_numeric_claim": false,
+      "evidence_id": "EV-WP10-001",
+      "evidence_type": "IMPLEMENTATION_TEST",
+      "freshness_source": null,
+      "gap_owner": "curation lead",
+      "gate_ids": [],
+      "generator": "WP-10 author",
+      "limitations": [
+        "schema conformance only"
+      ],
+      "may_support_a_ths6_claim": false,
+      "media_type": "text/markdown",
+      "observed_or_executed": false,
+      "path": "docs/evidence/wp10-schema-validation.md",
+      "present": true,
+      "schema_path": null,
+      "sha256": "sha256:a2355797b8ff71b0ffd7ad4a48d3b98a73cad2d33819b96ad43b53f1bb7dd201",
+      "supported_claim_ids": [],
+      "test_only": false,
+      "title": "WP-10 schema validation evidence",
+      "validation_result": null,
+      "work_package": "WP-10"
+    },
+    {
+      "contains_numeric_claim": false,
+      "evidence_id": "EV-WP10-002",
+      "evidence_type": "IMPLEMENTATION_TEST",
+      "freshness_source": null,
+      "gap_owner": "curation lead",
+      "gate_ids": [],
+      "generator": "WP-10 author",
+      "limitations": [
+        "exercises the workflow with fixtures"
+      ],
+      "may_support_a_ths6_claim": false,
+      "media_type": "text/markdown",
+      "observed_or_executed": false,
+      "path": "docs/evidence/wp10-workflow-validation.md",
+      "present": true,
+      "schema_path": null,
+      "sha256": "sha256:221e16e7ba3ef3e05694a9393c6a2c0a5bf410558827b9ace34e2f1ef7e190a6",
+      "supported_claim_ids": [],
+      "test_only": false,
+      "title": "WP-10 workflow validation evidence",
+      "validation_result": null,
+      "work_package": "WP-10"
+    },
+    {
+      "contains_numeric_claim": true,
+      "evidence_id": "EV-WP10-003",
+      "evidence_type": "REAL_EXECUTED",
+      "freshness_source": null,
+      "gap_owner": "curation lead",
+      "gate_ids": [
+        "GATE-B"
+      ],
+      "generator": "pgx-normalize",
+      "limitations": [
+        "allocates work items; curates nothing"
+      ],
+      "may_support_a_ths6_claim": true,
+      "media_type": "application/json",
+      "observed_or_executed": true,
+      "path": "data/migration/wp10/legacy-work-item-allocation.json",
+      "present": true,
+      "schema_path": null,
+      "sha256": "sha256:508fff3bf1d601f77e1733952d5a6071eb1ce2440460d60e3950ac56064c44d4",
+      "supported_claim_ids": [],
+      "test_only": false,
+      "title": "Legacy work item allocation",
+      "validation_result": null,
+      "work_package": "WP-10"
+    },
+    {
+      "contains_numeric_claim": true,
+      "evidence_id": "EV-WP10-004",
+      "evidence_type": "REAL_EXECUTED",
+      "freshness_source": null,
+      "gap_owner": null,
+      "gate_ids": [],
+      "generator": "pgx-normalize",
+      "limitations": [],
+      "may_support_a_ths6_claim": true,
+      "media_type": "application/json",
+      "observed_or_executed": true,
+      "path": "data/migration/wp10/manifest.json",
+      "present": true,
+      "schema_path": null,
+      "sha256": "sha256:38737bdfe8fa805eec7980b2de0ddcae0ced4ec433d8f95e1e9083ced4db3eaf",
+      "supported_claim_ids": [],
+      "test_only": false,
+      "title": "WP-10 migration manifest",
+      "validation_result": null,
+      "work_package": "WP-10"
+    },
+    {
+      "contains_numeric_claim": false,
+      "evidence_id": "EV-WP10-005",
+      "evidence_type": "DOCUMENT_ONLY",
+      "freshness_source": null,
+      "gap_owner": null,
+      "gate_ids": [],
+      "generator": "pgx-normalize",
+      "limitations": [],
+      "may_support_a_ths6_claim": false,
+      "media_type": "application/json",
+      "observed_or_executed": false,
+      "path": "schemas/curation-work-item.schema.json",
+      "present": true,
+      "schema_path": null,
+      "sha256": "sha256:4861d88d4374ab5566150ad26ce5b51404f9c0897c6481645e0119553fc3dc8a",
+      "supported_claim_ids": [],
+      "test_only": false,
+      "title": "Curation work item schema",
+      "validation_result": null,
+      "work_package": "WP-10"
+    },
+    {
+      "contains_numeric_claim": true,
+      "evidence_id": "EV-WP11-001",
+      "evidence_type": "SCIENTIFIC_PENDING",
+      "freshness_source": null,
+      "gap_owner": "curation lead",
+      "gate_ids": [
+        "GATE-A",
+        "GATE-B"
+      ],
+      "generator": "pgx-rules gate-status",
+      "limitations": [
+        "reports zero curated, validated, frozen and executable rules"
+      ],
+      "may_support_a_ths6_claim": false,
+      "media_type": "application/json",
+      "observed_or_executed": false,
+      "path": "data/rulesets/wp11-real-gate-status.json",
+      "present": true,
+      "schema_path": "schemas/wp11-gate-status.schema.json",
+      "sha256": "sha256:df22eac65333272753dc8cc591ddecfaadf4bc9ba6787bea6a01645833ba8981",
+      "supported_claim_ids": [
+        "THS6-CLAIM-020"
+      ],
+      "test_only": false,
+      "title": "WP-11 real gate status",
+      "validation_result": "VALID",
+      "work_package": "WP-11"
+    },
+    {
+      "contains_numeric_claim": true,
+      "evidence_id": "EV-WP11-002",
+      "evidence_type": "REAL_EXECUTED",
+      "freshness_source": null,
+      "gap_owner": "curation lead",
+      "gate_ids": [
+        "GATE-B"
+      ],
+      "generator": "pgx-rules build",
+      "limitations": [
+        "the build ran and produced nothing, because no rule is approved"
+      ],
+      "may_support_a_ths6_claim": true,
+      "media_type": "application/json",
+      "observed_or_executed": true,
+      "path": "data/rulesets/wp11-real-build-attempt.json",
+      "present": true,
+      "schema_path": null,
+      "sha256": "sha256:5919f76199aa753b4ed8af3395fe32c398fe861efda553264edd0ddf905442dd",
+      "supported_claim_ids": [],
+      "test_only": false,
+      "title": "WP-11 real ruleset build attempt",
+      "validation_result": null,
+      "work_package": "WP-11"
+    },
+    {
+      "contains_numeric_claim": true,
+      "evidence_id": "EV-WP11-003",
+      "evidence_type": "REAL_EXECUTED",
+      "freshness_source": null,
+      "gap_owner": "curation lead",
+      "gate_ids": [
+        "GATE-B"
+      ],
+      "generator": "pgx-normalize",
+      "limitations": [
+        "candidates are not rules and carry no approval"
+      ],
+      "may_support_a_ths6_claim": true,
+      "media_type": "application/json",
+      "observed_or_executed": true,
+      "path": "data/migration/wp11/legacy-rule-candidate-inventory.json",
+      "present": true,
+      "schema_path": "schemas/legacy-rule-candidate-inventory.schema.json",
+      "sha256": "sha256:9fb7f449b19c4d958f4e69db60c528e2481565cf0dcfb4cdfd10bda3e407ff25",
+      "supported_claim_ids": [],
+      "test_only": false,
+      "title": "Legacy rule candidate inventory",
+      "validation_result": "VALID",
+      "work_package": "WP-11"
+    },
+    {
+      "contains_numeric_claim": false,
+      "evidence_id": "EV-WP11-004",
+      "evidence_type": "IMPLEMENTATION_TEST",
+      "freshness_source": null,
+      "gap_owner": "curation lead",
+      "gate_ids": [],
+      "generator": "WP-11 author",
+      "limitations": [
+        "schema conformance only"
+      ],
+      "may_support_a_ths6_claim": false,
+      "media_type": "text/markdown",
+      "observed_or_executed": false,
+      "path": "docs/evidence/wp11-schema-validation.md",
+      "present": true,
+      "schema_path": null,
+      "sha256": "sha256:195d82a5a90bd7e8d604c620e17fdeff9c89e961042fbf55f661f2c64c223cdb",
+      "supported_claim_ids": [],
+      "test_only": false,
+      "title": "WP-11 schema validation evidence",
+      "validation_result": null,
+      "work_package": "WP-11"
+    },
+    {
+      "contains_numeric_claim": false,
+      "evidence_id": "EV-WP11-005",
+      "evidence_type": "DOCUMENT_ONLY",
+      "freshness_source": null,
+      "gap_owner": null,
+      "gate_ids": [],
+      "generator": "pgx-rules",
+      "limitations": [],
+      "may_support_a_ths6_claim": false,
+      "media_type": "application/json",
+      "observed_or_executed": false,
+      "path": "schemas/wp11-gate-status.schema.json",
+      "present": true,
+      "schema_path": null,
+      "sha256": "sha256:05290f5915813b3876350292278bd88cceda0999468556fcc764bb1015b85a71",
+      "supported_claim_ids": [],
+      "test_only": false,
+      "title": "WP-11 gate status schema",
+      "validation_result": null,
+      "work_package": "WP-11"
+    },
+    {
+      "contains_numeric_claim": false,
+      "evidence_id": "EV-WP11-006",
+      "evidence_type": "DOCUMENT_ONLY",
+      "freshness_source": null,
+      "gap_owner": null,
+      "gate_ids": [
+        "GATE-B"
+      ],
+      "generator": "scientific owner",
+      "limitations": [],
+      "may_support_a_ths6_claim": false,
+      "media_type": "text/markdown",
+      "observed_or_executed": false,
+      "path": "docs/scientific/rule-authoring-and-approval.md",
+      "present": true,
+      "schema_path": null,
+      "sha256": "sha256:e76ffccaaad689cb7ba9a48613b7569fdd8c820ff00543080c7f2ad8eb5f1b56",
+      "supported_claim_ids": [],
+      "test_only": false,
+      "title": "Rule authoring and approval policy",
+      "validation_result": null,
+      "work_package": "WP-11"
+    },
+    {
+      "contains_numeric_claim": false,
+      "evidence_id": "EV-WP12-001",
+      "evidence_type": "IMPLEMENTATION_TEST",
+      "freshness_source": null,
+      "gap_owner": "safety owner",
+      "gate_ids": [
+        "GATE-C"
+      ],
+      "generator": "WP-12 author",
+      "limitations": [
+        "invariants proven over fixtures, not governed content"
+      ],
+      "may_support_a_ths6_claim": false,
+      "media_type": "text/markdown",
+      "observed_or_executed": false,
+      "path": "docs/evidence/wp12-phenotype-safety-invariants.md",
+      "present": true,
+      "schema_path": null,
+      "sha256": "sha256:87f2d80185257d1d526b2f997882a5a95aaf968440e707815d6ba592d435dadf",
+      "supported_claim_ids": [
+        "THS6-CLAIM-004"
+      ],
+      "test_only": false,
+      "title": "WP-12 phenotype safety invariants",
+      "validation_result": null,
+      "work_package": "WP-12"
+    },
+    {
+      "contains_numeric_claim": true,
+      "evidence_id": "EV-WP12-002",
+      "evidence_type": "REAL_EXECUTED",
+      "freshness_source": null,
+      "gap_owner": "scientific owner",
+      "gate_ids": [],
+      "generator": "pgx-phenotype",
+      "limitations": [
+        "compares against the legacy prototype"
+      ],
+      "may_support_a_ths6_claim": true,
+      "media_type": "application/json",
+      "observed_or_executed": true,
+      "path": "data/migration/wp12/phenotype-regression-report.json",
+      "present": true,
+      "schema_path": "schemas/phenotype-regression-report.schema.json",
+      "sha256": "sha256:a44e9144308ecbc4ccf576f8f428f120911fbc64ee3411de73f0a967776eb688",
+      "supported_claim_ids": [],
+      "test_only": false,
+      "title": "Phenotype regression report",
+      "validation_result": "VALID",
+      "work_package": "WP-12"
+    },
+    {
+      "contains_numeric_claim": false,
+      "evidence_id": "EV-WP12-003",
+      "evidence_type": "DOCUMENT_ONLY",
+      "freshness_source": null,
+      "gap_owner": null,
+      "gate_ids": [],
+      "generator": "migration owner",
+      "limitations": [],
+      "may_support_a_ths6_claim": false,
+      "media_type": "application/json",
+      "observed_or_executed": false,
+      "path": "data/migration/wp12/phenotype-regression-allowlist.json",
+      "present": true,
+      "schema_path": null,
+      "sha256": "sha256:8b6434b22996228d580337f90a343737ec1dee732c0b643ac28b294fdef8e9e3",
+      "supported_claim_ids": [],
+      "test_only": false,
+      "title": "Phenotype regression allowlist",
+      "validation_result": null,
+      "work_package": "WP-12"
+    },
+    {
+      "contains_numeric_claim": true,
+      "evidence_id": "EV-WP13-001",
+      "evidence_type": "SCIENTIFIC_PENDING",
+      "freshness_source": null,
+      "gap_owner": "curation lead",
+      "gate_ids": [
+        "GATE-C"
+      ],
+      "generator": "pgx-coverage gate-status",
+      "limitations": [
+        "zero real coverage manifests, executions and supported axes"
+      ],
+      "may_support_a_ths6_claim": false,
+      "media_type": "application/json",
+      "observed_or_executed": false,
+      "path": "data/coverage/wp13-real-gate-status.json",
+      "present": true,
+      "schema_path": "schemas/wp13-gate-status.schema.json",
+      "sha256": "sha256:8fd1fc764289bad6bafe21d30e1bdef861c260ab669035103bc28ef535750d23",
+      "supported_claim_ids": [
+        "THS6-CLAIM-021"
+      ],
+      "test_only": false,
+      "title": "WP-13 real gate status",
+      "validation_result": "VALID",
+      "work_package": "WP-13"
+    },
+    {
+      "contains_numeric_claim": false,
+      "evidence_id": "EV-WP13-002",
+      "evidence_type": "IMPLEMENTATION_TEST",
+      "freshness_source": null,
+      "gap_owner": "safety owner",
+      "gate_ids": [
+        "GATE-C"
+      ],
+      "generator": "WP-13 author",
+      "limitations": [
+        "a truth table proven over fixtures"
+      ],
+      "may_support_a_ths6_claim": false,
+      "media_type": "text/markdown",
+      "observed_or_executed": false,
+      "path": "docs/evidence/wp13-coverage-truth-table.md",
+      "present": true,
+      "schema_path": null,
+      "sha256": "sha256:8f274b305fc84655bc27220ad4dff375dbab139618d5791a5199f07abe51f61d",
+      "supported_claim_ids": [
+        "THS6-CLAIM-004",
+        "THS6-CLAIM-021"
+      ],
+      "test_only": false,
+      "title": "WP-13 coverage truth table",
+      "validation_result": null,
+      "work_package": "WP-13"
+    },
+    {
+      "contains_numeric_claim": false,
+      "evidence_id": "EV-WP13-003",
+      "evidence_type": "IMPLEMENTATION_TEST",
+      "freshness_source": null,
+      "gap_owner": "safety owner",
+      "gate_ids": [
+        "GATE-C"
+      ],
+      "generator": "WP-13 author",
+      "limitations": [
+        "invariants proven over fixtures"
+      ],
+      "may_support_a_ths6_claim": false,
+      "media_type": "text/markdown",
+      "observed_or_executed": false,
+      "path": "docs/evidence/wp13-safety-invariants.md",
+      "present": true,
+      "schema_path": null,
+      "sha256": "sha256:dcf1c787482f37b2f6db504c39d55aa3f20c5268ff12565beb6bda431ceae61d",
+      "supported_claim_ids": [
+        "THS6-CLAIM-004"
+      ],
+      "test_only": false,
+      "title": "WP-13 safety invariants",
+      "validation_result": null,
+      "work_package": "WP-13"
+    },
+    {
+      "contains_numeric_claim": true,
+      "evidence_id": "EV-WP13-004",
+      "evidence_type": "REAL_EXECUTED",
+      "freshness_source": null,
+      "gap_owner": "scientific owner",
+      "gate_ids": [],
+      "generator": "pgx-coverage",
+      "limitations": [
+        "compares against the legacy prototype"
+      ],
+      "may_support_a_ths6_claim": true,
+      "media_type": "application/json",
+      "observed_or_executed": true,
+      "path": "data/migration/wp13/coverage-regression-report.json",
+      "present": true,
+      "schema_path": "schemas/coverage-regression-report.schema.json",
+      "sha256": "sha256:ed9d50010afd0ced2a6ed932a51431a295531df942622589ca407c2b5c6c1995",
+      "supported_claim_ids": [],
+      "test_only": false,
+      "title": "Coverage regression report",
+      "validation_result": "VALID",
+      "work_package": "WP-13"
+    },
+    {
+      "contains_numeric_claim": false,
+      "evidence_id": "EV-WP13-005",
+      "evidence_type": "DOCUMENT_ONLY",
+      "freshness_source": null,
+      "gap_owner": null,
+      "gate_ids": [],
+      "generator": "pgx-coverage",
+      "limitations": [],
+      "may_support_a_ths6_claim": false,
+      "media_type": "application/json",
+      "observed_or_executed": false,
+      "path": "schemas/wp13-gate-status.schema.json",
+      "present": true,
+      "schema_path": null,
+      "sha256": "sha256:2a800e5e69f4264e5c491901b6453f28d4cec8c1c759f509651d01d12622f3b7",
+      "supported_claim_ids": [],
+      "test_only": false,
+      "title": "WP-13 gate status schema",
+      "validation_result": null,
+      "work_package": "WP-13"
+    },
+    {
+      "contains_numeric_claim": true,
+      "evidence_id": "EV-WP14-001",
+      "evidence_type": "SCIENTIFIC_PENDING",
+      "freshness_source": null,
+      "gap_owner": "curation lead",
+      "gate_ids": [
+        "GATE-C"
+      ],
+      "generator": "pgx-assess gate-status",
+      "limitations": [
+        "no assessment has been computed from governed content"
+      ],
+      "may_support_a_ths6_claim": false,
+      "media_type": "application/json",
+      "observed_or_executed": false,
+      "path": "data/assessments/wp14-real-gate-status.json",
+      "present": true,
+      "schema_path": "schemas/wp14-gate-status.schema.json",
+      "sha256": "sha256:0dc69c9a8885de9f51841d2b5e1b3c18b8cde66692bbf27faef0d7151b11883b",
+      "supported_claim_ids": [
+        "THS6-CLAIM-002"
+      ],
+      "test_only": false,
+      "title": "WP-14 real gate status",
+      "validation_result": "VALID",
+      "work_package": "WP-14"
+    },
+    {
+      "contains_numeric_claim": false,
+      "evidence_id": "EV-WP14-002",
+      "evidence_type": "IMPLEMENTATION_TEST",
+      "freshness_source": null,
+      "gap_owner": "release approver",
+      "gate_ids": [
+        "GATE-C"
+      ],
+      "generator": "WP-14 author",
+      "limitations": [
+        "determinism demonstrated over fixtures, not over a release"
+      ],
+      "may_support_a_ths6_claim": false,
+      "media_type": "text/markdown",
+      "observed_or_executed": false,
+      "path": "docs/evidence/wp14-determinism.md",
+      "present": true,
+      "schema_path": null,
+      "sha256": "sha256:17b0639bf8877f87ebae882cd88eed64dffd5ed22e5aa08eb5793ee494c1e661",
+      "supported_claim_ids": [
+        "THS6-CLAIM-002"
+      ],
+      "test_only": false,
+      "title": "WP-14 determinism evidence",
+      "validation_result": null,
+      "work_package": "WP-14"
+    },
+    {
+      "contains_numeric_claim": false,
+      "evidence_id": "EV-WP14-003",
+      "evidence_type": "IMPLEMENTATION_TEST",
+      "freshness_source": null,
+      "gap_owner": "safety owner",
+      "gate_ids": [
+        "GATE-C"
+      ],
+      "generator": "WP-14 author",
+      "limitations": [
+        "invariants proven over fixtures"
+      ],
+      "may_support_a_ths6_claim": false,
+      "media_type": "text/markdown",
+      "observed_or_executed": false,
+      "path": "docs/evidence/wp14-safety-invariants.md",
+      "present": true,
+      "schema_path": null,
+      "sha256": "sha256:e46dca77242f1fce80c0801fdabf401d929c3f462b40b6dd816573ba3d7583f6",
+      "supported_claim_ids": [
+        "THS6-CLAIM-004"
+      ],
+      "test_only": false,
+      "title": "WP-14 safety invariants",
+      "validation_result": null,
+      "work_package": "WP-14"
+    },
+    {
+      "contains_numeric_claim": true,
+      "evidence_id": "EV-WP14-004",
+      "evidence_type": "REAL_EXECUTED",
+      "freshness_source": null,
+      "gap_owner": "scientific owner",
+      "gate_ids": [],
+      "generator": "pgx-assess",
+      "limitations": [
+        "compares against the legacy prototype"
+      ],
+      "may_support_a_ths6_claim": true,
+      "media_type": "application/json",
+      "observed_or_executed": true,
+      "path": "data/migration/wp14/assessment-regression-report.json",
+      "present": true,
+      "schema_path": "schemas/assessment-regression-report.schema.json",
+      "sha256": "sha256:b206c95dbcd369f4738d413931e963638f8b075e36f428b0c6c2eb1151c87846",
+      "supported_claim_ids": [],
+      "test_only": false,
+      "title": "Assessment regression report",
+      "validation_result": "VALID",
+      "work_package": "WP-14"
+    },
+    {
+      "contains_numeric_claim": false,
+      "evidence_id": "EV-WP14-005",
+      "evidence_type": "DOCUMENT_ONLY",
+      "freshness_source": null,
+      "gap_owner": null,
+      "gate_ids": [],
+      "generator": "pgx-assess",
+      "limitations": [],
+      "may_support_a_ths6_claim": false,
+      "media_type": "application/json",
+      "observed_or_executed": false,
+      "path": "schemas/wp14-gate-status.schema.json",
+      "present": true,
+      "schema_path": null,
+      "sha256": "sha256:1495d9927b01501ca8527abd59f98155e8237ff16d77ec3b51ea3824923374fa",
+      "supported_claim_ids": [],
+      "test_only": false,
+      "title": "WP-14 gate status schema",
+      "validation_result": null,
+      "work_package": "WP-14"
+    },
+    {
+      "contains_numeric_claim": true,
+      "evidence_id": "EV-WP15-001",
+      "evidence_type": "SCIENTIFIC_PENDING",
+      "freshness_source": null,
+      "gap_owner": "curation lead",
+      "gate_ids": [
+        "GATE-C"
+      ],
+      "generator": "pgx-report gate-status",
+      "limitations": [
+        "zero real assessments, reports and published artifacts"
+      ],
+      "may_support_a_ths6_claim": false,
+      "media_type": "application/json",
+      "observed_or_executed": false,
+      "path": "data/reports/wp15-real-gate-status.json",
+      "present": true,
+      "schema_path": "schemas/wp15-gate-status.schema.json",
+      "sha256": "sha256:09519b242fa5af8b3b54a9ec4caeca5ef043a510683f2a9fcba237434e525336",
+      "supported_claim_ids": [
+        "THS6-CLAIM-003"
+      ],
+      "test_only": false,
+      "title": "WP-15 real gate status",
+      "validation_result": "VALID",
+      "work_package": "WP-15"
+    },
+    {
+      "contains_numeric_claim": false,
+      "evidence_id": "EV-WP15-002",
+      "evidence_type": "IMPLEMENTATION_TEST",
+      "freshness_source": null,
+      "gap_owner": "clinical safety authority",
+      "gate_ids": [
+        "GATE-C"
+      ],
+      "generator": "WP-15 author",
+      "limitations": [
+        "the scanner is exercised over fixtures; the boundary itself is unapproved"
+      ],
+      "may_support_a_ths6_claim": false,
+      "media_type": "text/markdown",
+      "observed_or_executed": false,
+      "path": "docs/evidence/wp15-claim-safety.md",
+      "present": true,
+      "schema_path": null,
+      "sha256": "sha256:14e9a2d37a8a48e378891a8d624570198fddfbeada90170e6ae27cd1152bc74e",
+      "supported_claim_ids": [
+        "THS6-CLAIM-022"
+      ],
+      "test_only": false,
+      "title": "WP-15 claim safety evidence",
+      "validation_result": null,
+      "work_package": "WP-15"
+    },
+    {
+      "contains_numeric_claim": false,
+      "evidence_id": "EV-WP15-003",
+      "evidence_type": "IMPLEMENTATION_TEST",
+      "freshness_source": null,
+      "gap_owner": "release approver",
+      "gate_ids": [],
+      "generator": "WP-15 author",
+      "limitations": [
+        "determinism demonstrated over fixtures"
+      ],
+      "may_support_a_ths6_claim": false,
+      "media_type": "text/markdown",
+      "observed_or_executed": false,
+      "path": "docs/evidence/wp15-determinism.md",
+      "present": true,
+      "schema_path": null,
+      "sha256": "sha256:6201aecbdd13343a0874bf0459811c0a7ec6245efb934aa868c1f6706d5d1600",
+      "supported_claim_ids": [
+        "THS6-CLAIM-002"
+      ],
+      "test_only": false,
+      "title": "WP-15 determinism evidence",
+      "validation_result": null,
+      "work_package": "WP-15"
+    },
+    {
+      "contains_numeric_claim": false,
+      "evidence_id": "EV-WP15-004",
+      "evidence_type": "DOCUMENT_ONLY",
+      "freshness_source": null,
+      "gap_owner": null,
+      "gate_ids": [],
+      "generator": "pgx-report",
+      "limitations": [],
+      "may_support_a_ths6_claim": false,
+      "media_type": "application/json",
+      "observed_or_executed": false,
+      "path": "schemas/wp15-gate-status.schema.json",
+      "present": true,
+      "schema_path": null,
+      "sha256": "sha256:f200cc24d0e287617b53557524b860b3cd8c46949495e4c0e75ac7d6497b8915",
+      "supported_claim_ids": [],
+      "test_only": false,
+      "title": "WP-15 gate status schema",
+      "validation_result": null,
+      "work_package": "WP-15"
+    },
+    {
+      "contains_numeric_claim": false,
+      "evidence_id": "EV-WP15-005",
+      "evidence_type": "DOCUMENT_ONLY",
+      "freshness_source": null,
+      "gap_owner": null,
+      "gate_ids": [],
+      "generator": "pgx-report",
+      "limitations": [],
+      "may_support_a_ths6_claim": false,
+      "media_type": "application/json",
+      "observed_or_executed": false,
+      "path": "schemas/report-fact-ledger.schema.json",
+      "present": true,
+      "schema_path": null,
+      "sha256": "sha256:b832b150b3944a98e7be5060228078b47ebe33f56ae31d7130a1167124993ecc",
+      "supported_claim_ids": [
+        "THS6-CLAIM-003"
+      ],
+      "test_only": false,
+      "title": "Report fact ledger schema",
+      "validation_result": null,
+      "work_package": "WP-15"
+    },
+    {
+      "contains_numeric_claim": true,
+      "evidence_id": "EV-WP16-001",
+      "evidence_type": "CONFIGURED_NOT_EXECUTED",
+      "freshness_source": null,
+      "gap_owner": "platform owner",
+      "gate_ids": [
+        "GATE-C"
+      ],
+      "generator": "pgx-api gate-status",
+      "limitations": [
+        "14 routes declared; zero real API assessments and no ASGI runtime test executed"
+      ],
+      "may_support_a_ths6_claim": false,
+      "media_type": "application/json",
+      "observed_or_executed": false,
+      "path": "data/api/wp16-real-gate-status.json",
+      "present": true,
+      "schema_path": "schemas/wp16/gate-status.schema.json",
+      "sha256": "sha256:c55c7c5fc82f8e44efdf8fa77164180d1ea37dc776eed02a8428e2a83dd3d961",
+      "supported_claim_ids": [
+        "THS6-CLAIM-001"
+      ],
+      "test_only": false,
+      "title": "WP-16 real gate status",
+      "validation_result": "VALID",
+      "work_package": "WP-16"
+    },
+    {
+      "contains_numeric_claim": false,
+      "evidence_id": "EV-WP16-002",
+      "evidence_type": "IMPLEMENTATION_TEST",
+      "freshness_source": null,
+      "gap_owner": "platform owner",
+      "gate_ids": [],
+      "generator": "WP-16 author",
+      "limitations": [
+        "contract conformance, not a served runtime"
+      ],
+      "may_support_a_ths6_claim": false,
+      "media_type": "text/markdown",
+      "observed_or_executed": false,
+      "path": "docs/evidence/wp16-api-contract-report.md",
+      "present": true,
+      "schema_path": null,
+      "sha256": "sha256:bf50eca87e125f4c6e79b8587d668d15dd76bc1c1d0baf123ae316e584a77961",
+      "supported_claim_ids": [
+        "THS6-CLAIM-001"
+      ],
+      "test_only": false,
+      "title": "WP-16 API contract report",
+      "validation_result": null,
+      "work_package": "WP-16"
+    },
+    {
+      "contains_numeric_claim": false,
+      "evidence_id": "EV-WP16-003",
+      "evidence_type": "CONFIGURED_NOT_EXECUTED",
+      "freshness_source": null,
+      "gap_owner": "platform owner",
+      "gate_ids": [],
+      "generator": "pgx-api openapi",
+      "limitations": [
+        "the document a running server would serve; no server has been observed serving it"
+      ],
+      "may_support_a_ths6_claim": false,
+      "media_type": "application/json",
+      "observed_or_executed": false,
+      "path": "schemas/openapi/wp16-openapi.json",
+      "present": true,
+      "schema_path": null,
+      "sha256": "sha256:465d514b50075011c0835c6e3c30a8d962eb33908f407d8009763731ef4522af",
+      "supported_claim_ids": [
+        "THS6-CLAIM-001"
+      ],
+      "test_only": false,
+      "title": "Committed OpenAPI document",
+      "validation_result": null,
+      "work_package": "WP-16"
+    },
+    {
+      "contains_numeric_claim": false,
+      "evidence_id": "EV-WP16-004",
+      "evidence_type": "DOCUMENT_ONLY",
+      "freshness_source": null,
+      "gap_owner": null,
+      "gate_ids": [],
+      "generator": "pgx-api",
+      "limitations": [],
+      "may_support_a_ths6_claim": false,
+      "media_type": "application/json",
+      "observed_or_executed": false,
+      "path": "schemas/wp16/gate-status.schema.json",
+      "present": true,
+      "schema_path": null,
+      "sha256": "sha256:a566b813fc52763856f7e91b6d228898e8ed7a362f3d21d30b78a10fbddefe37",
+      "supported_claim_ids": [],
+      "test_only": false,
+      "title": "WP-16 gate status schema",
+      "validation_result": null,
+      "work_package": "WP-16"
+    },
+    {
+      "contains_numeric_claim": false,
+      "evidence_id": "EV-WP16-005",
+      "evidence_type": "UNAVAILABLE",
+      "freshness_source": null,
+      "gap_owner": "platform owner",
+      "gate_ids": [
+        "GATE-C"
+      ],
+      "generator": "pgx-api runtime-verify",
+      "limitations": [
+        "written only when the runtime suite runs; it has not run, so the artifact is absent and the served document reports itself unverified",
+        "declared by this registry but not present in the working tree"
+      ],
+      "may_support_a_ths6_claim": false,
+      "media_type": "application/json",
+      "observed_or_executed": false,
+      "path": "data/api/wp16-runtime-verification.json",
+      "present": false,
+      "schema_path": null,
+      "sha256": null,
+      "supported_claim_ids": [],
+      "test_only": false,
+      "title": "WP-16 ASGI runtime verification",
+      "validation_result": "ABSENT",
+      "work_package": "WP-16"
+    },
+    {
+      "contains_numeric_claim": true,
+      "evidence_id": "EV-WP17-001",
+      "evidence_type": "INVALID",
+      "freshness_source": null,
+      "gap_owner": "platform owner",
+      "gate_ids": [
+        "GATE-C"
+      ],
+      "generator": "pgx-web gate-status",
+      "limitations": [
+        "declares the expert review workflow NOT_IMPLEMENTED, which WP-22 contradicts; validation dashboard is empty state only",
+        "does not satisfy the schema it declares"
+      ],
+      "may_support_a_ths6_claim": false,
+      "media_type": "application/json",
+      "observed_or_executed": false,
+      "path": "data/web/wp17-real-gate-status.json",
+      "present": true,
+      "schema_path": "schemas/wp17/ui-gate-status.schema.json",
+      "sha256": null,
+      "supported_claim_ids": [
+        "THS6-CLAIM-001",
+        "THS6-CLAIM-011"
+      ],
+      "test_only": false,
+      "title": "WP-17 real gate status",
+      "validation_result": "INVALID: 1 error(s)",
+      "work_package": "WP-17"
+    },
+    {
+      "contains_numeric_claim": true,
+      "evidence_id": "EV-WP17-002",
+      "evidence_type": "REAL_OBSERVED",
+      "freshness_source": null,
+      "gap_owner": "platform owner",
+      "gate_ids": [],
+      "generator": "WP-17 author",
+      "limitations": [
+        "pages were rendered and captured over development fixtures; no governed content was displayed"
+      ],
+      "may_support_a_ths6_claim": true,
+      "media_type": "text/markdown",
+      "observed_or_executed": true,
+      "path": "docs/evidence/wp17-ui-verification.md",
+      "present": true,
+      "schema_path": null,
+      "sha256": "sha256:7cc7995b45275066458c1b21b08de0651aef2ed045f2bbc70d0752221b640e5a",
+      "supported_claim_ids": [
+        "THS6-CLAIM-001"
+      ],
+      "test_only": false,
+      "title": "WP-17 interface verification",
+      "validation_result": null,
+      "work_package": "WP-17"
+    },
+    {
+      "contains_numeric_claim": true,
+      "evidence_id": "EV-WP17-003",
+      "evidence_type": "TEST_ONLY_REHEARSAL",
+      "freshness_source": null,
+      "gap_owner": "validation owner",
+      "gate_ids": [
+        "GATE-D"
+      ],
+      "generator": "WP-17 author",
+      "limitations": [
+        "seven development fixtures; they are not validation cases and must never be counted as any"
+      ],
+      "may_support_a_ths6_claim": false,
+      "media_type": "application/json",
+      "observed_or_executed": false,
+      "path": "data/demo/wp17-development-cases.json",
+      "present": true,
+      "schema_path": "schemas/wp17/demo-case-catalog.schema.json",
+      "sha256": "sha256:22c8fd170e27e76a31cbfa6e895d51c3a151a9476a4f5fad55559348fde35ff9",
+      "supported_claim_ids": [],
+      "test_only": true,
+      "title": "Development case catalogue",
+      "validation_result": "VALID_ANNOTATIONS_SKIPPED",
+      "work_package": "WP-17"
+    },
+    {
+      "contains_numeric_claim": true,
+      "evidence_id": "EV-WP17-004",
+      "evidence_type": "TEST_ONLY_REHEARSAL",
+      "freshness_source": null,
+      "gap_owner": "validation owner",
+      "gate_ids": [],
+      "generator": "WP-17 author",
+      "limitations": [
+        "seals a fixture catalogue"
+      ],
+      "may_support_a_ths6_claim": false,
+      "media_type": "application/json",
+      "observed_or_executed": false,
+      "path": "data/demo/wp17-demo-case-manifest.json",
+      "present": true,
+      "schema_path": null,
+      "sha256": "sha256:8653c7c1ea4e3ba4c8cc406b85e83f5f50ffddcfbad3062d7a9594e17d2aca5a",
+      "supported_claim_ids": [],
+      "test_only": true,
+      "title": "Development case manifest",
+      "validation_result": null,
+      "work_package": "WP-17"
+    },
+    {
+      "contains_numeric_claim": false,
+      "evidence_id": "EV-WP17-005",
+      "evidence_type": "DOCUMENT_ONLY",
+      "freshness_source": null,
+      "gap_owner": null,
+      "gate_ids": [],
+      "generator": "pgx-web",
+      "limitations": [],
+      "may_support_a_ths6_claim": false,
+      "media_type": "application/json",
+      "observed_or_executed": false,
+      "path": "schemas/wp17/ui-gate-status.schema.json",
+      "present": true,
+      "schema_path": null,
+      "sha256": "sha256:c6e5711845daf88ec68de115e482457622add256c2e2a3cc978bd9682f2c7662",
+      "supported_claim_ids": [],
+      "test_only": false,
+      "title": "WP-17 gate status schema",
+      "validation_result": null,
+      "work_package": "WP-17"
+    },
+    {
+      "contains_numeric_claim": false,
+      "evidence_id": "EV-WP17-006",
+      "evidence_type": "DOCUMENT_ONLY",
+      "freshness_source": null,
+      "gap_owner": null,
+      "gate_ids": [],
+      "generator": "WP-17 author",
+      "limitations": [],
+      "may_support_a_ths6_claim": false,
+      "media_type": "text/markdown",
+      "observed_or_executed": false,
+      "path": "docs/web/route-contract.md",
+      "present": true,
+      "schema_path": null,
+      "sha256": "sha256:b6a96f4c07050c4fcb855ba37078d04b9c8e105b4891fa5d6e9b657b7cfa004d",
+      "supported_claim_ids": [
+        "THS6-CLAIM-001"
+      ],
+      "test_only": false,
+      "title": "Web route contract",
+      "validation_result": null,
+      "work_package": "WP-17"
+    },
+    {
+      "contains_numeric_claim": true,
+      "evidence_id": "EV-WP18-001",
+      "evidence_type": "SCIENTIFIC_PENDING",
+      "freshness_source": null,
+      "gap_owner": "validation owner",
+      "gate_ids": [
+        "GATE-D"
+      ],
+      "generator": "pgx-validation gate-status",
+      "limitations": [
+        "zero holdout cases against a target of fifty; validation metric count is null, not zero"
+      ],
+      "may_support_a_ths6_claim": false,
+      "media_type": "application/json",
+      "observed_or_executed": false,
+      "path": "data/validation/wp18-real-gate-status.json",
+      "present": true,
+      "schema_path": "schemas/wp18-gate-status.schema.json",
+      "sha256": "sha256:edf408b0b61b2e9e1c59d4e85236d8c124a163a3306ab80b38832bbc2c545d6d",
+      "supported_claim_ids": [
+        "THS6-CLAIM-007",
+        "THS6-CLAIM-008"
+      ],
+      "test_only": false,
+      "title": "WP-18 real gate status",
+      "validation_result": "VALID",
+      "work_package": "WP-18"
+    },
+    {
+      "contains_numeric_claim": true,
+      "evidence_id": "EV-WP18-002",
+      "evidence_type": "REAL_EXECUTED",
+      "freshness_source": null,
+      "gap_owner": "validation owner",
+      "gate_ids": [
+        "GATE-D"
+      ],
+      "generator": "pgx-validation separation-audit",
+      "limitations": [
+        "audits seven development cases; with no holdout set there is nothing to separate them from"
+      ],
+      "may_support_a_ths6_claim": true,
+      "media_type": "application/json",
+      "observed_or_executed": true,
+      "path": "data/validation/wp18-separation-audit.json",
+      "present": true,
+      "schema_path": "schemas/validation-separation-audit.schema.json",
+      "sha256": "sha256:a6dec167f4899c3370b366a84a74b01e1db6bf407334de35613f6fd61704b607",
+      "supported_claim_ids": [
+        "THS6-CLAIM-008"
+      ],
+      "test_only": false,
+      "title": "Separation audit",
+      "validation_result": "VALID",
+      "work_package": "WP-18"
+    },
+    {
+      "contains_numeric_claim": true,
+      "evidence_id": "EV-WP18-003",
+      "evidence_type": "SCIENTIFIC_PENDING",
+      "freshness_source": null,
+      "gap_owner": "validation owner",
+      "gate_ids": [
+        "GATE-D"
+      ],
+      "generator": "pgx-validation",
+      "limitations": [
+        "structurally empty; no holdout case exists"
+      ],
+      "may_support_a_ths6_claim": false,
+      "media_type": "application/json",
+      "observed_or_executed": false,
+      "path": "data/validation/wp18-holdout-case-manifest.json",
+      "present": true,
+      "schema_path": "schemas/validation-case-manifest.schema.json",
+      "sha256": "sha256:af92befc0ae48f5e1f5718b801394e880245c7d4ed4378ba0090446930edc45c",
+      "supported_claim_ids": [
+        "THS6-CLAIM-008"
+      ],
+      "test_only": false,
+      "title": "Holdout case manifest",
+      "validation_result": "VALID",
+      "work_package": "WP-18"
+    },
+    {
+      "contains_numeric_claim": true,
+      "evidence_id": "EV-WP18-004",
+      "evidence_type": "TEST_ONLY_REHEARSAL",
+      "freshness_source": null,
+      "gap_owner": "validation owner",
+      "gate_ids": [
+        "GATE-D"
+      ],
+      "generator": "pgx-validation",
+      "limitations": [
+        "development cases, explicitly excluded from validation evidence"
+      ],
+      "may_support_a_ths6_claim": false,
+      "media_type": "application/json",
+      "observed_or_executed": false,
+      "path": "data/validation/wp18-development-case-manifest.json",
+      "present": true,
+      "schema_path": null,
+      "sha256": "sha256:4436d876027dc3f8ffb5e68d14fb73f7bc7aae8521355d966f6a9588525b12d5",
+      "supported_claim_ids": [],
+      "test_only": true,
+      "title": "Development case manifest",
+      "validation_result": null,
+      "work_package": "WP-18"
+    },
+    {
+      "contains_numeric_claim": false,
+      "evidence_id": "EV-WP18-005",
+      "evidence_type": "IMPLEMENTATION_TEST",
+      "freshness_source": null,
+      "gap_owner": "validation owner",
+      "gate_ids": [],
+      "generator": "WP-18 author",
+      "limitations": [
+        "describes the audit machinery"
+      ],
+      "may_support_a_ths6_claim": false,
+      "media_type": "text/markdown",
+      "observed_or_executed": false,
+      "path": "docs/evidence/wp18-separation-audit.md",
+      "present": true,
+      "schema_path": null,
+      "sha256": "sha256:2dbb48b96a36f716843a750824ed25e1c866644ba3cba7addbb4cca8d3afca09",
+      "supported_claim_ids": [
+        "THS6-CLAIM-008"
+      ],
+      "test_only": false,
+      "title": "WP-18 separation audit evidence",
+      "validation_result": null,
+      "work_package": "WP-18"
+    },
+    {
+      "contains_numeric_claim": false,
+      "evidence_id": "EV-WP18-006",
+      "evidence_type": "DOCUMENT_ONLY",
+      "freshness_source": null,
+      "gap_owner": null,
+      "gate_ids": [
+        "GATE-D"
+      ],
+      "generator": "validation owner",
+      "limitations": [],
+      "may_support_a_ths6_claim": false,
+      "media_type": "text/markdown",
+      "observed_or_executed": false,
+      "path": "docs/validation/holdout-separation-policy.md",
+      "present": true,
+      "schema_path": null,
+      "sha256": "sha256:59fbcabd260aac97e828923b200c4be58ccc538ce995195dead563544e2b9d3a",
+      "supported_claim_ids": [
+        "THS6-CLAIM-008"
+      ],
+      "test_only": false,
+      "title": "Holdout separation policy",
+      "validation_result": null,
+      "work_package": "WP-18"
+    },
+    {
+      "contains_numeric_claim": false,
+      "evidence_id": "EV-WP18-007",
+      "evidence_type": "DOCUMENT_ONLY",
+      "freshness_source": null,
+      "gap_owner": null,
+      "gate_ids": [],
+      "generator": "validation owner",
+      "limitations": [],
+      "may_support_a_ths6_claim": false,
+      "media_type": "text/markdown",
+      "observed_or_executed": false,
+      "path": "docs/validation/validation-case-contract.md",
+      "present": true,
+      "schema_path": null,
+      "sha256": "sha256:23900fb6b7f864775a45bcd0533745e22a3b1fb70155ce7b2e7c039a1533de5e",
+      "supported_claim_ids": [
+        "THS6-CLAIM-007"
+      ],
+      "test_only": false,
+      "title": "Validation case contract",
+      "validation_result": null,
+      "work_package": "WP-18"
+    },
+    {
+      "contains_numeric_claim": true,
+      "evidence_id": "EV-WP19-001",
+      "evidence_type": "STALE",
+      "freshness_source": "data/verification/wp19-test-inventory.json",
+      "gap_owner": "verification owner",
+      "gate_ids": [
+        "GATE-C",
+        "GATE-E"
+      ],
+      "generator": "pgx-verify gate-status",
+      "limitations": [
+        "records a discovered test count from before WP-20 through WP-25 added tests; the count no longer matches the suite"
+      ],
+      "may_support_a_ths6_claim": false,
+      "media_type": "application/json",
+      "observed_or_executed": false,
+      "path": "data/verification/wp19-real-gate-status.json",
+      "present": true,
+      "schema_path": "schemas/wp19/wp19-gate-status.schema.json",
+      "sha256": "sha256:148f518171ffd717fd5a632b23b21822098ea15adf3fed4126782883dc6e8a78",
+      "supported_claim_ids": [],
+      "test_only": false,
+      "title": "WP-19 real gate status",
+      "validation_result": "VALID",
+      "work_package": "WP-19"
+    },
+    {
+      "contains_numeric_claim": true,
+      "evidence_id": "EV-WP19-002",
+      "evidence_type": "STALE",
+      "freshness_source": null,
+      "gap_owner": "verification owner",
+      "gate_ids": [],
+      "generator": "pgx-verify inventory",
+      "limitations": [
+        "an inventory of the suite as it was when last generated"
+      ],
+      "may_support_a_ths6_claim": false,
+      "media_type": "application/json",
+      "observed_or_executed": false,
+      "path": "data/verification/wp19-test-inventory.json",
+      "present": true,
+      "schema_path": null,
+      "sha256": "sha256:5255f91c585a0f09e164766bf933753d14272768e971b182e0eca0578a758294",
+      "supported_claim_ids": [],
+      "test_only": false,
+      "title": "WP-19 test inventory",
+      "validation_result": null,
+      "work_package": "WP-19"
+    },
+    {
+      "contains_numeric_claim": true,
+      "evidence_id": "EV-WP19-003",
+      "evidence_type": "STALE",
+      "freshness_source": null,
+      "gap_owner": "verification owner",
+      "gate_ids": [],
+      "generator": "pgx-verify run",
+      "limitations": [
+        "a recorded run whose evidence WP-19 itself rejects as stale"
+      ],
+      "may_support_a_ths6_claim": false,
+      "media_type": "application/json",
+      "observed_or_executed": false,
+      "path": "data/verification/wp19-verification-run.json",
+      "present": true,
+      "schema_path": null,
+      "sha256": "sha256:7f0d6434a8539c4aec61953d6937a6953b9d0f33a314fec8916d0e9dcef57715",
+      "supported_claim_ids": [],
+      "test_only": false,
+      "title": "WP-19 verification run",
+      "validation_result": null,
+      "work_package": "WP-19"
+    },
+    {
+      "contains_numeric_claim": true,
+      "evidence_id": "EV-WP19-004",
+      "evidence_type": "REAL_EXECUTED",
+      "freshness_source": null,
+      "gap_owner": "verification owner",
+      "gate_ids": [],
+      "generator": "pgx-verify reproducibility",
+      "limitations": [
+        "proves deterministic generators reproduce; says nothing about scientific content"
+      ],
+      "may_support_a_ths6_claim": true,
+      "media_type": "application/json",
+      "observed_or_executed": true,
+      "path": "data/verification/wp19-reproducibility-report.json",
+      "present": true,
+      "schema_path": "schemas/wp19/reproducibility-report.schema.json",
+      "sha256": "sha256:c9b4d48f5be1f95e77d2b02432c7710d40fc33cc926176d404698cefb0996f82",
+      "supported_claim_ids": [],
+      "test_only": false,
+      "title": "WP-19 reproducibility report",
+      "validation_result": "VALID",
+      "work_package": "WP-19"
+    },
+    {
+      "contains_numeric_claim": true,
+      "evidence_id": "EV-WP19-005",
+      "evidence_type": "IMPLEMENTATION_TEST",
+      "freshness_source": null,
+      "gap_owner": "verification owner",
+      "gate_ids": [],
+      "generator": "pgx-verify matrix",
+      "limitations": [
+        "maps software requirements to tests"
+      ],
+      "may_support_a_ths6_claim": false,
+      "media_type": "application/json",
+      "observed_or_executed": false,
+      "path": "data/verification/wp19-requirement-matrix.json",
+      "present": true,
+      "schema_path": "schemas/wp19/requirement-matrix.schema.json",
+      "sha256": "sha256:db7247dd2314a4461b8a9759115ddf6b74480fd10e41374aae5c6cea8f3ca7a6",
+      "supported_claim_ids": [
+        "THS6-CLAIM-016"
+      ],
+      "test_only": false,
+      "title": "WP-19 requirement matrix",
+      "validation_result": "VALID",
+      "work_package": "WP-19"
+    },
+    {
+      "contains_numeric_claim": true,
+      "evidence_id": "EV-WP19-006",
+      "evidence_type": "CONFIGURED_NOT_EXECUTED",
+      "freshness_source": null,
+      "gap_owner": "verification owner",
+      "gate_ids": [],
+      "generator": "pgx-verify profiles",
+      "limitations": [
+        "declares profiles; executing them is a separate act"
+      ],
+      "may_support_a_ths6_claim": false,
+      "media_type": "application/json",
+      "observed_or_executed": false,
+      "path": "data/verification/wp19-verification-profiles.json",
+      "present": true,
+      "schema_path": null,
+      "sha256": "sha256:7d8a79ef98eb7ebda8f5ea4909772270be0b4a6a2ddedfc870e2494519bf43aa",
+      "supported_claim_ids": [],
+      "test_only": false,
+      "title": "WP-19 verification profiles",
+      "validation_result": null,
+      "work_package": "WP-19"
+    },
+    {
+      "contains_numeric_claim": false,
+      "evidence_id": "EV-WP19-007",
+      "evidence_type": "OPERATIONAL_PENDING",
+      "freshness_source": null,
+      "gap_owner": "verification owner",
+      "gate_ids": [],
+      "generator": "pgx-verify coverage",
+      "limitations": [
+        "no coverage tool is installed, so no percentage exists and none is invented"
+      ],
+      "may_support_a_ths6_claim": false,
+      "media_type": "application/json",
+      "observed_or_executed": false,
+      "path": "data/verification/wp19-coverage-summary.json",
+      "present": true,
+      "schema_path": "schemas/wp19/coverage-summary.schema.json",
+      "sha256": "sha256:cd827d97b59d82606fec4cba74c93e387449c7b05938128ae2b7a0d005829536",
+      "supported_claim_ids": [],
+      "test_only": false,
+      "title": "WP-19 coverage summary",
+      "validation_result": "VALID",
+      "work_package": "WP-19"
+    },
+    {
+      "contains_numeric_claim": false,
+      "evidence_id": "EV-WP19-008",
+      "evidence_type": "IMPLEMENTATION_TEST",
+      "freshness_source": null,
+      "gap_owner": "verification owner",
+      "gate_ids": [],
+      "generator": "WP-19 author",
+      "limitations": [
+        "software verification is not clinical validation"
+      ],
+      "may_support_a_ths6_claim": false,
+      "media_type": "text/markdown",
+      "observed_or_executed": false,
+      "path": "docs/evidence/wp19-software-verification.md",
+      "present": true,
+      "schema_path": null,
+      "sha256": "sha256:b3dc1dd0f778851386c2d7a21ce29b32160ca424036cf431c64b5584fda3845b",
+      "supported_claim_ids": [],
+      "test_only": false,
+      "title": "WP-19 software verification evidence",
+      "validation_result": null,
+      "work_package": "WP-19"
+    },
+    {
+      "contains_numeric_claim": true,
+      "evidence_id": "EV-WP20-001",
+      "evidence_type": "IMPLEMENTATION_TEST",
+      "freshness_source": null,
+      "gap_owner": "safety owner",
+      "gate_ids": [
+        "GATE-C",
+        "GATE-F"
+      ],
+      "generator": "pgx-safety gate-status",
+      "limitations": [
+        "twelve invariants executed locally; the CI job has never run and the claim boundary is unapproved"
+      ],
+      "may_support_a_ths6_claim": false,
+      "media_type": "application/json",
+      "observed_or_executed": false,
+      "path": "data/safety/wp20-real-gate-status.json",
+      "present": true,
+      "schema_path": "schemas/wp20/wp20-gate-status.schema.json",
+      "sha256": "sha256:99203e9c8fa2733fd949053a6bd168a4adb25b2d73c853f6c2e439db1ddd2879",
+      "supported_claim_ids": [
+        "THS6-CLAIM-009",
+        "THS6-CLAIM-022"
+      ],
+      "test_only": false,
+      "title": "WP-20 real gate status",
+      "validation_result": "VALID",
+      "work_package": "WP-20"
+    },
+    {
+      "contains_numeric_claim": true,
+      "evidence_id": "EV-WP20-002",
+      "evidence_type": "CONFIGURED_NOT_EXECUTED",
+      "freshness_source": null,
+      "gap_owner": "safety owner",
+      "gate_ids": [],
+      "generator": "pgx-safety registry",
+      "limitations": [
+        "declares twelve invariants"
+      ],
+      "may_support_a_ths6_claim": false,
+      "media_type": "application/json",
+      "observed_or_executed": false,
+      "path": "data/safety/wp20-invariant-registry.json",
+      "present": true,
+      "schema_path": "schemas/wp20/safety-invariant-registry.schema.json",
+      "sha256": "sha256:4fd1659cb02e802cb79c62759fee52d93256752c18edc575df66075aa0e5617f",
+      "supported_claim_ids": [
+        "THS6-CLAIM-009"
+      ],
+      "test_only": false,
+      "title": "Safety invariant registry",
+      "validation_result": "VALID",
+      "work_package": "WP-20"
+    },
+    {
+      "contains_numeric_claim": true,
+      "evidence_id": "EV-WP20-003",
+      "evidence_type": "IMPLEMENTATION_TEST",
+      "freshness_source": null,
+      "gap_owner": "safety owner",
+      "gate_ids": [],
+      "generator": "pgx-safety negative-controls",
+      "limitations": [
+        "37 negative controls, all detected, over fixtures"
+      ],
+      "may_support_a_ths6_claim": false,
+      "media_type": "application/json",
+      "observed_or_executed": false,
+      "path": "data/safety/wp20-negative-controls.json",
+      "present": true,
+      "schema_path": "schemas/wp20/safety-negative-controls.schema.json",
+      "sha256": "sha256:2f3ecf5c51d2f97fe2443aeba4806a5d7b93bb51d71e4686fbec63b19834aa1c",
+      "supported_claim_ids": [
+        "THS6-CLAIM-009"
+      ],
+      "test_only": false,
+      "title": "Safety negative controls",
+      "validation_result": "VALID",
+      "work_package": "WP-20"
+    },
+    {
+      "contains_numeric_claim": true,
+      "evidence_id": "EV-WP20-004",
+      "evidence_type": "IMPLEMENTATION_TEST",
+      "freshness_source": null,
+      "gap_owner": "safety owner",
+      "gate_ids": [],
+      "generator": "pgx-safety execute",
+      "limitations": [
+        "executed locally, never by a CI provider"
+      ],
+      "may_support_a_ths6_claim": false,
+      "media_type": "application/json",
+      "observed_or_executed": false,
+      "path": "data/safety/wp20-safety-execution.json",
+      "present": true,
+      "schema_path": "schemas/wp20/safety-execution-result.schema.json",
+      "sha256": "sha256:3f7a3b4a822db7471373efe9bbe55caacefe2ce87cad802f090c2a99903785fd",
+      "supported_claim_ids": [
+        "THS6-CLAIM-009"
+      ],
+      "test_only": false,
+      "title": "Safety execution result",
+      "validation_result": "VALID",
+      "work_package": "WP-20"
+    },
+    {
+      "contains_numeric_claim": true,
+      "evidence_id": "EV-WP20-005",
+      "evidence_type": "IMPLEMENTATION_TEST",
+      "freshness_source": null,
+      "gap_owner": "safety owner",
+      "gate_ids": [],
+      "generator": "pgx-safety report",
+      "limitations": [
+        "aggregates local executions"
+      ],
+      "may_support_a_ths6_claim": false,
+      "media_type": "application/json",
+      "observed_or_executed": false,
+      "path": "data/safety/wp20-safety-report.json",
+      "present": true,
+      "schema_path": "schemas/wp20/safety-report.schema.json",
+      "sha256": "sha256:4f72bb3f1104a93698d31d7030220104bce447e140463af8b29d038918127079",
+      "supported_claim_ids": [
+        "THS6-CLAIM-004",
+        "THS6-CLAIM-009"
+      ],
+      "test_only": false,
+      "title": "Safety report",
+      "validation_result": "VALID",
+      "work_package": "WP-20"
+    },
+    {
+      "contains_numeric_claim": false,
+      "evidence_id": "EV-WP20-006",
+      "evidence_type": "DOCUMENT_ONLY",
+      "freshness_source": null,
+      "gap_owner": null,
+      "gate_ids": [],
+      "generator": "WP-20 author",
+      "limitations": [],
+      "may_support_a_ths6_claim": false,
+      "media_type": "text/markdown",
+      "observed_or_executed": false,
+      "path": "docs/evidence/wp20-safety-report.md",
+      "present": true,
+      "schema_path": null,
+      "sha256": "sha256:c3686d4811dd89d9d609bb08a775acb7111865d2399eb1b54d24ff8950bbf77f",
+      "supported_claim_ids": [
+        "THS6-CLAIM-009"
+      ],
+      "test_only": false,
+      "title": "WP-20 safety report document",
+      "validation_result": null,
+      "work_package": "WP-20"
+    },
+    {
+      "contains_numeric_claim": false,
+      "evidence_id": "EV-WP20-007",
+      "evidence_type": "CONFIGURED_NOT_EXECUTED",
+      "freshness_source": null,
+      "gap_owner": "platform owner",
+      "gate_ids": [
+        "GATE-C"
+      ],
+      "generator": "WP-20 author",
+      "limitations": [
+        "a configured workflow is not a CI run"
+      ],
+      "may_support_a_ths6_claim": false,
+      "media_type": "application/yaml",
+      "observed_or_executed": false,
+      "path": ".github/workflows/safety-gate.yml",
+      "present": true,
+      "schema_path": null,
+      "sha256": "sha256:b03d3efa5344c0d59598752fbdb84e13dc5e8945983e19348e314f558b91818e",
+      "supported_claim_ids": [
+        "THS6-CLAIM-009"
+      ],
+      "test_only": false,
+      "title": "Safety gate workflow",
+      "validation_result": null,
+      "work_package": "WP-20"
+    },
+    {
+      "contains_numeric_claim": false,
+      "evidence_id": "EV-WP20-008",
+      "evidence_type": "DOCUMENT_ONLY",
+      "freshness_source": null,
+      "gap_owner": null,
+      "gate_ids": [],
+      "generator": "safety owner",
+      "limitations": [],
+      "may_support_a_ths6_claim": false,
+      "media_type": "text/markdown",
+      "observed_or_executed": false,
+      "path": "docs/risk-management/wp20-invariant-registry.md",
+      "present": true,
+      "schema_path": null,
+      "sha256": "sha256:9e1b1bc4ab7e3aab99913d4c51dda4a71de8bdeb0480d91ff1c1f11786fcbbc5",
+      "supported_claim_ids": [
+        "THS6-CLAIM-009"
+      ],
+      "test_only": false,
+      "title": "Invariant registry document",
+      "validation_result": null,
+      "work_package": "WP-20"
+    },
+    {
+      "contains_numeric_claim": true,
+      "evidence_id": "EV-WP21-001",
+      "evidence_type": "SCIENTIFIC_PENDING",
+      "freshness_source": null,
+      "gap_owner": "validation owner",
+      "gate_ids": [
+        "GATE-D"
+      ],
+      "generator": "pgx-benchmark gate-status",
+      "limitations": [
+        "zero computed metric values, reference judgments and thresholds; completed expert review count is null"
+      ],
+      "may_support_a_ths6_claim": false,
+      "media_type": "application/json",
+      "observed_or_executed": false,
+      "path": "data/validation/wp21-real-gate-status.json",
+      "present": true,
+      "schema_path": "schemas/wp21/wp21-gate-status.schema.json",
+      "sha256": "sha256:c6e45c86d271cd96c13ab74df6b143508507e330daf8a42258f44040802ac6ab",
+      "supported_claim_ids": [
+        "THS6-CLAIM-012"
+      ],
+      "test_only": false,
+      "title": "WP-21 real gate status",
+      "validation_result": "VALID",
+      "work_package": "WP-21"
+    },
+    {
+      "contains_numeric_claim": true,
+      "evidence_id": "EV-WP21-002",
+      "evidence_type": "SCIENTIFIC_PENDING",
+      "freshness_source": null,
+      "gap_owner": "validation owner",
+      "gate_ids": [
+        "GATE-D"
+      ],
+      "generator": "pgx-benchmark report",
+      "limitations": [
+        "a report whose metric values are null because no benchmark has been executed"
+      ],
+      "may_support_a_ths6_claim": false,
+      "media_type": "application/json",
+      "observed_or_executed": false,
+      "path": "data/validation/wp21-validation-report.json",
+      "present": true,
+      "schema_path": "schemas/wp21/validation-report.schema.json",
+      "sha256": "sha256:5893a88680517d744498555060b1b57cc8e7b52c31254f2318a1ed5ad368a570",
+      "supported_claim_ids": [
+        "THS6-CLAIM-012"
+      ],
+      "test_only": false,
+      "title": "WP-21 validation report",
+      "validation_result": "VALID",
+      "work_package": "WP-21"
+    },
+    {
+      "contains_numeric_claim": true,
+      "evidence_id": "EV-WP21-003",
+      "evidence_type": "CONFIGURED_NOT_EXECUTED",
+      "freshness_source": null,
+      "gap_owner": "validation owner",
+      "gate_ids": [
+        "GATE-D"
+      ],
+      "generator": "pgx-benchmark",
+      "limitations": [
+        "fifteen definitions; definitions are not values"
+      ],
+      "may_support_a_ths6_claim": false,
+      "media_type": "application/json",
+      "observed_or_executed": false,
+      "path": "data/validation/wp21-metric-definitions.json",
+      "present": true,
+      "schema_path": "schemas/wp21/metric-definitions.schema.json",
+      "sha256": "sha256:057ffba9f5c4596d5950bbc377c8d061fc6f45f41611bd9f1b3e2ff8f93f7867",
+      "supported_claim_ids": [],
+      "test_only": false,
+      "title": "Metric definitions",
+      "validation_result": "VALID",
+      "work_package": "WP-21"
+    },
+    {
+      "contains_numeric_claim": true,
+      "evidence_id": "EV-WP21-004",
+      "evidence_type": "CONFIGURED_NOT_EXECUTED",
+      "freshness_source": null,
+      "gap_owner": "validation owner",
+      "gate_ids": [],
+      "generator": "pgx-benchmark",
+      "limitations": [
+        "ten declared failure paths, none exercised against real content"
+      ],
+      "may_support_a_ths6_claim": false,
+      "media_type": "application/json",
+      "observed_or_executed": false,
+      "path": "data/validation/wp21-failure-path-catalogue.json",
+      "present": true,
+      "schema_path": "schemas/wp21/failure-path-catalogue.schema.json",
+      "sha256": "sha256:9f86d8a8dd891af838a129e928d9551d656cb0c0371e70b40b33b4b5692ce2a1",
+      "supported_claim_ids": [],
+      "test_only": false,
+      "title": "Failure path catalogue",
+      "validation_result": "VALID",
+      "work_package": "WP-21"
+    },
+    {
+      "contains_numeric_claim": false,
+      "evidence_id": "EV-WP21-005",
+      "evidence_type": "SCIENTIFIC_PENDING",
+      "freshness_source": null,
+      "gap_owner": "validation owner",
+      "gate_ids": [],
+      "generator": "pgx-benchmark dashboard",
+      "limitations": [
+        "an empty-state feed; the dashboard renders no metric"
+      ],
+      "may_support_a_ths6_claim": false,
+      "media_type": "application/json",
+      "observed_or_executed": false,
+      "path": "data/validation/wp21-dashboard-feed.json",
+      "present": true,
+      "schema_path": "schemas/wp21/dashboard-feed.schema.json",
+      "sha256": "sha256:1d86a30ed3d61e683541bb668d7df61e6f2cf0ca2c924714698cb711079ef56e",
+      "supported_claim_ids": [],
+      "test_only": false,
+      "title": "Benchmark dashboard feed",
+      "validation_result": "VALID",
+      "work_package": "WP-21"
+    },
+    {
+      "contains_numeric_claim": false,
+      "evidence_id": "EV-WP21-006",
+      "evidence_type": "DOCUMENT_ONLY",
+      "freshness_source": null,
+      "gap_owner": null,
+      "gate_ids": [],
+      "generator": "WP-21 author",
+      "limitations": [],
+      "may_support_a_ths6_claim": false,
+      "media_type": "text/markdown",
+      "observed_or_executed": false,
+      "path": "docs/evidence/wp21-validation-report.md",
+      "present": true,
+      "schema_path": null,
+      "sha256": "sha256:f9b94b5e4741f61f34f07766fefa8cbf4804f59c3c9f8df5179c6dc3dc5b7f9c",
+      "supported_claim_ids": [
+        "THS6-CLAIM-012"
+      ],
+      "test_only": false,
+      "title": "WP-21 validation report document",
+      "validation_result": null,
+      "work_package": "WP-21"
+    },
+    {
+      "contains_numeric_claim": false,
+      "evidence_id": "EV-WP21-007",
+      "evidence_type": "DOCUMENT_ONLY",
+      "freshness_source": null,
+      "gap_owner": null,
+      "gate_ids": [
+        "GATE-D"
+      ],
+      "generator": "validation owner",
+      "limitations": [],
+      "may_support_a_ths6_claim": false,
+      "media_type": "text/markdown",
+      "observed_or_executed": false,
+      "path": "docs/validation/benchmark-protocol.md",
+      "present": true,
+      "schema_path": null,
+      "sha256": "sha256:e5f07d4bc7c7bc9030c808577886cbca26d05433c38c58347305709f0ba70f3c",
+      "supported_claim_ids": [
+        "THS6-CLAIM-012"
+      ],
+      "test_only": false,
+      "title": "Benchmark protocol",
+      "validation_result": null,
+      "work_package": "WP-21"
+    },
+    {
+      "contains_numeric_claim": false,
+      "evidence_id": "EV-WP21-008",
+      "evidence_type": "DOCUMENT_ONLY",
+      "freshness_source": null,
+      "gap_owner": null,
+      "gate_ids": [],
+      "generator": "validation owner",
+      "limitations": [],
+      "may_support_a_ths6_claim": false,
+      "media_type": "text/markdown",
+      "observed_or_executed": false,
+      "path": "docs/validation/metric-definitions.md",
+      "present": true,
+      "schema_path": null,
+      "sha256": "sha256:a6457ea8c6cab05410542b84690ff45ae16c04da2ed31e2373b742d34c3a1cb7",
+      "supported_claim_ids": [],
+      "test_only": false,
+      "title": "Metric definitions document",
+      "validation_result": null,
+      "work_package": "WP-21"
+    },
+    {
+      "contains_numeric_claim": true,
+      "evidence_id": "EV-WP22-001",
+      "evidence_type": "HUMAN_PENDING",
+      "freshness_source": null,
+      "gap_owner": "expert review chair",
+      "gate_ids": [
+        "GATE-D"
+      ],
+      "generator": "pgx-expert-review gate-status",
+      "limitations": [
+        "protocol unapproved, zero signatories, zero named reviewers, zero completed reviews"
+      ],
+      "may_support_a_ths6_claim": false,
+      "media_type": "application/json",
+      "observed_or_executed": false,
+      "path": "data/expert-review/wp22-real-gate-status.json",
+      "present": true,
+      "schema_path": "schemas/wp22/wp22-gate-status.schema.json",
+      "sha256": "sha256:eed1149b713409ea0fc2c7392361aeb7cd574ef738029ef1dd869f7c3b92fefa",
+      "supported_claim_ids": [
+        "THS6-CLAIM-010",
+        "THS6-CLAIM-011"
+      ],
+      "test_only": false,
+      "title": "WP-22 real gate status",
+      "validation_result": "VALID",
+      "work_package": "WP-22"
+    },
+    {
+      "contains_numeric_claim": true,
+      "evidence_id": "EV-WP22-002",
+      "evidence_type": "HUMAN_PENDING",
+      "freshness_source": null,
+      "gap_owner": "expert review chair",
+      "gate_ids": [
+        "GATE-D"
+      ],
+      "generator": "pgx-expert-review protocol",
+      "limitations": [
+        "a manifest with no signatory"
+      ],
+      "may_support_a_ths6_claim": false,
+      "media_type": "application/json",
+      "observed_or_executed": false,
+      "path": "data/expert-review/wp22-protocol-manifest.json",
+      "present": true,
+      "schema_path": "schemas/wp22/expert-protocol-manifest.schema.json",
+      "sha256": "sha256:1126e46be8e279fed666b0b4e9f8f57971ae01387af274e6097f69a3108aff2f",
+      "supported_claim_ids": [
+        "THS6-CLAIM-010"
+      ],
+      "test_only": false,
+      "title": "Expert protocol manifest",
+      "validation_result": "VALID",
+      "work_package": "WP-22"
+    },
+    {
+      "contains_numeric_claim": true,
+      "evidence_id": "EV-WP22-003",
+      "evidence_type": "CONFIGURED_NOT_EXECUTED",
+      "freshness_source": null,
+      "gap_owner": "expert review chair",
+      "gate_ids": [],
+      "generator": "pgx-expert-review workflow",
+      "limitations": [
+        "an eight-step workflow nobody has walked; contradicts WP-17's claim that no such workflow is implemented"
+      ],
+      "may_support_a_ths6_claim": false,
+      "media_type": "application/json",
+      "observed_or_executed": false,
+      "path": "data/expert-review/wp22-review-workflow.json",
+      "present": true,
+      "schema_path": "schemas/wp22/review-workflow.schema.json",
+      "sha256": "sha256:ab7199f0fb51d58575af9a3c59b892af386a40828f1cc6f8f52fc70dbea90f74",
+      "supported_claim_ids": [
+        "THS6-CLAIM-011"
+      ],
+      "test_only": false,
+      "title": "Expert review workflow",
+      "validation_result": "VALID",
+      "work_package": "WP-22"
+    },
+    {
+      "contains_numeric_claim": false,
+      "evidence_id": "EV-WP22-004",
+      "evidence_type": "HUMAN_PENDING",
+      "freshness_source": null,
+      "gap_owner": "expert review chair",
+      "gate_ids": [],
+      "generator": "pgx-expert-review summary",
+      "limitations": [
+        "an empty summary; there is nothing to summarise"
+      ],
+      "may_support_a_ths6_claim": false,
+      "media_type": "application/json",
+      "observed_or_executed": false,
+      "path": "data/expert-review/wp22-public-summary.json",
+      "present": true,
+      "schema_path": "schemas/wp22/review-public-summary.schema.json",
+      "sha256": "sha256:ceb44678227a86b7d40a1f4695b68f7e3e194149c05c1210c80214d3f2ddd20e",
+      "supported_claim_ids": [],
+      "test_only": false,
+      "title": "Expert review public summary",
+      "validation_result": "VALID",
+      "work_package": "WP-22"
+    },
+    {
+      "contains_numeric_claim": false,
+      "evidence_id": "EV-WP22-005",
+      "evidence_type": "DOCUMENT_ONLY",
+      "freshness_source": null,
+      "gap_owner": null,
+      "gate_ids": [],
+      "generator": "WP-22 author",
+      "limitations": [],
+      "may_support_a_ths6_claim": false,
+      "media_type": "text/markdown",
+      "observed_or_executed": false,
+      "path": "docs/evidence/wp22-expert-review-report.md",
+      "present": true,
+      "schema_path": null,
+      "sha256": "sha256:949e3a46846ef746e2da9ab5eab305ab3c69262302d4f8fb6831b5916f9daf34",
+      "supported_claim_ids": [
+        "THS6-CLAIM-010"
+      ],
+      "test_only": false,
+      "title": "WP-22 expert review report",
+      "validation_result": null,
+      "work_package": "WP-22"
+    },
+    {
+      "contains_numeric_claim": false,
+      "evidence_id": "EV-WP22-006",
+      "evidence_type": "HUMAN_PENDING",
+      "freshness_source": null,
+      "gap_owner": "expert review chair",
+      "gate_ids": [
+        "GATE-D"
+      ],
+      "generator": "validation owner",
+      "limitations": [
+        "unapproved"
+      ],
+      "may_support_a_ths6_claim": false,
+      "media_type": "text/markdown",
+      "observed_or_executed": false,
+      "path": "docs/validation/expert-protocol.md",
+      "present": true,
+      "schema_path": null,
+      "sha256": "sha256:11d719033e8fcdbbc7e5719eab6f4a671631399efbf8d06f4163fa7143a7f84f",
+      "supported_claim_ids": [
+        "THS6-CLAIM-010"
+      ],
+      "test_only": false,
+      "title": "Expert protocol",
+      "validation_result": null,
+      "work_package": "WP-22"
+    },
+    {
+      "contains_numeric_claim": true,
+      "evidence_id": "EV-WP23-001",
+      "evidence_type": "OPERATIONAL_PENDING",
+      "freshness_source": null,
+      "gap_owner": "platform owner",
+      "gate_ids": [
+        "GATE-E"
+      ],
+      "generator": "pgx-security gate-status",
+      "limitations": [
+        "no database, session store, audit store or argon2; the audit chain has never been verified"
+      ],
+      "may_support_a_ths6_claim": false,
+      "media_type": "application/json",
+      "observed_or_executed": false,
+      "path": "data/security/wp23-real-gate-status.json",
+      "present": true,
+      "schema_path": "schemas/wp23/wp23-gate-status.schema.json",
+      "sha256": "sha256:541359be47c4ee8f79ef7f01289571c41bcda8d29d57a0f1f3d9d2a7a66c1d6a",
+      "supported_claim_ids": [
+        "THS6-CLAIM-013",
+        "THS6-CLAIM-023"
+      ],
+      "test_only": false,
+      "title": "WP-23 real gate status",
+      "validation_result": "VALID",
+      "work_package": "WP-23"
+    },
+    {
+      "contains_numeric_claim": true,
+      "evidence_id": "EV-WP23-002",
+      "evidence_type": "CONFIGURED_NOT_EXECUTED",
+      "freshness_source": null,
+      "gap_owner": "platform owner",
+      "gate_ids": [
+        "GATE-E"
+      ],
+      "generator": "pgx-security rbac",
+      "limitations": [
+        "25 permissions declared; no real user has exercised one"
+      ],
+      "may_support_a_ths6_claim": false,
+      "media_type": "application/json",
+      "observed_or_executed": false,
+      "path": "data/security/wp23-rbac-registry.json",
+      "present": true,
+      "schema_path": "schemas/wp23/rbac-registry.schema.json",
+      "sha256": "sha256:0fb25809d10a75dbbc6dd49c36484b1e69c0d058c8cfe7629623d8e2bf94a611",
+      "supported_claim_ids": [
+        "THS6-CLAIM-023"
+      ],
+      "test_only": false,
+      "title": "RBAC registry",
+      "validation_result": "VALID",
+      "work_package": "WP-23"
+    },
+    {
+      "contains_numeric_claim": true,
+      "evidence_id": "EV-WP23-003",
+      "evidence_type": "CONFIGURED_NOT_EXECUTED",
+      "freshness_source": null,
+      "gap_owner": "platform owner",
+      "gate_ids": [
+        "GATE-E"
+      ],
+      "generator": "pgx-security audit-actions",
+      "limitations": [
+        "41 governed actions declared; zero governed audit events exist"
+      ],
+      "may_support_a_ths6_claim": false,
+      "media_type": "application/json",
+      "observed_or_executed": false,
+      "path": "data/security/wp23-audit-action-registry.json",
+      "present": true,
+      "schema_path": null,
+      "sha256": "sha256:82e4894dfff3adb49e6bd88096cd0aa9c56c8b08c742001245475b5b4b78091e",
+      "supported_claim_ids": [
+        "THS6-CLAIM-013"
+      ],
+      "test_only": false,
+      "title": "Governed audit action registry",
+      "validation_result": null,
+      "work_package": "WP-23"
+    },
+    {
+      "contains_numeric_claim": true,
+      "evidence_id": "EV-WP23-004",
+      "evidence_type": "CONFIGURED_NOT_EXECUTED",
+      "freshness_source": null,
+      "gap_owner": "platform owner",
+      "gate_ids": [
+        "GATE-E"
+      ],
+      "generator": "pgx-security rate-limits",
+      "limitations": [
+        "five policies declared, none enforced against traffic"
+      ],
+      "may_support_a_ths6_claim": false,
+      "media_type": "application/json",
+      "observed_or_executed": false,
+      "path": "data/security/wp23-rate-limit-policy.json",
+      "present": true,
+      "schema_path": "schemas/wp23/rate-limit-policy.schema.json",
+      "sha256": "sha256:aa2d3e65dd5b48d6764c62c234d887ff8506cf2278b5d981b6d94189df8534aa",
+      "supported_claim_ids": [],
+      "test_only": false,
+      "title": "Rate limit policy",
+      "validation_result": "VALID",
+      "work_package": "WP-23"
+    },
+    {
+      "contains_numeric_claim": true,
+      "evidence_id": "EV-WP23-005",
+      "evidence_type": "REAL_EXECUTED",
+      "freshness_source": null,
+      "gap_owner": "security owner",
+      "gate_ids": [
+        "GATE-E"
+      ],
+      "generator": "pgx-security secret-scan",
+      "limitations": [
+        "scans this repository's working tree; it does not scan history or a built image"
+      ],
+      "may_support_a_ths6_claim": true,
+      "media_type": "application/json",
+      "observed_or_executed": true,
+      "path": "data/security/wp23-secret-scan-report.json",
+      "present": true,
+      "schema_path": "schemas/wp23/secret-scan-report.schema.json",
+      "sha256": "sha256:d612d9f64383897b8fc83d99c03f16583a21fbcbb87344bf2cc4a7d18b5a53d5",
+      "supported_claim_ids": [],
+      "test_only": false,
+      "title": "Secret scan report",
+      "validation_result": "VALID",
+      "work_package": "WP-23"
+    },
+    {
+      "contains_numeric_claim": false,
+      "evidence_id": "EV-WP23-006",
+      "evidence_type": "OPERATIONAL_PENDING",
+      "freshness_source": null,
+      "gap_owner": "platform owner",
+      "gate_ids": [
+        "GATE-E"
+      ],
+      "generator": "pgx-security backup-status",
+      "limitations": [
+        "no backup has been taken and no restore verified"
+      ],
+      "may_support_a_ths6_claim": false,
+      "media_type": "application/json",
+      "observed_or_executed": false,
+      "path": "data/security/wp23-backup-restore-status.json",
+      "present": true,
+      "schema_path": "schemas/wp23/backup-restore-status.schema.json",
+      "sha256": "sha256:81a431c150b4d200e38c069eb42cc4919290a8bc5dbe989819a6933c6326cf28",
+      "supported_claim_ids": [],
+      "test_only": false,
+      "title": "Backup and restore status",
+      "validation_result": "VALID",
+      "work_package": "WP-23"
+    },
+    {
+      "contains_numeric_claim": false,
+      "evidence_id": "EV-WP23-007",
+      "evidence_type": "DOCUMENT_ONLY",
+      "freshness_source": null,
+      "gap_owner": null,
+      "gate_ids": [],
+      "generator": "WP-23 author",
+      "limitations": [],
+      "may_support_a_ths6_claim": false,
+      "media_type": "text/markdown",
+      "observed_or_executed": false,
+      "path": "docs/evidence/wp23-security-report.md",
+      "present": true,
+      "schema_path": null,
+      "sha256": "sha256:d4ad7ce40df599e5373c2019dd52838a52edd647540efc234c65285d75656ccf",
+      "supported_claim_ids": [
+        "THS6-CLAIM-023"
+      ],
+      "test_only": false,
+      "title": "WP-23 security report",
+      "validation_result": null,
+      "work_package": "WP-23"
+    },
+    {
+      "contains_numeric_claim": false,
+      "evidence_id": "EV-WP23-008",
+      "evidence_type": "DOCUMENT_ONLY",
+      "freshness_source": null,
+      "gap_owner": null,
+      "gate_ids": [],
+      "generator": "security owner",
+      "limitations": [],
+      "may_support_a_ths6_claim": false,
+      "media_type": "text/markdown",
+      "observed_or_executed": false,
+      "path": "docs/security/rbac-matrix.md",
+      "present": true,
+      "schema_path": null,
+      "sha256": "sha256:8c46fe92e4ab9f9b29bc8ff8c14f82c5f4e48bc0ebba248955847a5c3a73c96b",
+      "supported_claim_ids": [],
+      "test_only": false,
+      "title": "RBAC matrix document",
+      "validation_result": null,
+      "work_package": "WP-23"
+    },
+    {
+      "contains_numeric_claim": false,
+      "evidence_id": "EV-WP23-009",
+      "evidence_type": "DOCUMENT_ONLY",
+      "freshness_source": null,
+      "gap_owner": null,
+      "gate_ids": [],
+      "generator": "security owner",
+      "limitations": [],
+      "may_support_a_ths6_claim": false,
+      "media_type": "text/markdown",
+      "observed_or_executed": false,
+      "path": "docs/security/audit-policy.md",
+      "present": true,
+      "schema_path": null,
+      "sha256": "sha256:3f4c6e7d3514ee4c51c4a1377ab4636b24c50d48cdc2553422921fef83284ae9",
+      "supported_claim_ids": [
+        "THS6-CLAIM-013"
+      ],
+      "test_only": false,
+      "title": "Audit policy",
+      "validation_result": null,
+      "work_package": "WP-23"
+    },
+    {
+      "contains_numeric_claim": true,
+      "evidence_id": "EV-WP24-001",
+      "evidence_type": "OPERATIONAL_PENDING",
+      "freshness_source": null,
+      "gap_owner": "platform owner",
+      "gate_ids": [
+        "GATE-E"
+      ],
+      "generator": "pgx-deploy gate-status",
+      "limitations": [
+        "no container runtime, no executed migration, no CI run; release may not proceed"
+      ],
+      "may_support_a_ths6_claim": false,
+      "media_type": "application/json",
+      "observed_or_executed": false,
+      "path": "data/deployment/wp24-real-gate-status.json",
+      "present": true,
+      "schema_path": "schemas/wp24/wp24-gate-status.schema.json",
+      "sha256": "sha256:ff940c775335444c5e73475346dca72de9a5db6325dc1c974186d3c3455236bb",
+      "supported_claim_ids": [
+        "THS6-CLAIM-014"
+      ],
+      "test_only": false,
+      "title": "WP-24 real gate status",
+      "validation_result": "VALID",
+      "work_package": "WP-24"
+    },
+    {
+      "contains_numeric_claim": true,
+      "evidence_id": "EV-WP24-002",
+      "evidence_type": "OPERATIONAL_PENDING",
+      "freshness_source": null,
+      "gap_owner": "platform owner",
+      "gate_ids": [
+        "GATE-E"
+      ],
+      "generator": "pgx-deploy gate-e",
+      "limitations": [
+        "reads WP-23 and WP-24 and reports BLOCKED"
+      ],
+      "may_support_a_ths6_claim": false,
+      "media_type": "application/json",
+      "observed_or_executed": false,
+      "path": "data/deployment/wp24-gate-e-status.json",
+      "present": true,
+      "schema_path": "schemas/wp24/gate-e-operational-status.schema.json",
+      "sha256": "sha256:5aedab576b19158ef6f41ac9e70e899b8863649b409807a0f0c8dea7a7f8c6de",
+      "supported_claim_ids": [],
+      "test_only": false,
+      "title": "Gate E operational status",
+      "validation_result": "VALID",
+      "work_package": "WP-24"
+    },
+    {
+      "contains_numeric_claim": true,
+      "evidence_id": "EV-WP24-003",
+      "evidence_type": "OPERATIONAL_PENDING",
+      "freshness_source": null,
+      "gap_owner": "release approver",
+      "gate_ids": [
+        "GATE-F"
+      ],
+      "generator": "pgx-deploy release-validation",
+      "limitations": [
+        "release_may_proceed is false"
+      ],
+      "may_support_a_ths6_claim": false,
+      "media_type": "application/json",
+      "observed_or_executed": false,
+      "path": "data/deployment/wp24-release-validation.json",
+      "present": true,
+      "schema_path": "schemas/wp24/release-validation.schema.json",
+      "sha256": "sha256:2c46570b71b7015b79af7012f9048fffbc93abba3d2604f0fe3d8053db757dfa",
+      "supported_claim_ids": [
+        "THS6-CLAIM-024"
+      ],
+      "test_only": false,
+      "title": "Release validation aggregate",
+      "validation_result": "VALID",
+      "work_package": "WP-24"
+    },
+    {
+      "contains_numeric_claim": false,
+      "evidence_id": "EV-WP24-004",
+      "evidence_type": "CONFIGURED_NOT_EXECUTED",
+      "freshness_source": null,
+      "gap_owner": "platform owner",
+      "gate_ids": [
+        "GATE-E"
+      ],
+      "generator": "pgx-deploy provenance",
+      "limitations": [
+        "describes what a build would be made from; no build has happened and no lockfile exists"
+      ],
+      "may_support_a_ths6_claim": false,
+      "media_type": "application/json",
+      "observed_or_executed": false,
+      "path": "data/deployment/wp24-build-provenance.json",
+      "present": true,
+      "schema_path": "schemas/wp24/build-provenance.schema.json",
+      "sha256": "sha256:9ce6a73de03595f1c7da0238fc3ce49ec8d6ee494c945b219e2fb462e9bcaa25",
+      "supported_claim_ids": [
+        "THS6-CLAIM-005"
+      ],
+      "test_only": false,
+      "title": "Build provenance",
+      "validation_result": "VALID",
+      "work_package": "WP-24"
+    },
+    {
+      "contains_numeric_claim": true,
+      "evidence_id": "EV-WP24-005",
+      "evidence_type": "CONFIGURED_NOT_EXECUTED",
+      "freshness_source": null,
+      "gap_owner": "platform owner",
+      "gate_ids": [
+        "GATE-E"
+      ],
+      "generator": "pgx-deploy targets",
+      "limitations": [
+        "declared targets published before any measurement"
+      ],
+      "may_support_a_ths6_claim": false,
+      "media_type": "application/json",
+      "observed_or_executed": false,
+      "path": "data/deployment/wp24-performance-targets.json",
+      "present": true,
+      "schema_path": "schemas/wp24/performance-targets.schema.json",
+      "sha256": "sha256:0bc76433695516a7b0bc61f403c8a0b36bf330f844dd41e66b1981817fcac258",
+      "supported_claim_ids": [],
+      "test_only": false,
+      "title": "Performance targets",
+      "validation_result": "VALID",
+      "work_package": "WP-24"
+    },
+    {
+      "contains_numeric_claim": true,
+      "evidence_id": "EV-WP24-006",
+      "evidence_type": "CONFIGURED_NOT_EXECUTED",
+      "freshness_source": null,
+      "gap_owner": "platform owner",
+      "gate_ids": [
+        "GATE-E"
+      ],
+      "generator": "pgx-deploy drills",
+      "limitations": [
+        "declared drills; none has been executed"
+      ],
+      "may_support_a_ths6_claim": false,
+      "media_type": "application/json",
+      "observed_or_executed": false,
+      "path": "data/deployment/wp24-reliability-drills.json",
+      "present": true,
+      "schema_path": "schemas/wp24/reliability-drill-catalogue.schema.json",
+      "sha256": "sha256:df9cd8e4b52c27fed547446c5c01610549e1dfe14576fc2585c4ca2cdb22b57f",
+      "supported_claim_ids": [
+        "THS6-CLAIM-015"
+      ],
+      "test_only": false,
+      "title": "Reliability drill catalogue",
+      "validation_result": "VALID",
+      "work_package": "WP-24"
+    },
+    {
+      "contains_numeric_claim": true,
+      "evidence_id": "EV-WP24-007",
+      "evidence_type": "CONFIGURED_NOT_EXECUTED",
+      "freshness_source": null,
+      "gap_owner": "platform owner",
+      "gate_ids": [
+        "GATE-E"
+      ],
+      "generator": "pgx-deploy restore",
+      "limitations": [
+        "four conditions declared; no restore has been run"
+      ],
+      "may_support_a_ths6_claim": false,
+      "media_type": "application/json",
+      "observed_or_executed": false,
+      "path": "data/deployment/wp24-restore-conditions.json",
+      "present": true,
+      "schema_path": null,
+      "sha256": "sha256:beef1fe47c288e95629fa452888abdf870f67b4003a1d888647da5ffd16911a1",
+      "supported_claim_ids": [],
+      "test_only": false,
+      "title": "Restore conditions",
+      "validation_result": null,
+      "work_package": "WP-24"
+    },
+    {
+      "contains_numeric_claim": true,
+      "evidence_id": "EV-WP24-008",
+      "evidence_type": "REAL_EXECUTED",
+      "freshness_source": null,
+      "gap_owner": "platform owner",
+      "gate_ids": [
+        "GATE-E"
+      ],
+      "generator": "pgx-deploy runtime-assets",
+      "limitations": [
+        "measures this working tree; it is not an image listing"
+      ],
+      "may_support_a_ths6_claim": true,
+      "media_type": "application/json",
+      "observed_or_executed": true,
+      "path": "data/deployment/wp24-runtime-asset-manifest.json",
+      "present": true,
+      "schema_path": "schemas/wp24/runtime-asset-manifest.schema.json",
+      "sha256": "sha256:b2f3ab8c7681a1fd17e1ff71e5a47c0c24955bba3d831a443d85d74044892dab",
+      "supported_claim_ids": [],
+      "test_only": false,
+      "title": "Runtime asset manifest",
+      "validation_result": "VALID",
+      "work_package": "WP-24"
+    },
+    {
+      "contains_numeric_claim": true,
+      "evidence_id": "EV-WP24-009",
+      "evidence_type": "CONFIGURED_NOT_EXECUTED",
+      "freshness_source": null,
+      "gap_owner": "platform owner",
+      "gate_ids": [
+        "GATE-E"
+      ],
+      "generator": "pgx-deploy secrets",
+      "limitations": [
+        "names and mechanisms only; never a value"
+      ],
+      "may_support_a_ths6_claim": false,
+      "media_type": "application/json",
+      "observed_or_executed": false,
+      "path": "data/deployment/wp24-secret-configuration.json",
+      "present": true,
+      "schema_path": null,
+      "sha256": "sha256:c5325bc3aa186b1fcff9ed267486dbbd44e28d80945906b52dc6d37e18467be0",
+      "supported_claim_ids": [],
+      "test_only": false,
+      "title": "Secret configuration report",
+      "validation_result": null,
+      "work_package": "WP-24"
+    },
+    {
+      "contains_numeric_claim": false,
+      "evidence_id": "EV-WP24-010",
+      "evidence_type": "CONFIGURED_NOT_EXECUTED",
+      "freshness_source": null,
+      "gap_owner": "platform owner",
+      "gate_ids": [
+        "GATE-E"
+      ],
+      "generator": "WP-24 author",
+      "limitations": [
+        "a Dockerfile is not a built image"
+      ],
+      "may_support_a_ths6_claim": false,
+      "media_type": null,
+      "observed_or_executed": false,
+      "path": "Dockerfile",
+      "present": true,
+      "schema_path": null,
+      "sha256": "sha256:8e0b982a356670d890e5823f31c62ae4b67bd1bec42d718b749a7d62807c550e",
+      "supported_claim_ids": [
+        "THS6-CLAIM-014"
+      ],
+      "test_only": false,
+      "title": "Container image definition",
+      "validation_result": null,
+      "work_package": "WP-24"
+    },
+    {
+      "contains_numeric_claim": false,
+      "evidence_id": "EV-WP24-011",
+      "evidence_type": "CONFIGURED_NOT_EXECUTED",
+      "freshness_source": null,
+      "gap_owner": "platform owner",
+      "gate_ids": [
+        "GATE-E"
+      ],
+      "generator": "WP-24 author",
+      "limitations": [
+        "a configured workflow is not a CI run"
+      ],
+      "may_support_a_ths6_claim": false,
+      "media_type": "application/yaml",
+      "observed_or_executed": false,
+      "path": ".github/workflows/build-and-verify.yml",
+      "present": true,
+      "schema_path": null,
+      "sha256": "sha256:9dc4fa169e1770391f400d088a71477b5901a6a16235e668697bd62b196286d9",
+      "supported_claim_ids": [
+        "THS6-CLAIM-009"
+      ],
+      "test_only": false,
+      "title": "Build and verify workflow",
+      "validation_result": null,
+      "work_package": "WP-24"
+    },
+    {
+      "contains_numeric_claim": false,
+      "evidence_id": "EV-WP24-012",
+      "evidence_type": "CONFIGURED_NOT_EXECUTED",
+      "freshness_source": null,
+      "gap_owner": "platform owner",
+      "gate_ids": [
+        "GATE-F"
+      ],
+      "generator": "WP-24 author",
+      "limitations": [
+        "a configured workflow is not a CI run"
+      ],
+      "may_support_a_ths6_claim": false,
+      "media_type": "application/yaml",
+      "observed_or_executed": false,
+      "path": ".github/workflows/release-validation.yml",
+      "present": true,
+      "schema_path": null,
+      "sha256": "sha256:ef5f4a86cb792c429a4edeee6a428f126c7fd45af05cedae05f14f9705f84db2",
+      "supported_claim_ids": [
+        "THS6-CLAIM-024"
+      ],
+      "test_only": false,
+      "title": "Release validation workflow",
+      "validation_result": null,
+      "work_package": "WP-24"
+    },
+    {
+      "contains_numeric_claim": false,
+      "evidence_id": "EV-WP24-013",
+      "evidence_type": "DOCUMENT_ONLY",
+      "freshness_source": null,
+      "gap_owner": null,
+      "gate_ids": [],
+      "generator": "WP-24 author",
+      "limitations": [],
+      "may_support_a_ths6_claim": false,
+      "media_type": "text/markdown",
+      "observed_or_executed": false,
+      "path": "docs/evidence/wp24-build-provenance-report.md",
+      "present": true,
+      "schema_path": null,
+      "sha256": "sha256:c7000095c350248b8aa8b2c818fa8402e17b8c41bd692aae3aa92f7ad7466504",
+      "supported_claim_ids": [
+        "THS6-CLAIM-005"
+      ],
+      "test_only": false,
+      "title": "WP-24 build provenance report",
+      "validation_result": null,
+      "work_package": "WP-24"
+    },
+    {
+      "contains_numeric_claim": false,
+      "evidence_id": "EV-WP24-014",
+      "evidence_type": "DOCUMENT_ONLY",
+      "freshness_source": null,
+      "gap_owner": null,
+      "gate_ids": [],
+      "generator": "WP-24 author",
+      "limitations": [],
+      "may_support_a_ths6_claim": false,
+      "media_type": "text/markdown",
+      "observed_or_executed": false,
+      "path": "docs/evidence/wp24-reliability-performance-report.md",
+      "present": true,
+      "schema_path": null,
+      "sha256": "sha256:97da9a1816496ae71150ae9e73badb36a5f15649e872df77166a8f082eacdfe4",
+      "supported_claim_ids": [
+        "THS6-CLAIM-015"
+      ],
+      "test_only": false,
+      "title": "WP-24 reliability and performance report",
+      "validation_result": null,
+      "work_package": "WP-24"
+    },
+    {
+      "contains_numeric_claim": false,
+      "evidence_id": "EV-WP24-015",
+      "evidence_type": "DOCUMENT_ONLY",
+      "freshness_source": null,
+      "gap_owner": "platform owner",
+      "gate_ids": [
+        "GATE-E"
+      ],
+      "generator": "platform owner",
+      "limitations": [
+        "a written runbook is not an executed operation"
+      ],
+      "may_support_a_ths6_claim": false,
+      "media_type": "text/markdown",
+      "observed_or_executed": false,
+      "path": "docs/operations/staging-deployment-runbook.md",
+      "present": true,
+      "schema_path": null,
+      "sha256": "sha256:975728c546af80377a97d765c973e6cd5ae7c8429ac72f776a4f62f613384bd4",
+      "supported_claim_ids": [
+        "THS6-CLAIM-014"
+      ],
+      "test_only": false,
+      "title": "Staging deployment runbook",
+      "validation_result": null,
+      "work_package": "WP-24"
+    },
+    {
+      "contains_numeric_claim": false,
+      "evidence_id": "EV-WP24-016",
+      "evidence_type": "DOCUMENT_ONLY",
+      "freshness_source": null,
+      "gap_owner": "platform owner",
+      "gate_ids": [
+        "GATE-E"
+      ],
+      "generator": "platform owner",
+      "limitations": [
+        "a written runbook is not an executed rollback"
+      ],
+      "may_support_a_ths6_claim": false,
+      "media_type": "text/markdown",
+      "observed_or_executed": false,
+      "path": "docs/operations/rollback-runbook.md",
+      "present": true,
+      "schema_path": null,
+      "sha256": "sha256:2b4c02a2a527f73c08817de539c865d929d7e031164b8e01930b64d14e6e7674",
+      "supported_claim_ids": [
+        "THS6-CLAIM-006"
+      ],
+      "test_only": false,
+      "title": "Rollback runbook",
+      "validation_result": null,
+      "work_package": "WP-24"
+    },
+    {
+      "contains_numeric_claim": false,
+      "evidence_id": "EV-WP24-017",
+      "evidence_type": "DOCUMENT_ONLY",
+      "freshness_source": null,
+      "gap_owner": "platform owner",
+      "gate_ids": [
+        "GATE-E"
+      ],
+      "generator": "platform owner",
+      "limitations": [
+        "a written runbook is not an executed restore"
+      ],
+      "may_support_a_ths6_claim": false,
+      "media_type": "text/markdown",
+      "observed_or_executed": false,
+      "path": "docs/operations/backup-restore-runbook.md",
+      "present": true,
+      "schema_path": null,
+      "sha256": "sha256:8002a4458ce72c094973f470630f9c7de30b9502ac4708a86c4c757cf1c45749",
+      "supported_claim_ids": [],
+      "test_only": false,
+      "title": "Backup and restore runbook",
+      "validation_result": null,
+      "work_package": "WP-24"
+    },
+    {
+      "contains_numeric_claim": false,
+      "evidence_id": "EV-WP24-018",
+      "evidence_type": "DOCUMENT_ONLY",
+      "freshness_source": null,
+      "gap_owner": "WP-24 author",
+      "gate_ids": [],
+      "generator": "WP-24 author",
+      "limitations": [
+        "its prose states that no docs/ths6 directory exists, which is false; three preliminary notes are there"
+      ],
+      "may_support_a_ths6_claim": false,
+      "media_type": "text/markdown",
+      "observed_or_executed": false,
+      "path": "docs/handoffs/wp24-handoff.md",
+      "present": true,
+      "schema_path": null,
+      "sha256": "sha256:607149cfafe24a1da99e680afde91e84b24147fff5a3fc50cdb01271739eef80",
+      "supported_claim_ids": [],
+      "test_only": false,
+      "title": "WP-24 handoff",
+      "validation_result": null,
+      "work_package": "WP-24"
+    }
+  ],
+  "note": "Presence is not support. An artifact counts towards a claim only when its type is REAL_EXECUTED or REAL_OBSERVED.",
+  "preliminary_ths6_documents": [
+    "docs/ths6/wp02-foundation-evidence.md",
+    "docs/ths6/wp03-release-evidence.md",
+    "docs/ths6/wp04-ingestion-evidence.md"
+  ],
+  "present_count": 144,
+  "resolved_count": 145
+}

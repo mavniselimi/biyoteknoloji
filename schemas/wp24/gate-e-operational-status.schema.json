@@ -1,0 +1,158 @@
+{
+  "$id": "https://pgx.local/schemas/wp24/gate-e-operational-status.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "description": "Gate E needs both halves. WP-23's security gate and WP-24's deployment gate are read from their own artifacts and neither is inferred from the other.",
+  "if": {
+    "properties": {
+      "gate_e_status": {
+        "const": "PASS"
+      }
+    },
+    "required": [
+      "gate_e_status"
+    ]
+  },
+  "properties": {
+    "audit_chain_verified": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "authentication_configured": {
+      "type": "boolean"
+    },
+    "backup_operational": {
+      "type": "boolean"
+    },
+    "canonical_audit_implemented": {
+      "type": "boolean"
+    },
+    "ci_configured": {
+      "type": "boolean"
+    },
+    "ci_executed": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "claim_boundary_status": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "definition_source": {
+      "type": "string"
+    },
+    "gate": {
+      "const": "Gate E - Operational"
+    },
+    "gate_e_status": {
+      "enum": [
+        "PASS",
+        "BLOCKED"
+      ],
+      "type": "string"
+    },
+    "gate_status_schema_version": {
+      "const": "pgx-wp24-gate-e-operational-status/1"
+    },
+    "generated_at": {
+      "type": "string"
+    },
+    "image_built": {
+      "type": "boolean"
+    },
+    "image_published": {
+      "const": false
+    },
+    "performance_evidence": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "release_may_proceed": {
+      "type": "boolean"
+    },
+    "reliability_evidence": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "restore_verified": {
+      "type": "boolean"
+    },
+    "rollback_exercised": {
+      "type": "boolean"
+    },
+    "staging_deployed": {
+      "type": "boolean"
+    },
+    "staging_is_remote": {
+      "type": "boolean"
+    },
+    "tls_observed": {
+      "type": "boolean"
+    },
+    "work_packages": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "wp23_implementation_status": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "wp23_security_gate_status": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "wp24_deployment_gate_status": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "wp24_implementation_status": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "gate_status_schema_version",
+    "gate",
+    "gate_e_status",
+    "release_may_proceed",
+    "ci_executed",
+    "image_published"
+  ],
+  "then": {
+    "properties": {
+      "restore_verified": {
+        "const": true
+      },
+      "tls_observed": {
+        "const": true
+      },
+      "wp23_security_gate_status": {
+        "const": "PASS"
+      },
+      "wp24_deployment_gate_status": {
+        "const": "PASS"
+      }
+    }
+  },
+  "title": "PGx Gate E operational status (WP-24)",
+  "type": "object"
+}

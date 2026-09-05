@@ -1,0 +1,214 @@
+{
+  "canonical_build": {
+    "canonical_build_content_hash": "sha256:61e892abb95facac239f28bdd9b61b9e6f7573ea4fd6861226ba30f0b22566c9",
+    "canonical_build_key": "PGX-DATA-20260830-900/61e892abb95facac",
+    "dataset_lifecycle_state": "BUILDING",
+    "dataset_public_id": "PGX-DATA-20260830-900"
+  },
+  "canonical_drug_count": 11,
+  "case_count": 8,
+  "cases": [
+    {
+      "case_id": "CANDIDATE-prasugrel",
+      "drug_id": "DRUG:prasugrel",
+      "expected_difference_id": "LEGACY-BUG-009-PRASUGREL-SCORE-REMOVED",
+      "legacy_overall_risk_level": null,
+      "legacy_rendered_as_reassuring": true,
+      "legacy_score": 59,
+      "source": "alternative-beta-clopidogrel.json",
+      "v2_coverage_status": "UNSUPPORTED_DRUG",
+      "v2_explanation": "the pinned canonical dataset does not contain this chemical, so no axis exists to evaluate and none is fabricated",
+      "v2_reason_codes": [
+        "DRUG_NOT_IN_CANONICAL_DATASET"
+      ],
+      "v2_recognized": false,
+      "v2_score": null
+    },
+    {
+      "case_id": "CANDIDATE-ticagrelor",
+      "drug_id": "DRUG:ticagrelor",
+      "expected_difference_id": "LEGACY-BUG-009-TICAGRELOR-SCORE-REMOVED",
+      "legacy_overall_risk_level": null,
+      "legacy_rendered_as_reassuring": true,
+      "legacy_score": 59,
+      "source": "alternative-beta-clopidogrel.json",
+      "v2_coverage_status": "UNSUPPORTED_DRUG",
+      "v2_explanation": "the pinned canonical dataset does not contain this chemical, so no axis exists to evaluate and none is fabricated",
+      "v2_reason_codes": [
+        "DRUG_NOT_IN_CANONICAL_DATASET"
+      ],
+      "v2_recognized": false,
+      "v2_score": null
+    },
+    {
+      "case_id": "P2-amitriptyline",
+      "drug_id": "DRUG:amitriptyline",
+      "expected_difference_id": null,
+      "legacy_overall_risk_level": "medium",
+      "legacy_rendered_as_reassuring": false,
+      "legacy_score": null,
+      "source": "risk-p2-cyp2c19-poor.json",
+      "v2_coverage_status": "INSUFFICIENT",
+      "v2_explanation": "the pinned canonical dataset contains this chemical and no approved coverage scope declares what a complete assessment of it would require; recognition is not coverage",
+      "v2_reason_codes": [
+        "NO_VALIDATED_RULE_FOR_AXIS"
+      ],
+      "v2_recognized": true,
+      "v2_score": null
+    },
+    {
+      "case_id": "P2-clopidogrel",
+      "drug_id": "DRUG:clopidogrel",
+      "expected_difference_id": null,
+      "legacy_overall_risk_level": "high",
+      "legacy_rendered_as_reassuring": false,
+      "legacy_score": null,
+      "source": "risk-p2-cyp2c19-poor.json",
+      "v2_coverage_status": "INSUFFICIENT",
+      "v2_explanation": "the pinned canonical dataset contains this chemical and no approved coverage scope declares what a complete assessment of it would require; recognition is not coverage",
+      "v2_reason_codes": [
+        "NO_VALIDATED_RULE_FOR_AXIS"
+      ],
+      "v2_recognized": true,
+      "v2_score": null
+    },
+    {
+      "case_id": "P2-codeine",
+      "drug_id": "DRUG:codeine",
+      "expected_difference_id": "LEGACY-BUG-002-CODEINE-NONE-TO-INSUFFICIENT",
+      "legacy_overall_risk_level": "none",
+      "legacy_rendered_as_reassuring": true,
+      "legacy_score": null,
+      "source": "risk-p2-cyp2c19-poor.json",
+      "v2_coverage_status": "INSUFFICIENT",
+      "v2_explanation": "the pinned canonical dataset contains this chemical and no approved coverage scope declares what a complete assessment of it would require; recognition is not coverage",
+      "v2_reason_codes": [
+        "NO_VALIDATED_RULE_FOR_AXIS"
+      ],
+      "v2_recognized": true,
+      "v2_score": null
+    },
+    {
+      "case_id": "P2-voriconazole",
+      "drug_id": "DRUG:voriconazole",
+      "expected_difference_id": null,
+      "legacy_overall_risk_level": "high",
+      "legacy_rendered_as_reassuring": false,
+      "legacy_score": null,
+      "source": "risk-p2-cyp2c19-poor.json",
+      "v2_coverage_status": "INSUFFICIENT",
+      "v2_explanation": "the pinned canonical dataset contains this chemical and no approved coverage scope declares what a complete assessment of it would require; recognition is not coverage",
+      "v2_reason_codes": [
+        "NO_VALIDATED_RULE_FOR_AXIS"
+      ],
+      "v2_recognized": true,
+      "v2_score": null
+    },
+    {
+      "case_id": "P2-warfarin",
+      "drug_id": "DRUG:warfarin",
+      "expected_difference_id": "LEGACY-BUG-002-WARFARIN-NONE-TO-INSUFFICIENT",
+      "legacy_overall_risk_level": "none",
+      "legacy_rendered_as_reassuring": true,
+      "legacy_score": null,
+      "source": "risk-p2-cyp2c19-poor.json",
+      "v2_coverage_status": "INSUFFICIENT",
+      "v2_explanation": "the pinned canonical dataset contains this chemical and no approved coverage scope declares what a complete assessment of it would require; recognition is not coverage",
+      "v2_reason_codes": [
+        "NO_VALIDATED_RULE_FOR_AXIS"
+      ],
+      "v2_recognized": true,
+      "v2_score": null
+    },
+    {
+      "case_id": "UNKNOWN-DRUG",
+      "drug_id": "DRUG:definitely-not-a-real-chemical",
+      "expected_difference_id": null,
+      "legacy_overall_risk_level": "none",
+      "legacy_rendered_as_reassuring": true,
+      "legacy_score": null,
+      "source": "constructed",
+      "v2_coverage_status": "UNSUPPORTED_DRUG",
+      "v2_explanation": "the pinned canonical dataset does not contain this chemical, so no axis exists to evaluate and none is fabricated",
+      "v2_reason_codes": [
+        "DRUG_NOT_IN_CANONICAL_DATASET"
+      ],
+      "v2_recognized": false,
+      "v2_score": null
+    }
+  ],
+  "content_hash": "sha256:4ede0b448d49c08c2488ac58e83810b46a296287f1d96fb93dd2bab239d735bd",
+  "expected_difference_hits": {
+    "LEGACY-BUG-002-CODEINE-NONE-TO-INSUFFICIENT": 1,
+    "LEGACY-BUG-002-WARFARIN-NONE-TO-INSUFFICIENT": 1,
+    "LEGACY-BUG-009-PRASUGREL-SCORE-REMOVED": 1,
+    "LEGACY-BUG-009-TICAGRELOR-SCORE-REMOVED": 1
+  },
+  "expected_differences": [
+    {
+      "comparison_selector": {
+        "artifact_id": "risk-p2-cyp2c19-poor.json",
+        "drug": "codeine",
+        "legacy_field": "overall_risk_level"
+      },
+      "difference_id": "LEGACY-BUG-002-CODEINE-NONE-TO-INSUFFICIENT",
+      "expected_coverage_status": "INSUFFICIENT",
+      "expected_reason_code": "NO_VALIDATED_RULE_FOR_AXIS",
+      "legacy_bug_id": "LEGACY-BUG-002",
+      "observed_legacy_behavior": "codeine returns overall_risk_level 'none', which RISK_LABEL_TR renders as 'Dusuk / uyari yok' - low, no warning - although nothing was actually evaluated",
+      "reference": "SAFETY-INV-001; architecture.md 9.2, 9.3",
+      "required_v2_behavior": "coverage INSUFFICIENT with NO_VALIDATED_RULE_FOR_AXIS. The drug is in the pinned canonical dataset, and no approved coverage scope exists for it, so the honest answer is that it was not assessed and why",
+      "safety_rationale": "'we did not look' rendered as 'nothing to worry about' is the highest-consequence failure mode of a pharmacogenomic tool; coverage exists as a separate first-class output precisely so that absence cannot be reported as reassurance"
+    },
+    {
+      "comparison_selector": {
+        "artifact_id": "risk-p2-cyp2c19-poor.json",
+        "drug": "warfarin",
+        "legacy_field": "overall_risk_level"
+      },
+      "difference_id": "LEGACY-BUG-002-WARFARIN-NONE-TO-INSUFFICIENT",
+      "expected_coverage_status": "INSUFFICIENT",
+      "expected_reason_code": "NO_VALIDATED_RULE_FOR_AXIS",
+      "legacy_bug_id": "LEGACY-BUG-002",
+      "observed_legacy_behavior": "warfarin returns overall_risk_level 'none' under the same label, with finding status 'gene_drug_known_no_profile_match'",
+      "reference": "SAFETY-INV-001; architecture.md 9.2, 9.3",
+      "required_v2_behavior": "coverage INSUFFICIENT with NO_VALIDATED_RULE_FOR_AXIS, for the same reason as codeine. It is a separate entry because the legacy snapshot records it separately, and a fix covering only one drug would satisfy a single-entry allowlist",
+      "safety_rationale": "the same defect on a second drug; both must change or a reader still sees 'low, no warning' where nothing was assessed"
+    },
+    {
+      "comparison_selector": {
+        "artifact_id": "alternative-beta-clopidogrel.json",
+        "drug": "prasugrel",
+        "legacy_field": "legacy_score_unprotected"
+      },
+      "difference_id": "LEGACY-BUG-009-PRASUGREL-SCORE-REMOVED",
+      "expected_coverage_status": "UNSUPPORTED_DRUG",
+      "expected_reason_code": "DRUG_NOT_IN_CANONICAL_DATASET",
+      "legacy_bug_id": "LEGACY-BUG-009",
+      "observed_legacy_behavior": "prasugrel receives score 59 under 'MVP alternatif uygunluk on skoru' while its own data status is 'insufficient_pgx_rule_data' - a suitability-shaped number on a candidate with no usable rule",
+      "reference": "SAFETY-INV-005; architecture.md 4.4",
+      "required_v2_behavior": "no score of any kind. Prasugrel is absent from the pinned canonical dataset, so coverage is UNSUPPORTED_DRUG with DRUG_NOT_IN_CANONICAL_DATASET, and there is no field in a coverage result a score could be written into",
+      "safety_rationale": "a number between 0 and 100 beside a drug name reads as a ranking however it is labelled, and ranking candidates by anything is a preference claim this system does not make (SAFETY-INV-005)"
+    },
+    {
+      "comparison_selector": {
+        "artifact_id": "alternative-beta-clopidogrel.json",
+        "drug": "ticagrelor",
+        "legacy_field": "legacy_score_unprotected"
+      },
+      "difference_id": "LEGACY-BUG-009-TICAGRELOR-SCORE-REMOVED",
+      "expected_coverage_status": "UNSUPPORTED_DRUG",
+      "expected_reason_code": "DRUG_NOT_IN_CANONICAL_DATASET",
+      "legacy_bug_id": "LEGACY-BUG-009",
+      "observed_legacy_behavior": "ticagrelor receives the identical score 59 under the identical data status, which is itself the tell: the number distinguishes nothing and still reads as an assessment",
+      "reference": "SAFETY-INV-005; architecture.md 4.4",
+      "required_v2_behavior": "no score. Ticagrelor is absent from the pinned canonical dataset, so coverage is UNSUPPORTED_DRUG with DRUG_NOT_IN_CANONICAL_DATASET",
+      "safety_rationale": "same defect, second candidate; each is addressed by identity so a reordered list cannot move one expectation onto the other"
+    }
+  ],
+  "expected_differences_not_observed": [],
+  "note": "Migration evidence, not clinical validation. No approved coverage manifest exists, so every V2 answer here is a form of 'not assessed, and here is the machine-readable reason'. That is the correction: the legacy engine reported the same situation as 'low / no warning'. No coverage status in this report asserts safety, preference or suitability for any medicine, and no score appears anywhere because a coverage result has no field one could be written into.",
+  "real_coverage_manifests": 0,
+  "report_schema_version": "pgx-coverage-regression-report/1",
+  "unexpected_differences": []
+}

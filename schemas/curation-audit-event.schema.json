@@ -1,0 +1,94 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pgx-platform.invalid/schemas/curation-audit-event.schema.json",
+  "title": "PGx curation audit event",
+  "description": "One append-only record of a curation workflow transition (WP-10). Written in the same unit of work as the change it describes, so a failed operation leaves no event: an audit trail describing a transition that rolled back is worse than no trail, because somebody would believe it. Events are never updated or deleted; migration 0002's trigger refuses both.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "action",
+    "actor",
+    "object_type",
+    "object_id",
+    "occurred_at",
+    "metadata"
+  ],
+  "properties": {
+    "audit_event_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "action": {
+      "enum": [
+        "CURATION_WORK_ITEM_IMPORTED",
+        "CURATION_REVISION_CREATED",
+        "CURATION_REVISION_SUBMITTED",
+        "CURATION_CHANGES_REQUESTED",
+        "CURATION_APPROVED",
+        "CURATION_REJECTED",
+        "CURATION_REFERRED_TO_ADJUDICATION",
+        "CURATION_ADJUDICATED"
+      ],
+      "description": "One action per operation, so an audit query can answer 'who approved this' without parsing prose."
+    },
+    "actor": {
+      "type": "string",
+      "minLength": 1
+    },
+    "object_type": {
+      "enum": [
+        "curation_work_item",
+        "curation_revision"
+      ]
+    },
+    "object_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "occurred_at": {
+      "type": "string",
+      "minLength": 1
+    },
+    "reason": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "metadata": {
+      "type": "object"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "action": {
+            "const": "CURATION_APPROVED"
+          }
+        },
+        "required": [
+          "action"
+        ]
+      },
+      "then": {
+        "properties": {
+          "metadata": {
+            "type": "object",
+            "required": [
+              "revision_id",
+              "revision_content_hash",
+              "author_actor_id"
+            ],
+            "description": "An approval names the revision it approved, its hash, and the author it was checked against. Without all three, 'what was approved and by whom, independently of whom' is not answerable from the trail."
+          }
+        },
+        "required": [
+          "metadata"
+        ]
+      }
+    }
+  ]
+}

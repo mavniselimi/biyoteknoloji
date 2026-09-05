@@ -1,0 +1,162 @@
+{% extends "base.html" %}
+{% block content %}
+{#
+  Nothing on this page is computed. Every code, label, count and hash comes
+  from the view model, which was checked against the API response before this
+  template was reached.
+
+  Medications appear in the order the model holds them, which is the order the
+  engine produced. There is no sort, no filter and no "most important first".
+#}
+<h2>{{ text['assessment.overall'] }}</h2>
+{% with status = model.status %}{% include "_status_pair.html" %}{% endwith %}
+<p class="muted">{{ text['assessment.status_pair_note'] }}</p>
+
+<dl class="fact-list">
+  <div><dt>{{ field['assessment_id'] }}</dt><dd><code>{{ model.assessment_id }}</code></dd></div>
+  <div><dt>{{ field['mode'] }}</dt><dd><code>{{ model.mode }}</code></dd></div>
+  <div><dt>{{ field['input_kind'] }}</dt><dd><code>{{ model.input_kind }}</code></dd></div>
+  <div><dt>{{ field['case_id'] }}</dt><dd>{% if model.case_id %}<code>{{ model.case_id }}</code>{% else %}<span class="absent">&#8212;</span>{% endif %}</dd></div>
+</dl>
+
+<h2>{{ text['assessment.medications'] }}</h2>
+{% for medication in model.medications %}
+<section class="medication" aria-labelledby="medication-{{ loop.index }}">
+  <h3 id="medication-{{ loop.index }}"><code>{{ medication.drug }}</code></h3>
+  {% with status = medication.status %}{% include "_status_pair.html" %}{% endwith %}
+
+  <table class="data-table axis-table">
+    <caption>{{ text['assessment.axes_caption'] }}</caption>
+    <thead>
+      <tr>
+        <th scope="col">{{ field['gene'] }}</th>
+        <th scope="col">{{ field['coverage'] }}</th>
+        <th scope="col">{{ field['phenotype'] }}</th>
+        <th scope="col">{{ field['observation_state'] }}</th>
+        <th scope="col">{{ field['reason_code'] }}</th>
+        <th scope="col">{{ field['evidence'] }}</th>
+        <th scope="col">{{ field['conflict'] }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for axis in medication.axes %}
+      <tr data-coverage="{{ axis.coverage_code }}">
+        <th scope="row"><code>{{ axis.gene }}</code></th>
+        <td><span>{{ axis.coverage_label }}</span> <code class="status-code">{{ axis.coverage_code }}</code></td>
+        <td>{% if axis.observed_phenotype %}<code>{{ axis.observed_phenotype }}</code>{% else %}<span class="absent">&#8212;</span>{% endif %}</td>
+        <td>{% if axis.observation_state %}<span>{{ axis.observation_state_label }}</span> <code class="status-code">{{ axis.observation_state }}</code>{% else %}<span class="absent">&#8212;</span>{% endif %}</td>
+        <td>
+          {% if axis.reason_codes %}
+          <ul class="code-list">
+            {% for code in axis.reason_codes %}
+            <li><code>{{ code }}</code> <span>{{ axis.reason_labels[loop.index0] }}</span></li>
+            {% endfor %}
+          </ul>
+          {% else %}<span class="absent">&#8212;</span>{% endif %}
+        </td>
+        <td>
+          {% if axis.evidence_references %}
+          <ul class="code-list">
+            {% for reference in axis.evidence_references %}
+            <li><a href="{{ axis.evidence_urls[loop.index0] }}"><code>{{ reference }}</code></a></li>
+            {% endfor %}
+          </ul>
+          {% else %}<span class="absent">&#8212;</span>{% endif %}
+        </td>
+        <td>
+          {% if axis.conflict_references %}
+          <ul class="code-list">
+            {% for reference in axis.conflict_references %}
+            <li><code>{{ reference }}</code></li>
+            {% endfor %}
+          </ul>
+          {% else %}<span class="absent">&#8212;</span>{% endif %}
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <h4>{{ text['assessment.findings'] }}</h4>
+  {% if medication.findings %}
+  <table class="data-table finding-table">
+    <caption>{{ text['assessment.findings_caption'] }}</caption>
+    <thead>
+      <tr>
+        <th scope="col">{{ field['gene'] }}</th>
+        <th scope="col">{{ field['phenotype'] }}</th>
+        <th scope="col">{{ field['finding_attention'] }}</th>
+        <th scope="col">{{ field['rule'] }}</th>
+        <th scope="col">{{ field['rule_version'] }}</th>
+        <th scope="col">{{ field['rule_content_hash'] }}</th>
+        <th scope="col">{{ field['rationale_reference'] }}</th>
+        <th scope="col">{{ field['curation_revision'] }}</th>
+        <th scope="col">{{ field['effect_code'] }}</th>
+        <th scope="col">{{ field['explanation_code'] }}</th>
+        <th scope="col">{{ field['evidence'] }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for finding in medication.findings %}
+      <tr data-attention="{{ finding.attention_code }}">
+        <th scope="row"><code>{{ finding.gene }}</code></th>
+        <td><code>{{ finding.phenotype }}</code></td>
+        <td><span>{{ finding.attention_label }}</span> <code class="status-code">{{ finding.attention_code }}</code></td>
+        <td><code>{{ finding.rule_id }}</code></td>
+        <td class="numeric">{{ finding.rule_version }}</td>
+        <td class="value-cell"><code>{{ finding.rule_content_hash }}</code></td>
+        <td><code>{{ finding.rationale_reference }}</code></td>
+        <td class="value-cell"><code>{{ finding.curation_revision_id }}</code></td>
+        <td>{% if finding.effect_code %}<code>{{ finding.effect_code }}</code>{% else %}<span class="absent" aria-label="{{ text['app.none_recorded'] }}">{{ finding.effect_display }}</span>{% endif %}</td>
+        <td>{% if finding.explanation_code %}<code>{{ finding.explanation_code }}</code>{% else %}<span class="absent" aria-label="{{ text['app.none_recorded'] }}">{{ finding.explanation_display }}</span>{% endif %}</td>
+        <td>
+          <ul class="code-list">
+            {% for reference in finding.evidence_references %}
+            <li><a href="{{ finding.evidence_urls[loop.index0] }}"><code>{{ reference }}</code></a></li>
+            {% endfor %}
+          </ul>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p class="empty-state">{{ medication.no_findings_note }}</p>
+  {% endif %}
+</section>
+{% endfor %}
+
+<h2>{{ text['assessment.observations'] }}</h2>
+<table class="data-table">
+  <caption>{{ text['assessment.observations_caption'] }}</caption>
+  <thead>
+    <tr>
+      <th scope="col">{{ field['gene'] }}</th>
+      <th scope="col">{{ field['observation_state'] }}</th>
+      <th scope="col">{{ field['phenotype'] }}</th>
+      <th scope="col">{{ field['reason_code'] }}</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for observation in model.observations %}
+    <tr>
+      <th scope="row"><code>{{ observation.gene }}</code></th>
+      <td><span>{{ observation.state_label }}</span> <code class="status-code">{{ observation.state_code }}</code></td>
+      <td>{% if observation.phenotype %}<code>{{ observation.phenotype }}</code>{% else %}<span class="absent">{{ observation.phenotype_display }}</span>{% endif %}</td>
+      <td>{% if observation.reason_code %}<code>{{ observation.reason_code }}</code>{% else %}<span class="absent">{{ observation.reason_display }}</span>{% endif %}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<h2>{{ text['assessment.hashes'] }}</h2>
+<dl class="fact-list">
+  <div><dt>{{ field['input_hash'] }}</dt><dd><code>{{ model.input_hash }}</code></dd></div>
+  <div><dt>{{ field['output_hash'] }}</dt><dd><code>{{ model.output_hash }}</code></dd></div>
+  <div><dt>{{ field['coverage_result_hash'] }}</dt><dd><code>{{ model.coverage_result_hash }}</code></dd></div>
+</dl>
+
+<h2>{{ text['assessment.provenance'] }}</h2>
+<p class="muted">{{ text['assessment.pinned_note'] }}</p>
+{% with rows = model.release_rows, caption = text['assessment.provenance_caption'] %}{% include "_provenance.html" %}{% endwith %}
+{% endblock %}

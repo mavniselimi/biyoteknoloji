@@ -1,0 +1,118 @@
+{
+  "attempt": "BUILD A REAL FROZEN RULESET FROM APPROVED CURATION",
+  "blockers": [
+    {
+      "code": "CURATION_PROTOCOL_NOT_APPROVED",
+      "detail": "protocol status is AWAITING_EXPERT_REVIEW with no named approver",
+      "meaning": "the curation protocol has not been approved by a named scientific expert",
+      "owner": "a named scientific expert (not code)",
+      "unblocks": "curated interpretations may begin under an approved protocol, and a rule may pin a protocol that was in force"
+    },
+    {
+      "code": "DATASET_NOT_PUBLISHED",
+      "detail": "canonical dataset lifecycle state is BUILDING",
+      "meaning": "the canonical dataset is not PUBLISHED",
+      "owner": "the dataset quality and publication process (WP-07)",
+      "unblocks": "a rule may pin a published dataset boundary"
+    },
+    {
+      "code": "EVIDENCE_BUILD_NOT_APPROVED",
+      "detail": "evidence build carries QUARANTINED, LEGACY_MIGRATION, NOT_CURATED, NOT_EXECUTABLE, NOT_PUBLICATION_ELIGIBLE",
+      "meaning": "the evidence build is quarantined and not eligible for publication or rule construction",
+      "owner": "data acquisition and source policy review",
+      "unblocks": "a rule may cite evidence from an approved build"
+    },
+    {
+      "code": "HUMAN_ROLE_ASSIGNMENTS_MISSING",
+      "detail": "curation_role_assignments is empty by design until WP-23",
+      "meaning": "no identity holds any curation or review role; the production role assignment set is empty",
+      "owner": "WP-23 authentication, then whoever assigns roles",
+      "unblocks": "any actor-bound operation in the rule layer"
+    },
+    {
+      "code": "LEGACY_ITEMS_NOT_ELIGIBLE",
+      "detail": "1559 legacy work items are RAW and unreviewed",
+      "meaning": "every legacy-derived candidate is still RAW and unreviewed, so none is eligible to become a rule",
+      "owner": "scientific curators",
+      "unblocks": "legacy candidates may enter curation and, once approved, become rule sources"
+    },
+    {
+      "code": "NO_CURATED_INTERPRETATIONS",
+      "detail": "0 of 1559 work items are CURATED",
+      "meaning": "no curation work item has reached CURATED, so there is no accepted conclusion for a rule to encode",
+      "owner": "scientific curators and an independent reviewer",
+      "unblocks": "a DRAFT rule may be marked CURATED"
+    },
+    {
+      "code": "NO_RULE_APPROVAL_ENVELOPES",
+      "detail": "no rule approval envelope exists; WP-10's production role assignment set is empty, so nobody could have signed one",
+      "meaning": "no WP-10 rule approval envelope exists",
+      "owner": "a curator, an independent reviewer and an approver, acting separately",
+      "unblocks": "a CURATED rule may be validated"
+    },
+    {
+      "code": "NO_VALIDATED_RULES",
+      "detail": "0 rules exist in any state",
+      "meaning": "no rule has been validated, so no ruleset can have members",
+      "owner": "an independent scientific reviewer or adjudicator",
+      "unblocks": "a BUILDING ruleset may gain members and validate"
+    },
+    {
+      "code": "SOURCE_POLICY_NOT_APPROVED",
+      "detail": "20 source entries, 0 approved",
+      "meaning": "no source policy entry has completed human review, so no source is cleared for use in an executable rule",
+      "owner": "a named source-policy approver",
+      "unblocks": "the source-policy eligibility gate opens"
+    },
+    {
+      "code": "UNLINKED_CURATION_ITEMS_REMAIN",
+      "detail": "33 legacy work items have no evidence link",
+      "meaning": "some legacy work items have no evidence link, so they cannot cite evidence even if curated",
+      "owner": "scientific curators selecting evidence during curation",
+      "unblocks": "those items may cite evidence and become rule sources"
+    }
+  ],
+  "content_hash": "sha256:19ab5f79be934c9cc08ecd3decf25c9ea26f5cca00b0556a5f4843af0a2a2a63",
+  "executable_rulesets": [],
+  "gate_status_version": "pgx-wp11-gate-status/1",
+  "note": "No rule, ruleset or approval was created to make this attempt succeed. Manufacturing one would be the exact failure the curation and approval workflow exists to prevent.",
+  "outcome": "REFUSED",
+  "steps": [
+    {
+      "reason": "no curation work item has reached CURATED",
+      "result": "0 found",
+      "step": "enumerate CURATED interpretations eligible for rules"
+    },
+    {
+      "reason": "the production role assignment set is empty, so nobody could have signed one",
+      "result": "0 found",
+      "step": "enumerate rule approval envelopes"
+    },
+    {
+      "reason": "there is nothing eligible to draft from",
+      "result": "not attempted",
+      "step": "create DRAFT rules from eligible interpretations"
+    },
+    {
+      "reason": "no CURATED rule exists",
+      "result": "not attempted",
+      "step": "validate rules"
+    },
+    {
+      "reason": "only VALIDATED rules may be members and there are none",
+      "result": "not attempted",
+      "step": "create a BUILDING ruleset and add members"
+    },
+    {
+      "reason": "an empty ruleset cannot validate, and a ruleset cannot be frozen without validating first",
+      "result": "not attempted",
+      "step": "build and freeze a ruleset artifact"
+    },
+    {
+      "reason": "the production registry root contains no frozen artifact",
+      "result": "0 executable rulesets",
+      "step": "ask the default registry what is executable"
+    }
+  ],
+  "stopped_at": "NO_VALIDATED_RULES"
+}

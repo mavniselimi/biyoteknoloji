@@ -1,0 +1,105 @@
+{
+  "$id": "https://pgx.local/schemas/wp17/ui-gate-status.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "description": "What the interface can actually do, reported as separate answers. Template runtime, ASGI runtime, browser runtime, screenshot evidence, accessibility testing, claim scanning, the inherited API status, PostgreSQL, authentication, CSRF, the claim boundary, the active release and every count are distinct questions and are never collapsed into one boolean.",
+  "properties": {
+    "development_case_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "expert_review_workflow_status": {
+      "enum": [
+        "NOT_IMPLEMENTED",
+        "IMPLEMENTED"
+      ]
+    },
+    "gate_status_schema_version": {
+      "const": "pgx-wp17-ui-gate-status/1"
+    },
+    "holdout_case_count": {
+      "anyOf": [
+        {
+          "minimum": 0,
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "null while holdout storage is not implemented. Never 0: a zero would say a count was taken."
+    },
+    "implementation_status": {
+      "enum": [
+        "IMPLEMENTED",
+        "PARTIAL",
+        "NOT_STARTED"
+      ]
+    },
+    "may_serve_real_traffic": {
+      "type": "boolean"
+    },
+    "real_assessment_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "real_report_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "real_validation_case_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "screenshot_evidence_status": {
+      "description": "NONE means no screenshot exists. A rendered HTML snapshot is never BROWSER_CAPTURED.",
+      "enum": [
+        "NONE",
+        "BROWSER_CAPTURED"
+      ]
+    },
+    "validation_dashboard_status": {
+      "enum": [
+        "EMPTY_STATE_ONLY",
+        "POPULATED"
+      ]
+    },
+    "work_package": {
+      "const": "WP-17"
+    },
+    "wp18_started": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "gate_status_schema_version",
+    "work_package",
+    "implementation_status",
+    "template_runtime_available",
+    "asgi_runtime_available",
+    "asgi_runtime_tests_executed",
+    "browser_runtime_available",
+    "screenshot_evidence_status",
+    "accessibility_structural_tests_available",
+    "claim_scan_executed",
+    "claim_scan_clean",
+    "api_runtime_verification",
+    "postgresql_runtime_available",
+    "authentication_implemented",
+    "csrf_implemented",
+    "session_management_implemented",
+    "claim_boundary_approved",
+    "active_release_available",
+    "real_assessment_count",
+    "real_report_count",
+    "real_validation_case_count",
+    "development_case_count",
+    "expert_review_workflow_status",
+    "validation_dashboard_status",
+    "wp18_started",
+    "blockers",
+    "may_serve_real_traffic"
+  ],
+  "title": "WP-17 interface gate status",
+  "type": "object",
+  "x-pgx-artifact-kind": "RUNTIME_MEASURED"
+}

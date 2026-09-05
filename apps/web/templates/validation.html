@@ -1,0 +1,128 @@
+{% extends "base.html" %}
+{% block content %}
+{#
+  An empty state, not a dashboard with zeros in it.
+
+  Where a count exists it is a number. Where the architecture that would
+  produce one does not exist, the model holds None and this template prints
+  the unavailable label - never 0, and never a percentage. There is no ratio
+  anywhere on this page and no field in the model that could hold one.
+#}
+<div class="notice notice-unavailable" role="status">
+  <p><strong>{{ text['status.not_implemented'] }}.</strong> {{ model.architecture_note }}</p>
+  <p>{{ model.no_run_note }}</p>
+</div>
+
+<h2>{{ text['validation.development_cases'] }}</h2>
+<table class="data-table">
+  <caption>{{ text['validation.heading'] }}</caption>
+  <thead><tr><th scope="col">{{ field['subject'] }}</th><th scope="col">{{ field['value'] }}</th></tr></thead>
+  <tbody>
+    <tr>
+      <th scope="row">{{ text['validation.development_cases'] }}</th>
+      <td class="numeric">{{ model.development_case_count }}</td>
+    </tr>
+    <tr>
+      <th scope="row">{{ text['validation.holdout_cases'] }}</th>
+      <td>{% if model.internal_holdout_count is none %}<span class="unavailable">{{ text['status.unavailable'] }}</span>{% else %}<span class="numeric">{{ model.internal_holdout_count }}</span>{% endif %}</td>
+    </tr>
+    <tr>
+      <th scope="row">{{ text['validation.expert_cases'] }}</th>
+      <td>{% if model.expert_holdout_count is none %}<span class="unavailable">{{ text['status.unavailable'] }}</span>{% else %}<span class="numeric">{{ model.expert_holdout_count }}</span>{% endif %}</td>
+    </tr>
+    <tr>
+      <th scope="row">{{ text['validation.validation_runs'] }}</th>
+      <td>{% if model.validation_run_count is none %}<span class="unavailable">{{ text['status.unavailable'] }}</span>{% else %}<span class="numeric">{{ model.validation_run_count }}</span>{% endif %}</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>{{ model.separation_note }}</p>
+<p>{{ model.metrics_note }}</p>
+<p><strong>{{ model.no_conclusion_note }}</strong></p>
+
+{#
+  WP-21 metric tables. One per partition, never combined.
+
+  Every cell prints a string the view model already decided about. There is
+  no arithmetic here and no `or 0` anywhere: a metric with no number carries
+  the unavailable label in `value_text`, so a template mistake cannot turn an
+  absent measurement into a zero.
+
+  The development section is a separate table under a heading that says it is
+  not validation evidence, with its own warning paragraph. Not a badge on a
+  shared table - a badge is something a reader skims past.
+#}
+{% if model.metric_sections %}
+<h2>{{ text['validation.metrics_heading'] }}</h2>
+
+{% if not model.benchmark_executed %}
+<p class="notice notice-unavailable" role="status">{{ model.not_benchmarked_note }}</p>
+{% endif %}
+
+<table class="data-table">
+  <caption>{{ text['validation.metrics_heading'] }}</caption>
+  <thead><tr><th scope="col">{{ field['subject'] }}</th><th scope="col">{{ field['value'] }}</th></tr></thead>
+  <tbody>
+    <tr><th scope="row">{{ text['validation.release'] }}</th><td>{{ model.release_text }}</td></tr>
+    <tr><th scope="row">{{ text['validation.metric_registry'] }}</th><td><code>{{ model.metric_registry_version }}</code></td></tr>
+  </tbody>
+</table>
+
+<p><strong>{{ model.no_combined_note }}</strong></p>
+
+{% for section in model.metric_sections %}
+<section class="metric-section {% if section.is_development_regression %}metric-section-development{% else %}metric-section-holdout{% endif %}">
+  <h3>{{ section.heading }}</h3>
+  {% if section.is_development_regression %}
+  <p class="notice notice-unavailable" role="status"><strong>{{ section.note }}</strong></p>
+  {% else %}
+  <p>{{ section.note }}</p>
+  {% endif %}
+  <p>{{ text['validation.case_count'] }}: <span class="numeric">{{ section.case_count_text }}</span></p>
+  <table class="data-table">
+    <caption>{{ section.heading }}</caption>
+    <thead>
+      <tr>
+        <th scope="col">{{ text['validation.metric_id'] }}</th>
+        <th scope="col">{{ text['validation.metric_label'] }}</th>
+        <th scope="col">{{ text['validation.numerator'] }}</th>
+        <th scope="col">{{ text['validation.denominator'] }}</th>
+        <th scope="col">{{ text['validation.metric_value'] }}</th>
+        <th scope="col">{{ text['validation.metric_status'] }}</th>
+        <th scope="col">{{ text['validation.metric_reason'] }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for row in section.rows %}
+      <tr>
+        <th scope="row"><code>{{ row.metric_id }}</code></th>
+        <td>{{ row.label }}</td>
+        <td class="numeric">{{ row.numerator_text }}</td>
+        <td class="numeric">{{ row.denominator_text }}</td>
+        <td>{% if row.has_number %}<span class="numeric">{{ row.value_text }}</span>{% else %}<span class="unavailable">{{ row.value_text }}</span>{% endif %}</td>
+        <td>{% if row.status_text %}<span class="unavailable">{{ row.status_text }}</span>{% endif %}</td>
+        <td>{% if row.reason_text %}<code>{{ row.reason_text }}</code>{% endif %}</td>
+      </tr>
+      {% else %}
+      <tr><td colspan="7" class="empty-state">{{ text['app.none_recorded'] }}</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</section>
+{% endfor %}
+{% endif %}
+
+<h2>{{ text['validation.blockers'] }}</h2>
+<table class="data-table">
+  <caption>{{ text['validation.blockers_caption'] }}</caption>
+  <thead><tr><th scope="col">{{ field['codes'] }}</th><th scope="col">{{ field['reason'] }}</th></tr></thead>
+  <tbody>
+    {% for code, detail in model.blockers %}
+    <tr><th scope="row"><code>{{ code }}</code></th><td>{{ detail }}</td></tr>
+    {% else %}
+    <tr><td colspan="2" class="empty-state">{{ text['app.none_recorded'] }}</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

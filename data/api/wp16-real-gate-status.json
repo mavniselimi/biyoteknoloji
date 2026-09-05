@@ -1,0 +1,130 @@
+{
+  "active_release_available": false,
+  "active_release_note": "No release is registered in this repository, so no assessment can pin one and every catalogue and version route reports the typed unavailability.",
+  "api_dependencies_available": true,
+  "api_version": "1.0.0",
+  "asgi_runtime_test_note": "no execution is recorded: no runtime-verification evidence has been written; run `python -m apps.api.runtime_verification`. Installed dependencies are reported separately and are not evidence that a test ran.",
+  "asgi_runtime_test_status": "BLOCKED",
+  "asgi_runtime_tests_executed": false,
+  "authentication_implemented": false,
+  "authentication_note": "WP-16 defines an immutable Principal, three governed roles, a route-level role matrix and a resolver that refuses. It implements no password, session, token, cookie or CSRF mechanism. The production default establishes no principal at all and reports the API as not ready.",
+  "blocker_count": 6,
+  "blockers": [
+    {
+      "blocking": true,
+      "code": "API_AUTHENTICATION_NOT_IMPLEMENTED",
+      "detail": "WP-23 owns authentication; WP-16 defines only the principal contract, the role matrix and a fail-closed default"
+    },
+    {
+      "blocking": true,
+      "code": "API_CLAIM_BOUNDARY_NOT_APPROVED",
+      "detail": "claim boundary status is DRAFT / AWAITING HUMAN AND SCIENTIFIC REVIEW"
+    },
+    {
+      "blocking": true,
+      "code": "API_DATABASE_DRIVER_NOT_INSTALLED",
+      "detail": "not importable in this environment: psycopg"
+    },
+    {
+      "blocking": true,
+      "code": "API_NO_ACTIVE_RELEASE",
+      "detail": "no release is registered or active in this repository, so no assessment can pin one"
+    },
+    {
+      "blocking": true,
+      "code": "API_NO_DATABASE_RUNTIME",
+      "detail": "no database connection is configured or its driver is not installed, so no assessment can be stored or read through the API"
+    },
+    {
+      "blocking": true,
+      "code": "API_RUNTIME_NOT_VERIFIED",
+      "detail": "no successful runtime verification is recorded: no runtime-verification evidence has been written; run `python -m apps.api.runtime_verification`"
+    }
+  ],
+  "claim_boundary_approved": false,
+  "claim_boundary_phase": "P0",
+  "claim_boundary_status": "DRAFT / AWAITING HUMAN AND SCIENTIFIC REVIEW",
+  "contract_model_count": 43,
+  "contract_version": "pgx-api-contract/1",
+  "database_dependencies_available": false,
+  "database_reachable": false,
+  "declared_route_count": 14,
+  "dependency_availability": {
+    "alembic": {
+      "importable": true,
+      "needed_for": "migration head compatibility",
+      "version": "1.19.1"
+    },
+    "fastapi": {
+      "importable": true,
+      "needed_for": "the ASGI application and its routers",
+      "version": "0.141.1"
+    },
+    "httpx": {
+      "importable": true,
+      "needed_for": "the test client that issues requests",
+      "version": "0.28.1"
+    },
+    "psycopg": {
+      "importable": false,
+      "needed_for": "the PostgreSQL driver",
+      "version": null
+    },
+    "pydantic": {
+      "importable": true,
+      "needed_for": "the generated request and response models",
+      "version": "2.13.3"
+    },
+    "sqlalchemy": {
+      "importable": true,
+      "needed_for": "the assessment read path",
+      "version": "2.0.52"
+    },
+    "starlette": {
+      "importable": true,
+      "needed_for": "middleware and responses",
+      "version": "1.6.0"
+    },
+    "uvicorn": {
+      "importable": true,
+      "needed_for": "serving the application",
+      "version": "0.46.0"
+    }
+  },
+  "dependency_resolution_note": "No lock file is committed and no resolution was performed by this generator. The versions above are what is importable in the environment that produced this document; the declared ranges in pyproject.toml have not been resolved against an index here.",
+  "disabled_stub_routes": {},
+  "error_code_count": 45,
+  "gate_status_schema_version": "pgx-wp16-gate-status/1",
+  "implementation_status": "IMPLEMENTED",
+  "implemented_route_count": 14,
+  "may_serve_real_traffic": false,
+  "note": "This is an expected governance and environment result, not a test failure. The WP-16 API layer is implemented and its framework-free half - every validation, authorisation, error mapping, pagination, readiness and serialisation decision - is executed by the test suite wherever it runs. Its ASGI runtime and served-OpenAPI checks are reported from a recorded execution rather than from installed packages - see asgi_runtime_test_status - so this document says BLOCKED until somebody actually runs them and says so again if the inputs change afterwards. PostgreSQL, real authentication, an active release and the claim boundary remain blocked by environment and governance, not by code. No count above was asserted rather than measured, no missing dependency was replaced with a stand-in, and no synthetic fixture is exposed as a real record.",
+  "openapi": {
+    "artifact_committed": true,
+    "artifact_matches_generator": true,
+    "generated_from_declaration": true,
+    "generated_from_running_application": false,
+    "runtime_verification": "BLOCKED",
+    "runtime_verification_note": "The document is generated from the declarative contract that also produces the routers and the validator. No recorded run has compared it with a document served by a running application: no runtime-verification evidence has been written; run `python -m apps.api.runtime_verification`. The comparison is performed by `python -m apps.api.runtime_verification`.",
+    "runtime_verification_status": "BLOCKED"
+  },
+  "postgresql_runtime_available": false,
+  "postgresql_runtime_note": "No PostgreSQL service was started or reached. No migration was applied, no schema was created and no row was written or read.",
+  "readiness_blocking_component_count": 7,
+  "real_api_assessment_count": 0,
+  "real_api_assessment_count_source": "no ASGI server has run against this repository, so no assessment has ever been created through the API",
+  "real_assessment_count": 0,
+  "real_assessment_count_source": "no database is configured or reachable from this environment and no assessment row exists in this repository; the count is zero because there is nothing to count, not because a query returned zero",
+  "real_report_count": 0,
+  "real_report_count_source": "read from data/reports/wp15-real-gate-status.json, which the reporting layer maintains",
+  "runtime_verification_evidence": null,
+  "runtime_verification_evidence_path": "data/api/wp16-runtime-verification.json",
+  "runtime_verification_reason": "no runtime-verification evidence has been written; run `python -m apps.api.runtime_verification`",
+  "synthetic_fixture_count": 2,
+  "synthetic_fixture_count_source": "counted as files under tests/fixtures/wp16/, including the package marker",
+  "work_package": "WP-16",
+  "wp17_markers_found": [
+    "apps/web"
+  ],
+  "wp17_started": true
+}

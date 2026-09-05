@@ -1,0 +1,120 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "support": {
+            "const": "SUPPORTED"
+          }
+        },
+        "required": [
+          "support"
+        ]
+      },
+      "then": {
+        "properties": {
+          "missing_evidence_ids": {
+            "maxItems": 0,
+            "type": "array"
+          },
+          "sufficient": {
+            "const": true
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "sufficient": {
+            "const": true
+          }
+        },
+        "required": [
+          "sufficient"
+        ]
+      },
+      "then": {
+        "properties": {
+          "support": {
+            "const": "SUPPORTED"
+          }
+        }
+      }
+    }
+  ],
+  "description": "One statement and what would justify it. SUPPORTED requires nothing missing.",
+  "properties": {
+    "claim_id": {
+      "pattern": "^THS6-CLAIM-[0-9]{3}$",
+      "type": "string"
+    },
+    "dod_ids": {
+      "items": {
+        "pattern": "^P0-DOD-0(0[1-9]|1[0-5])$",
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "gate_id": {
+      "pattern": "^GATE-[A-F]$",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "missing_evidence_ids": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "notes": {
+      "type": "string"
+    },
+    "origin": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "outward_facing": {
+      "type": "boolean"
+    },
+    "required_evidence_ids": {
+      "items": {
+        "pattern": "^EV-WP[0-2][0-9]-[0-9]{3}$",
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "statement": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "sufficient": {
+      "type": "boolean"
+    },
+    "support": {
+      "enum": [
+        "SUPPORTED",
+        "PARTIALLY_SUPPORTED",
+        "UNSUPPORTED",
+        "NOT_EVALUATED",
+        "CONTRADICTED"
+      ],
+      "type": "string"
+    }
+  },
+  "required": [
+    "claim_id",
+    "statement",
+    "origin",
+    "required_evidence_ids",
+    "support",
+    "sufficient",
+    "missing_evidence_ids"
+  ],
+  "title": "WP-25 claim",
+  "type": "object"
+}

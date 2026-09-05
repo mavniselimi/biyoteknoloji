@@ -1,0 +1,5 @@
+drug,drug_id,canonical_name,types,drug_behavior_hint,pediatric,mvp_supported,smiles
+nortriptyline,PA450657,nortriptyline,Drug,active_drug_or_general_drug,False,candidate,CNCCC=C1C2=CC=CC=C2CCC3=CC=CC=C31
+pantoprazole,PA450774,pantoprazole,Drug,active_drug_or_general_drug,False,candidate,COC1=C(C(=NC=C1)CS(=O)C2=NC3=C(N2)C=C(C=C3)OC(F)F)OC
+prasugrel,PA154410481,prasugrel,Drug,active_drug_or_general_drug,False,candidate,CC(=O)OC1=CC2=C(S1)CCN(C2)C(C3=CC=CC=C3F)C(=O)C4CC4
+ticagrelor,PA165374673,ticagrelor,Drug,active_drug_or_general_drug,False,candidate,CCCSC1=NC2=C(C(=N1)N[C@@H]3C[C@H]3C4=CC(=C(C=C4)F)F)N=NN2[C@@H]5C[C@@H]([C@H]([C@H]5O)O)OCCO

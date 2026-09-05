@@ -1,0 +1,268 @@
+{
+  "authored_case_count": 1,
+  "case_count": 7,
+  "case_role": "DEVELOPMENT",
+  "cases": [
+    {
+      "case_id": "WP17-CASE-INSUFFICIENT",
+      "case_role": "DEVELOPMENT",
+      "demonstrates": "Y\u00f6netilen kurallar\u0131n de\u011ferlendiremedi\u011fi bir gen i\u00e7in fenotip bildiren profil. Kapsam\u0131n yetersiz kald\u0131\u011f\u0131 ve sonucun de\u011ferlendirilmedi olarak d\u00f6nd\u00fc\u011f\u00fc durumu g\u00f6stermek i\u00e7in yaz\u0131lm\u0131\u015ft\u0131r.",
+      "is_holdout": false,
+      "is_synthetic": true,
+      "is_validation_evidence": false,
+      "label": "Yetersiz kapsam g\u00f6sterim profili",
+      "legacy_profile_key": null,
+      "migration_note": "Bu vaka ta\u015f\u0131nmad\u0131; yetersiz kapsam g\u00f6sterimi i\u00e7in burada yaz\u0131ld\u0131. Yedinci bir eski profil de\u011fildir ve do\u011frulama vakas\u0131 say\u0131lmaz.",
+      "no_pii_assertion": "Bu vaka sentetiktir. Hi\u00e7bir ger\u00e7ek ki\u015fiye ait veri, tan\u0131mlay\u0131c\u0131 veya klinik metin i\u00e7ermez.",
+      "observation_count": 1,
+      "observations": [
+        {
+          "gene": "GENE:TESTGENE-UNCOVERED",
+          "value": "INDETERMINATE"
+        }
+      ],
+      "schema_version": "pgx-wp17-development-cases/1",
+      "source_file": null,
+      "source_file_sha256": null
+    },
+    {
+      "case_id": "WP17-CASE-P1",
+      "case_role": "DEVELOPMENT",
+      "demonstrates": "Be\u015f gende de normal fonksiyon bildirilen profil.",
+      "is_holdout": false,
+      "is_synthetic": true,
+      "is_validation_evidence": false,
+      "label": "Normal metabolizma profili",
+      "legacy_profile_key": "P1_normal",
+      "migration_note": "Eski g\u00f6sterim profilinden ta\u015f\u0131nd\u0131. Fenotipler WP-12 normalle\u015ftiricisiyle kanonik bi\u00e7ime getirildi. Kaynak dosyadaki serbest metin a\u00e7\u0131klamas\u0131 ta\u015f\u0131nmad\u0131: ila\u00e7 ad\u0131 ve sonu\u00e7 iddias\u0131 i\u00e7erdi\u011fi i\u00e7in bu katalog onu tutmaz.",
+      "no_pii_assertion": "Bu vaka sentetiktir. Hi\u00e7bir ger\u00e7ek ki\u015fiye ait veri, tan\u0131mlay\u0131c\u0131 veya klinik metin i\u00e7ermez.",
+      "observation_count": 5,
+      "observations": [
+        {
+          "gene": "GENE:CYP1A2",
+          "value": "NORMAL"
+        },
+        {
+          "gene": "GENE:CYP2C19",
+          "value": "NORMAL"
+        },
+        {
+          "gene": "GENE:CYP2C9",
+          "value": "NORMAL"
+        },
+        {
+          "gene": "GENE:CYP2D6",
+          "value": "NORMAL"
+        },
+        {
+          "gene": "GENE:CYP3A4",
+          "value": "NORMAL"
+        }
+      ],
+      "schema_version": "pgx-wp17-development-cases/1",
+      "source_file": "clinpgx_mvp_seed/mvp_demo_profiles.json",
+      "source_file_sha256": "sha256:6d370e9358ec0096fa6a7af59b88abe2435ce458ed2eaae213922f7f3f9bd1ca"
+    },
+    {
+      "case_id": "WP17-CASE-P2",
+      "case_role": "DEVELOPMENT",
+      "demonstrates": "Tek gende d\u00fc\u015f\u00fck fonksiyon bildirilen profil (CYP2C19).",
+      "is_holdout": false,
+      "is_synthetic": true,
+      "is_validation_evidence": false,
+      "label": "CYP2C19 poor metabolizer profili",
+      "legacy_profile_key": "P2_cyp2c19_poor",
+      "migration_note": "Eski g\u00f6sterim profilinden ta\u015f\u0131nd\u0131. Fenotipler WP-12 normalle\u015ftiricisiyle kanonik bi\u00e7ime getirildi. Kaynak dosyadaki serbest metin a\u00e7\u0131klamas\u0131 ta\u015f\u0131nmad\u0131: ila\u00e7 ad\u0131 ve sonu\u00e7 iddias\u0131 i\u00e7erdi\u011fi i\u00e7in bu katalog onu tutmaz.",
+      "no_pii_assertion": "Bu vaka sentetiktir. Hi\u00e7bir ger\u00e7ek ki\u015fiye ait veri, tan\u0131mlay\u0131c\u0131 veya klinik metin i\u00e7ermez.",
+      "observation_count": 5,
+      "observations": [
+        {
+          "gene": "GENE:CYP1A2",
+          "value": "NORMAL"
+        },
+        {
+          "gene": "GENE:CYP2C19",
+          "value": "POOR"
+        },
+        {
+          "gene": "GENE:CYP2C9",
+          "value": "NORMAL"
+        },
+        {
+          "gene": "GENE:CYP2D6",
+          "value": "NORMAL"
+        },
+        {
+          "gene": "GENE:CYP3A4",
+          "value": "NORMAL"
+        }
+      ],
+      "schema_version": "pgx-wp17-development-cases/1",
+      "source_file": "clinpgx_mvp_seed/mvp_demo_profiles.json",
+      "source_file_sha256": "sha256:6d370e9358ec0096fa6a7af59b88abe2435ce458ed2eaae213922f7f3f9bd1ca"
+    },
+    {
+      "case_id": "WP17-CASE-P3",
+      "case_role": "DEVELOPMENT",
+      "demonstrates": "Tek gende d\u00fc\u015f\u00fck fonksiyon bildirilen profil (CYP2D6).",
+      "is_holdout": false,
+      "is_synthetic": true,
+      "is_validation_evidence": false,
+      "label": "CYP2D6 poor metabolizer profili",
+      "legacy_profile_key": "P3_cyp2d6_poor",
+      "migration_note": "Eski g\u00f6sterim profilinden ta\u015f\u0131nd\u0131. Fenotipler WP-12 normalle\u015ftiricisiyle kanonik bi\u00e7ime getirildi. Kaynak dosyadaki serbest metin a\u00e7\u0131klamas\u0131 ta\u015f\u0131nmad\u0131: ila\u00e7 ad\u0131 ve sonu\u00e7 iddias\u0131 i\u00e7erdi\u011fi i\u00e7in bu katalog onu tutmaz.",
+      "no_pii_assertion": "Bu vaka sentetiktir. Hi\u00e7bir ger\u00e7ek ki\u015fiye ait veri, tan\u0131mlay\u0131c\u0131 veya klinik metin i\u00e7ermez.",
+      "observation_count": 5,
+      "observations": [
+        {
+          "gene": "GENE:CYP1A2",
+          "value": "NORMAL"
+        },
+        {
+          "gene": "GENE:CYP2C19",
+          "value": "NORMAL"
+        },
+        {
+          "gene": "GENE:CYP2C9",
+          "value": "NORMAL"
+        },
+        {
+          "gene": "GENE:CYP2D6",
+          "value": "POOR"
+        },
+        {
+          "gene": "GENE:CYP3A4",
+          "value": "NORMAL"
+        }
+      ],
+      "schema_version": "pgx-wp17-development-cases/1",
+      "source_file": "clinpgx_mvp_seed/mvp_demo_profiles.json",
+      "source_file_sha256": "sha256:6d370e9358ec0096fa6a7af59b88abe2435ce458ed2eaae213922f7f3f9bd1ca"
+    },
+    {
+      "case_id": "WP17-CASE-P4",
+      "case_role": "DEVELOPMENT",
+      "demonstrates": "Tek gende artm\u0131\u015f fonksiyon bildirilen profil (CYP2D6). ULTRARAPID ve RAPID ayr\u0131 fenotiplerdir ve birbirinin yerine kullan\u0131lmaz.",
+      "is_holdout": false,
+      "is_synthetic": true,
+      "is_validation_evidence": false,
+      "label": "CYP2D6 ultrarapid metabolizer profili",
+      "legacy_profile_key": "P4_cyp2d6_ultrarapid",
+      "migration_note": "Eski g\u00f6sterim profilinden ta\u015f\u0131nd\u0131. Fenotipler WP-12 normalle\u015ftiricisiyle kanonik bi\u00e7ime getirildi. Kaynak dosyadaki serbest metin a\u00e7\u0131klamas\u0131 ta\u015f\u0131nmad\u0131: ila\u00e7 ad\u0131 ve sonu\u00e7 iddias\u0131 i\u00e7erdi\u011fi i\u00e7in bu katalog onu tutmaz.",
+      "no_pii_assertion": "Bu vaka sentetiktir. Hi\u00e7bir ger\u00e7ek ki\u015fiye ait veri, tan\u0131mlay\u0131c\u0131 veya klinik metin i\u00e7ermez.",
+      "observation_count": 5,
+      "observations": [
+        {
+          "gene": "GENE:CYP1A2",
+          "value": "NORMAL"
+        },
+        {
+          "gene": "GENE:CYP2C19",
+          "value": "NORMAL"
+        },
+        {
+          "gene": "GENE:CYP2C9",
+          "value": "NORMAL"
+        },
+        {
+          "gene": "GENE:CYP2D6",
+          "value": "ULTRARAPID"
+        },
+        {
+          "gene": "GENE:CYP3A4",
+          "value": "NORMAL"
+        }
+      ],
+      "schema_version": "pgx-wp17-development-cases/1",
+      "source_file": "clinpgx_mvp_seed/mvp_demo_profiles.json",
+      "source_file_sha256": "sha256:6d370e9358ec0096fa6a7af59b88abe2435ce458ed2eaae213922f7f3f9bd1ca"
+    },
+    {
+      "case_id": "WP17-CASE-P5",
+      "case_role": "DEVELOPMENT",
+      "demonstrates": "Tek gende ara fonksiyon bildirilen profil (CYP2C9).",
+      "is_holdout": false,
+      "is_synthetic": true,
+      "is_validation_evidence": false,
+      "label": "CYP2C9 decreased/intermediate fonksiyon profili",
+      "legacy_profile_key": "P5_cyp2c9_decreased",
+      "migration_note": "Eski g\u00f6sterim profilinden ta\u015f\u0131nd\u0131. Fenotipler WP-12 normalle\u015ftiricisiyle kanonik bi\u00e7ime getirildi. Kaynak dosyadaki serbest metin a\u00e7\u0131klamas\u0131 ta\u015f\u0131nmad\u0131: ila\u00e7 ad\u0131 ve sonu\u00e7 iddias\u0131 i\u00e7erdi\u011fi i\u00e7in bu katalog onu tutmaz.",
+      "no_pii_assertion": "Bu vaka sentetiktir. Hi\u00e7bir ger\u00e7ek ki\u015fiye ait veri, tan\u0131mlay\u0131c\u0131 veya klinik metin i\u00e7ermez.",
+      "observation_count": 5,
+      "observations": [
+        {
+          "gene": "GENE:CYP1A2",
+          "value": "NORMAL"
+        },
+        {
+          "gene": "GENE:CYP2C19",
+          "value": "NORMAL"
+        },
+        {
+          "gene": "GENE:CYP2C9",
+          "value": "INTERMEDIATE"
+        },
+        {
+          "gene": "GENE:CYP2D6",
+          "value": "NORMAL"
+        },
+        {
+          "gene": "GENE:CYP3A4",
+          "value": "NORMAL"
+        }
+      ],
+      "schema_version": "pgx-wp17-development-cases/1",
+      "source_file": "clinpgx_mvp_seed/mvp_demo_profiles.json",
+      "source_file_sha256": "sha256:6d370e9358ec0096fa6a7af59b88abe2435ce458ed2eaae213922f7f3f9bd1ca"
+    },
+    {
+      "case_id": "WP17-CASE-P6",
+      "case_role": "DEVELOPMENT",
+      "demonstrates": "Birden \u00e7ok gende farkl\u0131 fonksiyon d\u00fczeyleri bildirilen profil.",
+      "is_holdout": false,
+      "is_synthetic": true,
+      "is_validation_evidence": false,
+      "label": "Kar\u0131\u015f\u0131k y\u00fcksek dikkat profili",
+      "legacy_profile_key": "P6_mixed_high_attention",
+      "migration_note": "Eski g\u00f6sterim profilinden ta\u015f\u0131nd\u0131. Fenotipler WP-12 normalle\u015ftiricisiyle kanonik bi\u00e7ime getirildi. Kaynak dosyadaki serbest metin a\u00e7\u0131klamas\u0131 ta\u015f\u0131nmad\u0131: ila\u00e7 ad\u0131 ve sonu\u00e7 iddias\u0131 i\u00e7erdi\u011fi i\u00e7in bu katalog onu tutmaz.",
+      "no_pii_assertion": "Bu vaka sentetiktir. Hi\u00e7bir ger\u00e7ek ki\u015fiye ait veri, tan\u0131mlay\u0131c\u0131 veya klinik metin i\u00e7ermez.",
+      "observation_count": 5,
+      "observations": [
+        {
+          "gene": "GENE:CYP1A2",
+          "value": "NORMAL"
+        },
+        {
+          "gene": "GENE:CYP2C19",
+          "value": "POOR"
+        },
+        {
+          "gene": "GENE:CYP2C9",
+          "value": "INTERMEDIATE"
+        },
+        {
+          "gene": "GENE:CYP2D6",
+          "value": "POOR"
+        },
+        {
+          "gene": "GENE:CYP3A4",
+          "value": "NORMAL"
+        }
+      ],
+      "schema_version": "pgx-wp17-development-cases/1",
+      "source_file": "clinpgx_mvp_seed/mvp_demo_profiles.json",
+      "source_file_sha256": "sha256:6d370e9358ec0096fa6a7af59b88abe2435ce458ed2eaae213922f7f3f9bd1ca"
+    }
+  ],
+  "contains_holdout": false,
+  "is_validation_evidence": false,
+  "migrated_case_count": 6,
+  "migration_version": "pgx-wp17-demo-migration/1",
+  "note": "Synthetic development cases for demonstration only. None of these is validation evidence, holdout data, a clinical example or a record of any person. No case carries an expected result, and this catalogue has no field in which one could be recorded. The legacy source file's free-text notes were deliberately not migrated: they name medicines and assert outcomes.",
+  "schema_version": "pgx-wp17-development-cases/1",
+  "source": {
+    "source_file": "clinpgx_mvp_seed/mvp_demo_profiles.json",
+    "source_file_bytes": 2166,
+    "source_file_sha256": "sha256:6d370e9358ec0096fa6a7af59b88abe2435ce458ed2eaae213922f7f3f9bd1ca"
+  }
+}

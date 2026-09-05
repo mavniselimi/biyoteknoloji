@@ -1,0 +1,28 @@
+{
+  "all_four_required": true,
+  "backup_execution_version": "pgx-wp24-backup-execution/1",
+  "condition_count": 4,
+  "conditions": [
+    {
+      "condition_id": "RESTORE-01",
+      "title": "restored into a separate target database",
+      "why": "restoring into the source proves the dump is readable and destroys the thing being protected"
+    },
+    {
+      "condition_id": "RESTORE-02",
+      "title": "the restored database is at the exact expected Alembic head",
+      "why": "data that survived into a schema the application was not written for is data the system cannot use"
+    },
+    {
+      "condition_id": "RESTORE-03",
+      "title": "the governed audit chain verifies and its event count matches the separately exported head sequence",
+      "why": "a truncated restore produces a chain that verifies perfectly and is short; only the separately exported head catches it"
+    },
+    {
+      "condition_id": "RESTORE-04",
+      "title": "every referenced release manifest hash resolves against the restored immutable manifests",
+      "why": "a restore that kept the claims and lost what they were based on has preserved nothing that can be defended"
+    }
+  ],
+  "note": "All four, or the restore is not verified. pg_restore exiting zero satisfies none of them: it says the archive was readable."
+}

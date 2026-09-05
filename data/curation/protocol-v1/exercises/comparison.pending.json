@@ -1,0 +1,14 @@
+{
+  "blocked_by": [
+    "No named curator has completed curator-a.template.json.",
+    "No named curator has completed curator-b.template.json."
+  ],
+  "cases": null,
+  "comparison_version": "pgx-inter-curator-comparison/1",
+  "curator_a": null,
+  "curator_b": null,
+  "exercise_id": "wp09-inter-curator-1",
+  "note": "A comparison requires two independently completed responses from two different named people. Until then there is nothing to compare, and a file showing empty agreement would misrepresent that as a result.",
+  "status": "PENDING_TWO_COMPLETED_RESPONSES",
+  "summary": null
+}

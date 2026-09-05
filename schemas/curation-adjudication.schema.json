@@ -1,0 +1,187 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pgx-platform.invalid/schemas/curation-adjudication.schema.json",
+  "title": "PGx curation adjudication",
+  "description": "A third named person settling a disagreement between a curator and an independent reviewer (WP-10). Both original positions are required, non-empty and stored in full: an adjudication that replaced them would erase the disagreement it was called to settle, and nobody could later check whether the adjudicator was right. The schema refuses a generated consensus, a merged position and an agreement score, because an adjudication settles which reading the project adopts - it does not compute one.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "work_item_id",
+    "revision_id",
+    "revision_content_hash",
+    "adjudicated_by",
+    "adjudicated_by_role",
+    "adjudicated_at",
+    "decision",
+    "rationale",
+    "curator_position",
+    "reviewer_position",
+    "disputed_evidence_uuids",
+    "resulting_state",
+    "content_hash",
+    "note"
+  ],
+  "properties": {
+    "work_item_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "revision_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "revision_content_hash": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "adjudication_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "adjudicated_by": {
+      "type": "string",
+      "minLength": 2
+    },
+    "adjudicated_by_role": {
+      "const": "ADJUDICATOR",
+      "description": "Adjudication is the adjudicator's act. A curator or reviewer settling a dispute they are a side of is not adjudication."
+    },
+    "adjudicated_at": {
+      "type": "string",
+      "minLength": 1
+    },
+    "decision": {
+      "enum": [
+        "APPROVE",
+        "REQUEST_CHANGES",
+        "REJECT"
+      ],
+      "description": "Deliberately not a superset of ReviewDecision: an adjudicator settles a dispute, and REFER_TO_ADJUDICATION here would be a loop with no exit."
+    },
+    "rationale": {
+      "type": "string",
+      "minLength": 24
+    },
+    "curator_position": {
+      "type": "object",
+      "minProperties": 1,
+      "description": "The curator's reading, preserved in full."
+    },
+    "reviewer_position": {
+      "type": "object",
+      "minProperties": 1,
+      "description": "The reviewer's reading, preserved in full."
+    },
+    "disputed_evidence_uuids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "resulting_state": {
+      "enum": [
+        "RAW",
+        "CURATED",
+        "REJECTED"
+      ]
+    },
+    "content_hash": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "note": {
+      "type": "string",
+      "minLength": 40
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "decision": {
+            "const": "APPROVE"
+          }
+        },
+        "required": [
+          "decision"
+        ]
+      },
+      "then": {
+        "properties": {
+          "resulting_state": {
+            "const": "CURATED"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "decision": {
+            "const": "REJECT"
+          }
+        },
+        "required": [
+          "decision"
+        ]
+      },
+      "then": {
+        "properties": {
+          "resulting_state": {
+            "const": "REJECTED"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "decision": {
+            "const": "REQUEST_CHANGES"
+          }
+        },
+        "required": [
+          "decision"
+        ]
+      },
+      "then": {
+        "properties": {
+          "resulting_state": {
+            "const": "RAW"
+          }
+        }
+      }
+    }
+  ],
+  "not": {
+    "anyOf": [
+      {
+        "required": [
+          "consensus"
+        ]
+      },
+      {
+        "required": [
+          "merged_position"
+        ]
+      },
+      {
+        "required": [
+          "agreement_score"
+        ]
+      },
+      {
+        "required": [
+          "winner"
+        ]
+      },
+      {
+        "required": [
+          "auto_resolved"
+        ]
+      }
+    ]
+  }
+}

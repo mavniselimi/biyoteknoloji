@@ -1,0 +1,136 @@
+{
+  "asset_count": 11,
+  "assets": [
+    {
+      "matches_pinned": null,
+      "path": "data/demo/wp17-development-cases.json",
+      "present": true,
+      "reason": "the sealed development case catalogue the demo pages read",
+      "required": true,
+      "sha256": "sha256:22c8fd170e27e76a31cbfa6e895d51c3a151a9476a4f5fad55559348fde35ff9"
+    },
+    {
+      "matches_pinned": null,
+      "path": "data/demo/wp17-demo-case-manifest.json",
+      "present": true,
+      "reason": "the manifest that seals the case catalogue; without it the catalogue is content nobody can verify",
+      "required": true,
+      "sha256": "sha256:8653c7c1ea4e3ba4c8cc406b85e83f5f50ffddcfbad3062d7a9594e17d2aca5a"
+    },
+    {
+      "matches_pinned": null,
+      "path": "data/api/wp16-real-gate-status.json",
+      "present": true,
+      "reason": "the API gate status the system page reports",
+      "required": true,
+      "sha256": "sha256:c55c7c5fc82f8e44efdf8fa77164180d1ea37dc776eed02a8428e2a83dd3d961"
+    },
+    {
+      "matches_pinned": null,
+      "path": "data/web/wp17-real-gate-status.json",
+      "present": true,
+      "reason": "the interface gate status the system page reports",
+      "required": true,
+      "sha256": "sha256:9bec2dee39fba051eea4c478d0aeef818823e4d45eef02adeb7db09369c17b44"
+    },
+    {
+      "matches_pinned": null,
+      "path": "data/api/wp16-runtime-verification.json",
+      "present": false,
+      "reason": "the recorded ASGI runtime evidence the OpenAPI document reflects. Optional because it is written only when the runtime suite actually runs; its absence makes the served document report itself unverified, which is the truthful answer and not a broken image",
+      "required": false,
+      "sha256": null
+    },
+    {
+      "matches_pinned": null,
+      "path": "data/validation/wp18-real-gate-status.json",
+      "present": true,
+      "reason": "the validation gate status the dashboard reports",
+      "required": true,
+      "sha256": "sha256:edf408b0b61b2e9e1c59d4e85236d8c124a163a3306ab80b38832bbc2c545d6d"
+    },
+    {
+      "matches_pinned": null,
+      "path": "data/validation/wp21-dashboard-feed.json",
+      "present": true,
+      "reason": "the benchmark dashboard feed",
+      "required": false,
+      "sha256": "sha256:1d86a30ed3d61e683541bb668d7df61e6f2cf0ca2c924714698cb711079ef56e"
+    },
+    {
+      "matches_pinned": null,
+      "path": "data/safety/wp20-real-gate-status.json",
+      "present": true,
+      "reason": "the safety gate status the system page reports",
+      "required": true,
+      "sha256": "sha256:99203e9c8fa2733fd949053a6bd168a4adb25b2d73c853f6c2e439db1ddd2879"
+    },
+    {
+      "matches_pinned": null,
+      "path": "data/security/wp23-real-gate-status.json",
+      "present": true,
+      "reason": "the security gate status the system page reports",
+      "required": true,
+      "sha256": "sha256:541359be47c4ee8f79ef7f01289571c41bcda8d29d57a0f1f3d9d2a7a66c1d6a"
+    },
+    {
+      "matches_pinned": null,
+      "path": "schemas/openapi/wp16-openapi.json",
+      "present": true,
+      "reason": "the committed OpenAPI document the served one is compared against",
+      "required": true,
+      "sha256": "sha256:465d514b50075011c0835c6e3c30a8d962eb33908f407d8009763731ef4522af"
+    },
+    {
+      "matches_pinned": null,
+      "path": "config/scientific-sources.json",
+      "present": true,
+      "reason": "the reviewed source registry; a build without it must fail to load a policy rather than quietly find none",
+      "required": true,
+      "sha256": "sha256:1765ef403cf704aa1af4f5709d79c95bc559ca3079a2b6daaffcd2fd0ab9c574"
+    }
+  ],
+  "checksum_mismatches": [],
+  "forbidden_names": [
+    ".env",
+    ".env.local",
+    ".env.production",
+    "id_rsa",
+    "id_ed25519"
+  ],
+  "forbidden_prefixes": [
+    ".git/",
+    ".venv/",
+    ".venv-linux/",
+    "_to_delete/",
+    "data/_to_delete/",
+    "data/raw/",
+    "data/canonical/",
+    "data/evidence/",
+    "data/legacy-baseline/",
+    "data/migration/",
+    "data/holdout/",
+    "data/curation/",
+    "tests/",
+    "clinpgx_outputs/",
+    "clinpgx_outputs_v2/",
+    "clinpgx_mvp_seed/",
+    "final_report/",
+    "build/",
+    "deploy/secrets/"
+  ],
+  "forbidden_suffixes": [
+    ".pem",
+    ".key",
+    ".p12",
+    ".pfx",
+    ".jks",
+    ".sql.gz",
+    ".dump"
+  ],
+  "manifest_hash": "sha256:239801e551794f74a9928a8d20fb317def6c66175ef90af66dd1f52b36de0ba0",
+  "missing_required": [],
+  "note": "An allowlist of files, never a directory. A directory is a promise about what somebody will remember not to put in it.",
+  "runtime_asset_manifest_version": "pgx-wp24-runtime-asset-manifest/1",
+  "satisfied": true
+}

@@ -1,0 +1,280 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pgx-platform.invalid/schemas/computable-rule.schema.json",
+  "title": "PGx computable rule",
+  "description": "One executable rule as it appears on a line of rules.ndjson inside a frozen ruleset artifact. The schema refuses what a hand-edited rule file would most usefully lie about: a condition that matches more than the exact gene/drug/phenotype triple it names, an outcome that carries a dose, a recommendation, a drug choice or a safety declaration, a rule that names no evidence, and a rule that does not pin the exact curated revision and approval envelope it descends from. A document that validates here is a well-formed rule, not an approved one: validity is structural, and approval is an act performed by named people that this file can only record.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "rule_id",
+    "family_id",
+    "rule_version",
+    "rule_schema_version",
+    "condition_schema_version",
+    "condition",
+    "outcome",
+    "provenance",
+    "created_by",
+    "created_at",
+    "supersedes_rule_id",
+    "content_hash",
+    "metadata"
+  ],
+  "properties": {
+    "rule_id": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+    },
+    "family_id": {
+      "description": "Version lineage. Two rules sharing a family are successive versions of the same rule, which is how a superseded member is detected inside a ruleset.",
+      "type": "string",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+    },
+    "rule_version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "rule_schema_version": {
+      "const": "pgx-computable-rule/1"
+    },
+    "condition_schema_version": {
+      "const": "pgx-rule-condition/1"
+    },
+    "condition": {
+      "$ref": "#/$defs/condition"
+    },
+    "outcome": {
+      "$ref": "#/$defs/outcome"
+    },
+    "provenance": {
+      "$ref": "#/$defs/provenance"
+    },
+    "created_by": {
+      "type": "string",
+      "minLength": 1
+    },
+    "created_at": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$"
+    },
+    "supersedes_rule_id": {
+      "description": "The rule version this one replaces, or null for the first version in a family. Present and explicitly null rather than absent: 'replaces nothing' is a statement, and an omitted key is not.",
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "string",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+        }
+      ]
+    },
+    "content_hash": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "metadata": {
+      "description": "Non-semantic annotations. It is deliberately not part of the rule's semantic content hash, so a comment cannot silently change a rule's identity.",
+      "type": "object"
+    }
+  },
+  "$defs": {
+    "condition": {
+      "description": "Exactly one canonical gene, exactly one canonical drug, and an explicit phenotype match. There is no wildcard, no default arm, no negation, no range, no regular expression, no template and no nested boolean language: a condition that could be written to match 'everything else' would be a rule nobody had reviewed the scope of.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "condition_schema_version",
+        "kind",
+        "gene_id",
+        "drug_id",
+        "phenotype"
+      ],
+      "properties": {
+        "condition_schema_version": {
+          "const": "pgx-rule-condition/1"
+        },
+        "kind": {
+          "const": "PGX_AXIS"
+        },
+        "gene_id": {
+          "type": "string",
+          "pattern": "^GENE:[A-Z0-9][A-Z0-9\\-.@_]*$"
+        },
+        "drug_id": {
+          "type": "string",
+          "pattern": "^DRUG:[^A-Z\\s]+( [^A-Z\\s]+)*$"
+        },
+        "phenotype": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "operator",
+            "values"
+          ],
+          "properties": {
+            "operator": {
+              "description": "EXACT matches exactly one phenotype. ONE_OF matches any one of the phenotypes explicitly listed. There is no operator that expands a phenotype into a neighbouring one: RAPID and ULTRARAPID are separate values and each must be written out to be matched (SAFETY-INV-004).",
+              "enum": [
+                "EXACT",
+                "ONE_OF"
+              ]
+            },
+            "values": {
+              "type": "array",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": {
+                "description": "INDETERMINATE is absent on purpose: it is the absence of a determination, and a rule keyed on it would be a rule fired by missing data (SAFETY-INV-001).",
+                "enum": [
+                  "POOR",
+                  "INTERMEDIATE",
+                  "NORMAL",
+                  "RAPID",
+                  "ULTRARAPID"
+                ]
+              }
+            }
+          },
+          "allOf": [
+            {
+              "if": {
+                "properties": {
+                  "operator": {
+                    "const": "EXACT"
+                  }
+                },
+                "required": [
+                  "operator"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "values": {
+                    "maxItems": 1
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    "outcome": {
+      "description": "The only thing a rule may conclude is how much attention the pairing warrants, plus a reference to the curated rationale that says why. A dose, a dose adjustment, a recommendation, an alternative drug, a treatment instruction, a safety declaration, a numeric risk score, a ranking or a priority are all refused by additionalProperties: none of them is a conclusion this system is permitted to reach.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "attention_level",
+        "rationale_reference"
+      ],
+      "properties": {
+        "attention_level": {
+          "description": "NOT_ASSESSED is absent on purpose: it is what an engine reports when no rule matched, never something a rule author may assert.",
+          "enum": [
+            "NO_ACTIVE_ATTENTION",
+            "LOW",
+            "MEDIUM",
+            "HIGH"
+          ]
+        },
+        "rationale_reference": {
+          "description": "Points at the curated work item and revision carrying the reasoning. It is a reference, not prose: free text here would be an un-reviewed clinical claim travelling inside a reviewed artifact.",
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "provenance": {
+      "description": "What the rule descends from, pinned by identity and by content hash together. Identity alone would let the upstream document be edited underneath the rule; a hash alone would not say which document to look for.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "interpretation_id",
+        "curation_work_item_id",
+        "curation_revision_id",
+        "curation_revision_hash",
+        "approval_envelope_hash",
+        "protocol_version",
+        "protocol_content_hash",
+        "dataset_public_id",
+        "canonical_build_key",
+        "canonical_build_content_hash",
+        "evidence_build_key",
+        "evidence_build_content_hash",
+        "source_policy_version",
+        "source_policy_content_hash",
+        "evidence_record_uuids"
+      ],
+      "properties": {
+        "interpretation_id": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+        },
+        "curation_work_item_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "curation_revision_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "curation_revision_hash": {
+          "type": "string",
+          "pattern": "^sha256:[0-9a-f]{64}$"
+        },
+        "approval_envelope_hash": {
+          "description": "The envelope names this rule's content hash and this field names the envelope's; the binding is mutual and acyclic because the rule's own semantic hash is computed over provenance with this field removed.",
+          "type": "string",
+          "pattern": "^sha256:[0-9a-f]{64}$"
+        },
+        "protocol_version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "protocol_content_hash": {
+          "type": "string",
+          "pattern": "^sha256:[0-9a-f]{64}$"
+        },
+        "dataset_public_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "canonical_build_key": {
+          "type": "string",
+          "minLength": 1
+        },
+        "canonical_build_content_hash": {
+          "type": "string",
+          "pattern": "^sha256:[0-9a-f]{64}$"
+        },
+        "evidence_build_key": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evidence_build_content_hash": {
+          "type": "string",
+          "pattern": "^sha256:[0-9a-f]{64}$"
+        },
+        "source_policy_version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_policy_content_hash": {
+          "type": "string",
+          "pattern": "^sha256:[0-9a-f]{64}$"
+        },
+        "evidence_record_uuids": {
+          "description": "At least one. A rule with no evidence would be an assertion with no traceable basis, which SAFETY-INV-006 exists to forbid.",
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,537 @@
+{
+  "cache_only": true,
+  "cache_root": "/sessions/rcw-01fgcehq29xtuncjgca1p189/tmp/pgx-drill-cache-_cdlfyom",
+  "completed_at": "2026-08-30T12:02:33+00:00",
+  "content_hash": "sha256:c0b82f088d25d330d80a98e063960e56d8ae8aaa19c52d5b2df5a7c963580110",
+  "content_manifest": {
+    "content_manifest_version": "pgx-acquisition-content/1",
+    "entries": [
+      {
+        "byte_length": 12,
+        "cursor": null,
+        "endpoint_id": "guideline_annotation_by_pair",
+        "page_number": 2,
+        "raw_sha256": "sha256:0e67a643c152d6568c10b21764bb128950c9a0ca8453025af8562206ddc36457",
+        "request_key": "sha256:2acaaa5550dc0413cf757884d094632ff017f1930e5a1bad9370b8ed176bd6e8"
+      },
+      {
+        "byte_length": 12,
+        "cursor": null,
+        "endpoint_id": "gene_lookup",
+        "page_number": 2,
+        "raw_sha256": "sha256:0e67a643c152d6568c10b21764bb128950c9a0ca8453025af8562206ddc36457",
+        "request_key": "sha256:5d16cee1751948e111905ef181107324902170e08438373574576d51bf53f771"
+      },
+      {
+        "byte_length": 59,
+        "cursor": null,
+        "endpoint_id": "chemical_lookup",
+        "page_number": 1,
+        "raw_sha256": "sha256:6e80994b7669c845af9566e82563b7a9e756eb72470e6a955378af83270fa56a",
+        "request_key": "sha256:66a2a1297e794e56e0919e6cff4bfb0129f45a8ce7ca1599421af8e75376f43c"
+      },
+      {
+        "byte_length": 12,
+        "cursor": null,
+        "endpoint_id": "chemical_lookup",
+        "page_number": 2,
+        "raw_sha256": "sha256:0e67a643c152d6568c10b21764bb128950c9a0ca8453025af8562206ddc36457",
+        "request_key": "sha256:7a730b4a5a59bb82b1aa63a4b3236b4e0ac5163bca28be19459dd562f22c4e22"
+      },
+      {
+        "byte_length": 12,
+        "cursor": null,
+        "endpoint_id": "guideline_annotation_by_gene",
+        "page_number": 2,
+        "raw_sha256": "sha256:0e67a643c152d6568c10b21764bb128950c9a0ca8453025af8562206ddc36457",
+        "request_key": "sha256:907cc565701a650e1466aab386c92a8c63a8b88c4e04d68454ba6eace3640a32"
+      },
+      {
+        "byte_length": 58,
+        "cursor": null,
+        "endpoint_id": "guideline_annotation_by_gene",
+        "page_number": 1,
+        "raw_sha256": "sha256:44a3ce592354b688e183b6fd2ad073ae3fb6829ad44ef28f2382a3b74c383f36",
+        "request_key": "sha256:bd4a6a601ada0c2de01188b35d2b9489973c7d615f5d37e6ae02a8bbefed852c"
+      },
+      {
+        "byte_length": 58,
+        "cursor": null,
+        "endpoint_id": "guideline_annotation_by_pair",
+        "page_number": 1,
+        "raw_sha256": "sha256:44a3ce592354b688e183b6fd2ad073ae3fb6829ad44ef28f2382a3b74c383f36",
+        "request_key": "sha256:e512443b804025fd8d0318f40bec950377b1c4fe82ac47ff3eb573fd3be17103"
+      },
+      {
+        "byte_length": 106,
+        "cursor": null,
+        "endpoint_id": "gene_lookup",
+        "page_number": 1,
+        "raw_sha256": "sha256:da052c8a94b9785d067fe60dedd56396bb828064f875b94dd2a94e18906c11fe",
+        "request_key": "sha256:e5cb64e2129be286949e0ab7388a789b345faf5a56e1388b2535146d66f02382"
+      }
+    ],
+    "entry_count": 8,
+    "source_id": "clinpgx"
+  },
+  "duration_seconds": 153.0,
+  "endpoint_count": 4,
+  "endpoints": [
+    {
+      "endpoint_id": "gene_lookup",
+      "error_code": null,
+      "error_detail": null,
+      "outcome": "COMPLETE",
+      "pagination": {
+        "last_cursor": null,
+        "pages_fetched": 2,
+        "records_seen": 2,
+        "terminal": true,
+        "termination_reason": "EMPTY_PAGE"
+      },
+      "record_count": 2,
+      "records": [
+        {
+          "attempts": [],
+          "byte_length": 106,
+          "cache_blob_ref": "blobs/da/da052c8a94b9785d067fe60dedd56396bb828064f875b94dd2a94e18906c11fe",
+          "cache_state": "HIT",
+          "completed_at": "2026-08-30T12:00:18+00:00",
+          "content_type": "application/json",
+          "cursor": null,
+          "endpoint_id": "gene_lookup",
+          "error_code": null,
+          "error_detail": null,
+          "method": "GET",
+          "page_number": 1,
+          "parse_status": "OK",
+          "rate_limit": {
+            "limit": null,
+            "remaining": null,
+            "reset_seconds": null,
+            "retry_after_seconds": null
+          },
+          "raw_sha256": "sha256:da052c8a94b9785d067fe60dedd56396bb828064f875b94dd2a94e18906c11fe",
+          "record_count": 2,
+          "request_key": "sha256:e5cb64e2129be286949e0ab7388a789b345faf5a56e1388b2535146d66f02382",
+          "retry_count": 0,
+          "safe_query": [
+            [
+              "symbol",
+              "CYP2C19"
+            ],
+            [
+              "view",
+              "base"
+            ],
+            [
+              "page",
+              "1"
+            ],
+            [
+              "size",
+              "100"
+            ]
+          ],
+          "started_at": "2026-08-30T12:00:09+00:00",
+          "status_code": 200,
+          "url": "https://api.clinpgx.org/v1/data/gene"
+        },
+        {
+          "attempts": [],
+          "byte_length": 12,
+          "cache_blob_ref": "blobs/0e/0e67a643c152d6568c10b21764bb128950c9a0ca8453025af8562206ddc36457",
+          "cache_state": "HIT",
+          "completed_at": "2026-08-30T12:00:36+00:00",
+          "content_type": "application/json",
+          "cursor": null,
+          "endpoint_id": "gene_lookup",
+          "error_code": null,
+          "error_detail": null,
+          "method": "GET",
+          "page_number": 2,
+          "parse_status": "OK",
+          "rate_limit": {
+            "limit": null,
+            "remaining": null,
+            "reset_seconds": null,
+            "retry_after_seconds": null
+          },
+          "raw_sha256": "sha256:0e67a643c152d6568c10b21764bb128950c9a0ca8453025af8562206ddc36457",
+          "record_count": 0,
+          "request_key": "sha256:5d16cee1751948e111905ef181107324902170e08438373574576d51bf53f771",
+          "retry_count": 0,
+          "safe_query": [
+            [
+              "symbol",
+              "CYP2C19"
+            ],
+            [
+              "view",
+              "base"
+            ],
+            [
+              "page",
+              "2"
+            ],
+            [
+              "size",
+              "100"
+            ]
+          ],
+          "started_at": "2026-08-30T12:00:27+00:00",
+          "status_code": 200,
+          "url": "https://api.clinpgx.org/v1/data/gene"
+        }
+      ],
+      "required": true
+    },
+    {
+      "endpoint_id": "chemical_lookup",
+      "error_code": null,
+      "error_detail": null,
+      "outcome": "COMPLETE",
+      "pagination": {
+        "last_cursor": null,
+        "pages_fetched": 2,
+        "records_seen": 1,
+        "terminal": true,
+        "termination_reason": "EMPTY_PAGE"
+      },
+      "record_count": 2,
+      "records": [
+        {
+          "attempts": [],
+          "byte_length": 59,
+          "cache_blob_ref": "blobs/6e/6e80994b7669c845af9566e82563b7a9e756eb72470e6a955378af83270fa56a",
+          "cache_state": "HIT",
+          "completed_at": "2026-08-30T12:00:54+00:00",
+          "content_type": "application/json",
+          "cursor": null,
+          "endpoint_id": "chemical_lookup",
+          "error_code": null,
+          "error_detail": null,
+          "method": "GET",
+          "page_number": 1,
+          "parse_status": "OK",
+          "rate_limit": {
+            "limit": null,
+            "remaining": null,
+            "reset_seconds": null,
+            "retry_after_seconds": null
+          },
+          "raw_sha256": "sha256:6e80994b7669c845af9566e82563b7a9e756eb72470e6a955378af83270fa56a",
+          "record_count": 1,
+          "request_key": "sha256:66a2a1297e794e56e0919e6cff4bfb0129f45a8ce7ca1599421af8e75376f43c",
+          "retry_count": 0,
+          "safe_query": [
+            [
+              "name",
+              "clopidogrel"
+            ],
+            [
+              "view",
+              "base"
+            ],
+            [
+              "page",
+              "1"
+            ],
+            [
+              "size",
+              "100"
+            ]
+          ],
+          "started_at": "2026-08-30T12:00:45+00:00",
+          "status_code": 200,
+          "url": "https://api.clinpgx.org/v1/data/chemical"
+        },
+        {
+          "attempts": [],
+          "byte_length": 12,
+          "cache_blob_ref": "blobs/0e/0e67a643c152d6568c10b21764bb128950c9a0ca8453025af8562206ddc36457",
+          "cache_state": "HIT",
+          "completed_at": "2026-08-30T12:01:12+00:00",
+          "content_type": "application/json",
+          "cursor": null,
+          "endpoint_id": "chemical_lookup",
+          "error_code": null,
+          "error_detail": null,
+          "method": "GET",
+          "page_number": 2,
+          "parse_status": "OK",
+          "rate_limit": {
+            "limit": null,
+            "remaining": null,
+            "reset_seconds": null,
+            "retry_after_seconds": null
+          },
+          "raw_sha256": "sha256:0e67a643c152d6568c10b21764bb128950c9a0ca8453025af8562206ddc36457",
+          "record_count": 0,
+          "request_key": "sha256:7a730b4a5a59bb82b1aa63a4b3236b4e0ac5163bca28be19459dd562f22c4e22",
+          "retry_count": 0,
+          "safe_query": [
+            [
+              "name",
+              "clopidogrel"
+            ],
+            [
+              "view",
+              "base"
+            ],
+            [
+              "page",
+              "2"
+            ],
+            [
+              "size",
+              "100"
+            ]
+          ],
+          "started_at": "2026-08-30T12:01:03+00:00",
+          "status_code": 200,
+          "url": "https://api.clinpgx.org/v1/data/chemical"
+        }
+      ],
+      "required": true
+    },
+    {
+      "endpoint_id": "guideline_annotation_by_pair",
+      "error_code": null,
+      "error_detail": null,
+      "outcome": "COMPLETE",
+      "pagination": {
+        "last_cursor": null,
+        "pages_fetched": 2,
+        "records_seen": 1,
+        "terminal": true,
+        "termination_reason": "EMPTY_PAGE"
+      },
+      "record_count": 2,
+      "records": [
+        {
+          "attempts": [],
+          "byte_length": 58,
+          "cache_blob_ref": "blobs/44/44a3ce592354b688e183b6fd2ad073ae3fb6829ad44ef28f2382a3b74c383f36",
+          "cache_state": "HIT",
+          "completed_at": "2026-08-30T12:01:30+00:00",
+          "content_type": "application/json",
+          "cursor": null,
+          "endpoint_id": "guideline_annotation_by_pair",
+          "error_code": null,
+          "error_detail": null,
+          "method": "GET",
+          "page_number": 1,
+          "parse_status": "OK",
+          "rate_limit": {
+            "limit": null,
+            "remaining": null,
+            "reset_seconds": null,
+            "retry_after_seconds": null
+          },
+          "raw_sha256": "sha256:44a3ce592354b688e183b6fd2ad073ae3fb6829ad44ef28f2382a3b74c383f36",
+          "record_count": 1,
+          "request_key": "sha256:e512443b804025fd8d0318f40bec950377b1c4fe82ac47ff3eb573fd3be17103",
+          "retry_count": 0,
+          "safe_query": [
+            [
+              "relatedGenes.accessionId",
+              "PA124"
+            ],
+            [
+              "relatedChemicals.accessionId",
+              "PA449053"
+            ],
+            [
+              "view",
+              "base"
+            ],
+            [
+              "page",
+              "1"
+            ],
+            [
+              "size",
+              "100"
+            ]
+          ],
+          "started_at": "2026-08-30T12:01:21+00:00",
+          "status_code": 200,
+          "url": "https://api.clinpgx.org/v1/data/guidelineAnnotation"
+        },
+        {
+          "attempts": [],
+          "byte_length": 12,
+          "cache_blob_ref": "blobs/0e/0e67a643c152d6568c10b21764bb128950c9a0ca8453025af8562206ddc36457",
+          "cache_state": "HIT",
+          "completed_at": "2026-08-30T12:01:48+00:00",
+          "content_type": "application/json",
+          "cursor": null,
+          "endpoint_id": "guideline_annotation_by_pair",
+          "error_code": null,
+          "error_detail": null,
+          "method": "GET",
+          "page_number": 2,
+          "parse_status": "OK",
+          "rate_limit": {
+            "limit": null,
+            "remaining": null,
+            "reset_seconds": null,
+            "retry_after_seconds": null
+          },
+          "raw_sha256": "sha256:0e67a643c152d6568c10b21764bb128950c9a0ca8453025af8562206ddc36457",
+          "record_count": 0,
+          "request_key": "sha256:2acaaa5550dc0413cf757884d094632ff017f1930e5a1bad9370b8ed176bd6e8",
+          "retry_count": 0,
+          "safe_query": [
+            [
+              "relatedGenes.accessionId",
+              "PA124"
+            ],
+            [
+              "relatedChemicals.accessionId",
+              "PA449053"
+            ],
+            [
+              "view",
+              "base"
+            ],
+            [
+              "page",
+              "2"
+            ],
+            [
+              "size",
+              "100"
+            ]
+          ],
+          "started_at": "2026-08-30T12:01:39+00:00",
+          "status_code": 200,
+          "url": "https://api.clinpgx.org/v1/data/guidelineAnnotation"
+        }
+      ],
+      "required": true
+    },
+    {
+      "endpoint_id": "guideline_annotation_by_gene",
+      "error_code": null,
+      "error_detail": null,
+      "outcome": "COMPLETE",
+      "pagination": {
+        "last_cursor": null,
+        "pages_fetched": 2,
+        "records_seen": 1,
+        "terminal": true,
+        "termination_reason": "EMPTY_PAGE"
+      },
+      "record_count": 2,
+      "records": [
+        {
+          "attempts": [],
+          "byte_length": 58,
+          "cache_blob_ref": "blobs/44/44a3ce592354b688e183b6fd2ad073ae3fb6829ad44ef28f2382a3b74c383f36",
+          "cache_state": "HIT",
+          "completed_at": "2026-08-30T12:02:06+00:00",
+          "content_type": "application/json",
+          "cursor": null,
+          "endpoint_id": "guideline_annotation_by_gene",
+          "error_code": null,
+          "error_detail": null,
+          "method": "GET",
+          "page_number": 1,
+          "parse_status": "OK",
+          "rate_limit": {
+            "limit": null,
+            "remaining": null,
+            "reset_seconds": null,
+            "retry_after_seconds": null
+          },
+          "raw_sha256": "sha256:44a3ce592354b688e183b6fd2ad073ae3fb6829ad44ef28f2382a3b74c383f36",
+          "record_count": 1,
+          "request_key": "sha256:bd4a6a601ada0c2de01188b35d2b9489973c7d615f5d37e6ae02a8bbefed852c",
+          "retry_count": 0,
+          "safe_query": [
+            [
+              "relatedGenes.accessionId",
+              "PA124"
+            ],
+            [
+              "view",
+              "base"
+            ],
+            [
+              "page",
+              "1"
+            ],
+            [
+              "size",
+              "100"
+            ]
+          ],
+          "started_at": "2026-08-30T12:01:57+00:00",
+          "status_code": 200,
+          "url": "https://api.clinpgx.org/v1/data/guidelineAnnotation"
+        },
+        {
+          "attempts": [],
+          "byte_length": 12,
+          "cache_blob_ref": "blobs/0e/0e67a643c152d6568c10b21764bb128950c9a0ca8453025af8562206ddc36457",
+          "cache_state": "HIT",
+          "completed_at": "2026-08-30T12:02:24+00:00",
+          "content_type": "application/json",
+          "cursor": null,
+          "endpoint_id": "guideline_annotation_by_gene",
+          "error_code": null,
+          "error_detail": null,
+          "method": "GET",
+          "page_number": 2,
+          "parse_status": "OK",
+          "rate_limit": {
+            "limit": null,
+            "remaining": null,
+            "reset_seconds": null,
+            "retry_after_seconds": null
+          },
+          "raw_sha256": "sha256:0e67a643c152d6568c10b21764bb128950c9a0ca8453025af8562206ddc36457",
+          "record_count": 0,
+          "request_key": "sha256:907cc565701a650e1466aab386c92a8c63a8b88c4e04d68454ba6eace3640a32",
+          "retry_count": 0,
+          "safe_query": [
+            [
+              "relatedGenes.accessionId",
+              "PA124"
+            ],
+            [
+              "view",
+              "base"
+            ],
+            [
+              "page",
+              "2"
+            ],
+            [
+              "size",
+              "100"
+            ]
+          ],
+          "started_at": "2026-08-30T12:02:15+00:00",
+          "status_code": 200,
+          "url": "https://api.clinpgx.org/v1/data/guidelineAnnotation"
+        }
+      ],
+      "required": false
+    }
+  ],
+  "failures": [],
+  "is_publishable": true,
+  "required_endpoint_count": 3,
+  "run_id": "00000000-0000-4000-8000-000000000002",
+  "run_manifest_version": "pgx-acquisition-run/1",
+  "scope_note": "Acquisition only. These are raw source responses. Nothing here asserts scientific validity, canonical resolution, curation status, or release eligibility.",
+  "source_id": "clinpgx",
+  "started_at": "2026-08-30T12:00:00+00:00",
+  "status": "COMPLETE",
+  "total_pages": 8,
+  "total_records": 5,
+  "warnings": []
+}

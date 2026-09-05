@@ -1,0 +1,180 @@
+{
+  "$id": "https://pgx.local/schemas/wp21/wp21-gate-status.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "benchmark_gate_status": {
+            "const": "PASS"
+          }
+        },
+        "required": [
+          "benchmark_gate_status"
+        ]
+      },
+      "then": {
+        "properties": {
+          "active_release_available": {
+            "const": true
+          },
+          "benchmark_executed_against_active_release": {
+            "const": true
+          },
+          "numeric_validation_metric_count": {
+            "minimum": 1,
+            "type": "integer"
+          },
+          "validation_evidence_case_count": {
+            "minimum": 1,
+            "type": "integer"
+          }
+        }
+      }
+    }
+  ],
+  "description": "Two separate answers: the metric machinery is implemented, and no release has been validated.",
+  "properties": {
+    "active_release_available": {
+      "type": "boolean"
+    },
+    "benchmark_executed_against_active_release": {
+      "type": "boolean"
+    },
+    "benchmark_gate_status": {
+      "enum": [
+        "PASS",
+        "BLOCKED",
+        "FAILED"
+      ],
+      "type": "string"
+    },
+    "blocker_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "blockers": {
+      "items": {
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "claim_boundary_approved": {
+      "type": "boolean"
+    },
+    "clinical_validation_performed": {
+      "const": false
+    },
+    "computed_metric_value_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "development_case_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "expert_holdout_case_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "expert_review_performed": {
+      "const": false
+    },
+    "failure_path_count": {
+      "minimum": 10,
+      "type": "integer"
+    },
+    "gate_status_schema_version": {
+      "const": "pgx-wp21-gate-status/1"
+    },
+    "implementation_status": {
+      "enum": [
+        "IMPLEMENTED",
+        "PARTIAL",
+        "NOT_STARTED"
+      ],
+      "type": "string"
+    },
+    "internal_holdout_case_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "metric_definition_count": {
+      "minimum": 10,
+      "type": "integer"
+    },
+    "metric_framework_implemented": {
+      "type": "boolean"
+    },
+    "metric_registry_digest": {
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "numeric_validation_metric_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "reference_judgment_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "release_may_proceed": {
+      "type": "boolean"
+    },
+    "release_validation_result_available": {
+      "type": "boolean"
+    },
+    "restricted_storage_configured": {
+      "type": "boolean"
+    },
+    "separation_audit_clean": {
+      "type": "boolean"
+    },
+    "threshold_count": {
+      "const": 0
+    },
+    "validation_evidence_case_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "validation_evidence_metric_count": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "work_package": {
+      "const": "WP-21"
+    },
+    "wp21_markers_found": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "wp22_started": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "gate_status_schema_version",
+    "work_package",
+    "implementation_status",
+    "benchmark_gate_status",
+    "release_may_proceed",
+    "metric_framework_implemented",
+    "benchmark_executed_against_active_release",
+    "active_release_available",
+    "development_case_count",
+    "internal_holdout_case_count",
+    "expert_holdout_case_count",
+    "validation_evidence_case_count",
+    "numeric_validation_metric_count",
+    "threshold_count",
+    "release_validation_result_available",
+    "clinical_validation_performed",
+    "expert_review_performed",
+    "blockers"
+  ],
+  "title": "WP-21 gate status",
+  "type": "object"
+}

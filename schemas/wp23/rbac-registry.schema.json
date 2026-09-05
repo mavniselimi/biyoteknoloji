@@ -1,0 +1,101 @@
+{
+  "$id": "https://pgx.local/schemas/wp23/rbac-registry.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "description": "Every governed permission and its exact holders. role_hierarchy is null: there is nothing to describe, and an empty object would read as a hierarchy that happens to be empty today.",
+  "properties": {
+    "admin_is_not_a_reviewer": {
+      "minLength": 40,
+      "type": "string"
+    },
+    "matrix": {
+      "type": "object"
+    },
+    "permission_count": {
+      "minimum": 25,
+      "type": "integer"
+    },
+    "permissions": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "area": {
+            "minLength": 3,
+            "type": "string"
+          },
+          "holders": {
+            "items": {
+              "enum": [
+                "ADMIN",
+                "DEMO_USER",
+                "EXPERT_REVIEWER"
+              ],
+              "type": "string"
+            },
+            "minItems": 1,
+            "type": "array"
+          },
+          "permission_id": {
+            "minLength": 3,
+            "type": "string"
+          },
+          "rationale": {
+            "minLength": 40,
+            "type": "string"
+          },
+          "title": {
+            "minLength": 3,
+            "type": "string"
+          }
+        },
+        "required": [
+          "permission_id",
+          "title",
+          "area",
+          "rationale",
+          "holders"
+        ],
+        "type": "object"
+      },
+      "minItems": 25,
+      "type": "array"
+    },
+    "permissions_by_role": {
+      "type": "object"
+    },
+    "rbac_registry_version": {
+      "const": "pgx-wp23-rbac-registry/1"
+    },
+    "registry_digest": {
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "role_hierarchy": {
+      "type": "null"
+    },
+    "roles": {
+      "items": {
+        "enum": [
+          "ADMIN",
+          "DEMO_USER",
+          "EXPERT_REVIEWER"
+        ],
+        "type": "string"
+      },
+      "minItems": 3,
+      "type": "array"
+    }
+  },
+  "required": [
+    "rbac_registry_version",
+    "registry_digest",
+    "roles",
+    "role_hierarchy",
+    "permission_count",
+    "permissions",
+    "matrix",
+    "permissions_by_role"
+  ],
+  "title": "WP-23 RBAC registry",
+  "type": "object"
+}

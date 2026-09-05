@@ -1,0 +1,77 @@
+# PGx Platform V2 - development and test PostgreSQL (WP-02).
+#
+# Two services, deliberately separate:
+#
+#   postgres       persistent development database  (pgx_dev,  host port 5432)
+#   postgres-test  disposable test database         (pgx_test, host port 55432)
+#
+# The test service exists because integration tests are destructive: they run
+# `alembic downgrade base`. Pointing them at the development database would
+# destroy a developer's data, so they get their own server on their own port
+# with tmpfs storage that disappears when the container stops.
+#
+# There is no application service here: FastAPI arrives in WP-16 and must not
+# be implied now. Migrations and the seed are never a container start-up side
+# effect; they are explicit operator commands:
+#
+#     uv run alembic upgrade head
+#     uv run pgx-db-seed
+#
+# No `container_name:` and no global `name:` on the volume, so Compose project
+# isolation works and two checkouts can run side by side.
+
+services:
+  postgres:
+    # Pinned explicitly: a moving server version would silently change the
+    # behaviour the migration and constraint tests depend on.
+    image: postgres:16.13-bookworm
+    restart: unless-stopped
+    environment:
+      # Development-only placeholders. Override via .env; never commit secrets.
+      POSTGRES_USER: ${POSTGRES_USER:-pgx_dev}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-pgx_dev_password}
+      POSTGRES_DB: ${POSTGRES_DB:-pgx_dev}
+      # Deterministic collation, so index and ordering behaviour is stable.
+      POSTGRES_INITDB_ARGS: "--encoding=UTF8 --locale=C"
+    ports:
+      - "${POSTGRES_HOST_PORT:-5432}:5432"
+    volumes:
+      - pgx_postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-pgx_dev} -d ${POSTGRES_DB:-pgx_dev}"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+      start_period: 10s
+
+  postgres-test:
+    # Started on demand:  docker compose --profile test up -d postgres-test
+    profiles: ["test"]
+    image: postgres:16.13-bookworm
+    restart: "no"
+    environment:
+      POSTGRES_USER: ${TEST_POSTGRES_USER:-pgx_dev}
+      POSTGRES_PASSWORD: ${TEST_POSTGRES_PASSWORD:-pgx_dev_password}
+      # The name must contain "test": the integration suite refuses to run
+      # destructive migrations against a database that is not marked as one.
+      POSTGRES_DB: ${TEST_POSTGRES_DB:-pgx_test}
+      POSTGRES_INITDB_ARGS: "--encoding=UTF8 --locale=C"
+    ports:
+      - "${TEST_POSTGRES_HOST_PORT:-55432}:5432"
+    tmpfs:
+      # In-memory storage, never a named volume: the test database is meant to
+      # vanish with the container, and it must never share the development
+      # volume.
+      - /var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${TEST_POSTGRES_USER:-pgx_dev} -d ${TEST_POSTGRES_DB:-pgx_test}"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+      start_period: 10s
+
+volumes:
+  # Unnamed on purpose: Compose prefixes it with the project name, so parallel
+  # checkouts do not collide and `docker compose down -v` in one project cannot
+  # destroy another's data.
+  pgx_postgres_data:

@@ -1,0 +1,202 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pgx-platform.invalid/schemas/data-quality-report.schema.json",
+  "title": "PGx canonical build data quality report",
+  "description": "The data-quality record for one canonical build (WP-07). Every count is derived from the build's artifacts; none is maintained by hand. Each stream reconciles as input = accepted + rejected + deferred, where deferred means kept and waiting for a decision rather than dropped. The gate fails closed: any blocking finding refuses the check, and a passing gate is a precondition for a human quality decision rather than the decision itself. This report carries no generation timestamp, so the same build always produces identical bytes. Counts under source_observed_axes describe what the snapshot mentions; they are not validated coverage, clinical coverage, supported treatment, safe alternatives or executable pharmacogenetic rules.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "dq_report_version",
+    "dataset_public_id",
+    "canonical_build_key",
+    "build_content_hash",
+    "snapshot_manifest_hash",
+    "metrics",
+    "reconciliations",
+    "issues",
+    "decision",
+    "source_observed_axes",
+    "dataset_lifecycle_state",
+    "content_hash",
+    "lifecycle_note"
+  ],
+  "properties": {
+    "dq_report_version": {
+      "const": "pgx-data-quality/1"
+    },
+    "dataset_public_id": {
+      "type": "string",
+      "pattern": "^PGX-DATA-[0-9]{8}-[0-9]{3}$"
+    },
+    "canonical_build_key": {
+      "type": "string",
+      "minLength": 1
+    },
+    "build_content_hash": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "snapshot_manifest_hash": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "content_hash": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "description": "Digest of this report's own content."
+    },
+    "metrics": {
+      "description": "Derived counts. Per-run values such as how many identities were minted are deliberately absent, so two evaluations of one build are identical.",
+      "type": "object"
+    },
+    "reconciliations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "stream",
+          "input_count",
+          "accepted",
+          "rejected",
+          "deferred",
+          "balances",
+          "shortfall",
+          "basis"
+        ],
+        "properties": {
+          "stream": {
+            "type": "string",
+            "minLength": 1
+          },
+          "input_count": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "accepted": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "rejected": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "deferred": {
+            "description": "Kept, counted and awaiting a decision. Never discarded.",
+            "type": "integer",
+            "minimum": 0
+          },
+          "balances": {
+            "const": true
+          },
+          "shortfall": {
+            "const": 0
+          },
+          "basis": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "issues": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "code",
+          "severity",
+          "subject",
+          "detail",
+          "count",
+          "examples"
+        ],
+        "properties": {
+          "code": {
+            "type": "string",
+            "pattern": "^[A-Z][A-Z0-9_]*$"
+          },
+          "severity": {
+            "enum": [
+              "BLOCKING",
+              "ADVISORY",
+              "INFORMATIONAL"
+            ]
+          },
+          "subject": {
+            "type": "string",
+            "minLength": 1
+          },
+          "detail": {
+            "type": "string",
+            "minLength": 1
+          },
+          "count": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "examples": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "decision": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "passed",
+        "blocking_codes",
+        "advisory_codes",
+        "informational_codes",
+        "rationale",
+        "effect"
+      ],
+      "properties": {
+        "passed": {
+          "type": "boolean"
+        },
+        "blocking_codes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "advisory_codes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "informational_codes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "rationale": {
+          "type": "string",
+          "minLength": 1
+        },
+        "effect": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "source_observed_axes": {
+      "type": "object"
+    },
+    "dataset_lifecycle_state": {
+      "const": "BUILDING"
+    },
+    "lifecycle_note": {
+      "type": "string",
+      "minLength": 1
+    }
+  }
+}

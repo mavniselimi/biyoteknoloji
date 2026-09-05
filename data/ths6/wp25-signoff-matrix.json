@@ -1,0 +1,164 @@
+{
+  "example_names_used": false,
+  "note": "Nine roles, none signed. No example or placeholder name appears anywhere in this matrix, because a placeholder in a governance document survives a copy-paste and a reader's memory of it being a placeholder does not.",
+  "role_count": 9,
+  "roles": [
+    {
+      "attests_to": "I have reviewed each registered source against the source review checklist and I approve its use as scientific evidence.",
+      "gate_ids": [
+        "GATE-A"
+      ],
+      "must_have_reviewed": [
+        "config/scientific-sources.json",
+        "docs/scientific/source-review-checklist.md",
+        "docs/scientific/source-strategy.md"
+      ],
+      "role": "Scientific source approver",
+      "role_id": "SIGN-01",
+      "signatory": null,
+      "signature_recorded_at": null,
+      "signed": false
+    },
+    {
+      "attests_to": "I confirm the canonical dataset is built from a complete, sealed snapshot and that its published identity is immutable.",
+      "gate_ids": [
+        "GATE-A"
+      ],
+      "must_have_reviewed": [
+        "data/canonical/PGX-DATA-20260830-900/manifest.json",
+        "data/canonical/PGX-DATA-20260830-900/dq-report.json"
+      ],
+      "role": "Data owner",
+      "role_id": "SIGN-02",
+      "signatory": null,
+      "signature_recorded_at": null,
+      "signed": false
+    },
+    {
+      "attests_to": "I confirm every interpretation was curated under the approved protocol and that each rule carries complete approval metadata.",
+      "gate_ids": [
+        "GATE-B"
+      ],
+      "must_have_reviewed": [
+        "docs/scientific/curation-protocol-v1.md",
+        "data/rulesets/wp11-real-gate-status.json"
+      ],
+      "role": "Curation lead",
+      "role_id": "SIGN-03",
+      "signatory": null,
+      "signature_recorded_at": null,
+      "signed": false
+    },
+    {
+      "attests_to": "I approve the claim boundary: what this system may state, what it may not, and the wording of each refusal.",
+      "gate_ids": [
+        "GATE-C"
+      ],
+      "must_have_reviewed": [
+        "docs/architecture/intended-purpose.md",
+        "docs/risk-management/safety-contract.md",
+        "data/safety/wp20-real-gate-status.json"
+      ],
+      "role": "Clinical safety authority",
+      "role_id": "SIGN-04",
+      "signatory": null,
+      "signature_recorded_at": null,
+      "signed": false
+    },
+    {
+      "attests_to": "I confirm the validation set is adequate for the intended use and that the holdout set was not used in rule development.",
+      "gate_ids": [
+        "GATE-D"
+      ],
+      "must_have_reviewed": [
+        "data/validation/wp18-real-gate-status.json",
+        "data/validation/wp18-separation-audit.json",
+        "docs/validation/holdout-separation-policy.md"
+      ],
+      "role": "Validation owner",
+      "role_id": "SIGN-05",
+      "signatory": null,
+      "signature_recorded_at": null,
+      "signed": false
+    },
+    {
+      "attests_to": "I confirm the review protocol was approved before review began and that each recorded review was performed blind-first.",
+      "gate_ids": [
+        "GATE-D"
+      ],
+      "must_have_reviewed": [
+        "docs/validation/expert-protocol.md",
+        "data/expert-review/wp22-protocol-manifest.json",
+        "data/expert-review/wp22-real-gate-status.json"
+      ],
+      "role": "Expert review chair",
+      "role_id": "SIGN-06",
+      "signatory": null,
+      "signature_recorded_at": null,
+      "signed": false
+    },
+    {
+      "attests_to": "I confirm authentication, authorisation and the audit trail were exercised against real governed stores and that the chain verifies.",
+      "gate_ids": [
+        "GATE-E"
+      ],
+      "must_have_reviewed": [
+        "data/security/wp23-real-gate-status.json",
+        "docs/security/rbac-matrix.md",
+        "docs/security/audit-policy.md"
+      ],
+      "role": "Security owner",
+      "role_id": "SIGN-07",
+      "signatory": null,
+      "signature_recorded_at": null,
+      "signed": false
+    },
+    {
+      "attests_to": "I confirm the staging deployment, its health checks, its backup and restore, and its reliability drills were executed and observed.",
+      "gate_ids": [
+        "GATE-E"
+      ],
+      "must_have_reviewed": [
+        "data/deployment/wp24-real-gate-status.json",
+        "data/deployment/wp24-gate-e-status.json",
+        "docs/operations/staging-deployment-runbook.md"
+      ],
+      "role": "Platform owner",
+      "role_id": "SIGN-08",
+      "signatory": null,
+      "signature_recorded_at": null,
+      "signed": false
+    },
+    {
+      "attests_to": "I authorise this release: I have read the evidence pack, I accept its stated limitations, and I accept responsibility for the decision.",
+      "gate_ids": [
+        "GATE-F"
+      ],
+      "must_have_reviewed": [
+        "data/deployment/wp24-release-validation.json",
+        "data/ths6/wp25-ths6-status.json",
+        "docs/ths6/final/executive-summary.md"
+      ],
+      "role": "Release approver",
+      "role_id": "SIGN-09",
+      "signatory": null,
+      "signature_recorded_at": null,
+      "signed": false
+    }
+  ],
+  "signature_mechanism": null,
+  "signature_mechanism_note": "null, and not an omission: this repository contains no command, flag, fixture or helper that records a signature. Signing is a human act performed outside this software, and a repository that could manufacture one would have made the signature worthless.",
+  "signed_count": 0,
+  "signoff_matrix_version": "pgx-wp25-signoff-matrix/1",
+  "unsigned_role_ids": [
+    "SIGN-01",
+    "SIGN-02",
+    "SIGN-03",
+    "SIGN-04",
+    "SIGN-05",
+    "SIGN-06",
+    "SIGN-07",
+    "SIGN-08",
+    "SIGN-09"
+  ]
+}

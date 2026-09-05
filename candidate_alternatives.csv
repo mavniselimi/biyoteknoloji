@@ -1,0 +1,5 @@
+source_drug,candidate_drug,reason,evidence_level,notes
+clopidogrel,prasugrel,same_therapeutic_context,manual_demo,P2Y12 inhibitor / antiplatelet context
+clopidogrel,ticagrelor,same_therapeutic_context,manual_demo,P2Y12 inhibitor / antiplatelet context
+omeprazole,pantoprazole,same_drug_family,manual_demo,proton pump inhibitor context
+amitriptyline,nortriptyline,same_drug_family,manual_demo,tricyclic antidepressant context

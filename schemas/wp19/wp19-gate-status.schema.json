@@ -1,0 +1,346 @@
+{
+  "$id": "https://pgx.local/schemas/wp19/wp19-gate-status.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "description": "What WP-19 may say, component by component. `release_may_proceed` is one more field beside the others rather than instead of them: the suite can be entirely green while PostgreSQL was never reached, coverage was never measured and the claim boundary is unapproved, and a single boolean cannot say that.",
+  "properties": {
+    "asgi_runtime_status": {
+      "enum": [
+        "PASS",
+        "FAIL",
+        "ERROR",
+        "SKIP",
+        "BLOCKED",
+        "MISSING"
+      ]
+    },
+    "benchmark_gate_status": {
+      "enum": [
+        "PASS",
+        "FAIL",
+        "ERROR",
+        "SKIP",
+        "BLOCKED",
+        "MISSING",
+        "ABSENT",
+        "BLOCKED"
+      ]
+    },
+    "blocker_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "blockers": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "blocking": {
+            "const": true
+          },
+          "code": {
+            "pattern": "^VERIFICATION_[A-Z0-9_]+$",
+            "type": "string"
+          },
+          "detail": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "owner": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "blocking",
+          "code",
+          "detail",
+          "owner"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "browser_e2e_status": {
+      "enum": [
+        "PASS",
+        "FAIL",
+        "ERROR",
+        "SKIP",
+        "BLOCKED",
+        "MISSING"
+      ]
+    },
+    "category_status": {
+      "additionalProperties": {
+        "type": "object"
+      },
+      "propertyNames": {
+        "enum": [
+          "UNIT",
+          "DOMAIN_INVARIANT",
+          "FAILURE_NEGATIVE",
+          "INTEGRATION",
+          "POSTGRESQL_INTEGRATION",
+          "MIGRATION",
+          "API_CONTRACT",
+          "ASGI_RUNTIME",
+          "BROWSER_E2E",
+          "SNAPSHOT",
+          "ARTIFACT_SCHEMA",
+          "REPRODUCIBILITY",
+          "LEGACY_REGRESSION",
+          "VALIDATION_PARTITION",
+          "SECURITY_BOUNDARY",
+          "OFFLINE_INDEPENDENCE"
+        ]
+      },
+      "type": "object"
+    },
+    "claim_boundary_approved": {
+      "type": "boolean"
+    },
+    "claim_boundary_status": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "counts": {
+      "additionalProperties": false,
+      "properties": {
+        "discovered": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "errored": {
+          "minimum": 0,
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "executed": {
+          "minimum": 0,
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "failed": {
+          "minimum": 0,
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "not_executed": {
+          "minimum": 0,
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "passed": {
+          "minimum": 0,
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "skipped": {
+          "minimum": 0,
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "unexplained_skips": {
+          "minimum": 0,
+          "type": [
+            "integer",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "discovered",
+        "executed",
+        "passed",
+        "failed",
+        "errored",
+        "skipped",
+        "unexplained_skips",
+        "not_executed"
+      ],
+      "type": "object"
+    },
+    "coverage": {
+      "type": "object"
+    },
+    "coverage_tool_available": {
+      "type": "boolean"
+    },
+    "discovered_test_count": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "execution_status": {
+      "enum": [
+        "PASS",
+        "FAIL",
+        "ERROR",
+        "SKIP",
+        "BLOCKED",
+        "MISSING",
+        "BLOCKED"
+      ]
+    },
+    "flaky_repeat_status": {
+      "enum": [
+        "STABLE",
+        "FLAKY",
+        "BLOCKED",
+        null
+      ]
+    },
+    "gate_status_schema_version": {
+      "const": "pgx-wp19-gate-status/1"
+    },
+    "not_scientific_validation": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "numeric_validation_metric_count": {
+      "minimum": 0,
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "postgresql_test_status": {
+      "enum": [
+        "PASS",
+        "FAIL",
+        "ERROR",
+        "SKIP",
+        "BLOCKED",
+        "MISSING"
+      ]
+    },
+    "release_may_proceed": {
+      "type": "boolean"
+    },
+    "reproducibility_status": {
+      "enum": [
+        "REPRODUCIBLE",
+        "MISMATCH",
+        "STALE",
+        "BLOCKED",
+        null
+      ]
+    },
+    "requirement_status": {
+      "type": "object"
+    },
+    "run_evidence_status": {
+      "enum": [
+        "VERIFIED",
+        "BLOCKED",
+        "RUN_FAILED",
+        "STALE_EVIDENCE_REJECTED"
+      ]
+    },
+    "safety_gate_note": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "safety_gate_status": {
+      "enum": [
+        "PASS",
+        "FAIL",
+        "ERROR",
+        "SKIP",
+        "BLOCKED",
+        "MISSING",
+        "ABSENT"
+      ]
+    },
+    "safety_invariant_count": {
+      "minimum": 0,
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "safety_invariant_map_only": {
+      "type": "boolean"
+    },
+    "safety_negative_control_count": {
+      "minimum": 0,
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "safety_negative_controls_detected": {
+      "minimum": 0,
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "scientific_validation_performed": {
+      "const": false
+    },
+    "validation_evidence_case_count": {
+      "minimum": 0,
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "validation_metric_definition_count": {
+      "minimum": 0,
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "validation_metrics_implemented": {
+      "type": "boolean"
+    },
+    "work_package": {
+      "const": "WP-19"
+    },
+    "wp20_started": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "gate_status_schema_version",
+    "work_package",
+    "discovered_test_count",
+    "counts",
+    "execution_status",
+    "category_status",
+    "requirement_status",
+    "coverage",
+    "coverage_tool_available",
+    "postgresql_test_status",
+    "asgi_runtime_status",
+    "browser_e2e_status",
+    "flaky_repeat_status",
+    "reproducibility_status",
+    "run_evidence_status",
+    "claim_boundary_approved",
+    "claim_boundary_status",
+    "scientific_validation_performed",
+    "safety_gate_note",
+    "safety_invariant_map_only",
+    "not_scientific_validation",
+    "wp20_started",
+    "blockers",
+    "blocker_count",
+    "release_may_proceed"
+  ],
+  "title": "WP-19 gate status",
+  "type": "object"
+}

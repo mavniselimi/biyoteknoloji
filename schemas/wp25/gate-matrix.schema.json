@@ -1,0 +1,685 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "all_gates_pass": {
+            "const": true
+          }
+        },
+        "required": [
+          "all_gates_pass"
+        ]
+      },
+      "then": {
+        "properties": {
+          "blocking_gate_ids": {
+            "maxItems": 0,
+            "type": "array"
+          },
+          "failing_gate_ids": {
+            "maxItems": 0,
+            "type": "array"
+          },
+          "total_blocker_count": {
+            "maximum": 0
+          }
+        }
+      }
+    }
+  ],
+  "description": "Gates A to F. ``all_gates_pass`` requires every gate PASS and ``override_available`` must be false: there is no force flag, and a document claiming one describes different software.",
+  "properties": {
+    "all_gates_pass": {
+      "type": "boolean"
+    },
+    "blocker_owners": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "blocking_gate_ids": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "disagreement_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "failing_gate_ids": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "gate_count": {
+      "minimum": 6,
+      "type": "integer"
+    },
+    "gate_matrix_version": {
+      "const": "pgx-wp25-gate-matrix/1",
+      "type": "string"
+    },
+    "gates": {
+      "items": {
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "result": {
+                  "const": "PASS"
+                }
+              },
+              "required": [
+                "result"
+              ]
+            },
+            "then": {
+              "properties": {
+                "blockers": {
+                  "maxItems": 0,
+                  "type": "array"
+                },
+                "is_pass": {
+                  "const": true
+                },
+                "unmet_condition_ids": {
+                  "maxItems": 0,
+                  "type": "array"
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "is_pass": {
+                  "const": true
+                }
+              },
+              "required": [
+                "is_pass"
+              ]
+            },
+            "then": {
+              "properties": {
+                "result": {
+                  "const": "PASS"
+                }
+              }
+            }
+          }
+        ],
+        "properties": {
+          "blockers": {
+            "items": {
+              "properties": {
+                "blocking": {
+                  "const": true,
+                  "type": "boolean"
+                },
+                "code": {
+                  "enum": [
+                    "THS6_AUDIT_CHAIN_UNVERIFIED",
+                    "THS6_BACKUP_RESTORE_NOT_VERIFIED",
+                    "THS6_BENCHMARK_NOT_EXECUTED",
+                    "THS6_CI_NOT_EXECUTED",
+                    "THS6_CLAIM_BOUNDARY_NOT_APPROVED",
+                    "THS6_CONTAINER_RUNTIME_UNAVAILABLE",
+                    "THS6_CURATION_PROTOCOL_NOT_APPROVED",
+                    "THS6_DATABASE_UNAVAILABLE",
+                    "THS6_DATASET_NOT_PUBLISHED",
+                    "THS6_DEMO_NOT_EXECUTED",
+                    "THS6_DEPLOYMENT_GATE_BLOCKED",
+                    "THS6_DOD_DECLARED_COUNT_MISMATCH",
+                    "THS6_EVIDENCE_BUILD_NOT_APPROVED",
+                    "THS6_EVIDENCE_INVALID",
+                    "THS6_EVIDENCE_STALE",
+                    "THS6_EVIDENCE_UNAVAILABLE",
+                    "THS6_EXPERT_PROTOCOL_NOT_APPROVED",
+                    "THS6_INSUFFICIENT_VALIDATION_CASES",
+                    "THS6_LEGACY_WORK_ITEMS_UNLINKED",
+                    "THS6_MIGRATION_NOT_EXECUTED",
+                    "THS6_NO_ACTIVE_RELEASE",
+                    "THS6_NO_APPROVED_RULE",
+                    "THS6_NO_APPROVED_SOURCE",
+                    "THS6_NO_COMPLETED_REVIEW",
+                    "THS6_NO_COMPUTED_METRIC",
+                    "THS6_NO_COVERAGE_EXECUTION",
+                    "THS6_NO_CURATED_INTERPRETATION",
+                    "THS6_NO_EXECUTABLE_RULESET",
+                    "THS6_NO_HOLDOUT_SET",
+                    "THS6_NO_HUMAN_SIGNOFF",
+                    "THS6_NO_NAMED_REVIEWER",
+                    "THS6_NO_REAL_ASSESSMENT",
+                    "THS6_PROSE_INVENTORY_DISCREPANCY",
+                    "THS6_SAFETY_CI_NOT_EXECUTED",
+                    "THS6_SAFETY_GATE_BLOCKED",
+                    "THS6_SECURITY_GATE_BLOCKED",
+                    "THS6_SNAPSHOT_QUARANTINED",
+                    "THS6_SOURCE_ARTIFACT_DISAGREEMENT",
+                    "THS6_SOURCE_DOCUMENT_UNAVAILABLE",
+                    "THS6_STAGING_NOT_DEPLOYED",
+                    "THS6_UPSTREAM_GATE_NOT_PASS"
+                  ],
+                  "type": "string"
+                },
+                "detail": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "gate_id": {
+                  "pattern": "^GATE-[A-F]$",
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "owner": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "code",
+                "detail",
+                "owner",
+                "blocking"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "condition_count": {
+            "minimum": 1,
+            "type": "integer"
+          },
+          "conditions": {
+            "items": {
+              "$schema": "https://json-schema.org/draft/2020-12/schema",
+              "allOf": [
+                {
+                  "if": {
+                    "properties": {
+                      "met": {
+                        "const": false
+                      }
+                    },
+                    "required": [
+                      "met"
+                    ]
+                  },
+                  "then": {
+                    "properties": {
+                      "blocker": {
+                        "properties": {
+                          "blocking": {
+                            "const": true,
+                            "type": "boolean"
+                          },
+                          "code": {
+                            "enum": [
+                              "THS6_AUDIT_CHAIN_UNVERIFIED",
+                              "THS6_BACKUP_RESTORE_NOT_VERIFIED",
+                              "THS6_BENCHMARK_NOT_EXECUTED",
+                              "THS6_CI_NOT_EXECUTED",
+                              "THS6_CLAIM_BOUNDARY_NOT_APPROVED",
+                              "THS6_CONTAINER_RUNTIME_UNAVAILABLE",
+                              "THS6_CURATION_PROTOCOL_NOT_APPROVED",
+                              "THS6_DATABASE_UNAVAILABLE",
+                              "THS6_DATASET_NOT_PUBLISHED",
+                              "THS6_DEMO_NOT_EXECUTED",
+                              "THS6_DEPLOYMENT_GATE_BLOCKED",
+                              "THS6_DOD_DECLARED_COUNT_MISMATCH",
+                              "THS6_EVIDENCE_BUILD_NOT_APPROVED",
+                              "THS6_EVIDENCE_INVALID",
+                              "THS6_EVIDENCE_STALE",
+                              "THS6_EVIDENCE_UNAVAILABLE",
+                              "THS6_EXPERT_PROTOCOL_NOT_APPROVED",
+                              "THS6_INSUFFICIENT_VALIDATION_CASES",
+                              "THS6_LEGACY_WORK_ITEMS_UNLINKED",
+                              "THS6_MIGRATION_NOT_EXECUTED",
+                              "THS6_NO_ACTIVE_RELEASE",
+                              "THS6_NO_APPROVED_RULE",
+                              "THS6_NO_APPROVED_SOURCE",
+                              "THS6_NO_COMPLETED_REVIEW",
+                              "THS6_NO_COMPUTED_METRIC",
+                              "THS6_NO_COVERAGE_EXECUTION",
+                              "THS6_NO_CURATED_INTERPRETATION",
+                              "THS6_NO_EXECUTABLE_RULESET",
+                              "THS6_NO_HOLDOUT_SET",
+                              "THS6_NO_HUMAN_SIGNOFF",
+                              "THS6_NO_NAMED_REVIEWER",
+                              "THS6_NO_REAL_ASSESSMENT",
+                              "THS6_PROSE_INVENTORY_DISCREPANCY",
+                              "THS6_SAFETY_CI_NOT_EXECUTED",
+                              "THS6_SAFETY_GATE_BLOCKED",
+                              "THS6_SECURITY_GATE_BLOCKED",
+                              "THS6_SNAPSHOT_QUARANTINED",
+                              "THS6_SOURCE_ARTIFACT_DISAGREEMENT",
+                              "THS6_SOURCE_DOCUMENT_UNAVAILABLE",
+                              "THS6_STAGING_NOT_DEPLOYED",
+                              "THS6_UPSTREAM_GATE_NOT_PASS"
+                            ],
+                            "type": "string"
+                          },
+                          "detail": {
+                            "minLength": 1,
+                            "type": "string"
+                          },
+                          "gate_id": {
+                            "pattern": "^GATE-[A-F]$",
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
+                          "owner": {
+                            "minLength": 1,
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "code",
+                          "detail",
+                          "owner",
+                          "blocking"
+                        ],
+                        "type": "object"
+                      }
+                    },
+                    "required": [
+                      "blocker"
+                    ]
+                  }
+                },
+                {
+                  "if": {
+                    "properties": {
+                      "met": {
+                        "const": true
+                      }
+                    },
+                    "required": [
+                      "met"
+                    ]
+                  },
+                  "then": {
+                    "properties": {
+                      "blocker": {
+                        "type": "null"
+                      }
+                    }
+                  }
+                }
+              ],
+              "description": "One mandatory condition, with the artifact and field it was read from. ``met`` is nullable because 'not evaluated' is a third state and collapsing it into false would make an unevaluable gate look merely blocked.",
+              "properties": {
+                "blocker": {
+                  "anyOf": [
+                    {
+                      "properties": {
+                        "blocking": {
+                          "const": true,
+                          "type": "boolean"
+                        },
+                        "code": {
+                          "enum": [
+                            "THS6_AUDIT_CHAIN_UNVERIFIED",
+                            "THS6_BACKUP_RESTORE_NOT_VERIFIED",
+                            "THS6_BENCHMARK_NOT_EXECUTED",
+                            "THS6_CI_NOT_EXECUTED",
+                            "THS6_CLAIM_BOUNDARY_NOT_APPROVED",
+                            "THS6_CONTAINER_RUNTIME_UNAVAILABLE",
+                            "THS6_CURATION_PROTOCOL_NOT_APPROVED",
+                            "THS6_DATABASE_UNAVAILABLE",
+                            "THS6_DATASET_NOT_PUBLISHED",
+                            "THS6_DEMO_NOT_EXECUTED",
+                            "THS6_DEPLOYMENT_GATE_BLOCKED",
+                            "THS6_DOD_DECLARED_COUNT_MISMATCH",
+                            "THS6_EVIDENCE_BUILD_NOT_APPROVED",
+                            "THS6_EVIDENCE_INVALID",
+                            "THS6_EVIDENCE_STALE",
+                            "THS6_EVIDENCE_UNAVAILABLE",
+                            "THS6_EXPERT_PROTOCOL_NOT_APPROVED",
+                            "THS6_INSUFFICIENT_VALIDATION_CASES",
+                            "THS6_LEGACY_WORK_ITEMS_UNLINKED",
+                            "THS6_MIGRATION_NOT_EXECUTED",
+                            "THS6_NO_ACTIVE_RELEASE",
+                            "THS6_NO_APPROVED_RULE",
+                            "THS6_NO_APPROVED_SOURCE",
+                            "THS6_NO_COMPLETED_REVIEW",
+                            "THS6_NO_COMPUTED_METRIC",
+                            "THS6_NO_COVERAGE_EXECUTION",
+                            "THS6_NO_CURATED_INTERPRETATION",
+                            "THS6_NO_EXECUTABLE_RULESET",
+                            "THS6_NO_HOLDOUT_SET",
+                            "THS6_NO_HUMAN_SIGNOFF",
+                            "THS6_NO_NAMED_REVIEWER",
+                            "THS6_NO_REAL_ASSESSMENT",
+                            "THS6_PROSE_INVENTORY_DISCREPANCY",
+                            "THS6_SAFETY_CI_NOT_EXECUTED",
+                            "THS6_SAFETY_GATE_BLOCKED",
+                            "THS6_SECURITY_GATE_BLOCKED",
+                            "THS6_SNAPSHOT_QUARANTINED",
+                            "THS6_SOURCE_ARTIFACT_DISAGREEMENT",
+                            "THS6_SOURCE_DOCUMENT_UNAVAILABLE",
+                            "THS6_STAGING_NOT_DEPLOYED",
+                            "THS6_UPSTREAM_GATE_NOT_PASS"
+                          ],
+                          "type": "string"
+                        },
+                        "detail": {
+                          "minLength": 1,
+                          "type": "string"
+                        },
+                        "gate_id": {
+                          "pattern": "^GATE-[A-F]$",
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "owner": {
+                          "minLength": 1,
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "code",
+                        "detail",
+                        "owner",
+                        "blocking"
+                      ],
+                      "type": "object"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "condition_id": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "description": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "expected": {
+                  "type": "string"
+                },
+                "met": {
+                  "type": [
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "observed": {
+                  "type": "string"
+                },
+                "source_field": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "source_path": {
+                  "pattern": "^(?![/~\\\\])(?![A-Za-z]:)[^\\s].*$",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "condition_id",
+                "description",
+                "source_path",
+                "source_field",
+                "expected",
+                "observed",
+                "met"
+              ],
+              "title": "WP-25 gate condition",
+              "type": "object"
+            },
+            "minItems": 1,
+            "type": "array"
+          },
+          "depends_on": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "findings": {
+            "items": {
+              "$schema": "https://json-schema.org/draft/2020-12/schema",
+              "description": "A discrepancy WP-25 noticed: a document, count or artifact that is wrong. Distinct from a blocker, which says a condition is unmet. Every finding names an owner and what WP-25 did in the meantime; 'ignored' is not a resolution.",
+              "properties": {
+                "blocking": {
+                  "type": "boolean"
+                },
+                "code": {
+                  "enum": [
+                    "THS6_AUDIT_CHAIN_UNVERIFIED",
+                    "THS6_BACKUP_RESTORE_NOT_VERIFIED",
+                    "THS6_BENCHMARK_NOT_EXECUTED",
+                    "THS6_CI_NOT_EXECUTED",
+                    "THS6_CLAIM_BOUNDARY_NOT_APPROVED",
+                    "THS6_CONTAINER_RUNTIME_UNAVAILABLE",
+                    "THS6_CURATION_PROTOCOL_NOT_APPROVED",
+                    "THS6_DATABASE_UNAVAILABLE",
+                    "THS6_DATASET_NOT_PUBLISHED",
+                    "THS6_DEMO_NOT_EXECUTED",
+                    "THS6_DEPLOYMENT_GATE_BLOCKED",
+                    "THS6_DOD_DECLARED_COUNT_MISMATCH",
+                    "THS6_EVIDENCE_BUILD_NOT_APPROVED",
+                    "THS6_EVIDENCE_INVALID",
+                    "THS6_EVIDENCE_STALE",
+                    "THS6_EVIDENCE_UNAVAILABLE",
+                    "THS6_EXPERT_PROTOCOL_NOT_APPROVED",
+                    "THS6_INSUFFICIENT_VALIDATION_CASES",
+                    "THS6_LEGACY_WORK_ITEMS_UNLINKED",
+                    "THS6_MIGRATION_NOT_EXECUTED",
+                    "THS6_NO_ACTIVE_RELEASE",
+                    "THS6_NO_APPROVED_RULE",
+                    "THS6_NO_APPROVED_SOURCE",
+                    "THS6_NO_COMPLETED_REVIEW",
+                    "THS6_NO_COMPUTED_METRIC",
+                    "THS6_NO_COVERAGE_EXECUTION",
+                    "THS6_NO_CURATED_INTERPRETATION",
+                    "THS6_NO_EXECUTABLE_RULESET",
+                    "THS6_NO_HOLDOUT_SET",
+                    "THS6_NO_HUMAN_SIGNOFF",
+                    "THS6_NO_NAMED_REVIEWER",
+                    "THS6_NO_REAL_ASSESSMENT",
+                    "THS6_PROSE_INVENTORY_DISCREPANCY",
+                    "THS6_SAFETY_CI_NOT_EXECUTED",
+                    "THS6_SAFETY_GATE_BLOCKED",
+                    "THS6_SECURITY_GATE_BLOCKED",
+                    "THS6_SNAPSHOT_QUARANTINED",
+                    "THS6_SOURCE_ARTIFACT_DISAGREEMENT",
+                    "THS6_SOURCE_DOCUMENT_UNAVAILABLE",
+                    "THS6_STAGING_NOT_DEPLOYED",
+                    "THS6_UPSTREAM_GATE_NOT_PASS"
+                  ],
+                  "type": "string"
+                },
+                "detail": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "owner": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "references": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                },
+                "resolution": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "code",
+                "detail",
+                "owner",
+                "resolution",
+                "blocking"
+              ],
+              "title": "WP-25 finding",
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "gate_id": {
+            "pattern": "^GATE-[A-F]$",
+            "type": "string"
+          },
+          "is_pass": {
+            "type": "boolean"
+          },
+          "met_condition_count": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "notes": {
+            "type": "string"
+          },
+          "result": {
+            "enum": [
+              "PASS",
+              "BLOCKED",
+              "FAIL",
+              "NOT_EVALUATED",
+              "STALE"
+            ],
+            "type": "string"
+          },
+          "title": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "unmet_condition_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "gate_id",
+          "title",
+          "result",
+          "is_pass",
+          "condition_count",
+          "met_condition_count",
+          "unmet_condition_ids",
+          "conditions",
+          "blockers"
+        ],
+        "type": "object"
+      },
+      "minItems": 6,
+      "type": "array"
+    },
+    "note": {
+      "type": "string"
+    },
+    "override_available": {
+      "const": false,
+      "type": "boolean"
+    },
+    "passing_gate_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "passing_gate_ids": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "results": {
+      "additionalProperties": {
+        "enum": [
+          "PASS",
+          "BLOCKED",
+          "FAIL",
+          "NOT_EVALUATED",
+          "STALE"
+        ],
+        "type": "string"
+      },
+      "propertyNames": {
+        "pattern": "^GATE-[A-F]$"
+      },
+      "type": "object"
+    },
+    "source_artifact_disagreements": {
+      "items": {
+        "properties": {
+          "explanation": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "fact": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "left_field": {
+            "type": "string"
+          },
+          "left_path": {
+            "type": "string"
+          },
+          "left_value": {},
+          "owner": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "resolution": {
+            "type": "string"
+          },
+          "right_field": {
+            "type": "string"
+          },
+          "right_path": {
+            "type": "string"
+          },
+          "right_value": {}
+        },
+        "required": [
+          "fact",
+          "left_path",
+          "right_path",
+          "explanation",
+          "owner"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "total_blocker_count": {
+      "minimum": 0,
+      "type": "integer"
+    }
+  },
+  "required": [
+    "gate_matrix_version",
+    "gate_count",
+    "results",
+    "passing_gate_ids",
+    "gates",
+    "all_gates_pass",
+    "override_available",
+    "source_artifact_disagreements"
+  ],
+  "title": "WP-25 gate matrix",
+  "type": "object"
+}

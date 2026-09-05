@@ -1,0 +1,67 @@
+{
+  "allowlist_schema_version": "pgx-coverage-regression-allowlist/1",
+  "entries": [
+    {
+      "comparison_selector": {
+        "artifact_id": "risk-p2-cyp2c19-poor.json",
+        "drug": "codeine",
+        "legacy_field": "overall_risk_level"
+      },
+      "difference_id": "LEGACY-BUG-002-CODEINE-NONE-TO-INSUFFICIENT",
+      "expected_coverage_status": "INSUFFICIENT",
+      "expected_reason_code": "NO_VALIDATED_RULE_FOR_AXIS",
+      "legacy_bug_id": "LEGACY-BUG-002",
+      "observed_legacy_behavior": "codeine returns overall_risk_level 'none', which RISK_LABEL_TR renders as 'Dusuk / uyari yok' - low, no warning - although nothing was actually evaluated",
+      "reference": "SAFETY-INV-001; architecture.md 9.2, 9.3",
+      "required_v2_behavior": "coverage INSUFFICIENT with NO_VALIDATED_RULE_FOR_AXIS. The drug is in the pinned canonical dataset, and no approved coverage scope exists for it, so the honest answer is that it was not assessed and why",
+      "safety_rationale": "'we did not look' rendered as 'nothing to worry about' is the highest-consequence failure mode of a pharmacogenomic tool; coverage exists as a separate first-class output precisely so that absence cannot be reported as reassurance"
+    },
+    {
+      "comparison_selector": {
+        "artifact_id": "risk-p2-cyp2c19-poor.json",
+        "drug": "warfarin",
+        "legacy_field": "overall_risk_level"
+      },
+      "difference_id": "LEGACY-BUG-002-WARFARIN-NONE-TO-INSUFFICIENT",
+      "expected_coverage_status": "INSUFFICIENT",
+      "expected_reason_code": "NO_VALIDATED_RULE_FOR_AXIS",
+      "legacy_bug_id": "LEGACY-BUG-002",
+      "observed_legacy_behavior": "warfarin returns overall_risk_level 'none' under the same label, with finding status 'gene_drug_known_no_profile_match'",
+      "reference": "SAFETY-INV-001; architecture.md 9.2, 9.3",
+      "required_v2_behavior": "coverage INSUFFICIENT with NO_VALIDATED_RULE_FOR_AXIS, for the same reason as codeine. It is a separate entry because the legacy snapshot records it separately, and a fix covering only one drug would satisfy a single-entry allowlist",
+      "safety_rationale": "the same defect on a second drug; both must change or a reader still sees 'low, no warning' where nothing was assessed"
+    },
+    {
+      "comparison_selector": {
+        "artifact_id": "alternative-beta-clopidogrel.json",
+        "drug": "prasugrel",
+        "legacy_field": "legacy_score_unprotected"
+      },
+      "difference_id": "LEGACY-BUG-009-PRASUGREL-SCORE-REMOVED",
+      "expected_coverage_status": "UNSUPPORTED_DRUG",
+      "expected_reason_code": "DRUG_NOT_IN_CANONICAL_DATASET",
+      "legacy_bug_id": "LEGACY-BUG-009",
+      "observed_legacy_behavior": "prasugrel receives score 59 under 'MVP alternatif uygunluk on skoru' while its own data status is 'insufficient_pgx_rule_data' - a suitability-shaped number on a candidate with no usable rule",
+      "reference": "SAFETY-INV-005; architecture.md 4.4",
+      "required_v2_behavior": "no score of any kind. Prasugrel is absent from the pinned canonical dataset, so coverage is UNSUPPORTED_DRUG with DRUG_NOT_IN_CANONICAL_DATASET, and there is no field in a coverage result a score could be written into",
+      "safety_rationale": "a number between 0 and 100 beside a drug name reads as a ranking however it is labelled, and ranking candidates by anything is a preference claim this system does not make (SAFETY-INV-005)"
+    },
+    {
+      "comparison_selector": {
+        "artifact_id": "alternative-beta-clopidogrel.json",
+        "drug": "ticagrelor",
+        "legacy_field": "legacy_score_unprotected"
+      },
+      "difference_id": "LEGACY-BUG-009-TICAGRELOR-SCORE-REMOVED",
+      "expected_coverage_status": "UNSUPPORTED_DRUG",
+      "expected_reason_code": "DRUG_NOT_IN_CANONICAL_DATASET",
+      "legacy_bug_id": "LEGACY-BUG-009",
+      "observed_legacy_behavior": "ticagrelor receives the identical score 59 under the identical data status, which is itself the tell: the number distinguishes nothing and still reads as an assessment",
+      "reference": "SAFETY-INV-005; architecture.md 4.4",
+      "required_v2_behavior": "no score. Ticagrelor is absent from the pinned canonical dataset, so coverage is UNSUPPORTED_DRUG with DRUG_NOT_IN_CANONICAL_DATASET",
+      "safety_rationale": "same defect, second candidate; each is addressed by identity so a reordered list cannot move one expectation onto the other"
+    }
+  ],
+  "entry_count": 4,
+  "policy": "An entry records a difference between legacy risk reporting and V2 coverage that is intended. The harness fails if an entry's difference stops appearing, if a difference appears that no entry covers, or if the report is not reproducible byte for byte. Legacy snapshots are never edited to make V2 agree with them: the legacy value is the defect, and it is recorded so the change is visible."
+}

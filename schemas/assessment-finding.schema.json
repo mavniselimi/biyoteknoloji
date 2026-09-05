@@ -1,0 +1,139 @@
+{
+  "$id": "https://pgx-platform.invalid/schemas/assessment-finding.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "One calculated attention finding with its whole traceability chain: the rule that produced it by identity, version and content hash, the rationale reference naming the approved curated interpretation whose reasoning justifies the level, at least one evidence reference, and the artifacts it was computed against. attention_level cannot be NOT_ASSESSED: a finding is a calculated result, and absence is expressed as coverage rather than as a finding that says nothing. effect_code and explanation_code are nullable because the governed rule outcome carries neither - WP-11 approves an attention level and a rationale reference - and inventing a scientific code to fill the gap would manufacture a reviewed-looking claim nobody reviewed. Their absence is the honest value and WP-15 must render it as absence. additionalProperties is false throughout, which is where the boundary is actually enforced: a dose, a recommendation, a preferred or safer flag, a suitability score, a ranking, a treatment or a rendered sentence cannot be attached to any of these documents by anything downstream, because the schema refuses every property it does not name. WP-14 calculates structured facts; WP-15 renders them.",
+  "properties": {
+    "attention_level": {
+      "enum": [
+        "NO_ACTIVE_ATTENTION",
+        "LOW",
+        "MEDIUM",
+        "HIGH"
+      ]
+    },
+    "canonical_build_content_hash": {
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "coverage_manifest_hash": {
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "curation_revision_hash": {
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "curation_revision_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "dataset_public_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "drug_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "effect_code": {
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "minLength": 1,
+          "type": "string"
+        }
+      ]
+    },
+    "evidence_references": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "explanation_code": {
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "minLength": 1,
+          "type": "string"
+        }
+      ]
+    },
+    "finding_schema_version": {
+      "const": "pgx-assessment-finding/1"
+    },
+    "gene_id": {
+      "pattern": "^GENE:[A-Z0-9][A-Z0-9\\-.@_]*$",
+      "type": "string"
+    },
+    "phenotype": {
+      "enum": [
+        "POOR",
+        "INTERMEDIATE",
+        "NORMAL",
+        "RAPID",
+        "ULTRARAPID"
+      ]
+    },
+    "rationale_reference": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "rule_content_hash": {
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "rule_family_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "rule_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "rule_version": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "ruleset_content_hash": {
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "ruleset_public_id": {
+      "minLength": 1,
+      "type": "string"
+    }
+  },
+  "required": [
+    "attention_level",
+    "canonical_build_content_hash",
+    "coverage_manifest_hash",
+    "curation_revision_hash",
+    "curation_revision_id",
+    "dataset_public_id",
+    "drug_id",
+    "effect_code",
+    "evidence_references",
+    "explanation_code",
+    "finding_schema_version",
+    "gene_id",
+    "phenotype",
+    "rationale_reference",
+    "rule_content_hash",
+    "rule_family_id",
+    "rule_id",
+    "rule_version",
+    "ruleset_content_hash",
+    "ruleset_public_id"
+  ],
+  "title": "PGx assessment finding",
+  "type": "object"
+}

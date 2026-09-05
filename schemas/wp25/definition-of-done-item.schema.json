@@ -1,0 +1,161 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "satisfied": {
+            "const": false
+          }
+        },
+        "required": [
+          "satisfied"
+        ]
+      },
+      "then": {
+        "properties": {
+          "blockers": {
+            "minItems": 1
+          },
+          "owner": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "owner"
+        ]
+      }
+    }
+  ],
+  "description": "One P0 bullet, carrying the architecture text verbatim so the transcription can be checked, and an observable condition so the bullet can be evaluated rather than argued about.",
+  "properties": {
+    "architecture_text": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "blockers": {
+      "items": {
+        "properties": {
+          "blocking": {
+            "const": true,
+            "type": "boolean"
+          },
+          "code": {
+            "enum": [
+              "THS6_AUDIT_CHAIN_UNVERIFIED",
+              "THS6_BACKUP_RESTORE_NOT_VERIFIED",
+              "THS6_BENCHMARK_NOT_EXECUTED",
+              "THS6_CI_NOT_EXECUTED",
+              "THS6_CLAIM_BOUNDARY_NOT_APPROVED",
+              "THS6_CONTAINER_RUNTIME_UNAVAILABLE",
+              "THS6_CURATION_PROTOCOL_NOT_APPROVED",
+              "THS6_DATABASE_UNAVAILABLE",
+              "THS6_DATASET_NOT_PUBLISHED",
+              "THS6_DEMO_NOT_EXECUTED",
+              "THS6_DEPLOYMENT_GATE_BLOCKED",
+              "THS6_DOD_DECLARED_COUNT_MISMATCH",
+              "THS6_EVIDENCE_BUILD_NOT_APPROVED",
+              "THS6_EVIDENCE_INVALID",
+              "THS6_EVIDENCE_STALE",
+              "THS6_EVIDENCE_UNAVAILABLE",
+              "THS6_EXPERT_PROTOCOL_NOT_APPROVED",
+              "THS6_INSUFFICIENT_VALIDATION_CASES",
+              "THS6_LEGACY_WORK_ITEMS_UNLINKED",
+              "THS6_MIGRATION_NOT_EXECUTED",
+              "THS6_NO_ACTIVE_RELEASE",
+              "THS6_NO_APPROVED_RULE",
+              "THS6_NO_APPROVED_SOURCE",
+              "THS6_NO_COMPLETED_REVIEW",
+              "THS6_NO_COMPUTED_METRIC",
+              "THS6_NO_COVERAGE_EXECUTION",
+              "THS6_NO_CURATED_INTERPRETATION",
+              "THS6_NO_EXECUTABLE_RULESET",
+              "THS6_NO_HOLDOUT_SET",
+              "THS6_NO_HUMAN_SIGNOFF",
+              "THS6_NO_NAMED_REVIEWER",
+              "THS6_NO_REAL_ASSESSMENT",
+              "THS6_PROSE_INVENTORY_DISCREPANCY",
+              "THS6_SAFETY_CI_NOT_EXECUTED",
+              "THS6_SAFETY_GATE_BLOCKED",
+              "THS6_SECURITY_GATE_BLOCKED",
+              "THS6_SNAPSHOT_QUARANTINED",
+              "THS6_SOURCE_ARTIFACT_DISAGREEMENT",
+              "THS6_SOURCE_DOCUMENT_UNAVAILABLE",
+              "THS6_STAGING_NOT_DEPLOYED",
+              "THS6_UPSTREAM_GATE_NOT_PASS"
+            ],
+            "type": "string"
+          },
+          "detail": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "gate_id": {
+            "pattern": "^GATE-[A-F]$",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "owner": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "code",
+          "detail",
+          "owner",
+          "blocking"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "dod_id": {
+      "pattern": "^P0-DOD-0(0[1-9]|1[0-5])$",
+      "type": "string"
+    },
+    "evidence_ids": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "gate_ids": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "notes": {
+      "type": "string"
+    },
+    "observable_condition": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "owner": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "satisfied": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "dod_id",
+    "architecture_text",
+    "observable_condition",
+    "satisfied",
+    "blockers"
+  ],
+  "title": "WP-25 Definition of Done item",
+  "type": "object"
+}

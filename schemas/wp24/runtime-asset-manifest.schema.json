@@ -1,0 +1,83 @@
+{
+  "$id": "https://pgx.local/schemas/wp24/runtime-asset-manifest.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "description": "The exact files the runtime image must contain. An allowlist of files, never a directory: a directory is a promise about what somebody will remember not to put in it.",
+  "properties": {
+    "asset_count": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "assets": {
+      "items": {
+        "properties": {
+          "matches_pinned": {
+            "type": [
+              "boolean",
+              "null"
+            ]
+          },
+          "path": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "present": {
+            "type": "boolean"
+          },
+          "reason": {
+            "minLength": 10,
+            "type": "string"
+          },
+          "required": {
+            "type": "boolean"
+          },
+          "sha256": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "path",
+          "reason",
+          "required",
+          "present",
+          "sha256"
+        ],
+        "type": "object"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "checksum_mismatches": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "manifest_hash": {
+      "type": "string"
+    },
+    "missing_required": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "runtime_asset_manifest_version": {
+      "const": "pgx-wp24-runtime-asset-manifest/1"
+    },
+    "satisfied": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "runtime_asset_manifest_version",
+    "assets",
+    "missing_required",
+    "checksum_mismatches",
+    "satisfied"
+  ],
+  "title": "PGx runtime asset manifest (WP-24)",
+  "type": "object"
+}

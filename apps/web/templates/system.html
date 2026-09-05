@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>{{ text['system.versions'] }}</h2>
+{% if model.version_available %}
+{% with rows = model.version_rows, caption = text['system.versions_caption'] %}{% include "_provenance.html" %}{% endwith %}
+<dl class="fact-list">
+  <div><dt>{{ text['system.claim_boundary'] }}</dt>
+    <dd>
+      <code>{{ model.claim_boundary_phase }}</code>
+      {% if model.claim_boundary_approved %}<span class="status-ok">{{ text['status.ready'] }}</span>{% else %}<span class="status-blocked">{{ text['status.not_ready'] }}</span>{% endif %}
+    </dd>
+  </div>
+</dl>
+{% else %}
+<p class="empty-state">{{ model.version_unavailable_note }}</p>
+{% endif %}
+
+<h2>{{ text['system.readiness'] }}</h2>
+{% if model.readiness_available %}
+<p>
+  <span class="label-inline">{{ text['system.overall_readiness'] }}:</span>
+  {% if model.readiness_status == 'READY' %}<span class="status-ok">{{ text['status.ready'] }}</span>{% else %}<span class="status-blocked">{{ text['status.not_ready'] }}</span>{% endif %}
+  <code class="status-code">{{ model.readiness_status }}</code>
+</p>
+<table class="data-table readiness-table">
+  <caption>{{ text['system.readiness_caption'] }}</caption>
+  <thead>
+    <tr>
+      <th scope="col">{{ text['system.component'] }}</th>
+      <th scope="col">{{ field['statement'] }}</th>
+      <th scope="col">{{ field['kind'] }}</th>
+      <th scope="col">{{ text['system.detail'] }}</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for component, ready, blocking, detail in model.readiness_components %}
+    <tr data-ready="{{ ready }}">
+      <th scope="row"><code>{{ component }}</code></th>
+      <td>{% if ready %}<span class="status-ok">{{ text['status.ready'] }}</span>{% else %}<span class="status-blocked">{{ text['status.not_ready'] }}</span>{% endif %}</td>
+      <td>{% if blocking %}{{ text['status.blocking'] }}{% else %}{{ text['status.advisory'] }}{% endif %}</td>
+      <td>{{ detail }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<p class="empty-state">{{ text['status.unavailable'] }}</p>
+{% endif %}
+{% endblock %}

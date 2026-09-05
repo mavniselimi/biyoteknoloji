@@ -1,0 +1,176 @@
+{
+  "artifacts": {
+    "gemini_input.json": {
+      "sha256": "b930d34197e4d7648a23e739d25f2ae3d510c91284c5cbb267ce3513222f2987",
+      "size_bytes": 6333
+    },
+    "risk_findings.csv": {
+      "sha256": "100cc96c554f6723f41049d8320e71b1f5450afa754c0caaf7ae21a4726d38f7",
+      "size_bytes": 7812
+    },
+    "risk_report.md": {
+      "sha256": "ab7b462806326cc0531eac17126707632d16070a8eaae004418df3730c347cb7",
+      "size_bytes": 4915
+    },
+    "risk_result_full.json": {
+      "sha256": "39399dcecc551339bc4fcc03075fb19e60b3ad533c829aa7e3b18776dab6bfe2",
+      "size_bytes": 30049
+    }
+  },
+  "case": {
+    "phenotypes": {
+      "CYP1A2": "normal",
+      "CYP2C19": "poor",
+      "CYP2C9": "normal",
+      "CYP2D6": "normal",
+      "CYP3A4": "normal"
+    },
+    "profile_id": "P2_cyp2c19_poor",
+    "profile_name": "CYP2C19 poor metabolizer profili",
+    "selected_drugs": [
+      "clopidogrel",
+      "voriconazole",
+      "codeine",
+      "warfarin",
+      "amitriptyline"
+    ]
+  },
+  "contains_known_legacy_defects": true,
+  "description": "Offline rerun of the recorded P2 CYP2C19-poor demonstration. This is a historical regression seed that reproduces legacy behaviour INCLUDING known defects (LEGACY-BUG-001/002/003). It is not clinical validation and its values are not protected expected results.",
+  "determinism": "byte-identical across repeated runs on the same seed",
+  "dropped_keys_in_compact_payload": [
+    "drug",
+    "drug_behavior_hint",
+    "drug_id",
+    "evidence_count",
+    "evidence_examples",
+    "gene_id",
+    "guideline",
+    "matched_rule_group",
+    "phenotype_or_genotype_source",
+    "risk_score",
+    "status"
+  ],
+  "drug_results": [
+    {
+      "active_flag_count": 1,
+      "drug": "clopidogrel",
+      "finding_count": 1,
+      "finding_statuses": [
+        "risk_flag"
+      ],
+      "genes": [
+        "CYP2C19"
+      ],
+      "overall_risk_label_tr": "Yüksek dikkat",
+      "overall_risk_level": "high",
+      "status": "analyzed"
+    },
+    {
+      "active_flag_count": 1,
+      "drug": "voriconazole",
+      "finding_count": 2,
+      "finding_statuses": [
+        "gene_drug_known_no_profile_match",
+        "risk_flag"
+      ],
+      "genes": [
+        "CYP2C19",
+        "CYP3A4"
+      ],
+      "overall_risk_label_tr": "Yüksek dikkat",
+      "overall_risk_level": "high",
+      "status": "analyzed"
+    },
+    {
+      "active_flag_count": 0,
+      "drug": "codeine",
+      "finding_count": 1,
+      "finding_statuses": [
+        "gene_drug_known_no_profile_match"
+      ],
+      "genes": [
+        "CYP2D6"
+      ],
+      "overall_risk_label_tr": "Düşük / uyarı yok",
+      "overall_risk_level": "none",
+      "status": "analyzed"
+    },
+    {
+      "active_flag_count": 0,
+      "drug": "warfarin",
+      "finding_count": 1,
+      "finding_statuses": [
+        "gene_drug_known_no_profile_match"
+      ],
+      "genes": [
+        "CYP2C9"
+      ],
+      "overall_risk_label_tr": "Düşük / uyarı yok",
+      "overall_risk_level": "none",
+      "status": "analyzed"
+    },
+    {
+      "active_flag_count": 1,
+      "drug": "amitriptyline",
+      "finding_count": 3,
+      "finding_statuses": [
+        "gene_drug_known_no_profile_match",
+        "risk_flag"
+      ],
+      "genes": [
+        "CYP1A2",
+        "CYP2C19",
+        "CYP2D6"
+      ],
+      "overall_risk_label_tr": "Orta dikkat",
+      "overall_risk_level": "medium",
+      "status": "analyzed"
+    }
+  ],
+  "full_finding_keys": [
+    "drug",
+    "drug_behavior_hint",
+    "drug_id",
+    "effect_direction",
+    "evidence_count",
+    "evidence_examples",
+    "evidence_strength",
+    "gene",
+    "gene_id",
+    "guideline",
+    "matched_rule_group",
+    "phenotype_or_genotype_source",
+    "plain_language",
+    "risk_label_tr",
+    "risk_level",
+    "risk_meaning",
+    "risk_score",
+    "status",
+    "user_phenotype"
+  ],
+  "gemini_input_compact_finding_keys": [
+    "effect_direction",
+    "evidence_strength",
+    "gene",
+    "guideline_sources",
+    "guideline_summary",
+    "plain_language",
+    "risk_label_tr",
+    "risk_level",
+    "risk_meaning",
+    "user_phenotype"
+  ],
+  "legacy_clinical_warning_text": "Bu çıktı klinik karar, doz önerisi veya tedavi önerisi değildir. ClinPGx kaynaklı veriler ve sentetik CYP profilleri kullanılarak oluşturulmuş açıklanabilir farmakogenetik ön değerlendirme / MVP dikkat bayrağıdır.",
+  "legacy_warning_note": "Recorded verbatim as legacy evidence. This is NOT the canonical warning; the canonical text lives in pgx/domain/claims.py.",
+  "not_clinical_validation": true,
+  "overall": {
+    "overall_risk_label_tr": "Yüksek dikkat",
+    "overall_risk_level": "high",
+    "overall_risk_score": 3,
+    "risk_flag_count": 3,
+    "same_gene_attention_count": 2
+  },
+  "snapshot_id": "risk-p2-cyp2c19-poor",
+  "snapshot_kind": "historical_regression_seed"
+}

@@ -1,0 +1,99 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "description": "Nine roles, none signed. ``signatory`` must be null and ``signed`` false in the schema itself, so a hand-edited artifact claiming a signature fails validation rather than circulating. ``signature_mechanism`` must be null because this repository contains no way to record one.",
+  "properties": {
+    "example_names_used": {
+      "const": false,
+      "type": "boolean"
+    },
+    "note": {
+      "type": "string"
+    },
+    "role_count": {
+      "const": 9,
+      "type": "integer"
+    },
+    "roles": {
+      "items": {
+        "properties": {
+          "attests_to": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "gate_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "must_have_reviewed": {
+            "items": {
+              "type": "string"
+            },
+            "minItems": 1,
+            "type": "array"
+          },
+          "role": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "role_id": {
+            "pattern": "^SIGN-0[1-9]$",
+            "type": "string"
+          },
+          "signatory": {
+            "type": "null"
+          },
+          "signature_recorded_at": {
+            "type": "null"
+          },
+          "signed": {
+            "const": false,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "role_id",
+          "role",
+          "attests_to",
+          "must_have_reviewed",
+          "signatory",
+          "signed"
+        ],
+        "type": "object"
+      },
+      "maxItems": 9,
+      "minItems": 9,
+      "type": "array"
+    },
+    "signature_mechanism": {
+      "type": "null"
+    },
+    "signature_mechanism_note": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "signed_count": {
+      "const": 0,
+      "type": "integer"
+    },
+    "signoff_matrix_version": {
+      "const": "pgx-wp25-signoff-matrix/1",
+      "type": "string"
+    },
+    "unsigned_role_ids": {
+      "minItems": 9,
+      "type": "array"
+    }
+  },
+  "required": [
+    "signoff_matrix_version",
+    "role_count",
+    "signed_count",
+    "roles",
+    "signature_mechanism",
+    "example_names_used"
+  ],
+  "title": "WP-25 sign-off matrix",
+  "type": "object"
+}

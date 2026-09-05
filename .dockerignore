@@ -1,0 +1,111 @@
+# What never enters a build context (WP-24).
+#
+# This file is the first line of defence and is deliberately not the only one:
+# `pgx-deploy build` inspects the built image's filesystem afterwards and fails
+# on anything matching FORBIDDEN_IMAGE_PREFIXES in
+# pgx/deployment/runtime_assets.py. An ignore file states an intention; the
+# post-build check measures the result, and only the second one would catch a
+# COPY that named a path this file forgot.
+#
+# The ordering below is by *why*, not alphabetical, because the reasons are the
+# reviewable part.
+
+# ---------------------------------------------------------------------------
+# Secrets and key material. Nothing here is ever in an image layer, including
+# an intermediate one - a deleted file in an earlier layer is still in the
+# image.
+# ---------------------------------------------------------------------------
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+deploy/secrets/
+deploy/tls/
+**/id_rsa
+**/id_ed25519
+
+# ---------------------------------------------------------------------------
+# Restricted and scientific-input data. The image gets a named allowlist of
+# artifacts the serving path reads; everything else under data/ is a build
+# input, a baseline, or - in the case of holdout - something that must never
+# be in a container at all.
+# ---------------------------------------------------------------------------
+data/raw/
+data/canonical/
+data/evidence/
+data/legacy-baseline/
+data/migration/
+data/curation/
+data/holdout/
+data/reports/
+data/coverage/
+data/rulesets/
+data/assessments/
+data/expert-review/
+data/_to_delete/
+_to_delete/
+
+# ---------------------------------------------------------------------------
+# Frozen legacy artifacts. They are WP-01 evidence and are never runtime code;
+# packaging them would put a legacy entry point inside the deployment image,
+# which the WP-24 brief forbids and which architecture.md section 15 step 10
+# already rules out.
+# ---------------------------------------------------------------------------
+clinpgx_probe.py
+clinpgx_probe_v2.py
+clean_mvp_seed_dataset.py
+risk_engine.py
+gemini_report_generator.py
+candidate_onboarding.py
+alternative_ranker.py
+clinpgx_mvp_seed/
+clinpgx_outputs/
+clinpgx_outputs_v2/
+final_report/
+candidate_alternatives.csv
+drug_graph_edges.csv
+MVP_1_TEKNIK_DURUM_RAPORU.md
+
+# ---------------------------------------------------------------------------
+# Development environments, caches and generated output. Copying a .venv is
+# how an image ends up with a host's interpreter path baked into a shebang.
+# ---------------------------------------------------------------------------
+.venv/
+.venv-linux/
+.git/
+.github/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+build/
+dist/
+*.egg-info/
+.DS_Store
+.tmp/
+.cache/
+tmp/
+
+# ---------------------------------------------------------------------------
+# Tests and their fixtures. Not because they are secret, but because an image
+# containing a test suite contains its fixtures - including the WP-20 unsafe
+# controls, which are deliberately dangerous code that exists to be detected.
+# ---------------------------------------------------------------------------
+tests/
+scripts/
+
+# ---------------------------------------------------------------------------
+# Documentation and compose files. Read by people, not by the runtime.
+# ---------------------------------------------------------------------------
+docs/
+README.md.bak
+docker-compose*.yml
+Dockerfile
+.dockerignore

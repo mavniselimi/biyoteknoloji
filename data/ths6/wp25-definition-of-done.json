@@ -1,0 +1,432 @@
+{
+  "all_items_satisfied": false,
+  "architecture_section": "architecture.md, section 21, Definition of Done for the complete P0 program",
+  "count_matches_declaration": false,
+  "declared_count_in_wp25_prose": 14,
+  "definition_of_done_version": "pgx-wp25-definition-of-done/1",
+  "enumerated_count": 15,
+  "findings": [
+    {
+      "blocking": false,
+      "code": "THS6_DOD_DECLARED_COUNT_MISMATCH",
+      "detail": "WP-25's own prose declares 14 Definition of Done items; architecture.md, section 21, Definition of Done for the complete P0 program enumerates 15. The two counts disagree.",
+      "owner": "architecture/document owner",
+      "references": [
+        "architecture.md"
+      ],
+      "resolution": "all 15 enumerated bullets are implemented as P0-DOD-001 through P0-DOD-015 and evaluated separately. No bullet was merged, renumbered or discarded to reach the declared count. The discrepancy is visible and it permits no item to be ignored."
+    }
+  ],
+  "items": [
+    {
+      "architecture_text": "One integrated web prototype runs the representative workflow.",
+      "blockers": [
+        {
+          "blocking": true,
+          "code": "THS6_NO_REAL_ASSESSMENT",
+          "detail": "C9: the API has served at least one real assessment (observed 0, required >= 1)",
+          "gate_id": "GATE-C",
+          "owner": "platform owner"
+        },
+        {
+          "blocking": true,
+          "code": "THS6_NO_REAL_ASSESSMENT",
+          "detail": "C1: at least one assessment has been computed from governed content (observed 0, required >= 1)",
+          "gate_id": "GATE-C",
+          "owner": "curation lead"
+        }
+      ],
+      "dod_id": "P0-DOD-001",
+      "evidence_ids": [],
+      "gate_ids": [
+        "GATE-C"
+      ],
+      "notes": "the prototype exists and renders; what it has never rendered is a result computed from an approved dataset and ruleset",
+      "observable_condition": "the web prototype computes and displays an assessment produced from governed content, end to end, at least once",
+      "owner": "platform owner",
+      "satisfied": false
+    },
+    {
+      "architecture_text": "Assessment facts are deterministic for the same release and input.",
+      "blockers": [
+        {
+          "blocking": true,
+          "code": "THS6_NO_ACTIVE_RELEASE",
+          "detail": "C8: a release is active (observed False, required is true)",
+          "gate_id": "GATE-C",
+          "owner": "release approver"
+        },
+        {
+          "blocking": true,
+          "code": "THS6_NO_REAL_ASSESSMENT",
+          "detail": "C1: at least one assessment has been computed from governed content (observed 0, required >= 1)",
+          "gate_id": "GATE-C",
+          "owner": "curation lead"
+        }
+      ],
+      "dod_id": "P0-DOD-002",
+      "evidence_ids": [],
+      "gate_ids": [
+        "GATE-C"
+      ],
+      "notes": "determinism is demonstrated over fixtures; 'for the same release' has no referent while no release is active",
+      "observable_condition": "the same input, evaluated twice against the same release, produces byte-identical facts - which requires a release to exist",
+      "owner": "release approver",
+      "satisfied": false
+    },
+    {
+      "architecture_text": "Every finding has traceable evidence.",
+      "blockers": [
+        {
+          "blocking": true,
+          "code": "THS6_NO_REAL_ASSESSMENT",
+          "detail": "C4: at least one report has been produced (observed 0, required >= 1)",
+          "gate_id": "GATE-C",
+          "owner": "curation lead"
+        }
+      ],
+      "dod_id": "P0-DOD-003",
+      "evidence_ids": [],
+      "gate_ids": [
+        "GATE-C"
+      ],
+      "notes": "no report has been produced, so the property holds vacuously and is recorded as unsatisfied rather than as met",
+      "observable_condition": "each finding in a produced report resolves to a governed evidence record",
+      "owner": "curation lead",
+      "satisfied": false
+    },
+    {
+      "architecture_text": "Missing data is never shown as low/no risk; coverage is separate.",
+      "blockers": [
+        {
+          "blocking": true,
+          "code": "THS6_NO_COVERAGE_EXECUTION",
+          "detail": "C2: at least one coverage manifest has been executed (observed 0, required >= 1)",
+          "gate_id": "GATE-C",
+          "owner": "curation lead"
+        },
+        {
+          "blocking": true,
+          "code": "THS6_NO_COVERAGE_EXECUTION",
+          "detail": "C3: at least one axis is supported by governed coverage (observed 0, required >= 1)",
+          "gate_id": "GATE-C",
+          "owner": "curation lead"
+        }
+      ],
+      "dod_id": "P0-DOD-004",
+      "evidence_ids": [],
+      "gate_ids": [
+        "GATE-C"
+      ],
+      "notes": "the invariant is implemented and proven over fixtures; it has never been exercised over governed content because none exists",
+      "observable_condition": "coverage is computed over governed content and rendered as its own axis, never folded into a risk value",
+      "owner": "curation lead",
+      "satisfied": false
+    },
+    {
+      "architecture_text": "Software, dataset, and ruleset are independently versioned and rollback works.",
+      "blockers": [
+        {
+          "blocking": true,
+          "code": "THS6_DATASET_NOT_PUBLISHED",
+          "detail": "A2: a canonical dataset is published (observed False, required is true)",
+          "gate_id": "GATE-A",
+          "owner": "data owner"
+        },
+        {
+          "blocking": true,
+          "code": "THS6_NO_EXECUTABLE_RULESET",
+          "detail": "B5: at least one ruleset is frozen (observed 0, required >= 1)",
+          "gate_id": "GATE-B",
+          "owner": "curation lead"
+        },
+        {
+          "blocking": true,
+          "code": "THS6_DEPLOYMENT_GATE_BLOCKED",
+          "detail": "E6: the deployment gate reports PASS in its own artifact (observed 'BLOCKED', required == 'PASS')",
+          "gate_id": "GATE-E",
+          "owner": "platform owner"
+        }
+      ],
+      "dod_id": "P0-DOD-005",
+      "evidence_ids": [],
+      "gate_ids": [
+        "GATE-A",
+        "GATE-B",
+        "GATE-E"
+      ],
+      "notes": "the registry design is implemented; no dataset is published, no ruleset is frozen, and no rollback has been executed",
+      "observable_condition": "three independent version identifiers exist for one running system, and a rollback between two released versions has been executed",
+      "owner": "release approver",
+      "satisfied": false
+    },
+    {
+      "architecture_text": "At least 50 serious validation cases exist, with a preference for 100+.",
+      "blockers": [
+        {
+          "blocking": true,
+          "code": "THS6_INSUFFICIENT_VALIDATION_CASES",
+          "detail": "D1: at least fifty validation cases exist (observed 0, required >= 50)",
+          "gate_id": "GATE-D",
+          "owner": "validation owner"
+        }
+      ],
+      "dod_id": "P0-DOD-006",
+      "evidence_ids": [],
+      "gate_ids": [
+        "GATE-D"
+      ],
+      "notes": "zero exist; the seven development cases are excluded by contract and must never be counted towards this bullet",
+      "observable_condition": "the validation case store holds at least fifty authored cases",
+      "owner": "validation owner",
+      "satisfied": false
+    },
+    {
+      "architecture_text": "An independent holdout set was not used for rule development.",
+      "blockers": [
+        {
+          "blocking": true,
+          "code": "THS6_NO_HOLDOUT_SET",
+          "detail": "D2: an independent holdout set exists (observed 0, required >= 1)",
+          "gate_id": "GATE-D",
+          "owner": "validation owner"
+        }
+      ],
+      "dod_id": "P0-DOD-007",
+      "evidence_ids": [],
+      "gate_ids": [
+        "GATE-D"
+      ],
+      "notes": "the separation audit runs and passes over seven development cases, which is a check with nothing to separate them from",
+      "observable_condition": "a holdout set exists and the separation audit shows no case in it influenced rule development",
+      "owner": "validation owner",
+      "satisfied": false
+    },
+    {
+      "architecture_text": "All safety invariants pass in CI.",
+      "blockers": [
+        {
+          "blocking": true,
+          "code": "THS6_SAFETY_CI_NOT_EXECUTED",
+          "detail": "C6: the safety invariants have been executed by a CI provider (observed False, required is true)",
+          "gate_id": "GATE-C",
+          "owner": "platform owner"
+        },
+        {
+          "blocking": true,
+          "code": "THS6_SAFETY_GATE_BLOCKED",
+          "detail": "C5: the safety gate reports PASS in its own artifact (observed 'BLOCKED', required == 'PASS')",
+          "gate_id": "GATE-C",
+          "owner": "safety owner"
+        }
+      ],
+      "dod_id": "P0-DOD-008",
+      "evidence_ids": [],
+      "gate_ids": [
+        "GATE-C"
+      ],
+      "notes": "twelve invariants execute locally and pass; the workflow file is configured and has never been run by a provider",
+      "observable_condition": "a continuous integration provider has executed the safety gate and recorded every invariant passing",
+      "owner": "platform owner",
+      "satisfied": false
+    },
+    {
+      "architecture_text": "Blind-first expert review is completed under the approved protocol.",
+      "blockers": [
+        {
+          "blocking": true,
+          "code": "THS6_EXPERT_PROTOCOL_NOT_APPROVED",
+          "detail": "D6: the expert review protocol has a signatory (observed 0, required >= 1)",
+          "gate_id": "GATE-D",
+          "owner": "expert review chair"
+        },
+        {
+          "blocking": true,
+          "code": "THS6_NO_COMPLETED_REVIEW",
+          "detail": "D8: at least one expert review is completed (observed null (no measurement was taken), required >= 1)",
+          "gate_id": "GATE-D",
+          "owner": "expert review chair"
+        }
+      ],
+      "dod_id": "P0-DOD-009",
+      "evidence_ids": [],
+      "gate_ids": [
+        "GATE-D"
+      ],
+      "notes": "the review machinery is implemented and empty; no protocol signatory and no named reviewer exist",
+      "observable_condition": "the protocol carries a signatory and at least one blind-first review is recorded complete",
+      "owner": "expert review chair",
+      "satisfied": false
+    },
+    {
+      "architecture_text": "Experts use the representative workflow, not only static reports.",
+      "blockers": [
+        {
+          "blocking": true,
+          "code": "THS6_NO_NAMED_REVIEWER",
+          "detail": "D7: at least one expert reviewer is named (observed 0, required >= 1)",
+          "gate_id": "GATE-D",
+          "owner": "expert review chair"
+        },
+        {
+          "blocking": true,
+          "code": "THS6_NO_COMPLETED_REVIEW",
+          "detail": "D9: the expert review gate reports PASS in its own artifact (observed 'BLOCKED', required == 'PASS')",
+          "gate_id": "GATE-D",
+          "owner": "expert review chair"
+        }
+      ],
+      "dod_id": "P0-DOD-010",
+      "evidence_ids": [],
+      "gate_ids": [
+        "GATE-D"
+      ],
+      "notes": "an eight-step workflow is implemented; nobody has walked it",
+      "observable_condition": "a completed review records that the reviewer used the interactive workflow",
+      "owner": "expert review chair",
+      "satisfied": false
+    },
+    {
+      "architecture_text": "Benchmark metrics are release-specific.",
+      "blockers": [
+        {
+          "blocking": true,
+          "code": "THS6_NO_COMPUTED_METRIC",
+          "detail": "D3: at least one validation metric has a computed value (observed 0, required >= 1)",
+          "gate_id": "GATE-D",
+          "owner": "validation owner"
+        },
+        {
+          "blocking": true,
+          "code": "THS6_BENCHMARK_NOT_EXECUTED",
+          "detail": "D5: a benchmark has been executed against the active release (observed False, required is true)",
+          "gate_id": "GATE-D",
+          "owner": "validation owner"
+        }
+      ],
+      "dod_id": "P0-DOD-011",
+      "evidence_ids": [],
+      "gate_ids": [
+        "GATE-D"
+      ],
+      "notes": "fifteen metric definitions exist and no metric has a value; a definition is not a measurement",
+      "observable_condition": "at least one metric has a computed value attributed to a named release",
+      "owner": "validation owner",
+      "satisfied": false
+    },
+    {
+      "architecture_text": "Audit records actor/time/input hash/version bundle/output hash.",
+      "blockers": [
+        {
+          "blocking": true,
+          "code": "THS6_AUDIT_CHAIN_UNVERIFIED",
+          "detail": "E4: the audit chain has been verified against a real store (observed None, required is true)",
+          "gate_id": "GATE-E",
+          "owner": "platform owner"
+        },
+        {
+          "blocking": true,
+          "code": "THS6_DATABASE_UNAVAILABLE",
+          "detail": "E2: a governed database is reachable (observed False, required is true)",
+          "gate_id": "GATE-E",
+          "owner": "platform owner"
+        }
+      ],
+      "dod_id": "P0-DOD-012",
+      "evidence_ids": [],
+      "gate_ids": [
+        "GATE-E"
+      ],
+      "notes": "41 governed actions and the chain structure are implemented; no audit store has ever existed to write one",
+      "observable_condition": "governed audit events exist in a real store and the hash chain verifies",
+      "owner": "platform owner",
+      "satisfied": false
+    },
+    {
+      "architecture_text": "A staging prototype, health checks, and basic reliability report exist.",
+      "blockers": [
+        {
+          "blocking": true,
+          "code": "THS6_STAGING_NOT_DEPLOYED",
+          "detail": "E9: a staging environment has been deployed (observed False, required is true)",
+          "gate_id": "GATE-E",
+          "owner": "platform owner"
+        },
+        {
+          "blocking": true,
+          "code": "THS6_CONTAINER_RUNTIME_UNAVAILABLE",
+          "detail": "E7: a container runtime is available (observed False, required is true)",
+          "gate_id": "GATE-E",
+          "owner": "platform owner"
+        }
+      ],
+      "dod_id": "P0-DOD-013",
+      "evidence_ids": [],
+      "gate_ids": [
+        "GATE-E"
+      ],
+      "notes": "the Dockerfile, compose topology, health endpoints and drill catalogue are implemented; no runtime answered, so nothing was deployed or measured",
+      "observable_condition": "a staging environment has been deployed, its health endpoint observed answering, and a reliability report produced from executed drills",
+      "owner": "platform owner",
+      "satisfied": false
+    },
+    {
+      "architecture_text": "Every THS 6 claim links to a concrete artifact or metric.",
+      "blockers": [],
+      "dod_id": "P0-DOD-014",
+      "evidence_ids": [],
+      "gate_ids": [
+        "GATE-F"
+      ],
+      "notes": "this is the one bullet WP-25 itself can satisfy: the claim registry links every claim to named artifacts, and the traceability matrix refuses a dangling identifier",
+      "observable_condition": "every registered claim names required evidence, and each named item resolves to an artifact present in the repository",
+      "owner": "WP-25 evidence owner",
+      "satisfied": true
+    },
+    {
+      "architecture_text": "Core demo completes with network unavailable, LLM off, and every P1 feature off.",
+      "blockers": [
+        {
+          "blocking": true,
+          "code": "THS6_DEMO_NOT_EXECUTED",
+          "detail": "F4: the interface reports a populated validation dashboard (observed 'EMPTY_STATE_ONLY', required == 'POPULATED')",
+          "gate_id": "GATE-F",
+          "owner": "platform owner"
+        }
+      ],
+      "dod_id": "P0-DOD-015",
+      "evidence_ids": [],
+      "gate_ids": [
+        "GATE-F"
+      ],
+      "notes": "the interface renders offline with the model off, which is half the bullet; it renders an empty state because there is no governed content to display",
+      "observable_condition": "the representative demonstration runs to completion offline, with the language model disabled and every P1 feature off, and produces a result rather than an empty state",
+      "owner": "platform owner",
+      "satisfied": false
+    }
+  ],
+  "note": "Every enumerated bullet is evaluated separately. An unevaluated item is not a satisfied one, and no aggregate here rounds anything up.",
+  "satisfied_count": 1,
+  "satisfied_dod_ids": [
+    "P0-DOD-014"
+  ],
+  "unevaluated_count": 0,
+  "unevaluated_dod_ids": [],
+  "unsatisfied_count": 14,
+  "unsatisfied_dod_ids": [
+    "P0-DOD-001",
+    "P0-DOD-002",
+    "P0-DOD-003",
+    "P0-DOD-004",
+    "P0-DOD-005",
+    "P0-DOD-006",
+    "P0-DOD-007",
+    "P0-DOD-008",
+    "P0-DOD-009",
+    "P0-DOD-010",
+    "P0-DOD-011",
+    "P0-DOD-012",
+    "P0-DOD-013",
+    "P0-DOD-015"
+  ]
+}

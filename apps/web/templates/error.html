@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="notice notice-error" role="alert" tabindex="-1" id="error-summary">
+  <h2>{{ text['error.summary'] }}</h2>
+  <p><code>{{ model.code }}</code> <span class="status-code">HTTP {{ model.status }}</span></p>
+  <p>{{ model.guidance }}</p>
+</div>
+
+<h2>{{ text['error.what_now'] }}</h2>
+<p>{{ model.no_partial_note }}</p>
+{% if model.request_id %}
+<dl class="fact-list">
+  <div><dt>{{ text['app.request_id'] }}</dt><dd><code>{{ model.request_id }}</code></dd></div>
+</dl>
+{% endif %}
+<p><a href="{{ model.home_url }}">{{ text['error.back_home'] }}</a></p>
+{% endblock %}

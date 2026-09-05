@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pgx-platform.invalid/schemas/release-manifest.schema.json",
+  "title": "PGx release manifest",
+  "description": "The payload a release bundle pins and hashes (WP-03). It names exactly which software build, dataset version and ruleset version a release binds together. Its SHA-256 digest over canonical JSON (UTF-8, sorted keys, fixed separators) is stored as release_bundles.manifest_hash. No wall-clock timestamp appears anywhere in this document: the manifest must hash identically whenever it is rebuilt from the same records.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "release", "software", "dataset", "ruleset"],
+  "properties": {
+    "schema_version": {
+      "description": "Manifest shape version. Part of the hashed payload, so a shape change cannot silently collide with an older digest.",
+      "const": "pgx-release-manifest/1"
+    },
+    "release": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["public_id"],
+      "properties": {
+        "public_id": {
+          "description": "Operator-facing release identifier.",
+          "type": "string",
+          "pattern": "^PGX-REL-[0-9]{8}-[0-9]{3}$"
+        }
+      }
+    },
+    "software": {
+      "description": "The registered build the release ran under. Pinned by identity and source tree, not by the declared version string alone: two builds may declare the same version and differ in code.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "version", "source_commit", "source_tree_hash", "manifest_hash"],
+      "properties": {
+        "id": {"type": "string", "format": "uuid"},
+        "version": {"type": "string", "minLength": 1},
+        "source_commit": {"type": "string", "minLength": 1},
+        "source_tree_hash": {"$ref": "#/$defs/digest"},
+        "manifest_hash": {"$ref": "#/$defs/digest"}
+      }
+    },
+    "dataset": {
+      "description": "The dataset version the release pins. Only a PUBLISHED dataset may back an activated release; the status is recorded here so the manifest states what was true when it was built.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "public_id", "status", "manifest_hash"],
+      "properties": {
+        "id": {"type": "string", "format": "uuid"},
+        "public_id": {"type": "string", "pattern": "^PGX-DATA-[0-9]{8}-[0-9]{3}$"},
+        "status": {"enum": ["BUILDING", "QUALITY_CHECKED", "PUBLISHED", "RETIRED"]},
+        "manifest_hash": {"$ref": "#/$defs/digest"}
+      }
+    },
+    "ruleset": {
+      "description": "The ruleset version the release pins, including its exact membership. Membership is what makes this a pin rather than a label: two rulesets sharing a public ID and differing in members produce different digests.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "public_id", "status", "manifest_hash", "member_count", "rule_ids"],
+      "properties": {
+        "id": {"type": "string", "format": "uuid"},
+        "public_id": {"type": "string", "pattern": "^PGX-RULESET-[0-9]{8}-[0-9]{3}$"},
+        "status": {"enum": ["BUILDING", "VALIDATED", "FROZEN", "RETIRED"]},
+        "manifest_hash": {"$ref": "#/$defs/digest"},
+        "member_count": {
+          "description": "Must equal the length of rule_ids. A count that disagrees with the list it counts makes the manifest self-contradictory.",
+          "type": "integer",
+          "minimum": 0
+        },
+        "rule_ids": {
+          "description": "Rule identities, sorted by the domain so the digest does not depend on query order. Array order is significant to the hash.",
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"type": "string", "format": "uuid"}
+        }
+      }
+    }
+  },
+  "$defs": {
+    "digest": {
+      "description": "Canonical digest spelling produced by pgx.domain.hashing.sha256_digest.",
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    }
+  }
+}

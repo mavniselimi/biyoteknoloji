@@ -1,0 +1,230 @@
+# WP-24 - the release path.
+#
+# The second half of architecture.md section 14.2:
+#
+#   holdout regression -> build image -> vulnerability and secret checks
+#   -> release validation artifact
+#
+# Separate from build-and-verify.yml on purpose. "The software works" and
+# "this may be released" are different claims, and one green check mark
+# covering both is how the first gets read as the second.
+#
+# WHAT THIS PIPELINE WILL NOT DO, TODAY, IN THIS REPOSITORY:
+#
+#   * It will not publish an image. There is no registry step below and no
+#     credential for one. The repository has no approved claim boundary, no
+#     holdout case, no completed expert review and no active validated
+#     release; an image published from this state would be a release of
+#     something nobody has validated, wearing a version number.
+#   * It will not substitute a development fixture for the authorized holdout
+#     set. `holdout-regression` fails when the count is zero, and that is the
+#     correct outcome: a regression run against the cases the rules were
+#     built from measures how well the rules remember their training data.
+#   * It will not treat a blocked safety gate as advisory. `build-image`
+#     needs `safety-invariants` from the other workflow, and every downstream
+#     job needs `holdout-regression`.
+#
+# The software-verification workflow still runs while all of this is blocked,
+# which is the point of the split: engineering can proceed and be measured
+# while the scientific gates stay closed.
+#
+# Action pinning: see the note at the top of build-and-verify.yml. Every
+# `uses:` carries the all-zero placeholder until
+# `scripts/resolve_action_pins.sh` runs on a host with network.
+
+name: release-validation
+
+on:
+  # Manual and tag-driven only. Not on every push: a release path that ran
+  # constantly would train everybody to ignore its failures, and its
+  # failures are the ones that matter.
+  workflow_dispatch:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: release-validation-${{ github.ref }}
+  cancel-in-progress: false
+
+env:
+  PGX_PYTHON_VERSION: "3.11"
+  PYTHONDONTWRITEBYTECODE: "1"
+
+jobs:
+  holdout-regression:
+    name: 9. holdout regression (authorized set only)
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@0000000000000000000000000000000000000000 # v4.2.2 - UNRESOLVED
+      - uses: actions/setup-python@0000000000000000000000000000000000000000 # v5.3.0 - UNRESOLVED
+        with:
+          python-version: ${{ env.PGX_PYTHON_VERSION }}
+      - name: There is an authorized holdout set to regress against
+        # Exit 1 when there is none. Not a skip, and not a pass with a
+        # warning: the release path is closed until scientific curators
+        # supply cases, and a job that went green here would close it on
+        # their behalf.
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import io, json, sys
+          with io.open("data/safety/wp20-real-gate-status.json") as handle:
+              status = json.load(handle)
+          count = int(status.get("holdout_case_count") or 0)
+          print("authorized holdout cases:", count)
+          if count == 0:
+              sys.stderr.write(
+                  "No authorized holdout set exists. The release path stays "
+                  "closed. Development fixtures may not stand in for it: a "
+                  "regression run against the cases the rules were built "
+                  "from measures how well the rules remember their training "
+                  "data.\nOwner: scientific curators (WP-18).\n")
+              raise SystemExit(1)
+          PY
+      - name: The partition is intact before anything reads a holdout case
+        run: python3 -m pgx.application.validation_cli audit --format json
+
+  build-image:
+    name: 10. build image (never published)
+    needs: holdout-regression
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@0000000000000000000000000000000000000000 # v4.2.2 - UNRESOLVED
+      - uses: actions/setup-python@0000000000000000000000000000000000000000 # v5.3.0 - UNRESOLVED
+        with:
+          python-version: ${{ env.PGX_PYTHON_VERSION }}
+      - uses: astral-sh/setup-uv@0000000000000000000000000000000000000000 # v5.1.0 - UNRESOLVED
+        with:
+          enable-cache: true
+          cache-dependency-glob: uv.lock
+
+      - name: The lockfile matches pyproject.toml
+        run: uv lock --check
+
+      - name: Wheel and sdist, built twice and compared
+        run: |
+          uv run python -m pgx.application.deploy_cli --format json build \
+            --reference pgx-platform:ci-local
+
+      - name: Nothing forbidden is in the image
+        # Measured on the built filesystem, not read off .dockerignore. The
+        # two disagree the moment a COPY names a path the ignore file did not
+        # anticipate, and that disagreement is what this catches.
+        run: |
+          uv run python - <<'PY'
+          import json, sys
+          sys.path.insert(0, ".")
+          from pgx.deployment.image import audit_image_contents
+          result = audit_image_contents("pgx-platform:ci-local")
+          print(json.dumps(result, indent=2, sort_keys=True))
+          raise SystemExit(0 if result.get("clean") else 1)
+          PY
+
+      - name: The image runs as a non-root user
+        run: |
+          test "$(docker image inspect --format '{{.Config.User}}' \
+            pgx-platform:ci-local)" = "10001:10001"
+
+      # There is no push step. Deliberately, and the absence is the policy.
+
+      - name: Upload the build provenance
+        if: always()
+        uses: actions/upload-artifact@0000000000000000000000000000000000000000 # v4.4.3 - UNRESOLVED
+        with:
+          name: wp24-build-provenance
+          # The generated directory only. No secret, no certificate, no
+          # holdout payload and no database dump is ever written there.
+          path: .deploy-out/
+          if-no-files-found: warn
+
+  vulnerability-and-secret-checks:
+    name: 11. vulnerability and secret checks
+    needs: build-image
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@0000000000000000000000000000000000000000 # v4.2.2 - UNRESOLVED
+      - uses: actions/setup-python@0000000000000000000000000000000000000000 # v5.3.0 - UNRESOLVED
+        with:
+          python-version: ${{ env.PGX_PYTHON_VERSION }}
+
+      - name: The repository secret scan, blocking
+        # Exit 0 CLEAN, non-zero otherwise. It reports a path, a line and a
+        # rule id; no matched value reaches this log, which is the whole
+        # point of a scanner that never prints what it found.
+        run: python3 -m pgx.application.security_cli secret-scan
+
+      - name: SBOM from real image contents
+        run: |
+          python3 - <<'PY'
+          import json, sys
+          sys.path.insert(0, ".")
+          from pgx.deployment.supply_chain import generate_sbom
+          result = generate_sbom(image_reference="pgx-platform:ci-local",
+                                 output_path=".deploy-out/sbom.spdx.json")
+          print(json.dumps(result, indent=2, sort_keys=True))
+          raise SystemExit(0 if result["state"] == "EXECUTED" else 2)
+          PY
+
+      - name: Vulnerability scan, with the scanner and database named
+        # Exit 2 when no scanner or no advisory database is available. A scan
+        # that could not run is not a clean scan, and a report with no
+        # advisory database says only that something looked at something.
+        run: |
+          python3 - <<'PY'
+          import json, sys
+          sys.path.insert(0, ".")
+          from pgx.deployment.supply_chain import scan_vulnerabilities
+          result = scan_vulnerabilities(
+              image_reference="pgx-platform:ci-local")
+          print(json.dumps(result, indent=2, sort_keys=True))
+          raise SystemExit(0 if result["state"] == "VERIFIED" else 1)
+          PY
+
+      - name: Upload the supply-chain reports
+        if: always()
+        uses: actions/upload-artifact@0000000000000000000000000000000000000000 # v4.4.3 - UNRESOLVED
+        with:
+          name: wp24-supply-chain
+          path: |
+            .deploy-out/
+            data/security/wp23-secret-scan-report.json
+          if-no-files-found: warn
+
+  release-validation:
+    name: 12. release validation artifact
+    needs: vulnerability-and-secret-checks
+    # Runs even when an earlier job failed. The aggregate is most useful
+    # exactly when something is blocked: a release-validation document that
+    # only existed on success would never describe the state anybody needs to
+    # read.
+    if: always()
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@0000000000000000000000000000000000000000 # v4.2.2 - UNRESOLVED
+      - uses: actions/setup-python@0000000000000000000000000000000000000000 # v5.3.0 - UNRESOLVED
+        with:
+          python-version: ${{ env.PGX_PYTHON_VERSION }}
+      - name: Aggregate every gate
+        # Exit 0 only when every required gate is VERIFIED. In this
+        # repository that is 2 - blocked - and it should be.
+        run: |
+          python3 -m pgx.application.deploy_cli --format json \
+            release-validation
+      - name: Upload the release validation
+        if: always()
+        uses: actions/upload-artifact@0000000000000000000000000000000000000000 # v4.4.3 - UNRESOLVED
+        with:
+          name: wp24-release-validation
+          path: |
+            data/deployment/wp24-release-validation.json
+            data/deployment/wp24-real-gate-status.json
+            data/deployment/wp24-gate-e-status.json
+          if-no-files-found: warn

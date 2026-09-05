@@ -1,0 +1,530 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pgx-platform.invalid/schemas/coverage-result.schema.json",
+  "title": "PGx coverage result",
+  "description": "The whole answer for one coverage request, pinned to the profile, coverage manifest, ruleset, dataset and evidence build it was computed against, each by identity and hash. A stored result can therefore be checked against the artifacts that produced it rather than against whatever is on disk today. At least one medication is required: an empty request has no answer, and reporting FULL for one would be the emptiest possible reassurance. additionalProperties is false throughout, which is where the separation of coverage from attention is actually enforced: an attention level, an overall_attention, a risk level, a risk score, a severity, a dose, a recommendation, a preferred or safer flag, a suitability score or a treatment cannot be attached to any of these documents by anything downstream, because the schema refuses every property it does not name. WP-13 computes coverage; WP-14 computes attention; a document that could carry both would let one be read as the other. PARTIAL is required to carry SOME_AXES_NOT_COVERED; that is enforced by the model and by test, not here, because the supported schema keyword set has no way to require a specific array member and this project's validator refuses any keyword it cannot actually check.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "coverage_result_schema_version",
+    "status",
+    "reason_codes",
+    "medication_count",
+    "medications",
+    "profile_content_hash",
+    "coverage_manifest_hash",
+    "ruleset_public_id",
+    "ruleset_content_hash",
+    "dataset_public_id",
+    "canonical_build_content_hash",
+    "evidence_build_key",
+    "evidence_build_content_hash",
+    "note",
+    "content_hash"
+  ],
+  "properties": {
+    "coverage_result_schema_version": {
+      "const": "pgx-coverage-result/1"
+    },
+    "status": {
+      "enum": [
+        "FULL",
+        "PARTIAL",
+        "INSUFFICIENT",
+        "UNSUPPORTED_DRUG",
+        "UNSUPPORTED_PHENOTYPE",
+        "SOURCE_CONFLICT"
+      ]
+    },
+    "reason_codes": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "DRUG_NOT_IN_CANONICAL_DATASET",
+          "PHENOTYPE_NOT_PROVIDED",
+          "PHENOTYPE_NOT_SUPPORTED",
+          "NO_VALIDATED_RULE_FOR_AXIS",
+          "SOME_AXES_NOT_COVERED",
+          "VALIDATED_RULES_CONFLICT",
+          "DATASET_RULESET_MISMATCH",
+          "EVIDENCE_REFERENCE_MISSING"
+        ]
+      }
+    },
+    "medication_count": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "medications": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "medication_coverage_schema_version",
+          "medication",
+          "status",
+          "reason_codes",
+          "axis_count",
+          "axes"
+        ],
+        "properties": {
+          "medication_coverage_schema_version": {
+            "const": "pgx-medication-coverage/1"
+          },
+          "medication": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "requested_value",
+              "state",
+              "drug_id",
+              "reason"
+            ],
+            "properties": {
+              "requested_value": {
+                "type": "string"
+              },
+              "state": {
+                "enum": [
+                  "RECOGNIZED",
+                  "NOT_IN_CANONICAL_DATASET",
+                  "INVALID"
+                ]
+              },
+              "drug_id": {
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                ]
+              },
+              "reason": {
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "string"
+                  }
+                ]
+              }
+            }
+          },
+          "status": {
+            "enum": [
+              "FULL",
+              "PARTIAL",
+              "INSUFFICIENT",
+              "UNSUPPORTED_DRUG",
+              "UNSUPPORTED_PHENOTYPE",
+              "SOURCE_CONFLICT"
+            ]
+          },
+          "reason_codes": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "enum": [
+                "DRUG_NOT_IN_CANONICAL_DATASET",
+                "PHENOTYPE_NOT_PROVIDED",
+                "PHENOTYPE_NOT_SUPPORTED",
+                "NO_VALIDATED_RULE_FOR_AXIS",
+                "SOME_AXES_NOT_COVERED",
+                "VALIDATED_RULES_CONFLICT",
+                "DATASET_RULESET_MISMATCH",
+                "EVIDENCE_REFERENCE_MISSING"
+              ]
+            }
+          },
+          "axis_count": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "axes": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "axis_coverage_schema_version",
+                "drug_id",
+                "gene_id",
+                "status",
+                "reason_codes",
+                "observed_phenotype",
+                "observation_state",
+                "declaration_id",
+                "rule_references",
+                "evidence_references",
+                "conflict_references",
+                "ruleset_public_id",
+                "ruleset_content_hash",
+                "dataset_public_id",
+                "canonical_build_content_hash",
+                "coverage_manifest_hash"
+              ],
+              "properties": {
+                "axis_coverage_schema_version": {
+                  "const": "pgx-axis-coverage/1"
+                },
+                "drug_id": {
+                  "type": "string",
+                  "pattern": "^DRUG:[^A-Z\\s]+( [^A-Z\\s]+)*$"
+                },
+                "gene_id": {
+                  "type": "string",
+                  "pattern": "^GENE:[A-Z0-9][A-Z0-9\\-.@_]*$"
+                },
+                "status": {
+                  "enum": [
+                    "FULL",
+                    "PARTIAL",
+                    "INSUFFICIENT",
+                    "UNSUPPORTED_DRUG",
+                    "UNSUPPORTED_PHENOTYPE",
+                    "SOURCE_CONFLICT"
+                  ]
+                },
+                "reason_codes": {
+                  "type": "array",
+                  "uniqueItems": true,
+                  "items": {
+                    "enum": [
+                      "DRUG_NOT_IN_CANONICAL_DATASET",
+                      "PHENOTYPE_NOT_PROVIDED",
+                      "PHENOTYPE_NOT_SUPPORTED",
+                      "NO_VALIDATED_RULE_FOR_AXIS",
+                      "SOME_AXES_NOT_COVERED",
+                      "VALIDATED_RULES_CONFLICT",
+                      "DATASET_RULESET_MISMATCH",
+                      "EVIDENCE_REFERENCE_MISSING"
+                    ]
+                  }
+                },
+                "observed_phenotype": {
+                  "anyOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "enum": [
+                        "POOR",
+                        "INTERMEDIATE",
+                        "NORMAL",
+                        "RAPID",
+                        "ULTRARAPID"
+                      ]
+                    }
+                  ]
+                },
+                "observation_state": {
+                  "type": "string"
+                },
+                "declaration_id": {
+                  "anyOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  ]
+                },
+                "rule_references": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "rule_id",
+                      "rule_version",
+                      "rule_content_hash"
+                    ],
+                    "properties": {
+                      "rule_id": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "rule_version": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "rule_content_hash": {
+                        "anyOf": [
+                          {
+                            "type": "string",
+                            "maxLength": 0
+                          },
+                          {
+                            "type": "string",
+                            "pattern": "^sha256:[0-9a-f]{64}$"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                },
+                "evidence_references": {
+                  "type": "array",
+                  "uniqueItems": true,
+                  "items": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "conflict_references": {
+                  "type": "array",
+                  "uniqueItems": true,
+                  "items": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "ruleset_public_id": {
+                  "type": "string"
+                },
+                "ruleset_content_hash": {
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "maxLength": 0
+                    },
+                    {
+                      "type": "string",
+                      "pattern": "^sha256:[0-9a-f]{64}$"
+                    }
+                  ]
+                },
+                "dataset_public_id": {
+                  "type": "string"
+                },
+                "canonical_build_content_hash": {
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "maxLength": 0
+                    },
+                    {
+                      "type": "string",
+                      "pattern": "^sha256:[0-9a-f]{64}$"
+                    }
+                  ]
+                },
+                "coverage_manifest_hash": {
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "maxLength": 0
+                    },
+                    {
+                      "type": "string",
+                      "pattern": "^sha256:[0-9a-f]{64}$"
+                    }
+                  ]
+                }
+              },
+              "allOf": [
+                {
+                  "if": {
+                    "properties": {
+                      "status": {
+                        "const": "FULL"
+                      }
+                    },
+                    "required": [
+                      "status"
+                    ]
+                  },
+                  "then": {
+                    "properties": {
+                      "reason_codes": {
+                        "maxItems": 0
+                      },
+                      "observed_phenotype": {
+                        "enum": [
+                          "POOR",
+                          "INTERMEDIATE",
+                          "NORMAL",
+                          "RAPID",
+                          "ULTRARAPID"
+                        ]
+                      },
+                      "rule_references": {
+                        "minItems": 1
+                      },
+                      "evidence_references": {
+                        "minItems": 1
+                      }
+                    }
+                  },
+                  "else": {
+                    "properties": {
+                      "reason_codes": {
+                        "minItems": 1
+                      }
+                    }
+                  }
+                },
+                {
+                  "if": {
+                    "properties": {
+                      "status": {
+                        "const": "SOURCE_CONFLICT"
+                      }
+                    },
+                    "required": [
+                      "status"
+                    ]
+                  },
+                  "then": {
+                    "properties": {
+                      "conflict_references": {
+                        "minItems": 1
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "status": {
+                  "const": "FULL"
+                }
+              },
+              "required": [
+                "status"
+              ]
+            },
+            "then": {
+              "properties": {
+                "reason_codes": {
+                  "maxItems": 0
+                },
+                "axes": {
+                  "minItems": 1
+                }
+              }
+            },
+            "else": {
+              "properties": {
+                "reason_codes": {
+                  "minItems": 1
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "profile_content_hash": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "coverage_manifest_hash": {
+      "anyOf": [
+        {
+          "type": "string",
+          "maxLength": 0
+        },
+        {
+          "type": "string",
+          "pattern": "^sha256:[0-9a-f]{64}$"
+        }
+      ]
+    },
+    "ruleset_public_id": {
+      "type": "string"
+    },
+    "ruleset_content_hash": {
+      "anyOf": [
+        {
+          "type": "string",
+          "maxLength": 0
+        },
+        {
+          "type": "string",
+          "pattern": "^sha256:[0-9a-f]{64}$"
+        }
+      ]
+    },
+    "dataset_public_id": {
+      "type": "string"
+    },
+    "canonical_build_content_hash": {
+      "anyOf": [
+        {
+          "type": "string",
+          "maxLength": 0
+        },
+        {
+          "type": "string",
+          "pattern": "^sha256:[0-9a-f]{64}$"
+        }
+      ]
+    },
+    "evidence_build_key": {
+      "type": "string"
+    },
+    "evidence_build_content_hash": {
+      "anyOf": [
+        {
+          "type": "string",
+          "maxLength": 0
+        },
+        {
+          "type": "string",
+          "pattern": "^sha256:[0-9a-f]{64}$"
+        }
+      ]
+    },
+    "note": {
+      "type": "string",
+      "minLength": 100
+    },
+    "content_hash": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "FULL"
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "then": {
+        "properties": {
+          "reason_codes": {
+            "maxItems": 0
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "reason_codes": {
+            "minItems": 1
+          }
+        }
+      }
+    }
+  ]
+}

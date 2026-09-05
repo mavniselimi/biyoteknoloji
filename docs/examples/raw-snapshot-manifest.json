@@ -1,0 +1,86 @@
+{
+  "snapshot_manifest_version": "pgx-raw-snapshot/1",
+  "dataset_public_id": "PGX-DATA-20260830-001",
+  "source_key": "fixture-source",
+  "source_registry_id": null,
+  "source_policy_status": "APPROVED",
+  "source_policy_content_hash": null,
+  "snapshot_kind": "ACQUISITION",
+  "snapshot_state": "SEALED",
+  "acquisition_run_id": "fixture-run-0001",
+  "acquisition_status": "COMPLETE",
+  "acquisition_content_hash": "sha256:ec47d25de87af96edb40ff883054212ee0c2dec343242a3fd00739a216b36dc2",
+  "acquisition_manifest_hash": "sha256:9ca22341fc20b9dfadb87bbac4fcb88b65c32a873c830c53eee8a8af5bd23638",
+  "snapshot_content_hash": "sha256:9306ff5702578c27764cd52224d4f303ea4cf7c8e160de496c3d7751405e2c15",
+  "manifest_hash": "sha256:594fa9b89cbb06b2a08fc79a7cbb16a074cdae85310cdf987a6dbc6de01098d5",
+  "created_at": "2026-08-30T12:00:00Z",
+  "artifact_count": 2,
+  "total_byte_count": 1236,
+  "artifacts": [
+    {
+      "relative_path": "responses/74701db5cba4891248d0ac25d40cb8fd43afa005e5c54ddf43d7dd8401f7e8b5.json",
+      "artifact_kind": "RESPONSE_BODY",
+      "byte_length": 32,
+      "sha256": "sha256:abee93a5dbadf36c43b0a388716234b62150a0f9fc6874224aecee047a3e48f3",
+      "request_key": "sha256:74701db5cba4891248d0ac25d40cb8fd43afa005e5c54ddf43d7dd8401f7e8b5",
+      "endpoint_id": "fixture_endpoint",
+      "page_number": 1,
+      "cursor": null,
+      "content_type": "application/json",
+      "retrieval_ref": "sha256:abee93a5dbadf36c43b0a388716234b62150a0f9fc6874224aecee047a3e48f3",
+      "source_relative_path": null
+    },
+    {
+      "relative_path": "responses/bf19dee495e4f15aace35716fd5ac49138284d5b15aa3bd881351281c84a123c.json",
+      "artifact_kind": "RESPONSE_BODY",
+      "byte_length": 32,
+      "sha256": "sha256:8a33c9ac01c2e1c516ffb6eaede8826d29f01e247ba3c40ba21768ebc8be712a",
+      "request_key": "sha256:bf19dee495e4f15aace35716fd5ac49138284d5b15aa3bd881351281c84a123c",
+      "endpoint_id": "fixture_endpoint",
+      "page_number": 2,
+      "cursor": null,
+      "content_type": "application/json",
+      "retrieval_ref": "sha256:8a33c9ac01c2e1c516ffb6eaede8826d29f01e247ba3c40ba21768ebc8be712a",
+      "source_relative_path": null
+    }
+  ],
+  "request_log": {
+    "relative_path": "requests.ndjson",
+    "artifact_kind": "REQUEST_LOG",
+    "byte_length": 1172,
+    "sha256": "sha256:f1a15204ad9ae27d3687cfa208132c69e98230f332169b0687301acbbc2366a7",
+    "request_key": null,
+    "endpoint_id": null,
+    "page_number": null,
+    "cursor": null,
+    "content_type": "application/x-ndjson",
+    "retrieval_ref": null,
+    "source_relative_path": null
+  },
+  "complete": true,
+  "completeness_basis": "every required endpoint completed with terminal pagination, recomputed from the retrieval records rather than read from the manifest's status field",
+  "warnings": [],
+  "limitations": [
+    "Example only: built from a synthetic two-page acquisition run."
+  ],
+  "legacy_origin": null,
+  "publication_eligible": false,
+  "publication_gate": {
+    "decision": "BLOCKED",
+    "dataset_key": "fixture-source",
+    "summary": {
+      "BLOCKER": 1,
+      "WARNING": 0,
+      "INFO": 0
+    },
+    "issues": [
+      {
+        "code": "SOURCE_PENDING_REVIEW",
+        "severity": "BLOCKER",
+        "subject": "fixture-source",
+        "detail": "example: the source is awaiting review"
+      }
+    ]
+  },
+  "scope_note": "Raw source bytes only. These artifacts are exactly what the source returned; they are not canonical entities, not curated evidence, not interpretations, and not a scientifically approved dataset. Nothing here asserts release eligibility."
+}

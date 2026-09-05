@@ -1,0 +1,163 @@
+{
+  "$id": "https://pgx.local/schemas/wp22/expert-protocol-manifest.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "approved": {
+            "const": true
+          }
+        },
+        "required": [
+          "approved"
+        ]
+      },
+      "then": {
+        "properties": {
+          "document_digest": {
+            "pattern": "^sha256:[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "documented": {
+            "const": true
+          },
+          "missing_signatory_roles": {
+            "maxItems": 0,
+            "type": "array"
+          },
+          "signatories": {
+            "minItems": 4,
+            "type": "array"
+          },
+          "signatory_count": {
+            "minimum": 4,
+            "type": "integer"
+          }
+        }
+      }
+    }
+  ],
+  "description": "The protocol document, its digest, and the named people who approved it. Approval is a list of signatories rather than a boolean, so it cannot be set - only supplied.",
+  "properties": {
+    "approved": {
+      "type": "boolean"
+    },
+    "document_digest": {
+      "anyOf": [
+        {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "document_path": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "documented": {
+      "type": "boolean"
+    },
+    "missing_signatory_roles": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "note": {
+      "type": "string"
+    },
+    "protocol_hash": {
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "protocol_version": {
+      "const": "pgx-wp22-expert-protocol/1"
+    },
+    "required_signatory_roles": {
+      "items": {
+        "enum": [
+          "PRODUCT_TECHNICAL_OWNER",
+          "SCIENTIFIC_ADVISOR",
+          "RISK_MANAGEMENT_OWNER",
+          "INDEPENDENT_REVIEWER"
+        ],
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "signatories": {
+      "items": {
+        "additionalProperties": true,
+        "properties": {
+          "affiliation": {
+            "minLength": 2,
+            "type": "string"
+          },
+          "approved_document_digest": {
+            "pattern": "^sha256:[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "decided_on": {
+            "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$",
+            "type": "string"
+          },
+          "name": {
+            "minLength": 2,
+            "type": "string"
+          },
+          "record_reference": {
+            "minLength": 2,
+            "type": "string"
+          },
+          "role": {
+            "enum": [
+              "PRODUCT_TECHNICAL_OWNER",
+              "SCIENTIFIC_ADVISOR",
+              "RISK_MANAGEMENT_OWNER",
+              "INDEPENDENT_REVIEWER"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "name",
+          "affiliation",
+          "role",
+          "decided_on",
+          "approved_document_digest",
+          "record_reference"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "signatory_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "status": {
+      "minLength": 3,
+      "type": "string"
+    }
+  },
+  "required": [
+    "protocol_version",
+    "document_path",
+    "document_digest",
+    "documented",
+    "status",
+    "approved",
+    "required_signatory_roles",
+    "signatory_count",
+    "missing_signatory_roles",
+    "signatories",
+    "protocol_hash"
+  ],
+  "title": "WP-22 blind review protocol manifest",
+  "type": "object"
+}

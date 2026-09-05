@@ -1,0 +1,23 @@
+source,edge_type,target,evidence,notes
+clopidogrel,has_ingredient,clopidogrel,manual_seed,active ingredient node
+clopidogrel,belongs_to_class,P2Y12_inhibitor,manual_seed,antiplatelet class
+clopidogrel,used_for,antiplatelet_therapy,manual_seed,therapeutic context
+clopidogrel,substrate_of,CYP2C19,clinpgx_mvp_seed,prodrug activation context
+prasugrel,has_ingredient,prasugrel,manual_seed,active ingredient node
+prasugrel,belongs_to_class,P2Y12_inhibitor,manual_seed,antiplatelet class
+prasugrel,used_for,antiplatelet_therapy,manual_seed,therapeutic context
+ticagrelor,has_ingredient,ticagrelor,manual_seed,active ingredient node
+ticagrelor,belongs_to_class,P2Y12_inhibitor,manual_seed,antiplatelet class
+ticagrelor,used_for,antiplatelet_therapy,manual_seed,therapeutic context
+omeprazole,has_ingredient,omeprazole,manual_seed,active ingredient node
+omeprazole,belongs_to_class,proton_pump_inhibitor,manual_seed,PPI class
+omeprazole,used_for,acid_suppression,manual_seed,therapeutic context
+pantoprazole,has_ingredient,pantoprazole,manual_seed,active ingredient node
+pantoprazole,belongs_to_class,proton_pump_inhibitor,manual_seed,PPI class
+pantoprazole,used_for,acid_suppression,manual_seed,therapeutic context
+amitriptyline,has_ingredient,amitriptyline,manual_seed,active ingredient node
+amitriptyline,belongs_to_class,tricyclic_antidepressant,manual_seed,TCA class
+amitriptyline,used_for,antidepressant_therapy,manual_seed,therapeutic context
+nortriptyline,has_ingredient,nortriptyline,manual_seed,active ingredient node
+nortriptyline,belongs_to_class,tricyclic_antidepressant,manual_seed,TCA class
+nortriptyline,used_for,antidepressant_therapy,manual_seed,therapeutic context

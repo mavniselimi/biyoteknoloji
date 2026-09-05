@@ -1,0 +1,26 @@
+{
+  "approved": false,
+  "document_digest": "sha256:11d719033e8fcdbbc7e5719eab6f4a671631399efbf8d06f4163fa7143a7f84f",
+  "document_path": "docs/validation/expert-protocol.md",
+  "documented": true,
+  "generated_note": "The protocol document exists and has not been approved. Approval requires four named people - a product technical owner, a scientific advisor, a risk-management owner and an independent reviewer - each signing the exact document digest above. No code path in this repository can supply them, and the TEST-ONLY approved protocol used by the workflow tests is constructed inside the test suite and never read from disk.",
+  "missing_signatory_roles": [
+    "PRODUCT_TECHNICAL_OWNER",
+    "SCIENTIFIC_ADVISOR",
+    "RISK_MANAGEMENT_OWNER",
+    "INDEPENDENT_REVIEWER"
+  ],
+  "not_clinical_validation": "This manifest describes a document and its approval state. It is not clinical validation, scientific validation or evidence of either.",
+  "note": "The protocol document exists and is not approved. Approval requires four named people signing the exact document digest; no code path in this repository can supply them.",
+  "protocol_hash": "sha256:28fb2222679bd6a18c21bbd2f55ef534720ee80454637356f97fdd9ef447c919",
+  "protocol_version": "pgx-wp22-expert-protocol/1",
+  "required_signatory_roles": [
+    "PRODUCT_TECHNICAL_OWNER",
+    "SCIENTIFIC_ADVISOR",
+    "RISK_MANAGEMENT_OWNER",
+    "INDEPENDENT_REVIEWER"
+  ],
+  "signatories": [],
+  "signatory_count": 0,
+  "status": "DRAFT / AWAITING HUMAN AND SCIENTIFIC REVIEW"
+}

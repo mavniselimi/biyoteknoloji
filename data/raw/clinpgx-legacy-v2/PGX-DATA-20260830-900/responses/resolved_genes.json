@@ -1,0 +1,445 @@
+{
+  "CYP2C19": {
+    "objCls": "Gene",
+    "id": "PA124",
+    "symbol": "CYP2C19",
+    "name": "cytochrome P450 family 2 subfamily C member 19",
+    "alleleFile": "CYP2C19_allele_definition_table.xlsx",
+    "alleleFunctionSource": "CPIC",
+    "alleleType": "Named Alleles",
+    "amp": true,
+    "buildVersion": "GRCh38.p7",
+    "cbStart": "q23.33",
+    "cbStop": "q23.33",
+    "chr": {
+      "objCls": "Chromosome",
+      "id": "PA504",
+      "name": "chr10"
+    },
+    "chrStartPosB37": 96522463,
+    "chrStartPosB38": 94762681,
+    "chrStopPosB37": 96612671,
+    "chrStopPosB38": 94853205,
+    "cpicGene": true,
+    "hasNonStandardHaplotypes": false,
+    "hideHaplotypes": false,
+    "history": [],
+    "pharmVarGene": true,
+    "strand": "plus",
+    "vipCitation": {
+      "id": 14171708,
+      "title": "PharmGKB summary: very important pharmacogene information for cytochrome P450, family 2, subfamily C, polypeptide 19.",
+      "_sameAs": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3349992",
+      "authors": [
+        "Scott Stuart A",
+        "Sangkuhl Katrin",
+        "Shuldiner Alan R",
+        "Hulot Jean-Sébastien",
+        "Thorn Caroline F",
+        "Altman Russ B",
+        "Klein Teri E"
+      ],
+      "crossReferences": [
+        {
+          "id": 1449263318,
+          "resource": "PubMed Central",
+          "resourceId": "PMC3349992",
+          "_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3349992"
+        },
+        {
+          "id": 827823934,
+          "resource": "PubMed",
+          "resourceId": "22027650",
+          "_url": "https://www.ncbi.nlm.nih.gov/pubmed/22027650"
+        },
+        {
+          "id": 1449263319,
+          "resource": "DOI",
+          "resourceId": "10.1097/FPC.0b013e32834d4962",
+          "_url": "http://dx.doi.org/10.1097%2FFPC.0b013e32834d4962"
+        }
+      ],
+      "day": -1,
+      "journal": "Pharmacogenetics and genomics",
+      "month": 2,
+      "objCls": "Literature",
+      "page": "159-65",
+      "pediatric": false,
+      "pgkbPublication": true,
+      "pubDate": "2012-02-01T00:00:00-08:00",
+      "pubmedMeshTerms": [],
+      "terms": [
+        {
+          "id": 1454108640,
+          "resource": "ClinPGx Tags",
+          "term": "PharmGKB",
+          "termId": "pgkbTags:1454108640"
+        },
+        {
+          "id": 1451577482,
+          "resource": "PGx Paper Types",
+          "term": "Review",
+          "termId": "pgxPaperTypes:1451577482"
+        },
+        {
+          "id": 1451577562,
+          "resource": "PGx Paper Types",
+          "term": "Allele Function",
+          "termId": "pgxPaperTypes:1451577562"
+        }
+      ],
+      "type": "Literature",
+      "volume": "22",
+      "year": 2012
+    },
+    "vipId": "PA166169770",
+    "vipSummary": {
+      "id": 1448744769,
+      "html": "<p>CYP2C19 is one of the key pharmacogenes involved in implementation of pharmacogenomics.</p>\n<ul>\n<li>It is involved in guidelines for antidepressants, <a href=\"/chemical/PA449053/guidelineAnnotation/PA166104948\">clopidogrel</a> and <a href=\"/chemical/PA10233/guidelineAnnotation/PA166161537\">voriconazole</a> (<a href=\"/gene/PA124/prescribingInfo\">go to list of all guidelines with CYP2C19</a>).</li>\n<li>the nomenclature has been set by <a rel=\"noopener noreferrer\" href=\"https://www.pharmvar.org/gene/CYP2C19\" target=\"_blank\">PharmVar</a>, note that the reference sequence for CYP2C19 on hg38 is equivalent to <a href=\"/haplotype/PA166218473\">CYP2C19*38</a> not <a href=\"/haplotype/PA165980634\">CYP2C19*1</a>.</li>\n<li>the AMP tier 1 alleles are <a href=\"/haplotype/PA165980635\">CYP2C19*2</a>, <a href=\"/haplotype/PA165980636\">CYP2C19*3</a> and <a href=\"/haplotype/PA165816533\">CYP2C19*17</a> <a href=\"/ampAllelesToTest\">see all alleles on the AMP recommended to test list</a></li>\n<li>key variant pages are <a href=\"/variant/PA166154053\">rs4244285</a>(part of *2),  <a href=\"/variant/PA166154070\">rs4986893</a>(part of *3) and <a href=\"/variant/PA166154147\">rs12248560</a>(part of *17)</li>\n<li>See the <a href=\"/page/cyp2c19RefMaterials\">Gene-specific Information Tables</a> for Allele Definitions (for which variants comprise which star alleles), Allele function assignments (normal function, no function, decreased or increased function etc) and Diplotype-Phenotype Table (for how the alleles combine to form metabolizer phenotypes for PM, NM, UM)</li>\n</ul>\n"
+    },
+    "vipTier": "Tier 1"
+  },
+  "CYP2D6": {
+    "objCls": "Gene",
+    "id": "PA128",
+    "symbol": "CYP2D6",
+    "name": "cytochrome P450 family 2 subfamily D member 6",
+    "alleleFile": "CYP2D6_allele_definition_table.xlsx",
+    "alleleFunctionSource": "CPIC",
+    "alleleType": "Named Alleles",
+    "amp": true,
+    "buildVersion": "GRCh38.p7",
+    "cbStart": "q13.1",
+    "cbStop": "q13.2",
+    "chr": {
+      "objCls": "Chromosome",
+      "id": "PA525",
+      "name": "chr22"
+    },
+    "chrStartPosB37": 42522501,
+    "chrStartPosB38": 42125531,
+    "chrStopPosB37": 42526883,
+    "chrStopPosB38": 42130881,
+    "cpicGene": true,
+    "hasNonStandardHaplotypes": false,
+    "hideHaplotypes": false,
+    "history": [],
+    "pharmVarGene": true,
+    "strand": "minus",
+    "vipCitation": {
+      "id": 7144344,
+      "title": "Cytochrome P450 2D6.",
+      "_sameAs": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4373606",
+      "authors": [
+        "Owen Ryan P",
+        "Sangkuhl Katrin",
+        "Klein Teri E",
+        "Altman Russ B"
+      ],
+      "crossReferences": [
+        {
+          "id": 1449247412,
+          "resource": "PubMed Central",
+          "resourceId": "PMC4373606",
+          "_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4373606"
+        },
+        {
+          "id": 562114580,
+          "resource": "PubMed",
+          "resourceId": "19512959",
+          "_url": "https://www.ncbi.nlm.nih.gov/pubmed/19512959"
+        },
+        {
+          "id": 1449247413,
+          "resource": "DOI",
+          "resourceId": "10.1097/FPC.0b013e32832e0e97",
+          "_url": "http://dx.doi.org/10.1097%2FFPC.0b013e32832e0e97"
+        }
+      ],
+      "day": -1,
+      "journal": "Pharmacogenetics and genomics",
+      "month": 7,
+      "objCls": "Literature",
+      "page": "559-62",
+      "pediatric": false,
+      "pgkbPublication": true,
+      "pubDate": "2009-07-01T00:00:00-07:00",
+      "pubmedMeshTerms": [],
+      "terms": [
+        {
+          "id": 1454108640,
+          "resource": "ClinPGx Tags",
+          "term": "PharmGKB",
+          "termId": "pgkbTags:1454108640"
+        },
+        {
+          "id": 1451577482,
+          "resource": "PGx Paper Types",
+          "term": "Review",
+          "termId": "pgxPaperTypes:1451577482"
+        }
+      ],
+      "type": "Literature",
+      "volume": "19",
+      "year": 2009
+    },
+    "vipId": "PA166170264",
+    "vipSummary": {
+      "id": 1448995144,
+      "html": "<p>CYP2D6 is one of the key pharmacogenes involved in implementation of pharmacogenomics. It is highly polymorphic and involved in the metabolism of up to 25% of the drugs that are in common use in the clinic.</p>\n<ul>\n<li>It is involved in guidelines for <a href=\"/guidelineAnnotation/PA166104996\">codeine</a> and other opioids, antidepressants, and tamoxifen <a href=\"/gene/PA128/prescribingInfo#guideline-annotations\">go to list of all guidelines with CYP2D6</a>.</li>\n<li>the nomenclature has been set by <a rel=\"noopener noreferrer\" href=\"https://www.pharmvar.org/gene/CYP2D6\" target=\"_blank\">PharmVar</a>.</li>\n<li>the AMP tier 1 alleles are <a href=\"/haplotype/PA165816577\">CYP2D6*2</a>, <a href=\"/haplotype/PA165816578\">CYP2D6*3</a>, <a href=\"/haplotype/PA165816579\">CYP2D6*4</a>, <a href=\"/haplotype/PA165948092\">CYP2D6*5</a>, <a href=\"/haplotype/PA165816581\">CYP2D6*6</a>, <a href=\"/haplotype/PA165948317\">CYP2D6*9</a>, <a href=\"/haplotype/PA165816582\">CYP2D6*10</a>, <a href=\"/haplotype/PA165816583\">CYP2D6*17</a>, <a href=\"/haplotype/PA165948318\">CYP2D6*29</a>, <a href=\"/haplotype/PA165816584\">CYP2D6*41</a>, CYP2D6 duplications and other copy number variants <a href=\"/ampAllelesToTest\">see all alleles on the AMP recommended to test list</a>.</li>\n<li>See the <a href=\"/page/cyp2d6RefMaterials\">Gene-specific Information Tables</a> for Allele Definitions (for which variants comprise which star alleles), Allele function assignments (normal function, no function, decreased or increased function etc) and Diplotype-Phenotype Table (for how the alleles combine to form metabolizer phenotypes for PM, NM, UM).</li>\n<li>CYP2D6 is the most studied CYP for phenoconversion, where a drug-drug interaction mimics a metabolizer phenotype. <a href=\"/chemical/PA450801\">paroxetine</a>, <a href=\"/chemical/PA449673\">fluoxetine</a> and <a href=\"/chemical/PA448687\">bupropion</a> are strong inhibitors of CYP2D6 as per <a rel=\"noopener noreferrer\" href=\"https://drug-interactions.medicine.iu.edu/MainTable.aspx\" target=\"_blank\">Flockhart Table</a>.</li>\n</ul>\n"
+    },
+    "vipTier": "Tier 1"
+  },
+  "CYP2C9": {
+    "objCls": "Gene",
+    "id": "PA126",
+    "symbol": "CYP2C9",
+    "name": "cytochrome P450 family 2 subfamily C member 9",
+    "alleleFile": "CYP2C9_allele_definition_table.xlsx",
+    "alleleFunctionSource": "CPIC",
+    "alleleType": "Named Alleles",
+    "amp": true,
+    "buildVersion": "GRCh38.p7",
+    "cbStart": "q23.33",
+    "cbStop": "q23.33",
+    "chr": {
+      "objCls": "Chromosome",
+      "id": "PA504",
+      "name": "chr10"
+    },
+    "chrStartPosB37": 96698350,
+    "chrStartPosB38": 94905867,
+    "chrStopPosB37": 96749486,
+    "chrStopPosB38": 94989395,
+    "cpicGene": true,
+    "hasNonStandardHaplotypes": false,
+    "hideHaplotypes": false,
+    "history": [],
+    "pharmVarGene": true,
+    "strand": "plus",
+    "vipCitation": {
+      "id": 7160454,
+      "title": "Cytochrome P450 2C9-CYP2C9.",
+      "_sameAs": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3201766",
+      "authors": [
+        "Van Booven Derek",
+        "Marsh Sharon",
+        "McLeod Howard",
+        "Carrillo Michelle Whirl",
+        "Sangkuhl Katrin",
+        "Klein Teri E",
+        "Altman Russ B"
+      ],
+      "crossReferences": [
+        {
+          "id": 1449247468,
+          "resource": "PubMed Central",
+          "resourceId": "PMC3201766",
+          "_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3201766"
+        },
+        {
+          "id": 569773167,
+          "resource": "PubMed",
+          "resourceId": "20150829",
+          "_url": "https://www.ncbi.nlm.nih.gov/pubmed/20150829"
+        },
+        {
+          "id": 1449247469,
+          "resource": "DOI",
+          "resourceId": "10.1097/FPC.0b013e3283349e84",
+          "_url": "http://dx.doi.org/10.1097%2FFPC.0b013e3283349e84"
+        }
+      ],
+      "day": -1,
+      "journal": "Pharmacogenetics and genomics",
+      "month": 4,
+      "objCls": "Literature",
+      "page": "277-81",
+      "pediatric": false,
+      "pgkbPublication": true,
+      "pubDate": "2010-04-01T00:00:00-07:00",
+      "pubmedMeshTerms": [],
+      "terms": [
+        {
+          "id": 1454108640,
+          "resource": "ClinPGx Tags",
+          "term": "PharmGKB",
+          "termId": "pgkbTags:1454108640"
+        },
+        {
+          "id": 1451577482,
+          "resource": "PGx Paper Types",
+          "term": "Review",
+          "termId": "pgxPaperTypes:1451577482"
+        },
+        {
+          "id": 1451577562,
+          "resource": "PGx Paper Types",
+          "term": "Allele Function",
+          "termId": "pgxPaperTypes:1451577562"
+        }
+      ],
+      "type": "Literature",
+      "volume": "20",
+      "year": 2010
+    },
+    "vipId": "PA166169913",
+    "vipSummary": {
+      "id": 1448821553,
+      "html": "<p>CYP2C9 is one of the key pharmacogenes involved in implementation of pharmacogenomics.</p>\n<ul>\n<li>It is involved in guidelines for <a href=\"/guidelineAnnotation/PA166104949\">warfarin</a>, <a href=\"/guidelineAnnotation/PA166122806\">phenytoin</a> and <a href=\"/guidelineAnnotation/PA166191841\">NSAIDs</a>, (<a href=\"/gene/PA126/prescribingInfo\">go to list of all guidelines with CYP2C9</a>).</li>\n<li>the nomenclature has been set by <a rel=\"noopener noreferrer\" href=\"https://www.pharmvar.org/gene/CYP2C9\" target=\"_blank\">PharmVar</a></li>\n<li>the AMP tier 1 alleles are <a href=\"/haplotype/PA165816543\">CYP2C9*2</a>, <a href=\"/haplotype/PA165816544\">CYP2C9*3</a>, <a href=\"/haplotype/PA165816546\">CYP2C9*5</a>, <a href=\"/haplotype/PA165816547\">CYP2C9*6</a>, <a href=\"/haplotype/PA165816549\">CYP2C9*8</a>, and <a href=\"/haplotype/PA165816552\">CYP2C9*11</a>, <a href=\"/ampAllelesToTest\">see all alleles on the AMP recommended to test list</a></li>\n<li>key variant pages include <a href=\"/variant/PA166153972\">rs1799853</a> and <a href=\"/variant/PA166153959\">rs1057910</a></li>\n<li>See the <a href=\"/page/cyp2c9RefMaterials\">Gene-specific Information Tables</a> for Allele Definitions (for which variants comprise which star alleles), Allele function assignments (normal function, no function, decreased or increased function etc) and Diplotype-Phenotype Table (for how the alleles combine to form metabolizer phenotypes for PM, NM, UM)</li>\n</ul>\n"
+    },
+    "vipTier": "Tier 1"
+  },
+  "CYP3A4": {
+    "objCls": "Gene",
+    "id": "PA130",
+    "symbol": "CYP3A4",
+    "name": "cytochrome P450 family 3 subfamily A member 4",
+    "alleleFunctionSource": "ClinPGx",
+    "alleleType": "Named Alleles",
+    "amp": true,
+    "buildVersion": "GRCh38",
+    "cbStart": "q22.1",
+    "cbStop": "q22.1",
+    "chr": {
+      "objCls": "Chromosome",
+      "id": "PA534",
+      "name": "chr7"
+    },
+    "chrStartPosB37": 99354590,
+    "chrStartPosB38": 99756967,
+    "chrStopPosB37": 99381807,
+    "chrStopPosB38": 99784184,
+    "cpicGene": false,
+    "hasNonStandardHaplotypes": false,
+    "hideHaplotypes": false,
+    "history": [],
+    "pharmVarGene": true,
+    "strand": "minus",
+    "vipCitation": {
+      "id": 15168379,
+      "title": "PharmGKB VIP Summary: CYP3A4",
+      "_sameAs": "https://api.pharmgkb.org/v1/download/file/attachment/CYP3A4_VIP_Summary.pdf",
+      "crossReferences": [
+        {
+          "id": 1452646257,
+          "resource": "URL",
+          "resourceId": "https://api.pharmgkb.org/v1/download/file/attachment/CYP3A4_VIP_Summary.pdf",
+          "_url": "https://api.pharmgkb.org/v1/download/file/attachment/CYP3A4_VIP_Summary.pdf"
+        }
+      ],
+      "day": -1,
+      "month": -1,
+      "notes": "This document contains text that was found on the PharmGKB VIP page for CYP3A4 prior to Oct 2024.",
+      "objCls": "Literature",
+      "pediatric": false,
+      "pgkbPublication": false,
+      "pubmedMeshTerms": [],
+      "terms": [
+        {
+          "id": 1452267780,
+          "resource": "ClinPGx Tags",
+          "term": "Has PGx",
+          "termId": "pgkbTags:1452267780"
+        }
+      ],
+      "type": "Literature",
+      "year": -1
+    },
+    "vipId": "PA166169915",
+    "vipSummary": {
+      "id": 1448821611,
+      "html": "<p>CYP3A4 is one of the key pharmacogenes involved in implementation of pharmacogenomics.</p>\n<ul>\n<li>It is involved in guidelines for quetiapine (<a href=\"/gene/PA131/prescribingInfo\">go to list of all guidelines with CYP3A4</a>).</li>\n<li>the nomenclature has been set by <a rel=\"noopener noreferrer\" href=\"https://www.pharmvar.org/gene/CYP3A4\" target=\"_blank\">PharmVar</a></li>\n<li>the AMP tier 1 allele is <a href=\"/haplotype/PA166048680\">CYP3A4*22</a> and tier 2 allele is <a href=\"/haplotype/PA165819244\">CYP3A4*20</a> <a href=\"/page/ampAllelesToTest\">see all alleles on the AMP recommended to test list</a>.</li>\n<li>key variant pages are <a href=\"/variant/PA166157487\">rs35599367</a> (defining for *22) and <a href=\"/variant/PA166157502\">rs67666821</a> (defining for *20).</li>\n<li>it is involved in many <a href=\"/gene/PA130/labelAnnotation\">drug label annotations</a> with a larger number of cautions for drug-drug interactions with CYP3A4 inhibitors (such as <a href=\"/chemical/PA450146\">ketoconazole</a>) and inducers (such as <a href=\"/chemical/PA448785\">carbamazepine</a>), see the <a rel=\"noopener noreferrer\" href=\"https://drug-interactions.medicine.iu.edu/MainTable.aspx\" target=\"_blank\">Flockhart table</a> for more CYP3A4 inhibitors, inducers and substrates.</li>\n</ul>\n"
+    },
+    "vipTier": "Tier 1"
+  },
+  "CYP1A2": {
+    "objCls": "Gene",
+    "id": "PA27093",
+    "symbol": "CYP1A2",
+    "name": "cytochrome P450 family 1 subfamily A member 2",
+    "alleleType": "Named Alleles",
+    "amp": false,
+    "buildVersion": "GRCh38.p7",
+    "cbStart": "q24.1",
+    "cbStop": "q24.1",
+    "chr": {
+      "objCls": "Chromosome",
+      "id": "PA513",
+      "name": "chr15"
+    },
+    "chrStartPosB37": 75041184,
+    "chrStartPosB38": 74748843,
+    "chrStopPosB37": 75048941,
+    "chrStopPosB38": 74756600,
+    "cpicGene": false,
+    "hasNonStandardHaplotypes": false,
+    "hideHaplotypes": false,
+    "history": [],
+    "pharmVarGene": true,
+    "strand": "plus",
+    "vipCitation": {
+      "id": 13840591,
+      "title": "PharmGKB summary: very important pharmacogene information for CYP1A2.",
+      "_sameAs": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3346273",
+      "authors": [
+        "Thorn Caroline F",
+        "Aklillu Eleni",
+        "Klein Teri E",
+        "Altman Russ B"
+      ],
+      "crossReferences": [
+        {
+          "id": 1449262626,
+          "resource": "PubMed Central",
+          "resourceId": "PMC3346273",
+          "_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3346273"
+        },
+        {
+          "id": 827779142,
+          "resource": "PubMed",
+          "resourceId": "21989077",
+          "_url": "https://www.ncbi.nlm.nih.gov/pubmed/21989077"
+        },
+        {
+          "id": 1449262627,
+          "resource": "DOI",
+          "resourceId": "10.1097/FPC.0b013e32834c6efd",
+          "_url": "http://dx.doi.org/10.1097%2FFPC.0b013e32834c6efd"
+        }
+      ],
+      "day": -1,
+      "journal": "Pharmacogenetics and genomics",
+      "month": 1,
+      "objCls": "Literature",
+      "page": "73-7",
+      "pediatric": false,
+      "pgkbPublication": true,
+      "pubDate": "2012-01-01T00:00:00-08:00",
+      "pubmedMeshTerms": [],
+      "terms": [
+        {
+          "id": 1454108640,
+          "resource": "ClinPGx Tags",
+          "term": "PharmGKB",
+          "termId": "pgkbTags:1454108640"
+        },
+        {
+          "id": 1451577482,
+          "resource": "PGx Paper Types",
+          "term": "Review",
+          "termId": "pgxPaperTypes:1451577482"
+        }
+      ],
+      "type": "Literature",
+      "volume": "22",
+      "year": 2012
+    },
+    "vipId": "PA166165414",
+    "vipSummary": {
+      "id": 1448637703,
+      "html": "<p>CYP1A2 is an inducible member of the cytochrome P450 (CYP) drug metabolizing gene family, important for metabolism of caffeine and antipsychotics.</p>\n"
+    },
+    "vipTier": "Tier 2"
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "denominator_policy": "This catalogue is the denominator for PGX-VAL-014 and PGX-VAL-015. It is declared before any benchmark runs. A run that exercises two paths reports two out of the catalogue size, never two out of two.",
+  "failure_path_catalogue_version": "pgx-wp21-failure-paths/1",
+  "failure_path_count": 10,
+  "failure_paths": [
+    {
+      "expected_refusal": "NOT_ASSESSED with a coverage reason naming the medication; never LOW and never NO_ACTIVE_ATTENTION",
+      "meaning": "The medication is not in the pinned release's drug catalogue.",
+      "path_id": "FP-001",
+      "title": "Unsupported medication"
+    },
+    {
+      "expected_refusal": "NOT_ASSESSED with coverage below FULL",
+      "meaning": "An axis the rule needs has no phenotype supplied.",
+      "path_id": "FP-002",
+      "title": "Missing required gene or axis"
+    },
+    {
+      "expected_refusal": "NOT_ASSESSED; indeterminate is not a calculated level",
+      "meaning": "A phenotype is supplied but is indeterminate for this axis.",
+      "path_id": "FP-003",
+      "title": "Indeterminate phenotype"
+    },
+    {
+      "expected_refusal": "coverage PARTIAL, attention NOT_ASSESSED where the missing axis is load-bearing",
+      "meaning": "Some but not all required axes resolve.",
+      "path_id": "FP-004",
+      "title": "Partial coverage"
+    },
+    {
+      "expected_refusal": "coverage INSUFFICIENT and refusal to emit an attention level",
+      "meaning": "Coverage is below the manifest's minimum for this medication.",
+      "path_id": "FP-005",
+      "title": "Insufficient coverage"
+    },
+    {
+      "expected_refusal": "an explicit conflict outcome; never the more reassuring branch",
+      "meaning": "Two validated rules or two sources disagree for one axis.",
+      "path_id": "FP-006",
+      "title": "Conflicting sources or rules"
+    },
+    {
+      "expected_refusal": "NOT_ASSESSED; a DRAFT or DEPRECATED rule must not substitute",
+      "meaning": "The pinned ruleset holds no VALIDATED rule for this combination.",
+      "path_id": "FP-007",
+      "title": "No applicable validated rule"
+    },
+    {
+      "expected_refusal": "refusal before calculation; nothing persisted",
+      "meaning": "The release is missing, inactive, or its manifest hash disagrees.",
+      "path_id": "FP-008",
+      "title": "Invalid or unpinned release"
+    },
+    {
+      "expected_refusal": "refusal to emit the finding",
+      "meaning": "A finding would be emitted with no resolvable evidence.",
+      "path_id": "FP-009",
+      "title": "Missing evidence reference"
+    },
+    {
+      "expected_refusal": "refusal at the input boundary, before any calculation",
+      "meaning": "The input carries a real-patient, genotype or raw-sequencing field.",
+      "path_id": "FP-010",
+      "title": "Prohibited input kind or field"
+    }
+  ],
+  "schema_version": "pgx-wp21-failure-paths/1"
+}

@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "intact": {
+            "const": true
+          }
+        },
+        "required": [
+          "intact"
+        ]
+      },
+      "then": {
+        "properties": {
+          "absent_member_paths": {
+            "maxItems": 0,
+            "type": "array"
+          },
+          "changed_members": {
+            "maxItems": 0,
+            "type": "array"
+          },
+          "pack_digest_matches": {
+            "const": true
+          }
+        }
+      }
+    }
+  ],
+  "description": "The verification result. ``intact`` describes bytes and says nothing about whether any gate passed.",
+  "properties": {
+    "absent_member_paths": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "achievement_note": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "changed_member_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "changed_members": {
+      "type": "array"
+    },
+    "declared_pack_sha256": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "intact": {
+      "type": "boolean"
+    },
+    "integrity_note": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "member_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "pack_digest_matches": {
+      "type": "boolean"
+    },
+    "pack_integrity_version": {
+      "const": "pgx-wp25-pack-integrity/1",
+      "type": "string"
+    },
+    "recomputed_pack_sha256": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "pack_integrity_version",
+    "declared_pack_sha256",
+    "recomputed_pack_sha256",
+    "pack_digest_matches",
+    "changed_members",
+    "absent_member_paths",
+    "intact",
+    "integrity_note"
+  ],
+  "title": "WP-25 pack integrity result",
+  "type": "object"
+}

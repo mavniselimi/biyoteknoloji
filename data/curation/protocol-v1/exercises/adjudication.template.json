@@ -1,0 +1,23 @@
+{
+  "adjudicator_name": null,
+  "adjudicator_role": "ADJUDICATOR",
+  "decided_at": null,
+  "decision": null,
+  "disputed_case_ids": [],
+  "exercise_id": "wp09-inter-curator-1",
+  "is_decided": false,
+  "note": "Both original responses are preserved above and are not replaced by the decision. An adjudication settles which reading the project adopts; it does not erase the disagreement or make the other reading disappear.",
+  "preserved_responses": [
+    {
+      "completed": false,
+      "curator_label": "A",
+      "curator_name": null
+    },
+    {
+      "completed": false,
+      "curator_label": "B",
+      "curator_name": null
+    }
+  ],
+  "rationale": null
+}

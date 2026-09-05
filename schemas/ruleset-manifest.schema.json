@@ -1,0 +1,173 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pgx-platform.invalid/schemas/ruleset-manifest.schema.json",
+  "title": "PGx ruleset manifest",
+  "description": "The manifest.json of a frozen ruleset artifact: which rules are in the set, pinned by content hash, and which upstream builds, protocol and source policy the whole set was cut against. The schema refuses a manifest that names a member without its content hash, that omits the pins, or that presents structural_axes as coverage. A manifest is a statement of membership, not of clinical adequacy: the fact that an axis has a rule says nothing about whether that axis is adequately covered, and the note field is required so no reader has to infer that from prose elsewhere.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "ruleset_schema_version",
+    "rule_schema_version",
+    "condition_schema_version",
+    "ruleset_id",
+    "public_id",
+    "ruleset_version",
+    "member_count",
+    "members",
+    "structural_axes",
+    "dataset_public_id",
+    "canonical_build_key",
+    "canonical_build_content_hash",
+    "evidence_build_key",
+    "evidence_build_content_hash",
+    "protocol_version",
+    "protocol_content_hash",
+    "source_policy_version",
+    "source_policy_content_hash",
+    "approval_list_hash",
+    "manifest_hash",
+    "note"
+  ],
+  "properties": {
+    "ruleset_schema_version": {
+      "const": "pgx-ruleset-manifest/1"
+    },
+    "rule_schema_version": {
+      "const": "pgx-computable-rule/1"
+    },
+    "condition_schema_version": {
+      "const": "pgx-rule-condition/1"
+    },
+    "ruleset_id": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+    },
+    "public_id": {
+      "type": "string",
+      "pattern": "^PGX-RULESET-[0-9]{8}-[0-9]{3}$"
+    },
+    "ruleset_version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "member_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "members": {
+      "description": "Sorted deterministically and pinned by content hash. A member row that named only an id would let the rule it admits be edited afterwards without the manifest noticing.",
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "rule_id",
+          "family_id",
+          "rule_version",
+          "content_hash"
+        ],
+        "properties": {
+          "rule_id": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+          },
+          "family_id": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+          },
+          "rule_version": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "content_hash": {
+            "type": "string",
+            "pattern": "^sha256:[0-9a-f]{64}$"
+          }
+        }
+      }
+    },
+    "structural_axes": {
+      "description": "The gene/drug/phenotype triples the member rules are keyed on. An inventory of what is present, deliberately carrying no count, score or completeness measure that could be read as coverage.",
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "gene_id",
+          "drug_id",
+          "phenotype"
+        ],
+        "properties": {
+          "gene_id": {
+            "type": "string",
+            "pattern": "^GENE:[A-Z0-9][A-Z0-9\\-.@_]*$"
+          },
+          "drug_id": {
+            "type": "string",
+            "pattern": "^DRUG:[^A-Z\\s]+( [^A-Z\\s]+)*$"
+          },
+          "phenotype": {
+            "enum": [
+              "POOR",
+              "INTERMEDIATE",
+              "NORMAL",
+              "RAPID",
+              "ULTRARAPID"
+            ]
+          }
+        }
+      }
+    },
+    "dataset_public_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "canonical_build_key": {
+      "type": "string",
+      "minLength": 1
+    },
+    "canonical_build_content_hash": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "evidence_build_key": {
+      "type": "string",
+      "minLength": 1
+    },
+    "evidence_build_content_hash": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "protocol_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "protocol_content_hash": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "source_policy_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_policy_content_hash": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "approval_list_hash": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "manifest_hash": {
+      "description": "Covers the manifest's own semantic content. It is not the ruleset content hash, which covers membership: a formatting change to this document and a change of membership must not be indistinguishable.",
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "note": {
+      "type": "string",
+      "minLength": 100
+    }
+  }
+}

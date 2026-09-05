@@ -1,0 +1,178 @@
+{
+  "$id": "https://pgx.local/schemas/wp24/release-validation.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "description": "release_may_proceed is the conjunction of the required gates. There is no override, no force flag and no warn-only mode, and a TEST_ONLY_REHEARSAL never closes a gate.",
+  "if": {
+    "properties": {
+      "release_may_proceed": {
+        "const": true
+      }
+    },
+    "required": [
+      "release_may_proceed"
+    ]
+  },
+  "properties": {
+    "blockers": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "blocking": {
+            "type": "boolean"
+          },
+          "code": {
+            "enum": [
+              "DEPLOY_ADVISORY_DATABASE_UNAVAILABLE",
+              "DEPLOY_ARGON2_UNAVAILABLE",
+              "DEPLOY_BACKUP_NOT_EXECUTED",
+              "DEPLOY_BUILD_BACKEND_UNAVAILABLE",
+              "DEPLOY_CI_NOT_EXECUTED",
+              "DEPLOY_CLAIM_BOUNDARY_NOT_APPROVED",
+              "DEPLOY_COMPOSITION_INCOMPLETE",
+              "DEPLOY_CONTAINER_RUNTIME_UNAVAILABLE",
+              "DEPLOY_DATABASE_UNAVAILABLE",
+              "DEPLOY_EXPERT_REVIEW_NOT_PERFORMED",
+              "DEPLOY_IMAGE_NOT_BUILT",
+              "DEPLOY_LOCKFILE_ABSENT",
+              "DEPLOY_LOCKFILE_UNVERIFIED",
+              "DEPLOY_MIGRATION_HEAD_MISMATCH",
+              "DEPLOY_MIGRATION_NOT_EXECUTED",
+              "DEPLOY_NO_ELIGIBLE_RELEASE",
+              "DEPLOY_NO_HOLDOUT_EVIDENCE",
+              "DEPLOY_NO_REAL_USERS",
+              "DEPLOY_PACKAGE_INDEX_UNAVAILABLE",
+              "DEPLOY_PERFORMANCE_NOT_EXECUTED",
+              "DEPLOY_RESTORE_NOT_VERIFIED",
+              "DEPLOY_ROLLBACK_NOT_EXERCISED",
+              "DEPLOY_RUNTIME_ASSET_MISSING",
+              "DEPLOY_SAFETY_GATE_BLOCKED",
+              "DEPLOY_SBOM_NOT_GENERATED",
+              "DEPLOY_SMOKE_NOT_EXECUTED",
+              "DEPLOY_STAGING_NOT_DEPLOYED",
+              "DEPLOY_TLS_NOT_OBSERVED",
+              "DEPLOY_VULNERABILITY_SCANNER_UNAVAILABLE"
+            ],
+            "type": "string"
+          },
+          "detail": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "owner": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "code",
+          "detail",
+          "owner",
+          "blocking"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "evaluated_at": {
+      "type": "string"
+    },
+    "gate_count": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "gates": {
+      "items": {
+        "properties": {
+          "detail": {
+            "type": "string"
+          },
+          "gate": {
+            "type": "string"
+          },
+          "may_close_gate": {
+            "type": "boolean"
+          },
+          "required": {
+            "type": "boolean"
+          },
+          "source": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "state": {
+            "enum": [
+              "CONFIGURED",
+              "EXECUTED",
+              "OBSERVED",
+              "VERIFIED",
+              "BLOCKED",
+              "NOT_EXECUTED",
+              "STALE",
+              "NOT_APPLICABLE",
+              "TEST_ONLY_REHEARSAL"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "gate",
+          "state",
+          "required",
+          "may_close_gate"
+        ],
+        "type": "object"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "image_built": {
+      "type": "boolean"
+    },
+    "image_published": {
+      "type": "boolean"
+    },
+    "image_released": {
+      "type": "boolean"
+    },
+    "release_may_proceed": {
+      "type": "boolean"
+    },
+    "release_validation_version": {
+      "const": "pgx-wp24-release-validation/1"
+    },
+    "required_gate_count": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "satisfied_required_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "unmet_required_gates": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "release_validation_version",
+    "gates",
+    "unmet_required_gates",
+    "release_may_proceed",
+    "image_released",
+    "image_published"
+  ],
+  "then": {
+    "properties": {
+      "unmet_required_gates": {
+        "maxItems": 0,
+        "type": "array"
+      }
+    }
+  },
+  "title": "PGx release validation (WP-24)",
+  "type": "object"
+}

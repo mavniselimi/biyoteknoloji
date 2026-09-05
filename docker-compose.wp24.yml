@@ -1,0 +1,246 @@
+# PGx Platform V2 - the WP-24 deployment topology.
+#
+# A SEPARATE file from docker-compose.yml on purpose. That file is WP-02's
+# development and test database and its semantics are relied on by the
+# integration suite - in particular `postgres-test`, whose tmpfs storage and
+# separate port are what stop `alembic downgrade base` from reaching a
+# developer's data. Adding an application service to it would put a running
+# app beside a database that tests destroy.
+#
+#     docker compose -p pgx_wp24_rehearsal -f docker-compose.wp24.yml up -d
+#
+# The project name is not optional and not defaulted. Compose derives a
+# project name from the directory when none is given, which would make this
+# topology share a namespace with the development one - and `down -v` in
+# either would then reach the other's volumes. `pgx-deploy` always passes
+# `-p pgx_wp24_rehearsal` and refuses to run without it.
+#
+# NOTHING HERE RUNS AN OPERATION ON START-UP. No migration, no seed, no
+# ingestion, no release activation, no admin bootstrap, no backup, no restore.
+# Every one of those is an explicit `pgx-deploy` subcommand or a
+# `docker compose run --rm` invocation, documented in
+# docs/operations/staging-deployment-runbook.md. An application that migrates
+# itself on boot applies 0011 from whichever replica starts first,
+# concurrently, and 0011's downgrade refuses to undo it.
+#
+# LOCAL REHEARSAL, NOT STAGING. Running this file on a laptop produces a
+# LOCAL_STAGING_REHEARSAL. It is not a staging deployment, it is not reachable
+# by anybody else, and no document produced from it may call it one.
+
+name: pgx_wp24_rehearsal
+
+x-app-common: &app-common
+  # Built locally by `pgx-deploy build`. There is no `image:` with a registry
+  # reference here because nothing has been published: naming a registry path
+  # in a compose file is how a `docker compose pull` ends up looking for an
+  # image that does not exist, or worse, finding somebody else's.
+  build:
+    context: .
+    dockerfile: Dockerfile
+    target: runtime
+  image: pgx-platform:wp24-local
+  environment:
+    # Secrets arrive as FILES. The *_FILE form is preferred everywhere and
+    # pgx/deployment/secrets.py refuses a configuration that sets both a
+    # variable and its _FILE twin - a precedence rule there would let a
+    # rotated file be silently ignored in favour of a stale variable.
+    DATABASE_URL_FILE: /run/secrets/database_url
+    PGX_API_ENV: ${PGX_API_ENV:-STAGING}
+    # SESSION is the only production-capable mode (WP-23). STATIC_TOKEN is
+    # refused in PRODUCTION by apps/api/config.py and has no place here.
+    PGX_API_AUTH_MODE: ${PGX_API_AUTH_MODE:-SESSION}
+    PGX_API_DOCS_ENABLED: "false"
+    PGX_API_MIGRATION_HEAD: ${PGX_API_MIGRATION_HEAD:-0011_wp23_auth_audit}
+    PGX_API_READINESS_TIMEOUT_SECONDS: "2.0"
+  secrets:
+    - database_url
+  # Bounded, and the same bounds the performance report records. An
+  # unconstrained container makes a latency number that describes the host
+  # rather than the software.
+  deploy:
+    resources:
+      limits:
+        cpus: "2.0"
+        memory: 1g
+      reservations:
+        memory: 256m
+  pids_limit: 256
+  security_opt:
+    - no-new-privileges:true
+  cap_drop:
+    - ALL
+  read_only: true
+  tmpfs:
+    # The only writable paths. /tmp because Python and psycopg use it; nothing
+    # the application produces is meant to survive a restart, and a writable
+    # application directory is how a compromised process persists.
+    - /tmp:size=64m,mode=1777
+
+services:
+  app:
+    <<: *app-common
+    restart: unless-stopped
+    # NOT published to the host in a staging configuration. Ingress reaches it
+    # over the internal network through the proxy, which is what makes "HTTPS
+    # terminates at the ingress" true rather than aspirational: a published
+    # app port is a plaintext path around the terminator.
+    #
+    # The `local` profile publishes it for a laptop rehearsal with no proxy,
+    # and a rehearsal is exactly where a plaintext port is acceptable - the
+    # session cookie is Secure, so a browser will not send it over that port,
+    # which is the mechanism working rather than being worked around.
+    expose:
+      - "8000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    stop_grace_period: 25s
+    healthcheck:
+      test: ["CMD", "python", "-c",
+             "import urllib.request,sys; sys.exit(0 if urllib.request.urlopen('http://127.0.0.1:8000/health/live', timeout=2).status==200 else 1)"]
+      interval: 15s
+      timeout: 3s
+      retries: 3
+      start_period: 10s
+
+  # The same image, published on the host, for a rehearsal with no proxy.
+  #   docker compose -p pgx_wp24_rehearsal -f docker-compose.wp24.yml \
+  #       --profile local up -d app-local postgres
+  app-local:
+    <<: *app-common
+    profiles: ["local"]
+    restart: "no"
+    ports:
+      - "${PGX_APP_HOST_PORT:-8080}:8000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    stop_grace_period: 25s
+
+  # One-shot operational commands. `docker compose run --rm ops <command>`.
+  # Never started by `up`: the profile keeps it out, so a topology that comes
+  # up cannot have run a migration on the way.
+  ops:
+    <<: *app-common
+    profiles: ["ops"]
+    restart: "no"
+    read_only: false          # alembic writes a version table, not a file,
+    tmpfs:                    # but pip-less commands still need a scratch dir
+      - /tmp:size=128m,mode=1777
+    depends_on:
+      postgres:
+        condition: service_healthy
+    entrypoint: ["python"]
+    command: ["-c", "print('pass a command: docker compose run --rm ops -m pgx.application.deploy_cli status')"]
+
+  postgres:
+    image: postgres:16.13-bookworm
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER_FILE: /run/secrets/postgres_user
+      POSTGRES_PASSWORD_FILE: /run/secrets/postgres_password
+      POSTGRES_DB: ${PGX_POSTGRES_DB:-pgx_staging}
+      POSTGRES_INITDB_ARGS: "--encoding=UTF8 --locale=C"
+    secrets:
+      - postgres_user
+      - postgres_password
+    # Not published. The application reaches it over the compose network; a
+    # published database port on a host is a database on the internet the
+    # first time somebody's firewall is misconfigured.
+    expose:
+      - "5432"
+    volumes:
+      - pgx_wp24_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U \"$$(cat /run/secrets/postgres_user)\" -d ${PGX_POSTGRES_DB:-pgx_staging}"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+      start_period: 10s
+    stop_grace_period: 30s
+
+  # The restore target. A SEPARATE server, on its own volume, because the
+  # WP-23 runbook's first condition is that a restore is verified somewhere
+  # other than the database it came from. Restoring into the source proves
+  # the dump can be read; it proves nothing about whether the data survived,
+  # and it destroys the thing you were trying to protect.
+  postgres-restore-target:
+    profiles: ["restore"]
+    image: postgres:16.13-bookworm
+    restart: "no"
+    environment:
+      POSTGRES_USER_FILE: /run/secrets/postgres_user
+      POSTGRES_PASSWORD_FILE: /run/secrets/postgres_password
+      POSTGRES_DB: ${PGX_RESTORE_DB:-pgx_restore_check}
+      POSTGRES_INITDB_ARGS: "--encoding=UTF8 --locale=C"
+    secrets:
+      - postgres_user
+      - postgres_password
+    expose:
+      - "5432"
+    volumes:
+      - pgx_wp24_restore_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U \"$$(cat /run/secrets/postgres_user)\" -d ${PGX_RESTORE_DB:-pgx_restore_check}"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+      start_period: 10s
+
+  # TLS termination. Staging only, and only with a real certificate mounted.
+  #
+  # There is no self-signed default and no generated certificate in this file.
+  # A rehearsal CA is possible and is documented in
+  # docs/operations/staging-deployment-runbook.md, where the rule is stated
+  # once and enforced by pgx-deploy: a rehearsal certificate is verified
+  # AGAINST ITS OWN CA, never with `curl -k`, and the result is labelled
+  # LOCAL_STAGING_REHEARSAL. `curl -k` is not evidence of TLS; it is evidence
+  # that verification was switched off.
+  proxy:
+    profiles: ["staging"]
+    image: caddy:2.8-alpine
+    restart: unless-stopped
+    depends_on:
+      app:
+        condition: service_healthy
+    ports:
+      - "${PGX_HTTPS_PORT:-8443}:8443"
+    volumes:
+      - ./deploy/proxy/Caddyfile:/etc/caddy/Caddyfile:ro
+      # Mounted, never committed. deploy/tls/ is in .gitignore and
+      # .dockerignore, and pgx-security secret-scan treats a key here as a
+      # finding rather than an exception.
+      - ./deploy/tls:/etc/caddy/tls:ro
+    environment:
+      PGX_TLS_CERT: ${PGX_TLS_CERT:-/etc/caddy/tls/server.crt}
+      PGX_TLS_KEY: ${PGX_TLS_KEY:-/etc/caddy/tls/server.key}
+    cap_drop:
+      - ALL
+    cap_add:
+      - NET_BIND_SERVICE
+    security_opt:
+      - no-new-privileges:true
+
+secrets:
+  # Files on the host, mounted read-only into the container at
+  # /run/secrets/<name>. Not environment variables: an environment variable is
+  # visible in `docker inspect`, in a crash dump and in the process table.
+  #
+  # deploy/secrets/ is excluded by .gitignore, by .dockerignore and by the
+  # secret scanner's forbidden-prefix list. `deploy/secrets/README.md`
+  # explains how to create these; there are no defaults and no examples that
+  # would work.
+  database_url:
+    file: ./deploy/secrets/database_url
+  postgres_user:
+    file: ./deploy/secrets/postgres_user
+  postgres_password:
+    file: ./deploy/secrets/postgres_password
+
+volumes:
+  # Named within this project only. `pgx-deploy stop` never passes `-v`, and
+  # `pgx-deploy` has no subcommand that deletes a volume: removing a database
+  # volume is a decision a person makes with a command they typed, not one a
+  # deployment tool offers as an option.
+  pgx_wp24_data:
+  pgx_wp24_restore_data:

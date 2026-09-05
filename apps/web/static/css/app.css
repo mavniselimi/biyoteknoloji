@@ -1,0 +1,257 @@
+/*
+ * PGx Platform V2 - research interface stylesheet.
+ *
+ * A restrained data-review surface, not a wellness product. There is no
+ * reassuring green, no traffic light without a label, no medication card, no
+ * decorative animation, no icon font and no remote asset of any kind: the
+ * content-security policy allows only this origin, and nothing here asks for
+ * anything else.
+ *
+ * Two rules govern every colour decision.
+ *
+ * 1. Colour never carries a status on its own. Every status renders its
+ *    governed code and its controlled label as text; the hue and the border
+ *    pattern reinforce what the words already say. Remove the stylesheet and
+ *    nothing is lost but the layout - which the accessibility tests check by
+ *    parsing the HTML rather than the CSS.
+ *
+ * 2. NO_ACTIVE_ATTENTION is not green. A "no active finding" result under
+ *    partial coverage is precisely the case SAFETY-INV-001 exists for, and
+ *    green is the colour of "you are fine". Every attention state uses the
+ *    same neutral ink; the border weight distinguishes them, and the words do
+ *    the rest.
+ */
+
+:root {
+  --ink: #16191d;
+  --ink-muted: #4a5058;
+  --ink-faint: #6b7280;
+  --paper: #ffffff;
+  --paper-sunken: #f4f5f7;
+  --rule: #cfd4da;
+  --rule-strong: #9aa1aa;
+  --accent: #1f3a5f;
+  --accent-soft: #e8edf4;
+  --attention-mark: #6b4d00;
+  --coverage-mark: #123c4a;
+  --blocked: #7a1f1f;
+  --blocked-soft: #fbeaea;
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 1rem;
+  --space-4: 1.5rem;
+  --space-5: 2.5rem;
+  --measure: 68ch;
+  --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { font-size: 100%; }
+
+body {
+  margin: 0;
+  padding: 0 var(--space-3) var(--space-5);
+  font-family: var(--font);
+  font-size: 1rem;
+  line-height: 1.55;
+  color: var(--ink);
+  background: var(--paper);
+  max-width: 78rem;
+  margin-inline: auto;
+}
+
+/* -- skip link ---------------------------------------------------------- */
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  padding: var(--space-2) var(--space-3);
+  background: var(--accent);
+  color: #fff;
+  z-index: 10;
+}
+.skip-link:focus { left: 0; }
+
+/* -- focus: always visible, never removed ------------------------------- */
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+summary:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* -- header and navigation ---------------------------------------------- */
+
+.site-header {
+  border-bottom: 2px solid var(--rule-strong);
+  padding: var(--space-4) 0 var(--space-3);
+}
+.site-title { margin: 0; font-size: 1.05rem; font-weight: 700; letter-spacing: 0.02em; }
+.site-subtitle { margin: var(--space-1) 0 0; color: var(--ink-muted); font-size: 0.9rem; }
+
+.environment { display: flex; gap: var(--space-2); margin: var(--space-2) 0 0; font-size: 0.85rem; }
+.environment dt { color: var(--ink-faint); }
+.environment dt::after { content: ":"; }
+.environment dd { margin: 0; font-family: var(--font-mono); }
+
+.site-nav { border-bottom: 1px solid var(--rule); padding: var(--space-2) 0; }
+.site-nav ul { list-style: none; display: flex; flex-wrap: wrap; gap: var(--space-3); margin: 0; padding: 0; }
+.site-nav a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+.site-nav a[aria-current="page"] { font-weight: 700; text-decoration-thickness: 3px; }
+.current-marker { font-family: var(--font-mono); }
+
+/* -- the canonical warning ---------------------------------------------- */
+
+.clinical-warning {
+  border: 2px solid var(--rule-strong);
+  border-left-width: 8px;
+  background: var(--paper-sunken);
+  padding: var(--space-3);
+  margin: var(--space-4) 0;
+}
+.clinical-warning h2 { margin: 0 0 var(--space-2); font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.06em; }
+.clinical-warning p { margin: 0; max-width: var(--measure); }
+
+/* -- notices ------------------------------------------------------------ */
+
+.notice { border: 1px solid var(--rule-strong); border-left-width: 6px; padding: var(--space-3); margin: var(--space-3) 0; }
+.notice p { margin: 0 0 var(--space-2); max-width: var(--measure); }
+.notice p:last-child { margin-bottom: 0; }
+.notice-unavailable { background: var(--paper-sunken); }
+.notice-error { border-color: var(--blocked); background: var(--blocked-soft); }
+.notice-scope { background: var(--accent-soft); border-color: var(--accent); }
+
+/* -- headings and text -------------------------------------------------- */
+
+main h1 { font-size: 1.6rem; margin: var(--space-4) 0 var(--space-3); }
+main h2 { font-size: 1.2rem; margin: var(--space-5) 0 var(--space-2); border-bottom: 1px solid var(--rule); padding-bottom: var(--space-1); }
+main h3 { font-size: 1.05rem; margin: var(--space-4) 0 var(--space-2); }
+main h4 { font-size: 0.95rem; margin: var(--space-3) 0 var(--space-2); color: var(--ink-muted); }
+.lede { font-size: 1.05rem; max-width: var(--measure); }
+.muted { color: var(--ink-muted); font-size: 0.9rem; max-width: var(--measure); }
+.empty-state { color: var(--ink-muted); font-style: normal; padding: var(--space-3); background: var(--paper-sunken); border: 1px dashed var(--rule-strong); }
+.unavailable { color: var(--ink-muted); font-variant: all-small-caps; letter-spacing: 0.04em; }
+.absent { color: var(--ink-faint); font-family: var(--font-mono); }
+
+code { font-family: var(--font-mono); font-size: 0.86em; overflow-wrap: anywhere; }
+
+/* -- the status pair ---------------------------------------------------- */
+
+.status-pair { border: 2px solid var(--rule-strong); margin: var(--space-3) 0; }
+.status-pair-grid { display: grid; grid-template-columns: 1fr 1fr; margin: 0; }
+.status-cell { padding: var(--space-3); margin: 0; }
+.status-cell + .status-cell { border-left: 1px solid var(--rule); }
+.status-cell dt { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-faint); }
+.status-cell dd { margin: var(--space-1) 0 0; }
+.status-label { display: block; font-weight: 600; }
+.status-code { display: inline-block; margin-top: var(--space-1); font-family: var(--font-mono); font-size: 0.8rem; color: var(--ink-muted); }
+
+/* The left edge marks which half is which, so the two are distinguishable
+   without relying on their order or on colour alone. */
+.status-attention { border-top: 4px solid var(--attention-mark); }
+.status-coverage { border-top: 4px dashed var(--coverage-mark); }
+
+.status-reasons { border-top: 1px solid var(--rule); padding: var(--space-3); background: var(--paper-sunken); }
+.status-reasons-heading { margin: 0 0 var(--space-2); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-faint); }
+.status-reasons ul { margin: 0; padding-left: 1.1rem; }
+.status-reasons li { margin-bottom: var(--space-1); }
+
+/* NOT_ASSESSED and PARTIAL get a heavier frame - never a colour that reads as
+   an outcome. The words already say what they are. */
+.status-pair[data-attention="NOT_ASSESSED"],
+.status-pair[data-coverage="PARTIAL"],
+.status-pair[data-coverage="INSUFFICIENT"],
+.status-pair[data-coverage="SOURCE_CONFLICT"] {
+  border-width: 3px;
+  border-style: double;
+}
+
+/* -- tables ------------------------------------------------------------- */
+
+.data-table { width: 100%; border-collapse: collapse; margin: var(--space-3) 0; font-size: 0.9rem; }
+.data-table caption { text-align: left; font-size: 0.85rem; color: var(--ink-muted); padding-bottom: var(--space-2); }
+.data-table th, .data-table td { border: 1px solid var(--rule); padding: var(--space-2); text-align: left; vertical-align: top; }
+.data-table thead th { background: var(--paper-sunken); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.04em; }
+.data-table tbody th { font-weight: 600; }
+.numeric { font-variant-numeric: tabular-nums; }
+.value-cell { max-width: 24rem; }
+.code-list { list-style: none; margin: 0; padding: 0; }
+.code-list li { margin-bottom: var(--space-1); }
+
+.status-ok { font-weight: 600; }
+.status-blocked { font-weight: 600; color: var(--blocked); }
+.status-blocked::before { content: "! "; font-family: var(--font-mono); }
+
+/* -- forms -------------------------------------------------------------- */
+
+fieldset { border: 1px solid var(--rule-strong); padding: var(--space-3); margin: var(--space-3) 0; }
+legend { font-weight: 600; padding: 0 var(--space-2); }
+.choice { display: flex; align-items: flex-start; gap: var(--space-2); padding: var(--space-1) 0; }
+.choice label { display: flex; flex-direction: column; }
+.choice-key { color: var(--ink-muted); }
+button.primary { font: inherit; padding: var(--space-2) var(--space-4); border: 2px solid var(--accent); background: var(--accent); color: #fff; cursor: pointer; }
+button.primary[disabled] { border-color: var(--rule-strong); background: var(--paper-sunken); color: var(--ink-faint); cursor: not-allowed; }
+
+/* -- lists and definition lists ----------------------------------------- */
+
+.fact-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr)); gap: var(--space-3); margin: var(--space-3) 0; }
+.fact-list > div { border-left: 3px solid var(--rule); padding-left: var(--space-3); }
+.fact-list dt { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-faint); }
+.fact-list dd { margin: var(--space-1) 0 0; overflow-wrap: anywhere; }
+
+.section-list, .phase-list { max-width: var(--measure); }
+.phase-list li { margin-bottom: var(--space-2); }
+.phase-name { font-weight: 600; margin-right: var(--space-2); }
+.role-tag { background: var(--accent-soft); padding: 0 var(--space-1); }
+.case-label { display: block; font-weight: 600; }
+.case-demonstrates { display: block; }
+
+/* -- footer ------------------------------------------------------------- */
+
+.site-footer { border-top: 2px solid var(--rule-strong); margin-top: var(--space-5); padding-top: var(--space-3); font-size: 0.85rem; color: var(--ink-muted); }
+.request-id { display: flex; gap: var(--space-2); margin: var(--space-2) 0; }
+.request-id dt::after { content: ":"; }
+.request-id dd { margin: 0; }
+
+/* -- narrow viewports ---------------------------------------------------- */
+
+@media (max-width: 48rem) {
+  .status-pair-grid { grid-template-columns: 1fr; }
+  .status-cell + .status-cell { border-left: none; border-top: 1px solid var(--rule); }
+  /* Wide data tables scroll inside their own container rather than pushing
+     the page sideways. The caption stays put so the scrolled region keeps a
+     name. */
+  .data-table { display: block; overflow-x: auto; white-space: normal; }
+  .fact-list { grid-template-columns: 1fr; }
+}
+
+/* -- reduced motion ------------------------------------------------------ */
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* -- print --------------------------------------------------------------- */
+
+@media print {
+  body { max-width: none; padding: 0; color: #000; }
+  .site-nav, .skip-link { display: none; }
+  /* The warning prints. A page that dropped it when printed would produce a
+     paper document with no notice on it, which is the copy that gets shown to
+     someone who never saw the screen. */
+  .clinical-warning { border: 2px solid #000; }
+  .data-table { font-size: 0.75rem; }
+  a { text-decoration: underline; }
+  a[href^="/"]::after { content: " (" attr(href) ")"; font-size: 0.7em; }
+}

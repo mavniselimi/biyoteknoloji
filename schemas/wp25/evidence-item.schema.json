@@ -1,0 +1,225 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "may_support_a_ths6_claim": {
+            "const": true
+          }
+        },
+        "required": [
+          "may_support_a_ths6_claim"
+        ]
+      },
+      "then": {
+        "properties": {
+          "evidence_type": {
+            "enum": [
+              "REAL_EXECUTED",
+              "REAL_OBSERVED"
+            ]
+          },
+          "test_only": {
+            "const": false
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "observed_or_executed": {
+            "const": true
+          }
+        },
+        "required": [
+          "observed_or_executed"
+        ]
+      },
+      "then": {
+        "properties": {
+          "evidence_type": {
+            "enum": [
+              "REAL_EXECUTED",
+              "REAL_OBSERVED"
+            ]
+          },
+          "present": {
+            "const": true
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "present": {
+            "const": false
+          }
+        },
+        "required": [
+          "present"
+        ]
+      },
+      "then": {
+        "properties": {
+          "observed_or_executed": {
+            "const": false
+          },
+          "sha256": {
+            "type": "null"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "test_only": {
+            "const": true
+          }
+        },
+        "required": [
+          "test_only"
+        ]
+      },
+      "then": {
+        "properties": {
+          "may_support_a_ths6_claim": {
+            "const": false
+          }
+        }
+      }
+    }
+  ],
+  "description": "One artifact in the pack. The constraints that matter are the refusals: an item may not claim to support a THS 6 claim while typed as a test or marked test-only, an absent item may not carry a digest, and a path may not be absolute.",
+  "properties": {
+    "contains_numeric_claim": {
+      "type": "boolean"
+    },
+    "evidence_id": {
+      "pattern": "^EV-WP[0-2][0-9]-[0-9]{3}$",
+      "type": "string"
+    },
+    "evidence_type": {
+      "enum": [
+        "REAL_EXECUTED",
+        "REAL_OBSERVED",
+        "IMPLEMENTATION_TEST",
+        "CONFIGURED_NOT_EXECUTED",
+        "DOCUMENT_ONLY",
+        "TEST_ONLY_REHEARSAL",
+        "HUMAN_PENDING",
+        "SCIENTIFIC_PENDING",
+        "OPERATIONAL_PENDING",
+        "STALE",
+        "INVALID",
+        "UNAVAILABLE"
+      ],
+      "type": "string"
+    },
+    "freshness_source": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "gap_owner": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "gate_ids": {
+      "items": {
+        "pattern": "^GATE-[A-F]$",
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "generator": {
+      "type": "string"
+    },
+    "limitations": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "may_support_a_ths6_claim": {
+      "type": "boolean"
+    },
+    "media_type": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "observed_or_executed": {
+      "type": "boolean"
+    },
+    "path": {
+      "pattern": "^(?![/~\\\\])(?![A-Za-z]:)[^\\s].*$",
+      "type": "string"
+    },
+    "present": {
+      "type": "boolean"
+    },
+    "schema_path": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "sha256": {
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "supported_claim_ids": {
+      "items": {
+        "pattern": "^THS6-CLAIM-[0-9]{3}$",
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "test_only": {
+      "type": "boolean"
+    },
+    "title": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "validation_result": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "work_package": {
+      "pattern": "^WP-[0-9]{2}$",
+      "type": "string"
+    }
+  },
+  "required": [
+    "evidence_id",
+    "title",
+    "work_package",
+    "evidence_type",
+    "path",
+    "present",
+    "sha256",
+    "test_only",
+    "observed_or_executed",
+    "may_support_a_ths6_claim",
+    "contains_numeric_claim",
+    "supported_claim_ids",
+    "gate_ids",
+    "limitations"
+  ],
+  "title": "WP-25 evidence item",
+  "type": "object"
+}

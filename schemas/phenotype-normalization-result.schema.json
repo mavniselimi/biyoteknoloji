@@ -1,0 +1,132 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pgx-platform.invalid/schemas/phenotype-normalization-result.schema.json",
+  "title": "PGx phenotype normalization result",
+  "description": "One supplied value, read under a named input contract, and what came of it. The schema exists to keep four outcomes distinguishable where a careless producer would collapse them into a boolean: a value nobody supplied, a value recording that no determination could be made, a value that is not a phenotype, and a value that is. A NORMALIZED result carries a phenotype and no reason code; every other result carries a reason code and no phenotype, so no reader can find a phenotype on a result that failed. INDETERMINATE is never a phenotype here - it is a status, because a rule cannot be written about it. The coupling is enforced by the schema and not only by the producer: a NORMALIZED result must carry a phenotype and no reason code, and every other status must carry a reason code and a null phenotype, so a hand-edited failure cannot arrive with a phenotype attached.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "result_schema_version",
+    "input_contract_version",
+    "gene_id",
+    "status",
+    "phenotype",
+    "reason_code",
+    "reason",
+    "raw_value"
+  ],
+  "properties": {
+    "result_schema_version": {
+      "const": "pgx-phenotype-normalization-result/1"
+    },
+    "input_contract_version": {
+      "const": "pgx-phenotype-input/1"
+    },
+    "gene_id": {
+      "type": "string",
+      "pattern": "^GENE:[A-Z0-9][A-Z0-9\\-.@_]*$"
+    },
+    "status": {
+      "enum": [
+        "NORMALIZED",
+        "MISSING",
+        "INDETERMINATE",
+        "UNSUPPORTED"
+      ]
+    },
+    "phenotype": {
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "enum": [
+            "POOR",
+            "INTERMEDIATE",
+            "NORMAL",
+            "RAPID",
+            "ULTRARAPID"
+          ]
+        }
+      ]
+    },
+    "reason_code": {
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "enum": [
+            "PHENOTYPE_INPUT_MISSING",
+            "PHENOTYPE_INPUT_INDETERMINATE",
+            "PHENOTYPE_INPUT_UNSUPPORTED",
+            "PHENOTYPE_INPUT_INVALID_TYPE",
+            "PHENOTYPE_INPUT_GENOTYPE_NOT_ALLOWED",
+            "PHENOTYPE_INPUT_BROAD_GROUP_NOT_ALLOWED"
+          ]
+        }
+      ]
+    },
+    "reason": {
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "string",
+          "minLength": 10
+        }
+      ]
+    },
+    "raw_value": {
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "string"
+        }
+      ]
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "NORMALIZED"
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "then": {
+        "properties": {
+          "phenotype": {
+            "enum": [
+              "POOR",
+              "INTERMEDIATE",
+              "NORMAL",
+              "RAPID",
+              "ULTRARAPID"
+            ]
+          },
+          "reason_code": {
+            "type": "null"
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "phenotype": {
+            "type": "null"
+          },
+          "reason_code": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  ]
+}

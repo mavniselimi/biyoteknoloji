@@ -1,0 +1,387 @@
+{
+  "absent_member_paths": [],
+  "integrity_note": "Evidence pack integrity describes this pack, not the programme. A valid pack that honestly records blockers is still a blocked programme.",
+  "manifest_excludes_itself": true,
+  "manifest_member_path": "data/ths6/wp25-evidence-pack-manifest.json",
+  "manifest_self_hash": null,
+  "manifest_self_hash_note": "null by construction. A manifest containing a digest of itself could never satisfy its own check: writing the digest changes the bytes it describes. The pack's identity is 'pack_sha256', which a verifier recomputes.",
+  "member_count": 53,
+  "members": [
+    {
+      "bytes": 25945,
+      "path": "data/ths6/wp25-claim-registry.json",
+      "present": true,
+      "sha256": "sha256:9bcf15167d6d580bfb276ecd29409ebaa1228f9350f729d0c3ce4c43a7266cac",
+      "state": "PRESENT"
+    },
+    {
+      "bytes": 8095,
+      "path": "data/ths6/wp25-contingency-matrix.json",
+      "present": true,
+      "sha256": "sha256:1a69487c37fba43b8fe67e5573bfa026f40c9cb71443d5d2b1aa6a3db3c1e4f7",
+      "state": "PRESENT"
+    },
+    {
+      "bytes": 16821,
+      "path": "data/ths6/wp25-definition-of-done.json",
+      "present": true,
+      "sha256": "sha256:a76b0869a2391d76e89e6cbf7ece4d7576152e2a9a03173f05de1c94f953f9d2",
+      "state": "PRESENT"
+    },
+    {
+      "bytes": 10585,
+      "path": "data/ths6/wp25-demo-manifest.json",
+      "present": true,
+      "sha256": "sha256:49a298d79ca94be2999fd5082fa055a9d57258e5c72b6a8748414843da0ccbc7",
+      "state": "PRESENT"
+    },
+    {
+      "bytes": 6121,
+      "path": "data/ths6/wp25-demo-preflight.json",
+      "present": true,
+      "sha256": "sha256:fbebc2b016dd74a604bd26e1fe337e771e78dde011b40a5faff73cea3acecf85",
+      "state": "PRESENT"
+    },
+    {
+      "bytes": 128735,
+      "path": "data/ths6/wp25-evidence-registry.json",
+      "present": true,
+      "sha256": "sha256:8e84e6b69877ab10fe1f8b8bcdd2b7ecdc2223f8f760904100b8f2e3ac01f5e0",
+      "state": "PRESENT"
+    },
+    {
+      "bytes": 6450,
+      "path": "data/ths6/wp25-findings.json",
+      "present": true,
+      "sha256": "sha256:bdd11f0816275f8a58448b8858587eb70d0519b22b08d62e591dd27cd56aef53",
+      "state": "PRESENT"
+    },
+    {
+      "bytes": 48314,
+      "path": "data/ths6/wp25-gate-matrix.json",
+      "present": true,
+      "sha256": "sha256:27f805a427efd2c83377d05b05e0a50062cb2ce2adb58233e8fa34c038449ac4",
+      "state": "PRESENT"
+    },
+    {
+      "bytes": 5667,
+      "path": "data/ths6/wp25-signoff-matrix.json",
+      "present": true,
+      "sha256": "sha256:09f181f04d9c831e5335ddf74c56cd73f5da30facc019122cf454503763a2425",
+      "state": "PRESENT"
+    },
+    {
+      "bytes": 2935,
+      "path": "data/ths6/wp25-ths6-status.json",
+      "present": true,
+      "sha256": "sha256:2be60abdf6c70253b6e1b52abe647df564760e0ad4af0455aa254a7891a30921",
+      "state": "PRESENT"
+    },
+    {
+      "bytes": 20079,
+      "path": "data/ths6/wp25-traceability-matrix.json",
+      "present": true,
+      "sha256": "sha256:76a20940e8b38c0966821dff4f15f3809cd2fcff528d0e0f1c00d9b679e18b4d",
+      "state": "PRESENT"
+    },
+    {
+      "bytes": 3011,
+      "path": "docs/ths6/final/README.md",
+      "present": true,
+      "sha256": "sha256:0622cfd60ec81484e432a45c0175785d415b0a071672eaf755903f70a7dc2d5c",
+      "state": "PRESENT"
+    },
+    {
+      "bytes": 3677,
+      "path": "docs/ths6/final/claim-boundary.md",
+      "present": true,
+      "sha256": "sha256:505e27aa59bbbdf5a306c609239d4841f8e6f0a8ae8aa5f849257e755c0c483e",
+      "state": "PRESENT"
+    },
+    {
+      "bytes": 3740,
+      "path": "docs/ths6/final/contingency-plan.md",
+      "present": true,
+      "sha256": "sha256:e67cbbf913175837292251709468c8ac081cd17502c66050cb9d7108eed9d6d8",
+      "state": "PRESENT"
+    },
+    {
+      "bytes": 4116,
+      "path": "docs/ths6/final/definition-of-done.md",
+      "present": true,
+      "sha256": "sha256:0f30eedde62bdee3507d15a787caf3478a989120e3d2e7eb062f881bc32fb7a9",
+      "state": "PRESENT"
+    },
+    {
+      "bytes": 4063,
+      "path": "docs/ths6/final/demo-runbook.md",
+      "present": true,
+      "sha256": "sha256:f2d463a6107691377b9e6d2ca2dea89258855f8b99cbb112e2bbcdf2694a7823",
+      "state": "PRESENT"
+    },
+    {
+      "bytes": 3749,
+      "path": "docs/ths6/final/evidence-index.md",
+      "present": true,
+      "sha256": "sha256:d68eee9269d35ae6d50f5722f7fc023456376ba9b29aab00477cfc1b5a772542",
+      "state": "PRESENT"
+    },
+    {
+      "bytes": 5065,
+      "path": "docs/ths6/final/executive-summary.md",
+      "present": true,
+      "sha256": "sha256:9c826eaac1705552379e4d412f7a67bc7222f8d03ee9ad1c54c54a77dadd43d5",
+      "state": "PRESENT"
+    },
+    {
+      "bytes": 4901,
+      "path": "docs/ths6/final/findings-and-discrepancies.md",
+      "present": true,
+      "sha256": "sha256:b5c41b2807e516330f3c1eede605ad0e052f1e58b0dce4b8f1c177361e18bb9a",
+      "state": "PRESENT"
+    },
+    {
+      "bytes": 2604,
+      "path": "docs/ths6/final/gate-a-scientific-data.md",
+      "present": true,
+      "sha256": "sha256:006baca54dbb54e26a5bf4df2678c49e240c177a7453c3476a38e8620f069422",
+      "state": "PRESENT"
+    },
+    {
+      "bytes": 2343,
+      "path": "docs/ths6/final/gate-b-rules.md",
+      "present": true,
+      "sha256": "sha256:7af69cef6db71bcacaf2bf37421a1bc4e3be9f1017b73d76ebfe4ca3befefa0c",
+      "state": "PRESENT"
+    },
+    {
+      "bytes": 3191,
+      "path": "docs/ths6/final/gate-c-core-safety.md",
+      "present": true,
+      "sha256": "sha256:28b048d7853669a031c9fea5ce5eff71d69ee8dbe71bf56eab1e9a09941a4499",
+      "state": "PRESENT"
+    },
+    {
+      "bytes": 3224,
+      "path": "docs/ths6/final/gate-d-validation.md",
+      "present": true,
+      "sha256": "sha256:bed8d4da3b32581b25a0133ebde11d0634816ffd7a0b6f1f1411cfcd61d0ebeb",
+      "state": "PRESENT"
+    },
+    {
+      "bytes": 3001,
+      "path": "docs/ths6/final/gate-e-operational.md",
+      "present": true,
+      "sha256": "sha256:74a684f4b2e23f4aba716024c84a6152514c3e04d80a43dd6061cb722777f5b0",
+      "state": "PRESENT"
+    },
+    {
+      "bytes": 3158,
+      "path": "docs/ths6/final/gate-f-ths6.md",
+      "present": true,
+      "sha256": "sha256:b58628d22f5d8fd391223ef0b15a27147fd01fbc1716476ced62344f44566303",
+      "state": "PRESENT"
+    },
+    {
+      "bytes": 3302,
+      "path": "docs/ths6/final/human-signoff.md",
+      "present": true,
+      "sha256": "sha256:f0865c33c20e07b648574bfcfc169ebf783f90968e92f5d008b785080a4c63e4",
+      "state": "PRESENT"
+    },
+    {
+      "bytes": 3002,
+      "path": "docs/ths6/final/limitations-and-scope.md",
+      "present": true,
+      "sha256": "sha256:d1b6e02aef3f06f8b4e82bc23d56a3269fbf04608a997716254d81e7242e0b7a",
+      "state": "PRESENT"
+    },
+    {
+      "bytes": 2849,
+      "path": "docs/ths6/final/open-blockers.md",
+      "present": true,
+      "sha256": "sha256:94979e0867b6bb5bc246189742c9c15a6bd27440b6f25253f9b641efdbc7521e",
+      "state": "PRESENT"
+    },
+    {
+      "bytes": 3647,
+      "path": "docs/ths6/final/pack-integrity.md",
+      "present": true,
+      "sha256": "sha256:b7dbc49a2bd8623936fdeb089b685c6e14290d71c82d8ff4edc94ecf31e400f5",
+      "state": "PRESENT"
+    },
+    {
+      "bytes": 2192,
+      "path": "docs/ths6/final/traceability.md",
+      "present": true,
+      "sha256": "sha256:d4ee2dd02af7d31529b551374ca8dc69b16a8236867fd450a1aa62b0e7b8e950",
+      "state": "PRESENT"
+    },
+    {
+      "bytes": 4108,
+      "path": "docs/ths6/final/verification-instructions.md",
+      "present": true,
+      "sha256": "sha256:df87ee190ef5e04be152c1b08196920d29c87b95215315c54a5a5f6eadcc64df",
+      "state": "PRESENT"
+    },
+    {
+      "bytes": 4423,
+      "path": "docs/ths6/final/vocabulary.md",
+      "present": true,
+      "sha256": "sha256:d37309e3e99a656e7036702abf85f9e1f086c174b841afb59a70e849ddb92fed",
+      "state": "PRESENT"
+    },
+    {
+      "bytes": 5428,
+      "path": "docs/ths6/final/what-remains.md",
+      "present": true,
+      "sha256": "sha256:a7e66e7b0707a7ea03b75258ade643f76212e378cd49d291b959c7f9d8a79543",
+      "state": "PRESENT"
+    },
+    {
+      "bytes": 4996,
+      "path": "schemas/wp25/claim-registry.schema.json",
+      "present": true,
+      "sha256": "sha256:51fe642f0a0dbb5d142562a9af49486d43b56dee9e56ffe970b723f7d645197d",
+      "state": "PRESENT"
+    },
+    {
+      "bytes": 2261,
+      "path": "schemas/wp25/claim.schema.json",
+      "present": true,
+      "sha256": "sha256:b02615d1d7721d48e35d53c98f607e3a16995f4e67c38f177a41effdee1690b1",
+      "state": "PRESENT"
+    },
+    {
+      "bytes": 2457,
+      "path": "schemas/wp25/contingency-matrix.schema.json",
+      "present": true,
+      "sha256": "sha256:03e5e8e5f56237b2186c7f7af37e2a780c72d938be95085638e2eeef10fb294e",
+      "state": "PRESENT"
+    },
+    {
+      "bytes": 1061,
+      "path": "schemas/wp25/contingency-scenario.schema.json",
+      "present": true,
+      "sha256": "sha256:c1eb7a6eb47dd2c2f8a205cb660448436f26c46aca8647396de3ceb2210e1c0c",
+      "state": "PRESENT"
+    },
+    {
+      "bytes": 4201,
+      "path": "schemas/wp25/definition-of-done-item.schema.json",
+      "present": true,
+      "sha256": "sha256:27fa9e936ad8387da319000d7119a7d3844cfa6b1b39af084e43fe6f90203bed",
+      "state": "PRESENT"
+    },
+    {
+      "bytes": 10450,
+      "path": "schemas/wp25/definition-of-done-registry.schema.json",
+      "present": true,
+      "sha256": "sha256:b14108b9a0ed4db02457b6f81ccff9195b54bd0782c8d0ed0636dabe8e3a38ab",
+      "state": "PRESENT"
+    },
+    {
+      "bytes": 5201,
+      "path": "schemas/wp25/demo-manifest.schema.json",
+      "present": true,
+      "sha256": "sha256:3493a8b9aa701ac6fa71df356321175cd1bc736e442a2cf40a52d7b5ec919747",
+      "state": "PRESENT"
+    },
+    {
+      "bytes": 5889,
+      "path": "schemas/wp25/demo-preflight.schema.json",
+      "present": true,
+      "sha256": "sha256:53d5f1d51cbc117383bf25cef2c3e152fd7cd15774b045532bc3e222e05e7e96",
+      "state": "PRESENT"
+    },
+    {
+      "bytes": 4388,
+      "path": "schemas/wp25/evidence-item.schema.json",
+      "present": true,
+      "sha256": "sha256:3bff037440c50ac8b79306f9c0bf8148c3e60b83ca24547012e8b6f383fdacf4",
+      "state": "PRESENT"
+    },
+    {
+      "bytes": 3136,
+      "path": "schemas/wp25/evidence-pack-manifest.schema.json",
+      "present": true,
+      "sha256": "sha256:3191596aec46ac8195473cefd3bf51a15e9a464d4084addefc36be721b365d42",
+      "state": "PRESENT"
+    },
+    {
+      "bytes": 10431,
+      "path": "schemas/wp25/evidence-registry.schema.json",
+      "present": true,
+      "sha256": "sha256:a462d1ac60ad6470c6fba8f94f8399e919859b23adeb02b5191c4c972c6e5707",
+      "state": "PRESENT"
+    },
+    {
+      "bytes": 2484,
+      "path": "schemas/wp25/finding.schema.json",
+      "present": true,
+      "sha256": "sha256:c72e59fd56d4597562a8288142b143121e71b34272c5258cc5045cf3475cf11d",
+      "state": "PRESENT"
+    },
+    {
+      "bytes": 7276,
+      "path": "schemas/wp25/gate-condition.schema.json",
+      "present": true,
+      "sha256": "sha256:7ed510169a3dbabadef698a6060eceedf0dd36fd9fc92d04603b10581b00d8f2",
+      "state": "PRESENT"
+    },
+    {
+      "bytes": 22854,
+      "path": "schemas/wp25/gate-matrix.schema.json",
+      "present": true,
+      "sha256": "sha256:be0c1e867f3fb56c92cd385a99bc9faa441bb18813e678aa5b3c79f8d370f732",
+      "state": "PRESENT"
+    },
+    {
+      "bytes": 16470,
+      "path": "schemas/wp25/gate-record.schema.json",
+      "present": true,
+      "sha256": "sha256:3acb1582d9d8b56da7760a1147a34f941959161e4e823b1c915ce49d6f45ee95",
+      "state": "PRESENT"
+    },
+    {
+      "bytes": 1861,
+      "path": "schemas/wp25/pack-integrity-result.schema.json",
+      "present": true,
+      "sha256": "sha256:839909fadcc01c81e720967f7c37929ddb4b39e2b724a2ed12c2ac35d9ce4820",
+      "state": "PRESENT"
+    },
+    {
+      "bytes": 2355,
+      "path": "schemas/wp25/signoff-matrix.schema.json",
+      "present": true,
+      "sha256": "sha256:b2edd570af1b0169e45c2cbc70519aa4df3d573342956e960ad943e69a987f09",
+      "state": "PRESENT"
+    },
+    {
+      "bytes": 5424,
+      "path": "schemas/wp25/ths6-status.schema.json",
+      "present": true,
+      "sha256": "sha256:e1a1d44c89d02b5698f40c599d7548811a1bd2f2ad31f59228ad826afb9f42f1",
+      "state": "PRESENT"
+    },
+    {
+      "bytes": 4865,
+      "path": "schemas/wp25/traceability-matrix.schema.json",
+      "present": true,
+      "sha256": "sha256:2efd05279167c98e899c01ee307a4f9f6cbcbd3fd495234593870ee59eb326b2",
+      "state": "PRESENT"
+    },
+    {
+      "bytes": 2264,
+      "path": "schemas/wp25/traceability-row.schema.json",
+      "present": true,
+      "sha256": "sha256:2acf1515003961cde3bb291de5b761ce58a1d750374f2f28dc0d871e5d7ca678",
+      "state": "PRESENT"
+    }
+  ],
+  "pack_integrity_version": "pgx-wp25-pack-integrity/1",
+  "pack_sha256": "sha256:e51a1bf63a7c79c09815d709560dd61edf0ec9f84c0ed8dfcad61bc52064893a",
+  "pack_version": "pgx-wp25-evidence-pack/1",
+  "present_member_count": 53,
+  "refused_member_paths": []
+}

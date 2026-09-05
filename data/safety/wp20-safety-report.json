@@ -1,0 +1,802 @@
+{
+  "detector_evidence_disclaimer": "Detecting an unsafe negative control proves that this software detector rejects that unsafe state. It is not clinical validation, scientific validation, expert review, or evidence that the system is safe for any patient. Those are produced by people under WP-21 and WP-22 and cannot be produced by running tests.",
+  "evidence_schema_version": "pgx-wp20-safety-execution/1",
+  "false_reassurance": {
+    "corpus_size": 36,
+    "meets_target": true,
+    "note": "Every combination of coverage status and calculated attention level the aggregator can be handed, swept exhaustively. The target is exactly zero unsafe outputs. This is a count over a software corpus. It is NOT a clinical false-negative rate and says nothing about how often a real case would be mishandled.",
+    "target": 0,
+    "violation_count": 0
+  },
+  "invariants": [
+    {
+      "all_controls_satisfied": true,
+      "blockers": [],
+      "compliance_state": "COMPLIANT",
+      "control_count": 3,
+      "controls": [
+        {
+          "control_id": "SC-SAFETY-INV-001",
+          "detail": "the safe control was accepted",
+          "detected": false,
+          "expected_refusal_code": "",
+          "kind": "SAFE",
+          "observed_refusal_code": "",
+          "satisfied": true
+        },
+        {
+          "control_id": "NC-INV-001-ABSENCE-MAPPED-TO-LOW",
+          "detail": "FULL coverage with no finding produced LOW; the one legitimate reassuring answer is NO_ACTIVE_ATTENTION",
+          "detected": true,
+          "expected_refusal_code": "SAFETY_FALSE_REASSURANCE",
+          "kind": "NEGATIVE",
+          "observed_refusal_code": "SAFETY_FALSE_REASSURANCE",
+          "satisfied": true
+        },
+        {
+          "control_id": "NC-INV-001-NOT-ASSESSED-IN-MAXIMUM",
+          "detail": "coverage PARTIAL with no calculated level produced NO_ACTIVE_ATTENTION - absence rendered as reassurance",
+          "detected": true,
+          "expected_refusal_code": "SAFETY_FALSE_REASSURANCE",
+          "kind": "NEGATIVE",
+          "observed_refusal_code": "SAFETY_FALSE_REASSURANCE",
+          "satisfied": true
+        }
+      ],
+      "detected_negative_controls": 2,
+      "execution_state": "PASS",
+      "invariant_id": "SAFETY-INV-001",
+      "negative_control_count": 2,
+      "reason": "",
+      "refusal_code": "",
+      "registered": true,
+      "severity": "CRITICAL_PATIENT_FACING",
+      "tests": {
+        "errored": 0,
+        "executed": 121,
+        "failed": 0,
+        "passed": 121,
+        "skipped": 0,
+        "unexplained_skips": 0
+      }
+    },
+    {
+      "all_controls_satisfied": true,
+      "blockers": [
+        {
+          "code": "SAFETY_LLM_RENDERER_IS_A_P1_FEATURE",
+          "detail": "P1-06 owns the optional narration renderer. P0 ships none, the default is disabled, and the deterministic report needs no model at all. The adversarial fixtures here are test-only doubles.",
+          "owner": "P1"
+        }
+      ],
+      "compliance_state": "NOT_PRESENT",
+      "control_count": 4,
+      "controls": [
+        {
+          "control_id": "SC-SAFETY-INV-002",
+          "detail": "the safe control was accepted",
+          "detected": false,
+          "expected_refusal_code": "",
+          "kind": "SAFE",
+          "observed_refusal_code": "",
+          "satisfied": true
+        },
+        {
+          "control_id": "NC-INV-002-RENDERER-CHANGES-ATTENTION",
+          "detail": "the narration dropped attention 'HIGH', which the deterministic report carried",
+          "detected": true,
+          "expected_refusal_code": "SAFETY_LLM_ALTERED_FACT",
+          "kind": "NEGATIVE",
+          "observed_refusal_code": "SAFETY_LLM_ALTERED_FACT",
+          "satisfied": true
+        },
+        {
+          "control_id": "NC-INV-002-RENDERER-INVENTS-DOSE",
+          "detail": "the narration introduced a dose ('25 mg'); the deterministic report contains none and no dose logic is validated",
+          "detected": true,
+          "expected_refusal_code": "SAFETY_LLM_ALTERED_FACT",
+          "kind": "NEGATIVE",
+          "observed_refusal_code": "SAFETY_LLM_ALTERED_FACT",
+          "satisfied": true
+        },
+        {
+          "control_id": "NC-INV-002-RENDERER-DROPS-VERSION",
+          "detail": "the narration dropped release_id 'REL-TEST-001', which the deterministic report carried",
+          "detected": true,
+          "expected_refusal_code": "SAFETY_LLM_ALTERED_FACT",
+          "kind": "NEGATIVE",
+          "observed_refusal_code": "SAFETY_LLM_ALTERED_FACT",
+          "satisfied": true
+        }
+      ],
+      "detected_negative_controls": 3,
+      "execution_state": "BLOCKED",
+      "invariant_id": "SAFETY-INV-002",
+      "negative_control_count": 3,
+      "reason": "every executable check passed; enforcement is incomplete because P1-06 owns the optional narration renderer. P0 ships none, the default is disabled, and the deterministic report needs no model at all. The adversarial fixtures here are test-only doubles.",
+      "refusal_code": "SAFETY_LLM_ALTERED_FACT",
+      "registered": true,
+      "severity": "CRITICAL_PATIENT_FACING",
+      "tests": {
+        "errored": 0,
+        "executed": 64,
+        "failed": 0,
+        "passed": 64,
+        "skipped": 0,
+        "unexplained_skips": 0
+      }
+    },
+    {
+      "all_controls_satisfied": true,
+      "blockers": [],
+      "compliance_state": "COMPLIANT",
+      "control_count": 4,
+      "controls": [
+        {
+          "control_id": "SC-SAFETY-INV-003",
+          "detail": "the safe control was accepted",
+          "detected": false,
+          "expected_refusal_code": "",
+          "kind": "SAFE",
+          "observed_refusal_code": "",
+          "satisfied": true
+        },
+        {
+          "control_id": "NC-INV-003-DRAFT-RULE-FIRES",
+          "detail": "rule R-DRAFT-1 executed with status DRAFT; only VALIDATED rules may participate",
+          "detected": true,
+          "expected_refusal_code": "SAFETY_UNVALIDATED_RULE_EXECUTED",
+          "kind": "NEGATIVE",
+          "observed_refusal_code": "SAFETY_UNVALIDATED_RULE_EXECUTED",
+          "satisfied": true
+        },
+        {
+          "control_id": "NC-INV-003-DEPRECATED-RULE-FIRES",
+          "detail": "rule R-DEPRECATED-1 executed with status DEPRECATED; only VALIDATED rules may participate",
+          "detected": true,
+          "expected_refusal_code": "SAFETY_UNVALIDATED_RULE_EXECUTED",
+          "kind": "NEGATIVE",
+          "observed_refusal_code": "SAFETY_UNVALIDATED_RULE_EXECUTED",
+          "satisfied": true
+        },
+        {
+          "control_id": "NC-INV-003-UNPINNED-RULESET-ACCEPTED",
+          "detail": "rule R-UNPINNED-1 executed from ruleset RS-OTHER-002, which is not the pinned RS-PINNED-001",
+          "detected": true,
+          "expected_refusal_code": "SAFETY_UNVALIDATED_RULE_EXECUTED",
+          "kind": "NEGATIVE",
+          "observed_refusal_code": "SAFETY_UNVALIDATED_RULE_EXECUTED",
+          "satisfied": true
+        }
+      ],
+      "detected_negative_controls": 3,
+      "execution_state": "PASS",
+      "invariant_id": "SAFETY-INV-003",
+      "negative_control_count": 3,
+      "reason": "",
+      "refusal_code": "",
+      "registered": true,
+      "severity": "CRITICAL_EVIDENTIAL",
+      "tests": {
+        "errored": 0,
+        "executed": 81,
+        "failed": 0,
+        "passed": 81,
+        "skipped": 0,
+        "unexplained_skips": 0
+      }
+    },
+    {
+      "all_controls_satisfied": true,
+      "blockers": [],
+      "compliance_state": "COMPLIANT",
+      "control_count": 4,
+      "controls": [
+        {
+          "control_id": "SC-SAFETY-INV-004",
+          "detail": "the safe control was accepted",
+          "detected": false,
+          "expected_refusal_code": "",
+          "kind": "SAFE",
+          "observed_refusal_code": "",
+          "satisfied": true
+        },
+        {
+          "control_id": "NC-INV-004-PREFIX-MATCHER",
+          "detail": "RAPID matched a rule declaring {ULTRARAPID}; matching must be exact string equality with no prefix, synonym or ordinal rule",
+          "detected": true,
+          "expected_refusal_code": "SAFETY_PHENOTYPE_CROSS_MATCH",
+          "kind": "NEGATIVE",
+          "observed_refusal_code": "SAFETY_PHENOTYPE_CROSS_MATCH",
+          "satisfied": true
+        },
+        {
+          "control_id": "NC-INV-004-SYNONYM-TABLE",
+          "detail": "RAPID matched a rule declaring {ULTRARAPID}; matching must be exact string equality with no prefix, synonym or ordinal rule",
+          "detected": true,
+          "expected_refusal_code": "SAFETY_PHENOTYPE_CROSS_MATCH",
+          "kind": "NEGATIVE",
+          "observed_refusal_code": "SAFETY_PHENOTYPE_CROSS_MATCH",
+          "satisfied": true
+        },
+        {
+          "control_id": "NC-INV-004-ORDINAL-PROXIMITY",
+          "detail": "POOR matched a rule declaring {INTERMEDIATE}; matching must be exact string equality with no prefix, synonym or ordinal rule",
+          "detected": true,
+          "expected_refusal_code": "SAFETY_PHENOTYPE_CROSS_MATCH",
+          "kind": "NEGATIVE",
+          "observed_refusal_code": "SAFETY_PHENOTYPE_CROSS_MATCH",
+          "satisfied": true
+        }
+      ],
+      "detected_negative_controls": 3,
+      "execution_state": "PASS",
+      "invariant_id": "SAFETY-INV-004",
+      "negative_control_count": 3,
+      "reason": "",
+      "refusal_code": "",
+      "registered": true,
+      "severity": "CRITICAL_PATIENT_FACING",
+      "tests": {
+        "errored": 0,
+        "executed": 69,
+        "failed": 0,
+        "passed": 69,
+        "skipped": 0,
+        "unexplained_skips": 0
+      }
+    },
+    {
+      "all_controls_satisfied": true,
+      "blockers": [
+        {
+          "code": "SAFETY_CANDIDATE_EXPLORATION_IS_A_P1_FEATURE",
+          "detail": "P1-02 owns candidate exploration. P0 ships none. The legacy 0-100 suitability score is removed and must not return.",
+          "owner": "P1"
+        }
+      ],
+      "compliance_state": "NOT_PRESENT",
+      "control_count": 4,
+      "controls": [
+        {
+          "control_id": "SC-SAFETY-INV-005",
+          "detail": "the safe control was accepted",
+          "detected": false,
+          "expected_refusal_code": "",
+          "kind": "SAFE",
+          "observed_refusal_code": "",
+          "satisfied": true
+        },
+        {
+          "control_id": "NC-INV-005-SAFETY-SCORE",
+          "detail": "candidate 'SYNTHDRUG-1' carries field 'safety_score'; a score mixes 'we have data' with 'this is a good option'",
+          "detected": true,
+          "expected_refusal_code": "SAFETY_CANDIDATE_PREFERENCE",
+          "kind": "NEGATIVE",
+          "observed_refusal_code": "SAFETY_CANDIDATE_PREFERENCE",
+          "satisfied": true
+        },
+        {
+          "control_id": "NC-INV-005-ORDERED-BY-ATTENTION",
+          "detail": "the listing is ordered by 'attention'; a ranked list reads as a recommendation whatever the disclaimer says",
+          "detected": true,
+          "expected_refusal_code": "SAFETY_CANDIDATE_PREFERENCE",
+          "kind": "NEGATIVE",
+          "observed_refusal_code": "SAFETY_CANDIDATE_PREFERENCE",
+          "satisfied": true
+        },
+        {
+          "control_id": "NC-INV-005-PREFERRED-LABEL",
+          "detail": "candidate output contains 'preferred', which labels a candidate as preferable",
+          "detected": true,
+          "expected_refusal_code": "SAFETY_CANDIDATE_PREFERENCE",
+          "kind": "NEGATIVE",
+          "observed_refusal_code": "SAFETY_CANDIDATE_PREFERENCE",
+          "satisfied": true
+        }
+      ],
+      "detected_negative_controls": 3,
+      "execution_state": "BLOCKED",
+      "invariant_id": "SAFETY-INV-005",
+      "negative_control_count": 3,
+      "reason": "every executable check passed; enforcement is incomplete because P1-02 owns candidate exploration. P0 ships none. The legacy 0-100 suitability score is removed and must not return.",
+      "refusal_code": "SAFETY_CANDIDATE_PREFERENCE",
+      "registered": true,
+      "severity": "CRITICAL_PATIENT_FACING",
+      "tests": {
+        "errored": 0,
+        "executed": 131,
+        "failed": 0,
+        "passed": 131,
+        "skipped": 0,
+        "unexplained_skips": 0
+      }
+    },
+    {
+      "all_controls_satisfied": true,
+      "blockers": [],
+      "compliance_state": "COMPLIANT",
+      "control_count": 4,
+      "controls": [
+        {
+          "control_id": "SC-SAFETY-INV-006",
+          "detail": "the safe control was accepted",
+          "detected": false,
+          "expected_refusal_code": "",
+          "kind": "SAFE",
+          "observed_refusal_code": "",
+          "satisfied": true
+        },
+        {
+          "control_id": "NC-INV-006-DANGLING-EVIDENCE-REFERENCE",
+          "detail": "finding 'F-DANGLING' cites evidence 'EV-MISSING', which resolves to nothing",
+          "detected": true,
+          "expected_refusal_code": "SAFETY_EVIDENCE_NOT_RESOLVABLE",
+          "kind": "NEGATIVE",
+          "observed_refusal_code": "SAFETY_EVIDENCE_NOT_RESOLVABLE",
+          "satisfied": true
+        },
+        {
+          "control_id": "NC-INV-006-FINDING-WITHOUT-EVIDENCE",
+          "detail": "finding 'F-DANGLING' cites evidence 'EV-MISSING', which resolves to nothing",
+          "detected": true,
+          "expected_refusal_code": "SAFETY_EVIDENCE_NOT_RESOLVABLE",
+          "kind": "NEGATIVE",
+          "observed_refusal_code": "SAFETY_EVIDENCE_NOT_RESOLVABLE",
+          "satisfied": true
+        },
+        {
+          "control_id": "NC-INV-006-EVIDENCE-OUTSIDE-PINNED-DATASET",
+          "detail": "finding 'F-STALE-DATASET' cites evidence 'EV-STALE' from dataset PGX-DATA-TEST-002, not the pinned PGX-DATA-TEST-001",
+          "detected": true,
+          "expected_refusal_code": "SAFETY_EVIDENCE_NOT_RESOLVABLE",
+          "kind": "NEGATIVE",
+          "observed_refusal_code": "SAFETY_EVIDENCE_NOT_RESOLVABLE",
+          "satisfied": true
+        }
+      ],
+      "detected_negative_controls": 3,
+      "execution_state": "PASS",
+      "invariant_id": "SAFETY-INV-006",
+      "negative_control_count": 3,
+      "reason": "",
+      "refusal_code": "",
+      "registered": true,
+      "severity": "CRITICAL_EVIDENTIAL",
+      "tests": {
+        "errored": 0,
+        "executed": 60,
+        "failed": 0,
+        "passed": 60,
+        "skipped": 0,
+        "unexplained_skips": 0
+      }
+    },
+    {
+      "all_controls_satisfied": true,
+      "blockers": [
+        {
+          "code": "SAFETY_AUDIT_ACTOR_IDENTITY_OWNED_BY_WP23",
+          "detail": "Actor, role, session and correlation identity on the audit record are WP-23's. The release bundle and both hashes are enforced now.",
+          "owner": "WP-23"
+        }
+      ],
+      "compliance_state": "COMPLIANT",
+      "control_count": 5,
+      "controls": [
+        {
+          "control_id": "SC-SAFETY-INV-007",
+          "detail": "the safe control was accepted",
+          "detected": false,
+          "expected_refusal_code": "",
+          "kind": "SAFE",
+          "observed_refusal_code": "",
+          "satisfied": true
+        },
+        {
+          "control_id": "NC-INV-007-MISSING-RELEASE-FIELD",
+          "detail": "a record missing 'release_id' was persisted; the release bundle and both hashes must be complete before anything is stored",
+          "detected": true,
+          "expected_refusal_code": "SAFETY_RELEASE_BUNDLE_INCOMPLETE",
+          "kind": "NEGATIVE",
+          "observed_refusal_code": "SAFETY_RELEASE_BUNDLE_INCOMPLETE",
+          "satisfied": true
+        },
+        {
+          "control_id": "NC-INV-007-MISSING-INPUT-HASH",
+          "detail": "a record missing 'input_hash' was persisted; the release bundle and both hashes must be complete before anything is stored",
+          "detected": true,
+          "expected_refusal_code": "SAFETY_RELEASE_BUNDLE_INCOMPLETE",
+          "kind": "NEGATIVE",
+          "observed_refusal_code": "SAFETY_RELEASE_BUNDLE_INCOMPLETE",
+          "satisfied": true
+        },
+        {
+          "control_id": "NC-INV-007-MISSING-OUTPUT-HASH",
+          "detail": "a record missing 'output_hash' was persisted; the release bundle and both hashes must be complete before anything is stored",
+          "detected": true,
+          "expected_refusal_code": "SAFETY_RELEASE_BUNDLE_INCOMPLETE",
+          "kind": "NEGATIVE",
+          "observed_refusal_code": "SAFETY_RELEASE_BUNDLE_INCOMPLETE",
+          "satisfied": true
+        },
+        {
+          "control_id": "NC-INV-007-PARTIAL-PERSISTENCE",
+          "detail": "the store committed an assessment row and abandoned its children; a partly-verified assessment is one whose trustworthy half cannot be told from the rest",
+          "detected": true,
+          "expected_refusal_code": "SAFETY_RELEASE_BUNDLE_INCOMPLETE",
+          "kind": "NEGATIVE",
+          "observed_refusal_code": "SAFETY_RELEASE_BUNDLE_INCOMPLETE",
+          "satisfied": true
+        }
+      ],
+      "detected_negative_controls": 4,
+      "execution_state": "BLOCKED",
+      "invariant_id": "SAFETY-INV-007",
+      "negative_control_count": 4,
+      "reason": "every executable check passed; enforcement is incomplete because Actor, role, session and correlation identity on the audit record are WP-23's. The release bundle and both hashes are enforced now.",
+      "refusal_code": "SAFETY_RELEASE_BUNDLE_INCOMPLETE",
+      "registered": true,
+      "severity": "CRITICAL_EVIDENTIAL",
+      "tests": {
+        "errored": 0,
+        "executed": 100,
+        "failed": 0,
+        "passed": 100,
+        "skipped": 0,
+        "unexplained_skips": 0
+      }
+    },
+    {
+      "all_controls_satisfied": true,
+      "blockers": [],
+      "compliance_state": "COMPLIANT",
+      "control_count": 4,
+      "controls": [
+        {
+          "control_id": "SC-SAFETY-INV-008",
+          "detail": "the safe control was accepted",
+          "detected": false,
+          "expected_refusal_code": "",
+          "kind": "SAFE",
+          "observed_refusal_code": "",
+          "satisfied": true
+        },
+        {
+          "control_id": "NC-INV-008-CONFLICT-TAKES-LOWER-LEVEL",
+          "detail": "conflicting validated rules produced coverage PARTIAL; a disagreement must surface as SOURCE_CONFLICT",
+          "detected": true,
+          "expected_refusal_code": "SAFETY_CONFLICT_COLLAPSED",
+          "kind": "NEGATIVE",
+          "observed_refusal_code": "SAFETY_CONFLICT_COLLAPSED",
+          "satisfied": true
+        },
+        {
+          "control_id": "NC-INV-008-CONFLICT-AVERAGED",
+          "detail": "conflicting validated rules produced coverage PARTIAL; a disagreement must surface as SOURCE_CONFLICT",
+          "detected": true,
+          "expected_refusal_code": "SAFETY_CONFLICT_COLLAPSED",
+          "kind": "NEGATIVE",
+          "observed_refusal_code": "SAFETY_CONFLICT_COLLAPSED",
+          "satisfied": true
+        },
+        {
+          "control_id": "NC-INV-008-CONFLICTING-RULE-DROPPED",
+          "detail": "conflicting validated rules produced coverage FULL; a disagreement must surface as SOURCE_CONFLICT",
+          "detected": true,
+          "expected_refusal_code": "SAFETY_CONFLICT_COLLAPSED",
+          "kind": "NEGATIVE",
+          "observed_refusal_code": "SAFETY_CONFLICT_COLLAPSED",
+          "satisfied": true
+        }
+      ],
+      "detected_negative_controls": 3,
+      "execution_state": "PASS",
+      "invariant_id": "SAFETY-INV-008",
+      "negative_control_count": 3,
+      "reason": "",
+      "refusal_code": "",
+      "registered": true,
+      "severity": "CRITICAL_PATIENT_FACING",
+      "tests": {
+        "errored": 0,
+        "executed": 64,
+        "failed": 0,
+        "passed": 64,
+        "skipped": 0,
+        "unexplained_skips": 0
+      }
+    },
+    {
+      "all_controls_satisfied": true,
+      "blockers": [
+        {
+          "code": "SAFETY_NO_HOLDOUT_CASES_EXIST",
+          "detail": "The separation mechanism is enforced and proven. There are zero holdout cases to separate, which is a scientific blocker WP-18 reports and no code can close.",
+          "owner": "scientific curators"
+        }
+      ],
+      "compliance_state": "COMPLIANT",
+      "control_count": 4,
+      "controls": [
+        {
+          "control_id": "SC-SAFETY-INV-009",
+          "detail": "the safe control was accepted",
+          "detected": false,
+          "expected_refusal_code": "",
+          "kind": "SAFE",
+          "observed_refusal_code": "",
+          "satisfied": true
+        },
+        {
+          "control_id": "NC-INV-009-ID-IN-TWO-ROLES",
+          "detail": "leak/same-identifier: an overlapping set was reported clean; once a holdout leaks into development no later analysis can undo it",
+          "detected": true,
+          "expected_refusal_code": "SAFETY_PARTITION_OVERLAP",
+          "kind": "NEGATIVE",
+          "observed_refusal_code": "SAFETY_PARTITION_OVERLAP",
+          "satisfied": true
+        },
+        {
+          "control_id": "NC-INV-009-CONTENT-DUPLICATE-ACROSS-PARTITIONS",
+          "detail": "leak/duplicate-content: an overlapping set was reported clean; once a holdout leaks into development no later analysis can undo it",
+          "detected": true,
+          "expected_refusal_code": "SAFETY_PARTITION_OVERLAP",
+          "kind": "NEGATIVE",
+          "observed_refusal_code": "SAFETY_PARTITION_OVERLAP",
+          "satisfied": true
+        },
+        {
+          "control_id": "NC-INV-009-DERIVATION-FAMILY-SPLIT",
+          "detail": "leak/same-identifier: an overlapping set was reported clean; once a holdout leaks into development no later analysis can undo it",
+          "detected": true,
+          "expected_refusal_code": "SAFETY_PARTITION_OVERLAP",
+          "kind": "NEGATIVE",
+          "observed_refusal_code": "SAFETY_PARTITION_OVERLAP",
+          "satisfied": true
+        }
+      ],
+      "detected_negative_controls": 3,
+      "execution_state": "BLOCKED",
+      "invariant_id": "SAFETY-INV-009",
+      "negative_control_count": 3,
+      "reason": "every executable check passed; enforcement is incomplete because The separation mechanism is enforced and proven. There are zero holdout cases to separate, which is a scientific blocker WP-18 reports and no code can close.",
+      "refusal_code": "SAFETY_PARTITION_OVERLAP",
+      "registered": true,
+      "severity": "CRITICAL_EVIDENTIAL",
+      "tests": {
+        "errored": 0,
+        "executed": 54,
+        "failed": 0,
+        "passed": 54,
+        "skipped": 0,
+        "unexplained_skips": 0
+      }
+    },
+    {
+      "all_controls_satisfied": true,
+      "blockers": [],
+      "compliance_state": "COMPLIANT",
+      "control_count": 4,
+      "controls": [
+        {
+          "control_id": "SC-SAFETY-INV-010",
+          "detail": "the safe control was accepted",
+          "detected": false,
+          "expected_refusal_code": "",
+          "kind": "SAFE",
+          "observed_refusal_code": "",
+          "satisfied": true
+        },
+        {
+          "control_id": "NC-INV-010-REPORT-CARRIES-RECOMMENDATION",
+          "detail": "report/recommendation: prohibited claim text was released; a blocking claim must prevent release and must never be auto-edited into compliance",
+          "detected": true,
+          "expected_refusal_code": "SAFETY_PROHIBITED_CLAIM",
+          "kind": "NEGATIVE",
+          "observed_refusal_code": "SAFETY_PROHIBITED_CLAIM",
+          "satisfied": true
+        },
+        {
+          "control_id": "NC-INV-010-API-STRING-CARRIES-DOSE",
+          "detail": "report/recommendation: prohibited claim text was released; a blocking claim must prevent release and must never be auto-edited into compliance",
+          "detected": true,
+          "expected_refusal_code": "SAFETY_PROHIBITED_CLAIM",
+          "kind": "NEGATIVE",
+          "observed_refusal_code": "SAFETY_PROHIBITED_CLAIM",
+          "satisfied": true
+        },
+        {
+          "control_id": "NC-INV-010-TEMPLATE-CARRIES-REASSURANCE",
+          "detail": "report/recommendation: prohibited claim text was released; a blocking claim must prevent release and must never be auto-edited into compliance",
+          "detected": true,
+          "expected_refusal_code": "SAFETY_PROHIBITED_CLAIM",
+          "kind": "NEGATIVE",
+          "observed_refusal_code": "SAFETY_PROHIBITED_CLAIM",
+          "satisfied": true
+        }
+      ],
+      "detected_negative_controls": 3,
+      "execution_state": "PASS",
+      "invariant_id": "SAFETY-INV-010",
+      "negative_control_count": 3,
+      "reason": "",
+      "refusal_code": "",
+      "registered": true,
+      "severity": "CRITICAL_PATIENT_FACING",
+      "tests": {
+        "errored": 0,
+        "executed": 135,
+        "failed": 0,
+        "passed": 135,
+        "skipped": 0,
+        "unexplained_skips": 0
+      }
+    },
+    {
+      "all_controls_satisfied": true,
+      "blockers": [],
+      "compliance_state": "COMPLIANT",
+      "control_count": 5,
+      "controls": [
+        {
+          "control_id": "SC-SAFETY-INV-011",
+          "detail": "the safe control was accepted",
+          "detected": false,
+          "expected_refusal_code": "",
+          "kind": "SAFE",
+          "observed_refusal_code": "",
+          "satisfied": true
+        },
+        {
+          "control_id": "NC-INV-011-NESTED-GENOTYPE-FIELD",
+          "detail": "prohibited/nested-genotype: a prohibited real-data field was accepted; P0 takes only synthetic and protocol-defined input",
+          "detected": true,
+          "expected_refusal_code": "SAFETY_REAL_PATIENT_DATA",
+          "kind": "NEGATIVE",
+          "observed_refusal_code": "SAFETY_REAL_PATIENT_DATA",
+          "satisfied": true
+        },
+        {
+          "control_id": "NC-INV-011-PATIENT-IDENTIFIER",
+          "detail": "prohibited/nested-genotype: a prohibited real-data field was accepted; P0 takes only synthetic and protocol-defined input",
+          "detected": true,
+          "expected_refusal_code": "SAFETY_REAL_PATIENT_DATA",
+          "kind": "NEGATIVE",
+          "observed_refusal_code": "SAFETY_REAL_PATIENT_DATA",
+          "satisfied": true
+        },
+        {
+          "control_id": "NC-INV-011-RAW-SEQUENCING-PAYLOAD",
+          "detail": "prohibited/nested-genotype: a prohibited real-data field was accepted; P0 takes only synthetic and protocol-defined input",
+          "detected": true,
+          "expected_refusal_code": "SAFETY_REAL_PATIENT_DATA",
+          "kind": "NEGATIVE",
+          "observed_refusal_code": "SAFETY_REAL_PATIENT_DATA",
+          "satisfied": true
+        },
+        {
+          "control_id": "NC-INV-011-PILOT-MODE-REQUESTED",
+          "detail": "prohibited/nested-genotype: a prohibited real-data field was accepted; P0 takes only synthetic and protocol-defined input",
+          "detected": true,
+          "expected_refusal_code": "SAFETY_REAL_PATIENT_DATA",
+          "kind": "NEGATIVE",
+          "observed_refusal_code": "SAFETY_REAL_PATIENT_DATA",
+          "satisfied": true
+        }
+      ],
+      "detected_negative_controls": 4,
+      "execution_state": "PASS",
+      "invariant_id": "SAFETY-INV-011",
+      "negative_control_count": 4,
+      "reason": "",
+      "refusal_code": "",
+      "registered": true,
+      "severity": "CRITICAL_SCOPE",
+      "tests": {
+        "errored": 0,
+        "executed": 137,
+        "failed": 0,
+        "passed": 137,
+        "skipped": 0,
+        "unexplained_skips": 0
+      }
+    },
+    {
+      "all_controls_satisfied": true,
+      "blockers": [
+        {
+          "code": "SAFETY_AUDIT_COMPLETENESS_OWNED_BY_WP23",
+          "detail": "Actor, role, session and correlation identity on the append-only audit record are WP-23's. Determinism of the calculated result is enforced now; audit completeness is not, and reporting this invariant as fully satisfied would be a lie.",
+          "owner": "WP-23"
+        },
+        {
+          "code": "SAFETY_OPERATIONAL_REPEATABILITY_OWNED_BY_WP24",
+          "detail": "Repeat-run determinism across deployments and over time is a CI property. WP-20 proves it within one process and one machine.",
+          "owner": "WP-24"
+        }
+      ],
+      "compliance_state": "COMPLIANT",
+      "control_count": 4,
+      "controls": [
+        {
+          "control_id": "SC-SAFETY-INV-012",
+          "detail": "the safe control was accepted",
+          "detected": false,
+          "expected_refusal_code": "",
+          "kind": "SAFE",
+          "observed_refusal_code": "",
+          "satisfied": true
+        },
+        {
+          "control_id": "NC-INV-012-SHUFFLED-INPUT-CHANGES-OUTPUT",
+          "detail": "re-ordering the input changed the output hash; the order medications arrived in must not influence the result",
+          "detected": true,
+          "expected_refusal_code": "SAFETY_NON_DETERMINISTIC_RESULT",
+          "kind": "NEGATIVE",
+          "observed_refusal_code": "SAFETY_NON_DETERMINISTIC_RESULT",
+          "satisfied": true
+        },
+        {
+          "control_id": "NC-INV-012-MID-RUN-RELEASE-CHANGE",
+          "detail": "repeating the same input produced 3 different output hashes; a result that cannot be reproduced cannot be reviewed, defended or retracted",
+          "detected": true,
+          "expected_refusal_code": "SAFETY_NON_DETERMINISTIC_RESULT",
+          "kind": "NEGATIVE",
+          "observed_refusal_code": "SAFETY_NON_DETERMINISTIC_RESULT",
+          "satisfied": true
+        },
+        {
+          "control_id": "NC-INV-012-WALL-CLOCK-IN-OUTPUT",
+          "detail": "repeating the same input produced 3 different output hashes; a result that cannot be reproduced cannot be reviewed, defended or retracted",
+          "detected": true,
+          "expected_refusal_code": "SAFETY_NON_DETERMINISTIC_RESULT",
+          "kind": "NEGATIVE",
+          "observed_refusal_code": "SAFETY_NON_DETERMINISTIC_RESULT",
+          "satisfied": true
+        }
+      ],
+      "detected_negative_controls": 3,
+      "execution_state": "BLOCKED",
+      "invariant_id": "SAFETY-INV-012",
+      "negative_control_count": 3,
+      "reason": "every executable check passed; enforcement is incomplete because Actor, role, session and correlation identity on the append-only audit record are WP-23's. Determinism of the calculated result is enforced now; audit completeness is not, and reporting this invariant as fully satisfied would be a lie.; Repeat-run determinism across deployments and over time is a CI property. WP-20 proves it within one process and one machine.",
+      "refusal_code": "SAFETY_NON_DETERMINISTIC_RESULT",
+      "registered": true,
+      "severity": "CRITICAL_EVIDENTIAL",
+      "tests": {
+        "errored": 0,
+        "executed": 72,
+        "failed": 0,
+        "passed": 72,
+        "skipped": 0,
+        "unexplained_skips": 0
+      }
+    }
+  ],
+  "prohibited_claim_surfaces": {
+    "blocking_surface_count": 3,
+    "known_gap_count": 4,
+    "known_gaps": [
+      "tr/first-person-recommendation",
+      "en/first-person-recommendation",
+      "en/imperative-medication-change",
+      "tr/dosing-imperative"
+    ],
+    "reason": "",
+    "surface_count": 6
+  },
+  "report_schema_version": "pgx-wp20-safety-report/1",
+  "summary": {
+    "detected_negative_control_count": 37,
+    "executed_invariant_count": 12,
+    "execution_states": {
+      "BLOCKED": 5,
+      "PASS": 7
+    },
+    "negative_control_count": 37,
+    "registered_invariant_count": 12,
+    "tests_executed": 1088
+  },
+  "work_package": "WP-20"
+}

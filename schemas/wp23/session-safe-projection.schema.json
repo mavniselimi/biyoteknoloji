@@ -1,0 +1,70 @@
+{
+  "$id": "https://pgx.local/schemas/wp23/session-safe-projection.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "What may be shown about a server-side session. It has no property for the token, for the token digest, or for the per-session CSRF key material. A digest in a published document would be a verifier for the cookie.",
+  "properties": {
+    "absolute_expires_at": {
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9:.]+Z$",
+      "type": "string"
+    },
+    "auth_generation": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "created_at": {
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9:.]+Z$",
+      "type": "string"
+    },
+    "idle_expires_at": {
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9:.]+Z$",
+      "type": "string"
+    },
+    "last_seen_at": {
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9:.]+Z$",
+      "type": "string"
+    },
+    "revocation_reason": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "revoked": {
+      "type": "boolean"
+    },
+    "role": {
+      "enum": [
+        "ADMIN",
+        "DEMO_USER",
+        "EXPERT_REVIEWER"
+      ],
+      "type": "string"
+    },
+    "session_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "user_id": {
+      "minLength": 1,
+      "type": "string"
+    }
+  },
+  "required": [
+    "session_id",
+    "user_id",
+    "role",
+    "auth_generation",
+    "created_at",
+    "last_seen_at",
+    "idle_expires_at",
+    "absolute_expires_at",
+    "revoked"
+  ],
+  "title": "WP-23 session safe projection",
+  "type": "object"
+}

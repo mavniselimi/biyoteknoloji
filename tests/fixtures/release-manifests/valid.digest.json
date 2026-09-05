@@ -1,0 +1,4 @@
+{
+  "manifest_hash": "sha256:bd25d0e2b8d17cf44e9f4593d74fa051771fb230569b93801c0c8b8981798488",
+  "note": "SHA-256 over canonical JSON of valid.json, produced by pgx.domain.hashing.sha256_digest. Recomputing it must give the same value."
+}

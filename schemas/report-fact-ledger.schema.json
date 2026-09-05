@@ -1,0 +1,349 @@
+{
+  "$defs": {
+    "ledgerAxis": {
+      "additionalProperties": false,
+      "properties": {
+        "axis": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "conflict_references": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "coverage_code": {
+          "enum": [
+            "FULL",
+            "PARTIAL",
+            "INSUFFICIENT",
+            "UNSUPPORTED_DRUG",
+            "UNSUPPORTED_PHENOTYPE",
+            "SOURCE_CONFLICT"
+          ]
+        },
+        "evidence_references": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "observed_phenotype": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "enum": [
+                "POOR",
+                "INTERMEDIATE",
+                "NORMAL",
+                "RAPID",
+                "ULTRARAPID"
+              ]
+            }
+          ]
+        },
+        "reason_codes": {
+          "items": {
+            "enum": [
+              "DRUG_NOT_IN_CANONICAL_DATASET",
+              "PHENOTYPE_NOT_PROVIDED",
+              "PHENOTYPE_NOT_SUPPORTED",
+              "NO_VALIDATED_RULE_FOR_AXIS",
+              "SOME_AXES_NOT_COVERED",
+              "VALIDATED_RULES_CONFLICT",
+              "DATASET_RULESET_MISMATCH",
+              "EVIDENCE_REFERENCE_MISSING"
+            ]
+          },
+          "type": "array",
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "axis",
+        "conflict_references",
+        "coverage_code",
+        "evidence_references",
+        "observed_phenotype",
+        "reason_codes"
+      ],
+      "type": "object"
+    },
+    "ledgerFinding": {
+      "additionalProperties": false,
+      "properties": {
+        "attention_code": {
+          "enum": [
+            "NO_ACTIVE_ATTENTION",
+            "LOW",
+            "MEDIUM",
+            "HIGH"
+          ]
+        },
+        "effect_code": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "minLength": 1,
+              "type": "string"
+            }
+          ]
+        },
+        "evidence_references": {
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "minItems": 1,
+          "type": "array"
+        },
+        "explanation_code": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "minLength": 1,
+              "type": "string"
+            }
+          ]
+        },
+        "finding": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "phenotype": {
+          "enum": [
+            "POOR",
+            "INTERMEDIATE",
+            "NORMAL",
+            "RAPID",
+            "ULTRARAPID"
+          ]
+        },
+        "rationale_reference": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "rule_content_hash": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "rule_id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "rule_version": {
+          "minimum": 1,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "attention_code",
+        "effect_code",
+        "evidence_references",
+        "explanation_code",
+        "finding",
+        "phenotype",
+        "rationale_reference",
+        "rule_content_hash",
+        "rule_id",
+        "rule_version"
+      ],
+      "type": "object"
+    },
+    "ledgerMedication": {
+      "additionalProperties": false,
+      "properties": {
+        "attention_code": {
+          "enum": [
+            "NOT_ASSESSED",
+            "NO_ACTIVE_ATTENTION",
+            "LOW",
+            "MEDIUM",
+            "HIGH"
+          ]
+        },
+        "coverage_code": {
+          "enum": [
+            "FULL",
+            "PARTIAL",
+            "INSUFFICIENT",
+            "UNSUPPORTED_DRUG",
+            "UNSUPPORTED_PHENOTYPE",
+            "SOURCE_CONFLICT"
+          ]
+        },
+        "coverage_reason_codes": {
+          "items": {
+            "enum": [
+              "DRUG_NOT_IN_CANONICAL_DATASET",
+              "PHENOTYPE_NOT_PROVIDED",
+              "PHENOTYPE_NOT_SUPPORTED",
+              "NO_VALIDATED_RULE_FOR_AXIS",
+              "SOME_AXES_NOT_COVERED",
+              "VALIDATED_RULES_CONFLICT",
+              "DATASET_RULESET_MISMATCH",
+              "EVIDENCE_REFERENCE_MISSING"
+            ]
+          },
+          "type": "array",
+          "uniqueItems": true
+        },
+        "drug_canonical_key": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "requested_value": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "attention_code",
+        "coverage_code",
+        "coverage_reason_codes",
+        "drug_canonical_key",
+        "requested_value"
+      ],
+      "type": "object"
+    }
+  },
+  "$id": "https://pgx-platform.invalid/schemas/report-fact-ledger.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Every fact a report of one assessment is obliged to carry, enumerated from the assessment rather than from the report. A report checked against this cannot satisfy it by shaping the question to fit its answer, and a report that dropped one evidence reference is distinguishable from one that never had it.",
+  "properties": {
+    "assessment_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "axes": {
+      "items": {
+        "$ref": "#/$defs/ledgerAxis"
+      },
+      "type": "array"
+    },
+    "canonical_result_hash": {
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "conflict_references": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "counts": {
+      "type": "object"
+    },
+    "coverage_result_hash": {
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "evidence_references": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "fact_ledger_schema_version": {
+      "const": "pgx-report-fact-ledger/1"
+    },
+    "findings": {
+      "items": {
+        "$ref": "#/$defs/ledgerFinding"
+      },
+      "type": "array"
+    },
+    "input_hash": {
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "ledger_hash": {
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "medications": {
+      "items": {
+        "$ref": "#/$defs/ledgerMedication"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "observations": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "output_hash": {
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "overall_attention": {
+      "enum": [
+        "NOT_ASSESSED",
+        "NO_ACTIVE_ATTENTION",
+        "LOW",
+        "MEDIUM",
+        "HIGH"
+      ]
+    },
+    "overall_coverage": {
+      "enum": [
+        "FULL",
+        "PARTIAL",
+        "INSUFFICIENT",
+        "UNSUPPORTED_DRUG",
+        "UNSUPPORTED_PHENOTYPE",
+        "SOURCE_CONFLICT"
+      ]
+    },
+    "overall_coverage_reason_codes": {
+      "items": {
+        "enum": [
+          "DRUG_NOT_IN_CANONICAL_DATASET",
+          "PHENOTYPE_NOT_PROVIDED",
+          "PHENOTYPE_NOT_SUPPORTED",
+          "NO_VALIDATED_RULE_FOR_AXIS",
+          "SOME_AXES_NOT_COVERED",
+          "VALIDATED_RULES_CONFLICT",
+          "DATASET_RULESET_MISMATCH",
+          "EVIDENCE_REFERENCE_MISSING"
+        ]
+      },
+      "type": "array",
+      "uniqueItems": true
+    },
+    "release_provenance": {
+      "type": "object"
+    }
+  },
+  "required": [
+    "assessment_id",
+    "axes",
+    "canonical_result_hash",
+    "conflict_references",
+    "counts",
+    "coverage_result_hash",
+    "evidence_references",
+    "fact_ledger_schema_version",
+    "findings",
+    "input_hash",
+    "ledger_hash",
+    "medications",
+    "observations",
+    "output_hash",
+    "overall_attention",
+    "overall_coverage",
+    "overall_coverage_reason_codes",
+    "release_provenance"
+  ],
+  "title": "PGx report fact ledger",
+  "type": "object"
+}

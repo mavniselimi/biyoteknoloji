@@ -1,0 +1,147 @@
+<!-- Rendered template output from the WP-17 development fixtures.
+     Not a screenshot and not a browser capture.
+     Public gene symbols may appear; cases, profiles and assessments
+     are synthetic development fixtures. No real patient data, no real
+     person and no validation evidence is shown.
+     Regenerate: python -m tests.fixtures.wp17.snapshots -->
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Vaka - PGx Platform V2</title>
+<link rel="stylesheet" href="/static/css/app.css?v=1">
+</head>
+<body data-route="web.case_detail">
+<a class="skip-link" href="#main">İçeriğe geç</a>
+
+<header class="site-header">
+  <p class="site-title">PGx Platform V2</p>
+  <p class="site-subtitle">Araştırma/prototip gösterim arayüzü</p>
+  <dl class="environment">
+    <dt>Ortam</dt>
+    <dd>TEST</dd>
+  </dl>
+</header>
+
+<nav class="site-nav" aria-label="Ana gezinme">
+  <ul>
+    <li>
+      <a href="/">Başlangıç</a>
+    </li>
+    <li>
+      <a href="/cases">Geliştirme vakaları</a>
+    </li>
+    <li>
+      <a href="/validation">Doğrulama panosu</a>
+    </li>
+    <li>
+      <a href="/system">Sistem bilgisi</a>
+    </li>
+    <li>
+      <a href="/login">Oturum</a>
+    </li>
+  </ul>
+</nav>
+
+<main id="main" class="site-main">
+  <h1>Vaka</h1>
+
+<aside class="clinical-warning" role="note" aria-labelledby="clinical-warning-heading">
+  <h2 id="clinical-warning-heading">Araştırma/prototip kullanım uyarısı</h2>
+  <p>Bu çıktı klinik karar, tanı, doz önerisi veya tedavi önerisi değildir. PGx Platform V2, araştırma/prototip amaçlı bir karar destek göstericisidir; sentetik veya protokolle tanımlanmış fenotip profillerini sürümlenmiş ve uzman yönetimli bir farmakogenetik kural kümesiyle karşılaştırarak izlenebilir dikkat bulguları ve bunlardan ayrı bir kapsam değerlendirmesi üretir. Eksik veri düşük risk anlamına gelmez. Doz, ilaç değişimi ve tedavi kararı yalnızca yetkili hekim tarafından; klinik tablo, endikasyon, laboratuvar sonuçları ve güncel kılavuzlar dikkate alınarak verilir.</p>
+</aside>
+
+
+<p class="lede">Normal metabolizma profili</p>
+<p>Beş gende de normal fonksiyon bildirilen profil.</p>
+
+<dl class="fact-list">
+  <div><dt>Vaka kimliği</dt><dd><code>WP17-CASE-P1</code></dd></div>
+  <div><dt>Vaka rolü</dt><dd><code class="role-tag">DEVELOPMENT</code></dd></div>
+  <div><dt>Kaynak profil anahtarı</dt><dd><code>P1_normal</code></dd></div>
+  <div><dt>Tür</dt><dd><code>clinpgx_mvp_seed/mvp_demo_profiles.json</code></dd></div>
+  <div><dt>Girdi özeti</dt><dd><code>sha256:6d370e9358ec0096fa6a7af59b88abe2435ce458ed2eaae213922f7f3f9bd1ca</code></dd></div>
+</dl>
+
+<p class="muted">Eski gösterim profilinden taşındı. Fenotipler WP-12 normalleştiricisiyle kanonik biçime getirildi. Kaynak dosyadaki serbest metin açıklaması taşınmadı: ilaç adı ve sonuç iddiası içerdiği için bu katalog onu tutmaz.</p>
+<p class="muted">Bu vaka sentetiktir. Hiçbir gerçek kişiye ait veri, tanımlayıcı veya klinik metin içermez.</p>
+
+<h2>Kanonik fenotip gözlemleri</h2>
+<table class="data-table">
+  <caption>Bu vakanın sabitlenmiş fenotip gözlemleri</caption>
+  <thead>
+    <tr><th scope="col">Gen</th><th scope="col">Fenotip</th></tr>
+  </thead>
+  <tbody>
+    <tr><th scope="row"><code>GENE:CYP1A2</code></th><td><code>NORMAL</code></td></tr>
+    <tr><th scope="row"><code>GENE:CYP2C19</code></th><td><code>NORMAL</code></td></tr>
+    <tr><th scope="row"><code>GENE:CYP2C9</code></th><td><code>NORMAL</code></td></tr>
+    <tr><th scope="row"><code>GENE:CYP2D6</code></th><td><code>NORMAL</code></td></tr>
+    <tr><th scope="row"><code>GENE:CYP3A4</code></th><td><code>NORMAL</code></td></tr>
+  </tbody>
+</table>
+
+<h2>İlaç seçimi</h2>
+<p>Bu liste, sabitlenmiş sürümün kanonik ilaç kataloğudur ve kanonik anahtara göre sıralanmıştır. Seçim yalnızca sentetik bir test isteği tanımlar; tedavi seçimi değildir ve hiçbir sıralama, öneri veya uygunluk ifade etmez.</p>
+
+
+<form class="assess-form" method="post" action="/cases/WP17-CASE-P1/assess">
+  <fieldset>
+    <legend>Değerlendirilecek ilaçları seçin</legend>
+    <div class="choice">
+      <input type="checkbox" id="drug-1" name="medications" value="DRUG:testdrug-alpha" disabled>
+      <label for="drug-1">
+        <span class="choice-name">testdrug alpha</span>
+        <code class="choice-key">DRUG:testdrug-alpha</code>
+      </label>
+    </div>
+    <div class="choice">
+      <input type="checkbox" id="drug-2" name="medications" value="DRUG:testdrug-beta" disabled>
+      <label for="drug-2">
+        <span class="choice-name">testdrug beta</span>
+        <code class="choice-key">DRUG:testdrug-beta</code>
+      </label>
+    </div>
+  </fieldset>
+
+  <h2>Gönderilecek alanlar</h2>
+  <p>Aşağıdaki alanlar dışında hiçbir veri gönderilmez. Aktör, rol, özet değerleri ve sürüm bilgisi istemci tarafından gönderilemez; bunları sunucu belirler.</p>
+  <table class="data-table">
+    <caption>Gönderilecek alanlar</caption>
+    <thead>
+      <tr><th scope="col">Alan</th><th scope="col">Değer</th></tr>
+    </thead>
+    <tbody>
+      <tr><th scope="row"><code>mode</code></th><td>DEMO</td></tr>
+      <tr><th scope="row"><code>input_kind</code></th><td>SYNTHETIC_PHENOTYPE_PROFILE</td></tr>
+      <tr><th scope="row"><code>case_id</code></th><td>WP17-CASE-P1</td></tr>
+      <tr><th scope="row"><code>profile.input_contract_version</code></th><td>pgx-phenotype-input/1</td></tr>
+      <tr><th scope="row"><code>profile.observations</code></th><td>5</td></tr>
+      <tr><th scope="row"><code>medications</code></th><td>Değerlendirilecek ilaçları seçin</td></tr>
+    </tbody>
+  </table>
+  <p class="muted">Bu formda hasta adı, kimlik, doğum tarihi, dosya numarası, genotip, varyant dosyası, tanı, endikasyon, doz veya serbest metin alanı bulunmaz.</p>
+
+  <div class="notice notice-unavailable" role="status">
+    <p><strong>Kullanılamıyor.</strong> Değerlendirme çalıştırma bu dağıtımda kullanılamıyor. Gerekli bağımlılıklar hazır olmadan istek gönderilmez.</p>
+  </div>
+  <button type="submit" class="primary" disabled aria-describedby="submit-unavailable">Sentetik değerlendirmeyi çalıştır</button>
+  <p id="submit-unavailable" class="muted">Değerlendirme çalıştırma bu dağıtımda kullanılamıyor. Gerekli bağımlılıklar hazır olmadan istek gönderilmez.</p>
+</form>
+</main>
+
+<footer class="site-footer">
+  <p>Bu arayüz sentetik ve geliştirme amaçlı girdiler üzerinde çalışır. Gerçek hasta verisi kabul etmez.</p>
+  <dl class="request-id">
+    <dt>İstek kimliği</dt>
+    <dd><code>11111111-1111-4111-8111-111111111111</code></dd>
+  </dl>
+  <p class="muted">Destek ve denetim için kullanılır. Değerlendirme verisinin parçası değildir ve hiçbir özete karışmaz.</p>
+  <p class="muted">PGx Platform V2 1.0.0</p>
+</footer>
+
+<script src="/static/js/app.js?v=1" defer></script>
+</body>
+</html>

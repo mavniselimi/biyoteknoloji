@@ -1,0 +1,205 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pgx-platform.invalid/schemas/curation-review.schema.json",
+  "title": "PGx curation review or adjudication",
+  "description": "One independent reviewer's decision about one submitted revision, or a third person's adjudication of a dispute (WP-10). A review pins the revision's content hash and its author, so 'was this reviewed' is answerable by comparing bytes and 'was the reviewer independent' is answerable from the review alone. No review overwrites another: two reviews of one revision are two records, and which one governed is decided by the work item's state transitions.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "work_item_id",
+    "revision_id",
+    "revision_content_hash",
+    "decision",
+    "reviewed_by",
+    "reviewed_by_role",
+    "reviewed_at",
+    "author_actor_id",
+    "rationale",
+    "protocol_content_hash",
+    "evidence_build_content_hash",
+    "resulting_state",
+    "content_hash"
+  ],
+  "properties": {
+    "work_item_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "revision_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "revision_content_hash": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "review_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "decision": {
+      "enum": [
+        "APPROVE",
+        "REQUEST_CHANGES",
+        "REJECT",
+        "REFER_TO_ADJUDICATION"
+      ]
+    },
+    "reviewed_by": {
+      "type": "string",
+      "minLength": 2
+    },
+    "reviewed_by_role": {
+      "enum": [
+        "INDEPENDENT_SCIENTIFIC_REVIEWER",
+        "ADJUDICATOR"
+      ],
+      "description": "Only these roles may judge a scientific conclusion. A curator, a steward or an engineering observer may not."
+    },
+    "reviewed_at": {
+      "type": "string",
+      "minLength": 1
+    },
+    "author_actor_id": {
+      "type": "string",
+      "minLength": 2,
+      "description": "Stored on the review so the separation rule is checkable without a join. A constraint that had to join to the revision could be satisfied at insert and falsified later."
+    },
+    "rationale": {
+      "type": "string",
+      "minLength": 24,
+      "description": "A decision with no stated reason cannot be audited or contested."
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "protocol_content_hash": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "evidence_build_content_hash": {
+      "type": "string",
+      "minLength": 1
+    },
+    "resulting_state": {
+      "enum": [
+        "RAW",
+        "UNDER_REVIEW",
+        "CURATED",
+        "REJECTED"
+      ]
+    },
+    "content_hash": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "decision": {
+            "const": "APPROVE"
+          }
+        },
+        "required": [
+          "decision"
+        ]
+      },
+      "then": {
+        "properties": {
+          "resulting_state": {
+            "const": "CURATED"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "decision": {
+            "const": "REJECT"
+          }
+        },
+        "required": [
+          "decision"
+        ]
+      },
+      "then": {
+        "properties": {
+          "resulting_state": {
+            "const": "REJECTED"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "decision": {
+            "const": "REQUEST_CHANGES"
+          }
+        },
+        "required": [
+          "decision"
+        ]
+      },
+      "then": {
+        "properties": {
+          "resulting_state": {
+            "const": "RAW"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "decision": {
+            "const": "REFER_TO_ADJUDICATION"
+          }
+        },
+        "required": [
+          "decision"
+        ]
+      },
+      "then": {
+        "properties": {
+          "resulting_state": {
+            "const": "UNDER_REVIEW"
+          }
+        },
+        "description": "Referring a dispute is not deciding it. Moving the item would suggest somebody had."
+      }
+    }
+  ],
+  "not": {
+    "anyOf": [
+      {
+        "required": [
+          "consensus"
+        ]
+      },
+      {
+        "required": [
+          "merged_response"
+        ]
+      },
+      {
+        "required": [
+          "agreement_score"
+        ]
+      },
+      {
+        "required": [
+          "auto_approved"
+        ]
+      }
+    ]
+  }
+}

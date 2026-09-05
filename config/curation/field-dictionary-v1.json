@@ -1,0 +1,430 @@
+{
+  "field_count": 24,
+  "field_dictionary_version": "pgx-curation-field-dictionary/1",
+  "fields": [
+    {
+      "allowed_values": null,
+      "human_judgement_required": false,
+      "may_enter_rule": false,
+      "name": "record_id",
+      "null_meaning": "Never null. A record without an identifier cannot be cited.",
+      "owner": "SYSTEM",
+      "prohibited_interpretations": [
+        "Not a scientific identifier and not stable across protocol versions."
+      ],
+      "provenance_requirement": "Assigned by the tooling, not by a curator.",
+      "required": true,
+      "type": "string",
+      "validation": "Non-empty; unique within a protocol version."
+    },
+    {
+      "allowed_values": null,
+      "human_judgement_required": false,
+      "may_enter_rule": true,
+      "name": "protocol_version",
+      "null_meaning": "Never null. A conclusion with no protocol version cannot be read under the rules it was made under.",
+      "owner": "SYSTEM",
+      "prohibited_interpretations": [
+        "Not a data version and not a source version."
+      ],
+      "provenance_requirement": "Copied from the protocol document in force at authoring time.",
+      "required": true,
+      "type": "string",
+      "validation": "Must match a published protocol version."
+    },
+    {
+      "allowed_values": null,
+      "human_judgement_required": true,
+      "may_enter_rule": true,
+      "name": "question",
+      "null_meaning": "Never null. A conclusion with no question answers nothing.",
+      "owner": "CURATOR",
+      "prohibited_interpretations": [
+        "Not a gene/drug pair key: a pair-level conclusion must not be applied to every annotation sharing that pair."
+      ],
+      "provenance_requirement": "Gene and drug keys must exist in the canonical build.",
+      "required": true,
+      "type": "object",
+      "validation": "Gene and drug canonical keys, effect dimension, question text; phenotype scope and population optional."
+    },
+    {
+      "allowed_values": [
+        "POOR",
+        "INTERMEDIATE",
+        "NORMAL",
+        "RAPID",
+        "ULTRARAPID",
+        "INDETERMINATE"
+      ],
+      "human_judgement_required": true,
+      "may_enter_rule": true,
+      "name": "question.phenotype_scope",
+      "null_meaning": "Empty means the conclusion is not scoped to a phenotype - not that it applies to every phenotype.",
+      "owner": "CURATOR",
+      "prohibited_interpretations": [
+        "An empty scope is not a wildcard.",
+        "RAPID must never be read as covering ULTRARAPID (SAFETY-INV-004)."
+      ],
+      "provenance_requirement": "Normalization must be explained in the rationale.",
+      "required": false,
+      "type": "array<Phenotype>",
+      "validation": "Exact Phenotype members; no aliases; RAPID and ULTRARAPID are distinct members and must both be listed to cover both."
+    },
+    {
+      "allowed_values": [
+        "DRAFT",
+        "UNDER_REVIEW",
+        "CURATED",
+        "REJECTED"
+      ],
+      "human_judgement_required": true,
+      "may_enter_rule": false,
+      "name": "status",
+      "null_meaning": "Never null. Defaults to DRAFT, which means nobody has reviewed it.",
+      "owner": "CURATOR",
+      "prohibited_interpretations": [
+        "DRAFT is not a rejection.",
+        "The persisted CurationStatus spells DRAFT as RAW; they are the same state under two names, not two states."
+      ],
+      "provenance_requirement": "Each transition records who made it and when.",
+      "required": true,
+      "type": "InterpretationStatus",
+      "validation": "CURATED additionally requires rationale and a distinct named reviewer."
+    },
+    {
+      "allowed_values": [
+        "SUPPORTED",
+        "CONFLICTING",
+        "INSUFFICIENT",
+        "NOT_INTERPRETABLE",
+        "OUT_OF_SCOPE",
+        "NOT_APPLICABLE"
+      ],
+      "human_judgement_required": true,
+      "may_enter_rule": true,
+      "name": "conclusion_state",
+      "null_meaning": "Never null. Absence of a conclusion is expressed as INSUFFICIENT, with a statement of what is missing.",
+      "owner": "CURATOR",
+      "prohibited_interpretations": [
+        "Not ordered: INSUFFICIENT is not a weak SUPPORTED.",
+        "INSUFFICIENT is never low risk, no risk, no effect, safe, normal or negative evidence (SAFETY-INV-001).",
+        "CONFLICTING does not mean the disagreement was resolved."
+      ],
+      "provenance_requirement": "Must follow from the cited evidence via the rationale.",
+      "required": true,
+      "type": "ConclusionState",
+      "validation": "INSUFFICIENT requires an insufficiency statement; CONFLICTING requires a recorded conflict."
+    },
+    {
+      "allowed_values": null,
+      "human_judgement_required": true,
+      "may_enter_rule": false,
+      "name": "conclusion_text",
+      "null_meaning": "Never null. A state with no sentence cannot be reviewed.",
+      "owner": "CURATOR",
+      "prohibited_interpretations": [
+        "Not patient-facing text.",
+        "Not a recommendation, and not advice."
+      ],
+      "provenance_requirement": "Written by the named author.",
+      "required": true,
+      "type": "string",
+      "validation": "Substantive text; screened for reassuring language when the state is INSUFFICIENT or CONFLICTING."
+    },
+    {
+      "allowed_values": [
+        "APPLICABLE",
+        "PARTIALLY_APPLICABLE",
+        "NOT_APPLICABLE",
+        "UNCLEAR"
+      ],
+      "human_judgement_required": true,
+      "may_enter_rule": true,
+      "name": "applicability",
+      "null_meaning": "Never null. UNCLEAR is the honest answer when the population is not established; it is not a null.",
+      "owner": "CURATOR",
+      "prohibited_interpretations": [
+        "APPLICABLE does not mean applicable to every population - it means applicable to the one stated."
+      ],
+      "provenance_requirement": "The population statement in the rationale must support it.",
+      "required": true,
+      "type": "Applicability",
+      "validation": "One controlled member."
+    },
+    {
+      "allowed_values": [
+        "EXPOSURE",
+        "CLEARANCE",
+        "ACTIVATION",
+        "RESPONSE_ASSOCIATION",
+        "ADVERSE_EVENT_ASSOCIATION",
+        "FUNCTIONAL_ACTIVITY",
+        "OTHER",
+        "INSUFFICIENT_TO_CLASSIFY"
+      ],
+      "human_judgement_required": true,
+      "may_enter_rule": true,
+      "name": "effect_dimension",
+      "null_meaning": "Never null. INSUFFICIENT_TO_CLASSIFY is the answer when the dimension is not established.",
+      "owner": "CURATOR",
+      "prohibited_interpretations": [
+        "Not a treatment instruction.",
+        "Not a direction of risk: ACTIVATION says what changed, not whether that is good or bad for a patient."
+      ],
+      "provenance_requirement": "Normalization from the source's wording must be explained.",
+      "required": true,
+      "type": "EffectDimension",
+      "validation": "One controlled member."
+    },
+    {
+      "allowed_values": null,
+      "human_judgement_required": true,
+      "may_enter_rule": true,
+      "name": "evidence",
+      "null_meaning": "Never empty. A conclusion with no evidence is untraceable.",
+      "owner": "CURATOR",
+      "prohibited_interpretations": [
+        "Not a bibliography: each entry states a relationship to this conclusion."
+      ],
+      "provenance_requirement": "Every UUID must exist in the sealed evidence build.",
+      "required": true,
+      "type": "array<EvidenceSelection>",
+      "validation": "At least one included record; no repeats; each with a written rationale."
+    },
+    {
+      "allowed_values": [
+        "SUPPORTS",
+        "CONTRADICTS",
+        "CONTEXT_ONLY",
+        "EXCLUDED"
+      ],
+      "human_judgement_required": true,
+      "may_enter_rule": true,
+      "name": "evidence[].relationship",
+      "null_meaning": "Never null.",
+      "owner": "CURATOR",
+      "prohibited_interpretations": [
+        "CONTRADICTS is not a reason to delete the record.",
+        "CONTEXT_ONLY does not mean irrelevant."
+      ],
+      "provenance_requirement": "The relationship is the curator's assessment, not the source's.",
+      "required": true,
+      "type": "EvidenceRelationship",
+      "validation": "EXCLUDED requires an exclusion_reason; every other value forbids one."
+    },
+    {
+      "allowed_values": [
+        "WRONG_ENTITY",
+        "WRONG_PHENOTYPE_SCOPE",
+        "WRONG_POPULATION",
+        "DUPLICATE_SOURCE_RECORD",
+        "SUPERSEDED_SOURCE_VERSION",
+        "INSUFFICIENT_DETAIL",
+        "OUT_OF_SCOPE",
+        "UNRESOLVED_PROVENANCE",
+        "OTHER_WITH_RATIONALE"
+      ],
+      "human_judgement_required": true,
+      "may_enter_rule": false,
+      "name": "evidence[].exclusion_reason",
+      "null_meaning": "Null means the record was not excluded. It never means excluded for an unstated reason.",
+      "owner": "CURATOR",
+      "prohibited_interpretations": [
+        "Not a category that may be applied automatically: contradictory, older, other-organisation and unknown-version evidence must never be excluded by rule."
+      ],
+      "provenance_requirement": "Accompanied by written rationale in the same entry.",
+      "required": false,
+      "type": "ExclusionReason",
+      "validation": "Required exactly when relationship is EXCLUDED."
+    },
+    {
+      "allowed_values": null,
+      "human_judgement_required": false,
+      "may_enter_rule": true,
+      "name": "evidence[].trace_verified",
+      "null_meaning": "Null means the trace was not checked, which is different from a check that failed. Neither may be reported as verified.",
+      "owner": "SYSTEM",
+      "prohibited_interpretations": [
+        "Null is not False and False is not 'probably fine'."
+      ],
+      "provenance_requirement": "Derived from pgx-evidence verify.",
+      "required": false,
+      "type": "boolean",
+      "validation": "Set only by a verification run against the sealed build."
+    },
+    {
+      "allowed_values": null,
+      "human_judgement_required": false,
+      "may_enter_rule": true,
+      "name": "evidence[].source_version_status",
+      "null_meaning": "Never null. UNKNOWN_LEGACY records that a version existed and was lost; SOURCE_UNVERSIONED records that the source has none.",
+      "owner": "SOURCE",
+      "prohibited_interpretations": [
+        "UNKNOWN_LEGACY must not be hidden behind a confidence label.",
+        "An unknown version is not an old version."
+      ],
+      "provenance_requirement": "Comes from the evidence build, never from the curator.",
+      "required": true,
+      "type": "string",
+      "validation": "Copied verbatim from the evidence record."
+    },
+    {
+      "allowed_values": null,
+      "human_judgement_required": false,
+      "may_enter_rule": false,
+      "name": "source_reported",
+      "null_meaning": "Empty means no source-reported value was recorded for comparison. It does not mean the source reported nothing.",
+      "owner": "SOURCE",
+      "prohibited_interpretations": [
+        "significance=yes is not ConclusionState.SUPPORTED.",
+        "A ClinPGx score is not confidence, importance, strength or risk, and must not be mapped to any of them.",
+        "polarity is not a direction of patient risk."
+      ],
+      "provenance_requirement": "Each entry names the evidence record it came from.",
+      "required": false,
+      "type": "array<SourceReportedValues>",
+      "validation": "Copied unchanged from the evidence record's own payload."
+    },
+    {
+      "allowed_values": null,
+      "human_judgement_required": true,
+      "may_enter_rule": true,
+      "name": "conflict",
+      "null_meaning": "Never null. NONE_IDENTIFIED means nobody found a conflict, not that none exists.",
+      "owner": "CURATOR",
+      "prohibited_interpretations": [
+        "NONE_IDENTIFIED is not a finding of agreement.",
+        "There is no precedence field, and adding one would be a change to this project's scientific position."
+      ],
+      "provenance_requirement": "Every conflicting record stays cited.",
+      "required": true,
+      "type": "ConflictAnalysis",
+      "validation": "Any state other than NONE_IDENTIFIED requires at least two evidence records, a disputed field, materiality and analysis."
+    },
+    {
+      "allowed_values": null,
+      "human_judgement_required": true,
+      "may_enter_rule": true,
+      "name": "conflict.material",
+      "null_meaning": "Null is refused on a recorded conflict: undetermined materiality is expressed as UNRESOLVED with material=False and an explanation.",
+      "owner": "CURATOR",
+      "prohibited_interpretations": [
+        "Immaterial does not mean absent.",
+        "Materiality is not severity."
+      ],
+      "provenance_requirement": "Judged by a named curator.",
+      "required": false,
+      "type": "boolean",
+      "validation": "Required whenever state is not NONE_IDENTIFIED."
+    },
+    {
+      "allowed_values": null,
+      "human_judgement_required": true,
+      "may_enter_rule": false,
+      "name": "insufficiency",
+      "null_meaning": "Null means the conclusion is not INSUFFICIENT. It never means sufficiency was established.",
+      "owner": "CURATOR",
+      "prohibited_interpretations": [
+        "Not a low-risk finding.",
+        "Not a negative result: nothing was ruled out."
+      ],
+      "provenance_requirement": "Must list the evidence actually reviewed.",
+      "required": false,
+      "type": "InsufficiencyStatement",
+      "validation": "Required exactly when conclusion_state is INSUFFICIENT; screened for reassuring language."
+    },
+    {
+      "allowed_values": null,
+      "human_judgement_required": true,
+      "may_enter_rule": false,
+      "name": "rationale",
+      "null_meaning": "Null means the conclusion has not been argued, so it cannot be CURATED.",
+      "owner": "CURATOR",
+      "prohibited_interpretations": [
+        "Not a summary of the conclusion.",
+        "A source's own wording quoted here is not an argument for the conclusion."
+      ],
+      "provenance_requirement": "Names the author, and the reviewer once reviewed.",
+      "required": false,
+      "type": "Rationale",
+      "validation": "Eleven named parts, each substantive; placeholder and circular text refused."
+    },
+    {
+      "allowed_values": null,
+      "human_judgement_required": true,
+      "may_enter_rule": false,
+      "name": "rationale.authored_by",
+      "null_meaning": "Null means unauthored. An unauthored conclusion is not reviewable.",
+      "owner": "CURATOR",
+      "prohibited_interpretations": [
+        "A team name, a role name or a system name is not an author."
+      ],
+      "provenance_requirement": "The person is accountable for the conclusion.",
+      "required": false,
+      "type": "ReviewSignature",
+      "validation": "Named person, scientific role, UTC instant, written reason."
+    },
+    {
+      "allowed_values": null,
+      "human_judgement_required": true,
+      "may_enter_rule": false,
+      "name": "rationale.reviewed_by",
+      "null_meaning": "Null means not independently reviewed, which blocks CURATED.",
+      "owner": "CURATOR",
+      "prohibited_interpretations": [
+        "The author re-reading their own work is not an independent review."
+      ],
+      "provenance_requirement": "Recorded with instant and reason.",
+      "required": false,
+      "type": "ReviewSignature",
+      "validation": "Must be a different person from the author, in a reviewing role."
+    },
+    {
+      "allowed_values": null,
+      "human_judgement_required": false,
+      "may_enter_rule": true,
+      "name": "unresolved_references",
+      "null_meaning": "Empty means nothing was left dangling, not that everything resolved successfully.",
+      "owner": "SYSTEM",
+      "prohibited_interpretations": [
+        "An unresolved reference is not a resolved-to-nothing reference."
+      ],
+      "provenance_requirement": "Carried forward from WP-07's resolution queue.",
+      "required": false,
+      "type": "array<string>",
+      "validation": "Populated from the evidence build's unresolved references."
+    },
+    {
+      "allowed_values": null,
+      "human_judgement_required": false,
+      "may_enter_rule": false,
+      "name": "content_hash",
+      "null_meaning": "Never null.",
+      "owner": "SYSTEM",
+      "prohibited_interpretations": [
+        "Not a signature and not an approval."
+      ],
+      "provenance_requirement": "Deterministic; two identical records hash alike.",
+      "required": true,
+      "type": "string",
+      "validation": "sha256 over the record's content identity, excluding operational timestamps."
+    },
+    {
+      "allowed_values": null,
+      "human_judgement_required": false,
+      "may_enter_rule": true,
+      "name": "is_rule_eligible",
+      "null_meaning": "Never null. False is the default and the safe answer.",
+      "owner": "SYSTEM",
+      "prohibited_interpretations": [
+        "Eligibility is not approval: WP-11 still requires its own review before a rule exists."
+      ],
+      "provenance_requirement": "Derived, never set by a curator.",
+      "required": true,
+      "type": "boolean",
+      "validation": "True only for a CURATED, SUPPORTED conclusion with no blocking conflict, no insufficiency and no unresolved reference."
+    }
+  ],
+  "note": "Every field states an owner and a null meaning. Null is a distinct fact, never a value, and never a reassurance.",
+  "status": "DRAFT_AWAITING_EXPERT_REVIEW"
+}

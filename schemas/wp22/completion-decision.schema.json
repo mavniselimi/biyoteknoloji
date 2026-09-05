@@ -1,0 +1,85 @@
+{
+  "$id": "https://pgx.local/schemas/wp22/completion-decision.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "AGREE, PARTIAL or DISAGREE, with optional Likert ratings. PARTIAL is a third answer rather than a midpoint, so no schema here orders or averages the three.",
+  "properties": {
+    "completed_at": {
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9:.]+Z$",
+      "type": "string"
+    },
+    "completion_hash": {
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "completion_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "decision": {
+      "enum": [
+        "AGREE",
+        "PARTIAL",
+        "DISAGREE"
+      ],
+      "type": "string"
+    },
+    "previous_hash": {
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "ratings": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "dimension": {
+            "enum": [
+              "CLARITY",
+              "TRACEABILITY",
+              "CLINICAL_USEFULNESS",
+              "SAFETY_FRAMING"
+            ],
+            "type": "string"
+          },
+          "value": {
+            "maximum": 5,
+            "minimum": 1,
+            "type": "integer"
+          }
+        },
+        "required": [
+          "dimension",
+          "value"
+        ],
+        "type": "object"
+      },
+      "maxItems": 4,
+      "type": "array"
+    },
+    "reveal_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "review_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "reviewer_note": {
+      "maxLength": 1000,
+      "type": "string"
+    }
+  },
+  "required": [
+    "completion_id",
+    "review_id",
+    "reveal_id",
+    "decision",
+    "ratings",
+    "reviewer_note",
+    "completed_at",
+    "completion_hash",
+    "previous_hash"
+  ],
+  "title": "WP-22 completion decision",
+  "type": "object"
+}

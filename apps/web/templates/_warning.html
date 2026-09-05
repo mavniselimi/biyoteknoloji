@@ -1,0 +1,16 @@
+{#
+  The canonical research/prototype warning.
+
+  page.warning is fetched from pgx.domain.claims by PageContext on every
+  build, and PageContext refuses to hold anything else. This file contains no
+  copy of the text: a literal here would be a second version that survives a
+  change to the governed one, and the stale copy is the one readers see.
+
+  It is not dismissible. There is no close control, no JavaScript that hides
+  it and no CSS class that collapses it - the stylesheet is a stylesheet, not
+  a mechanism, and the page is identical with CSS disabled.
+#}
+<aside class="clinical-warning" role="note" aria-labelledby="clinical-warning-heading">
+  <h2 id="clinical-warning-heading">{{ page.warning_heading }}</h2>
+  <p>{{ page.warning }}</p>
+</aside>
