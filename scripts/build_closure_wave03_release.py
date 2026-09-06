@@ -53,6 +53,7 @@ OUTPUT_ROOT = os.path.join(REPO, "data", "closure", "wave-03-candidate-release")
 # cannot fit inside it. It travels in every purpose string instead, which the
 # ledger records beside the actor on every single event.
 ACTOR = "pgx-closure-wave03-automated-pass"
+_LEDGER_INSTANT = _dt.datetime(2026, 9, 6, 12, 0, 0, tzinfo=_dt.timezone.utc)
 NOT_A_HUMAN = "actor is an automated pass, not a person"
 
 
@@ -83,7 +84,11 @@ def main() -> int:
             sys.stderr.write("  %s %s\n" % (issue.code, issue.detail))
         return 2
 
-    ledger = AccessLedger()
+    # A fixed clock, so the ledger's own bytes are reproducible. The ledger's
+    # value is the *order* of accesses and the hash chain over them, neither of
+    # which a wall-clock reading contributes to; a real reading would only make
+    # the artifact differ from itself on every rebuild.
+    ledger = AccessLedger(clock=lambda: _LEDGER_INSTANT)
     validation_context = AccessContext(
         actor=ACTOR, kind=AccessContextKind.VALIDATION_RUN,
         purpose=("evaluate the candidate ruleset against the open "
@@ -193,8 +198,6 @@ def main() -> int:
         "artifact_count": len(artifacts),
         "artifacts": artifacts,
         "authority_state": CandidateAuthorityState.INTERNAL_VALIDATION.value,
-        "built_at": _dt.datetime.now(_dt.timezone.utc).strftime(
-            "%Y-%m-%dT%H:%M:%SZ"),
         "citations": ["%s (%s), PMID %s, DOI %s"
                       % (item.title, item.guideline_version_label,
                          item.pmid, item.doi) for item in RETRIEVALS],

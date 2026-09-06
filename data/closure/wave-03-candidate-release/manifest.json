@@ -22,9 +22,9 @@
       "sha256": "sha256:74d1b7196884e0e47a57ef34e05093548435cd0170a4abb9f1fba7a46760b1eb"
     },
     {
-      "byte_length": 35717,
+      "byte_length": 35325,
       "relative_path": "access-ledger.json",
-      "sha256": "sha256:9376ed77e2f01834ff3cc4da030d412c4b5697247e5415bdf355ea9ecadef289"
+      "sha256": "sha256:4f30dcb8003184ce9779718dbcccb0134b40eb1fae51c4d11374fed946b31f2b"
     },
     {
       "byte_length": 1505,
@@ -33,7 +33,6 @@
     }
   ],
   "authority_state": "INTERNAL_VALIDATION",
-  "built_at": "2026-09-06T12:31:55Z",
   "citations": [
     "Annotation of CPIC Guideline for clopidogrel and CYP2C19 (2022 Update), PMID 35034351, DOI 10.1002/cpt.2526",
     "Annotation of CPIC Guideline for lansoprazole, omeprazole, pantoprazole and CYP2C19 (August 2020 (published 2021)), PMID 32770672, DOI 10.1002/cpt.2015",

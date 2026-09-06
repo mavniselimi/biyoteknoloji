@@ -37,23 +37,57 @@ class ProhibitedTermsTest(unittest.TestCase):
         for term in PROHIBITED_AUTHORITY_TERMS:
             self.assertNotIn(term, text)
 
-    def test_no_wave03_artifact_claims_a_prohibited_authority(self):
-        targets = [
-            os.path.join("pgx", "closure", "authority.py"),
-            os.path.join("pgx", "closure", "source_grounding.py"),
-            os.path.join("pgx", "closure", "source_rows.py"),
-            os.path.join("pgx", "closure", "candidate_curation.py"),
-            os.path.join("pgx", "closure", "candidate_ruleset.py"),
-        ]
-        for relative in targets:
-            path = os.path.join(_REPO, relative)
-            if not os.path.exists(path):
+    def _wave03_artifacts(self):
+        """Every file this wave wrote, found rather than listed.
+
+        A hand-maintained list would silently stop covering the artifact
+        somebody added last, which is the one most likely to overclaim.
+        """
+        found = []
+        for directory, predicate in (
+                (os.path.join("pgx", "closure"),
+                 lambda n: n.startswith(("authority", "source_",
+                                         "candidate_", "wave03"))),
+                (os.path.join("tests", "unit", "closure"),
+                 lambda n: n.startswith("test_wave03")),
+                ("scripts", lambda n: n.startswith(
+                    "build_closure_wave03")),
+                (os.path.join("docs", "closure"),
+                 lambda n: n.startswith("wave-03")),
+                (os.path.join("data", "closure"),
+                 lambda n: n.startswith("wave-03")),
+        ):
+            base = os.path.join(_REPO, directory)
+            if not os.path.isdir(base):
                 continue
-            with open(path, encoding="utf-8") as handle:
+            for name in sorted(os.listdir(base)):
+                if not predicate(name):
+                    continue
+                full = os.path.join(base, name)
+                if os.path.isdir(full):
+                    for inner in sorted(os.listdir(full)):
+                        found.append(os.path.join(full, inner))
+                else:
+                    found.append(full)
+        return found
+
+    def test_no_wave03_artifact_claims_a_prohibited_authority(self):
+        artifacts = self._wave03_artifacts()
+        # The test file defining the terms is excluded, and only that one.
+        artifacts = [p for p in artifacts
+                     if os.path.basename(p) != os.path.basename(__file__)]
+        self.assertGreaterEqual(len(artifacts), 15,
+                                "the artifact sweep found almost nothing, so "
+                                "it is not checking what it claims to")
+        for path in artifacts:
+            if os.path.isdir(path) or path.endswith((".pyc", ".sha256")):
+                continue
+            with open(path, encoding="utf-8", errors="replace") as handle:
                 text = handle.read()
             self.assertEqual(
                 contains_prohibited_term(text), (),
-                "%s claims a prohibited authority" % relative)
+                "%s claims a prohibited authority"
+                % os.path.relpath(path, _REPO))
 
     def test_contains_prohibited_term_actually_matches(self):
         # A scanner that never matches anything would pass every test above.

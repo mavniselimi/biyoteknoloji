@@ -1,5 +1,5 @@
 {
-  "chain_head": "sha256:5de76d4082cf95065f018f25b5c17ece9869b5aaaa166fbc93bd87099ea9df86",
+  "chain_head": "sha256:334cc87770892c4120ea303e65f63f5bf2276e94386a0d48ae2ca6cb6b4f4fd3",
   "event_count": 56,
   "events": [
     {
@@ -11,7 +11,7 @@
       "case_role": "DEVELOPMENT",
       "context_kind": "VALIDATION_RUN",
       "manifest_hash": "sha256:e5e5f2dfedf8b4ac55cb90945858fed284d655725792a763f18ed591ff928f30",
-      "occurred_at": "2026-09-06T12:31:55.050254Z",
+      "occurred_at": "2026-09-06T12:00:00Z",
       "purpose": "evaluate the candidate ruleset against the open partitions; actor is an automated pass, not a person",
       "reason_code": "",
       "schema_version": "pgx-wp18-access-event/1"
@@ -25,7 +25,7 @@
       "case_role": "DEVELOPMENT",
       "context_kind": "VALIDATION_RUN",
       "manifest_hash": "sha256:8ff73208e95cfea0e1929666c35a01be08786229478ca1210532584c88a49679",
-      "occurred_at": "2026-09-06T12:31:55.050333Z",
+      "occurred_at": "2026-09-06T12:00:00Z",
       "purpose": "evaluate the candidate ruleset against the open partitions; actor is an automated pass, not a person",
       "reason_code": "",
       "schema_version": "pgx-wp18-access-event/1"
@@ -39,7 +39,7 @@
       "case_role": "DEVELOPMENT",
       "context_kind": "VALIDATION_RUN",
       "manifest_hash": "sha256:24e356ede490efa25366b3eff1df1cfae6becae319e398e9f6848bb76b0cf267",
-      "occurred_at": "2026-09-06T12:31:55.050377Z",
+      "occurred_at": "2026-09-06T12:00:00Z",
       "purpose": "evaluate the candidate ruleset against the open partitions; actor is an automated pass, not a person",
       "reason_code": "",
       "schema_version": "pgx-wp18-access-event/1"
@@ -53,7 +53,7 @@
       "case_role": "DEVELOPMENT",
       "context_kind": "VALIDATION_RUN",
       "manifest_hash": "sha256:a585893df3ca66fbb3192dc53b865a3855da11617c4ce061e0fbe3043caf6152",
-      "occurred_at": "2026-09-06T12:31:55.050423Z",
+      "occurred_at": "2026-09-06T12:00:00Z",
       "purpose": "evaluate the candidate ruleset against the open partitions; actor is an automated pass, not a person",
       "reason_code": "",
       "schema_version": "pgx-wp18-access-event/1"
@@ -67,7 +67,7 @@
       "case_role": "DEVELOPMENT",
       "context_kind": "VALIDATION_RUN",
       "manifest_hash": "sha256:be79ffb91ec00efc7d069d090691feeaec367c85e88ee38ba5941ad615fac1b1",
-      "occurred_at": "2026-09-06T12:31:55.050462Z",
+      "occurred_at": "2026-09-06T12:00:00Z",
       "purpose": "evaluate the candidate ruleset against the open partitions; actor is an automated pass, not a person",
       "reason_code": "",
       "schema_version": "pgx-wp18-access-event/1"
@@ -81,7 +81,7 @@
       "case_role": "DEVELOPMENT",
       "context_kind": "VALIDATION_RUN",
       "manifest_hash": "sha256:39601df6e4b392f34d7cd81280d59c8331722663f83520a5190976b3f4150d64",
-      "occurred_at": "2026-09-06T12:31:55.050499Z",
+      "occurred_at": "2026-09-06T12:00:00Z",
       "purpose": "evaluate the candidate ruleset against the open partitions; actor is an automated pass, not a person",
       "reason_code": "",
       "schema_version": "pgx-wp18-access-event/1"
@@ -95,7 +95,7 @@
       "case_role": "DEVELOPMENT",
       "context_kind": "VALIDATION_RUN",
       "manifest_hash": "sha256:98e24bac0a67cc5b7238ea8479f9bef84203b213f96eba17b03cb879c2a3cbb1",
-      "occurred_at": "2026-09-06T12:31:55.050537Z",
+      "occurred_at": "2026-09-06T12:00:00Z",
       "purpose": "evaluate the candidate ruleset against the open partitions; actor is an automated pass, not a person",
       "reason_code": "",
       "schema_version": "pgx-wp18-access-event/1"
@@ -109,7 +109,7 @@
       "case_role": "DEVELOPMENT",
       "context_kind": "VALIDATION_RUN",
       "manifest_hash": "sha256:b27098c53b5f11dcdbd84d66b3c1f084db012b88d2c99c006ce1585c00305787",
-      "occurred_at": "2026-09-06T12:31:55.050574Z",
+      "occurred_at": "2026-09-06T12:00:00Z",
       "purpose": "evaluate the candidate ruleset against the open partitions; actor is an automated pass, not a person",
       "reason_code": "",
       "schema_version": "pgx-wp18-access-event/1"
@@ -123,7 +123,7 @@
       "case_role": "DEVELOPMENT",
       "context_kind": "VALIDATION_RUN",
       "manifest_hash": "sha256:40ffee9b373d3e801af079ea416d4a04b0870d2080b7414da1bdce9fc6431c1c",
-      "occurred_at": "2026-09-06T12:31:55.050621Z",
+      "occurred_at": "2026-09-06T12:00:00Z",
       "purpose": "evaluate the candidate ruleset against the open partitions; actor is an automated pass, not a person",
       "reason_code": "",
       "schema_version": "pgx-wp18-access-event/1"
@@ -137,7 +137,7 @@
       "case_role": "DEVELOPMENT",
       "context_kind": "VALIDATION_RUN",
       "manifest_hash": "sha256:39deff1cab4b668cdd308b8cf1237358b3a135a2cb9b8b2235410051e0becd0d",
-      "occurred_at": "2026-09-06T12:31:55.050663Z",
+      "occurred_at": "2026-09-06T12:00:00Z",
       "purpose": "evaluate the candidate ruleset against the open partitions; actor is an automated pass, not a person",
       "reason_code": "",
       "schema_version": "pgx-wp18-access-event/1"
@@ -151,7 +151,7 @@
       "case_role": "DEVELOPMENT",
       "context_kind": "VALIDATION_RUN",
       "manifest_hash": "sha256:a2c6859e5592fcff1b337447a85705866de500489da049776e7a58a2ccff0dcc",
-      "occurred_at": "2026-09-06T12:31:55.050706Z",
+      "occurred_at": "2026-09-06T12:00:00Z",
       "purpose": "evaluate the candidate ruleset against the open partitions; actor is an automated pass, not a person",
       "reason_code": "",
       "schema_version": "pgx-wp18-access-event/1"
@@ -165,7 +165,7 @@
       "case_role": "DEVELOPMENT",
       "context_kind": "VALIDATION_RUN",
       "manifest_hash": "sha256:d0091a3a44f70288c83e57b2381a4034c658d63cdf1653f5136b38ca971c3b70",
-      "occurred_at": "2026-09-06T12:31:55.050747Z",
+      "occurred_at": "2026-09-06T12:00:00Z",
       "purpose": "evaluate the candidate ruleset against the open partitions; actor is an automated pass, not a person",
       "reason_code": "",
       "schema_version": "pgx-wp18-access-event/1"
@@ -179,7 +179,7 @@
       "case_role": "DEVELOPMENT",
       "context_kind": "VALIDATION_RUN",
       "manifest_hash": "sha256:e08c4470d2b4c1192316445a2c4b27dd21dcd7643a408886b0a01e5ec19ac396",
-      "occurred_at": "2026-09-06T12:31:55.050788Z",
+      "occurred_at": "2026-09-06T12:00:00Z",
       "purpose": "evaluate the candidate ruleset against the open partitions; actor is an automated pass, not a person",
       "reason_code": "",
       "schema_version": "pgx-wp18-access-event/1"
@@ -193,7 +193,7 @@
       "case_role": "DEVELOPMENT",
       "context_kind": "VALIDATION_RUN",
       "manifest_hash": "sha256:58b39be6a0842a466f02fbf1a154e5e663e94aa4086c663bccf784d3f2b5d9cf",
-      "occurred_at": "2026-09-06T12:31:55.050831Z",
+      "occurred_at": "2026-09-06T12:00:00Z",
       "purpose": "evaluate the candidate ruleset against the open partitions; actor is an automated pass, not a person",
       "reason_code": "",
       "schema_version": "pgx-wp18-access-event/1"
@@ -207,7 +207,7 @@
       "case_role": "DEVELOPMENT",
       "context_kind": "VALIDATION_RUN",
       "manifest_hash": "sha256:e47654a708af9bf0cf5fb222cc277bb65ec8663a2cc7ac79487caacb6c9c231f",
-      "occurred_at": "2026-09-06T12:31:55.050873Z",
+      "occurred_at": "2026-09-06T12:00:00Z",
       "purpose": "evaluate the candidate ruleset against the open partitions; actor is an automated pass, not a person",
       "reason_code": "",
       "schema_version": "pgx-wp18-access-event/1"
@@ -221,7 +221,7 @@
       "case_role": "DEVELOPMENT",
       "context_kind": "VALIDATION_RUN",
       "manifest_hash": "sha256:6c45f5f3fcacb10129406c3b6369e7bab2d2b4059c5f3b99f8ecc19f85cd2b50",
-      "occurred_at": "2026-09-06T12:31:55.050915Z",
+      "occurred_at": "2026-09-06T12:00:00Z",
       "purpose": "evaluate the candidate ruleset against the open partitions; actor is an automated pass, not a person",
       "reason_code": "",
       "schema_version": "pgx-wp18-access-event/1"
@@ -235,7 +235,7 @@
       "case_role": "DEVELOPMENT",
       "context_kind": "VALIDATION_RUN",
       "manifest_hash": "sha256:eab6459c108f93b2ea54acee694acd9c5454b0b770ad75ebbadc06b90370b631",
-      "occurred_at": "2026-09-06T12:31:55.050957Z",
+      "occurred_at": "2026-09-06T12:00:00Z",
       "purpose": "evaluate the candidate ruleset against the open partitions; actor is an automated pass, not a person",
       "reason_code": "",
       "schema_version": "pgx-wp18-access-event/1"
@@ -249,7 +249,7 @@
       "case_role": "DEVELOPMENT",
       "context_kind": "VALIDATION_RUN",
       "manifest_hash": "sha256:507447789af448d29080a16cd62e7e63920166bc596c99653483a4cf44909320",
-      "occurred_at": "2026-09-06T12:31:55.050999Z",
+      "occurred_at": "2026-09-06T12:00:00Z",
       "purpose": "evaluate the candidate ruleset against the open partitions; actor is an automated pass, not a person",
       "reason_code": "",
       "schema_version": "pgx-wp18-access-event/1"
@@ -263,7 +263,7 @@
       "case_role": "DEVELOPMENT",
       "context_kind": "VALIDATION_RUN",
       "manifest_hash": "sha256:df901a05ef080db7f42938b9a65e5a2fbafcac69dfe6a1cb58af10c2378fbbeb",
-      "occurred_at": "2026-09-06T12:31:55.051041Z",
+      "occurred_at": "2026-09-06T12:00:00Z",
       "purpose": "evaluate the candidate ruleset against the open partitions; actor is an automated pass, not a person",
       "reason_code": "",
       "schema_version": "pgx-wp18-access-event/1"
@@ -277,7 +277,7 @@
       "case_role": "DEVELOPMENT",
       "context_kind": "VALIDATION_RUN",
       "manifest_hash": "sha256:45b9ea4e70d02d9e03117857f18c0bb6b45e2ad94da1c8ab85c9d454d64bd323",
-      "occurred_at": "2026-09-06T12:31:55.051082Z",
+      "occurred_at": "2026-09-06T12:00:00Z",
       "purpose": "evaluate the candidate ruleset against the open partitions; actor is an automated pass, not a person",
       "reason_code": "",
       "schema_version": "pgx-wp18-access-event/1"
@@ -291,7 +291,7 @@
       "case_role": "DEVELOPMENT",
       "context_kind": "VALIDATION_RUN",
       "manifest_hash": "sha256:8deb3cc5ce30244e8782922009ef2412e1da41c54145a6d7dba567468f3526e7",
-      "occurred_at": "2026-09-06T12:31:55.051121Z",
+      "occurred_at": "2026-09-06T12:00:00Z",
       "purpose": "evaluate the candidate ruleset against the open partitions; actor is an automated pass, not a person",
       "reason_code": "",
       "schema_version": "pgx-wp18-access-event/1"
@@ -305,7 +305,7 @@
       "case_role": "DEVELOPMENT",
       "context_kind": "VALIDATION_RUN",
       "manifest_hash": "sha256:1e35a350b35349103fea364ed46fb303eca5235fb3a75e0c9454e499fba22d2f",
-      "occurred_at": "2026-09-06T12:31:55.051161Z",
+      "occurred_at": "2026-09-06T12:00:00Z",
       "purpose": "evaluate the candidate ruleset against the open partitions; actor is an automated pass, not a person",
       "reason_code": "",
       "schema_version": "pgx-wp18-access-event/1"
@@ -319,7 +319,7 @@
       "case_role": "DEVELOPMENT",
       "context_kind": "VALIDATION_RUN",
       "manifest_hash": "sha256:58072f2fa53e5c5d5ec446c725be71b781cf46e31b81b1ff1493c57a335e70c6",
-      "occurred_at": "2026-09-06T12:31:55.051199Z",
+      "occurred_at": "2026-09-06T12:00:00Z",
       "purpose": "evaluate the candidate ruleset against the open partitions; actor is an automated pass, not a person",
       "reason_code": "",
       "schema_version": "pgx-wp18-access-event/1"
@@ -333,7 +333,7 @@
       "case_role": "INTERNAL_HOLDOUT",
       "context_kind": "VALIDATION_RUN",
       "manifest_hash": "sha256:bf03e01ea1aecbd8c07cdd6b0fe9a29498aab78dfd41e4310dcedd4eab734f4c",
-      "occurred_at": "2026-09-06T12:31:55.051239Z",
+      "occurred_at": "2026-09-06T12:00:00Z",
       "purpose": "evaluate the candidate ruleset against the open partitions; actor is an automated pass, not a person",
       "reason_code": "",
       "schema_version": "pgx-wp18-access-event/1"
@@ -347,7 +347,7 @@
       "case_role": "INTERNAL_HOLDOUT",
       "context_kind": "VALIDATION_RUN",
       "manifest_hash": "sha256:5b3aa4d4808e28462534dfca22db70bd70e83ae3a350e325414d479fcc673ec8",
-      "occurred_at": "2026-09-06T12:31:55.051281Z",
+      "occurred_at": "2026-09-06T12:00:00Z",
       "purpose": "evaluate the candidate ruleset against the open partitions; actor is an automated pass, not a person",
       "reason_code": "",
       "schema_version": "pgx-wp18-access-event/1"
@@ -361,7 +361,7 @@
       "case_role": "INTERNAL_HOLDOUT",
       "context_kind": "VALIDATION_RUN",
       "manifest_hash": "sha256:9bbd6befd51cd327f5b18f05c1847f9a78e53c6852d4d9a21d45c45a31dcedc7",
-      "occurred_at": "2026-09-06T12:31:55.051321Z",
+      "occurred_at": "2026-09-06T12:00:00Z",
       "purpose": "evaluate the candidate ruleset against the open partitions; actor is an automated pass, not a person",
       "reason_code": "",
       "schema_version": "pgx-wp18-access-event/1"
@@ -375,7 +375,7 @@
       "case_role": "INTERNAL_HOLDOUT",
       "context_kind": "VALIDATION_RUN",
       "manifest_hash": "sha256:7e6582b8340a1a98d16d726fb351a588754dfaa0bdb12730bb0c1be4b88c6128",
-      "occurred_at": "2026-09-06T12:31:55.051362Z",
+      "occurred_at": "2026-09-06T12:00:00Z",
       "purpose": "evaluate the candidate ruleset against the open partitions; actor is an automated pass, not a person",
       "reason_code": "",
       "schema_version": "pgx-wp18-access-event/1"
@@ -389,7 +389,7 @@
       "case_role": "INTERNAL_HOLDOUT",
       "context_kind": "VALIDATION_RUN",
       "manifest_hash": "sha256:89349a48719d8b8026c00f4c7ee446bd718ed9eeed83673785785010d68cf295",
-      "occurred_at": "2026-09-06T12:31:55.051406Z",
+      "occurred_at": "2026-09-06T12:00:00Z",
       "purpose": "evaluate the candidate ruleset against the open partitions; actor is an automated pass, not a person",
       "reason_code": "",
       "schema_version": "pgx-wp18-access-event/1"
@@ -403,7 +403,7 @@
       "case_role": "INTERNAL_HOLDOUT",
       "context_kind": "VALIDATION_RUN",
       "manifest_hash": "sha256:867747364bb3108182b052637411e930667d9e4f7b30599eda0494316d950741",
-      "occurred_at": "2026-09-06T12:31:55.051446Z",
+      "occurred_at": "2026-09-06T12:00:00Z",
       "purpose": "evaluate the candidate ruleset against the open partitions; actor is an automated pass, not a person",
       "reason_code": "",
       "schema_version": "pgx-wp18-access-event/1"
@@ -417,7 +417,7 @@
       "case_role": "INTERNAL_HOLDOUT",
       "context_kind": "VALIDATION_RUN",
       "manifest_hash": "sha256:7d6efe625464529b4dc86642f6f7541cea9f3e0bdfd30529e3aec9ff129203af",
-      "occurred_at": "2026-09-06T12:31:55.051488Z",
+      "occurred_at": "2026-09-06T12:00:00Z",
       "purpose": "evaluate the candidate ruleset against the open partitions; actor is an automated pass, not a person",
       "reason_code": "",
       "schema_version": "pgx-wp18-access-event/1"
@@ -431,7 +431,7 @@
       "case_role": "INTERNAL_HOLDOUT",
       "context_kind": "VALIDATION_RUN",
       "manifest_hash": "sha256:94d4d3a646508153e2ea5fff07b38cff29f923351c3f3e943ad6777f041d58d9",
-      "occurred_at": "2026-09-06T12:31:55.051528Z",
+      "occurred_at": "2026-09-06T12:00:00Z",
       "purpose": "evaluate the candidate ruleset against the open partitions; actor is an automated pass, not a person",
       "reason_code": "",
       "schema_version": "pgx-wp18-access-event/1"
@@ -445,7 +445,7 @@
       "case_role": "INTERNAL_HOLDOUT",
       "context_kind": "VALIDATION_RUN",
       "manifest_hash": "sha256:3716cce8d6f59f5e796095c1cc5050669f9637cce166766c838d748bbdd62d89",
-      "occurred_at": "2026-09-06T12:31:55.051567Z",
+      "occurred_at": "2026-09-06T12:00:00Z",
       "purpose": "evaluate the candidate ruleset against the open partitions; actor is an automated pass, not a person",
       "reason_code": "",
       "schema_version": "pgx-wp18-access-event/1"
@@ -459,7 +459,7 @@
       "case_role": "INTERNAL_HOLDOUT",
       "context_kind": "VALIDATION_RUN",
       "manifest_hash": "sha256:3b86e86216ac4852537cdea3fcf9e788d47f6570fd44df252de06f190b7a5601",
-      "occurred_at": "2026-09-06T12:31:55.051607Z",
+      "occurred_at": "2026-09-06T12:00:00Z",
       "purpose": "evaluate the candidate ruleset against the open partitions; actor is an automated pass, not a person",
       "reason_code": "",
       "schema_version": "pgx-wp18-access-event/1"
@@ -473,7 +473,7 @@
       "case_role": "INTERNAL_HOLDOUT",
       "context_kind": "VALIDATION_RUN",
       "manifest_hash": "sha256:cc928eccdcd6423c53c586b69e99a7dce41aa631537d24f7233ec9c1483bc377",
-      "occurred_at": "2026-09-06T12:31:55.051646Z",
+      "occurred_at": "2026-09-06T12:00:00Z",
       "purpose": "evaluate the candidate ruleset against the open partitions; actor is an automated pass, not a person",
       "reason_code": "",
       "schema_version": "pgx-wp18-access-event/1"
@@ -487,7 +487,7 @@
       "case_role": "INTERNAL_HOLDOUT",
       "context_kind": "VALIDATION_RUN",
       "manifest_hash": "sha256:e2f9764efc258feb2b93060f5e74212c2fcb8e263e40cd64a985c19032f954d7",
-      "occurred_at": "2026-09-06T12:31:55.051687Z",
+      "occurred_at": "2026-09-06T12:00:00Z",
       "purpose": "evaluate the candidate ruleset against the open partitions; actor is an automated pass, not a person",
       "reason_code": "",
       "schema_version": "pgx-wp18-access-event/1"
@@ -501,7 +501,7 @@
       "case_role": "INTERNAL_HOLDOUT",
       "context_kind": "VALIDATION_RUN",
       "manifest_hash": "sha256:9845083e4479d3716927bebac8248056107a4ac755118856f75375f7127898a1",
-      "occurred_at": "2026-09-06T12:31:55.051726Z",
+      "occurred_at": "2026-09-06T12:00:00Z",
       "purpose": "evaluate the candidate ruleset against the open partitions; actor is an automated pass, not a person",
       "reason_code": "",
       "schema_version": "pgx-wp18-access-event/1"
@@ -515,7 +515,7 @@
       "case_role": "INTERNAL_HOLDOUT",
       "context_kind": "VALIDATION_RUN",
       "manifest_hash": "sha256:34c146a1f5efc92f4341328f4028b09ec972872a4904160511e50ccc0bf10a0c",
-      "occurred_at": "2026-09-06T12:31:55.051766Z",
+      "occurred_at": "2026-09-06T12:00:00Z",
       "purpose": "evaluate the candidate ruleset against the open partitions; actor is an automated pass, not a person",
       "reason_code": "",
       "schema_version": "pgx-wp18-access-event/1"
@@ -529,7 +529,7 @@
       "case_role": "INTERNAL_HOLDOUT",
       "context_kind": "VALIDATION_RUN",
       "manifest_hash": "sha256:605fb3db8079d6d9911069a0bd403806a2244515d82a2c9234952e5b3cd3d1c0",
-      "occurred_at": "2026-09-06T12:31:55.051805Z",
+      "occurred_at": "2026-09-06T12:00:00Z",
       "purpose": "evaluate the candidate ruleset against the open partitions; actor is an automated pass, not a person",
       "reason_code": "",
       "schema_version": "pgx-wp18-access-event/1"
@@ -543,7 +543,7 @@
       "case_role": "INTERNAL_HOLDOUT",
       "context_kind": "VALIDATION_RUN",
       "manifest_hash": "sha256:fc2fd5d58b265c8fa0087f1b703610d1e31b2930e9480b4094ed5f75a57fda53",
-      "occurred_at": "2026-09-06T12:31:55.051845Z",
+      "occurred_at": "2026-09-06T12:00:00Z",
       "purpose": "evaluate the candidate ruleset against the open partitions; actor is an automated pass, not a person",
       "reason_code": "",
       "schema_version": "pgx-wp18-access-event/1"
@@ -557,7 +557,7 @@
       "case_role": "INTERNAL_HOLDOUT",
       "context_kind": "VALIDATION_RUN",
       "manifest_hash": "sha256:f2d8542bd83090c7ea29421f3c59c532c7486f246f39a95dd665544f4e72fb14",
-      "occurred_at": "2026-09-06T12:31:55.051884Z",
+      "occurred_at": "2026-09-06T12:00:00Z",
       "purpose": "evaluate the candidate ruleset against the open partitions; actor is an automated pass, not a person",
       "reason_code": "",
       "schema_version": "pgx-wp18-access-event/1"
@@ -571,7 +571,7 @@
       "case_role": "INTERNAL_HOLDOUT",
       "context_kind": "VALIDATION_RUN",
       "manifest_hash": "sha256:384ed63c158b9bc72da5a7dfd67a2cc38527d3b694c0d95e741836748993a10f",
-      "occurred_at": "2026-09-06T12:31:55.051923Z",
+      "occurred_at": "2026-09-06T12:00:00Z",
       "purpose": "evaluate the candidate ruleset against the open partitions; actor is an automated pass, not a person",
       "reason_code": "",
       "schema_version": "pgx-wp18-access-event/1"
@@ -585,7 +585,7 @@
       "case_role": "INTERNAL_HOLDOUT",
       "context_kind": "VALIDATION_RUN",
       "manifest_hash": "sha256:144a45174f5217dd764192c0db4dc8441ce93f23736ee2472ea7529cb3de0472",
-      "occurred_at": "2026-09-06T12:31:55.051964Z",
+      "occurred_at": "2026-09-06T12:00:00Z",
       "purpose": "evaluate the candidate ruleset against the open partitions; actor is an automated pass, not a person",
       "reason_code": "",
       "schema_version": "pgx-wp18-access-event/1"
@@ -599,7 +599,7 @@
       "case_role": "INTERNAL_HOLDOUT",
       "context_kind": "VALIDATION_RUN",
       "manifest_hash": "sha256:08cb6e0cb0b5018d8ad4edccef1a3742ab909a04a95fd67d13eb72fe0166db11",
-      "occurred_at": "2026-09-06T12:31:55.052003Z",
+      "occurred_at": "2026-09-06T12:00:00Z",
       "purpose": "evaluate the candidate ruleset against the open partitions; actor is an automated pass, not a person",
       "reason_code": "",
       "schema_version": "pgx-wp18-access-event/1"
@@ -613,7 +613,7 @@
       "case_role": "EXPERT_HOLDOUT",
       "context_kind": "AUDIT",
       "manifest_hash": "sha256:d5b413210eae6447652b0b8f659f284f42649214186d1b0a04a46769446bceff",
-      "occurred_at": "2026-09-06T12:31:55.052042Z",
+      "occurred_at": "2026-09-06T12:00:00Z",
       "purpose": "list the sealed expert partition without reading it; actor is an automated pass, not a person",
       "reason_code": "",
       "schema_version": "pgx-wp18-access-event/1"
@@ -627,7 +627,7 @@
       "case_role": "EXPERT_HOLDOUT",
       "context_kind": "AUDIT",
       "manifest_hash": "sha256:98c783755faa71041be40acce78e3c77ecc7f9f86d45fceafb514e260e3410ab",
-      "occurred_at": "2026-09-06T12:31:55.052076Z",
+      "occurred_at": "2026-09-06T12:00:00Z",
       "purpose": "list the sealed expert partition without reading it; actor is an automated pass, not a person",
       "reason_code": "",
       "schema_version": "pgx-wp18-access-event/1"
@@ -641,7 +641,7 @@
       "case_role": "EXPERT_HOLDOUT",
       "context_kind": "AUDIT",
       "manifest_hash": "sha256:a79b8144920b648a2f5babab275813a7c71dca45b99213686087ccb65e8780f4",
-      "occurred_at": "2026-09-06T12:31:55.052110Z",
+      "occurred_at": "2026-09-06T12:00:00Z",
       "purpose": "list the sealed expert partition without reading it; actor is an automated pass, not a person",
       "reason_code": "",
       "schema_version": "pgx-wp18-access-event/1"
@@ -655,7 +655,7 @@
       "case_role": "EXPERT_HOLDOUT",
       "context_kind": "AUDIT",
       "manifest_hash": "sha256:160c4c9ea83e0e1cfaa98737827872a25e95583c549b76fd27c4e9c899cfc3cd",
-      "occurred_at": "2026-09-06T12:31:55.052143Z",
+      "occurred_at": "2026-09-06T12:00:00Z",
       "purpose": "list the sealed expert partition without reading it; actor is an automated pass, not a person",
       "reason_code": "",
       "schema_version": "pgx-wp18-access-event/1"
@@ -669,7 +669,7 @@
       "case_role": "EXPERT_HOLDOUT",
       "context_kind": "AUDIT",
       "manifest_hash": "sha256:a3579b00bcffe9467b7fe06c92a7287ee5e5a80c66571cff2ab8aaec6cfa8651",
-      "occurred_at": "2026-09-06T12:31:55.052177Z",
+      "occurred_at": "2026-09-06T12:00:00Z",
       "purpose": "list the sealed expert partition without reading it; actor is an automated pass, not a person",
       "reason_code": "",
       "schema_version": "pgx-wp18-access-event/1"
@@ -683,7 +683,7 @@
       "case_role": "EXPERT_HOLDOUT",
       "context_kind": "AUDIT",
       "manifest_hash": "sha256:6c29d95f04875d4ac304c611c7c5d6e8cdf2b0c5c68662398e85cd2c1a8f7418",
-      "occurred_at": "2026-09-06T12:31:55.052210Z",
+      "occurred_at": "2026-09-06T12:00:00Z",
       "purpose": "list the sealed expert partition without reading it; actor is an automated pass, not a person",
       "reason_code": "",
       "schema_version": "pgx-wp18-access-event/1"
@@ -697,7 +697,7 @@
       "case_role": "EXPERT_HOLDOUT",
       "context_kind": "AUDIT",
       "manifest_hash": "sha256:e26f0b4d76f9ee3083aa561807853b2609e491fe0e073323814df330d19ca5d1",
-      "occurred_at": "2026-09-06T12:31:55.052242Z",
+      "occurred_at": "2026-09-06T12:00:00Z",
       "purpose": "list the sealed expert partition without reading it; actor is an automated pass, not a person",
       "reason_code": "",
       "schema_version": "pgx-wp18-access-event/1"
@@ -711,7 +711,7 @@
       "case_role": "EXPERT_HOLDOUT",
       "context_kind": "AUDIT",
       "manifest_hash": "sha256:6f16c7fa613e1340b66ce644c96930bdc427ea493280138469eba35e943a1738",
-      "occurred_at": "2026-09-06T12:31:55.052275Z",
+      "occurred_at": "2026-09-06T12:00:00Z",
       "purpose": "list the sealed expert partition without reading it; actor is an automated pass, not a person",
       "reason_code": "",
       "schema_version": "pgx-wp18-access-event/1"
@@ -725,7 +725,7 @@
       "case_role": "EXPERT_HOLDOUT",
       "context_kind": "AUDIT",
       "manifest_hash": "sha256:9a6ca671aafd39ca7a2645d5641f45e93ec7c696bf46a0549ae2a68e49cc8e2a",
-      "occurred_at": "2026-09-06T12:31:55.052308Z",
+      "occurred_at": "2026-09-06T12:00:00Z",
       "purpose": "list the sealed expert partition without reading it; actor is an automated pass, not a person",
       "reason_code": "",
       "schema_version": "pgx-wp18-access-event/1"
@@ -739,7 +739,7 @@
       "case_role": "EXPERT_HOLDOUT",
       "context_kind": "AUDIT",
       "manifest_hash": "sha256:fe28abb2ca8ea11668ea003da88ce8f7de27852484803a1d1c297669950d3af5",
-      "occurred_at": "2026-09-06T12:31:55.052341Z",
+      "occurred_at": "2026-09-06T12:00:00Z",
       "purpose": "list the sealed expert partition without reading it; actor is an automated pass, not a person",
       "reason_code": "",
       "schema_version": "pgx-wp18-access-event/1"
@@ -753,7 +753,7 @@
       "case_role": "EXPERT_HOLDOUT",
       "context_kind": "AUDIT",
       "manifest_hash": "sha256:c7c539e92c1d46141f65d199c74b7f3e1e7a1ceb1c3b1cff4aa900e2c1d4ecb4",
-      "occurred_at": "2026-09-06T12:31:55.052374Z",
+      "occurred_at": "2026-09-06T12:00:00Z",
       "purpose": "list the sealed expert partition without reading it; actor is an automated pass, not a person",
       "reason_code": "",
       "schema_version": "pgx-wp18-access-event/1"
@@ -767,7 +767,7 @@
       "case_role": "EXPERT_HOLDOUT",
       "context_kind": "AUDIT",
       "manifest_hash": "sha256:e02d3ae8f8cbf710982fa9c3824ed69cb404543119c69bbe1aa61e2ef5e43b89",
-      "occurred_at": "2026-09-06T12:31:55.052411Z",
+      "occurred_at": "2026-09-06T12:00:00Z",
       "purpose": "list the sealed expert partition without reading it; actor is an automated pass, not a person",
       "reason_code": "",
       "schema_version": "pgx-wp18-access-event/1"
@@ -781,7 +781,7 @@
       "case_role": "EXPERT_HOLDOUT",
       "context_kind": "AUDIT",
       "manifest_hash": "sha256:ae407681a30824109b98b56c21b2641c35cd1b90ee8852877848d8521cfc44eb",
-      "occurred_at": "2026-09-06T12:31:55.052444Z",
+      "occurred_at": "2026-09-06T12:00:00Z",
       "purpose": "list the sealed expert partition without reading it; actor is an automated pass, not a person",
       "reason_code": "",
       "schema_version": "pgx-wp18-access-event/1"

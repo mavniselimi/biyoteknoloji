@@ -230,3 +230,41 @@ class CommittedReleaseTest(unittest.TestCase):
 
 if __name__ == "__main__":  # pragma: no cover
     unittest.main()
+
+
+class RebuildDeterminismTest(unittest.TestCase):
+    """The committed artifacts are the ones this code produces.
+
+    Worth a test rather than a convention: the first version of both build
+    scripts stamped a wall-clock instant into the manifest, which made every
+    rebuild differ from the committed bytes and made "is this artifact
+    current" unanswerable. The instants were removed rather than tolerated,
+    following the same rule ``ComputableRuleDefinition.semantic_content``
+    already applies - when something was made is recorded by git, not by the
+    thing itself.
+    """
+
+    def test_no_wave03_artifact_stamps_a_wall_clock_instant(self):
+        for root in ("wave-03-candidate-evidence", "wave-03-candidate-release"):
+            path = os.path.join(REPO, "data", "closure", root, "manifest.json")
+            if not os.path.exists(path):
+                continue
+            with open(path, encoding="utf-8") as handle:
+                payload = json.load(handle)
+            for field in ("sealed_at", "built_at", "generated_at"):
+                self.assertNotIn(field, payload, "%s/%s" % (root, field))
+
+    def test_the_access_ledger_uses_a_fixed_clock(self):
+        path = os.path.join(RELEASE, "access-ledger.json")
+        if not os.path.exists(path):
+            self.skipTest("no candidate release has been built")
+        with open(path, encoding="utf-8") as handle:
+            ledger = json.load(handle)
+        events = ledger["events"] if isinstance(ledger, dict) else ledger
+        self.assertTrue(events)
+        instants = {event["occurred_at"] for event in events}
+        self.assertEqual(
+            len(instants), 1,
+            "the ledger's value is the order of accesses and the hash chain "
+            "over them; differing instants only make the artifact differ from "
+            "itself on every rebuild")

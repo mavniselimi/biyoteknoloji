@@ -77,7 +77,6 @@
   "retrieval_count": 4,
   "review_state": "PENDING_EXTERNAL_EXPERT_REVIEW",
   "rule_count": 23,
-  "sealed_at": "2026-09-06T12:26:02Z",
   "source_row_count": 30,
   "total_byte_count": 98742,
   "unrepresentable_row_count": 7

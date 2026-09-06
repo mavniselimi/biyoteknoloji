@@ -22,11 +22,17 @@ manifest that states its own limits) and none of the claims.
 The output is deliberately not placed under ``data/raw/`` or
 ``data/canonical/``. A directory in either of those trees is read by tooling
 that is entitled to assume things this content cannot support.
+**No build instant is recorded here.** Following the convention
+``ComputableRuleDefinition.semantic_content`` already sets in this repository -
+who wrote something and when are recorded, audited, and not part of what was
+claimed - the seal carries no wall-clock field. The consequence is that a
+rebuild is byte-identical, so "is the committed artifact the one this code
+produces" is a question a test can answer. When the seal happened is git's to
+record.
 """
 
 from __future__ import annotations
 
-import datetime as _dt
 import hashlib
 import io
 import json
@@ -138,8 +144,6 @@ def main() -> int:
         "review_state":
             CandidateAuthorityState.PENDING_EXTERNAL_EXPERT_REVIEW.value,
         "rule_count": len(ruleset.rules),
-        "sealed_at": _dt.datetime.now(_dt.timezone.utc).strftime(
-            "%Y-%m-%dT%H:%M:%SZ"),
         "source_row_count": len(ROWS),
         "total_byte_count": sum(item["byte_length"] for item in artifacts),
         "unrepresentable_row_count": len(unrepresentable_rows()),

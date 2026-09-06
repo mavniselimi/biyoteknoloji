@@ -1,0 +1,424 @@
+{
+  "authority_bridge": {
+    "entries": [
+      {
+        "candidate_path": "",
+        "module": "pgx/rules/lifecycle.py",
+        "note": "Three distinct people are required and the project has one named reviewer. A single AI pass cannot supply the second and third: it is one process with one set of priors, so 'creator' and 'reviewer' would be the same judgement recorded twice. Wave 3 therefore leaves every candidate rule outside this transition entirely rather than entering it with a manufactured envelope.",
+        "requirement": "A rule may leave CURATED only when a complete WP-10 rule approval envelope names the rule version and separates creator, reviewer and approver, and the validator is not the rule's author.",
+        "requirement_id": "AB-01",
+        "symbol": "RULE_TRANSITION_REQUIREMENTS[('CURATED', 'VALIDATED')]",
+        "verdict": "BLOCKED_REQUIRES_SECOND_INTERNAL_HUMAN"
+      },
+      {
+        "candidate_path": "",
+        "module": "pgx/rules/lifecycle.py",
+        "note": "Follows from AB-01 and is listed separately because it is the gate somebody would be tempted to open first. A candidate ruleset is built and frozen on its own track with its own identity; it never claims RulesetStatus.VALIDATED.",
+        "requirement": "A ruleset may leave BUILDING only when every member is a VALIDATED rule.",
+        "requirement_id": "AB-02",
+        "symbol": "RULESET_TRANSITION_REQUIREMENTS[('BUILDING', 'VALIDATED')]",
+        "verdict": "BLOCKED_REQUIRES_SECOND_INTERNAL_HUMAN"
+      },
+      {
+        "candidate_path": "",
+        "module": "pgx/ths6/vocabulary.py",
+        "note": "The named expert is exactly the person Wave 3 is forbidden to invent. Wave 3's curation is recorded as internal curation against the retrieved sources and is never written into the WP-10 curation store.",
+        "requirement": "An interpretation may be curated only under an approved curation protocol, and the protocol must be approved by a named expert.",
+        "requirement_id": "AB-03",
+        "symbol": "BLOCKER_CODES['THS6_CURATION_PROTOCOL_NOT_APPROVED']",
+        "verdict": "BLOCKED_REQUIRES_EXTERNAL_HUMAN"
+      },
+      {
+        "candidate_path": "",
+        "module": "pgx/ths6/vocabulary.py",
+        "note": "Wave 3 does not touch pgx.expert_review at all. Its state machine is correct and its emptiness is the accurate record.",
+        "requirement": "The expert review protocol requires a signatory, a named reviewer, and a completed review before any review-derived claim may be made.",
+        "requirement_id": "AB-04",
+        "symbol": "BLOCKER_CODES['THS6_EXPERT_PROTOCOL_NOT_APPROVED'], ['THS6_NO_NAMED_REVIEWER'], ['THS6_NO_COMPLETED_REVIEW']",
+        "verdict": "BLOCKED_REQUIRES_EXTERNAL_HUMAN"
+      },
+      {
+        "candidate_path": "",
+        "module": "pgx/ths6/vocabulary.py",
+        "note": "Unchanged by Wave 3 and expected to stay unchanged until the external evaluation this build is being prepared for.",
+        "requirement": "The claim boundary is a draft awaiting human and scientific review; no role on the sign-off matrix has signed.",
+        "requirement_id": "AB-05",
+        "symbol": "BLOCKER_CODES['THS6_CLAIM_BOUNDARY_NOT_APPROVED'], ['THS6_NO_HUMAN_SIGNOFF']",
+        "verdict": "BLOCKED_REQUIRES_EXTERNAL_HUMAN"
+      },
+      {
+        "candidate_path": "Wave 3 retrieved the four first-release guideline annotations itself and recorded, per retrieval, the official URL, the retrieval instant, a content hash and the licence basis. That is the evidence the H01 decision could not cite in Wave 1.",
+        "module": "pgx/scientific/models.py",
+        "note": "Satisfied as to *evidence*, not as to *registry mutation*. See AB-07: the registry cannot yet describe how the evidence was obtained, so config/scientific-sources.json stays byte-identical and the evidence lives on the candidate track.",
+        "requirement": "A source policy record may hold an approving status only when it carries a ReviewRecord with a named reviewer, a decision instant and at least one official evidence reference.",
+        "requirement_id": "AB-06",
+        "symbol": "SourcePolicyRecord.is_approved / ReviewRecord",
+        "verdict": "SATISFIED_BY_CANDIDATE_TRACK"
+      },
+      {
+        "candidate_path": "The smallest honest change is additive: one new AcquisitionMode member for agent-assisted targeted retrieval, deliberately excluded from AUTOMATED_ACQUISITION_MODES, plus one additive migration widening ck_source_policies_acquisition_mode_enum. The member name must be at most 32 characters to fit the existing column.",
+        "module": "pgx/scientific/models.py",
+        "note": "Wave 3 did NOT make that change. None of the six existing members describes what happened: MANUAL_DOWNLOAD and PUBLICATION_TRANSCRIPTION both say a human did it, OFFICIAL_API and LICENSED_BULK_EXPORT say an agreed interface did, INTERNAL_DERIVATION says no external source was involved, and NOT_DETERMINED says nobody decided. Choosing any of them would misdescribe the retrieval, and widening the production source vocabulary is a decision about what this project is permitted to do - which belongs to a human, not to the wave that wants the permission.",
+        "requirement": "Every source policy record must classify how the project is permitted to obtain records from the source, using a member of the AcquisitionMode vocabulary.",
+        "requirement_id": "AB-07",
+        "symbol": "AcquisitionMode",
+        "verdict": "BLOCKED_REQUIRES_EXTERNAL_HUMAN"
+      },
+      {
+        "candidate_path": "WP-C05 builds a new dataset through the existing canonical mechanism, with its own identifier, sealed raw snapshots and a data-quality report.",
+        "module": "pgx/ths6/vocabulary.py",
+        "note": "Publication of the dataset is a mechanical act with a deterministic definition; it is not a scientific endorsement, and the dataset-quality decision that accompanies it is recorded as PROJECT_TEAM_PROVISIONAL.",
+        "requirement": "A canonical dataset must be published before anything downstream may treat it as authoritative.",
+        "requirement_id": "AB-08",
+        "symbol": "BLOCKER_CODES['THS6_DATASET_NOT_PUBLISHED']",
+        "verdict": "SATISFIED_BY_CANDIDATE_TRACK"
+      },
+      {
+        "candidate_path": "WP-C08 freezes a candidate ruleset with its own identity, executable in DEMO and VALIDATION only.",
+        "module": "pgx/ths6/vocabulary.py",
+        "note": "Registering a candidate ruleset does not clear the THS-6 blocker, which asks about a governed ruleset built from VALIDATED rules. The two are separate evaluations and the gate matrix is not touched.",
+        "requirement": "An executable ruleset must be registered before any assessment can be computed from governed content.",
+        "requirement_id": "AB-09",
+        "symbol": "BLOCKER_CODES['THS6_NO_EXECUTABLE_RULESET']",
+        "verdict": "SATISFIED_BY_CANDIDATE_TRACK"
+      },
+      {
+        "candidate_path": "WP-C10 builds the case catalogue with sealed internal holdout and a reserved external-expert partition that nothing in this wave may open.",
+        "module": "pgx/ths6/vocabulary.py",
+        "note": "The cases are authored by the same process that authored the rules, so agreement between them is INTERNAL_VALIDATION and never independent evidence. The reserved partition exists precisely so that a later external reviewer has material the build has not seen.",
+        "requirement": "Fewer validation cases exist than the P0 target requires, and no independent holdout set exists.",
+        "requirement_id": "AB-10",
+        "symbol": "BLOCKER_CODES['THS6_INSUFFICIENT_VALIDATION_CASES'], ['THS6_NO_HOLDOUT_SET']",
+        "verdict": "SATISFIED_BY_CANDIDATE_TRACK"
+      },
+      {
+        "candidate_path": "The candidate ruleset is not the active production ruleset and does not execute in any production channel. Its execution is confined to DEMO and VALIDATION.",
+        "module": "pgx/domain/enums.py",
+        "note": "This row is NOT a way around SAFETY-INV-003. The invariant governs what may execute against a real patient-facing path, and the candidate track has no such path. If a candidate rule ever reached one, the invariant would be violated and the answer would be to stop, not to reclassify.",
+        "requirement": "Only VALIDATED rules from the active ruleset may ever execute (SAFETY-INV-003).",
+        "requirement_id": "AB-11",
+        "symbol": "RuleStatus",
+        "verdict": "NOT_APPLICABLE_TO_CANDIDATE_TRACK"
+      },
+      {
+        "candidate_path": "",
+        "module": "pgx/ths6/gate_matrix.py",
+        "note": "Candidate readiness is evaluated separately and reported separately. Wave 3 does not write to the gate matrix, does not add a condition to it, and does not change any value it reads.",
+        "requirement": "Gate F cannot pass while any of Gates A to E is not PASS, and there is no override.",
+        "requirement_id": "AB-12",
+        "symbol": "build_gate_matrix",
+        "verdict": "NOT_APPLICABLE_TO_CANDIDATE_TRACK"
+      }
+    ],
+    "permitted_pre_expert_states": [
+      "SOURCE_GROUNDED_INTERNAL_DECISION",
+      "PROJECT_TEAM_PROVISIONAL",
+      "PENDING_EXTERNAL_EXPERT_REVIEW",
+      "INTERNAL_VALIDATION",
+      "LITERATURE_DERIVED_VALIDATION",
+      "SOFTWARE_VERIFICATION"
+    ],
+    "prohibited_terms_checked": 5,
+    "row_count": 12,
+    "verdict_counts": {
+      "BLOCKED_REQUIRES_EXTERNAL_HUMAN": 4,
+      "BLOCKED_REQUIRES_SECOND_INTERNAL_HUMAN": 2,
+      "NOT_APPLICABLE_TO_CANDIDATE_TRACK": 2,
+      "SATISFIED_BY_CANDIDATE_TRACK": 4
+    }
+  },
+  "candidate_ruleset": {
+    "content_hash": "sha256:47e376610d4a928109d72f6a9ead14a1d1025b8d776b9d1aaf8db6d468915511",
+    "coverage": {
+      "GENE:CYP2C19|DRUG:amitriptyline": [
+        "ULTRARAPID",
+        "RAPID",
+        "NORMAL",
+        "INTERMEDIATE",
+        "POOR"
+      ],
+      "GENE:CYP2C19|DRUG:clopidogrel": [
+        "ULTRARAPID",
+        "RAPID",
+        "NORMAL",
+        "INTERMEDIATE",
+        "POOR"
+      ],
+      "GENE:CYP2C19|DRUG:omeprazole": [
+        "ULTRARAPID",
+        "RAPID",
+        "NORMAL",
+        "INTERMEDIATE",
+        "POOR"
+      ],
+      "GENE:CYP2D6|DRUG:amitriptyline": [
+        "ULTRARAPID",
+        "NORMAL",
+        "INTERMEDIATE",
+        "POOR"
+      ],
+      "GENE:CYP2D6|DRUG:codeine": [
+        "ULTRARAPID",
+        "NORMAL",
+        "INTERMEDIATE",
+        "POOR"
+      ]
+    },
+    "permitted_channels": [
+      "DEMO",
+      "VALIDATION"
+    ],
+    "refusal_count": 13,
+    "rule_count": 23
+  },
+  "curation": {
+    "curation_count": 23,
+    "joint_check_count": 20,
+    "joint_understatement_count": 0
+  },
+  "dataset_quality_decisions": [
+    {
+      "dataset_public_id": "PGX-DATA-20260830-900",
+      "decision": "REJECTED",
+      "reviewer_name": "pgx-closure-wave03 automated quality pass (NOT A HUMAN REVIEWER)",
+      "reviewer_role": "AUTOMATED_PROJECT_TEAM_PASS"
+    }
+  ],
+  "evidence_set": {
+    "content_hash": "sha256:7fb4ceb1afa7a9c23c4ec03203088e7f48186c4c97cb949eee9a0da835af6088",
+    "evidence_set_id": "PGX-CANDIDATE-EVIDENCE-WAVE03",
+    "is_canonical_dataset": false,
+    "is_raw_snapshot": false
+  },
+  "files": [
+    {
+      "byte_length": 5912,
+      "path": "data/closure/wave-03-candidate-evidence/amitriptyline-joint-table.json",
+      "sha256": "sha256:83561b096f13b4f9000ea8f6ea038af0929be05d3ac7571cdc41602ac8b8ce5d"
+    },
+    {
+      "byte_length": 33487,
+      "path": "data/closure/wave-03-candidate-evidence/candidate-ruleset.json",
+      "sha256": "sha256:1438c1018f3054e518651ac959c0a7f1155307377a157312e10c4728640633d0"
+    },
+    {
+      "byte_length": 947,
+      "path": "data/closure/wave-03-candidate-evidence/checksums.sha256",
+      "sha256": "sha256:79fb2832b0ca23f8d8ef60edf1be67223ba67246f486fbccd1a163470c99deae"
+    },
+    {
+      "byte_length": 19037,
+      "path": "data/closure/wave-03-candidate-evidence/curations.json",
+      "sha256": "sha256:b34ff1631dc12e364dfdc3495426b3c1a38406793691e2fccf616ffb6e6dc7ca"
+    },
+    {
+      "byte_length": 1266,
+      "path": "data/closure/wave-03-candidate-evidence/interfaces.json",
+      "sha256": "sha256:a230e12c9ea9e8c2f65000ea7457699d0f1015b66242734e9d1d410498b468d3"
+    },
+    {
+      "byte_length": 5042,
+      "path": "data/closure/wave-03-candidate-evidence/joint-consistency-checks.json",
+      "sha256": "sha256:94f79ce6ac00b05c974a89f368e285728fcb5b484c7e9f7e8daf28f71ab1cc7d"
+    },
+    {
+      "byte_length": 1717,
+      "path": "data/closure/wave-03-candidate-evidence/licence-bases.json",
+      "sha256": "sha256:5e6c7e4ae1e025fd919e56f5aca275c692122195fe8c64eae7453b72cd67a4d5"
+    },
+    {
+      "byte_length": 3663,
+      "path": "data/closure/wave-03-candidate-evidence/manifest.json",
+      "sha256": "sha256:f87e18b98b39e895c519a80ab689e40f5b038da38ed929df9bdacdfeafb9cb25"
+    },
+    {
+      "byte_length": 5350,
+      "path": "data/closure/wave-03-candidate-evidence/refusals.json",
+      "sha256": "sha256:dce18d3f206eaec73871442df9d476ff7654c5a53efdc2b6730bcc359f21e604"
+    },
+    {
+      "byte_length": 3385,
+      "path": "data/closure/wave-03-candidate-evidence/retrievals.json",
+      "sha256": "sha256:a7717cd379a423f2b473020f8b18cc0e95ab405059fcdd6d0ca33446573d2902"
+    },
+    {
+      "byte_length": 18536,
+      "path": "data/closure/wave-03-candidate-evidence/source-rows.json",
+      "sha256": "sha256:103510a24d06210ace91dba4246cd770977659f8f169a990a96696e290ab5247"
+    },
+    {
+      "byte_length": 5010,
+      "path": "data/closure/wave-03-candidate-evidence/unrepresentable-rows.json",
+      "sha256": "sha256:2d113821cd7d956c62a721869d328b4bf14a0c19f1af8a16343c930050bb79f3"
+    },
+    {
+      "byte_length": 35325,
+      "path": "data/closure/wave-03-candidate-release/access-ledger.json",
+      "sha256": "sha256:4f30dcb8003184ce9779718dbcccb0134b40eb1fae51c4d11374fed946b31f2b"
+    },
+    {
+      "byte_length": 33487,
+      "path": "data/closure/wave-03-candidate-release/candidate-ruleset.json",
+      "sha256": "sha256:1438c1018f3054e518651ac959c0a7f1155307377a157312e10c4728640633d0"
+    },
+    {
+      "byte_length": 131383,
+      "path": "data/closure/wave-03-candidate-release/case-catalogue.json",
+      "sha256": "sha256:01217eec3ff29bdfe4d9f7ef5a0ec588e2e183b16608cad45244b643e706c600"
+    },
+    {
+      "byte_length": 608,
+      "path": "data/closure/wave-03-candidate-release/checksums.sha256",
+      "sha256": "sha256:6a5c60b18a817e68f11543c9aa16c48eaa95ba7630c45abe176eda7c46d3accf"
+    },
+    {
+      "byte_length": 28122,
+      "path": "data/closure/wave-03-candidate-release/evaluation-results.json",
+      "sha256": "sha256:74d1b7196884e0e47a57ef34e05093548435cd0170a4abb9f1fba7a46760b1eb"
+    },
+    {
+      "byte_length": 1505,
+      "path": "data/closure/wave-03-candidate-release/evaluation-summary.json",
+      "sha256": "sha256:39ef8cd7e0d0d9cf1d21f8bf94f82b56abe4556e60389cf5098b3103e5c2c827"
+    },
+    {
+      "byte_length": 3892,
+      "path": "data/closure/wave-03-candidate-release/manifest.json",
+      "sha256": "sha256:e26b8f5a1e4085301c65d63b4f90488859c021aff911d4b119d5616fac357f7a"
+    },
+    {
+      "byte_length": 633,
+      "path": "data/closure/wave-03-candidate-release/separation-audit.json",
+      "sha256": "sha256:f77944c6e68d8f28628a517946d248afe9ec80265e310afbb5d3df3d1bd2670b"
+    },
+    {
+      "byte_length": 1779,
+      "path": "data/canonical/dataset-quality-decisions.ndjson",
+      "sha256": "sha256:2398c4343da902fb606e35857bd420eb7071dcd03c3fcaf4315af1a8acd8d44f"
+    }
+  ],
+  "manifest_version": "pgx-closure-wave03-manifest/1",
+  "operational_residuals": {
+    "blocked_count": 7,
+    "caused_by_this_wave_count": 1,
+    "entries": [
+      {
+        "measured_evidence": "`uv lock --offline` on the device VM resolved no solution: \"Because alembic was not found in the cache and your project depends on alembic>=1.13.1,<2.0 ... Packages were unavailable because the network was disabled.\" The uv cache is empty. pypi.org/simple/ returns HTTP 403 from both the device VM and the cloud container.",
+        "needs": "a reachable package index to resolve the dependency graph",
+        "residual_id": "OR-01",
+        "state": "BLOCKED_BY_EXTERNAL_ACCESS",
+        "subject": "uv.lock does not exist"
+      },
+      {
+        "measured_evidence": "pyproject declares ruff>=0.4.0,<1.0 and mypy>=1.9,<2.0, and the workflow installs with `uv sync --frozen`, so the lockfile is the pin and the ranges are not. Narrowing the ranges would look like a fix and change nothing about what CI installs.",
+        "needs": "uv.lock, which is OR-01",
+        "residual_id": "OR-02",
+        "state": "BLOCKED_BY_EXTERNAL_ACCESS",
+        "subject": "CI linters are not version-pinned"
+      },
+      {
+        "measured_evidence": "build-and-verify.yml pins actions/checkout, actions/setup-python and astral-sh/setup-uv to 0000000000000000000000000000000000000000 with a trailing \"- UNRESOLVED\" comment. api.github.com returns HTTP 403 from the cloud container; the device VM has no egress at all.",
+        "needs": "api.github.com, to resolve each tag to its commit SHA",
+        "residual_id": "OR-03",
+        "state": "BLOCKED_BY_EXTERNAL_ACCESS",
+        "subject": "every CI action SHA is unresolved"
+      },
+      {
+        "measured_evidence": "`import hatchling` fails on the device VM and it cannot be installed without a package index. Substituting a different build backend would produce a different artifact from the one the project declares, which is not the same evidence.",
+        "needs": "hatchling, the backend pyproject declares",
+        "residual_id": "OR-04",
+        "state": "BLOCKED_BY_EXTERNAL_ACCESS",
+        "subject": "no wheel or sdist has been built"
+      },
+      {
+        "measured_evidence": "`import psycopg` fails on the device VM. The Wave 2 database drill was executed against a real PostgreSQL 16.13 server in the cloud container through psql rather than through the application's own driver, so the ORM path itself remains unexercised.",
+        "needs": "psycopg",
+        "residual_id": "OR-05",
+        "state": "BLOCKED_BY_EXTERNAL_ACCESS",
+        "subject": "no Python driver can reach PostgreSQL"
+      },
+      {
+        "measured_evidence": "no docker binary is present on the device VM, and the cloud container has the CLI but no daemon. THS6_CONTAINER_RUNTIME_UNAVAILABLE remains the accurate blocker.",
+        "needs": "a container runtime",
+        "residual_id": "OR-06",
+        "state": "BLOCKED_BY_EXTERNAL_ACCESS",
+        "subject": "no container image and no SBOM"
+      },
+      {
+        "measured_evidence": "unchanged by this wave. A localhost process is not a staging environment and this project has already recorded that calling one staging would be the misdescription, not the shortcut.",
+        "needs": "an actual deployment target",
+        "residual_id": "OR-07",
+        "state": "BLOCKED_BY_EXTERNAL_ACCESS",
+        "subject": "no staging environment has been deployed or observed"
+      },
+      {
+        "measured_evidence": "uv reported \"Ignoring existing virtual environment linked to non-existent Python interpreter: .venv/bin/python3 -> python3.14\". The directory is not tracked by git, so it is a property of this working copy rather than of the repository, and Wave 3 did not touch it.",
+        "needs": "nothing from outside; it is a local working-copy artifact",
+        "residual_id": "OR-08",
+        "state": "OBSERVED_NOT_REPAIRED",
+        "subject": "the checked-out .venv points at a missing interpreter"
+      },
+      {
+        "measured_evidence": ".git/HEAD.lock and .git/index.lock are both zero bytes and cannot be unlinked or renamed from the device shell (\"Operation not permitted\"). Commits in this wave were therefore made with an explicit index file and by writing .git/refs/heads/main directly, because git update-ref refuses while the locks are present. The commits themselves are ordinary; only the mechanism was unusual.",
+        "needs": "filesystem permissions this session does not hold",
+        "residual_id": "OR-09",
+        "state": "OBSERVED_NOT_REPAIRED",
+        "subject": "two zero-byte git lock files cannot be removed"
+      },
+      {
+        "measured_evidence": "A fresh build_artifacts() run on the device VM was compared against the committed artifact rather than assumed about. Committed: 7461 discovered, 274 suites, 0 load failures. Fresh on this host: 7481 discovered, 275 suites, and 2 load failures - tests.unit.expert_review.test_persistence and tests.unit.security.test_persistence, both ImportError on the absent sqlalchemy. Committing that would record two import failures that do not exist on a provisioned host. The cloud container has the dependencies but WP-19 records are host-fingerprinted and are correctly rejected here, so neither environment can produce an honest replacement. The stale-count guard in tests/unit/ths6 and the reproducibility checks in tests/unit/verification therefore fail, and they fail correctly: they are detecting real staleness that this wave caused.",
+        "needs": "a host with the api and database extras installed, whose verification records this repository will accept",
+        "residual_id": "OR-10",
+        "state": "CAUSED_BY_THIS_WAVE_AND_UNFIXABLE_HERE",
+        "subject": "Wave 3's own new tests invalidated the WP-19 verification artifacts, and neither environment can regenerate them without making them worse"
+      }
+    ],
+    "total_count": 10
+  },
+  "release": {
+    "is_governed_release": false,
+    "release_key": "PGX-CANDIDATE-RELEASE-WAVE03",
+    "review_state": "PENDING_EXTERNAL_EXPERT_REVIEW",
+    "summary": {
+      "authority_state": "INTERNAL_VALIDATION",
+      "case_total": 56,
+      "catalogue_limitations": [
+        "one process authored the candidate rules, these cases and their expected answers; no partition here is independent of the build it tests, and a passing separation audit says the partitions do not leak into each other, not that any of them is independent evidence",
+        "the INTERNAL_HOLDOUT partition tests against the guideline's joint table, which no candidate rule encodes; that makes it a stronger check than the development partition and still not an external one",
+        "the EXPERT_HOLDOUT partition is sealed and was not evaluated in this wave; it is reserved so that a later external reviewer has material this build has not been scored against",
+        "an external expert should bring their own cases: a catalogue this project wrote cannot tell that project what it failed to think of"
+      ],
+      "catalogue_version": "pgx-wave03-candidate-cases/1",
+      "development_count": 23,
+      "evaluated_count": 43,
+      "evaluation_version": "pgx-wave03-candidate-evaluation/1",
+      "expert_holdout_count": 13,
+      "expert_payloads_read": 0,
+      "failed_count": 0,
+      "internal_holdout_count": 20,
+      "ledger_chain_broken_at": null,
+      "ledger_chain_ok": true,
+      "passed_count": 43,
+      "permitted_channels": [
+        "DEMO",
+        "VALIDATION"
+      ],
+      "review_state": "PENDING_EXTERNAL_EXPERT_REVIEW",
+      "ruleset_content_hash": "sha256:47e376610d4a928109d72f6a9ead14a1d1025b8d776b9d1aaf8db6d468915511",
+      "separation_issue_count": 0
+    }
+  },
+  "source_grounding": {
+    "retrieval_classification": "AGENT_ASSISTED_TARGETED_RETRIEVAL",
+    "retrieval_count": 4,
+    "retrieval_limits": [
+      "no byte-level hash of the served document exists: the retrieval tool returns rendered page text, not the HTTP response body",
+      "no per-request timestamp exists: each retrieval records the date it happened on and a measured instant it provably preceded",
+      "no full text of any guideline, supplement or publication is stored in this repository; only the recommendation rows and the citation",
+      "no source's programmatic interface was called, and no page other than the ones named here was fetched",
+      "the reading is this project's own; none of the cited organizations has seen it, reviewed it, or endorsed it"
+    ],
+    "row_count": 30,
+    "unrepresentable_row_count": 7
+  }
+}
