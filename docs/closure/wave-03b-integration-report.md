@@ -245,11 +245,18 @@ tampered release fails closed; and a refusal is never reported as
 ## 9. What remains blocked, unchanged by this wave
 
 `OR-01` to `OR-07` remain blocked on network egress neither environment has.
-`OR-10` is now larger: Wave 3B added and changed many tests, so WP-19's
-verification artifacts are further out of date. A fresh build on this host
-still records two `ImportError` load failures that do not exist on a
-provisioned host, so the artifacts were left alone and the guards that detect
-the staleness were left failing. Regenerating them here would make them worse.
+
+`OR-10` is now measured rather than described. WP-19's verification artifacts
+were last rebuilt in Wave 2 (`9b0bd97`) and were already stale at this brief's
+baseline `505b787`, which was missing three Wave 3 closure suites. Wave 3B and
+Wave 4 added two more and changed six, so the committed inventory reads 274
+suites and 7,461 tests against 277 and 7,562 on disk. A rebuild on the device
+VM drops `tests.unit.expert_review.test_persistence` and
+`tests.unit.security.test_persistence` into `load_failures` — `sqlalchemy` is
+absent and no package index is reachable — which replaces a stale artifact with
+a wrong one; the cloud container has `sqlalchemy` but not the repository. The
+artifacts were left stale and the guards that detect the staleness were left
+failing.
 
 The remaining test failures fall in exactly two pre-existing categories:
 `sqlalchemy` and the API extras are absent from this host (deployment, security,

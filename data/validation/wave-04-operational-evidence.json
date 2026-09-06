@@ -71,7 +71,7 @@
     {"code": "OR-05", "subject": "psycopg", "reason": "no package index; the database was exercised through psql rather than through the application's own driver, so the ORM path remains unexercised"},
     {"code": "OR-06", "subject": "container image and SBOM", "reason": "no container runtime with a daemon"},
     {"code": "OR-07", "subject": "staging deployment", "reason": "no deployment target; a localhost process is not staging"},
-    {"code": "OR-10", "subject": "WP-19 verification artifacts", "reason": "regenerating them on either available host records import failures that do not exist on a provisioned one"},
+    {"code": "OR-10", "subject": "WP-19 verification artifacts", "reason": "stale since the Wave 2 rebuild (commit 9b0bd97) and already stale at this brief's baseline 505b787, which was missing three Wave 3 closure suites; Wave 3B and Wave 4 added two more and changed six, so the committed inventory now reads 274 suites / 7,461 tests against 277 / 7,562 on disk. A rebuild on the device VM drops tests.unit.expert_review.test_persistence and tests.unit.security.test_persistence into load_failures because sqlalchemy is absent and no package index is reachable, replacing a stale artifact with a wrong one; the cloud container has sqlalchemy but not the repository. Left stale, with the guards that detect it left failing."},
     {"code": "W4-01", "subject": "authenticated web flow", "reason": "no authentication provider can be composed without a database driver, so every page behind authentication returns AUTHENTICATION_NOT_CONFIGURED 503"}
   ]
 }
