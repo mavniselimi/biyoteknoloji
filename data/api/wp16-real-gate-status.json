@@ -3,9 +3,9 @@
   "active_release_note": "No release is registered in this repository, so no assessment can pin one and every catalogue and version route reports the typed unavailability.",
   "api_dependencies_available": true,
   "api_version": "1.0.0",
-  "asgi_runtime_test_note": "tests/integration/api/test_asgi_runtime.py was executed by `python -m apps.api.runtime_verification` and every check passed. This flag reports that recorded execution, not the presence of the packages.",
-  "asgi_runtime_test_status": "VERIFIED",
-  "asgi_runtime_tests_executed": true,
+  "asgi_runtime_test_note": "no execution is recorded: api_source_sha256 changed since verification; the evidence describes a different repository state. Installed dependencies are reported separately and are not evidence that a test ran.",
+  "asgi_runtime_test_status": "STALE_EVIDENCE_REJECTED",
+  "asgi_runtime_tests_executed": false,
   "authentication_implemented": false,
   "authentication_note": "WP-16 defines an immutable Principal, three governed roles, a route-level role matrix and a resolver that refuses. It implements no password, session, token, cookie or CSRF mechanism. The production default establishes no principal at all and reports the API as not ready.",
   "blocker_count": 5,
@@ -22,11 +22,6 @@
     },
     {
       "blocking": true,
-      "code": "API_DATABASE_DRIVER_NOT_INSTALLED",
-      "detail": "not importable in this environment: psycopg"
-    },
-    {
-      "blocking": true,
       "code": "API_NO_ACTIVE_RELEASE",
       "detail": "no release is registered or active in this repository, so no assessment can pin one"
     },
@@ -34,6 +29,11 @@
       "blocking": true,
       "code": "API_NO_DATABASE_RUNTIME",
       "detail": "no database connection is configured or its driver is not installed, so no assessment can be stored or read through the API"
+    },
+    {
+      "blocking": true,
+      "code": "API_RUNTIME_NOT_VERIFIED",
+      "detail": "no successful runtime verification is recorded: api_source_sha256 changed since verification; the evidence describes a different repository state"
     }
   ],
   "claim_boundary_approved": false,
@@ -41,7 +41,7 @@
   "claim_boundary_status": "DRAFT / AWAITING HUMAN AND SCIENTIFIC REVIEW",
   "contract_model_count": 43,
   "contract_version": "pgx-api-contract/1",
-  "database_dependencies_available": false,
+  "database_dependencies_available": true,
   "database_reachable": false,
   "declared_route_count": 14,
   "dependency_availability": {
@@ -61,9 +61,9 @@
       "version": "0.28.1"
     },
     "psycopg": {
-      "importable": false,
+      "importable": true,
       "needed_for": "the PostgreSQL driver",
-      "version": null
+      "version": "3.2.10"
     },
     "pydantic": {
       "importable": true,
@@ -88,7 +88,7 @@
   },
   "dependency_resolution_note": "No lock file is committed and no resolution was performed by this generator. The versions above are what is importable in the environment that produced this document; the declared ranges in pyproject.toml have not been resolved against an index here.",
   "disabled_stub_routes": {},
-  "error_code_count": 45,
+  "error_code_count": 47,
   "gate_status_schema_version": "pgx-wp16-gate-status/1",
   "implementation_status": "IMPLEMENTED",
   "implemented_route_count": 14,
@@ -98,10 +98,10 @@
     "artifact_committed": true,
     "artifact_matches_generator": true,
     "generated_from_declaration": true,
-    "generated_from_running_application": true,
-    "runtime_verification": "VERIFIED",
-    "runtime_verification_note": "A running FastAPI application served /openapi.json and the document was compared with the committed artifact; the comparison found no difference. Recorded in data/api/wp16-runtime-verification.json and re-checked against the current inputs whenever this status is built.",
-    "runtime_verification_status": "VERIFIED"
+    "generated_from_running_application": false,
+    "runtime_verification": "BLOCKED",
+    "runtime_verification_note": "The document is generated from the declarative contract that also produces the routers and the validator. No recorded run has compared it with a document served by a running application: api_source_sha256 changed since verification; the evidence describes a different repository state. The comparison is performed by `python -m apps.api.runtime_verification`.",
+    "runtime_verification_status": "STALE_EVIDENCE_REJECTED"
   },
   "postgresql_runtime_available": false,
   "postgresql_runtime_note": "No PostgreSQL service was started or reached. No migration was applied, no schema was created and no row was written or read.",
@@ -153,7 +153,7 @@
     "verified_at": "2026-09-05T22:07:33Z"
   },
   "runtime_verification_evidence_path": "data/api/wp16-runtime-verification.json",
-  "runtime_verification_reason": "verified and current",
+  "runtime_verification_reason": "api_source_sha256 changed since verification; the evidence describes a different repository state",
   "synthetic_fixture_count": 2,
   "synthetic_fixture_count_source": "counted as files under tests/fixtures/wp16/, including the package marker",
   "work_package": "WP-16",

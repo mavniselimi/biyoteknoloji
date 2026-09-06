@@ -224,6 +224,40 @@ class RequestScopeMiddleware:
             await self.app(scope, receive, send)
 
 
+def compose_runtime_track(provider: ServiceProvider,
+                          settings: ApiSettings) -> ServiceProvider:
+    """Attach the capabilities of the track this deployment was told to serve.
+
+    Wave 3B built a candidate release, a candidate ruleset and a candidate
+    assessment service and composed none of them, so no request could reach
+    any of it. This is the wiring, and it is deliberately the only place that
+    does it: the API edge and the server-rendered interface share one provider,
+    so composing here composes both and there is exactly one evaluator.
+
+    A governed deployment is returned untouched. That is not politeness - it
+    is requirement 12: nothing about the governed track may change because a
+    candidate track now exists.
+    """
+    from dataclasses import replace
+
+    from pgx.application.candidate_composition import build_candidate_runtime
+    from pgx.application.runtime_track import RuntimeTrack
+
+    if settings.runtime_track is not RuntimeTrack.CANDIDATE:
+        return replace(provider, runtime_track=settings.runtime_track)
+
+    runtime = build_candidate_runtime(settings.candidate_repo_root)
+    return replace(
+        provider,
+        runtime_track=RuntimeTrack.CANDIDATE,
+        candidate_assessment_service=runtime.service,
+        candidate_release_resolver=runtime.release,
+        # The candidate boundary, wherever this deployment displays "the claim
+        # boundary". It reports is_approved as False, which is the answer.
+        claim_boundary=runtime.service().claim_boundary,
+    )
+
+
 def build_deployment_provider(
         settings: ApiSettings, composition: Any, *,
         base: Optional[ServiceProvider] = None) -> ServiceProvider:
@@ -245,6 +279,7 @@ def build_deployment_provider(
         principals = UnconfiguredAuthentication()
 
     provider = base or ServiceProvider(settings=settings)
+    provider = compose_runtime_track(provider, settings)
     return replace(
         provider,
         settings=settings,

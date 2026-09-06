@@ -39,9 +39,12 @@ not a second one written here.
 
 ## `details` is bounded and closed
 
-Only five keys may appear — `issues`, `components`, `required_role`,
-`work_package`, `limit` — and every list among them is truncated to
-`max_detail_entries`. The filtering happens in `error_envelope`, once, so no
+Only seven keys may appear — `issues`, `components`, `required_role`,
+`work_package`, `limit`, `composed_track`, `required_track` — and every list
+among them is truncated to `max_detail_entries`. The last two exist because
+`RUNTIME_TRACK_MISMATCH` without them tells an operator that something is
+wrong and not which of the two deployments they are looking at; both carry a
+track name from a closed set of two, never a value a caller sent. The filtering happens in `error_envelope`, once, so no
 caller can widen the envelope by handing it a larger mapping.
 
 Validation issues carry a **location and a code only**, never a value:
@@ -63,6 +66,7 @@ the framework-free validator or from Pydantic, and issues are sorted by
 | `ASSESSMENT_INPUT_INVALID` | 422 | The assessment input could not be read as a canonical input. |
 | `ASSESSMENT_NOT_FOUND` | 404 | No stored assessment carries that identifier. |
 | `AUTHENTICATION_NOT_CONFIGURED` | 503 | No authentication provider is configured. |
+| `CANDIDATE_RUNTIME_NOT_CONFIGURED` | 503 | This deployment runs the candidate track but no candidate release or candidate assessment service is composed. |
 | `CATALOGUE_UNAVAILABLE` | 503 | No governed catalogue is available for the active release. |
 | `CLAIM_BOUNDARY_NOT_APPROVED` | 503 | The claim boundary has not been approved, so no assessment may be executed. This is a governance gate, not a problem with the request. |
 | `CONCURRENT_STATE_CHANGE` | 409 | Stored state moved while this request was being served. |
@@ -99,6 +103,7 @@ the framework-free validator or from Pydantic, and issues are sorted by
 | `REQUEST_MALFORMED` | 400 | The request body could not be read as JSON. |
 | `REQUEST_TOO_LARGE` | 400 | The request body exceeds the accepted size. |
 | `RESOURCE_NOT_FOUND` | 404 | No resource carries that identifier. |
+| `RUNTIME_TRACK_MISMATCH` | 503 | The capability requested belongs to the release track this deployment does not serve. Candidate and governed releases carry different authorities and no request crosses between them. |
 | `SERVICE_NOT_READY` | 503 | A required component is not ready to serve this endpoint. |
 | `STORED_RESULT_INCONSISTENT` | 500 | A stored result did not verify against its recorded hashes and was not returned. |
 | `UNAUTHENTICATED` | 401 | This endpoint requires an authenticated principal. |
@@ -128,6 +133,15 @@ is not permitted to answer clinical questions yet — a governance gate — and
 not that the caller supplied bad clinical data. The catalogue message says
 so in words, because an operator who reads "not ready" and starts checking
 the database will not find anything wrong with it.
+
+**A track mismatch is 503, not 404.** `RUNTIME_TRACK_MISMATCH` says the
+capability exists and this deployment does not serve it — a governed
+deployment asked for the candidate release, or a candidate deployment asked
+for the governed one. It is deliberately not a fallback: the two tracks carry
+different authorities, and a request quietly served from the other one would
+return an answer whose provenance the caller could not check. A candidate
+release is `PROJECT_TEAM_PROVISIONAL` and `PENDING_EXTERNAL_EXPERT_REVIEW`; a
+governed release is signed. Nothing crosses.
 
 **A persistence failure is 500, not 503.** The request was valid and the
 failure is the server's, but 503 promises "temporarily unavailable, retry"

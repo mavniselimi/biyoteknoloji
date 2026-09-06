@@ -51,8 +51,8 @@
     }
   ],
   "gate_summary": {
-    "blocked": 1,
-    "passed": 9,
+    "blocked": 0,
+    "passed": 10,
     "total": 10
   },
   "gates": [
@@ -99,10 +99,10 @@
       "verdict": "PASS"
     },
     {
-      "evidence": "BLOCKED: the composed runtime track is None, so the deployed application does not run the candidate release. Set PGX_RUNTIME_TRACK=CANDIDATE for a candidate deployment.",
+      "evidence": "One assessment executed through the composed service: clopidogrel with CYP2C19 POOR in ACS_OR_PCI produced 1 axis/axes, attention HIGH and output hash sha256:1d91c463918e4400; the same case with no care setting refused with CARE_SETTING_NOT_DECLARED. apps.api.main.build_provider composes track=CANDIDATE; provider.require_candidate_release() resolves PGX-CANDIDATE-REL-20260906-001 and provider.require_candidate_assessment_service() runs it; boundary basis PROJECT_TEAM_PROVISIONAL, is_approved=False. The browser and the API read this same provider.",
       "gate": "G8",
       "requirement": "The real application composition used by the API and the browser resolves and executes the candidate release.",
-      "verdict": "BLOCKED"
+      "verdict": "PASS"
     },
     {
       "evidence": "tests/unit/closure/test_wave03b_assessment.py: 27 tests, all passing; covers care-setting refusal, joint two-gene requirement, CYP2D6 RAPID refusal, indeterminate refusal, PILOT rejection, missing/tampered release, and that no refusal is reported as NO_ACTIVE_ATTENTION",
@@ -111,7 +111,7 @@
       "verdict": "PASS"
     },
     {
-      "evidence": "347 python modules scanned for the five prohibited authority terms, 0 offenders; candidate boundary is_approved=False; P0 boundary is_approved=False; expert-review package untouched",
+      "evidence": "349 python modules scanned for the five prohibited authority terms, 0 offenders; candidate boundary is_approved=False; P0 boundary is_approved=False; expert-review package untouched",
       "gate": "G10",
       "requirement": "No external approval, independent validation or final THS-6 claim was fabricated.",
       "verdict": "PASS"

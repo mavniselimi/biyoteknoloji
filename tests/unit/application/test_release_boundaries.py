@@ -353,7 +353,15 @@ class TestReleaseAndIngestionStaySeparate(unittest.TestCase):
                           "assessment_schema.py", "assessment_service.py",
                           "assessment_snapshot.py",
                           "candidate_assessment_service.py",
-                          "candidate_release.py")
+                          # Wave 4B. The candidate track's composition and the
+                          # track vocabulary itself. Registered here rather
+                          # than left to be discovered, like every other
+                          # module in this layer: a module that appears in
+                          # pgx/application without a line in this tuple is a
+                          # module nobody decided to put there.
+                          "candidate_composition.py",
+                          "candidate_release.py",
+                          "runtime_track.py")
 
     #: WP-15. The same four shapes again: a service, a CLI, the schema loader
     #: and a gate-status builder. The reporting *logic* lives in

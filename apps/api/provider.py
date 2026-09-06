@@ -31,6 +31,8 @@ from apps.api.config import ApiSettings
 from apps.api.errors import NotReadyError
 from apps.api.readiness import ReadinessProbes
 from apps.api.security import PrincipalResolver, UnconfiguredAuthentication
+from pgx.application.runtime_track import (DEFAULT_RUNTIME_TRACK,
+                                           RuntimeTrack)
 from pgx.domain.claims import DEFAULT_CLAIM_BOUNDARY
 
 __all__ = ["ServiceProvider"]
@@ -48,6 +50,12 @@ class ServiceProvider:
 
     settings: ApiSettings
     claim_boundary: Any = DEFAULT_CLAIM_BOUNDARY
+    #: Which release track this deployment serves. Chosen by the composition
+    #: root from ``PGX_RUNTIME_TRACK``; never inferred from which files exist.
+    #: The accessors below use it to refuse the *other* track's capabilities,
+    #: so a route that reached for the wrong one gets a typed 503 instead of an
+    #: answer assembled from two authorities.
+    runtime_track: RuntimeTrack = DEFAULT_RUNTIME_TRACK
     principals: PrincipalResolver = field(
         default_factory=UnconfiguredAuthentication)
     assessment_service: Optional[Callable[[], Any]] = None
@@ -72,6 +80,13 @@ class ServiceProvider:
     audit_sink: Optional[Callable[[], Any]] = None
     audit_reader: Optional[Callable[[], Any]] = None
     user_administration: Optional[Callable[[], Any]] = None
+    #: Wave 4B candidate-track capabilities. Separate fields rather than
+    #: different values in the governed ones, so that a provider carrying a
+    #: candidate release cannot be mistaken for one carrying a governed
+    #: release by any reader - including a future one who only greps for
+    #: ``release_resolver``.
+    candidate_assessment_service: Optional[Callable[[], Any]] = None
+    candidate_release_resolver: Optional[Callable[[], Any]] = None
     readiness_probes: ReadinessProbes = field(default_factory=ReadinessProbes)
 
     # -- capability accessors --------------------------------------------
@@ -81,10 +96,59 @@ class ServiceProvider:
     # is visible in the source next to the capability it belongs to.
 
     def require_assessment_service(self) -> Any:
+        """The governed assessment service, and only in a governed deployment.
+
+        A candidate deployment is refused here rather than served from the
+        candidate service. The two produce different documents under different
+        authorities, and a caller who asked for the governed one and silently
+        received the other would have no way to tell.
+        """
+        self._require_track(RuntimeTrack.GOVERNED, "assessment_service")
         if self.assessment_service is None:
             raise NotReadyError("SERVICE_NOT_READY",
                                 details={"components": ["assessment_service"]})
         return self.assessment_service()
+
+    # -- track discipline -------------------------------------------------
+
+    def _require_track(self, expected: RuntimeTrack, component: str) -> None:
+        """Refuse a capability belonging to the track this is not.
+
+        The whole point of two tracks is that no request crosses between them.
+        A fallback here would be invisible: the caller would get an answer, and
+        the answer would carry the wrong authority.
+        """
+        if self.runtime_track is expected:
+            return
+        raise NotReadyError(
+            "RUNTIME_TRACK_MISMATCH",
+            details={"components": [component],
+                     "composed_track": self.runtime_track.value,
+                     "required_track": expected.value})
+
+    def require_candidate_assessment_service(self) -> Any:
+        """The candidate assessment service, and only in a candidate deployment."""
+        self._require_track(RuntimeTrack.CANDIDATE,
+                            "candidate_assessment_service")
+        if self.candidate_assessment_service is None:
+            raise NotReadyError(
+                "CANDIDATE_RUNTIME_NOT_CONFIGURED",
+                details={"components": ["candidate_assessment_service"]})
+        return self.candidate_assessment_service()
+
+    def require_candidate_release(self) -> Any:
+        """The pinned candidate release. Never the governed active pointer."""
+        self._require_track(RuntimeTrack.CANDIDATE, "candidate_release")
+        if self.candidate_release_resolver is None:
+            raise NotReadyError(
+                "CANDIDATE_RUNTIME_NOT_CONFIGURED",
+                details={"components": ["candidate_release"]})
+        pinned = self.candidate_release_resolver()
+        if pinned is None:
+            raise NotReadyError(
+                "CANDIDATE_RUNTIME_NOT_CONFIGURED",
+                details={"components": ["candidate_release"]})
+        return pinned
 
     def require_assessment_reader(self) -> Any:
         if self.assessment_reader is None:
@@ -93,6 +157,8 @@ class ServiceProvider:
         return self.assessment_reader()
 
     def require_release(self) -> Any:
+        """The governed active release. Refused in a candidate deployment."""
+        self._require_track(RuntimeTrack.GOVERNED, "active_release")
         if self.release_resolver is None:
             raise NotReadyError("ACTIVE_RELEASE_UNAVAILABLE",
                                 details={"components": ["active_release"]})
@@ -148,6 +214,11 @@ class ServiceProvider:
         is the whole point of the field set.
         """
         return {
+            "runtime_track": self.runtime_track.value,
+            "candidate_assessment_service_composed":
+                self.candidate_assessment_service is not None,
+            "candidate_release_composed":
+                self.candidate_release_resolver is not None,
             "authentication_service_composed":
                 self.authentication_service is not None,
             "csrf_service_composed": self.csrf_service is not None,

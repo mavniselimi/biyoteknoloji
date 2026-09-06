@@ -34,6 +34,10 @@ from enum import Enum
 from typing import Mapping, Optional, Tuple
 
 from apps.api.contracts.spec import LIMITS
+from pgx.application.runtime_track import (DEFAULT_RUNTIME_TRACK,
+                                           RUNTIME_TRACK_VARIABLE,
+                                           RuntimeTrack, RuntimeTrackError,
+                                           parse_runtime_track)
 from apps.api.security import AuthMode
 
 __all__ = [
@@ -97,6 +101,14 @@ class ApiSettings:
     database_url_configured: bool = False
     evidence_build_path: Optional[str] = None
     expected_migration_head: Optional[str] = None
+    #: Wave 4B. Which release track this deployment serves. Read from
+    #: ``PGX_RUNTIME_TRACK`` - not prefixed ``PGX_API_``, because the same
+    #: choice governs the interface and any CLI composed from the same
+    #: environment, and two variables that must agree eventually disagree.
+    runtime_track: RuntimeTrack = DEFAULT_RUNTIME_TRACK
+    #: Where the candidate release artifacts are read from. Only meaningful on
+    #: the candidate track.
+    candidate_repo_root: str = "."
 
     def __post_init__(self) -> None:
         if self.max_body_bytes < 1024 or self.max_body_bytes > 1_048_576:
@@ -247,6 +259,25 @@ def _bounded_path(env: Mapping[str, str], name: str) -> Optional[str]:
     return value
 
 
+def _runtime_track(source: Mapping[str, str]) -> RuntimeTrack:
+    """The release track, refusing anything it does not recognise.
+
+    Wrapped here so an unusable value becomes the same ``ApiConfigurationError``
+    every other bad variable produces, and so the message never quotes the
+    value - a configuration error that echoes its input is a log line that
+    eventually echoes a secret.
+    """
+    try:
+        return parse_runtime_track(source.get(RUNTIME_TRACK_VARIABLE))
+    except RuntimeTrackError:
+        raise ApiConfigurationError(
+            RUNTIME_TRACK_VARIABLE,
+            "one of " + ", ".join(item.value for item in RuntimeTrack)
+            + "; an unrecognised track is refused rather than resolved to a "
+              "default, because the default is the approved track and the "
+              "other one must be asked for") from None
+
+
 def load_settings(env: Optional[Mapping[str, str]] = None) -> ApiSettings:
     """Build settings from an environment mapping.
 
@@ -296,4 +327,7 @@ def load_settings(env: Optional[Mapping[str, str]] = None) -> ApiSettings:
         evidence_build_path=_bounded_path(source, "EVIDENCE_BUILD_PATH"),
         expected_migration_head=(
             (source.get(_ENV_PREFIX + "MIGRATION_HEAD") or "").strip() or None),
+        runtime_track=_runtime_track(source),
+        candidate_repo_root=(
+            (source.get("PGX_CANDIDATE_REPO_ROOT") or "").strip() or "."),
     )

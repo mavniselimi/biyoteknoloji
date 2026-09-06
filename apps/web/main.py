@@ -72,7 +72,10 @@ def build_combined_app(api_settings, web_settings):
 
     result = composition_result(api_settings)
     if result.composition is None:
-        provider = ServiceProvider(settings=api_settings)
+        from apps.api.deployment import compose_runtime_track
+
+        provider = compose_runtime_track(
+            ServiceProvider(settings=api_settings), api_settings)
         return create_combined_app(
             api_settings, provider,
             build_web_provider(web_settings, provider)), result

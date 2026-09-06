@@ -44,8 +44,16 @@ def build_provider(settings: Optional[ApiSettings] = None
     """
     settings = settings or load_settings()
     result = composition_result(settings)
+    from apps.api.deployment import compose_runtime_track
+
     if result.composition is None:
-        return ServiceProvider(settings=settings)
+        # No database, no security capabilities - but the release track is
+        # still the one this deployment was told to serve. A candidate
+        # deployment without a database must report the candidate release and
+        # refuse the authenticated routes, not report nothing and refuse
+        # everything for two different reasons at once.
+        return compose_runtime_track(ServiceProvider(settings=settings),
+                                     settings)
     from apps.api.deployment import build_deployment_provider
 
     return build_deployment_provider(settings, result.composition)
@@ -73,7 +81,7 @@ def build_app(settings: Optional[ApiSettings] = None):
     settings = settings or load_settings()
     result = composition_result(settings)
     if result.composition is None:
-        return create_app(settings, ServiceProvider(settings=settings)), result
+        return create_app(settings, build_provider(settings)), result
     from apps.api.deployment import (RequestScopeMiddleware,
                                      build_deployment_provider)
 

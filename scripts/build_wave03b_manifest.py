@@ -44,6 +44,52 @@ def _digest(*parts):
         return "sha256:" + hashlib.sha256(handle.read()).hexdigest()
 
 
+def _execute_through(service):
+    """Run one assessment through the composed service and describe the answer.
+
+    Deliberately a case the ruleset covers *and* one it must refuse, so the
+    measurement is that the deployment computes and that it fails closed -
+    a deployment that answered everything would pass a weaker version of this.
+    """
+    from pgx.application.assessment_models import AssessmentInput
+    from pgx.domain.claims import OperationMode, PermittedInputKind
+    from pgx.domain.enums import Phenotype
+    from pgx.engine.phenotype_models import (PhenotypeObservation,
+                                             PhenotypeProfile)
+
+    profile = PhenotypeProfile(
+        observations=(PhenotypeObservation(gene_canonical_key="GENE:CYP2C19",
+                                           status="NORMALIZED",
+                                           phenotype=Phenotype.POOR),),
+        input_contract_version="pgx-wave04b-gate/1")
+    covered = AssessmentInput(
+        mode=OperationMode.DEMO,
+        input_kind=PermittedInputKind.SYNTHETIC_PHENOTYPE_PROFILE,
+        profile=profile,
+        medications=("DRUG:clopidogrel",),
+        care_setting="ACS_OR_PCI")
+    result = service.execute(covered)
+    document = result.evaluation.to_json()
+    axes = sum(len(m["axes"]) for m in document["medications"])
+
+    refused = AssessmentInput(
+        mode=OperationMode.DEMO,
+        input_kind=PermittedInputKind.SYNTHETIC_PHENOTYPE_PROFILE,
+        profile=profile,
+        medications=("DRUG:clopidogrel",),
+        care_setting=None)
+    refusal = service.execute(refused)
+    codes = sorted({code
+                    for medication in refusal.evaluation.to_json()["medications"]
+                    for code in medication.get("reason_codes", ())})
+    return ("One assessment executed through the composed service: "
+            "clopidogrel with CYP2C19 POOR in ACS_OR_PCI produced "
+            "%d axis/axes, attention %s and output hash %s; the same case "
+            "with no care setting refused with %s."
+            % (axes, document["attention_level"], result.output_hash[:23],
+               ", ".join(codes) or "no code"))
+
+
 def _probe_real_composition(pinned):
     """Ask the deployed composition root what it runs. Never construct it here.
 
@@ -96,8 +142,20 @@ def _probe_real_composition(pinned):
                            "this gate exists to catch."
                            % (got, state["active_candidate_release"],
                               expected))}
+    # "Executes" is measured, not implied: one real assessment is run through
+    # the composed service, because a provider that resolves a release and
+    # cannot run it is exactly the state this gate previously missed.
+    try:
+        executed = _execute_through(service)
+    except Exception as error:  # noqa: BLE001
+        return {"passed": False,
+                "detail": ("BLOCKED: the composed service resolved %s but "
+                           "executing one assessment through it raised %s: %s"
+                           % (got, type(error).__name__, error))}
+
     return {"passed": True,
-            "detail": ("apps.api.main.build_provider composes track=CANDIDATE; "
+            "detail": (executed + " "
+                       + "apps.api.main.build_provider composes track=CANDIDATE; "
                        "provider.require_candidate_release() resolves %s and "
                        "provider.require_candidate_assessment_service() runs "
                        "it; boundary basis %s, is_approved=%s. The browser "

@@ -169,6 +169,14 @@ ERROR_CATALOGUE: Mapping[str, Tuple[int, str]] = {
         503, "No sealed evidence build is available."),
     "CATALOGUE_UNAVAILABLE": (
         503, "No governed catalogue is available for the active release."),
+    "CANDIDATE_RUNTIME_NOT_CONFIGURED": (
+        503, "This deployment runs the candidate track but no candidate "
+             "release or candidate assessment service is composed."),
+    "RUNTIME_TRACK_MISMATCH": (
+        503, "The capability requested belongs to the release track this "
+             "deployment does not serve. Candidate and governed releases "
+             "carry different authorities and no request crosses between "
+             "them."),
     # -- 500 -------------------------------------------------------------
     "INTERNAL_ERROR": (
         500, "The request could not be completed."),
@@ -289,7 +297,14 @@ class ExpertReviewApiError(ApiError):
 #: assembled by several callers, and an open mapping is where a value nobody
 #: reviewed eventually appears.
 _DETAIL_KEYS: Tuple[str, ...] = ("issues", "components", "required_role",
-                                 "work_package", "limit")
+                                 "work_package", "limit",
+                                 # Wave 4B. Which track was composed and which
+                                 # the refused capability belongs to: without
+                                 # both, RUNTIME_TRACK_MISMATCH tells an
+                                 # operator that something is wrong and not
+                                 # which of the two deployments they are
+                                 # looking at.
+                                 "composed_track", "required_track")
 
 
 def _bounded_details(details: Optional[Mapping[str, Any]]) -> Dict[str, Any]:

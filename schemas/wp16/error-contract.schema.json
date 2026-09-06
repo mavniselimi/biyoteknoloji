@@ -53,6 +53,10 @@
       "message": "No authentication provider is configured.",
       "status": 503
     },
+    "CANDIDATE_RUNTIME_NOT_CONFIGURED": {
+      "message": "This deployment runs the candidate track but no candidate release or candidate assessment service is composed.",
+      "status": 503
+    },
     "CATALOGUE_UNAVAILABLE": {
       "message": "No governed catalogue is available for the active release.",
       "status": 503
@@ -196,6 +200,10 @@
     "RESOURCE_NOT_FOUND": {
       "message": "No resource carries that identifier.",
       "status": 404
+    },
+    "RUNTIME_TRACK_MISMATCH": {
+      "message": "The capability requested belongs to the release track this deployment does not serve. Candidate and governed releases carry different authorities and no request crosses between them.",
+      "status": 503
     },
     "SERVICE_NOT_READY": {
       "message": "A required component is not ready to serve this endpoint.",
