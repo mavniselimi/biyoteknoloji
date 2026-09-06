@@ -31,7 +31,7 @@ from pgx.engine.phenotype_models import (PhenotypeObservation,  # noqa: E402
                                          PhenotypeProfile)
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-OUTPUT = os.path.join(REPO, "data", "validation", "wave-04-performance.json")
+OUTPUT = os.path.join(REPO, "data", "closure", "wave-04-performance.json")
 RUNS = 1000
 
 LIMITATIONS = (

@@ -51,6 +51,28 @@ requests, and requests carrying an observation the drug's axis does not name:
 shapes the development partition does not contain, and shapes a real user
 would produce.
 
+### This catalogue is not WP-18's holdout, and does not live in its directory
+
+WP-18 keeps validation case payloads out of this repository deliberately:
+`data/validation/README.md` says the directory holds documents and no case
+payload, because a holdout case committed beside the rules it exists to test is
+no longer a holdout, and `tests/integration/validation/test_wp18_flow.py`
+asserts it. This catalogue was first written into that directory, and the
+guard refused it.
+
+The catalogue is a different thing wearing the same word. Its cases are
+machine-authored from the candidate rules' own scope; its `INTERNAL_HOLDOUT`
+partition was sealed before the benchmark but shares one author with the
+ruleset; its expert partition carries inputs and no expected answers, because
+no expert has seen it. That is internal-consistency evidence, not the
+independent partition WP-18 describes.
+
+So the whole Wave 4 catalogue, benchmark, performance and operational-evidence
+set now lives under `data/closure/` with the rest of the wave artifacts,
+`data/validation/` holds WP-18 and WP-21 documents only, and
+`wp18-holdout-case-manifest.json` still reports **zero** holdout cases —
+which remains the true number.
+
 ## 2. The benchmark (WP-C11) — COMPLETE
 
 Thresholds are declared in `scripts/run_wave04_benchmark.py` **above the code

@@ -119,60 +119,64 @@
     "sealed_before_any_benchmark_run": true,
     "separation_issue_count": 0
   },
+  "catalogue_is_not_the_wp18_holdout": {
+    "why": "WP-18 keeps validation case payloads out of this repository on purpose: a holdout case committed beside the rules it exists to test is no longer a holdout, and data/validation/ holds documents only. This catalogue is a different thing under the same word. Its cases are machine-authored from the candidate rules' own scope, its INTERNAL_HOLDOUT partition was sealed before the benchmark but shares one author with the ruleset, and its expert partition carries inputs with no expected answers because no expert has seen it. It is therefore internal-consistency evidence, it lives under data/closure/ with the rest of the wave artifacts rather than in data/validation/, and it does not raise WP-18's holdout count, which remains zero.",
+    "wp18_holdout_case_count": 0
+  },
   "files": [
     {
       "byte_length": 426,
-      "path": "data/validation/wave-04-catalogue/checksums.sha256",
+      "path": "data/closure/wave-04-catalogue/checksums.sha256",
       "sha256": "sha256:eab54eaf5c1b1202fde75b3bc117ce8b610987b7126d8d64a3f6c27ebf36a9da"
     },
     {
       "byte_length": 79256,
-      "path": "data/validation/wave-04-catalogue/development.json",
+      "path": "data/closure/wave-04-catalogue/development.json",
       "sha256": "sha256:79d7dc04f34fa5307c008b134bb47c93a250494fd4d9250486b0678be09f19a4"
     },
     {
       "byte_length": 29234,
-      "path": "data/validation/wave-04-catalogue/expert-reserved.json",
+      "path": "data/closure/wave-04-catalogue/expert-reserved.json",
       "sha256": "sha256:333220aa0982974194aefea4d019fbebca334864457d5fbe933afbdd59218fb8"
     },
     {
       "byte_length": 48948,
-      "path": "data/validation/wave-04-catalogue/internal-holdout.json",
+      "path": "data/closure/wave-04-catalogue/internal-holdout.json",
       "sha256": "sha256:a00f4e5f7f82d7df35f93e541f40a5eb42e2722d96b73b2cc32d77875c388ed9"
     },
     {
       "byte_length": 2449,
-      "path": "data/validation/wave-04-catalogue/manifest.json",
+      "path": "data/closure/wave-04-catalogue/manifest.json",
       "sha256": "sha256:f133a56e1d0d111c239a2c51b0030f34eb68c43fe89fc14d3febc2aee12d7251"
     },
     {
       "byte_length": 633,
-      "path": "data/validation/wave-04-catalogue/separation-audit.json",
+      "path": "data/closure/wave-04-catalogue/separation-audit.json",
       "sha256": "sha256:306134c7b41f34b5e3d7ddd67e98cfcc27e6adb6da756ba99e61cf439fb576e6"
     },
     {
       "byte_length": 108,
-      "path": "data/validation/wave-04-benchmark/access-ledger.json",
+      "path": "data/closure/wave-04-benchmark/access-ledger.json",
       "sha256": "sha256:1944b6741fa5d0ca0ee266f18912c3927789263c95c909922eda4d5c7ea5ea36"
     },
     {
       "byte_length": 3,
-      "path": "data/validation/wave-04-benchmark/disagreements.json",
+      "path": "data/closure/wave-04-benchmark/disagreements.json",
       "sha256": "sha256:37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
     },
     {
       "byte_length": 378,
-      "path": "data/validation/wave-04-benchmark/metrics.json",
+      "path": "data/closure/wave-04-benchmark/metrics.json",
       "sha256": "sha256:6180aaf5c02c56cf4e36c40454965590a99edd60e29d87eb45471bce1ea7d47d"
     },
     {
       "byte_length": 70498,
-      "path": "data/validation/wave-04-benchmark/per-case-results.json",
+      "path": "data/closure/wave-04-benchmark/per-case-results.json",
       "sha256": "sha256:195c14ff53966c05d87dd8f4a884cbe547391587c976c187b3a1fcf735252be4"
     },
     {
       "byte_length": 3181,
-      "path": "data/validation/wave-04-benchmark/run-manifest.json",
+      "path": "data/closure/wave-04-benchmark/run-manifest.json",
       "sha256": "sha256:f17938bdaded6f8b524b553e9ec96d8dc32d0763822d883aa4bf31ccf8344c70"
     },
     {
@@ -227,12 +231,12 @@
     },
     {
       "byte_length": 1224,
-      "path": "data/validation/wave-04-performance.json",
+      "path": "data/closure/wave-04-performance.json",
       "sha256": "sha256:3d89be1029914edfb5bec265efd22d1bf87abd3c31a2d58a32a99c9619600f08"
     },
     {
       "byte_length": 4974,
-      "path": "data/validation/wave-04-operational-evidence.json",
+      "path": "data/closure/wave-04-operational-evidence.json",
       "sha256": "sha256:ae1890c9e3f7b8b29089c09b8e0e888515ecfbeaa7a6a09067b6bf1e8c1a4675"
     },
     {

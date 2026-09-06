@@ -78,6 +78,16 @@ SCREENSHOT_DIR = os.path.join(
         os.path.abspath(__file__)))),
     "fixtures", "wp17", "browser")
 
+#: The second directory a committed image may legitimately live in. Wave 4's
+#: browser verification writes here, beside ``browser-verification.json``,
+#: which names every capture it took;
+#: ``test_every_wave04_capture_is_named_by_its_own_evidence_document`` holds
+#: the two to each other so this exemption cannot widen quietly.
+WAVE04_CAPTURE_DIR = os.path.join(
+    os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(
+        os.path.abspath(__file__))))),
+    "data", "web", "wave-04-browser")
+
 
 def _skip_reason() -> str:
     """Name the prerequisite that is missing, not just 'blocked'."""
@@ -130,22 +140,28 @@ class TestTheBrowserRuntimeIsReportedHonestly(unittest.TestCase):
         if not BROWSER_AVAILABLE:
             self.assertEqual(status["screenshot_evidence_status"], "NONE")
 
-    def test_no_image_is_committed_outside_the_capture_directory(self):
-        """An image nowhere near the capture path is unexplained.
+    def test_no_image_is_committed_outside_a_capture_directory(self):
+        """An image nowhere near a capture path is unexplained.
 
         Also rewritten away from "does this host have a browser". A committed
         capture is legitimate on a machine that cannot take one; what is not
-        legitimate is an image that no code path could have produced. Only
-        ``test_every_page_is_captured`` writes images, and only into
-        ``tests/fixtures/wp17/browser/``.
+        legitimate is an image that no code path could have produced.
+
+        Two code paths produce images. ``test_every_page_is_captured`` writes
+        into ``tests/fixtures/wp17/browser/``, and Wave 4's browser
+        verification writes into ``data/web/wave-04-browser/`` beside the
+        document that records what each capture shows. Every other image in
+        the repository is a stray.
         """
         root = os.path.dirname(os.path.dirname(os.path.dirname(
             os.path.dirname(os.path.abspath(__file__)))))
+        allowed = {os.path.abspath(SCREENSHOT_DIR),
+                   os.path.abspath(WAVE04_CAPTURE_DIR)}
         strays = []
         for directory in ("docs", "data", "tests"):
             for base, dirs, files in os.walk(os.path.join(root, directory)):
                 dirs[:] = [name for name in dirs if name != "__pycache__"]
-                if os.path.abspath(base) == os.path.abspath(SCREENSHOT_DIR):
+                if os.path.abspath(base) in allowed:
                     continue
                 for name in files:
                     if name.lower().endswith((".png", ".jpg", ".jpeg",
@@ -153,6 +169,30 @@ class TestTheBrowserRuntimeIsReportedHonestly(unittest.TestCase):
                         strays.append(os.path.relpath(
                             os.path.join(base, name), root))
         self.assertEqual(strays, [])
+
+    def test_every_wave04_capture_is_named_by_its_own_evidence_document(self):
+        """What the second capture directory buys itself an exemption to do.
+
+        A directory the stray check skips could otherwise hold any image at
+        all. This closes it from the other side: the set of image files in
+        ``data/web/wave-04-browser/`` must equal exactly the set of
+        screenshots ``browser-verification.json`` names, so an image with no
+        recorded page - and a recorded page with no image - both fail.
+        """
+        import io as _io
+        import json as _json
+
+        if not os.path.isdir(WAVE04_CAPTURE_DIR):
+            self.skipTest("no Wave 4 capture directory in this checkout")
+        record = os.path.join(WAVE04_CAPTURE_DIR, "browser-verification.json")
+        self.assertTrue(os.path.isfile(record), record)
+        with _io.open(record, encoding="utf-8") as handle:
+            document = _json.load(handle)
+        named = {page["screenshot"] for page in document["pages"]}
+        present = {name for name in os.listdir(WAVE04_CAPTURE_DIR)
+                   if name.lower().endswith((".png", ".jpg", ".jpeg",
+                                             ".webp"))}
+        self.assertEqual(present, named)
 
     def test_the_documents_do_not_claim_a_browser_ran(self):
         """A claim that a browser ran needs committed evidence behind it.

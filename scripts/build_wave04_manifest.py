@@ -27,12 +27,12 @@ def _digest(path):
 
 
 def main() -> int:
-    catalogue = _read("data", "validation", "wave-04-catalogue",
+    catalogue = _read("data", "closure", "wave-04-catalogue",
                       "manifest.json")
-    benchmark = _read("data", "validation", "wave-04-benchmark",
+    benchmark = _read("data", "closure", "wave-04-benchmark",
                       "run-manifest.json")
-    performance = _read("data", "validation", "wave-04-performance.json")
-    operational = _read("data", "validation",
+    performance = _read("data", "closure", "wave-04-performance.json")
+    operational = _read("data", "closure",
                         "wave-04-operational-evidence.json")
     browser = _read("data", "web", "wave-04-browser",
                     "browser-verification.json")
@@ -99,8 +99,8 @@ def main() -> int:
 
     files = []
     for relative in (
-            os.path.join("data", "validation", "wave-04-catalogue"),
-            os.path.join("data", "validation", "wave-04-benchmark"),
+            os.path.join("data", "closure", "wave-04-catalogue"),
+            os.path.join("data", "closure", "wave-04-benchmark"),
             os.path.join("data", "web", "wave-04-browser")):
         base = os.path.join(REPO, relative)
         for name in sorted(os.listdir(base)):
@@ -110,8 +110,8 @@ def main() -> int:
                     os.sep, "/"), "sha256": _digest(path),
                     "byte_length": os.path.getsize(path)})
     for relative in (
-            os.path.join("data", "validation", "wave-04-performance.json"),
-            os.path.join("data", "validation",
+            os.path.join("data", "closure", "wave-04-performance.json"),
+            os.path.join("data", "closure",
                          "wave-04-operational-evidence.json"),
             os.path.join("data", "web", "wave-04-route-audit.json")):
         path = os.path.join(REPO, relative)
@@ -132,6 +132,25 @@ def main() -> int:
             "viewport": browser["viewport"],
         },
         "catalogue": catalogue,
+        "catalogue_is_not_the_wp18_holdout": {
+            "wp18_holdout_case_count": _read(
+                "data", "validation",
+                "wp18-holdout-case-manifest.json")["case_count"],
+            "why": (
+                "WP-18 keeps validation case payloads out of this repository "
+                "on purpose: a holdout case committed beside the rules it "
+                "exists to test is no longer a holdout, and data/validation/ "
+                "holds documents only. This catalogue is a different thing "
+                "under the same word. Its cases are machine-authored from the "
+                "candidate rules' own scope, its INTERNAL_HOLDOUT partition "
+                "was sealed before the benchmark but shares one author with "
+                "the ruleset, and its expert partition carries inputs with no "
+                "expected answers because no expert has seen it. It is "
+                "therefore internal-consistency evidence, it lives under "
+                "data/closure/ with the rest of the wave artifacts rather "
+                "than in data/validation/, and it does not raise WP-18's "
+                "holdout count, which remains zero."),
+        },
         "files": files,
         "label": "INTERNAL_VALIDATION",
         "manifest_version": "pgx-closure-wave04-manifest/1",

@@ -47,8 +47,8 @@ from pgx.validation.vocabulary import (AccessAction,  # noqa: E402
                                        AccessContextKind)
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-CATALOGUE = os.path.join(REPO, "data", "validation", "wave-04-catalogue")
-OUTPUT = os.path.join(REPO, "data", "validation", "wave-04-benchmark")
+CATALOGUE = os.path.join(REPO, "data", "closure", "wave-04-catalogue")
+OUTPUT = os.path.join(REPO, "data", "closure", "wave-04-benchmark")
 
 ACTOR = "pgx-closure-wave04-benchmark"
 NOT_A_HUMAN = "actor is an automated pass, not a person"

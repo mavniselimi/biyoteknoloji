@@ -30,7 +30,7 @@ from pgx.validation.separation import audit_partition  # noqa: E402
 from pgx.validation.vocabulary import ValidationCaseRole  # noqa: E402
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-ROOT = os.path.join(REPO, "data", "validation", "wave-04-catalogue")
+ROOT = os.path.join(REPO, "data", "closure", "wave-04-catalogue")
 
 
 def _write(relative: str, payload: object) -> dict:
