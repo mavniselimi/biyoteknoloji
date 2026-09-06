@@ -39,7 +39,13 @@ __all__ = [
 
 #: Bumped when the map changes. Recorded in the canonical manifest so a build
 #: can be read years later without guessing which classification produced it.
-ARTIFACT_ROLE_MAP_VERSION = "pgx-artifact-roles/1"
+ARTIFACT_ROLE_MAP_VERSION = "pgx-artifact-roles/2"
+
+#: The artifact family a WP-06 ClinPGx probe snapshot carries.
+LEGACY_PROBE_ARTIFACT_SET = "clinpgx-legacy-probe"
+
+#: The artifact family a Wave 3B transcription capture carries.
+CAPTURE_ARTIFACT_SET = "cpic-guideline-capture"
 
 
 class ArtifactRole(str, Enum):
@@ -81,6 +87,18 @@ class ArtifactRoleEntry:
     rationale: str
     derived_from: Optional[str] = None
     record_type: Optional[str] = None
+    #: Which family of snapshots is expected to carry this artifact.
+    #:
+    #: Added because "missing" is only meaningful relative to what a given
+    #: snapshot was ever going to contain. Before this field, the map was one
+    #: flat list and every snapshot was judged against all of it - which was
+    #: harmless while exactly one snapshot shape existed and became wrong the
+    #: moment a second did: a transcription capture would be reported as
+    #: missing four ClinPGx probe files it was never going to have, and the
+    #: legacy probe snapshot would simultaneously be reported as missing four
+    #: capture files. Both reports would have been nonsense, and the
+    #: evidence-role ones would have blocked.
+    artifact_set: str = "clinpgx-legacy-probe"
 
     @property
     def counts_as_evidence(self) -> bool:
@@ -100,6 +118,7 @@ class ArtifactRoleEntry:
             "rationale": self.rationale,
             "derived_from": self.derived_from,
             "record_type": self.record_type,
+            "artifact_set": self.artifact_set,
             "counts_as_evidence": self.counts_as_evidence,
         }
 
@@ -112,6 +131,41 @@ class ArtifactRoleEntry:
 #: rather than assumed - and a consistency check in the builder re-verifies it
 #: on every run.
 ARTIFACT_ROLE_MAP: Tuple[ArtifactRoleEntry, ...] = (
+    # -- Wave 3B transcription-capture artifacts ----------------------------
+    #
+    # These four names belong to a TRANSCRIPTION_CAPTURE snapshot, not to a
+    # WP-04 acquisition. They are separate names rather than reuses of the
+    # ``resolved_*`` / ``pair_probe_raw`` / ``variant_annotation_*`` names
+    # above, and that separation is the point: those names mean "this is what
+    # the ClinPGx endpoint returned", and a guideline recommendation table read
+    # from a published page is not that. Giving this content those names would
+    # have made the misdescription invisible at every later read.
+    ArtifactRoleEntry(
+        "capture_genes.json", ArtifactRole.ENTITY_CANDIDATE_INPUT,
+        "Genes named by the captured guideline tables, keyed by symbol. The "
+        "capture carries no external gene accession, because a guideline "
+        "recommendation table does not publish one; the records therefore "
+        "propose an entity and no cross-reference.",
+        record_type="gene", artifact_set=CAPTURE_ARTIFACT_SET),
+    ArtifactRoleEntry(
+        "capture_chemicals.json", ArtifactRole.ENTITY_CANDIDATE_INPUT,
+        "Drugs named by the captured guideline tables, keyed by name. As with "
+        "the genes, no external accession is claimed.",
+        record_type="drug", artifact_set=CAPTURE_ARTIFACT_SET),
+    ArtifactRoleEntry(
+        "capture_axes.json", ArtifactRole.RELATIONSHIP_REFERENCE_INPUT,
+        "The gene-drug axes the captured guidelines cover, keyed GENE::drug. "
+        "References only: an axis resolves against the canonical catalog and "
+        "never creates the entities it names.",
+        record_type="capture_axis", artifact_set=CAPTURE_ARTIFACT_SET),
+    ArtifactRoleEntry(
+        "capture_recommendation_rows.json", ArtifactRole.RAW_ANNOTATION_INPUT,
+        "One record per transcribed recommendation row, including the rows "
+        "this project's phenotype vocabulary cannot carry. Counted and "
+        "deduplicated; not interpreted here. The interpretation into an "
+        "attention level happens in curation, under its own authority state.",
+        record_type="capture_recommendation_row",
+        artifact_set=CAPTURE_ARTIFACT_SET),
     ArtifactRoleEntry(
         "resolved_genes.json", ArtifactRole.ENTITY_CANDIDATE_INPUT,
         "Least-derived gene representation: a mapping of queried symbol to the "
@@ -215,5 +269,14 @@ def classify_artifacts(file_names) -> Tuple[Tuple[ArtifactRoleEntry, ...],
     """
     present = tuple(sorted(file_names))
     entries = tuple(role_of(name) for name in present)
-    missing = tuple(sorted(set(_BY_NAME) - set(present)))
+    observed_sets = {entry.artifact_set for entry in entries
+                     if entry.role is not ArtifactRole.UNRECOGNISED}
+    if not observed_sets:
+        # Nothing recognised at all. Reporting every mapped name as missing
+        # would bury the real finding, which is that this snapshot matches no
+        # known artifact family.
+        return entries, ()
+    expected = {name for name, entry in _BY_NAME.items()
+                if entry.artifact_set in observed_sets}
+    missing = tuple(sorted(expected - set(present)))
     return entries, missing

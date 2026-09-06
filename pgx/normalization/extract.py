@@ -392,6 +392,11 @@ class _ExtractionState:
             "resolved_chemicals.json": self._read_chemicals,
             "pair_probe_raw.json": self._read_pairs,
             "variant_annotation_filtered_raw.json": self._read_variant_annotations,
+            "capture_genes.json": self._read_genes,
+            "capture_chemicals.json": self._read_chemicals,
+            "capture_axes.json": self._read_capture_axes,
+            "capture_recommendation_rows.json":
+                self._read_capture_recommendation_rows,
         }.get(entry.file_name)
 
         if handler is not None and entry.counts_as_evidence:
@@ -689,6 +694,98 @@ class _ExtractionState:
                  "meaning."))
 
     # -- non-evidence artifacts -----------------------------------------
+
+    def _read_capture_axes(self, entry: ArtifactRoleEntry) -> None:
+        """Gene-drug axes from a transcription capture, as references only.
+
+        Deliberately not ``_read_pairs``. That handler reads the ClinPGx pair
+        endpoint's ``pair`` object of named containers, and a guideline
+        recommendation table has no such thing. Reusing it would have meant
+        inventing a container spelling for content that has none, which is how
+        a capture starts describing itself as an endpoint response.
+        """
+        payload = self._load_json(entry.file_name)
+        if not isinstance(payload, Mapping):
+            raise ArtifactRoleError(
+                "%s should be an object keyed by GENE::drug, got %s"
+                % (entry.file_name, type(payload).__name__),
+                artifacts=(entry.file_name,))
+
+        records = 0
+        for axis_key in sorted(payload):
+            record = payload[axis_key]
+            self._pair_keys.append(axis_key)
+            self._pair_references(entry.file_name, axis_key)
+            if not isinstance(record, Mapping):
+                self.findings.append(
+                    "capture axis %r is not an object and was skipped"
+                    % axis_key)
+                continue
+            pointer = json_pointer(axis_key)
+            source_id = _source_record_id(record)
+            self.observations.append(RecordObservation(
+                record_type="capture_axis",
+                source_record_id=source_id,
+                semantic_key=axis_key,
+                payload=record,
+                locator=self._locator(entry.file_name, pointer, source_id)))
+            records += 1
+            if source_id is None:
+                self._count_missing_id(entry.file_name)
+
+        self.reports.append(ArtifactReadReport(
+            file_name=entry.file_name,
+            relative_path=self._relative_path(entry.file_name),
+            role=entry.role, read=True, record_count=records,
+            note="Gene-drug axes covered by the captured guidelines. Each "
+                 "names its two entities and creates neither."))
+
+    def _read_capture_recommendation_rows(self,
+                                          entry: ArtifactRoleEntry) -> None:
+        """Transcribed recommendation rows. Counted, never interpreted.
+
+        Every row the source states is present, including the rows this
+        project's phenotype vocabulary cannot carry. Dropping those here would
+        make a representability gap look like an ordinary absence three layers
+        downstream, where nobody would be able to tell the difference.
+        """
+        payload = self._load_json(entry.file_name)
+        if not isinstance(payload, list):
+            raise ArtifactRoleError(
+                "%s should be a list of transcribed rows, got %s"
+                % (entry.file_name, type(payload).__name__),
+                artifacts=(entry.file_name,))
+
+        records = 0
+        for index, record in enumerate(payload):
+            pointer = json_pointer(index)
+            if not isinstance(record, Mapping):
+                self.findings.append(
+                    "%s at %s is not an object and was skipped"
+                    % (entry.file_name, pointer))
+                continue
+            source_id = _source_record_id(record)
+            gene = _string_or_none(record, "gene") or "?"
+            drug = _string_or_none(record, "drug") or "?"
+            phenotype = _string_or_none(record, "source_phenotype") or "?"
+            context = _string_or_none(record, "context") or "?"
+            self.observations.append(RecordObservation(
+                record_type="capture_recommendation_row",
+                source_record_id=source_id,
+                semantic_key="%s::%s|%s|%s" % (gene, drug, phenotype, context),
+                payload=record,
+                locator=self._locator(entry.file_name, pointer, source_id)))
+            records += 1
+            if source_id is None:
+                self._count_missing_id(entry.file_name)
+
+        self.reports.append(ArtifactReadReport(
+            file_name=entry.file_name,
+            relative_path=self._relative_path(entry.file_name),
+            role=entry.role, read=True, record_count=records,
+            note="Transcribed recommendation rows, including rows whose "
+                 "phenotype this project cannot represent. No row is "
+                 "interpreted here."))
 
     def _read_derived_identifiers(self, entry: ArtifactRoleEntry) -> None:
         """Read a derived file's identifier set only, for the derivation check.

@@ -86,6 +86,14 @@ def record_dataset_quality_decision(
     if not result.outcome.is_recorded:
         return QualityDecisionServiceResult(decision_result=result)
 
+    if decision.decision is QualityDecision.ACCEPTED_FOR_CANDIDATE_USE:
+        return QualityDecisionServiceResult(
+            decision_result=result,
+            transition_detail=(
+                "accepted for candidate DEMO/VALIDATION use; the WP-07 "
+                "transition is deliberately not attempted, because candidate "
+                "acceptance does not publish a dataset on the governed path"))
+
     if decision.decision is QualityDecision.REJECTED:
         return QualityDecisionServiceResult(
             decision_result=result,

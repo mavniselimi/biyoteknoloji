@@ -291,6 +291,39 @@ class TestTheRegistryIsUntouched(unittest.TestCase):
             with self.subTest(source=entry["source_key"]):
                 self.assertEqual(entry["status"], "PENDING_REVIEW")
 
+    def test_the_sources_h01_reviewed_are_unchanged(self):
+        """The property the byte-for-byte check was standing in for.
+
+        This class used to assert the registry file was byte-identical to
+        what it was when H01 was recorded. That was the right check while the
+        file only ever held the twenty sources the reviewer saw. Wave 3B
+        registered a twenty-first, so the file legitimately changed - and the
+        thing that must not change is narrower and more important: no row
+        H01 reviewed has moved, and nothing added since has been approved.
+        """
+        from pgx.closure.checkpoints import H01_REVIEWED_SOURCE_KEYS
+        with io.open(REGISTRY, encoding="utf-8") as handle:
+            registry = json.load(handle)
+        by_key = {entry["source_key"]: entry for entry in registry["sources"]}
+        for key in H01_REVIEWED_SOURCE_KEYS:
+            with self.subTest(source=key):
+                self.assertIn(key, by_key)
+                self.assertEqual(by_key[key]["status"], "PENDING_REVIEW")
+                self.assertIsNone(by_key[key]["review"])
+        for key, entry in by_key.items():
+            if key in H01_REVIEWED_SOURCE_KEYS:
+                continue
+            with self.subTest(added=key):
+                self.assertEqual(entry["status"], "PENDING_REVIEW")
+                self.assertIsNone(entry["review"])
+                self.assertEqual(entry["permitted_claim_categories"], [])
+
+    def test_the_reviewed_content_hashes_still_match(self):
+        """H01 is bound to what the reviewer saw, and it still is."""
+        payload = build_decision(REPO_ROOT)
+        self.assertEqual(payload["state"], "RECORDED")
+        self.assertTrue(payload["hash_binding"]["reviewed_content_matches"])
+
     def test_no_approved_source_has_been_given_an_acquisition_mode(self):
         """The four the reviewer approved still carry no acquisition mode.
 
@@ -312,18 +345,38 @@ class TestTheRegistryIsUntouched(unittest.TestCase):
                 self.assertEqual(entry["acquisition_mode"], "NOT_DETERMINED")
         self.assertEqual(seen, EXPECTED_APPROVED_SOURCES)
 
-    def test_the_registry_file_is_byte_for_byte_what_it_was(self):
-        """The strongest form of "untouched": the digest is pinned.
+    def test_the_registry_digest_is_recorded_even_when_it_moves(self):
+        """The pinned digest, kept as history rather than as an assertion.
 
-        If a later change edits the registry, this fails and whoever changed
-        it has to say why here rather than letting an approval record and a
-        registry drift apart quietly.
+        This asserted the registry file was byte-identical to its state when
+        H01 was recorded, and it did its job: Wave 3B changed the file and
+        this test is where that had to be explained rather than slipping past.
+
+        The explanation is that Wave 3B registered one additional source,
+        ``cpic.guideline-capture``, as ``PENDING_REVIEW`` with no review
+        record. H01 reviewed twenty sources and still does; the twenty-first
+        was added afterwards, is approved by nobody, and is deliberately
+        absent from the H01 checkpoint - so the attestation's reviewed-content
+        hashes are untouched, which
+        ``test_the_reviewed_content_hashes_still_match`` asserts directly.
+
+        The old digest stays recorded so the change is dated and locatable.
+        What replaced it as an assertion is
+        ``test_the_sources_h01_reviewed_are_unchanged``, which checks the
+        property this digest was standing in for and keeps checking it as the
+        registry grows.
         """
         import hashlib
 
         with io.open(REGISTRY, "rb") as handle:
             digest = hashlib.sha256(handle.read()).hexdigest()
-        self.assertEqual(digest, REGISTRY_SHA256_AT_DECISION)
+        if digest != REGISTRY_SHA256_AT_DECISION:
+            from pgx.scientific.policy import load_registry
+            registry = load_registry(REGISTRY)
+            self.assertGreater(len(registry.records), 20,
+                               "the registry digest moved but no source was "
+                               "added; something edited an existing row")
+            self.assertEqual(registry.approved_records, ())
 
     def test_the_policy_validator_still_approves_nothing(self):
         import datetime as _dt

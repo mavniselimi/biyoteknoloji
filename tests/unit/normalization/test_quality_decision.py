@@ -128,14 +128,37 @@ class TestADecisionCannotBeMadeAnonymously(_Tree):
 
 
 class TestOnlyTwoVerdictsExist(_Tree):
+    """Three verdicts now, and the third is not a softer approval.
 
-    def test_the_vocabulary_is_approved_or_rejected(self):
+    ``ACCEPTED_FOR_CANDIDATE_USE`` was added for the candidate track. The
+    assertions below are what stop it from becoming a back door: it must not
+    permit the WP-07 transition, and it must be spelled so that nothing
+    reading the ledger can mistake it for ``APPROVED``.
+    """
+
+    def test_the_vocabulary_is_exactly_these_three(self):
         self.assertEqual([item.value for item in QualityDecision],
-                         ["APPROVED", "REJECTED"])
+                         ["APPROVED", "ACCEPTED_FOR_CANDIDATE_USE",
+                          "REJECTED"])
 
     def test_only_an_approval_permits_the_transition(self):
         self.assertTrue(QualityDecision.APPROVED.permits_transition)
         self.assertFalse(QualityDecision.REJECTED.permits_transition)
+        self.assertFalse(
+            QualityDecision.ACCEPTED_FOR_CANDIDATE_USE.permits_transition,
+            "candidate acceptance would publish a dataset on the governed "
+            "path, which it has not earned")
+
+    def test_candidate_acceptance_binds_a_candidate_release_only(self):
+        self.assertTrue(QualityDecision.APPROVED.permits_candidate_release)
+        self.assertTrue(QualityDecision.ACCEPTED_FOR_CANDIDATE_USE
+                        .permits_candidate_release)
+        self.assertFalse(QualityDecision.REJECTED.permits_candidate_release)
+
+    def test_candidate_acceptance_is_not_spelled_like_an_approval(self):
+        value = QualityDecision.ACCEPTED_FOR_CANDIDATE_USE.value
+        self.assertNotIn("APPROV", value)
+        self.assertIn("CANDIDATE", value)
 
     def test_a_rejection_records_and_moves_nothing(self):
         result = append_decision(self._decision(QualityDecision.REJECTED),
@@ -281,12 +304,22 @@ class TestNoRealDecisionExistsInThisRepository(unittest.TestCase):
                           "dataset-quality-decisions.ndjson")
 
     def test_no_committed_decision_approves_a_dataset(self):
+        """The property, not the proxy.
+
+        This asserted that every row was ``REJECTED``, which was the same
+        thing while ``APPROVED`` and ``REJECTED`` were the only verdicts. A
+        third verdict exists now, so the assertion is stated as what it always
+        meant: no row carries the governed approval, and no row permits the
+        WP-07 transition.
+        """
         for row in load_ledger(self.LEDGER):
-            self.assertIs(
-                row.decision, QualityDecision.REJECTED,
+            self.assertIsNot(
+                row.decision, QualityDecision.APPROVED,
                 "%s carries a committed APPROVED decision. An approval moves "
                 "a dataset towards release, and none has been earned."
                 % row.dataset_public_id)
+            self.assertFalse(row.decision.permits_transition,
+                             row.dataset_public_id)
 
     def test_an_automated_reviewer_says_so_in_its_own_name(self):
         for row in load_ledger(self.LEDGER):
@@ -300,8 +333,19 @@ class TestNoRealDecisionExistsInThisRepository(unittest.TestCase):
                 self.assertEqual(row.reviewer_role,
                                  "AUTOMATED_PROJECT_TEAM_PASS")
 
-    def test_every_committed_decision_still_describes_its_build(self):
-        for row in load_ledger(self.LEDGER):
+    def test_every_current_decision_still_describes_its_build(self):
+        """Superseded rows are exempt, and only superseded rows.
+
+        A superseded decision is a record of what was believed at the time;
+        re-binding it to today's artifacts would destroy exactly the
+        information it is kept for. A *current* decision that no longer
+        describes what is on disk is a defect, and still fails here.
+        """
+        ledger = load_ledger(self.LEDGER)
+        superseded = {row.supersedes for row in ledger if row.supersedes}
+        for row in ledger:
+            if row.decision_id in superseded:
+                continue
             build = os.path.join(REPO_ROOT, "data", "canonical",
                                  row.dataset_public_id)
             if not os.path.isdir(build):

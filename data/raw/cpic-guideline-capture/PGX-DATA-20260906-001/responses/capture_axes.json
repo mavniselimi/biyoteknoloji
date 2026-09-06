@@ -1,0 +1,57 @@
+{
+  "CYP2C19::amitriptyline": {
+    "annotation_id": "PA166105006",
+    "annotation_url": "https://www.clinpgx.org/guidelineAnnotation/PA166105006",
+    "drug": "amitriptyline",
+    "gene": "CYP2C19",
+    "guideline_id": "PA166251445",
+    "guideline_version_label": "2016 Update, with the October 2019 CYP2D6 genotype-to-phenotype translation change applied by CPIC after publication",
+    "id": "capture:axis:CYP2C19::amitriptyline",
+    "row_count": 5,
+    "unrepresentable_row_count": 0
+  },
+  "CYP2C19::clopidogrel": {
+    "annotation_id": "PA166104948",
+    "annotation_url": "https://www.clinpgx.org/guidelineAnnotation/PA166104948",
+    "drug": "clopidogrel",
+    "gene": "CYP2C19",
+    "guideline_id": "PA166251443",
+    "guideline_version_label": "2022 Update",
+    "id": "capture:axis:CYP2C19::clopidogrel",
+    "row_count": 8,
+    "unrepresentable_row_count": 3
+  },
+  "CYP2C19::omeprazole": {
+    "annotation_id": "PA166219103",
+    "annotation_url": "https://www.clinpgx.org/guidelineAnnotation/PA166219103",
+    "drug": "omeprazole",
+    "gene": "CYP2C19",
+    "guideline_id": "PA166251441",
+    "guideline_version_label": "August 2020 (published 2021)",
+    "id": "capture:axis:CYP2C19::omeprazole",
+    "row_count": 8,
+    "unrepresentable_row_count": 3
+  },
+  "CYP2D6::amitriptyline": {
+    "annotation_id": "PA166105006",
+    "annotation_url": "https://www.clinpgx.org/guidelineAnnotation/PA166105006",
+    "drug": "amitriptyline",
+    "gene": "CYP2D6",
+    "guideline_id": "PA166251445",
+    "guideline_version_label": "2016 Update, with the October 2019 CYP2D6 genotype-to-phenotype translation change applied by CPIC after publication",
+    "id": "capture:axis:CYP2D6::amitriptyline",
+    "row_count": 4,
+    "unrepresentable_row_count": 0
+  },
+  "CYP2D6::codeine": {
+    "annotation_id": "PA166104996",
+    "annotation_url": "https://www.clinpgx.org/guidelineAnnotation/PA166104996",
+    "drug": "codeine",
+    "gene": "CYP2D6",
+    "guideline_id": "PA166251454",
+    "guideline_version_label": "December 2020 opioids guideline (supersedes the 2014 and 2012 codeine guidelines)",
+    "id": "capture:axis:CYP2D6::codeine",
+    "row_count": 5,
+    "unrepresentable_row_count": 1
+  }
+}

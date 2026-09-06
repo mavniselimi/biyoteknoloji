@@ -65,20 +65,51 @@ LEDGER_PATH = os.path.join("data", "canonical", "dataset-quality-decisions.ndjso
 
 
 class QualityDecision(str, Enum):
-    """The two things a data owner may say, and nothing in between.
+    """What a data owner may say about a build, and nothing in between.
 
     There is deliberately no ``PENDING`` or ``CONDITIONAL``. A decision that
     has not been made is an absent row, which is not the same thing as a
     recorded hesitation and should not be able to look like one.
+
+    ``ACCEPTED_FOR_CANDIDATE_USE`` was added for the candidate track and is
+    **not** a softer spelling of ``APPROVED``. The two answer different
+    questions, and both may be false at once:
+
+    * ``APPROVED`` says the dataset is fit for the governed path - its quality
+      gate passed, its source policy is approved, its completeness is known.
+    * ``ACCEPTED_FOR_CANDIDATE_USE`` says the dataset satisfied a separately
+      declared, weaker set of criteria and may back a DEMO/VALIDATION
+      candidate release. It is compatible with a quality gate that did not
+      pass, provided the decision names every blocking issue it is accepting
+      over - which is why the rationale, not the enum member, carries the
+      substance.
+
+    A row spelling ``ACCEPTED_FOR_CANDIDATE_USE`` therefore must never be read
+    as an approval, and the string was chosen so that a reader skimming the
+    ledger cannot mistake one for the other.
     """
 
     APPROVED = "APPROVED"
+    ACCEPTED_FOR_CANDIDATE_USE = "ACCEPTED_FOR_CANDIDATE_USE"
     REJECTED = "REJECTED"
 
     @property
     def permits_transition(self) -> bool:
-        """Only an approval may move a dataset, and only through WP-07."""
+        """Only an approval may move a dataset, and only through WP-07.
+
+        Candidate acceptance deliberately does **not** permit the WP-07
+        transition. That transition publishes a dataset on the governed path,
+        and a candidate acceptance has not earned it; the candidate release
+        binds the dataset by identity and hash instead, without moving its
+        governed lifecycle state.
+        """
         return self is QualityDecision.APPROVED
+
+    @property
+    def permits_candidate_release(self) -> bool:
+        """Whether a candidate release may bind this dataset."""
+        return self in (QualityDecision.APPROVED,
+                        QualityDecision.ACCEPTED_FOR_CANDIDATE_USE)
 
 
 class DecisionOutcome(str, Enum):
@@ -137,6 +168,21 @@ class DatasetQualityDecision:
     rationale: str
     dq_artifact_hash: str
     source_policy_hash: str
+    #: The ``decision_id`` this decision replaces, and why.
+    #:
+    #: The replay guard below refuses a second verdict on one build, which is
+    #: right: a retry that quietly produced a different answer would make the
+    #: ledger unreadable. But a first verdict can be wrong for a reason that
+    #: has nothing to do with the dataset - a defect in whatever evaluated it -
+    #: and an append-only ledger with no way to say so would force the choice
+    #: between editing history and leaving a false statement standing.
+    #:
+    #: So supersession is explicit and narrow: the new decision names the exact
+    #: prior decision id, states why, and both rows remain. A superseding
+    #: decision cannot be recorded by accident, because naming an id that is
+    #: not in the ledger is refused.
+    supersedes: Optional[str] = None
+    supersedes_reason: Optional[str] = None
 
     def __post_init__(self) -> None:
         if not isinstance(self.decision, QualityDecision):
@@ -156,6 +202,14 @@ class DatasetQualityDecision:
                 "ambiguous and a decision's time is part of the record")
         object.__setattr__(self, "decided_at",
                            self.decided_at.astimezone(_dt.timezone.utc))
+        if (self.supersedes is None) != (self.supersedes_reason is None):
+            raise QualityGateError(
+                "supersedes and supersedes_reason arrive together or not at "
+                "all; a replacement with no stated reason is an edit wearing "
+                "a different name")
+        if self.supersedes is not None:
+            _require_text(self.supersedes, "supersedes", 64)
+            _require_text(self.supersedes_reason, "supersedes_reason", 2000)
 
     @property
     def binding_key(self) -> str:
@@ -169,7 +223,8 @@ class DatasetQualityDecision:
         material = "|".join((
             DECISION_LEDGER_VERSION, self.binding_key, self.source_policy_hash,
             self.decision.value, self.reviewer_name, self.reviewer_role,
-            self.decided_at.isoformat(), self.rationale))
+            self.decided_at.isoformat(), self.rationale,
+            self.supersedes or "", self.supersedes_reason or ""))
         return "DQD-" + hashlib.sha256(
             material.encode("utf-8")).hexdigest()[:24]
 
@@ -186,6 +241,8 @@ class DatasetQualityDecision:
             "rationale": self.rationale,
             "dq_artifact_hash": self.dq_artifact_hash,
             "source_policy_hash": self.source_policy_hash,
+            "supersedes": self.supersedes,
+            "supersedes_reason": self.supersedes_reason,
             "permits_transition": self.decision.permits_transition,
             "note": ("A recorded decision by one named person about one "
                      "build. An APPROVED decision is a precondition for the "
@@ -205,7 +262,9 @@ class DatasetQualityDecision:
                 str(payload.get("decided_at", "")).replace("Z", "+00:00")),
             rationale=payload.get("rationale"),
             dq_artifact_hash=payload.get("dq_artifact_hash"),
-            source_policy_hash=payload.get("source_policy_hash"))
+            source_policy_hash=payload.get("source_policy_hash"),
+            supersedes=payload.get("supersedes"),
+            supersedes_reason=payload.get("supersedes_reason"))
 
 
 # ---------------------------------------------------------------------------
@@ -345,16 +404,42 @@ def append_decision(decision: DatasetQualityDecision, build_path: str,
                     "regenerated report is a different report, and an "
                     "approval of the old one says nothing about it."))
 
-    for existing in load_ledger(ledger_path):
-        if existing.binding_key == decision.binding_key:
+    ledger = load_ledger(ledger_path)
+    known_ids = {existing.decision_id for existing in ledger}
+    superseded_ids = {existing.supersedes for existing in ledger
+                      if existing.supersedes}
+    if decision.supersedes is not None:
+        if decision.supersedes not in known_ids:
             return DecisionResult(
-                outcome=DecisionOutcome.REFUSED_REPLAY,
-                decision=decision, existing=existing,
-                detail=("%s already decided this build on %s. A retry must "
-                        "not produce a second verdict; change the report or "
-                        "record a superseding decision deliberately."
-                        % (existing.reviewer_name,
-                           existing.decided_at.isoformat())))
+                outcome=DecisionOutcome.REFUSED_REPLAY, decision=decision,
+                detail=("this decision claims to supersede %r, which is not "
+                        "in the ledger. A supersession that names nothing "
+                        "real is not a correction."
+                        % decision.supersedes))
+        if decision.supersedes in superseded_ids:
+            return DecisionResult(
+                outcome=DecisionOutcome.REFUSED_REPLAY, decision=decision,
+                detail=("%r has already been superseded. A chain of "
+                        "corrections must supersede the current decision, not "
+                        "an older one, or the ledger stops having a head."
+                        % decision.supersedes))
+    for existing in ledger:
+        if existing.binding_key != decision.binding_key:
+            continue
+        if decision.supersedes == existing.decision_id:
+            continue
+        if existing.decision_id in superseded_ids:
+            continue
+        return DecisionResult(
+            outcome=DecisionOutcome.REFUSED_REPLAY,
+            decision=decision, existing=existing,
+            detail=("%s already decided this build on %s. A retry must "
+                    "not produce a second verdict; change the report or "
+                    "record a superseding decision deliberately, naming "
+                    "decision_id %s."
+                    % (existing.reviewer_name,
+                       existing.decided_at.isoformat(),
+                       existing.decision_id)))
 
     os.makedirs(os.path.dirname(ledger_path) or ".", exist_ok=True)
     line = json.dumps(decision.to_json(), sort_keys=True,
@@ -397,7 +482,18 @@ def render_review_record(decisions: Sequence[DatasetQualityDecision]) -> str:
     lines += ["| decision | dataset | build | reviewer | role | decided | "
               "DQ report | source policy |",
               "| --- | --- | --- | --- | --- | --- | --- | --- |"]
+    superseded = {item.supersedes for item in decisions if item.supersedes}
     for item in decisions:
+        if item.decision_id in superseded:
+            lines.append("| ~~`%s`~~ (SUPERSEDED) | `%s` | `%s` | %s | %s | "
+                         "%s | `%s` | `%s` |"
+                         % (item.decision.value, item.dataset_public_id,
+                            item.canonical_build_key, item.reviewer_name,
+                            item.reviewer_role,
+                            item.decided_at.isoformat().replace("+00:00", "Z"),
+                            item.dq_artifact_hash[:24] + "...",
+                            item.source_policy_hash[:24] + "..."))
+            continue
         lines.append("| `%s` | `%s` | `%s` | %s | %s | %s | `%s` | `%s` |"
                      % (item.decision.value, item.dataset_public_id,
                         item.canonical_build_key, item.reviewer_name,

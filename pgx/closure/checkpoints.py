@@ -199,10 +199,56 @@ def _document(title: str, intro: str,
 # H01 - source policy (carries the WP-C04 research)
 # ---------------------------------------------------------------------------
 
+#: The source keys the H01 review actually covered.
+#:
+#: Pinned rather than read from the live registry, because the H01 checkpoint
+#: is a record of what a named pharmacist was shown on 2026-09-06, and the
+#: reviewed-content files are bound to that record by sha256. Regenerating them
+#: from a registry that has since gained a source would change those hashes and
+#: drive H01 into AWAITING_REATTESTATION - which is the drift protocol working,
+#: but the drift would be entirely spurious: a source registered afterwards was
+#: never part of the decision, and pretending it was would be worse than
+#: leaving it out.
+#:
+#: A source registered after H01 is therefore absent from this checkpoint by
+#: construction, which is also the accurate statement about its authority: H01
+#: did not review it and does not authorise it.
+H01_REVIEWED_SOURCE_KEYS: Tuple[str, ...] = (
+    "aha.publications",
+    "ausnz.publications",
+    "clinpgx.api",
+    "clinpgx.website",
+    "cpic.api",
+    "cpic.database",
+    "cpic.publications",
+    "cpnds.publications",
+    "dpwg.knmp",
+    "druglabel.ema",
+    "druglabel.fda",
+    "druglabel.hcsc",
+    "druglabel.pmda",
+    "druglabel.swissmedic",
+    "druglabel.titck",
+    "internal.legacy_mvp_seed",
+    "internal.legacy_probe_outputs",
+    "internal.manual_normalization",
+    "pubmed.literature",
+    "rnpgx.publications",
+)
+
+
+def _h01_sources(registry: Mapping[str, Any]) -> List[Mapping[str, Any]]:
+    """The registry rows H01 reviewed, in a stable order."""
+    reviewed = set(H01_REVIEWED_SOURCE_KEYS)
+    return sorted((entry for entry in registry["sources"]
+                   if entry["source_key"] in reviewed),
+                  key=lambda item: item["source_key"])
+
+
 def _h01_evidence(registry: Mapping[str, Any]) -> str:
     rows: List[List[Any]] = []
     findings = {item["source_key"]: item for item in SOURCE_FINDINGS}
-    for entry in sorted(registry["sources"], key=lambda s: s["source_key"]):
+    for entry in _h01_sources(registry):
         key = entry["source_key"]
         found = findings.get(key)
         rows.append([
@@ -236,7 +282,7 @@ def _h01_proposals(registry: Mapping[str, Any]) -> str:
     findings = {item["source_key"]: item for item in SOURCE_FINDINGS}
     rows: List[List[Any]] = []
     for position, entry in enumerate(
-            sorted(registry["sources"], key=lambda s: s["source_key"]), 1):
+            _h01_sources(registry), 1):
         key = entry["source_key"]
         found = findings.get(key)
         if key not in TARGET_SOURCE_KEYS:

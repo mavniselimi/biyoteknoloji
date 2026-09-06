@@ -139,6 +139,20 @@ class SnapshotKind(str, Enum):
     ACQUISITION = "ACQUISITION"
     CACHE_REPLAY = "CACHE_REPLAY"
     LEGACY_IMPORT = "LEGACY_IMPORT"
+    #: Content this project transcribed from a source it read one published
+    #: document at a time, sealed with the same integrity discipline as any
+    #: other snapshot and making none of the other three claims.
+    #:
+    #: ``ACQUISITION`` and ``CACHE_REPLAY`` both assert a WP-04 run with full
+    #: retrieval metadata behind the bytes. ``LEGACY_IMPORT`` asserts the files
+    #: predate the adapter and came from the frozen legacy probe scripts. A
+    #: transcription capture asserts none of that: the bytes are this project's
+    #: own rendering of what it read, the retrieval is recorded as
+    #: ``AcquisitionMode.AGENT_TARGETED_RETRIEVAL``, and no upstream response
+    #: body exists to hash.
+    #:
+    #: The name is 21 characters because ``snapshot_kind`` is ``String(24)``.
+    TRANSCRIPTION_CAPTURE = "TRANSCRIPTION_CAPTURE"
 
     def __str__(self) -> str:
         return self.value
@@ -912,6 +926,14 @@ class SnapshotBuildRequest:
     cache: Optional[ResponseCache] = None
     legacy_source_dir: Optional[str] = None
     legacy_origin: Optional[Mapping[str, Any]] = None
+    #: For a TRANSCRIPTION_CAPTURE build: artifact base name -> exact bytes.
+    #: Passed in memory rather than read from a directory, so the capture that
+    #: is sealed is provably the capture the builder produced, with no window
+    #: in which something else could edit the files in between.
+    capture_files: Optional[Mapping[str, bytes]] = None
+    #: One record per document this project read, in the order it read them.
+    #: Written to requests.ndjson so the seal carries its own retrieval log.
+    capture_reads: Tuple[Mapping[str, Any], ...] = ()
     limitations: Tuple[str, ...] = ()
     source_registry_id: Optional[str] = None
     source_policy_status: Optional[str] = None
@@ -926,10 +948,29 @@ class SnapshotBuildRequest:
         if not isinstance(self.snapshot_kind, SnapshotKind):
             raise SnapshotError("snapshot_kind must be a SnapshotKind")
         object.__setattr__(self, "limitations", tuple(self.limitations))
+        object.__setattr__(self, "capture_reads", tuple(self.capture_reads))
         if self.snapshot_kind is SnapshotKind.LEGACY_IMPORT:
             if not self.legacy_source_dir:
                 raise SnapshotError(
                     "a LEGACY_IMPORT build needs legacy_source_dir")
+        elif self.snapshot_kind is SnapshotKind.TRANSCRIPTION_CAPTURE:
+            if not self.capture_files:
+                raise SnapshotError(
+                    "a TRANSCRIPTION_CAPTURE build needs capture_files")
+            if self.acquisition_manifest is not None or self.cache is not None:
+                raise SnapshotError(
+                    "a TRANSCRIPTION_CAPTURE build has no acquisition run; "
+                    "supplying one would claim retrieval metadata that does "
+                    "not exist")
+            if not self.capture_reads:
+                raise SnapshotError(
+                    "a TRANSCRIPTION_CAPTURE build must record which "
+                    "documents were read; a capture with no retrieval log "
+                    "cannot be traced back to anything")
+            if not self.limitations:
+                raise SnapshotError(
+                    "a TRANSCRIPTION_CAPTURE build must state its limitations; "
+                    "the whole point of the kind is what it cannot claim")
         else:
             if self.acquisition_manifest is None or self.cache is None:
                 raise SnapshotError(
@@ -1091,6 +1132,8 @@ class SnapshotManager:
 
         if request.snapshot_kind is SnapshotKind.LEGACY_IMPORT:
             plan, issues = self._plan_legacy(request)
+        elif request.snapshot_kind is SnapshotKind.TRANSCRIPTION_CAPTURE:
+            plan, issues = self._plan_capture(request)
         else:
             plan, issues = self._plan_acquisition(request)
         if issues:
@@ -1260,6 +1303,69 @@ class SnapshotManager:
                 % (record.request_key, len(data), record.byte_length),
                 record.request_key)
         return data, None
+
+    def _plan_capture(
+        self, request: SnapshotBuildRequest
+    ) -> Tuple[List[Tuple[RawArtifactDescriptor, bytes, Mapping[str, Any]]],
+               List[SnapshotIssue]]:
+        """Decide what a transcription capture will contain.
+
+        The bytes arrive in memory rather than from a directory. That is the
+        one real difference from a legacy import, and it removes a window: a
+        directory read between planning and writing can change, and a capture
+        that sealed different bytes than the ones the builder produced would be
+        a seal over something nobody inspected.
+
+        ``ArtifactKind.RESPONSE_BODY`` is deliberately **not** used. These are
+        not response bodies - no HTTP response was preserved - and the kind is
+        read by anything that wants to know whether an upstream byte stream
+        exists. ``LEGACY_FILE`` is the honest choice among the three: a file
+        this project holds whose bytes have no upstream counterpart to compare
+        against.
+        """
+        issues: List[SnapshotIssue] = []
+        planned: List[Tuple[RawArtifactDescriptor, bytes, Mapping[str, Any]]] = []
+        seen: Dict[str, str] = {}
+        for name in sorted(request.capture_files or {}):
+            data = (request.capture_files or {})[name]
+            if not isinstance(data, bytes):
+                issues.append(SnapshotIssue(
+                    SnapshotIssueCode.MISSING_RESPONSE_BODY,
+                    "capture file %r is %s, not bytes; a capture seals exact "
+                    "bytes and never a re-encoding of them"
+                    % (name, type(data).__name__), name))
+                continue
+            try:
+                artifact_path = safe_relative_path(
+                    RESPONSES_DIR + "/" + name, "capture artifact path")
+            except SnapshotError as exc:
+                issues.append(SnapshotIssue(
+                    exc.code or SnapshotIssueCode.UNSAFE_PATH, str(exc), name))
+                continue
+            folded = artifact_path.casefold()
+            if folded in seen:
+                issues.append(SnapshotIssue(
+                    SnapshotIssueCode.CASE_COLLIDING_ARTIFACT_PATH,
+                    "capture file collides with %r on a case-insensitive "
+                    "filesystem" % seen[folded], artifact_path))
+                continue
+            planned.append((
+                RawArtifactDescriptor(
+                    relative_path=artifact_path,
+                    artifact_kind=ArtifactKind.LEGACY_FILE,
+                    byte_length=len(data),
+                    sha256=_sha256_bytes(data),
+                    content_type=_guess_content_type(name),
+                    source_relative_path=None),
+                data,
+                {}))
+            seen[folded] = artifact_path
+
+        if not planned and not issues:
+            issues.append(SnapshotIssue(
+                SnapshotIssueCode.NO_ARTIFACTS,
+                "a capture with no artifacts seals nothing", ""))
+        return planned, issues
 
     def _plan_legacy(
         self, request: SnapshotBuildRequest
@@ -1451,6 +1557,12 @@ class SnapshotManager:
             if log_entry:
                 log_entries.append(log_entry)
 
+        # A capture's retrieval log is not per-artifact: one document read can
+        # contribute rows to several artifacts, and several documents can
+        # contribute to one. So the reads are recorded as they happened rather
+        # than being reconstructed from the files they ended up in.
+        if request.snapshot_kind is SnapshotKind.TRANSCRIPTION_CAPTURE:
+            log_entries = list(request.capture_reads)
         requests_text = render_requests_ndjson(log_entries)
         requests_bytes = requests_text.encode("utf-8")
         requests_path = os.path.join(staging, REQUESTS_FILE)

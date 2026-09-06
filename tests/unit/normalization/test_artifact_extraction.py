@@ -69,15 +69,50 @@ class TestTheRoleMap(unittest.TestCase):
         self.assertFalse(entry.counts_as_evidence)
         self.assertIn("Classify it", entry.rationale)
 
-    def test_exactly_four_artifacts_may_contribute_records(self):
-        evidence = [entry.file_name for entry in ARTIFACT_ROLE_MAP
-                    if entry.counts_as_evidence]
-        self.assertEqual(sorted(evidence), [
-            "pair_probe_raw.json",
-            "resolved_chemicals.json",
-            "resolved_genes.json",
-            "variant_annotation_filtered_raw.json",
-        ])
+    def test_each_artifact_family_names_its_own_evidence_inputs(self):
+        """Evidence is enumerated per family, not across the whole map.
+
+        This assertion used to name four files and read the map as one flat
+        list, which was right while exactly one kind of snapshot existed. A
+        second kind now does, and a flat list cannot describe both: a
+        transcription capture carries none of the ClinPGx probe files and a
+        probe snapshot carries none of the capture files, so a single expected
+        set would be wrong for whichever snapshot was being read.
+
+        The families are still enumerated exhaustively - a new evidence input
+        appearing in either one still fails this test.
+        """
+        by_family = {}
+        for entry in ARTIFACT_ROLE_MAP:
+            if entry.counts_as_evidence:
+                by_family.setdefault(entry.artifact_set, []).append(
+                    entry.file_name)
+        self.assertEqual(
+            {family: sorted(names) for family, names in by_family.items()},
+            {
+                "clinpgx-legacy-probe": [
+                    "pair_probe_raw.json",
+                    "resolved_chemicals.json",
+                    "resolved_genes.json",
+                    "variant_annotation_filtered_raw.json",
+                ],
+                "cpic-guideline-capture": [
+                    "capture_axes.json",
+                    "capture_chemicals.json",
+                    "capture_genes.json",
+                    "capture_recommendation_rows.json",
+                ],
+            })
+
+    def test_one_family_is_never_reported_as_missing_the_others_files(self):
+        """The reason the field exists, asserted directly."""
+        _, missing = classify_artifacts([
+            "capture_genes.json", "capture_chemicals.json",
+            "capture_axes.json", "capture_recommendation_rows.json"])
+        self.assertEqual(missing, ())
+        _, missing = classify_artifacts(["resolved_genes.json"])
+        self.assertNotIn("capture_genes.json", missing)
+        self.assertIn("pair_probe_raw.json", missing)
 
     def test_classify_reports_what_the_map_expected_and_did_not_find(self):
         entries, missing = classify_artifacts(["resolved_genes.json"])

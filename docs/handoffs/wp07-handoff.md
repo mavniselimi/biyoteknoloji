@@ -21,7 +21,7 @@
 |---|---|
 | `pgx/normalization/normalize.py` | Deterministic value normalisation; `pgx-normalization/1` |
 | `pgx/normalization/models.py` | Canonical entities, locators, alias review state, outcomes, duplicate groups |
-| `pgx/normalization/artifacts.py` | What each raw artifact is for; `pgx-artifact-roles/1` |
+| `pgx/normalization/artifacts.py` | What each raw artifact is for; `pgx-artifact-roles/2` |
 | `pgx/normalization/extract.py` | Reads a snapshot into candidates, references and observations; `pgx-extraction/1` |
 | `pgx/normalization/resolver.py` | The strict five-step resolver; `pgx-resolver/1` |
 | `pgx/normalization/dedup.py` | Duplicate detection that keeps every locator; `pgx-dedup/1` |

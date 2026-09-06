@@ -180,6 +180,27 @@ class AcquisitionMode(_VocabularyEnum):
     PUBLICATION_TRANSCRIPTION = "PUBLICATION_TRANSCRIPTION"
     #: Produced by this project from its own records; no external source.
     INTERNAL_DERIVATION = "INTERNAL_DERIVATION"
+    #: An agent driven by this project opened one published document at a time
+    #: on the source's own public interface and read the rendered page.
+    #:
+    #: Distinct from every member above, and the distinction is the reason it
+    #: exists. It is not ``MANUAL_DOWNLOAD``: no person performed it. It is not
+    #: ``PUBLICATION_TRANSCRIPTION``: that member means a human transcribed
+    #: facts from a publication. It is not ``OFFICIAL_API`` or
+    #: ``LICENSED_BULK_EXPORT``: no documented interface was called and no
+    #: export was obtained. It is not ``INTERNAL_DERIVATION``: an external
+    #: source was very much involved.
+    #:
+    #: What it records: one document at a time, on the publisher's own public
+    #: pages, with no crawl, no bulk retrieval, no access-control bypass, and
+    #: no upstream response body preserved - so a record carrying this mode has
+    #: no byte-level hash of what the server served, only a digest of what this
+    #: project transcribed.
+    #:
+    #: It is deliberately absent from :data:`AUTOMATED_ACQUISITION_MODES`. A
+    #: mode that describes a targeted read must never become the permission for
+    #: an unattended one.
+    AGENT_TARGETED_RETRIEVAL = "AGENT_TARGETED_RETRIEVAL"
 
 
 #: Acquisition modes that a machine may perform unattended, once approved.

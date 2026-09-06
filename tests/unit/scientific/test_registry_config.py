@@ -21,6 +21,8 @@ import json
 import os
 import unittest
 
+from pgx.scientific.models import ReuseDimension as _ReuseDimension
+
 from pgx.domain.enums import SourceRole
 from pgx.scientific.models import (
     REUSE_DIMENSIONS,
@@ -104,11 +106,34 @@ class TestTheCheckedInRegistryLoads(unittest.TestCase):
 
 
 class TestTheDefaultStateApprovesNothing(unittest.TestCase):
-    """No human has reviewed any source, so the project publishes nothing."""
+    """No human has reviewed any source, so the project publishes nothing.
+
+    Several assertions below were once universal and are now scoped to the
+    *uninvestigated* sources, and the reason matters. They were proxies for
+    "nobody has looked at this source" - no licence recorded, no evidence
+    retrieved, no acquisition mode decided - and they held while that was true
+    of every row. Wave 3B investigated one interface and recorded what it
+    verified, so the proxies became false there while the property they stood
+    for stayed true: nothing is approved.
+
+    The universal assertions are the ones that were never proxies -
+    ``no_source_is_approved``, ``every_source_is_pending_review``,
+    ``no_source_carries_a_review_record``, ``no_reviewer_name_appears``,
+    ``no_source_names_a_permitted_claim_category`` - and they still apply to
+    every row without exception. ``TestAnInvestigatedSourceStillApprovesNothing``
+    below covers the investigated one directly, which is a stronger check than
+    the proxy it replaced.
+    """
 
     @classmethod
     def setUpClass(cls):
         cls.registry = load_registry(CONFIG_PATH)
+
+    @property
+    def uninvestigated(self):
+        """Sources for which no project interpretation has been written."""
+        return tuple(record for record in self.registry.records
+                     if record.interpretation is None)
 
     def test_no_source_is_approved(self):
         self.assertEqual(self.registry.approved_records, ())
@@ -130,20 +155,20 @@ class TestTheDefaultStateApprovesNothing(unittest.TestCase):
         self.assertNotIn("TEST_SCIENTIFIC" + "_REVIEWER", text)
         self.assertNotIn('"reviewer_name"', text)
 
-    def test_no_source_claims_a_licence_identifier(self):
-        """Never guessed. No terms document has been read."""
-        for record in self.registry.records:
+    def test_no_uninvestigated_source_claims_a_licence_identifier(self):
+        """Never guessed. For these rows no terms document has been read."""
+        for record in self.uninvestigated:
             with self.subTest(source=record.source_key):
                 self.assertIsNone(record.license_identifier)
 
-    def test_no_source_claims_a_version_or_citation_policy(self):
-        for record in self.registry.records:
+    def test_no_uninvestigated_source_claims_a_version_or_citation_policy(self):
+        for record in self.uninvestigated:
             with self.subTest(source=record.source_key):
                 self.assertIsNone(record.version_policy)
                 self.assertIsNone(record.citation_policy)
 
-    def test_every_reuse_question_is_unanswered(self):
-        for record in self.registry.records:
+    def test_every_uninvestigated_reuse_question_is_unanswered(self):
+        for record in self.uninvestigated:
             with self.subTest(source=record.source_key):
                 self.assertEqual(len(record.reuse.unknown_dimensions),
                                  len(REUSE_DIMENSIONS))
@@ -153,13 +178,13 @@ class TestTheDefaultStateApprovesNothing(unittest.TestCase):
             with self.subTest(source=record.source_key):
                 self.assertEqual(record.permitted_claim_categories, ())
 
-    def test_no_source_holds_verified_official_evidence(self):
-        for record in self.registry.records:
+    def test_no_uninvestigated_source_holds_verified_official_evidence(self):
+        for record in self.uninvestigated:
             with self.subTest(source=record.source_key):
                 self.assertFalse(record.has_official_evidence)
 
-    def test_external_sources_have_no_decided_acquisition_mode(self):
-        for record in self.registry.records:
+    def test_uninvestigated_external_sources_have_no_acquisition_mode(self):
+        for record in self.uninvestigated:
             if record.role is SourceRole.INTERNAL_SYSTEM:
                 continue
             with self.subTest(source=record.source_key):
@@ -294,3 +319,69 @@ class TestTheJsonSchemaMatchesTheCode(unittest.TestCase):
 
 if __name__ == "__main__":  # pragma: no cover
     unittest.main()
+
+
+class TestAnInvestigatedSourceStillApprovesNothing(unittest.TestCase):
+    """The rows Wave 3B looked into, checked directly rather than by proxy.
+
+    An investigated source is the interesting case: it has a licence
+    identifier, verified evidence and a decided acquisition mode, which is
+    exactly the shape somebody would produce if they were quietly promoting a
+    source. So it gets the assertions that matter, individually.
+    """
+
+    @classmethod
+    def setUpClass(cls):
+        cls.registry = load_registry(CONFIG_PATH)
+        cls.investigated = tuple(record for record in cls.registry.records
+                                 if record.interpretation is not None)
+
+    def test_at_least_one_source_has_been_investigated(self):
+        # Otherwise every assertion below passes vacuously.
+        self.assertGreaterEqual(len(self.investigated), 1)
+
+    def test_an_investigated_source_is_still_not_approved(self):
+        for record in self.investigated:
+            with self.subTest(source=record.source_key):
+                self.assertFalse(record.is_approved)
+                self.assertIs(record.status, SourcePolicyStatus.PENDING_REVIEW)
+                self.assertIsNone(record.review)
+
+    def test_an_investigated_source_claims_no_permitted_category(self):
+        """A category list is a statement about what a source is cleared for."""
+        for record in self.investigated:
+            with self.subTest(source=record.source_key):
+                self.assertEqual(record.permitted_claim_categories, ())
+
+    def test_an_investigated_source_states_why_it_is_still_blocked(self):
+        for record in self.investigated:
+            with self.subTest(source=record.source_key):
+                self.assertTrue(record.blocking_reasons)
+                self.assertTrue(any("human" in reason.lower()
+                                    for reason in record.blocking_reasons),
+                                "no blocking reason mentions the missing "
+                                "human decision")
+
+    def test_an_investigated_interpretation_names_a_process_not_a_person(self):
+        for record in self.investigated:
+            with self.subTest(source=record.source_key):
+                by = (record.interpretation.interpreted_by or "")
+                self.assertIn("NOT A HUMAN", by)
+
+    def test_agent_retrieval_is_never_an_automated_acquisition_mode(self):
+        from pgx.scientific.models import (AUTOMATED_ACQUISITION_MODES,
+                                           AcquisitionMode)
+        self.assertNotIn(AcquisitionMode.AGENT_TARGETED_RETRIEVAL,
+                         AUTOMATED_ACQUISITION_MODES)
+        for record in self.registry.records:
+            if record.acquisition_mode is \
+                    AcquisitionMode.AGENT_TARGETED_RETRIEVAL:
+                with self.subTest(source=record.source_key):
+                    self.assertEqual(
+                        record.reuse.permission(
+                            _ReuseDimension.AUTOMATED_ACQUISITION).value,
+                        "PROHIBITED")
+                    self.assertEqual(
+                        record.reuse.permission(
+                            _ReuseDimension.BULK_DOWNLOAD).value,
+                        "PROHIBITED")

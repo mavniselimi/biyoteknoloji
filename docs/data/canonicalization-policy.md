@@ -77,7 +77,7 @@ neither module so much as references `uuid`.
 
 ## 5. Artifact roles
 
-`pgx-artifact-roles/1`. Every artifact in the snapshot is classified, and the
+`pgx-artifact-roles/2`. Every artifact in the snapshot is classified, and the
 classification decides whether it may contribute records.
 
 | Role | Artifacts | Contributes records |

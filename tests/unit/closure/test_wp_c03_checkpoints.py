@@ -176,14 +176,34 @@ class TestH01CarriesTheSourceResearch(unittest.TestCase):
                                                  "proposed-decisions.csv")))
 
     def _registry_keys(self):
+        """The sources H01 reviewed, not every source now registered.
+
+        The checkpoint is a record of what a named reviewer was shown on one
+        day, and its reviewed-content files are bound to that record by
+        sha256. A source registered afterwards is legitimately absent from it:
+        H01 did not review it, and rebuilding the checkpoint to include it
+        would change hashes the attestation depends on.
+        """
+        from pgx.closure.checkpoints import H01_REVIEWED_SOURCE_KEYS
+        return sorted(H01_REVIEWED_SOURCE_KEYS)
+
+    def test_a_source_registered_after_h01_is_absent_from_it(self):
+        """And is therefore not authorised by it."""
         import json
+        from pgx.closure.checkpoints import H01_REVIEWED_SOURCE_KEYS
         with io.open(os.path.join(REPO_ROOT, "config",
                                   "scientific-sources.json"),
                      encoding="utf-8") as handle:
-            return sorted(entry["source_key"]
-                          for entry in json.load(handle)["sources"])
+            registered = {entry["source_key"]
+                          for entry in json.load(handle)["sources"]}
+        later = registered - set(H01_REVIEWED_SOURCE_KEYS)
+        self.assertNotIn("cpic.guideline-capture", H01_REVIEWED_SOURCE_KEYS)
+        for key in later:
+            with self.subTest(source=key):
+                self.assertNotIn(key, [row["source_key"]
+                                       for row in self.proposals])
 
-    def test_every_registered_source_gets_exactly_one_proposal(self):
+    def test_every_reviewed_source_gets_exactly_one_proposal(self):
         keys = [row["source_key"] for row in self.proposals]
         self.assertEqual(sorted(keys), self._registry_keys())
         self.assertEqual(len(keys), EXPECTED_REGISTRY_SOURCES)

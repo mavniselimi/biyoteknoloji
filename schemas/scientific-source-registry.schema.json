@@ -269,7 +269,8 @@
             "OFFICIAL_API",
             "LICENSED_BULK_EXPORT",
             "PUBLICATION_TRANSCRIPTION",
-            "INTERNAL_DERIVATION"
+            "INTERNAL_DERIVATION",
+            "AGENT_TARGETED_RETRIEVAL"
           ]
         },
         "provider": {

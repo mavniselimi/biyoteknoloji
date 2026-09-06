@@ -63,7 +63,8 @@
       "enum": [
         "ACQUISITION",
         "CACHE_REPLAY",
-        "LEGACY_IMPORT"
+        "LEGACY_IMPORT",
+        "TRANSCRIPTION_CAPTURE"
       ]
     },
     "snapshot_state": {

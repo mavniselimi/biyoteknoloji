@@ -1,0 +1,26 @@
+{
+  "amitriptyline": {
+    "name": "amitriptyline",
+    "observed_in": [
+      "PA166105006"
+    ]
+  },
+  "clopidogrel": {
+    "name": "clopidogrel",
+    "observed_in": [
+      "PA166104948"
+    ]
+  },
+  "codeine": {
+    "name": "codeine",
+    "observed_in": [
+      "PA166104996"
+    ]
+  },
+  "omeprazole": {
+    "name": "omeprazole",
+    "observed_in": [
+      "PA166219103"
+    ]
+  }
+}

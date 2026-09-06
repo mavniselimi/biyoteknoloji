@@ -55,6 +55,18 @@ CANDIDATE_SNAPSHOT_RELATIVE = os.path.join(
     "data", "legacy-baseline", "snapshots", "alternative-beta-clopidogrel.json")
 CANONICAL_ROOT_RELATIVE = os.path.join("data", "canonical")
 
+#: The dataset the WP-14 legacy coverage regression is about.
+#:
+#: Pinned by name rather than discovered. The loader below used to take the
+#: last directory in ``data/canonical`` by sort order and its docstring called
+#: the result "the pinned canonical build", which was true only while exactly
+#: one build existed. When Wave 3B added a second, the regression silently
+#: retargeted itself at the newer dataset and the stored report stopped
+#: matching - the failure was loud, but a differently-named dataset would have
+#: made it silent, and a regression that quietly changes what it regresses
+#: against is worse than one that fails.
+LEGACY_REGRESSION_DATASET_ID = "PGX-DATA-20260830-900"
+
 
 @dataclass(frozen=True, slots=True)
 class CoverageExpectedDifference:
@@ -198,27 +210,34 @@ def _read_json(path: str) -> Any:
         return json.load(handle)
 
 
-def load_canonical_drug_catalogue(repo_root: str = "."
-                                  ) -> Tuple[Tuple[str, ...], Dict[str, Any]]:
-    """The drugs in the pinned canonical build, with the build's identity.
+def load_canonical_drug_catalogue(
+        repo_root: str = ".",
+        dataset_public_id: str = LEGACY_REGRESSION_DATASET_ID
+) -> Tuple[Tuple[str, ...], Dict[str, Any]]:
+    """The drugs in one named canonical build, with the build's identity.
 
     Read-only. The catalogue is what makes recognition checkable: a drug in it
     is a chemical the dataset has, which is the precondition for asking the
     coverage question and never an answer to it.
+
+    The build is named, never discovered. A caller that wants a different
+    dataset says so; a caller that says nothing gets the pinned legacy one and
+    an error if it is absent, rather than whichever directory happens to sort
+    last.
     """
     root = os.path.join(repo_root, CANONICAL_ROOT_RELATIVE)
     if not os.path.isdir(root):
         raise CoverageEngineError(
             "no canonical dataset at %s" % root,
             code="COVERAGE_LEGACY_ARTIFACT_MISSING", location=root)
-    builds = sorted(name for name in os.listdir(root)
-                    if os.path.isdir(os.path.join(root, name)))
-    if not builds:
+    directory = os.path.join(root, dataset_public_id)
+    if not os.path.isdir(directory):
+        available = sorted(name for name in os.listdir(root)
+                           if os.path.isdir(os.path.join(root, name)))
         raise CoverageEngineError(
-            "no canonical build under %s" % root,
-            code="COVERAGE_LEGACY_ARTIFACT_MISSING", location=root)
-    build = builds[-1]
-    directory = os.path.join(root, build)
+            "no canonical build %s under %s (present: %s)"
+            % (dataset_public_id, root, ", ".join(available) or "none"),
+            code="COVERAGE_LEGACY_ARTIFACT_MISSING", location=directory)
     manifest = _read_json(os.path.join(directory, "manifest.json"))
     drugs = set()
     for name in sorted(os.listdir(directory)):

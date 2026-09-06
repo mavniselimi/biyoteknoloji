@@ -174,15 +174,23 @@ class AssessmentInput:
         default read here: a service configured with an unapproved boundary
         must not be rescued by a module-level constant.
         """
-        if not boundary.is_approved:
+        # Order matters: a mode this boundary does not enable is reported by
+        # the mode check below, which names the mode. Reporting it here would
+        # tell a caller their claim boundary is unapproved when the real
+        # problem is that they asked for PILOT.
+        if boundary.is_mode_enabled(self.mode) \
+                and not boundary.permits_execution(self.mode):
             raise AssessmentInputError(
                 "the claim boundary is %r. No assessment executes until named "
-                "humans have approved the intended purpose, and no flag in "
-                "this codebase sets that approval." % boundary.status,
+                "humans have approved the intended purpose, or until a "
+                "project-team provisional candidate boundary is supplied "
+                "explicitly; no flag in this codebase sets the human approval."
+                % boundary.status,
                 code="ASSESSMENT_CLAIM_BOUNDARY_NOT_APPROVED",
                 location="$.claim_boundary",
                 detail={"phase": boundary.phase.value,
-                        "status": boundary.status})
+                        "status": boundary.status,
+                        "execution_basis": boundary.execution_basis})
         if not boundary.is_mode_enabled(self.mode):
             raise AssessmentInputError(
                 "operation mode %s is not enabled in %s"
