@@ -1,0 +1,966 @@
+[
+  {
+    "expected": {
+      "attention_level": "NOT_ASSESSED",
+      "outcome": "REFUSE",
+      "reason_code": "CARE_SETTING_NOT_DECLARED"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W4-INT-01-CLOPIDOGREL-NO-CARE-SETTING",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate release PGX-CANDIDATE-REL-20260906-001; not a governed artifact, executable in DEMO and VALIDATION only, pending external expert review",
+        "release_manifest_hash": "sha256:0cd22a88f086a2d408e3ac4da0738eba5233f500ab277ccbf4033a8c14581d01",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:229e1b6b27e612204dde5ad08150c9ec344590cf76386b68855cefaba2a5df71",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": true,
+      "is_validation_evidence": true,
+      "no_pii_assertion": "These cases carry gene symbols, drug names, phenotype labels and a care setting from a closed vocabulary. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "the release must not answer without knowing which column applies",
+      "provenance": {
+        "author": "pgx-closure-wave04 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "CPIC clopidogrel guideline Table 1 states separate recommendations for ACS and/or PCI and for non-ACS, non-PCI; only the first was transcribed",
+        "derivation_family_fingerprint": "sha256:d95abb540fc832ec6a7595fcaff5c36e748c58e0eb83028af2151a03f7345472",
+        "derivation_method": "derived from the first-release scope decisions and the guideline's silences, not from any rule's outcome",
+        "derived_from_development": false,
+        "source_identity": "first-release refusal surface: CLOPIDOGREL-NO-CARE-SETTING"
+      },
+      "role": "INTERNAL_HOLDOUT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "clopidogrel no care setting",
+      "visibility": "RESTRICTED"
+    },
+    "question": "does the candidate release refuse this input, with this reason, and without reporting an attention level?",
+    "request": {
+      "care_setting": null,
+      "medications": [
+        "DRUG:clopidogrel"
+      ],
+      "mode": "VALIDATION",
+      "phenotypes": {
+        "GENE:CYP2C19": "POOR"
+      }
+    }
+  },
+  {
+    "expected": {
+      "attention_level": "NOT_ASSESSED",
+      "outcome": "REFUSE",
+      "reason_code": "CARE_SETTING_NOT_DECLARED"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W4-INT-02-CLOPIDOGREL-NO-SETTING-NORMAL",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate release PGX-CANDIDATE-REL-20260906-001; not a governed artifact, executable in DEMO and VALIDATION only, pending external expert review",
+        "release_manifest_hash": "sha256:0cd22a88f086a2d408e3ac4da0738eba5233f500ab277ccbf4033a8c14581d01",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:1d70164d2eddb3763682a59d873fd5217242c3a94a8306e7cc9381cf73b9280e",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": true,
+      "is_validation_evidence": true,
+      "no_pii_assertion": "These cases carry gene symbols, drug names, phenotype labels and a care setting from a closed vocabulary. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "the refusal must not depend on the phenotype being an alarming one",
+      "provenance": {
+        "author": "pgx-closure-wave04 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "as above; a normal metabolizer is not an exception",
+        "derivation_family_fingerprint": "sha256:9bd75b907332f66bf78e6ea122444633d016490ff46d31530bb8de00a2c101f1",
+        "derivation_method": "derived from the first-release scope decisions and the guideline's silences, not from any rule's outcome",
+        "derived_from_development": false,
+        "source_identity": "first-release refusal surface: CLOPIDOGREL-NO-SETTING-NORMAL"
+      },
+      "role": "INTERNAL_HOLDOUT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "clopidogrel no setting normal",
+      "visibility": "RESTRICTED"
+    },
+    "question": "does the candidate release refuse this input, with this reason, and without reporting an attention level?",
+    "request": {
+      "care_setting": null,
+      "medications": [
+        "DRUG:clopidogrel"
+      ],
+      "mode": "VALIDATION",
+      "phenotypes": {
+        "GENE:CYP2C19": "NORMAL"
+      }
+    }
+  },
+  {
+    "expected": {
+      "attention_level": "NOT_ASSESSED",
+      "outcome": "REFUSE",
+      "reason_code": "PHENOTYPE_NOT_SUPPORTED"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W4-INT-03-CODEINE-RAPID",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate release PGX-CANDIDATE-REL-20260906-001; not a governed artifact, executable in DEMO and VALIDATION only, pending external expert review",
+        "release_manifest_hash": "sha256:0cd22a88f086a2d408e3ac4da0738eba5233f500ab277ccbf4033a8c14581d01",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:b6fc04832a9c44ba21481fa0b9343461054f37c25826fbded4145febabd466f9",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": true,
+      "is_validation_evidence": true,
+      "no_pii_assertion": "These cases carry gene symbols, drug names, phenotype labels and a care setting from a closed vocabulary. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "an axis absent from the evidence must not be answered",
+      "provenance": {
+        "author": "pgx-closure-wave04 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "CPIC's CYP2D6 activity-score model has no rapid metabolizer band",
+        "derivation_family_fingerprint": "sha256:98047297d45956929c32f79104232447946817a82d2aece1bd3f99e9fee1d856",
+        "derivation_method": "derived from the first-release scope decisions and the guideline's silences, not from any rule's outcome",
+        "derived_from_development": false,
+        "source_identity": "first-release refusal surface: CODEINE-RAPID"
+      },
+      "role": "INTERNAL_HOLDOUT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "codeine rapid",
+      "visibility": "RESTRICTED"
+    },
+    "question": "does the candidate release refuse this input, with this reason, and without reporting an attention level?",
+    "request": {
+      "care_setting": null,
+      "medications": [
+        "DRUG:codeine"
+      ],
+      "mode": "VALIDATION",
+      "phenotypes": {
+        "GENE:CYP2D6": "RAPID"
+      }
+    }
+  },
+  {
+    "expected": {
+      "attention_level": "NOT_ASSESSED",
+      "outcome": "REFUSE",
+      "reason_code": "PHENOTYPE_NOT_SUPPORTED"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W4-INT-04-AMITRIPTYLINE-2D6-RAPID",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate release PGX-CANDIDATE-REL-20260906-001; not a governed artifact, executable in DEMO and VALIDATION only, pending external expert review",
+        "release_manifest_hash": "sha256:0cd22a88f086a2d408e3ac4da0738eba5233f500ab277ccbf4033a8c14581d01",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:5dc1e1f2a3ad7fd6a342768f5008ec2d6157d4a226190a93559dbfa1e25d7784",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": true,
+      "is_validation_evidence": true,
+      "no_pii_assertion": "These cases carry gene symbols, drug names, phenotype labels and a care setting from a closed vocabulary. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "a joint rule must refuse an unsupported phenotype on either gene",
+      "provenance": {
+        "author": "pgx-closure-wave04 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "as above, on the joint axis",
+        "derivation_family_fingerprint": "sha256:962b86b055088ef100eba24833549ee0279c24e89a6ef7c97dd1320a0750340a",
+        "derivation_method": "derived from the first-release scope decisions and the guideline's silences, not from any rule's outcome",
+        "derived_from_development": false,
+        "source_identity": "first-release refusal surface: AMITRIPTYLINE-2D6-RAPID"
+      },
+      "role": "INTERNAL_HOLDOUT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "amitriptyline 2d6 rapid",
+      "visibility": "RESTRICTED"
+    },
+    "question": "does the candidate release refuse this input, with this reason, and without reporting an attention level?",
+    "request": {
+      "care_setting": null,
+      "medications": [
+        "DRUG:amitriptyline"
+      ],
+      "mode": "VALIDATION",
+      "phenotypes": {
+        "GENE:CYP2C19": "NORMAL",
+        "GENE:CYP2D6": "RAPID"
+      }
+    }
+  },
+  {
+    "expected": {
+      "attention_level": "NOT_ASSESSED",
+      "outcome": "REFUSE",
+      "reason_code": "PHENOTYPE_NOT_PROVIDED"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W4-INT-05-AMITRIPTYLINE-ONLY-2C19",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate release PGX-CANDIDATE-REL-20260906-001; not a governed artifact, executable in DEMO and VALIDATION only, pending external expert review",
+        "release_manifest_hash": "sha256:0cd22a88f086a2d408e3ac4da0738eba5233f500ab277ccbf4033a8c14581d01",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:5a14da611e32435e417ef9a37fb9db3151c588a77c53cd11a181447b314f3d11",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": true,
+      "is_validation_evidence": true,
+      "no_pii_assertion": "These cases carry gene symbols, drug names, phenotype labels and a care setting from a closed vocabulary. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "a missing axis must refuse rather than answer from the present one",
+      "provenance": {
+        "author": "pgx-closure-wave04 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "CPIC tricyclic guideline Table 4 is a two-gene matrix",
+        "derivation_family_fingerprint": "sha256:db93a01e17c34ac6f405cf02ebb190f1c59c76898af1694b239b73f55eef1e02",
+        "derivation_method": "derived from the first-release scope decisions and the guideline's silences, not from any rule's outcome",
+        "derived_from_development": false,
+        "source_identity": "first-release refusal surface: AMITRIPTYLINE-ONLY-2C19"
+      },
+      "role": "INTERNAL_HOLDOUT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "amitriptyline only 2c19",
+      "visibility": "RESTRICTED"
+    },
+    "question": "does the candidate release refuse this input, with this reason, and without reporting an attention level?",
+    "request": {
+      "care_setting": null,
+      "medications": [
+        "DRUG:amitriptyline"
+      ],
+      "mode": "VALIDATION",
+      "phenotypes": {
+        "GENE:CYP2C19": "NORMAL"
+      }
+    }
+  },
+  {
+    "expected": {
+      "attention_level": "NOT_ASSESSED",
+      "outcome": "REFUSE",
+      "reason_code": "PHENOTYPE_NOT_PROVIDED"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W4-INT-06-AMITRIPTYLINE-ONLY-2D6",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate release PGX-CANDIDATE-REL-20260906-001; not a governed artifact, executable in DEMO and VALIDATION only, pending external expert review",
+        "release_manifest_hash": "sha256:0cd22a88f086a2d408e3ac4da0738eba5233f500ab277ccbf4033a8c14581d01",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:60c6c7b2b6cf1a09cf0e7450a931bf5dfa2048bce4cdfa9d2d793f34ec63e109",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": true,
+      "is_validation_evidence": true,
+      "no_pii_assertion": "These cases carry gene symbols, drug names, phenotype labels and a care setting from a closed vocabulary. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "the refusal must not depend on which gene is absent",
+      "provenance": {
+        "author": "pgx-closure-wave04 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "as above, with the other gene missing",
+        "derivation_family_fingerprint": "sha256:71861ccdc7f2149092fef4b3bc5d22bed1e80c5c4644162daddc99959524e13b",
+        "derivation_method": "derived from the first-release scope decisions and the guideline's silences, not from any rule's outcome",
+        "derived_from_development": false,
+        "source_identity": "first-release refusal surface: AMITRIPTYLINE-ONLY-2D6"
+      },
+      "role": "INTERNAL_HOLDOUT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "amitriptyline only 2d6",
+      "visibility": "RESTRICTED"
+    },
+    "question": "does the candidate release refuse this input, with this reason, and without reporting an attention level?",
+    "request": {
+      "care_setting": null,
+      "medications": [
+        "DRUG:amitriptyline"
+      ],
+      "mode": "VALIDATION",
+      "phenotypes": {
+        "GENE:CYP2D6": "POOR"
+      }
+    }
+  },
+  {
+    "expected": {
+      "attention_level": "NOT_ASSESSED",
+      "outcome": "REFUSE",
+      "reason_code": "PHENOTYPE_NOT_PROVIDED"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W4-INT-07-AMITRIPTYLINE-NO-GENES",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate release PGX-CANDIDATE-REL-20260906-001; not a governed artifact, executable in DEMO and VALIDATION only, pending external expert review",
+        "release_manifest_hash": "sha256:0cd22a88f086a2d408e3ac4da0738eba5233f500ab277ccbf4033a8c14581d01",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:da43f821e83aa0038ecac143c9bff520377729cdca25a6cfb2a2f603bda41ab8",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": true,
+      "is_validation_evidence": true,
+      "no_pii_assertion": "These cases carry gene symbols, drug names, phenotype labels and a care setting from a closed vocabulary. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "an empty profile must refuse",
+      "provenance": {
+        "author": "pgx-closure-wave04 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "as above, with neither gene supplied",
+        "derivation_family_fingerprint": "sha256:e3e22dea424680f22ae97269c4e776bed362e828e979fc0262cc57f0e32c1922",
+        "derivation_method": "derived from the first-release scope decisions and the guideline's silences, not from any rule's outcome",
+        "derived_from_development": false,
+        "source_identity": "first-release refusal surface: AMITRIPTYLINE-NO-GENES"
+      },
+      "role": "INTERNAL_HOLDOUT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "amitriptyline no genes",
+      "visibility": "RESTRICTED"
+    },
+    "question": "does the candidate release refuse this input, with this reason, and without reporting an attention level?",
+    "request": {
+      "care_setting": null,
+      "medications": [
+        "DRUG:amitriptyline"
+      ],
+      "mode": "VALIDATION",
+      "phenotypes": {}
+    }
+  },
+  {
+    "expected": {
+      "attention_level": "NOT_ASSESSED",
+      "outcome": "REFUSE",
+      "reason_code": "PHENOTYPE_NOT_PROVIDED"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W4-INT-08-OMEPRAZOLE-NO-GENE",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate release PGX-CANDIDATE-REL-20260906-001; not a governed artifact, executable in DEMO and VALIDATION only, pending external expert review",
+        "release_manifest_hash": "sha256:0cd22a88f086a2d408e3ac4da0738eba5233f500ab277ccbf4033a8c14581d01",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:b51c4ccef5ccd05ea97eaacceb9dda5cdc61993726982b2fcf9d21ca0899af8d",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": true,
+      "is_validation_evidence": true,
+      "no_pii_assertion": "These cases carry gene symbols, drug names, phenotype labels and a care setting from a closed vocabulary. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "a single-gene drug must refuse when its gene is absent",
+      "provenance": {
+        "author": "pgx-closure-wave04 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "a single-gene axis with no observation",
+        "derivation_family_fingerprint": "sha256:45081ff06a7ea35d2d5b4a3fe5d319926efb26782362403eb6a597f69176606e",
+        "derivation_method": "derived from the first-release scope decisions and the guideline's silences, not from any rule's outcome",
+        "derived_from_development": false,
+        "source_identity": "first-release refusal surface: OMEPRAZOLE-NO-GENE"
+      },
+      "role": "INTERNAL_HOLDOUT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "omeprazole no gene",
+      "visibility": "RESTRICTED"
+    },
+    "question": "does the candidate release refuse this input, with this reason, and without reporting an attention level?",
+    "request": {
+      "care_setting": null,
+      "medications": [
+        "DRUG:omeprazole"
+      ],
+      "mode": "VALIDATION",
+      "phenotypes": {}
+    }
+  },
+  {
+    "expected": {
+      "attention_level": "NOT_ASSESSED",
+      "outcome": "REFUSE",
+      "reason_code": "DRUG_NOT_IN_CANONICAL_DATASET"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W4-INT-09-WARFARIN-OUT-OF-SCOPE",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate release PGX-CANDIDATE-REL-20260906-001; not a governed artifact, executable in DEMO and VALIDATION only, pending external expert review",
+        "release_manifest_hash": "sha256:0cd22a88f086a2d408e3ac4da0738eba5233f500ab277ccbf4033a8c14581d01",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:9fcb9188eaa968025cd3bee7b9725232cc23f2773415a17e0243c1d913e2c36e",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": true,
+      "is_validation_evidence": true,
+      "no_pii_assertion": "These cases carry gene symbols, drug names, phenotype labels and a care setting from a closed vocabulary. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "an out-of-scope drug must refuse, not be silently dropped",
+      "provenance": {
+        "author": "pgx-closure-wave04 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "warfarin is outside the four-drug first-release scope",
+        "derivation_family_fingerprint": "sha256:94a690ca3778f64e21460b50affafe9991660313f4c39d2f9709a306c871810b",
+        "derivation_method": "derived from the first-release scope decisions and the guideline's silences, not from any rule's outcome",
+        "derived_from_development": false,
+        "source_identity": "first-release refusal surface: WARFARIN-OUT-OF-SCOPE"
+      },
+      "role": "INTERNAL_HOLDOUT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "warfarin out of scope",
+      "visibility": "RESTRICTED"
+    },
+    "question": "does the candidate release refuse this input, with this reason, and without reporting an attention level?",
+    "request": {
+      "care_setting": null,
+      "medications": [
+        "DRUG:warfarin"
+      ],
+      "mode": "VALIDATION",
+      "phenotypes": {
+        "GENE:CYP2C19": "POOR"
+      }
+    }
+  },
+  {
+    "expected": {
+      "attention_level": "NOT_ASSESSED",
+      "outcome": "REFUSE",
+      "reason_code": "DRUG_NOT_IN_CANONICAL_DATASET"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W4-INT-10-TAMOXIFEN-OUT-OF-SCOPE",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate release PGX-CANDIDATE-REL-20260906-001; not a governed artifact, executable in DEMO and VALIDATION only, pending external expert review",
+        "release_manifest_hash": "sha256:0cd22a88f086a2d408e3ac4da0738eba5233f500ab277ccbf4033a8c14581d01",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:c433cf3b851b14a0abc5592c98a2eb4de4ac1d93c366539f6d601ea58b57ec8f",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": true,
+      "is_validation_evidence": true,
+      "no_pii_assertion": "These cases carry gene symbols, drug names, phenotype labels and a care setting from a closed vocabulary. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "the refusal must not depend on the gene",
+      "provenance": {
+        "author": "pgx-closure-wave04 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "as above, on the other gene",
+        "derivation_family_fingerprint": "sha256:acb44d2afdcbe80df86af30648f33155b963a430c1cddf081cbac3a790467f29",
+        "derivation_method": "derived from the first-release scope decisions and the guideline's silences, not from any rule's outcome",
+        "derived_from_development": false,
+        "source_identity": "first-release refusal surface: TAMOXIFEN-OUT-OF-SCOPE"
+      },
+      "role": "INTERNAL_HOLDOUT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "tamoxifen out of scope",
+      "visibility": "RESTRICTED"
+    },
+    "question": "does the candidate release refuse this input, with this reason, and without reporting an attention level?",
+    "request": {
+      "care_setting": null,
+      "medications": [
+        "DRUG:tamoxifen"
+      ],
+      "mode": "VALIDATION",
+      "phenotypes": {
+        "GENE:CYP2D6": "POOR"
+      }
+    }
+  },
+  {
+    "expected": {
+      "attention_level": "NOT_ASSESSED",
+      "outcome": "REFUSE",
+      "reason_code": "PHENOTYPE_NOT_PROVIDED"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W4-INT-11-CODEINE-WRONG-GENE",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate release PGX-CANDIDATE-REL-20260906-001; not a governed artifact, executable in DEMO and VALIDATION only, pending external expert review",
+        "release_manifest_hash": "sha256:0cd22a88f086a2d408e3ac4da0738eba5233f500ab277ccbf4033a8c14581d01",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:25cc6fea924639a043c19c8ca15505512cc31c9edadce5df012d5a6a6447c76d",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": true,
+      "is_validation_evidence": true,
+      "no_pii_assertion": "These cases carry gene symbols, drug names, phenotype labels and a care setting from a closed vocabulary. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "an observation on a gene the drug's axis does not name must not be used",
+      "provenance": {
+        "author": "pgx-closure-wave04 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "codeine's evidence axis is CYP2D6; a CYP2C19 observation is not it",
+        "derivation_family_fingerprint": "sha256:f4e0ac5feb57a266cefa81bcd8d50d0ee1d8c9757c1d8ba28158ef0821e70851",
+        "derivation_method": "derived from the first-release scope decisions and the guideline's silences, not from any rule's outcome",
+        "derived_from_development": false,
+        "source_identity": "first-release refusal surface: CODEINE-WRONG-GENE"
+      },
+      "role": "INTERNAL_HOLDOUT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "codeine wrong gene",
+      "visibility": "RESTRICTED"
+    },
+    "question": "does the candidate release refuse this input, with this reason, and without reporting an attention level?",
+    "request": {
+      "care_setting": null,
+      "medications": [
+        "DRUG:codeine"
+      ],
+      "mode": "VALIDATION",
+      "phenotypes": {
+        "GENE:CYP2C19": "POOR"
+      }
+    }
+  },
+  {
+    "expected": {
+      "attention_level": "NOT_ASSESSED",
+      "outcome": "REFUSE",
+      "reason_code": "PHENOTYPE_NOT_PROVIDED"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W4-INT-12-OMEPRAZOLE-WRONG-GENE",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate release PGX-CANDIDATE-REL-20260906-001; not a governed artifact, executable in DEMO and VALIDATION only, pending external expert review",
+        "release_manifest_hash": "sha256:0cd22a88f086a2d408e3ac4da0738eba5233f500ab277ccbf4033a8c14581d01",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:0931f8ccaa40d4ca18136d1c6cfa676f6c6dc19ab0448b9bddd3e0924032ae26",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": true,
+      "is_validation_evidence": true,
+      "no_pii_assertion": "These cases carry gene symbols, drug names, phenotype labels and a care setting from a closed vocabulary. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "the refusal must not depend on which gene was supplied",
+      "provenance": {
+        "author": "pgx-closure-wave04 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "as above, with the genes exchanged",
+        "derivation_family_fingerprint": "sha256:88be21016b6d2bc54f828ef3c7cebf2e4dc35c45982b8b78d536bdd3de18e492",
+        "derivation_method": "derived from the first-release scope decisions and the guideline's silences, not from any rule's outcome",
+        "derived_from_development": false,
+        "source_identity": "first-release refusal surface: OMEPRAZOLE-WRONG-GENE"
+      },
+      "role": "INTERNAL_HOLDOUT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "omeprazole wrong gene",
+      "visibility": "RESTRICTED"
+    },
+    "question": "does the candidate release refuse this input, with this reason, and without reporting an attention level?",
+    "request": {
+      "care_setting": null,
+      "medications": [
+        "DRUG:omeprazole"
+      ],
+      "mode": "VALIDATION",
+      "phenotypes": {
+        "GENE:CYP2D6": "POOR"
+      }
+    }
+  },
+  {
+    "expected": {
+      "attention_level": "NOT_ASSESSED",
+      "outcome": "REFUSE",
+      "reason_code": "CARE_SETTING_NOT_DECLARED"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W4-INT-13-CLOPIDOGREL-NO-GENE-NO-SETTING",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate release PGX-CANDIDATE-REL-20260906-001; not a governed artifact, executable in DEMO and VALIDATION only, pending external expert review",
+        "release_manifest_hash": "sha256:0cd22a88f086a2d408e3ac4da0738eba5233f500ab277ccbf4033a8c14581d01",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:964e7fb1284553ee8e64de8cba8514b6db640e5fcd1ddc99958374e573a56eac",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": true,
+      "is_validation_evidence": true,
+      "no_pii_assertion": "These cases carry gene symbols, drug names, phenotype labels and a care setting from a closed vocabulary. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "the care-setting refusal must come first, because without it the question of which column applies has not been settled",
+      "provenance": {
+        "author": "pgx-closure-wave04 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "two reasons to refuse at once",
+        "derivation_family_fingerprint": "sha256:93f945f230cc7cbc0485cb880081a96fe35a34e9b60a1ff3828817d47fcd2567",
+        "derivation_method": "derived from the first-release scope decisions and the guideline's silences, not from any rule's outcome",
+        "derived_from_development": false,
+        "source_identity": "first-release refusal surface: CLOPIDOGREL-NO-GENE-NO-SETTING"
+      },
+      "role": "INTERNAL_HOLDOUT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "clopidogrel no gene no setting",
+      "visibility": "RESTRICTED"
+    },
+    "question": "does the candidate release refuse this input, with this reason, and without reporting an attention level?",
+    "request": {
+      "care_setting": null,
+      "medications": [
+        "DRUG:clopidogrel"
+      ],
+      "mode": "VALIDATION",
+      "phenotypes": {}
+    }
+  },
+  {
+    "expected": {
+      "attention_level": "NOT_ASSESSED",
+      "outcome": "REFUSE",
+      "reason_code": "PHENOTYPE_NOT_PROVIDED"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W4-INT-14-CLOPIDOGREL-SETTING-NO-GENE",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate release PGX-CANDIDATE-REL-20260906-001; not a governed artifact, executable in DEMO and VALIDATION only, pending external expert review",
+        "release_manifest_hash": "sha256:0cd22a88f086a2d408e3ac4da0738eba5233f500ab277ccbf4033a8c14581d01",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:70579c4024e7776ccb8102ca5b7d871cb91449a6c1e57f4b6a9dea9b455e5aec",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": true,
+      "is_validation_evidence": true,
+      "no_pii_assertion": "These cases carry gene symbols, drug names, phenotype labels and a care setting from a closed vocabulary. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "declaring a care setting must not substitute for an observation",
+      "provenance": {
+        "author": "pgx-closure-wave04 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "the care setting is declared and the gene is absent",
+        "derivation_family_fingerprint": "sha256:48b76b31ef6f2d5cd499304d5ab2e979da6ee4fdc9147c5d1360485013d3a77b",
+        "derivation_method": "derived from the first-release scope decisions and the guideline's silences, not from any rule's outcome",
+        "derived_from_development": false,
+        "source_identity": "first-release refusal surface: CLOPIDOGREL-SETTING-NO-GENE"
+      },
+      "role": "INTERNAL_HOLDOUT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "clopidogrel setting no gene",
+      "visibility": "RESTRICTED"
+    },
+    "question": "does the candidate release refuse this input, with this reason, and without reporting an attention level?",
+    "request": {
+      "care_setting": "ACS_OR_PCI",
+      "medications": [
+        "DRUG:clopidogrel"
+      ],
+      "mode": "VALIDATION",
+      "phenotypes": {}
+    }
+  },
+  {
+    "expected": {
+      "attention_level": "NOT_ASSESSED",
+      "outcome": "REFUSE",
+      "reason_code": "PHENOTYPE_NOT_PROVIDED"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W4-INT-15-CODEINE-INDETERMINATE",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate release PGX-CANDIDATE-REL-20260906-001; not a governed artifact, executable in DEMO and VALIDATION only, pending external expert review",
+        "release_manifest_hash": "sha256:0cd22a88f086a2d408e3ac4da0738eba5233f500ab277ccbf4033a8c14581d01",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:5b347acef531c1ce01d282ffa3ee66f097621417f8c863203f3669ec70998fcd",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": true,
+      "is_validation_evidence": true,
+      "no_pii_assertion": "These cases carry gene symbols, drug names, phenotype labels and a care setting from a closed vocabulary. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "an indeterminate observation must not be treated as a phenotype",
+      "provenance": {
+        "author": "pgx-closure-wave04 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "CPIC states no recommendation for an indeterminate CYP2D6 phenotype",
+        "derivation_family_fingerprint": "sha256:ba8d58ec7579b7433e9b58fdda15928412bd0c502c2a69ab27a2db7ecdb5c594",
+        "derivation_method": "derived from the first-release scope decisions and the guideline's silences, not from any rule's outcome",
+        "derived_from_development": false,
+        "source_identity": "first-release refusal surface: CODEINE-INDETERMINATE"
+      },
+      "role": "INTERNAL_HOLDOUT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "codeine indeterminate",
+      "visibility": "RESTRICTED"
+    },
+    "question": "does the candidate release refuse this input, with this reason, and without reporting an attention level?",
+    "request": {
+      "care_setting": null,
+      "medications": [
+        "DRUG:codeine"
+      ],
+      "mode": "VALIDATION",
+      "phenotypes": {
+        "GENE:CYP2D6": "INDETERMINATE"
+      }
+    }
+  },
+  {
+    "expected": {
+      "attention_level": "NOT_ASSESSED",
+      "outcome": "REFUSE",
+      "reason_code": "PHENOTYPE_NOT_PROVIDED"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W4-INT-16-OMEPRAZOLE-INDETERMINATE",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate release PGX-CANDIDATE-REL-20260906-001; not a governed artifact, executable in DEMO and VALIDATION only, pending external expert review",
+        "release_manifest_hash": "sha256:0cd22a88f086a2d408e3ac4da0738eba5233f500ab277ccbf4033a8c14581d01",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:cd1d3a41fe066ef34cbb8792dbd404007fbc6dcb76e7fe0fd0140d224a6d5602",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": true,
+      "is_validation_evidence": true,
+      "no_pii_assertion": "These cases carry gene symbols, drug names, phenotype labels and a care setting from a closed vocabulary. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "the refusal must not depend on the gene",
+      "provenance": {
+        "author": "pgx-closure-wave04 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "as above, on the other gene",
+        "derivation_family_fingerprint": "sha256:ab4919e87308a07d455c8ec0b8dfc58ddef5173c4d2d916ff379ca7cfd7d486f",
+        "derivation_method": "derived from the first-release scope decisions and the guideline's silences, not from any rule's outcome",
+        "derived_from_development": false,
+        "source_identity": "first-release refusal surface: OMEPRAZOLE-INDETERMINATE"
+      },
+      "role": "INTERNAL_HOLDOUT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "omeprazole indeterminate",
+      "visibility": "RESTRICTED"
+    },
+    "question": "does the candidate release refuse this input, with this reason, and without reporting an attention level?",
+    "request": {
+      "care_setting": null,
+      "medications": [
+        "DRUG:omeprazole"
+      ],
+      "mode": "VALIDATION",
+      "phenotypes": {
+        "GENE:CYP2C19": "INDETERMINATE"
+      }
+    }
+  },
+  {
+    "expected": {
+      "attention_level": "NOT_ASSESSED",
+      "outcome": "REFUSE",
+      "reason_code": "PHENOTYPE_NOT_PROVIDED"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W4-INT-17-AMITRIPTYLINE-ONE-INDETERMINATE",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate release PGX-CANDIDATE-REL-20260906-001; not a governed artifact, executable in DEMO and VALIDATION only, pending external expert review",
+        "release_manifest_hash": "sha256:0cd22a88f086a2d408e3ac4da0738eba5233f500ab277ccbf4033a8c14581d01",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:36aa44848ba5f9c181d0fc7548e7eafecb65a205d8e62fecef168e62c961ed03",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": true,
+      "is_validation_evidence": true,
+      "no_pii_assertion": "These cases carry gene symbols, drug names, phenotype labels and a care setting from a closed vocabulary. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "a joint rule must refuse when one axis cannot be determined, and must not answer from the axis that could",
+      "provenance": {
+        "author": "pgx-closure-wave04 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "one axis of a two-gene matrix is indeterminate",
+        "derivation_family_fingerprint": "sha256:ab332cbdd4c3701c33b390c198b27e1d4a20c6dad67c1cb66a6e3788ae10a027",
+        "derivation_method": "derived from the first-release scope decisions and the guideline's silences, not from any rule's outcome",
+        "derived_from_development": false,
+        "source_identity": "first-release refusal surface: AMITRIPTYLINE-ONE-INDETERMINATE"
+      },
+      "role": "INTERNAL_HOLDOUT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "amitriptyline one indeterminate",
+      "visibility": "RESTRICTED"
+    },
+    "question": "does the candidate release refuse this input, with this reason, and without reporting an attention level?",
+    "request": {
+      "care_setting": null,
+      "medications": [
+        "DRUG:amitriptyline"
+      ],
+      "mode": "VALIDATION",
+      "phenotypes": {
+        "GENE:CYP2C19": "INDETERMINATE",
+        "GENE:CYP2D6": "NORMAL"
+      }
+    }
+  },
+  {
+    "expected": {
+      "attention_level": "NOT_ASSESSED",
+      "outcome": "REFUSE",
+      "reason_code": "PHENOTYPE_NOT_SUPPORTED"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W4-INT-18-AMITRIPTYLINE-2C19-RAPID-2D6-RAPID",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate release PGX-CANDIDATE-REL-20260906-001; not a governed artifact, executable in DEMO and VALIDATION only, pending external expert review",
+        "release_manifest_hash": "sha256:0cd22a88f086a2d408e3ac4da0738eba5233f500ab277ccbf4033a8c14581d01",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:28e78b1d7f39c66d661e003ddec1d31decec3fb6e895d4d70d9badd9cd845b6f",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": true,
+      "is_validation_evidence": true,
+      "no_pii_assertion": "These cases carry gene symbols, drug names, phenotype labels and a care setting from a closed vocabulary. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "a joint rule must refuse when either axis is unsupported, even when the other is a phenotype the guideline does answer",
+      "provenance": {
+        "author": "pgx-closure-wave04 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "CYP2C19 rapid is supported and CYP2D6 rapid is not",
+        "derivation_family_fingerprint": "sha256:d482b8249c77d900929197682d72e3b812e576ccbf17ac44ec212466151b18e5",
+        "derivation_method": "derived from the first-release scope decisions and the guideline's silences, not from any rule's outcome",
+        "derived_from_development": false,
+        "source_identity": "first-release refusal surface: AMITRIPTYLINE-2C19-RAPID-2D6-RAPID"
+      },
+      "role": "INTERNAL_HOLDOUT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "amitriptyline 2c19 rapid 2d6 rapid",
+      "visibility": "RESTRICTED"
+    },
+    "question": "does the candidate release refuse this input, with this reason, and without reporting an attention level?",
+    "request": {
+      "care_setting": null,
+      "medications": [
+        "DRUG:amitriptyline"
+      ],
+      "mode": "VALIDATION",
+      "phenotypes": {
+        "GENE:CYP2C19": "RAPID",
+        "GENE:CYP2D6": "RAPID"
+      }
+    }
+  },
+  {
+    "expected": {
+      "attention_level": "NOT_ASSESSED",
+      "outcome": "REFUSE",
+      "reason_code": "DRUG_NOT_IN_CANONICAL_DATASET"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W4-INT-19-TWO-OUT-OF-SCOPE-DRUGS",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate release PGX-CANDIDATE-REL-20260906-001; not a governed artifact, executable in DEMO and VALIDATION only, pending external expert review",
+        "release_manifest_hash": "sha256:0cd22a88f086a2d408e3ac4da0738eba5233f500ab277ccbf4033a8c14581d01",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:b588697e3d0ad4123a4a8b70215722837d18d4c0e3d482ba1a5bf5a704c565bf",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": true,
+      "is_validation_evidence": true,
+      "no_pii_assertion": "These cases carry gene symbols, drug names, phenotype labels and a care setting from a closed vocabulary. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "a request that can answer nothing must report nothing, not an empty reassurance",
+      "provenance": {
+        "author": "pgx-closure-wave04 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "neither drug is in the four-drug first-release scope",
+        "derivation_family_fingerprint": "sha256:79af36e2398995a20ad4875cb19d85ef1a1c267f5c34f7bc00ebed7b5942f844",
+        "derivation_method": "derived from the first-release scope decisions and the guideline's silences, not from any rule's outcome",
+        "derived_from_development": false,
+        "source_identity": "first-release refusal surface: TWO-OUT-OF-SCOPE-DRUGS"
+      },
+      "role": "INTERNAL_HOLDOUT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "two out of scope drugs",
+      "visibility": "RESTRICTED"
+    },
+    "question": "does the candidate release refuse this input, with this reason, and without reporting an attention level?",
+    "request": {
+      "care_setting": null,
+      "medications": [
+        "DRUG:tamoxifen",
+        "DRUG:warfarin"
+      ],
+      "mode": "VALIDATION",
+      "phenotypes": {
+        "GENE:CYP2C19": "POOR",
+        "GENE:CYP2D6": "POOR"
+      }
+    }
+  },
+  {
+    "expected": {
+      "attention_level": "NOT_ASSESSED",
+      "outcome": "REFUSE",
+      "reason_code": "PHENOTYPE_NOT_PROVIDED"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W4-INT-20-AMITRIPTYLINE-WRONG-GENES-ONLY",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate release PGX-CANDIDATE-REL-20260906-001; not a governed artifact, executable in DEMO and VALIDATION only, pending external expert review",
+        "release_manifest_hash": "sha256:0cd22a88f086a2d408e3ac4da0738eba5233f500ab277ccbf4033a8c14581d01",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:fa0c9f4914f1163a2737e7db14c6b9cb8b16f6df66e650b31a9616ee8143f0d3",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": true,
+      "is_validation_evidence": true,
+      "no_pii_assertion": "These cases carry gene symbols, drug names, phenotype labels and a care setting from a closed vocabulary. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "an out-of-scope gene must not satisfy an axis",
+      "provenance": {
+        "author": "pgx-closure-wave04 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "an observation on a gene outside the first-release scope entirely",
+        "derivation_family_fingerprint": "sha256:f96ec4a41950c3ff99037495cdf0491d7993c8aede5ca1292807e576e227c57e",
+        "derivation_method": "derived from the first-release scope decisions and the guideline's silences, not from any rule's outcome",
+        "derived_from_development": false,
+        "source_identity": "first-release refusal surface: AMITRIPTYLINE-WRONG-GENES-ONLY"
+      },
+      "role": "INTERNAL_HOLDOUT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "amitriptyline wrong genes only",
+      "visibility": "RESTRICTED"
+    },
+    "question": "does the candidate release refuse this input, with this reason, and without reporting an attention level?",
+    "request": {
+      "care_setting": null,
+      "medications": [
+        "DRUG:amitriptyline"
+      ],
+      "mode": "VALIDATION",
+      "phenotypes": {
+        "GENE:CYP2C9": "POOR"
+      }
+    }
+  },
+  {
+    "expected": {
+      "attention_level": "NOT_ASSESSED",
+      "outcome": "REFUSE",
+      "reason_code": "PHENOTYPE_NOT_PROVIDED"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W4-INT-21-CODEINE-AND-AMITRIPTYLINE-ONE-GENE",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate release PGX-CANDIDATE-REL-20260906-001; not a governed artifact, executable in DEMO and VALIDATION only, pending external expert review",
+        "release_manifest_hash": "sha256:0cd22a88f086a2d408e3ac4da0738eba5233f500ab277ccbf4033a8c14581d01",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:b5d87f236788acc824d5fdb3980ab65081fd290eec8dfd6c345f2df675583e50",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": true,
+      "is_validation_evidence": true,
+      "no_pii_assertion": "These cases carry gene symbols, drug names, phenotype labels and a care setting from a closed vocabulary. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "one drug answering must not cause the other to be answered from the same single observation",
+      "provenance": {
+        "author": "pgx-closure-wave04 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "codeine can be answered from CYP2D6 alone; amitriptyline cannot",
+        "derivation_family_fingerprint": "sha256:07d3df9444d4c437e242f50fabab320237d2b853c76adf845072d4084663fcc1",
+        "derivation_method": "derived from the first-release scope decisions and the guideline's silences, not from any rule's outcome",
+        "derived_from_development": false,
+        "source_identity": "first-release refusal surface: CODEINE-AND-AMITRIPTYLINE-ONE-GENE"
+      },
+      "role": "INTERNAL_HOLDOUT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "codeine and amitriptyline one gene",
+      "visibility": "RESTRICTED"
+    },
+    "question": "does the candidate release refuse this input, with this reason, and without reporting an attention level?",
+    "request": {
+      "care_setting": null,
+      "medications": [
+        "DRUG:amitriptyline",
+        "DRUG:codeine"
+      ],
+      "mode": "VALIDATION",
+      "phenotypes": {
+        "GENE:CYP2D6": "POOR"
+      }
+    }
+  }
+]

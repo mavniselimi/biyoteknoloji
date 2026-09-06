@@ -1,0 +1,2179 @@
+[
+  {
+    "case_id": "PGX-VAL-W4-DEV-AMITRIPTYLIN-RAPID-POOR-01",
+    "error": null,
+    "evidence_traceable": true,
+    "expected": {
+      "attention_level": "HIGH",
+      "outcome": "ATTENTION"
+    },
+    "latency_ms": 6.0652,
+    "observed": {
+      "attention_level": "HIGH",
+      "axes": [
+        {
+          "attention_level": "HIGH",
+          "axis_key": "GENE:CYP2C19+GENE:CYP2D6|DRUG:amitriptyline",
+          "capture_record_ids": [
+            "capture:row:CYP2C19|amitriptyline|CYP2C19 Rapid metabolizer|higher initial doses, e.g. depression",
+            "capture:row:CYP2C19|amitriptyline|CYP2C19 Ultrarapid metabolizer|higher initial doses, e.g. depression",
+            "capture:row:CYP2D6|amitriptyline|CYP2D6 Poor metabolizer|higher initial doses, e.g. depression",
+            "capture:row:CYP2D6|amitriptyline|CYP2D6 Ultrarapid metabolizer|higher initial doses, e.g. depression"
+          ],
+          "citations": [
+            "PMID 27997040, DOI 10.1002/cpt.597"
+          ],
+          "detail": "one candidate rule matched",
+          "gene_keys": [
+            "GENE:CYP2C19",
+            "GENE:CYP2D6"
+          ],
+          "interpretation_key": "CANDIDATE-INTERP:amitriptyline|CYP2C19|ULTRARAPID",
+          "is_joint": true,
+          "matched_rule_key": "CANDIDATE-RULE:amitriptyline|JOINT|01",
+          "reason_codes": [],
+          "rule_content_hash": "sha256:5ea5c5ef6db61620c8d652f95807ab74bbe252d296c5e7f51abd8c56ba2b5712",
+          "status": "FULL"
+        }
+      ],
+      "reason_codes": [],
+      "status": "FULL"
+    },
+    "passed": true,
+    "role": "DEVELOPMENT",
+    "unsafe_false_reassurance": false
+  },
+  {
+    "case_id": "PGX-VAL-W4-DEV-AMITRIPTYLIN-RAPID-ULTRARAPID-02",
+    "error": null,
+    "evidence_traceable": true,
+    "expected": {
+      "attention_level": "HIGH",
+      "outcome": "ATTENTION"
+    },
+    "latency_ms": 5.3835,
+    "observed": {
+      "attention_level": "HIGH",
+      "axes": [
+        {
+          "attention_level": "HIGH",
+          "axis_key": "GENE:CYP2C19+GENE:CYP2D6|DRUG:amitriptyline",
+          "capture_record_ids": [
+            "capture:row:CYP2C19|amitriptyline|CYP2C19 Rapid metabolizer|higher initial doses, e.g. depression",
+            "capture:row:CYP2C19|amitriptyline|CYP2C19 Ultrarapid metabolizer|higher initial doses, e.g. depression",
+            "capture:row:CYP2D6|amitriptyline|CYP2D6 Poor metabolizer|higher initial doses, e.g. depression",
+            "capture:row:CYP2D6|amitriptyline|CYP2D6 Ultrarapid metabolizer|higher initial doses, e.g. depression"
+          ],
+          "citations": [
+            "PMID 27997040, DOI 10.1002/cpt.597"
+          ],
+          "detail": "one candidate rule matched",
+          "gene_keys": [
+            "GENE:CYP2C19",
+            "GENE:CYP2D6"
+          ],
+          "interpretation_key": "CANDIDATE-INTERP:amitriptyline|CYP2C19|ULTRARAPID",
+          "is_joint": true,
+          "matched_rule_key": "CANDIDATE-RULE:amitriptyline|JOINT|01",
+          "reason_codes": [],
+          "rule_content_hash": "sha256:5ea5c5ef6db61620c8d652f95807ab74bbe252d296c5e7f51abd8c56ba2b5712",
+          "status": "FULL"
+        }
+      ],
+      "reason_codes": [],
+      "status": "FULL"
+    },
+    "passed": true,
+    "role": "DEVELOPMENT",
+    "unsafe_false_reassurance": false
+  },
+  {
+    "case_id": "PGX-VAL-W4-DEV-AMITRIPTYLIN-ULTRARAPID-POOR-03",
+    "error": null,
+    "evidence_traceable": true,
+    "expected": {
+      "attention_level": "HIGH",
+      "outcome": "ATTENTION"
+    },
+    "latency_ms": 5.3431,
+    "observed": {
+      "attention_level": "HIGH",
+      "axes": [
+        {
+          "attention_level": "HIGH",
+          "axis_key": "GENE:CYP2C19+GENE:CYP2D6|DRUG:amitriptyline",
+          "capture_record_ids": [
+            "capture:row:CYP2C19|amitriptyline|CYP2C19 Rapid metabolizer|higher initial doses, e.g. depression",
+            "capture:row:CYP2C19|amitriptyline|CYP2C19 Ultrarapid metabolizer|higher initial doses, e.g. depression",
+            "capture:row:CYP2D6|amitriptyline|CYP2D6 Poor metabolizer|higher initial doses, e.g. depression",
+            "capture:row:CYP2D6|amitriptyline|CYP2D6 Ultrarapid metabolizer|higher initial doses, e.g. depression"
+          ],
+          "citations": [
+            "PMID 27997040, DOI 10.1002/cpt.597"
+          ],
+          "detail": "one candidate rule matched",
+          "gene_keys": [
+            "GENE:CYP2C19",
+            "GENE:CYP2D6"
+          ],
+          "interpretation_key": "CANDIDATE-INTERP:amitriptyline|CYP2C19|ULTRARAPID",
+          "is_joint": true,
+          "matched_rule_key": "CANDIDATE-RULE:amitriptyline|JOINT|01",
+          "reason_codes": [],
+          "rule_content_hash": "sha256:5ea5c5ef6db61620c8d652f95807ab74bbe252d296c5e7f51abd8c56ba2b5712",
+          "status": "FULL"
+        }
+      ],
+      "reason_codes": [],
+      "status": "FULL"
+    },
+    "passed": true,
+    "role": "DEVELOPMENT",
+    "unsafe_false_reassurance": false
+  },
+  {
+    "case_id": "PGX-VAL-W4-DEV-AMITRIPTYLIN-ULTRARAPID-ULTRARAPID-04",
+    "error": null,
+    "evidence_traceable": true,
+    "expected": {
+      "attention_level": "HIGH",
+      "outcome": "ATTENTION"
+    },
+    "latency_ms": 5.1387,
+    "observed": {
+      "attention_level": "HIGH",
+      "axes": [
+        {
+          "attention_level": "HIGH",
+          "axis_key": "GENE:CYP2C19+GENE:CYP2D6|DRUG:amitriptyline",
+          "capture_record_ids": [
+            "capture:row:CYP2C19|amitriptyline|CYP2C19 Rapid metabolizer|higher initial doses, e.g. depression",
+            "capture:row:CYP2C19|amitriptyline|CYP2C19 Ultrarapid metabolizer|higher initial doses, e.g. depression",
+            "capture:row:CYP2D6|amitriptyline|CYP2D6 Poor metabolizer|higher initial doses, e.g. depression",
+            "capture:row:CYP2D6|amitriptyline|CYP2D6 Ultrarapid metabolizer|higher initial doses, e.g. depression"
+          ],
+          "citations": [
+            "PMID 27997040, DOI 10.1002/cpt.597"
+          ],
+          "detail": "one candidate rule matched",
+          "gene_keys": [
+            "GENE:CYP2C19",
+            "GENE:CYP2D6"
+          ],
+          "interpretation_key": "CANDIDATE-INTERP:amitriptyline|CYP2C19|ULTRARAPID",
+          "is_joint": true,
+          "matched_rule_key": "CANDIDATE-RULE:amitriptyline|JOINT|01",
+          "reason_codes": [],
+          "rule_content_hash": "sha256:5ea5c5ef6db61620c8d652f95807ab74bbe252d296c5e7f51abd8c56ba2b5712",
+          "status": "FULL"
+        }
+      ],
+      "reason_codes": [],
+      "status": "FULL"
+    },
+    "passed": true,
+    "role": "DEVELOPMENT",
+    "unsafe_false_reassurance": false
+  },
+  {
+    "case_id": "PGX-VAL-W4-DEV-AMITRIPTYLIN-RAPID-INTERMEDIATE-01",
+    "error": null,
+    "evidence_traceable": true,
+    "expected": {
+      "attention_level": "HIGH",
+      "outcome": "ATTENTION"
+    },
+    "latency_ms": 5.3031,
+    "observed": {
+      "attention_level": "HIGH",
+      "axes": [
+        {
+          "attention_level": "HIGH",
+          "axis_key": "GENE:CYP2C19+GENE:CYP2D6|DRUG:amitriptyline",
+          "capture_record_ids": [
+            "capture:row:CYP2C19|amitriptyline|CYP2C19 Rapid metabolizer|higher initial doses, e.g. depression",
+            "capture:row:CYP2C19|amitriptyline|CYP2C19 Ultrarapid metabolizer|higher initial doses, e.g. depression",
+            "capture:row:CYP2D6|amitriptyline|CYP2D6 Intermediate metabolizer|higher initial doses, e.g. depression",
+            "capture:row:CYP2D6|amitriptyline|CYP2D6 Normal metabolizer|higher initial doses, e.g. depression"
+          ],
+          "citations": [
+            "PMID 27997040, DOI 10.1002/cpt.597"
+          ],
+          "detail": "one candidate rule matched",
+          "gene_keys": [
+            "GENE:CYP2C19",
+            "GENE:CYP2D6"
+          ],
+          "interpretation_key": "CANDIDATE-INTERP:amitriptyline|CYP2C19|ULTRARAPID",
+          "is_joint": true,
+          "matched_rule_key": "CANDIDATE-RULE:amitriptyline|JOINT|02",
+          "reason_codes": [],
+          "rule_content_hash": "sha256:77366942364c95477964804dd8a92feaf2f264021c74f16624b61298e4b16f83",
+          "status": "FULL"
+        }
+      ],
+      "reason_codes": [],
+      "status": "FULL"
+    },
+    "passed": true,
+    "role": "DEVELOPMENT",
+    "unsafe_false_reassurance": false
+  },
+  {
+    "case_id": "PGX-VAL-W4-DEV-AMITRIPTYLIN-RAPID-NORMAL-02",
+    "error": null,
+    "evidence_traceable": true,
+    "expected": {
+      "attention_level": "HIGH",
+      "outcome": "ATTENTION"
+    },
+    "latency_ms": 5.2517,
+    "observed": {
+      "attention_level": "HIGH",
+      "axes": [
+        {
+          "attention_level": "HIGH",
+          "axis_key": "GENE:CYP2C19+GENE:CYP2D6|DRUG:amitriptyline",
+          "capture_record_ids": [
+            "capture:row:CYP2C19|amitriptyline|CYP2C19 Rapid metabolizer|higher initial doses, e.g. depression",
+            "capture:row:CYP2C19|amitriptyline|CYP2C19 Ultrarapid metabolizer|higher initial doses, e.g. depression",
+            "capture:row:CYP2D6|amitriptyline|CYP2D6 Intermediate metabolizer|higher initial doses, e.g. depression",
+            "capture:row:CYP2D6|amitriptyline|CYP2D6 Normal metabolizer|higher initial doses, e.g. depression"
+          ],
+          "citations": [
+            "PMID 27997040, DOI 10.1002/cpt.597"
+          ],
+          "detail": "one candidate rule matched",
+          "gene_keys": [
+            "GENE:CYP2C19",
+            "GENE:CYP2D6"
+          ],
+          "interpretation_key": "CANDIDATE-INTERP:amitriptyline|CYP2C19|ULTRARAPID",
+          "is_joint": true,
+          "matched_rule_key": "CANDIDATE-RULE:amitriptyline|JOINT|02",
+          "reason_codes": [],
+          "rule_content_hash": "sha256:77366942364c95477964804dd8a92feaf2f264021c74f16624b61298e4b16f83",
+          "status": "FULL"
+        }
+      ],
+      "reason_codes": [],
+      "status": "FULL"
+    },
+    "passed": true,
+    "role": "DEVELOPMENT",
+    "unsafe_false_reassurance": false
+  },
+  {
+    "case_id": "PGX-VAL-W4-DEV-AMITRIPTYLIN-ULTRARAPID-INTERMEDIATE-03",
+    "error": null,
+    "evidence_traceable": true,
+    "expected": {
+      "attention_level": "HIGH",
+      "outcome": "ATTENTION"
+    },
+    "latency_ms": 5.2665,
+    "observed": {
+      "attention_level": "HIGH",
+      "axes": [
+        {
+          "attention_level": "HIGH",
+          "axis_key": "GENE:CYP2C19+GENE:CYP2D6|DRUG:amitriptyline",
+          "capture_record_ids": [
+            "capture:row:CYP2C19|amitriptyline|CYP2C19 Rapid metabolizer|higher initial doses, e.g. depression",
+            "capture:row:CYP2C19|amitriptyline|CYP2C19 Ultrarapid metabolizer|higher initial doses, e.g. depression",
+            "capture:row:CYP2D6|amitriptyline|CYP2D6 Intermediate metabolizer|higher initial doses, e.g. depression",
+            "capture:row:CYP2D6|amitriptyline|CYP2D6 Normal metabolizer|higher initial doses, e.g. depression"
+          ],
+          "citations": [
+            "PMID 27997040, DOI 10.1002/cpt.597"
+          ],
+          "detail": "one candidate rule matched",
+          "gene_keys": [
+            "GENE:CYP2C19",
+            "GENE:CYP2D6"
+          ],
+          "interpretation_key": "CANDIDATE-INTERP:amitriptyline|CYP2C19|ULTRARAPID",
+          "is_joint": true,
+          "matched_rule_key": "CANDIDATE-RULE:amitriptyline|JOINT|02",
+          "reason_codes": [],
+          "rule_content_hash": "sha256:77366942364c95477964804dd8a92feaf2f264021c74f16624b61298e4b16f83",
+          "status": "FULL"
+        }
+      ],
+      "reason_codes": [],
+      "status": "FULL"
+    },
+    "passed": true,
+    "role": "DEVELOPMENT",
+    "unsafe_false_reassurance": false
+  },
+  {
+    "case_id": "PGX-VAL-W4-DEV-AMITRIPTYLIN-ULTRARAPID-NORMAL-04",
+    "error": null,
+    "evidence_traceable": true,
+    "expected": {
+      "attention_level": "HIGH",
+      "outcome": "ATTENTION"
+    },
+    "latency_ms": 5.1996,
+    "observed": {
+      "attention_level": "HIGH",
+      "axes": [
+        {
+          "attention_level": "HIGH",
+          "axis_key": "GENE:CYP2C19+GENE:CYP2D6|DRUG:amitriptyline",
+          "capture_record_ids": [
+            "capture:row:CYP2C19|amitriptyline|CYP2C19 Rapid metabolizer|higher initial doses, e.g. depression",
+            "capture:row:CYP2C19|amitriptyline|CYP2C19 Ultrarapid metabolizer|higher initial doses, e.g. depression",
+            "capture:row:CYP2D6|amitriptyline|CYP2D6 Intermediate metabolizer|higher initial doses, e.g. depression",
+            "capture:row:CYP2D6|amitriptyline|CYP2D6 Normal metabolizer|higher initial doses, e.g. depression"
+          ],
+          "citations": [
+            "PMID 27997040, DOI 10.1002/cpt.597"
+          ],
+          "detail": "one candidate rule matched",
+          "gene_keys": [
+            "GENE:CYP2C19",
+            "GENE:CYP2D6"
+          ],
+          "interpretation_key": "CANDIDATE-INTERP:amitriptyline|CYP2C19|ULTRARAPID",
+          "is_joint": true,
+          "matched_rule_key": "CANDIDATE-RULE:amitriptyline|JOINT|02",
+          "reason_codes": [],
+          "rule_content_hash": "sha256:77366942364c95477964804dd8a92feaf2f264021c74f16624b61298e4b16f83",
+          "status": "FULL"
+        }
+      ],
+      "reason_codes": [],
+      "status": "FULL"
+    },
+    "passed": true,
+    "role": "DEVELOPMENT",
+    "unsafe_false_reassurance": false
+  },
+  {
+    "case_id": "PGX-VAL-W4-DEV-AMITRIPTYLIN-NORMAL-ULTRARAPID-01",
+    "error": null,
+    "evidence_traceable": true,
+    "expected": {
+      "attention_level": "HIGH",
+      "outcome": "ATTENTION"
+    },
+    "latency_ms": 5.2793,
+    "observed": {
+      "attention_level": "HIGH",
+      "axes": [
+        {
+          "attention_level": "HIGH",
+          "axis_key": "GENE:CYP2C19+GENE:CYP2D6|DRUG:amitriptyline",
+          "capture_record_ids": [
+            "capture:row:CYP2C19|amitriptyline|CYP2C19 Normal metabolizer|higher initial doses, e.g. depression",
+            "capture:row:CYP2D6|amitriptyline|CYP2D6 Ultrarapid metabolizer|higher initial doses, e.g. depression"
+          ],
+          "citations": [
+            "PMID 27997040, DOI 10.1002/cpt.597"
+          ],
+          "detail": "one candidate rule matched",
+          "gene_keys": [
+            "GENE:CYP2C19",
+            "GENE:CYP2D6"
+          ],
+          "interpretation_key": "CANDIDATE-INTERP:amitriptyline|CYP2C19|NORMAL",
+          "is_joint": true,
+          "matched_rule_key": "CANDIDATE-RULE:amitriptyline|JOINT|03",
+          "reason_codes": [],
+          "rule_content_hash": "sha256:097460654fbbd8485401583f56330830334084094fcf15aec5de5ff4dfbd686e",
+          "status": "FULL"
+        }
+      ],
+      "reason_codes": [],
+      "status": "FULL"
+    },
+    "passed": true,
+    "role": "DEVELOPMENT",
+    "unsafe_false_reassurance": false
+  },
+  {
+    "case_id": "PGX-VAL-W4-DEV-AMITRIPTYLIN-NORMAL-NORMAL-01",
+    "error": null,
+    "evidence_traceable": true,
+    "expected": {
+      "attention_level": "NO_ACTIVE_ATTENTION",
+      "outcome": "ATTENTION"
+    },
+    "latency_ms": 5.2423,
+    "observed": {
+      "attention_level": "NO_ACTIVE_ATTENTION",
+      "axes": [
+        {
+          "attention_level": "NO_ACTIVE_ATTENTION",
+          "axis_key": "GENE:CYP2C19+GENE:CYP2D6|DRUG:amitriptyline",
+          "capture_record_ids": [
+            "capture:row:CYP2C19|amitriptyline|CYP2C19 Normal metabolizer|higher initial doses, e.g. depression",
+            "capture:row:CYP2D6|amitriptyline|CYP2D6 Normal metabolizer|higher initial doses, e.g. depression"
+          ],
+          "citations": [
+            "PMID 27997040, DOI 10.1002/cpt.597"
+          ],
+          "detail": "one candidate rule matched",
+          "gene_keys": [
+            "GENE:CYP2C19",
+            "GENE:CYP2D6"
+          ],
+          "interpretation_key": "CANDIDATE-INTERP:amitriptyline|CYP2C19|NORMAL",
+          "is_joint": true,
+          "matched_rule_key": "CANDIDATE-RULE:amitriptyline|JOINT|04",
+          "reason_codes": [],
+          "rule_content_hash": "sha256:5794be4c250be030f40e5790f9925209e04490dd59e8b3b6741a60cd58f63de1",
+          "status": "FULL"
+        }
+      ],
+      "reason_codes": [],
+      "status": "FULL"
+    },
+    "passed": true,
+    "role": "DEVELOPMENT",
+    "unsafe_false_reassurance": false
+  },
+  {
+    "case_id": "PGX-VAL-W4-DEV-AMITRIPTYLIN-NORMAL-INTERMEDIATE-01",
+    "error": null,
+    "evidence_traceable": true,
+    "expected": {
+      "attention_level": "MEDIUM",
+      "outcome": "ATTENTION"
+    },
+    "latency_ms": 5.0496,
+    "observed": {
+      "attention_level": "MEDIUM",
+      "axes": [
+        {
+          "attention_level": "MEDIUM",
+          "axis_key": "GENE:CYP2C19+GENE:CYP2D6|DRUG:amitriptyline",
+          "capture_record_ids": [
+            "capture:row:CYP2C19|amitriptyline|CYP2C19 Normal metabolizer|higher initial doses, e.g. depression",
+            "capture:row:CYP2D6|amitriptyline|CYP2D6 Intermediate metabolizer|higher initial doses, e.g. depression"
+          ],
+          "citations": [
+            "PMID 27997040, DOI 10.1002/cpt.597"
+          ],
+          "detail": "one candidate rule matched",
+          "gene_keys": [
+            "GENE:CYP2C19",
+            "GENE:CYP2D6"
+          ],
+          "interpretation_key": "CANDIDATE-INTERP:amitriptyline|CYP2C19|NORMAL",
+          "is_joint": true,
+          "matched_rule_key": "CANDIDATE-RULE:amitriptyline|JOINT|05",
+          "reason_codes": [],
+          "rule_content_hash": "sha256:35f9659b166e6622c99ae7a0738254d30642d9540a739683ae0c407d9c0234a0",
+          "status": "FULL"
+        }
+      ],
+      "reason_codes": [],
+      "status": "FULL"
+    },
+    "passed": true,
+    "role": "DEVELOPMENT",
+    "unsafe_false_reassurance": false
+  },
+  {
+    "case_id": "PGX-VAL-W4-DEV-AMITRIPTYLIN-NORMAL-POOR-01",
+    "error": null,
+    "evidence_traceable": true,
+    "expected": {
+      "attention_level": "HIGH",
+      "outcome": "ATTENTION"
+    },
+    "latency_ms": 5.208,
+    "observed": {
+      "attention_level": "HIGH",
+      "axes": [
+        {
+          "attention_level": "HIGH",
+          "axis_key": "GENE:CYP2C19+GENE:CYP2D6|DRUG:amitriptyline",
+          "capture_record_ids": [
+            "capture:row:CYP2C19|amitriptyline|CYP2C19 Normal metabolizer|higher initial doses, e.g. depression",
+            "capture:row:CYP2D6|amitriptyline|CYP2D6 Poor metabolizer|higher initial doses, e.g. depression"
+          ],
+          "citations": [
+            "PMID 27997040, DOI 10.1002/cpt.597"
+          ],
+          "detail": "one candidate rule matched",
+          "gene_keys": [
+            "GENE:CYP2C19",
+            "GENE:CYP2D6"
+          ],
+          "interpretation_key": "CANDIDATE-INTERP:amitriptyline|CYP2C19|NORMAL",
+          "is_joint": true,
+          "matched_rule_key": "CANDIDATE-RULE:amitriptyline|JOINT|06",
+          "reason_codes": [],
+          "rule_content_hash": "sha256:a4c0a36b43bbc9162ade5443d7d5edb05fe8c747156890f089095c766ba6a781",
+          "status": "FULL"
+        }
+      ],
+      "reason_codes": [],
+      "status": "FULL"
+    },
+    "passed": true,
+    "role": "DEVELOPMENT",
+    "unsafe_false_reassurance": false
+  },
+  {
+    "case_id": "PGX-VAL-W4-DEV-AMITRIPTYLIN-INTERMEDIATE-ULTRARAPID-01",
+    "error": null,
+    "evidence_traceable": true,
+    "expected": {
+      "attention_level": "HIGH",
+      "outcome": "ATTENTION"
+    },
+    "latency_ms": 5.1893,
+    "observed": {
+      "attention_level": "HIGH",
+      "axes": [
+        {
+          "attention_level": "HIGH",
+          "axis_key": "GENE:CYP2C19+GENE:CYP2D6|DRUG:amitriptyline",
+          "capture_record_ids": [
+            "capture:row:CYP2C19|amitriptyline|CYP2C19 Intermediate metabolizer|higher initial doses, e.g. depression",
+            "capture:row:CYP2D6|amitriptyline|CYP2D6 Ultrarapid metabolizer|higher initial doses, e.g. depression"
+          ],
+          "citations": [
+            "PMID 27997040, DOI 10.1002/cpt.597"
+          ],
+          "detail": "one candidate rule matched",
+          "gene_keys": [
+            "GENE:CYP2C19",
+            "GENE:CYP2D6"
+          ],
+          "interpretation_key": "CANDIDATE-INTERP:amitriptyline|CYP2C19|INTERMEDIATE",
+          "is_joint": true,
+          "matched_rule_key": "CANDIDATE-RULE:amitriptyline|JOINT|07",
+          "reason_codes": [],
+          "rule_content_hash": "sha256:c852c844c94b8b9a94398f79a7788b5da350e47bfbafb0edd8e85d5394023421",
+          "status": "FULL"
+        }
+      ],
+      "reason_codes": [],
+      "status": "FULL"
+    },
+    "passed": true,
+    "role": "DEVELOPMENT",
+    "unsafe_false_reassurance": false
+  },
+  {
+    "case_id": "PGX-VAL-W4-DEV-AMITRIPTYLIN-INTERMEDIATE-NORMAL-01",
+    "error": null,
+    "evidence_traceable": true,
+    "expected": {
+      "attention_level": "NO_ACTIVE_ATTENTION",
+      "outcome": "ATTENTION"
+    },
+    "latency_ms": 5.1446,
+    "observed": {
+      "attention_level": "NO_ACTIVE_ATTENTION",
+      "axes": [
+        {
+          "attention_level": "NO_ACTIVE_ATTENTION",
+          "axis_key": "GENE:CYP2C19+GENE:CYP2D6|DRUG:amitriptyline",
+          "capture_record_ids": [
+            "capture:row:CYP2C19|amitriptyline|CYP2C19 Intermediate metabolizer|higher initial doses, e.g. depression",
+            "capture:row:CYP2D6|amitriptyline|CYP2D6 Normal metabolizer|higher initial doses, e.g. depression"
+          ],
+          "citations": [
+            "PMID 27997040, DOI 10.1002/cpt.597"
+          ],
+          "detail": "one candidate rule matched",
+          "gene_keys": [
+            "GENE:CYP2C19",
+            "GENE:CYP2D6"
+          ],
+          "interpretation_key": "CANDIDATE-INTERP:amitriptyline|CYP2C19|INTERMEDIATE",
+          "is_joint": true,
+          "matched_rule_key": "CANDIDATE-RULE:amitriptyline|JOINT|08",
+          "reason_codes": [],
+          "rule_content_hash": "sha256:6a3dd3071042a95a0dd7841390d154ff3516c7af83cfc5b93ed27981fbdc12c6",
+          "status": "FULL"
+        }
+      ],
+      "reason_codes": [],
+      "status": "FULL"
+    },
+    "passed": true,
+    "role": "DEVELOPMENT",
+    "unsafe_false_reassurance": false
+  },
+  {
+    "case_id": "PGX-VAL-W4-DEV-AMITRIPTYLIN-INTERMEDIATE-INTERMEDIATE-01",
+    "error": null,
+    "evidence_traceable": true,
+    "expected": {
+      "attention_level": "MEDIUM",
+      "outcome": "ATTENTION"
+    },
+    "latency_ms": 5.1368,
+    "observed": {
+      "attention_level": "MEDIUM",
+      "axes": [
+        {
+          "attention_level": "MEDIUM",
+          "axis_key": "GENE:CYP2C19+GENE:CYP2D6|DRUG:amitriptyline",
+          "capture_record_ids": [
+            "capture:row:CYP2C19|amitriptyline|CYP2C19 Intermediate metabolizer|higher initial doses, e.g. depression",
+            "capture:row:CYP2D6|amitriptyline|CYP2D6 Intermediate metabolizer|higher initial doses, e.g. depression"
+          ],
+          "citations": [
+            "PMID 27997040, DOI 10.1002/cpt.597"
+          ],
+          "detail": "one candidate rule matched",
+          "gene_keys": [
+            "GENE:CYP2C19",
+            "GENE:CYP2D6"
+          ],
+          "interpretation_key": "CANDIDATE-INTERP:amitriptyline|CYP2C19|INTERMEDIATE",
+          "is_joint": true,
+          "matched_rule_key": "CANDIDATE-RULE:amitriptyline|JOINT|09",
+          "reason_codes": [],
+          "rule_content_hash": "sha256:05c3a651ca651f873e323ecae17bc5a348ff28ed7422c22cbc50b7d7cd27fed5",
+          "status": "FULL"
+        }
+      ],
+      "reason_codes": [],
+      "status": "FULL"
+    },
+    "passed": true,
+    "role": "DEVELOPMENT",
+    "unsafe_false_reassurance": false
+  },
+  {
+    "case_id": "PGX-VAL-W4-DEV-AMITRIPTYLIN-INTERMEDIATE-POOR-01",
+    "error": null,
+    "evidence_traceable": true,
+    "expected": {
+      "attention_level": "HIGH",
+      "outcome": "ATTENTION"
+    },
+    "latency_ms": 5.0472,
+    "observed": {
+      "attention_level": "HIGH",
+      "axes": [
+        {
+          "attention_level": "HIGH",
+          "axis_key": "GENE:CYP2C19+GENE:CYP2D6|DRUG:amitriptyline",
+          "capture_record_ids": [
+            "capture:row:CYP2C19|amitriptyline|CYP2C19 Intermediate metabolizer|higher initial doses, e.g. depression",
+            "capture:row:CYP2D6|amitriptyline|CYP2D6 Poor metabolizer|higher initial doses, e.g. depression"
+          ],
+          "citations": [
+            "PMID 27997040, DOI 10.1002/cpt.597"
+          ],
+          "detail": "one candidate rule matched",
+          "gene_keys": [
+            "GENE:CYP2C19",
+            "GENE:CYP2D6"
+          ],
+          "interpretation_key": "CANDIDATE-INTERP:amitriptyline|CYP2C19|INTERMEDIATE",
+          "is_joint": true,
+          "matched_rule_key": "CANDIDATE-RULE:amitriptyline|JOINT|10",
+          "reason_codes": [],
+          "rule_content_hash": "sha256:bf5ad942f302b09d2d91db2f894443014a634ff31e32d161b43b66fe3891d33c",
+          "status": "FULL"
+        }
+      ],
+      "reason_codes": [],
+      "status": "FULL"
+    },
+    "passed": true,
+    "role": "DEVELOPMENT",
+    "unsafe_false_reassurance": false
+  },
+  {
+    "case_id": "PGX-VAL-W4-DEV-AMITRIPTYLIN-POOR-POOR-01",
+    "error": null,
+    "evidence_traceable": true,
+    "expected": {
+      "attention_level": "HIGH",
+      "outcome": "ATTENTION"
+    },
+    "latency_ms": 5.2026,
+    "observed": {
+      "attention_level": "HIGH",
+      "axes": [
+        {
+          "attention_level": "HIGH",
+          "axis_key": "GENE:CYP2C19+GENE:CYP2D6|DRUG:amitriptyline",
+          "capture_record_ids": [
+            "capture:row:CYP2C19|amitriptyline|CYP2C19 Poor metabolizer|higher initial doses, e.g. depression",
+            "capture:row:CYP2D6|amitriptyline|CYP2D6 Intermediate metabolizer|higher initial doses, e.g. depression",
+            "capture:row:CYP2D6|amitriptyline|CYP2D6 Poor metabolizer|higher initial doses, e.g. depression",
+            "capture:row:CYP2D6|amitriptyline|CYP2D6 Ultrarapid metabolizer|higher initial doses, e.g. depression"
+          ],
+          "citations": [
+            "PMID 27997040, DOI 10.1002/cpt.597"
+          ],
+          "detail": "one candidate rule matched",
+          "gene_keys": [
+            "GENE:CYP2C19",
+            "GENE:CYP2D6"
+          ],
+          "interpretation_key": "CANDIDATE-INTERP:amitriptyline|CYP2C19|POOR",
+          "is_joint": true,
+          "matched_rule_key": "CANDIDATE-RULE:amitriptyline|JOINT|11",
+          "reason_codes": [],
+          "rule_content_hash": "sha256:406d8e322dab6b5dce16b50aa67542cf68bed0cd856f910c8d2514cbba695d70",
+          "status": "FULL"
+        }
+      ],
+      "reason_codes": [],
+      "status": "FULL"
+    },
+    "passed": true,
+    "role": "DEVELOPMENT",
+    "unsafe_false_reassurance": false
+  },
+  {
+    "case_id": "PGX-VAL-W4-DEV-AMITRIPTYLIN-POOR-INTERMEDIATE-02",
+    "error": null,
+    "evidence_traceable": true,
+    "expected": {
+      "attention_level": "HIGH",
+      "outcome": "ATTENTION"
+    },
+    "latency_ms": 5.203,
+    "observed": {
+      "attention_level": "HIGH",
+      "axes": [
+        {
+          "attention_level": "HIGH",
+          "axis_key": "GENE:CYP2C19+GENE:CYP2D6|DRUG:amitriptyline",
+          "capture_record_ids": [
+            "capture:row:CYP2C19|amitriptyline|CYP2C19 Poor metabolizer|higher initial doses, e.g. depression",
+            "capture:row:CYP2D6|amitriptyline|CYP2D6 Intermediate metabolizer|higher initial doses, e.g. depression",
+            "capture:row:CYP2D6|amitriptyline|CYP2D6 Poor metabolizer|higher initial doses, e.g. depression",
+            "capture:row:CYP2D6|amitriptyline|CYP2D6 Ultrarapid metabolizer|higher initial doses, e.g. depression"
+          ],
+          "citations": [
+            "PMID 27997040, DOI 10.1002/cpt.597"
+          ],
+          "detail": "one candidate rule matched",
+          "gene_keys": [
+            "GENE:CYP2C19",
+            "GENE:CYP2D6"
+          ],
+          "interpretation_key": "CANDIDATE-INTERP:amitriptyline|CYP2C19|POOR",
+          "is_joint": true,
+          "matched_rule_key": "CANDIDATE-RULE:amitriptyline|JOINT|11",
+          "reason_codes": [],
+          "rule_content_hash": "sha256:406d8e322dab6b5dce16b50aa67542cf68bed0cd856f910c8d2514cbba695d70",
+          "status": "FULL"
+        }
+      ],
+      "reason_codes": [],
+      "status": "FULL"
+    },
+    "passed": true,
+    "role": "DEVELOPMENT",
+    "unsafe_false_reassurance": false
+  },
+  {
+    "case_id": "PGX-VAL-W4-DEV-AMITRIPTYLIN-POOR-ULTRARAPID-03",
+    "error": null,
+    "evidence_traceable": true,
+    "expected": {
+      "attention_level": "HIGH",
+      "outcome": "ATTENTION"
+    },
+    "latency_ms": 5.1708,
+    "observed": {
+      "attention_level": "HIGH",
+      "axes": [
+        {
+          "attention_level": "HIGH",
+          "axis_key": "GENE:CYP2C19+GENE:CYP2D6|DRUG:amitriptyline",
+          "capture_record_ids": [
+            "capture:row:CYP2C19|amitriptyline|CYP2C19 Poor metabolizer|higher initial doses, e.g. depression",
+            "capture:row:CYP2D6|amitriptyline|CYP2D6 Intermediate metabolizer|higher initial doses, e.g. depression",
+            "capture:row:CYP2D6|amitriptyline|CYP2D6 Poor metabolizer|higher initial doses, e.g. depression",
+            "capture:row:CYP2D6|amitriptyline|CYP2D6 Ultrarapid metabolizer|higher initial doses, e.g. depression"
+          ],
+          "citations": [
+            "PMID 27997040, DOI 10.1002/cpt.597"
+          ],
+          "detail": "one candidate rule matched",
+          "gene_keys": [
+            "GENE:CYP2C19",
+            "GENE:CYP2D6"
+          ],
+          "interpretation_key": "CANDIDATE-INTERP:amitriptyline|CYP2C19|POOR",
+          "is_joint": true,
+          "matched_rule_key": "CANDIDATE-RULE:amitriptyline|JOINT|11",
+          "reason_codes": [],
+          "rule_content_hash": "sha256:406d8e322dab6b5dce16b50aa67542cf68bed0cd856f910c8d2514cbba695d70",
+          "status": "FULL"
+        }
+      ],
+      "reason_codes": [],
+      "status": "FULL"
+    },
+    "passed": true,
+    "role": "DEVELOPMENT",
+    "unsafe_false_reassurance": false
+  },
+  {
+    "case_id": "PGX-VAL-W4-DEV-AMITRIPTYLIN-POOR-NORMAL-01",
+    "error": null,
+    "evidence_traceable": true,
+    "expected": {
+      "attention_level": "HIGH",
+      "outcome": "ATTENTION"
+    },
+    "latency_ms": 5.169,
+    "observed": {
+      "attention_level": "HIGH",
+      "axes": [
+        {
+          "attention_level": "HIGH",
+          "axis_key": "GENE:CYP2C19+GENE:CYP2D6|DRUG:amitriptyline",
+          "capture_record_ids": [
+            "capture:row:CYP2C19|amitriptyline|CYP2C19 Poor metabolizer|higher initial doses, e.g. depression",
+            "capture:row:CYP2D6|amitriptyline|CYP2D6 Normal metabolizer|higher initial doses, e.g. depression"
+          ],
+          "citations": [
+            "PMID 27997040, DOI 10.1002/cpt.597"
+          ],
+          "detail": "one candidate rule matched",
+          "gene_keys": [
+            "GENE:CYP2C19",
+            "GENE:CYP2D6"
+          ],
+          "interpretation_key": "CANDIDATE-INTERP:amitriptyline|CYP2C19|POOR",
+          "is_joint": true,
+          "matched_rule_key": "CANDIDATE-RULE:amitriptyline|JOINT|12",
+          "reason_codes": [],
+          "rule_content_hash": "sha256:8c36b32ccefc4f289c0d13cddc315bfb677f8613b9c8551f8818df14b1e6b317",
+          "status": "FULL"
+        }
+      ],
+      "reason_codes": [],
+      "status": "FULL"
+    },
+    "passed": true,
+    "role": "DEVELOPMENT",
+    "unsafe_false_reassurance": false
+  },
+  {
+    "case_id": "PGX-VAL-W4-DEV-CLOPIDOGREL-INTERMEDIATE-01",
+    "error": null,
+    "evidence_traceable": true,
+    "expected": {
+      "attention_level": "HIGH",
+      "outcome": "ATTENTION"
+    },
+    "latency_ms": 5.2308,
+    "observed": {
+      "attention_level": "HIGH",
+      "axes": [
+        {
+          "attention_level": "HIGH",
+          "axis_key": "GENE:CYP2C19|DRUG:clopidogrel",
+          "capture_record_ids": [
+            "capture:row:CYP2C19|clopidogrel|CYP2C19 intermediate metabolizer|ACS and/or PCI"
+          ],
+          "citations": [
+            "PMID 35034351, DOI 10.1002/cpt.2526"
+          ],
+          "detail": "one candidate rule matched",
+          "gene_keys": [
+            "GENE:CYP2C19"
+          ],
+          "interpretation_key": "CANDIDATE-INTERP:clopidogrel|CYP2C19|INTERMEDIATE",
+          "is_joint": false,
+          "matched_rule_key": "CANDIDATE-RULE:clopidogrel|CYP2C19|INTERMEDIATE",
+          "reason_codes": [],
+          "rule_content_hash": "sha256:a61004f85fe69ca6e6e440a4e6258745600c71e9a8cf1835de3cb679129ad5b9",
+          "status": "FULL"
+        }
+      ],
+      "reason_codes": [],
+      "status": "FULL"
+    },
+    "passed": true,
+    "role": "DEVELOPMENT",
+    "unsafe_false_reassurance": false
+  },
+  {
+    "case_id": "PGX-VAL-W4-DEV-CLOPIDOGREL-NORMAL-01",
+    "error": null,
+    "evidence_traceable": true,
+    "expected": {
+      "attention_level": "NO_ACTIVE_ATTENTION",
+      "outcome": "ATTENTION"
+    },
+    "latency_ms": 5.0659,
+    "observed": {
+      "attention_level": "NO_ACTIVE_ATTENTION",
+      "axes": [
+        {
+          "attention_level": "NO_ACTIVE_ATTENTION",
+          "axis_key": "GENE:CYP2C19|DRUG:clopidogrel",
+          "capture_record_ids": [
+            "capture:row:CYP2C19|clopidogrel|CYP2C19 normal metabolizer|ACS and/or PCI"
+          ],
+          "citations": [
+            "PMID 35034351, DOI 10.1002/cpt.2526"
+          ],
+          "detail": "one candidate rule matched",
+          "gene_keys": [
+            "GENE:CYP2C19"
+          ],
+          "interpretation_key": "CANDIDATE-INTERP:clopidogrel|CYP2C19|NORMAL",
+          "is_joint": false,
+          "matched_rule_key": "CANDIDATE-RULE:clopidogrel|CYP2C19|NORMAL",
+          "reason_codes": [],
+          "rule_content_hash": "sha256:df83e10d58b75e30460ce84004f42b2aaa018875bf9c35214d3cf340d6f9c381",
+          "status": "FULL"
+        }
+      ],
+      "reason_codes": [],
+      "status": "FULL"
+    },
+    "passed": true,
+    "role": "DEVELOPMENT",
+    "unsafe_false_reassurance": false
+  },
+  {
+    "case_id": "PGX-VAL-W4-DEV-CLOPIDOGREL-POOR-01",
+    "error": null,
+    "evidence_traceable": true,
+    "expected": {
+      "attention_level": "HIGH",
+      "outcome": "ATTENTION"
+    },
+    "latency_ms": 5.1697,
+    "observed": {
+      "attention_level": "HIGH",
+      "axes": [
+        {
+          "attention_level": "HIGH",
+          "axis_key": "GENE:CYP2C19|DRUG:clopidogrel",
+          "capture_record_ids": [
+            "capture:row:CYP2C19|clopidogrel|CYP2C19 poor metabolizer|ACS and/or PCI"
+          ],
+          "citations": [
+            "PMID 35034351, DOI 10.1002/cpt.2526"
+          ],
+          "detail": "one candidate rule matched",
+          "gene_keys": [
+            "GENE:CYP2C19"
+          ],
+          "interpretation_key": "CANDIDATE-INTERP:clopidogrel|CYP2C19|POOR",
+          "is_joint": false,
+          "matched_rule_key": "CANDIDATE-RULE:clopidogrel|CYP2C19|POOR",
+          "reason_codes": [],
+          "rule_content_hash": "sha256:e4a45ad3335c8841bd60b68d755662d52323c8c4afbbe10affe2758245f38942",
+          "status": "FULL"
+        }
+      ],
+      "reason_codes": [],
+      "status": "FULL"
+    },
+    "passed": true,
+    "role": "DEVELOPMENT",
+    "unsafe_false_reassurance": false
+  },
+  {
+    "case_id": "PGX-VAL-W4-DEV-CLOPIDOGREL-RAPID-01",
+    "error": null,
+    "evidence_traceable": true,
+    "expected": {
+      "attention_level": "NO_ACTIVE_ATTENTION",
+      "outcome": "ATTENTION"
+    },
+    "latency_ms": 5.0987,
+    "observed": {
+      "attention_level": "NO_ACTIVE_ATTENTION",
+      "axes": [
+        {
+          "attention_level": "NO_ACTIVE_ATTENTION",
+          "axis_key": "GENE:CYP2C19|DRUG:clopidogrel",
+          "capture_record_ids": [
+            "capture:row:CYP2C19|clopidogrel|CYP2C19 rapid metabolizer|ACS and/or PCI"
+          ],
+          "citations": [
+            "PMID 35034351, DOI 10.1002/cpt.2526"
+          ],
+          "detail": "one candidate rule matched",
+          "gene_keys": [
+            "GENE:CYP2C19"
+          ],
+          "interpretation_key": "CANDIDATE-INTERP:clopidogrel|CYP2C19|RAPID",
+          "is_joint": false,
+          "matched_rule_key": "CANDIDATE-RULE:clopidogrel|CYP2C19|RAPID",
+          "reason_codes": [],
+          "rule_content_hash": "sha256:80ba8f8aabc4adbf0b3e01d89fd2a52ecb4acca8e62d92e966f8c2dfb9cf5be1",
+          "status": "FULL"
+        }
+      ],
+      "reason_codes": [],
+      "status": "FULL"
+    },
+    "passed": true,
+    "role": "DEVELOPMENT",
+    "unsafe_false_reassurance": false
+  },
+  {
+    "case_id": "PGX-VAL-W4-DEV-CLOPIDOGREL-ULTRARAPID-01",
+    "error": null,
+    "evidence_traceable": true,
+    "expected": {
+      "attention_level": "NO_ACTIVE_ATTENTION",
+      "outcome": "ATTENTION"
+    },
+    "latency_ms": 5.1622,
+    "observed": {
+      "attention_level": "NO_ACTIVE_ATTENTION",
+      "axes": [
+        {
+          "attention_level": "NO_ACTIVE_ATTENTION",
+          "axis_key": "GENE:CYP2C19|DRUG:clopidogrel",
+          "capture_record_ids": [
+            "capture:row:CYP2C19|clopidogrel|CYP2C19 ultrarapid metabolizer|ACS and/or PCI"
+          ],
+          "citations": [
+            "PMID 35034351, DOI 10.1002/cpt.2526"
+          ],
+          "detail": "one candidate rule matched",
+          "gene_keys": [
+            "GENE:CYP2C19"
+          ],
+          "interpretation_key": "CANDIDATE-INTERP:clopidogrel|CYP2C19|ULTRARAPID",
+          "is_joint": false,
+          "matched_rule_key": "CANDIDATE-RULE:clopidogrel|CYP2C19|ULTRARAPID",
+          "reason_codes": [],
+          "rule_content_hash": "sha256:e5ee33c28408bd1a734b62531bc5dcce42163d7a97667af5a14c5a0f13f0d28a",
+          "status": "FULL"
+        }
+      ],
+      "reason_codes": [],
+      "status": "FULL"
+    },
+    "passed": true,
+    "role": "DEVELOPMENT",
+    "unsafe_false_reassurance": false
+  },
+  {
+    "case_id": "PGX-VAL-W4-DEV-CODEINE-INTERMEDIATE-01",
+    "error": null,
+    "evidence_traceable": true,
+    "expected": {
+      "attention_level": "LOW",
+      "outcome": "ATTENTION"
+    },
+    "latency_ms": 5.2117,
+    "observed": {
+      "attention_level": "LOW",
+      "axes": [
+        {
+          "attention_level": "LOW",
+          "axis_key": "GENE:CYP2D6|DRUG:codeine",
+          "capture_record_ids": [
+            "capture:row:CYP2D6|codeine|CYP2D6 intermediate metabolizer|all indications"
+          ],
+          "citations": [
+            "PMID 33387367, DOI 10.1002/cpt.2149"
+          ],
+          "detail": "one candidate rule matched",
+          "gene_keys": [
+            "GENE:CYP2D6"
+          ],
+          "interpretation_key": "CANDIDATE-INTERP:codeine|CYP2D6|INTERMEDIATE",
+          "is_joint": false,
+          "matched_rule_key": "CANDIDATE-RULE:codeine|CYP2D6|INTERMEDIATE",
+          "reason_codes": [],
+          "rule_content_hash": "sha256:573176e93012c4fc38e5ca897f8e8b299283b7391a81e131224c46a9c4154aee",
+          "status": "FULL"
+        }
+      ],
+      "reason_codes": [],
+      "status": "FULL"
+    },
+    "passed": true,
+    "role": "DEVELOPMENT",
+    "unsafe_false_reassurance": false
+  },
+  {
+    "case_id": "PGX-VAL-W4-DEV-CODEINE-NORMAL-01",
+    "error": null,
+    "evidence_traceable": true,
+    "expected": {
+      "attention_level": "NO_ACTIVE_ATTENTION",
+      "outcome": "ATTENTION"
+    },
+    "latency_ms": 5.1405,
+    "observed": {
+      "attention_level": "NO_ACTIVE_ATTENTION",
+      "axes": [
+        {
+          "attention_level": "NO_ACTIVE_ATTENTION",
+          "axis_key": "GENE:CYP2D6|DRUG:codeine",
+          "capture_record_ids": [
+            "capture:row:CYP2D6|codeine|CYP2D6 normal metabolizer|all indications"
+          ],
+          "citations": [
+            "PMID 33387367, DOI 10.1002/cpt.2149"
+          ],
+          "detail": "one candidate rule matched",
+          "gene_keys": [
+            "GENE:CYP2D6"
+          ],
+          "interpretation_key": "CANDIDATE-INTERP:codeine|CYP2D6|NORMAL",
+          "is_joint": false,
+          "matched_rule_key": "CANDIDATE-RULE:codeine|CYP2D6|NORMAL",
+          "reason_codes": [],
+          "rule_content_hash": "sha256:f133088f2c6205a3ca767df38cf1b73935acf92f577d00f688f3e518813ac9d4",
+          "status": "FULL"
+        }
+      ],
+      "reason_codes": [],
+      "status": "FULL"
+    },
+    "passed": true,
+    "role": "DEVELOPMENT",
+    "unsafe_false_reassurance": false
+  },
+  {
+    "case_id": "PGX-VAL-W4-DEV-CODEINE-POOR-01",
+    "error": null,
+    "evidence_traceable": true,
+    "expected": {
+      "attention_level": "HIGH",
+      "outcome": "ATTENTION"
+    },
+    "latency_ms": 5.1327,
+    "observed": {
+      "attention_level": "HIGH",
+      "axes": [
+        {
+          "attention_level": "HIGH",
+          "axis_key": "GENE:CYP2D6|DRUG:codeine",
+          "capture_record_ids": [
+            "capture:row:CYP2D6|codeine|CYP2D6 poor metabolizer|all indications"
+          ],
+          "citations": [
+            "PMID 33387367, DOI 10.1002/cpt.2149"
+          ],
+          "detail": "one candidate rule matched",
+          "gene_keys": [
+            "GENE:CYP2D6"
+          ],
+          "interpretation_key": "CANDIDATE-INTERP:codeine|CYP2D6|POOR",
+          "is_joint": false,
+          "matched_rule_key": "CANDIDATE-RULE:codeine|CYP2D6|POOR",
+          "reason_codes": [],
+          "rule_content_hash": "sha256:3ea267c836a19f5f82b00dd37f94d66d549b735756a9ff7df2098054da77d766",
+          "status": "FULL"
+        }
+      ],
+      "reason_codes": [],
+      "status": "FULL"
+    },
+    "passed": true,
+    "role": "DEVELOPMENT",
+    "unsafe_false_reassurance": false
+  },
+  {
+    "case_id": "PGX-VAL-W4-DEV-CODEINE-ULTRARAPID-01",
+    "error": null,
+    "evidence_traceable": true,
+    "expected": {
+      "attention_level": "HIGH",
+      "outcome": "ATTENTION"
+    },
+    "latency_ms": 5.1426,
+    "observed": {
+      "attention_level": "HIGH",
+      "axes": [
+        {
+          "attention_level": "HIGH",
+          "axis_key": "GENE:CYP2D6|DRUG:codeine",
+          "capture_record_ids": [
+            "capture:row:CYP2D6|codeine|CYP2D6 ultrarapid metabolizer|all indications"
+          ],
+          "citations": [
+            "PMID 33387367, DOI 10.1002/cpt.2149"
+          ],
+          "detail": "one candidate rule matched",
+          "gene_keys": [
+            "GENE:CYP2D6"
+          ],
+          "interpretation_key": "CANDIDATE-INTERP:codeine|CYP2D6|ULTRARAPID",
+          "is_joint": false,
+          "matched_rule_key": "CANDIDATE-RULE:codeine|CYP2D6|ULTRARAPID",
+          "reason_codes": [],
+          "rule_content_hash": "sha256:ff781f20d86098c7dbe4098b30d5f61e31c46579066e7b1a1adbfc5be61523ba",
+          "status": "FULL"
+        }
+      ],
+      "reason_codes": [],
+      "status": "FULL"
+    },
+    "passed": true,
+    "role": "DEVELOPMENT",
+    "unsafe_false_reassurance": false
+  },
+  {
+    "case_id": "PGX-VAL-W4-DEV-OMEPRAZOLE-INTERMEDIATE-01",
+    "error": null,
+    "evidence_traceable": true,
+    "expected": {
+      "attention_level": "LOW",
+      "outcome": "ATTENTION"
+    },
+    "latency_ms": 5.1046,
+    "observed": {
+      "attention_level": "LOW",
+      "axes": [
+        {
+          "attention_level": "LOW",
+          "axis_key": "GENE:CYP2C19|DRUG:omeprazole",
+          "capture_record_ids": [
+            "capture:row:CYP2C19|omeprazole|CYP2C19 intermediate metabolizer|all indications"
+          ],
+          "citations": [
+            "PMID 32770672, DOI 10.1002/cpt.2015"
+          ],
+          "detail": "one candidate rule matched",
+          "gene_keys": [
+            "GENE:CYP2C19"
+          ],
+          "interpretation_key": "CANDIDATE-INTERP:omeprazole|CYP2C19|INTERMEDIATE",
+          "is_joint": false,
+          "matched_rule_key": "CANDIDATE-RULE:omeprazole|CYP2C19|INTERMEDIATE",
+          "reason_codes": [],
+          "rule_content_hash": "sha256:bcfb1375cf8c1429e4074e97eebb30c3fd335b0fa8223c7e72b1091639b7b717",
+          "status": "FULL"
+        }
+      ],
+      "reason_codes": [],
+      "status": "FULL"
+    },
+    "passed": true,
+    "role": "DEVELOPMENT",
+    "unsafe_false_reassurance": false
+  },
+  {
+    "case_id": "PGX-VAL-W4-DEV-OMEPRAZOLE-NORMAL-01",
+    "error": null,
+    "evidence_traceable": true,
+    "expected": {
+      "attention_level": "LOW",
+      "outcome": "ATTENTION"
+    },
+    "latency_ms": 5.0664,
+    "observed": {
+      "attention_level": "LOW",
+      "axes": [
+        {
+          "attention_level": "LOW",
+          "axis_key": "GENE:CYP2C19|DRUG:omeprazole",
+          "capture_record_ids": [
+            "capture:row:CYP2C19|omeprazole|CYP2C19 Normal metabolizer|all indications"
+          ],
+          "citations": [
+            "PMID 32770672, DOI 10.1002/cpt.2015"
+          ],
+          "detail": "one candidate rule matched",
+          "gene_keys": [
+            "GENE:CYP2C19"
+          ],
+          "interpretation_key": "CANDIDATE-INTERP:omeprazole|CYP2C19|NORMAL",
+          "is_joint": false,
+          "matched_rule_key": "CANDIDATE-RULE:omeprazole|CYP2C19|NORMAL",
+          "reason_codes": [],
+          "rule_content_hash": "sha256:3c7e426b0245d1cff9d1bd414d6d38acb07d39b5cf9875ae37fcb7d202c9848d",
+          "status": "FULL"
+        }
+      ],
+      "reason_codes": [],
+      "status": "FULL"
+    },
+    "passed": true,
+    "role": "DEVELOPMENT",
+    "unsafe_false_reassurance": false
+  },
+  {
+    "case_id": "PGX-VAL-W4-DEV-OMEPRAZOLE-POOR-01",
+    "error": null,
+    "evidence_traceable": true,
+    "expected": {
+      "attention_level": "LOW",
+      "outcome": "ATTENTION"
+    },
+    "latency_ms": 5.08,
+    "observed": {
+      "attention_level": "LOW",
+      "axes": [
+        {
+          "attention_level": "LOW",
+          "axis_key": "GENE:CYP2C19|DRUG:omeprazole",
+          "capture_record_ids": [
+            "capture:row:CYP2C19|omeprazole|CYP2C19 poor metabolizer|all indications"
+          ],
+          "citations": [
+            "PMID 32770672, DOI 10.1002/cpt.2015"
+          ],
+          "detail": "one candidate rule matched",
+          "gene_keys": [
+            "GENE:CYP2C19"
+          ],
+          "interpretation_key": "CANDIDATE-INTERP:omeprazole|CYP2C19|POOR",
+          "is_joint": false,
+          "matched_rule_key": "CANDIDATE-RULE:omeprazole|CYP2C19|POOR",
+          "reason_codes": [],
+          "rule_content_hash": "sha256:798578d87133eebc268d6a9716136b852d350b0703bf1c456955e247281c19de",
+          "status": "FULL"
+        }
+      ],
+      "reason_codes": [],
+      "status": "FULL"
+    },
+    "passed": true,
+    "role": "DEVELOPMENT",
+    "unsafe_false_reassurance": false
+  },
+  {
+    "case_id": "PGX-VAL-W4-DEV-OMEPRAZOLE-RAPID-01",
+    "error": null,
+    "evidence_traceable": true,
+    "expected": {
+      "attention_level": "LOW",
+      "outcome": "ATTENTION"
+    },
+    "latency_ms": 5.1559,
+    "observed": {
+      "attention_level": "LOW",
+      "axes": [
+        {
+          "attention_level": "LOW",
+          "axis_key": "GENE:CYP2C19|DRUG:omeprazole",
+          "capture_record_ids": [
+            "capture:row:CYP2C19|omeprazole|CYP2C19 Rapid metabolizer|all indications"
+          ],
+          "citations": [
+            "PMID 32770672, DOI 10.1002/cpt.2015"
+          ],
+          "detail": "one candidate rule matched",
+          "gene_keys": [
+            "GENE:CYP2C19"
+          ],
+          "interpretation_key": "CANDIDATE-INTERP:omeprazole|CYP2C19|RAPID",
+          "is_joint": false,
+          "matched_rule_key": "CANDIDATE-RULE:omeprazole|CYP2C19|RAPID",
+          "reason_codes": [],
+          "rule_content_hash": "sha256:e17a77ad188dd7e6258a4c84793155291af327e892faf7f4083098abdc7e6d3b",
+          "status": "FULL"
+        }
+      ],
+      "reason_codes": [],
+      "status": "FULL"
+    },
+    "passed": true,
+    "role": "DEVELOPMENT",
+    "unsafe_false_reassurance": false
+  },
+  {
+    "case_id": "PGX-VAL-W4-DEV-OMEPRAZOLE-ULTRARAPID-01",
+    "error": null,
+    "evidence_traceable": true,
+    "expected": {
+      "attention_level": "MEDIUM",
+      "outcome": "ATTENTION"
+    },
+    "latency_ms": 5.1242,
+    "observed": {
+      "attention_level": "MEDIUM",
+      "axes": [
+        {
+          "attention_level": "MEDIUM",
+          "axis_key": "GENE:CYP2C19|DRUG:omeprazole",
+          "capture_record_ids": [
+            "capture:row:CYP2C19|omeprazole|CYP2C19 Ultrarapid metabolizer|all indications"
+          ],
+          "citations": [
+            "PMID 32770672, DOI 10.1002/cpt.2015"
+          ],
+          "detail": "one candidate rule matched",
+          "gene_keys": [
+            "GENE:CYP2C19"
+          ],
+          "interpretation_key": "CANDIDATE-INTERP:omeprazole|CYP2C19|ULTRARAPID",
+          "is_joint": false,
+          "matched_rule_key": "CANDIDATE-RULE:omeprazole|CYP2C19|ULTRARAPID",
+          "reason_codes": [],
+          "rule_content_hash": "sha256:2a6c5a2fb069dd40f35a3118ca18ac034795de75139c3c2d4517b403b79a3972",
+          "status": "FULL"
+        }
+      ],
+      "reason_codes": [],
+      "status": "FULL"
+    },
+    "passed": true,
+    "role": "DEVELOPMENT",
+    "unsafe_false_reassurance": false
+  },
+  {
+    "case_id": "PGX-VAL-W4-INT-01-CLOPIDOGREL-NO-CARE-SETTING",
+    "error": null,
+    "evidence_traceable": false,
+    "expected": {
+      "attention_level": "NOT_ASSESSED",
+      "outcome": "REFUSE",
+      "reason_code": "CARE_SETTING_NOT_DECLARED"
+    },
+    "latency_ms": 5.0606,
+    "observed": {
+      "attention_level": "NOT_ASSESSED",
+      "axes": [],
+      "reason_codes": [
+        "CARE_SETTING_NOT_DECLARED"
+      ],
+      "status": "INSUFFICIENT"
+    },
+    "passed": true,
+    "role": "INTERNAL_HOLDOUT",
+    "unsafe_false_reassurance": false
+  },
+  {
+    "case_id": "PGX-VAL-W4-INT-02-CLOPIDOGREL-NO-SETTING-NORMAL",
+    "error": null,
+    "evidence_traceable": false,
+    "expected": {
+      "attention_level": "NOT_ASSESSED",
+      "outcome": "REFUSE",
+      "reason_code": "CARE_SETTING_NOT_DECLARED"
+    },
+    "latency_ms": 5.0787,
+    "observed": {
+      "attention_level": "NOT_ASSESSED",
+      "axes": [],
+      "reason_codes": [
+        "CARE_SETTING_NOT_DECLARED"
+      ],
+      "status": "INSUFFICIENT"
+    },
+    "passed": true,
+    "role": "INTERNAL_HOLDOUT",
+    "unsafe_false_reassurance": false
+  },
+  {
+    "case_id": "PGX-VAL-W4-INT-03-CODEINE-RAPID",
+    "error": null,
+    "evidence_traceable": true,
+    "expected": {
+      "attention_level": "NOT_ASSESSED",
+      "outcome": "REFUSE",
+      "reason_code": "PHENOTYPE_NOT_SUPPORTED"
+    },
+    "latency_ms": 5.1278,
+    "observed": {
+      "attention_level": "NOT_ASSESSED",
+      "axes": [
+        {
+          "attention_level": null,
+          "axis_key": "GENE:CYP2D6|DRUG:codeine",
+          "capture_record_ids": [],
+          "citations": [],
+          "detail": "the observed phenotype combination is not one this release encodes. That is a refusal, not a finding of no risk: no rule was evaluated.",
+          "gene_keys": [
+            "GENE:CYP2D6"
+          ],
+          "interpretation_key": null,
+          "is_joint": false,
+          "matched_rule_key": null,
+          "reason_codes": [
+            "PHENOTYPE_NOT_SUPPORTED"
+          ],
+          "rule_content_hash": null,
+          "status": "UNSUPPORTED_PHENOTYPE"
+        }
+      ],
+      "reason_codes": [
+        "PHENOTYPE_NOT_SUPPORTED"
+      ],
+      "status": "INSUFFICIENT"
+    },
+    "passed": true,
+    "role": "INTERNAL_HOLDOUT",
+    "unsafe_false_reassurance": false
+  },
+  {
+    "case_id": "PGX-VAL-W4-INT-04-AMITRIPTYLINE-2D6-RAPID",
+    "error": null,
+    "evidence_traceable": true,
+    "expected": {
+      "attention_level": "NOT_ASSESSED",
+      "outcome": "REFUSE",
+      "reason_code": "PHENOTYPE_NOT_SUPPORTED"
+    },
+    "latency_ms": 5.0402,
+    "observed": {
+      "attention_level": "NOT_ASSESSED",
+      "axes": [
+        {
+          "attention_level": null,
+          "axis_key": "GENE:CYP2C19+GENE:CYP2D6|DRUG:amitriptyline",
+          "capture_record_ids": [],
+          "citations": [],
+          "detail": "the observed phenotype combination is not one this release encodes. That is a refusal, not a finding of no risk: no rule was evaluated.",
+          "gene_keys": [
+            "GENE:CYP2C19",
+            "GENE:CYP2D6"
+          ],
+          "interpretation_key": null,
+          "is_joint": true,
+          "matched_rule_key": null,
+          "reason_codes": [
+            "PHENOTYPE_NOT_SUPPORTED"
+          ],
+          "rule_content_hash": null,
+          "status": "UNSUPPORTED_PHENOTYPE"
+        }
+      ],
+      "reason_codes": [
+        "PHENOTYPE_NOT_SUPPORTED"
+      ],
+      "status": "INSUFFICIENT"
+    },
+    "passed": true,
+    "role": "INTERNAL_HOLDOUT",
+    "unsafe_false_reassurance": false
+  },
+  {
+    "case_id": "PGX-VAL-W4-INT-05-AMITRIPTYLINE-ONLY-2C19",
+    "error": null,
+    "evidence_traceable": true,
+    "expected": {
+      "attention_level": "NOT_ASSESSED",
+      "outcome": "REFUSE",
+      "reason_code": "PHENOTYPE_NOT_PROVIDED"
+    },
+    "latency_ms": 4.913,
+    "observed": {
+      "attention_level": "NOT_ASSESSED",
+      "axes": [
+        {
+          "attention_level": null,
+          "axis_key": "GENE:CYP2C19+GENE:CYP2D6|DRUG:amitriptyline",
+          "capture_record_ids": [],
+          "citations": [],
+          "detail": "no usable phenotype for GENE:CYP2D6. Every gene a joint rule names must be present; the release does not answer from the axis that was.",
+          "gene_keys": [
+            "GENE:CYP2C19",
+            "GENE:CYP2D6"
+          ],
+          "interpretation_key": null,
+          "is_joint": true,
+          "matched_rule_key": null,
+          "reason_codes": [
+            "PHENOTYPE_NOT_PROVIDED"
+          ],
+          "rule_content_hash": null,
+          "status": "INSUFFICIENT"
+        }
+      ],
+      "reason_codes": [
+        "PHENOTYPE_NOT_PROVIDED"
+      ],
+      "status": "INSUFFICIENT"
+    },
+    "passed": true,
+    "role": "INTERNAL_HOLDOUT",
+    "unsafe_false_reassurance": false
+  },
+  {
+    "case_id": "PGX-VAL-W4-INT-06-AMITRIPTYLINE-ONLY-2D6",
+    "error": null,
+    "evidence_traceable": true,
+    "expected": {
+      "attention_level": "NOT_ASSESSED",
+      "outcome": "REFUSE",
+      "reason_code": "PHENOTYPE_NOT_PROVIDED"
+    },
+    "latency_ms": 4.9374,
+    "observed": {
+      "attention_level": "NOT_ASSESSED",
+      "axes": [
+        {
+          "attention_level": null,
+          "axis_key": "GENE:CYP2C19+GENE:CYP2D6|DRUG:amitriptyline",
+          "capture_record_ids": [],
+          "citations": [],
+          "detail": "no usable phenotype for GENE:CYP2C19. Every gene a joint rule names must be present; the release does not answer from the axis that was.",
+          "gene_keys": [
+            "GENE:CYP2C19",
+            "GENE:CYP2D6"
+          ],
+          "interpretation_key": null,
+          "is_joint": true,
+          "matched_rule_key": null,
+          "reason_codes": [
+            "PHENOTYPE_NOT_PROVIDED"
+          ],
+          "rule_content_hash": null,
+          "status": "INSUFFICIENT"
+        }
+      ],
+      "reason_codes": [
+        "PHENOTYPE_NOT_PROVIDED"
+      ],
+      "status": "INSUFFICIENT"
+    },
+    "passed": true,
+    "role": "INTERNAL_HOLDOUT",
+    "unsafe_false_reassurance": false
+  },
+  {
+    "case_id": "PGX-VAL-W4-INT-07-AMITRIPTYLINE-NO-GENES",
+    "error": null,
+    "evidence_traceable": true,
+    "expected": {
+      "attention_level": "NOT_ASSESSED",
+      "outcome": "REFUSE",
+      "reason_code": "PHENOTYPE_NOT_PROVIDED"
+    },
+    "latency_ms": 5.1412,
+    "observed": {
+      "attention_level": "NOT_ASSESSED",
+      "axes": [
+        {
+          "attention_level": null,
+          "axis_key": "GENE:CYP2C19+GENE:CYP2D6|DRUG:amitriptyline",
+          "capture_record_ids": [],
+          "citations": [],
+          "detail": "no usable phenotype for GENE:CYP2C19, GENE:CYP2D6. Every gene a joint rule names must be present; the release does not answer from the axis that was.",
+          "gene_keys": [
+            "GENE:CYP2C19",
+            "GENE:CYP2D6"
+          ],
+          "interpretation_key": null,
+          "is_joint": true,
+          "matched_rule_key": null,
+          "reason_codes": [
+            "PHENOTYPE_NOT_PROVIDED"
+          ],
+          "rule_content_hash": null,
+          "status": "INSUFFICIENT"
+        }
+      ],
+      "reason_codes": [
+        "PHENOTYPE_NOT_PROVIDED"
+      ],
+      "status": "INSUFFICIENT"
+    },
+    "passed": true,
+    "role": "INTERNAL_HOLDOUT",
+    "unsafe_false_reassurance": false
+  },
+  {
+    "case_id": "PGX-VAL-W4-INT-08-OMEPRAZOLE-NO-GENE",
+    "error": null,
+    "evidence_traceable": true,
+    "expected": {
+      "attention_level": "NOT_ASSESSED",
+      "outcome": "REFUSE",
+      "reason_code": "PHENOTYPE_NOT_PROVIDED"
+    },
+    "latency_ms": 5.068,
+    "observed": {
+      "attention_level": "NOT_ASSESSED",
+      "axes": [
+        {
+          "attention_level": null,
+          "axis_key": "GENE:CYP2C19|DRUG:omeprazole",
+          "capture_record_ids": [],
+          "citations": [],
+          "detail": "no usable phenotype for GENE:CYP2C19. The release does not answer an axis it cannot see.",
+          "gene_keys": [
+            "GENE:CYP2C19"
+          ],
+          "interpretation_key": null,
+          "is_joint": false,
+          "matched_rule_key": null,
+          "reason_codes": [
+            "PHENOTYPE_NOT_PROVIDED"
+          ],
+          "rule_content_hash": null,
+          "status": "INSUFFICIENT"
+        }
+      ],
+      "reason_codes": [
+        "PHENOTYPE_NOT_PROVIDED"
+      ],
+      "status": "INSUFFICIENT"
+    },
+    "passed": true,
+    "role": "INTERNAL_HOLDOUT",
+    "unsafe_false_reassurance": false
+  },
+  {
+    "case_id": "PGX-VAL-W4-INT-09-WARFARIN-OUT-OF-SCOPE",
+    "error": null,
+    "evidence_traceable": false,
+    "expected": {
+      "attention_level": "NOT_ASSESSED",
+      "outcome": "REFUSE",
+      "reason_code": "DRUG_NOT_IN_CANONICAL_DATASET"
+    },
+    "latency_ms": 5.0302,
+    "observed": {
+      "attention_level": "NOT_ASSESSED",
+      "axes": [],
+      "reason_codes": [
+        "DRUG_NOT_IN_CANONICAL_DATASET"
+      ],
+      "status": "UNSUPPORTED_DRUG"
+    },
+    "passed": true,
+    "role": "INTERNAL_HOLDOUT",
+    "unsafe_false_reassurance": false
+  },
+  {
+    "case_id": "PGX-VAL-W4-INT-10-TAMOXIFEN-OUT-OF-SCOPE",
+    "error": null,
+    "evidence_traceable": false,
+    "expected": {
+      "attention_level": "NOT_ASSESSED",
+      "outcome": "REFUSE",
+      "reason_code": "DRUG_NOT_IN_CANONICAL_DATASET"
+    },
+    "latency_ms": 5.0217,
+    "observed": {
+      "attention_level": "NOT_ASSESSED",
+      "axes": [],
+      "reason_codes": [
+        "DRUG_NOT_IN_CANONICAL_DATASET"
+      ],
+      "status": "UNSUPPORTED_DRUG"
+    },
+    "passed": true,
+    "role": "INTERNAL_HOLDOUT",
+    "unsafe_false_reassurance": false
+  },
+  {
+    "case_id": "PGX-VAL-W4-INT-11-CODEINE-WRONG-GENE",
+    "error": null,
+    "evidence_traceable": true,
+    "expected": {
+      "attention_level": "NOT_ASSESSED",
+      "outcome": "REFUSE",
+      "reason_code": "PHENOTYPE_NOT_PROVIDED"
+    },
+    "latency_ms": 5.0095,
+    "observed": {
+      "attention_level": "NOT_ASSESSED",
+      "axes": [
+        {
+          "attention_level": null,
+          "axis_key": "GENE:CYP2D6|DRUG:codeine",
+          "capture_record_ids": [],
+          "citations": [],
+          "detail": "no usable phenotype for GENE:CYP2D6. The release does not answer an axis it cannot see.",
+          "gene_keys": [
+            "GENE:CYP2D6"
+          ],
+          "interpretation_key": null,
+          "is_joint": false,
+          "matched_rule_key": null,
+          "reason_codes": [
+            "PHENOTYPE_NOT_PROVIDED"
+          ],
+          "rule_content_hash": null,
+          "status": "INSUFFICIENT"
+        }
+      ],
+      "reason_codes": [
+        "PHENOTYPE_NOT_PROVIDED"
+      ],
+      "status": "INSUFFICIENT"
+    },
+    "passed": true,
+    "role": "INTERNAL_HOLDOUT",
+    "unsafe_false_reassurance": false
+  },
+  {
+    "case_id": "PGX-VAL-W4-INT-12-OMEPRAZOLE-WRONG-GENE",
+    "error": null,
+    "evidence_traceable": true,
+    "expected": {
+      "attention_level": "NOT_ASSESSED",
+      "outcome": "REFUSE",
+      "reason_code": "PHENOTYPE_NOT_PROVIDED"
+    },
+    "latency_ms": 5.0772,
+    "observed": {
+      "attention_level": "NOT_ASSESSED",
+      "axes": [
+        {
+          "attention_level": null,
+          "axis_key": "GENE:CYP2C19|DRUG:omeprazole",
+          "capture_record_ids": [],
+          "citations": [],
+          "detail": "no usable phenotype for GENE:CYP2C19. The release does not answer an axis it cannot see.",
+          "gene_keys": [
+            "GENE:CYP2C19"
+          ],
+          "interpretation_key": null,
+          "is_joint": false,
+          "matched_rule_key": null,
+          "reason_codes": [
+            "PHENOTYPE_NOT_PROVIDED"
+          ],
+          "rule_content_hash": null,
+          "status": "INSUFFICIENT"
+        }
+      ],
+      "reason_codes": [
+        "PHENOTYPE_NOT_PROVIDED"
+      ],
+      "status": "INSUFFICIENT"
+    },
+    "passed": true,
+    "role": "INTERNAL_HOLDOUT",
+    "unsafe_false_reassurance": false
+  },
+  {
+    "case_id": "PGX-VAL-W4-INT-13-CLOPIDOGREL-NO-GENE-NO-SETTING",
+    "error": null,
+    "evidence_traceable": false,
+    "expected": {
+      "attention_level": "NOT_ASSESSED",
+      "outcome": "REFUSE",
+      "reason_code": "CARE_SETTING_NOT_DECLARED"
+    },
+    "latency_ms": 5.0294,
+    "observed": {
+      "attention_level": "NOT_ASSESSED",
+      "axes": [],
+      "reason_codes": [
+        "CARE_SETTING_NOT_DECLARED"
+      ],
+      "status": "INSUFFICIENT"
+    },
+    "passed": true,
+    "role": "INTERNAL_HOLDOUT",
+    "unsafe_false_reassurance": false
+  },
+  {
+    "case_id": "PGX-VAL-W4-INT-14-CLOPIDOGREL-SETTING-NO-GENE",
+    "error": null,
+    "evidence_traceable": true,
+    "expected": {
+      "attention_level": "NOT_ASSESSED",
+      "outcome": "REFUSE",
+      "reason_code": "PHENOTYPE_NOT_PROVIDED"
+    },
+    "latency_ms": 4.9455,
+    "observed": {
+      "attention_level": "NOT_ASSESSED",
+      "axes": [
+        {
+          "attention_level": null,
+          "axis_key": "GENE:CYP2C19|DRUG:clopidogrel",
+          "capture_record_ids": [],
+          "citations": [],
+          "detail": "no usable phenotype for GENE:CYP2C19. The release does not answer an axis it cannot see.",
+          "gene_keys": [
+            "GENE:CYP2C19"
+          ],
+          "interpretation_key": null,
+          "is_joint": false,
+          "matched_rule_key": null,
+          "reason_codes": [
+            "PHENOTYPE_NOT_PROVIDED"
+          ],
+          "rule_content_hash": null,
+          "status": "INSUFFICIENT"
+        }
+      ],
+      "reason_codes": [
+        "PHENOTYPE_NOT_PROVIDED"
+      ],
+      "status": "INSUFFICIENT"
+    },
+    "passed": true,
+    "role": "INTERNAL_HOLDOUT",
+    "unsafe_false_reassurance": false
+  },
+  {
+    "case_id": "PGX-VAL-W4-INT-15-CODEINE-INDETERMINATE",
+    "error": null,
+    "evidence_traceable": true,
+    "expected": {
+      "attention_level": "NOT_ASSESSED",
+      "outcome": "REFUSE",
+      "reason_code": "PHENOTYPE_NOT_PROVIDED"
+    },
+    "latency_ms": 5.0761,
+    "observed": {
+      "attention_level": "NOT_ASSESSED",
+      "axes": [
+        {
+          "attention_level": null,
+          "axis_key": "GENE:CYP2D6|DRUG:codeine",
+          "capture_record_ids": [],
+          "citations": [],
+          "detail": "no usable phenotype for GENE:CYP2D6. The release does not answer an axis it cannot see.",
+          "gene_keys": [
+            "GENE:CYP2D6"
+          ],
+          "interpretation_key": null,
+          "is_joint": false,
+          "matched_rule_key": null,
+          "reason_codes": [
+            "PHENOTYPE_NOT_PROVIDED"
+          ],
+          "rule_content_hash": null,
+          "status": "INSUFFICIENT"
+        }
+      ],
+      "reason_codes": [
+        "PHENOTYPE_NOT_PROVIDED"
+      ],
+      "status": "INSUFFICIENT"
+    },
+    "passed": true,
+    "role": "INTERNAL_HOLDOUT",
+    "unsafe_false_reassurance": false
+  },
+  {
+    "case_id": "PGX-VAL-W4-INT-16-OMEPRAZOLE-INDETERMINATE",
+    "error": null,
+    "evidence_traceable": true,
+    "expected": {
+      "attention_level": "NOT_ASSESSED",
+      "outcome": "REFUSE",
+      "reason_code": "PHENOTYPE_NOT_PROVIDED"
+    },
+    "latency_ms": 5.1075,
+    "observed": {
+      "attention_level": "NOT_ASSESSED",
+      "axes": [
+        {
+          "attention_level": null,
+          "axis_key": "GENE:CYP2C19|DRUG:omeprazole",
+          "capture_record_ids": [],
+          "citations": [],
+          "detail": "no usable phenotype for GENE:CYP2C19. The release does not answer an axis it cannot see.",
+          "gene_keys": [
+            "GENE:CYP2C19"
+          ],
+          "interpretation_key": null,
+          "is_joint": false,
+          "matched_rule_key": null,
+          "reason_codes": [
+            "PHENOTYPE_NOT_PROVIDED"
+          ],
+          "rule_content_hash": null,
+          "status": "INSUFFICIENT"
+        }
+      ],
+      "reason_codes": [
+        "PHENOTYPE_NOT_PROVIDED"
+      ],
+      "status": "INSUFFICIENT"
+    },
+    "passed": true,
+    "role": "INTERNAL_HOLDOUT",
+    "unsafe_false_reassurance": false
+  },
+  {
+    "case_id": "PGX-VAL-W4-INT-17-AMITRIPTYLINE-ONE-INDETERMINATE",
+    "error": null,
+    "evidence_traceable": true,
+    "expected": {
+      "attention_level": "NOT_ASSESSED",
+      "outcome": "REFUSE",
+      "reason_code": "PHENOTYPE_NOT_PROVIDED"
+    },
+    "latency_ms": 5.0486,
+    "observed": {
+      "attention_level": "NOT_ASSESSED",
+      "axes": [
+        {
+          "attention_level": null,
+          "axis_key": "GENE:CYP2C19+GENE:CYP2D6|DRUG:amitriptyline",
+          "capture_record_ids": [],
+          "citations": [],
+          "detail": "no usable phenotype for GENE:CYP2C19. Every gene a joint rule names must be present; the release does not answer from the axis that was.",
+          "gene_keys": [
+            "GENE:CYP2C19",
+            "GENE:CYP2D6"
+          ],
+          "interpretation_key": null,
+          "is_joint": true,
+          "matched_rule_key": null,
+          "reason_codes": [
+            "PHENOTYPE_NOT_PROVIDED"
+          ],
+          "rule_content_hash": null,
+          "status": "INSUFFICIENT"
+        }
+      ],
+      "reason_codes": [
+        "PHENOTYPE_NOT_PROVIDED"
+      ],
+      "status": "INSUFFICIENT"
+    },
+    "passed": true,
+    "role": "INTERNAL_HOLDOUT",
+    "unsafe_false_reassurance": false
+  },
+  {
+    "case_id": "PGX-VAL-W4-INT-18-AMITRIPTYLINE-2C19-RAPID-2D6-RAPID",
+    "error": null,
+    "evidence_traceable": true,
+    "expected": {
+      "attention_level": "NOT_ASSESSED",
+      "outcome": "REFUSE",
+      "reason_code": "PHENOTYPE_NOT_SUPPORTED"
+    },
+    "latency_ms": 5.0616,
+    "observed": {
+      "attention_level": "NOT_ASSESSED",
+      "axes": [
+        {
+          "attention_level": null,
+          "axis_key": "GENE:CYP2C19+GENE:CYP2D6|DRUG:amitriptyline",
+          "capture_record_ids": [],
+          "citations": [],
+          "detail": "the observed phenotype combination is not one this release encodes. That is a refusal, not a finding of no risk: no rule was evaluated.",
+          "gene_keys": [
+            "GENE:CYP2C19",
+            "GENE:CYP2D6"
+          ],
+          "interpretation_key": null,
+          "is_joint": true,
+          "matched_rule_key": null,
+          "reason_codes": [
+            "PHENOTYPE_NOT_SUPPORTED"
+          ],
+          "rule_content_hash": null,
+          "status": "UNSUPPORTED_PHENOTYPE"
+        }
+      ],
+      "reason_codes": [
+        "PHENOTYPE_NOT_SUPPORTED"
+      ],
+      "status": "INSUFFICIENT"
+    },
+    "passed": true,
+    "role": "INTERNAL_HOLDOUT",
+    "unsafe_false_reassurance": false
+  },
+  {
+    "case_id": "PGX-VAL-W4-INT-19-TWO-OUT-OF-SCOPE-DRUGS",
+    "error": null,
+    "evidence_traceable": false,
+    "expected": {
+      "attention_level": "NOT_ASSESSED",
+      "outcome": "REFUSE",
+      "reason_code": "DRUG_NOT_IN_CANONICAL_DATASET"
+    },
+    "latency_ms": 4.924,
+    "observed": {
+      "attention_level": "NOT_ASSESSED",
+      "axes": [],
+      "reason_codes": [
+        "DRUG_NOT_IN_CANONICAL_DATASET"
+      ],
+      "status": "UNSUPPORTED_DRUG"
+    },
+    "passed": true,
+    "role": "INTERNAL_HOLDOUT",
+    "unsafe_false_reassurance": false
+  },
+  {
+    "case_id": "PGX-VAL-W4-INT-20-AMITRIPTYLINE-WRONG-GENES-ONLY",
+    "error": null,
+    "evidence_traceable": true,
+    "expected": {
+      "attention_level": "NOT_ASSESSED",
+      "outcome": "REFUSE",
+      "reason_code": "PHENOTYPE_NOT_PROVIDED"
+    },
+    "latency_ms": 4.9826,
+    "observed": {
+      "attention_level": "NOT_ASSESSED",
+      "axes": [
+        {
+          "attention_level": null,
+          "axis_key": "GENE:CYP2C19+GENE:CYP2D6|DRUG:amitriptyline",
+          "capture_record_ids": [],
+          "citations": [],
+          "detail": "no usable phenotype for GENE:CYP2C19, GENE:CYP2D6. Every gene a joint rule names must be present; the release does not answer from the axis that was.",
+          "gene_keys": [
+            "GENE:CYP2C19",
+            "GENE:CYP2D6"
+          ],
+          "interpretation_key": null,
+          "is_joint": true,
+          "matched_rule_key": null,
+          "reason_codes": [
+            "PHENOTYPE_NOT_PROVIDED"
+          ],
+          "rule_content_hash": null,
+          "status": "INSUFFICIENT"
+        }
+      ],
+      "reason_codes": [
+        "PHENOTYPE_NOT_PROVIDED"
+      ],
+      "status": "INSUFFICIENT"
+    },
+    "passed": true,
+    "role": "INTERNAL_HOLDOUT",
+    "unsafe_false_reassurance": false
+  },
+  {
+    "case_id": "PGX-VAL-W4-INT-21-CODEINE-AND-AMITRIPTYLINE-ONE-GENE",
+    "error": null,
+    "evidence_traceable": true,
+    "expected": {
+      "attention_level": "NOT_ASSESSED",
+      "outcome": "REFUSE",
+      "reason_code": "PHENOTYPE_NOT_PROVIDED"
+    },
+    "latency_ms": 5.0765,
+    "observed": {
+      "attention_level": "NOT_ASSESSED",
+      "axes": [
+        {
+          "attention_level": null,
+          "axis_key": "GENE:CYP2C19+GENE:CYP2D6|DRUG:amitriptyline",
+          "capture_record_ids": [],
+          "citations": [],
+          "detail": "no usable phenotype for GENE:CYP2C19. Every gene a joint rule names must be present; the release does not answer from the axis that was.",
+          "gene_keys": [
+            "GENE:CYP2C19",
+            "GENE:CYP2D6"
+          ],
+          "interpretation_key": null,
+          "is_joint": true,
+          "matched_rule_key": null,
+          "reason_codes": [
+            "PHENOTYPE_NOT_PROVIDED"
+          ],
+          "rule_content_hash": null,
+          "status": "INSUFFICIENT"
+        }
+      ],
+      "reason_codes": [
+        "PHENOTYPE_NOT_PROVIDED"
+      ],
+      "status": "INSUFFICIENT"
+    },
+    "passed": true,
+    "role": "INTERNAL_HOLDOUT",
+    "unsafe_false_reassurance": false
+  }
+]

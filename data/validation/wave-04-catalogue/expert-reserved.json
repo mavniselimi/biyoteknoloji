@@ -1,0 +1,528 @@
+[
+  {
+    "expected": null,
+    "metadata": {
+      "case_id": "PGX-VAL-W4-EXP-01-TWO-DRUGS-ONE-GENE",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate release PGX-CANDIDATE-REL-20260906-001; not a governed artifact, executable in DEMO and VALIDATION only, pending external expert review",
+        "release_manifest_hash": "sha256:0cd22a88f086a2d408e3ac4da0738eba5233f500ab277ccbf4033a8c14581d01",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:27fdee825132a1f72329ebda436a7c1780e3a54d0c128e156cd2d19f54b5ed77",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": true,
+      "is_validation_evidence": true,
+      "no_pii_assertion": "These cases carry gene symbols, drug names, phenotype labels and a care setting from a closed vocabulary. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "reserved and unopened; this wave listed its metadata and did not evaluate the build against it",
+      "provenance": {
+        "author": "pgx-closure-wave04 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "CPIC first-release scope; see docs/closure/wave-03b-integration-report.md",
+        "derivation_family_fingerprint": "sha256:d808b45dfcd25d60ccd139a4e8b7cfe07597af6b328c6bfc5b85e5779b40c64e",
+        "derivation_method": "chosen to put a question to an external reviewer; no expected answer is recorded, because recording one would invent the judgment the reviewer is being asked for",
+        "derived_from_development": false,
+        "source_identity": "reserved external-expert question: TWO-DRUGS-ONE-GENE"
+      },
+      "role": "EXPERT_HOLDOUT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "two drugs one gene",
+      "visibility": "RESTRICTED"
+    },
+    "question": "two drugs sharing one gene, in opposite directions - clopidogrel needs activation and omeprazole is cleared. Is reporting them separately, with no interaction claim, the right product behaviour?",
+    "request": {
+      "care_setting": "ACS_OR_PCI",
+      "medications": [
+        "DRUG:clopidogrel",
+        "DRUG:omeprazole"
+      ],
+      "mode": "VALIDATION",
+      "phenotypes": {
+        "GENE:CYP2C19": "POOR"
+      }
+    }
+  },
+  {
+    "expected": null,
+    "metadata": {
+      "case_id": "PGX-VAL-W4-EXP-02-TWO-DRUGS-ONE-GENE-NORMAL",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate release PGX-CANDIDATE-REL-20260906-001; not a governed artifact, executable in DEMO and VALIDATION only, pending external expert review",
+        "release_manifest_hash": "sha256:0cd22a88f086a2d408e3ac4da0738eba5233f500ab277ccbf4033a8c14581d01",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:25b8713aa4599ef5f0124e0810b12d7d5cb57bff90195108411d144fc4b3de5f",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": true,
+      "is_validation_evidence": true,
+      "no_pii_assertion": "These cases carry gene symbols, drug names, phenotype labels and a care setting from a closed vocabulary. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "reserved and unopened; this wave listed its metadata and did not evaluate the build against it",
+      "provenance": {
+        "author": "pgx-closure-wave04 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "CPIC first-release scope; see docs/closure/wave-03b-integration-report.md",
+        "derivation_family_fingerprint": "sha256:5a26b5ceb004ade8cdf30916cce2eb05fc9b88c26e61076cd9bcfa56d417be9f",
+        "derivation_method": "chosen to put a question to an external reviewer; no expected answer is recorded, because recording one would invent the judgment the reviewer is being asked for",
+        "derived_from_development": false,
+        "source_identity": "reserved external-expert question: TWO-DRUGS-ONE-GENE-NORMAL"
+      },
+      "role": "EXPERT_HOLDOUT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "two drugs one gene normal",
+      "visibility": "RESTRICTED"
+    },
+    "question": "the same pair on a normal metabolizer: is the difference between the two answers legible to a clinician reading the output?",
+    "request": {
+      "care_setting": "ACS_OR_PCI",
+      "medications": [
+        "DRUG:clopidogrel",
+        "DRUG:omeprazole"
+      ],
+      "mode": "VALIDATION",
+      "phenotypes": {
+        "GENE:CYP2C19": "NORMAL"
+      }
+    }
+  },
+  {
+    "expected": null,
+    "metadata": {
+      "case_id": "PGX-VAL-W4-EXP-03-ALL-FOUR-DRUGS",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate release PGX-CANDIDATE-REL-20260906-001; not a governed artifact, executable in DEMO and VALIDATION only, pending external expert review",
+        "release_manifest_hash": "sha256:0cd22a88f086a2d408e3ac4da0738eba5233f500ab277ccbf4033a8c14581d01",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:5fe891986d89e0a0d0be86fc794d2f9292ba37d7e7c273bcb7b5c58dbab3751b",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": true,
+      "is_validation_evidence": true,
+      "no_pii_assertion": "These cases carry gene symbols, drug names, phenotype labels and a care setting from a closed vocabulary. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "reserved and unopened; this wave listed its metadata and did not evaluate the build against it",
+      "provenance": {
+        "author": "pgx-closure-wave04 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "CPIC first-release scope; see docs/closure/wave-03b-integration-report.md",
+        "derivation_family_fingerprint": "sha256:f8c6ecac2a52e0447a853f9c0901e581d74a7032c59185f4cccdbc6fac210584",
+        "derivation_method": "chosen to put a question to an external reviewer; no expected answer is recorded, because recording one would invent the judgment the reviewer is being asked for",
+        "derived_from_development": false,
+        "source_identity": "reserved external-expert question: ALL-FOUR-DRUGS"
+      },
+      "role": "EXPERT_HOLDOUT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "all four drugs",
+      "visibility": "RESTRICTED"
+    },
+    "question": "the whole first-release scope at once, with both genes poor. Is the aggregate presentation honest about which answers are findings and which are refusals?",
+    "request": {
+      "care_setting": "ACS_OR_PCI",
+      "medications": [
+        "DRUG:amitriptyline",
+        "DRUG:clopidogrel",
+        "DRUG:codeine",
+        "DRUG:omeprazole"
+      ],
+      "mode": "VALIDATION",
+      "phenotypes": {
+        "GENE:CYP2C19": "POOR",
+        "GENE:CYP2D6": "POOR"
+      }
+    }
+  },
+  {
+    "expected": null,
+    "metadata": {
+      "case_id": "PGX-VAL-W4-EXP-04-ALL-FOUR-DRUGS-MIXED",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate release PGX-CANDIDATE-REL-20260906-001; not a governed artifact, executable in DEMO and VALIDATION only, pending external expert review",
+        "release_manifest_hash": "sha256:0cd22a88f086a2d408e3ac4da0738eba5233f500ab277ccbf4033a8c14581d01",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:a5113d967ad7933de421a8b5033e6bf6c339e4015d573373f4217a87ad641516",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": true,
+      "is_validation_evidence": true,
+      "no_pii_assertion": "These cases carry gene symbols, drug names, phenotype labels and a care setting from a closed vocabulary. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "reserved and unopened; this wave listed its metadata and did not evaluate the build against it",
+      "provenance": {
+        "author": "pgx-closure-wave04 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "CPIC first-release scope; see docs/closure/wave-03b-integration-report.md",
+        "derivation_family_fingerprint": "sha256:d0bccb1acc7e0cfbd1d9865a5581e16d6c26495333d68fa56799ec01ca7a5fc0",
+        "derivation_method": "chosen to put a question to an external reviewer; no expected answer is recorded, because recording one would invent the judgment the reviewer is being asked for",
+        "derived_from_development": false,
+        "source_identity": "reserved external-expert question: ALL-FOUR-DRUGS-MIXED"
+      },
+      "role": "EXPERT_HOLDOUT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "all four drugs mixed",
+      "visibility": "RESTRICTED"
+    },
+    "question": "the same four drugs with mixed phenotypes: does the highest attention level dominating the summary hide the drugs that were refused?",
+    "request": {
+      "care_setting": "ACS_OR_PCI",
+      "medications": [
+        "DRUG:amitriptyline",
+        "DRUG:clopidogrel",
+        "DRUG:codeine",
+        "DRUG:omeprazole"
+      ],
+      "mode": "VALIDATION",
+      "phenotypes": {
+        "GENE:CYP2C19": "ULTRARAPID",
+        "GENE:CYP2D6": "INTERMEDIATE"
+      }
+    }
+  },
+  {
+    "expected": null,
+    "metadata": {
+      "case_id": "PGX-VAL-W4-EXP-05-COVERED-AND-OUT-OF-SCOPE",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate release PGX-CANDIDATE-REL-20260906-001; not a governed artifact, executable in DEMO and VALIDATION only, pending external expert review",
+        "release_manifest_hash": "sha256:0cd22a88f086a2d408e3ac4da0738eba5233f500ab277ccbf4033a8c14581d01",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:778746ebafedc00532fbccbe6786a3d7cfa84204272363151b9f88ba3715c6ef",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": true,
+      "is_validation_evidence": true,
+      "no_pii_assertion": "These cases carry gene symbols, drug names, phenotype labels and a care setting from a closed vocabulary. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "reserved and unopened; this wave listed its metadata and did not evaluate the build against it",
+      "provenance": {
+        "author": "pgx-closure-wave04 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "CPIC first-release scope; see docs/closure/wave-03b-integration-report.md",
+        "derivation_family_fingerprint": "sha256:05c68850a94dd136af8dbefc8490c3e5b4c1913a58b5ca712b41182d8aee57d9",
+        "derivation_method": "chosen to put a question to an external reviewer; no expected answer is recorded, because recording one would invent the judgment the reviewer is being asked for",
+        "derived_from_development": false,
+        "source_identity": "reserved external-expert question: COVERED-AND-OUT-OF-SCOPE"
+      },
+      "role": "EXPERT_HOLDOUT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "covered and out of scope",
+      "visibility": "RESTRICTED"
+    },
+    "question": "one covered drug and one out of scope: is the partial answer presented so that a reader cannot mistake it for a whole one?",
+    "request": {
+      "care_setting": null,
+      "medications": [
+        "DRUG:codeine",
+        "DRUG:warfarin"
+      ],
+      "mode": "VALIDATION",
+      "phenotypes": {
+        "GENE:CYP2D6": "POOR"
+      }
+    }
+  },
+  {
+    "expected": null,
+    "metadata": {
+      "case_id": "PGX-VAL-W4-EXP-06-COVERED-AND-TWO-OUT-OF-SCOPE",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate release PGX-CANDIDATE-REL-20260906-001; not a governed artifact, executable in DEMO and VALIDATION only, pending external expert review",
+        "release_manifest_hash": "sha256:0cd22a88f086a2d408e3ac4da0738eba5233f500ab277ccbf4033a8c14581d01",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:82cdcd152e468f502ca7c99d519d7d16aeed7bdd7f9cf39d99cd231f1cf6bf64",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": true,
+      "is_validation_evidence": true,
+      "no_pii_assertion": "These cases carry gene symbols, drug names, phenotype labels and a care setting from a closed vocabulary. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "reserved and unopened; this wave listed its metadata and did not evaluate the build against it",
+      "provenance": {
+        "author": "pgx-closure-wave04 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "CPIC first-release scope; see docs/closure/wave-03b-integration-report.md",
+        "derivation_family_fingerprint": "sha256:356b584233c122888d2d164e29263c486c10803392e0345c8bd0a574f8e07c0f",
+        "derivation_method": "chosen to put a question to an external reviewer; no expected answer is recorded, because recording one would invent the judgment the reviewer is being asked for",
+        "derived_from_development": false,
+        "source_identity": "reserved external-expert question: COVERED-AND-TWO-OUT-OF-SCOPE"
+      },
+      "role": "EXPERT_HOLDOUT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "covered and two out of scope",
+      "visibility": "RESTRICTED"
+    },
+    "question": "one covered drug and two out of scope, on a phenotype the guideline treats as a toxicity risk: does the refusal noise obscure the finding?",
+    "request": {
+      "care_setting": null,
+      "medications": [
+        "DRUG:codeine",
+        "DRUG:tamoxifen",
+        "DRUG:warfarin"
+      ],
+      "mode": "VALIDATION",
+      "phenotypes": {
+        "GENE:CYP2D6": "ULTRARAPID"
+      }
+    }
+  },
+  {
+    "expected": null,
+    "metadata": {
+      "case_id": "PGX-VAL-W4-EXP-07-EXTRA-GENE-OBSERVED",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate release PGX-CANDIDATE-REL-20260906-001; not a governed artifact, executable in DEMO and VALIDATION only, pending external expert review",
+        "release_manifest_hash": "sha256:0cd22a88f086a2d408e3ac4da0738eba5233f500ab277ccbf4033a8c14581d01",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:e1b3b92f88f60a010c2f60595ecc036f2b20d4d40a644cad1e610f205cfeed67",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": true,
+      "is_validation_evidence": true,
+      "no_pii_assertion": "These cases carry gene symbols, drug names, phenotype labels and a care setting from a closed vocabulary. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "reserved and unopened; this wave listed its metadata and did not evaluate the build against it",
+      "provenance": {
+        "author": "pgx-closure-wave04 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "CPIC first-release scope; see docs/closure/wave-03b-integration-report.md",
+        "derivation_family_fingerprint": "sha256:dd886342c669f638591b62c21c278b6a4e24bd91e2fdde95fe5dc416fb891582",
+        "derivation_method": "chosen to put a question to an external reviewer; no expected answer is recorded, because recording one would invent the judgment the reviewer is being asked for",
+        "derived_from_development": false,
+        "source_identity": "reserved external-expert question: EXTRA-GENE-OBSERVED"
+      },
+      "role": "EXPERT_HOLDOUT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "extra gene observed",
+      "visibility": "RESTRICTED"
+    },
+    "question": "an observation is supplied for a gene codeine's axis does not name. It is ignored. Should the output say so, rather than silently using only what it needed?",
+    "request": {
+      "care_setting": null,
+      "medications": [
+        "DRUG:codeine"
+      ],
+      "mode": "VALIDATION",
+      "phenotypes": {
+        "GENE:CYP2C19": "POOR",
+        "GENE:CYP2D6": "NORMAL"
+      }
+    }
+  },
+  {
+    "expected": null,
+    "metadata": {
+      "case_id": "PGX-VAL-W4-EXP-08-EXTRA-GENE-OBSERVED-CLOPIDOGREL",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate release PGX-CANDIDATE-REL-20260906-001; not a governed artifact, executable in DEMO and VALIDATION only, pending external expert review",
+        "release_manifest_hash": "sha256:0cd22a88f086a2d408e3ac4da0738eba5233f500ab277ccbf4033a8c14581d01",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:08105e9cf726a9a9b66dd0c74e7e80370ab2e801d7c0aac48bc0670071982661",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": true,
+      "is_validation_evidence": true,
+      "no_pii_assertion": "These cases carry gene symbols, drug names, phenotype labels and a care setting from a closed vocabulary. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "reserved and unopened; this wave listed its metadata and did not evaluate the build against it",
+      "provenance": {
+        "author": "pgx-closure-wave04 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "CPIC first-release scope; see docs/closure/wave-03b-integration-report.md",
+        "derivation_family_fingerprint": "sha256:c7ba8e97c0602265afcbe37af85cbf1282e83eed07ba380d25eccfefafd06cec",
+        "derivation_method": "chosen to put a question to an external reviewer; no expected answer is recorded, because recording one would invent the judgment the reviewer is being asked for",
+        "derived_from_development": false,
+        "source_identity": "reserved external-expert question: EXTRA-GENE-OBSERVED-CLOPIDOGREL"
+      },
+      "role": "EXPERT_HOLDOUT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "extra gene observed clopidogrel",
+      "visibility": "RESTRICTED"
+    },
+    "question": "as above, where the ignored observation is one a clinician might expect to matter. Is silence the right behaviour?",
+    "request": {
+      "care_setting": "ACS_OR_PCI",
+      "medications": [
+        "DRUG:clopidogrel"
+      ],
+      "mode": "VALIDATION",
+      "phenotypes": {
+        "GENE:CYP2C19": "INTERMEDIATE",
+        "GENE:CYP2D6": "POOR"
+      }
+    }
+  },
+  {
+    "expected": null,
+    "metadata": {
+      "case_id": "PGX-VAL-W4-EXP-09-AMITRIPTYLINE-WITH-A-SECOND-DRUG",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate release PGX-CANDIDATE-REL-20260906-001; not a governed artifact, executable in DEMO and VALIDATION only, pending external expert review",
+        "release_manifest_hash": "sha256:0cd22a88f086a2d408e3ac4da0738eba5233f500ab277ccbf4033a8c14581d01",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:8a55a215d25b54874d45830183f0de7840c9d8351b861d6d5267493c15029b05",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": true,
+      "is_validation_evidence": true,
+      "no_pii_assertion": "These cases carry gene symbols, drug names, phenotype labels and a care setting from a closed vocabulary. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "reserved and unopened; this wave listed its metadata and did not evaluate the build against it",
+      "provenance": {
+        "author": "pgx-closure-wave04 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "CPIC first-release scope; see docs/closure/wave-03b-integration-report.md",
+        "derivation_family_fingerprint": "sha256:857c11f1dcb45cfe806da7dd33a4e907f0dbd0cf37ebae0930b916adb8c24507",
+        "derivation_method": "chosen to put a question to an external reviewer; no expected answer is recorded, because recording one would invent the judgment the reviewer is being asked for",
+        "derived_from_development": false,
+        "source_identity": "reserved external-expert question: AMITRIPTYLINE-WITH-A-SECOND-DRUG"
+      },
+      "role": "EXPERT_HOLDOUT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "amitriptyline with a second drug",
+      "visibility": "RESTRICTED"
+    },
+    "question": "a joint two-gene drug beside a single-gene one, on the cell where combining single-gene readings would have given a different answer from the guideline's joint table. Is the joint answer the right one, and is it distinguishable in the output from the single-gene one beside it?",
+    "request": {
+      "care_setting": null,
+      "medications": [
+        "DRUG:amitriptyline",
+        "DRUG:codeine"
+      ],
+      "mode": "VALIDATION",
+      "phenotypes": {
+        "GENE:CYP2C19": "INTERMEDIATE",
+        "GENE:CYP2D6": "INTERMEDIATE"
+      }
+    }
+  },
+  {
+    "expected": null,
+    "metadata": {
+      "case_id": "PGX-VAL-W4-EXP-10-IRRELEVANT-CARE-SETTING",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate release PGX-CANDIDATE-REL-20260906-001; not a governed artifact, executable in DEMO and VALIDATION only, pending external expert review",
+        "release_manifest_hash": "sha256:0cd22a88f086a2d408e3ac4da0738eba5233f500ab277ccbf4033a8c14581d01",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:7ec3409ed687508a67b5dda8ac22bedf83869750e8389b0dd06e7d927001579d",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": true,
+      "is_validation_evidence": true,
+      "no_pii_assertion": "These cases carry gene symbols, drug names, phenotype labels and a care setting from a closed vocabulary. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "reserved and unopened; this wave listed its metadata and did not evaluate the build against it",
+      "provenance": {
+        "author": "pgx-closure-wave04 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "CPIC first-release scope; see docs/closure/wave-03b-integration-report.md",
+        "derivation_family_fingerprint": "sha256:adca6eb385eed9e2ad209abde15d188b7a08234929cd5d6fb448521126962bca",
+        "derivation_method": "chosen to put a question to an external reviewer; no expected answer is recorded, because recording one would invent the judgment the reviewer is being asked for",
+        "derived_from_development": false,
+        "source_identity": "reserved external-expert question: IRRELEVANT-CARE-SETTING"
+      },
+      "role": "EXPERT_HOLDOUT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "irrelevant care setting",
+      "visibility": "RESTRICTED"
+    },
+    "question": "a care setting is supplied for two drugs that do not require one. It is ignored. Should the release refuse an irrelevant qualifier instead?",
+    "request": {
+      "care_setting": "ACS_OR_PCI",
+      "medications": [
+        "DRUG:amitriptyline",
+        "DRUG:omeprazole"
+      ],
+      "mode": "VALIDATION",
+      "phenotypes": {
+        "GENE:CYP2C19": "NORMAL",
+        "GENE:CYP2D6": "NORMAL"
+      }
+    }
+  },
+  {
+    "expected": null,
+    "metadata": {
+      "case_id": "PGX-VAL-W4-EXP-11-NO-ACTIVE-ATTENTION-BESIDE-A-REFUSAL",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate release PGX-CANDIDATE-REL-20260906-001; not a governed artifact, executable in DEMO and VALIDATION only, pending external expert review",
+        "release_manifest_hash": "sha256:0cd22a88f086a2d408e3ac4da0738eba5233f500ab277ccbf4033a8c14581d01",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:054150436760f7209bb0b436e7182d02893bd2aa49f096551068b01bedbaa73a",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": true,
+      "is_validation_evidence": true,
+      "no_pii_assertion": "These cases carry gene symbols, drug names, phenotype labels and a care setting from a closed vocabulary. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "reserved and unopened; this wave listed its metadata and did not evaluate the build against it",
+      "provenance": {
+        "author": "pgx-closure-wave04 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "CPIC first-release scope; see docs/closure/wave-03b-integration-report.md",
+        "derivation_family_fingerprint": "sha256:9c84034bf071a396ec6837ca9457862ce225b62a18eca9e3bcf7e4d8c7454337",
+        "derivation_method": "chosen to put a question to an external reviewer; no expected answer is recorded, because recording one would invent the judgment the reviewer is being asked for",
+        "derived_from_development": false,
+        "source_identity": "reserved external-expert question: NO-ACTIVE-ATTENTION-BESIDE-A-REFUSAL"
+      },
+      "role": "EXPERT_HOLDOUT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "no active attention beside a refusal",
+      "visibility": "RESTRICTED"
+    },
+    "question": "one drug reports NO_ACTIVE_ATTENTION and the other refuses for want of a care setting. Are the two distinguishable enough in the product's own output that a clinician will not read the refusal as reassurance?",
+    "request": {
+      "care_setting": null,
+      "medications": [
+        "DRUG:codeine",
+        "DRUG:clopidogrel"
+      ],
+      "mode": "VALIDATION",
+      "phenotypes": {
+        "GENE:CYP2C19": "NORMAL",
+        "GENE:CYP2D6": "NORMAL"
+      }
+    }
+  },
+  {
+    "expected": null,
+    "metadata": {
+      "case_id": "PGX-VAL-W4-EXP-12-EVERY-AXIS-REFUSED",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate release PGX-CANDIDATE-REL-20260906-001; not a governed artifact, executable in DEMO and VALIDATION only, pending external expert review",
+        "release_manifest_hash": "sha256:0cd22a88f086a2d408e3ac4da0738eba5233f500ab277ccbf4033a8c14581d01",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:ef3e79ac34b5ebd9177a8defd00de04d311b24c75e961f6e236e46fd2e9762cb",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": true,
+      "is_validation_evidence": true,
+      "no_pii_assertion": "These cases carry gene symbols, drug names, phenotype labels and a care setting from a closed vocabulary. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "reserved and unopened; this wave listed its metadata and did not evaluate the build against it",
+      "provenance": {
+        "author": "pgx-closure-wave04 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "CPIC first-release scope; see docs/closure/wave-03b-integration-report.md",
+        "derivation_family_fingerprint": "sha256:aa918994c6cf2fc77a041fceac01a996c15f135872f6369ce0285d9c477aff01",
+        "derivation_method": "chosen to put a question to an external reviewer; no expected answer is recorded, because recording one would invent the judgment the reviewer is being asked for",
+        "derived_from_development": false,
+        "source_identity": "reserved external-expert question: EVERY-AXIS-REFUSED"
+      },
+      "role": "EXPERT_HOLDOUT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "every axis refused",
+      "visibility": "RESTRICTED"
+    },
+    "question": "nothing can be answered: one drug lacks its care setting, the other is out of scope, and the only observation is on an unsupported phenotype of an unrelated gene. Is a wholly empty result presented as clearly not an assessment?",
+    "request": {
+      "care_setting": null,
+      "medications": [
+        "DRUG:clopidogrel",
+        "DRUG:warfarin"
+      ],
+      "mode": "VALIDATION",
+      "phenotypes": {
+        "GENE:CYP2D6": "RAPID"
+      }
+    }
+  }
+]

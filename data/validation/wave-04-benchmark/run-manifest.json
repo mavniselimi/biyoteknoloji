@@ -1,0 +1,65 @@
+{
+  "all_thresholds_met": true,
+  "authority_state": "INTERNAL_VALIDATION",
+  "catalogue_manifest_hash": "sha256:f133a56e1d0d111c239a2c51b0030f34eb68c43fe89fc14d3febc2aee12d7251",
+  "declared_thresholds": {
+    "attention_agreement_min": 1.0,
+    "coverage_agreement_min": 1.0,
+    "deterministic_repeatability_min": 1.0,
+    "evidence_traceability_min": 1.0,
+    "expert_reserved_payloads_read_max": 0,
+    "refusal_correctness_min": 1.0,
+    "system_failure_rate_max": 0.0,
+    "unsafe_false_reassurance_max": 0
+  },
+  "expert_reserved_case_ids": [
+    "PGX-VAL-W4-EXP-01-TWO-DRUGS-ONE-GENE",
+    "PGX-VAL-W4-EXP-02-TWO-DRUGS-ONE-GENE-NORMAL",
+    "PGX-VAL-W4-EXP-03-ALL-FOUR-DRUGS",
+    "PGX-VAL-W4-EXP-04-ALL-FOUR-DRUGS-MIXED",
+    "PGX-VAL-W4-EXP-05-COVERED-AND-OUT-OF-SCOPE",
+    "PGX-VAL-W4-EXP-06-COVERED-AND-TWO-OUT-OF-SCOPE",
+    "PGX-VAL-W4-EXP-07-EXTRA-GENE-OBSERVED",
+    "PGX-VAL-W4-EXP-08-EXTRA-GENE-OBSERVED-CLOPIDOGREL",
+    "PGX-VAL-W4-EXP-09-AMITRIPTYLINE-WITH-A-SECOND-DRUG",
+    "PGX-VAL-W4-EXP-10-IRRELEVANT-CARE-SETTING",
+    "PGX-VAL-W4-EXP-11-NO-ACTIVE-ATTENTION-BESIDE-A-REFUSAL",
+    "PGX-VAL-W4-EXP-12-EVERY-AXIS-REFUSED"
+  ],
+  "expert_reserved_payloads_read": 0,
+  "label": "INTERNAL_VALIDATION",
+  "label_note": "Internal validation only. The rules, the cases and the expected answers for two of three partitions share one author, so this measures whether the software does what that author intended. It is not clinical, independent or expert validation.",
+  "metrics": {
+    "attention_agreement": 1.0,
+    "coverage_agreement": 1.0,
+    "deterministic_repeatability": 1.0,
+    "evidence_traceability": 1.0,
+    "expert_reserved_payloads_read": 0,
+    "failed_case_count": 0,
+    "latency_p50_ms": 5.1278,
+    "latency_p95_ms": 5.3031,
+    "refusal_correctness": 1.0,
+    "scored_case_count": 55,
+    "system_failure_rate": 0.0,
+    "unsafe_false_reassurance_count": 0
+  },
+  "release_manifest_hash": "sha256:0cd22a88f086a2d408e3ac4da0738eba5233f500ab277ccbf4033a8c14581d01",
+  "release_public_id": "PGX-CANDIDATE-REL-20260906-001",
+  "review_state": "PENDING_EXTERNAL_EXPERT_REVIEW",
+  "ruleset_content_hash": "sha256:29ca1949b33522f81f745b5b51e61b75913ad4e8584c852bfe2b96cc0fc7c71a",
+  "threshold_notes": {
+    "attention_agreement_min": "1.0 rather than a tolerance. Every scored case is either a combination the ruleset encodes or a refusal the scope rules state; there is no case here whose answer is a matter of degree, so any disagreement is a defect rather than noise.",
+    "system_failure_rate_max": "0.0. An unhandled exception during a benchmark is not a low score; it means the run does not describe the software.",
+    "unsafe_false_reassurance_max": "0, and not negotiable. A weaker-than-expected level, or NO_ACTIVE_ATTENTION where a refusal was expected, is the failure mode this product exists to prevent."
+  },
+  "threshold_verdicts": {
+    "attention_agreement": true,
+    "coverage_agreement": true,
+    "deterministic_repeatability": true,
+    "evidence_traceability": true,
+    "expert_reserved_payloads_read": true,
+    "refusal_correctness": true,
+    "system_failure_rate": true,
+    "unsafe_false_reassurance": true
+  }
+}

@@ -1,0 +1,1552 @@
+[
+  {
+    "expected": {
+      "attention_level": "HIGH",
+      "outcome": "ATTENTION"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W4-DEV-AMITRIPTYLIN-RAPID-POOR-01",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate release PGX-CANDIDATE-REL-20260906-001; not a governed artifact, executable in DEMO and VALIDATION only, pending external expert review",
+        "release_manifest_hash": "sha256:0cd22a88f086a2d408e3ac4da0738eba5233f500ab277ccbf4033a8c14581d01",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:a644cee579767b231df5e63e6045b5e5925abd8cf6bf9c2910061814141fee61",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": false,
+      "is_validation_evidence": false,
+      "no_pii_assertion": "These cases carry gene symbols, drug names, phenotype labels and a care setting from a closed vocabulary. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "internal consistency: the rule and the expectation have one author, so agreement confirms the encoding and nothing about the science",
+      "provenance": {
+        "author": "pgx-closure-wave04 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "PMID 27997040, DOI 10.1002/cpt.597",
+        "derivation_family_fingerprint": "sha256:7e3c7520c4d55f4334d0ff169e29340c9ce278d8526be6307dbec581693b6873",
+        "derivation_method": "enumerated from the combination the rule encodes; the expected answer is the rule's own outcome",
+        "derived_from_development": true,
+        "source_identity": "candidate rule CANDIDATE-RULE:amitriptyline|JOINT|01"
+      },
+      "role": "DEVELOPMENT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "DRUG:amitriptyline CYP2C19=RAPID, CYP2D6=POOR",
+      "visibility": "AUTHOR_VISIBLE"
+    },
+    "question": "what attention level does the candidate release report for this combination?",
+    "request": {
+      "care_setting": null,
+      "medications": [
+        "DRUG:amitriptyline"
+      ],
+      "mode": "VALIDATION",
+      "phenotypes": {
+        "GENE:CYP2C19": "RAPID",
+        "GENE:CYP2D6": "POOR"
+      }
+    }
+  },
+  {
+    "expected": {
+      "attention_level": "HIGH",
+      "outcome": "ATTENTION"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W4-DEV-AMITRIPTYLIN-RAPID-ULTRARAPID-02",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate release PGX-CANDIDATE-REL-20260906-001; not a governed artifact, executable in DEMO and VALIDATION only, pending external expert review",
+        "release_manifest_hash": "sha256:0cd22a88f086a2d408e3ac4da0738eba5233f500ab277ccbf4033a8c14581d01",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:18166e11e12c123a505c7fe7768ba1b2e74f017cb49c6eaab47c90fa80d78c77",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": false,
+      "is_validation_evidence": false,
+      "no_pii_assertion": "These cases carry gene symbols, drug names, phenotype labels and a care setting from a closed vocabulary. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "internal consistency: the rule and the expectation have one author, so agreement confirms the encoding and nothing about the science",
+      "provenance": {
+        "author": "pgx-closure-wave04 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "PMID 27997040, DOI 10.1002/cpt.597",
+        "derivation_family_fingerprint": "sha256:7e3c7520c4d55f4334d0ff169e29340c9ce278d8526be6307dbec581693b6873",
+        "derivation_method": "enumerated from the combination the rule encodes; the expected answer is the rule's own outcome",
+        "derived_from_development": true,
+        "source_identity": "candidate rule CANDIDATE-RULE:amitriptyline|JOINT|01"
+      },
+      "role": "DEVELOPMENT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "DRUG:amitriptyline CYP2C19=RAPID, CYP2D6=ULTRARAPID",
+      "visibility": "AUTHOR_VISIBLE"
+    },
+    "question": "what attention level does the candidate release report for this combination?",
+    "request": {
+      "care_setting": null,
+      "medications": [
+        "DRUG:amitriptyline"
+      ],
+      "mode": "VALIDATION",
+      "phenotypes": {
+        "GENE:CYP2C19": "RAPID",
+        "GENE:CYP2D6": "ULTRARAPID"
+      }
+    }
+  },
+  {
+    "expected": {
+      "attention_level": "HIGH",
+      "outcome": "ATTENTION"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W4-DEV-AMITRIPTYLIN-ULTRARAPID-POOR-03",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate release PGX-CANDIDATE-REL-20260906-001; not a governed artifact, executable in DEMO and VALIDATION only, pending external expert review",
+        "release_manifest_hash": "sha256:0cd22a88f086a2d408e3ac4da0738eba5233f500ab277ccbf4033a8c14581d01",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:0028171414ebacb9eac525b2dc786abfa7f8d72a04628f34d2e581d1e2645d6f",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": false,
+      "is_validation_evidence": false,
+      "no_pii_assertion": "These cases carry gene symbols, drug names, phenotype labels and a care setting from a closed vocabulary. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "internal consistency: the rule and the expectation have one author, so agreement confirms the encoding and nothing about the science",
+      "provenance": {
+        "author": "pgx-closure-wave04 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "PMID 27997040, DOI 10.1002/cpt.597",
+        "derivation_family_fingerprint": "sha256:7e3c7520c4d55f4334d0ff169e29340c9ce278d8526be6307dbec581693b6873",
+        "derivation_method": "enumerated from the combination the rule encodes; the expected answer is the rule's own outcome",
+        "derived_from_development": true,
+        "source_identity": "candidate rule CANDIDATE-RULE:amitriptyline|JOINT|01"
+      },
+      "role": "DEVELOPMENT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "DRUG:amitriptyline CYP2C19=ULTRARAPID, CYP2D6=POOR",
+      "visibility": "AUTHOR_VISIBLE"
+    },
+    "question": "what attention level does the candidate release report for this combination?",
+    "request": {
+      "care_setting": null,
+      "medications": [
+        "DRUG:amitriptyline"
+      ],
+      "mode": "VALIDATION",
+      "phenotypes": {
+        "GENE:CYP2C19": "ULTRARAPID",
+        "GENE:CYP2D6": "POOR"
+      }
+    }
+  },
+  {
+    "expected": {
+      "attention_level": "HIGH",
+      "outcome": "ATTENTION"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W4-DEV-AMITRIPTYLIN-ULTRARAPID-ULTRARAPID-04",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate release PGX-CANDIDATE-REL-20260906-001; not a governed artifact, executable in DEMO and VALIDATION only, pending external expert review",
+        "release_manifest_hash": "sha256:0cd22a88f086a2d408e3ac4da0738eba5233f500ab277ccbf4033a8c14581d01",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:27174ef3dab780faaa0650177e5b103f81b47e4329c81518ffc2ded9fe0827c3",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": false,
+      "is_validation_evidence": false,
+      "no_pii_assertion": "These cases carry gene symbols, drug names, phenotype labels and a care setting from a closed vocabulary. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "internal consistency: the rule and the expectation have one author, so agreement confirms the encoding and nothing about the science",
+      "provenance": {
+        "author": "pgx-closure-wave04 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "PMID 27997040, DOI 10.1002/cpt.597",
+        "derivation_family_fingerprint": "sha256:7e3c7520c4d55f4334d0ff169e29340c9ce278d8526be6307dbec581693b6873",
+        "derivation_method": "enumerated from the combination the rule encodes; the expected answer is the rule's own outcome",
+        "derived_from_development": true,
+        "source_identity": "candidate rule CANDIDATE-RULE:amitriptyline|JOINT|01"
+      },
+      "role": "DEVELOPMENT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "DRUG:amitriptyline CYP2C19=ULTRARAPID, CYP2D6=ULTRARAPID",
+      "visibility": "AUTHOR_VISIBLE"
+    },
+    "question": "what attention level does the candidate release report for this combination?",
+    "request": {
+      "care_setting": null,
+      "medications": [
+        "DRUG:amitriptyline"
+      ],
+      "mode": "VALIDATION",
+      "phenotypes": {
+        "GENE:CYP2C19": "ULTRARAPID",
+        "GENE:CYP2D6": "ULTRARAPID"
+      }
+    }
+  },
+  {
+    "expected": {
+      "attention_level": "HIGH",
+      "outcome": "ATTENTION"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W4-DEV-AMITRIPTYLIN-RAPID-INTERMEDIATE-01",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate release PGX-CANDIDATE-REL-20260906-001; not a governed artifact, executable in DEMO and VALIDATION only, pending external expert review",
+        "release_manifest_hash": "sha256:0cd22a88f086a2d408e3ac4da0738eba5233f500ab277ccbf4033a8c14581d01",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:e2e7df98f461917bd86513a5b5245a521c13f0095131f17ada8ca16ac90c8377",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": false,
+      "is_validation_evidence": false,
+      "no_pii_assertion": "These cases carry gene symbols, drug names, phenotype labels and a care setting from a closed vocabulary. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "internal consistency: the rule and the expectation have one author, so agreement confirms the encoding and nothing about the science",
+      "provenance": {
+        "author": "pgx-closure-wave04 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "PMID 27997040, DOI 10.1002/cpt.597",
+        "derivation_family_fingerprint": "sha256:749aeb5c8e852932bfd597e440595986aea4a46811cd7677756b497bf26ff1d7",
+        "derivation_method": "enumerated from the combination the rule encodes; the expected answer is the rule's own outcome",
+        "derived_from_development": true,
+        "source_identity": "candidate rule CANDIDATE-RULE:amitriptyline|JOINT|02"
+      },
+      "role": "DEVELOPMENT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "DRUG:amitriptyline CYP2C19=RAPID, CYP2D6=INTERMEDIATE",
+      "visibility": "AUTHOR_VISIBLE"
+    },
+    "question": "what attention level does the candidate release report for this combination?",
+    "request": {
+      "care_setting": null,
+      "medications": [
+        "DRUG:amitriptyline"
+      ],
+      "mode": "VALIDATION",
+      "phenotypes": {
+        "GENE:CYP2C19": "RAPID",
+        "GENE:CYP2D6": "INTERMEDIATE"
+      }
+    }
+  },
+  {
+    "expected": {
+      "attention_level": "HIGH",
+      "outcome": "ATTENTION"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W4-DEV-AMITRIPTYLIN-RAPID-NORMAL-02",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate release PGX-CANDIDATE-REL-20260906-001; not a governed artifact, executable in DEMO and VALIDATION only, pending external expert review",
+        "release_manifest_hash": "sha256:0cd22a88f086a2d408e3ac4da0738eba5233f500ab277ccbf4033a8c14581d01",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:74feab6967685602b6c20905ee616b5b03403923475b62d918f43f912e3a621c",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": false,
+      "is_validation_evidence": false,
+      "no_pii_assertion": "These cases carry gene symbols, drug names, phenotype labels and a care setting from a closed vocabulary. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "internal consistency: the rule and the expectation have one author, so agreement confirms the encoding and nothing about the science",
+      "provenance": {
+        "author": "pgx-closure-wave04 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "PMID 27997040, DOI 10.1002/cpt.597",
+        "derivation_family_fingerprint": "sha256:749aeb5c8e852932bfd597e440595986aea4a46811cd7677756b497bf26ff1d7",
+        "derivation_method": "enumerated from the combination the rule encodes; the expected answer is the rule's own outcome",
+        "derived_from_development": true,
+        "source_identity": "candidate rule CANDIDATE-RULE:amitriptyline|JOINT|02"
+      },
+      "role": "DEVELOPMENT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "DRUG:amitriptyline CYP2C19=RAPID, CYP2D6=NORMAL",
+      "visibility": "AUTHOR_VISIBLE"
+    },
+    "question": "what attention level does the candidate release report for this combination?",
+    "request": {
+      "care_setting": null,
+      "medications": [
+        "DRUG:amitriptyline"
+      ],
+      "mode": "VALIDATION",
+      "phenotypes": {
+        "GENE:CYP2C19": "RAPID",
+        "GENE:CYP2D6": "NORMAL"
+      }
+    }
+  },
+  {
+    "expected": {
+      "attention_level": "HIGH",
+      "outcome": "ATTENTION"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W4-DEV-AMITRIPTYLIN-ULTRARAPID-INTERMEDIATE-03",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate release PGX-CANDIDATE-REL-20260906-001; not a governed artifact, executable in DEMO and VALIDATION only, pending external expert review",
+        "release_manifest_hash": "sha256:0cd22a88f086a2d408e3ac4da0738eba5233f500ab277ccbf4033a8c14581d01",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:65c615783ada15230296083ea18c78be648eb9fbd52ab7a90f1b013cd3eebcc9",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": false,
+      "is_validation_evidence": false,
+      "no_pii_assertion": "These cases carry gene symbols, drug names, phenotype labels and a care setting from a closed vocabulary. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "internal consistency: the rule and the expectation have one author, so agreement confirms the encoding and nothing about the science",
+      "provenance": {
+        "author": "pgx-closure-wave04 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "PMID 27997040, DOI 10.1002/cpt.597",
+        "derivation_family_fingerprint": "sha256:749aeb5c8e852932bfd597e440595986aea4a46811cd7677756b497bf26ff1d7",
+        "derivation_method": "enumerated from the combination the rule encodes; the expected answer is the rule's own outcome",
+        "derived_from_development": true,
+        "source_identity": "candidate rule CANDIDATE-RULE:amitriptyline|JOINT|02"
+      },
+      "role": "DEVELOPMENT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "DRUG:amitriptyline CYP2C19=ULTRARAPID, CYP2D6=INTERMEDIATE",
+      "visibility": "AUTHOR_VISIBLE"
+    },
+    "question": "what attention level does the candidate release report for this combination?",
+    "request": {
+      "care_setting": null,
+      "medications": [
+        "DRUG:amitriptyline"
+      ],
+      "mode": "VALIDATION",
+      "phenotypes": {
+        "GENE:CYP2C19": "ULTRARAPID",
+        "GENE:CYP2D6": "INTERMEDIATE"
+      }
+    }
+  },
+  {
+    "expected": {
+      "attention_level": "HIGH",
+      "outcome": "ATTENTION"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W4-DEV-AMITRIPTYLIN-ULTRARAPID-NORMAL-04",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate release PGX-CANDIDATE-REL-20260906-001; not a governed artifact, executable in DEMO and VALIDATION only, pending external expert review",
+        "release_manifest_hash": "sha256:0cd22a88f086a2d408e3ac4da0738eba5233f500ab277ccbf4033a8c14581d01",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:1ba7f006ef8b051d6e751482ed442251f78fe8e123395545bd848f64fdfe4b1e",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": false,
+      "is_validation_evidence": false,
+      "no_pii_assertion": "These cases carry gene symbols, drug names, phenotype labels and a care setting from a closed vocabulary. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "internal consistency: the rule and the expectation have one author, so agreement confirms the encoding and nothing about the science",
+      "provenance": {
+        "author": "pgx-closure-wave04 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "PMID 27997040, DOI 10.1002/cpt.597",
+        "derivation_family_fingerprint": "sha256:749aeb5c8e852932bfd597e440595986aea4a46811cd7677756b497bf26ff1d7",
+        "derivation_method": "enumerated from the combination the rule encodes; the expected answer is the rule's own outcome",
+        "derived_from_development": true,
+        "source_identity": "candidate rule CANDIDATE-RULE:amitriptyline|JOINT|02"
+      },
+      "role": "DEVELOPMENT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "DRUG:amitriptyline CYP2C19=ULTRARAPID, CYP2D6=NORMAL",
+      "visibility": "AUTHOR_VISIBLE"
+    },
+    "question": "what attention level does the candidate release report for this combination?",
+    "request": {
+      "care_setting": null,
+      "medications": [
+        "DRUG:amitriptyline"
+      ],
+      "mode": "VALIDATION",
+      "phenotypes": {
+        "GENE:CYP2C19": "ULTRARAPID",
+        "GENE:CYP2D6": "NORMAL"
+      }
+    }
+  },
+  {
+    "expected": {
+      "attention_level": "HIGH",
+      "outcome": "ATTENTION"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W4-DEV-AMITRIPTYLIN-NORMAL-ULTRARAPID-01",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate release PGX-CANDIDATE-REL-20260906-001; not a governed artifact, executable in DEMO and VALIDATION only, pending external expert review",
+        "release_manifest_hash": "sha256:0cd22a88f086a2d408e3ac4da0738eba5233f500ab277ccbf4033a8c14581d01",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:7c65a3c093ce706132c74d627348b5a3179ed14201d16dbe2757a7180740eaa4",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": false,
+      "is_validation_evidence": false,
+      "no_pii_assertion": "These cases carry gene symbols, drug names, phenotype labels and a care setting from a closed vocabulary. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "internal consistency: the rule and the expectation have one author, so agreement confirms the encoding and nothing about the science",
+      "provenance": {
+        "author": "pgx-closure-wave04 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "PMID 27997040, DOI 10.1002/cpt.597",
+        "derivation_family_fingerprint": "sha256:b7db9af51aa63538c1b9532eee7d01afb5af860fbcded98d547fe2e2a123f9d0",
+        "derivation_method": "enumerated from the combination the rule encodes; the expected answer is the rule's own outcome",
+        "derived_from_development": true,
+        "source_identity": "candidate rule CANDIDATE-RULE:amitriptyline|JOINT|03"
+      },
+      "role": "DEVELOPMENT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "DRUG:amitriptyline CYP2C19=NORMAL, CYP2D6=ULTRARAPID",
+      "visibility": "AUTHOR_VISIBLE"
+    },
+    "question": "what attention level does the candidate release report for this combination?",
+    "request": {
+      "care_setting": null,
+      "medications": [
+        "DRUG:amitriptyline"
+      ],
+      "mode": "VALIDATION",
+      "phenotypes": {
+        "GENE:CYP2C19": "NORMAL",
+        "GENE:CYP2D6": "ULTRARAPID"
+      }
+    }
+  },
+  {
+    "expected": {
+      "attention_level": "NO_ACTIVE_ATTENTION",
+      "outcome": "ATTENTION"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W4-DEV-AMITRIPTYLIN-NORMAL-NORMAL-01",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate release PGX-CANDIDATE-REL-20260906-001; not a governed artifact, executable in DEMO and VALIDATION only, pending external expert review",
+        "release_manifest_hash": "sha256:0cd22a88f086a2d408e3ac4da0738eba5233f500ab277ccbf4033a8c14581d01",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:91bcfb08928b9e32f6393fbb5660311a88c6df433dee7be5191a01e2f3527c4d",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": false,
+      "is_validation_evidence": false,
+      "no_pii_assertion": "These cases carry gene symbols, drug names, phenotype labels and a care setting from a closed vocabulary. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "internal consistency: the rule and the expectation have one author, so agreement confirms the encoding and nothing about the science",
+      "provenance": {
+        "author": "pgx-closure-wave04 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "PMID 27997040, DOI 10.1002/cpt.597",
+        "derivation_family_fingerprint": "sha256:81e007bd9842012bd1a4db1ac9393fee7a77aa4446eddd7936aabae23352fd72",
+        "derivation_method": "enumerated from the combination the rule encodes; the expected answer is the rule's own outcome",
+        "derived_from_development": true,
+        "source_identity": "candidate rule CANDIDATE-RULE:amitriptyline|JOINT|04"
+      },
+      "role": "DEVELOPMENT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "DRUG:amitriptyline CYP2C19=NORMAL, CYP2D6=NORMAL",
+      "visibility": "AUTHOR_VISIBLE"
+    },
+    "question": "what attention level does the candidate release report for this combination?",
+    "request": {
+      "care_setting": null,
+      "medications": [
+        "DRUG:amitriptyline"
+      ],
+      "mode": "VALIDATION",
+      "phenotypes": {
+        "GENE:CYP2C19": "NORMAL",
+        "GENE:CYP2D6": "NORMAL"
+      }
+    }
+  },
+  {
+    "expected": {
+      "attention_level": "MEDIUM",
+      "outcome": "ATTENTION"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W4-DEV-AMITRIPTYLIN-NORMAL-INTERMEDIATE-01",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate release PGX-CANDIDATE-REL-20260906-001; not a governed artifact, executable in DEMO and VALIDATION only, pending external expert review",
+        "release_manifest_hash": "sha256:0cd22a88f086a2d408e3ac4da0738eba5233f500ab277ccbf4033a8c14581d01",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:7c1ff8419564478714f6507c814d877d607746e763aa824fa15e297a87eab15d",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": false,
+      "is_validation_evidence": false,
+      "no_pii_assertion": "These cases carry gene symbols, drug names, phenotype labels and a care setting from a closed vocabulary. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "internal consistency: the rule and the expectation have one author, so agreement confirms the encoding and nothing about the science",
+      "provenance": {
+        "author": "pgx-closure-wave04 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "PMID 27997040, DOI 10.1002/cpt.597",
+        "derivation_family_fingerprint": "sha256:33aac31c28a41526e796bf863c775b3faed328934389d8f18f3bba415ccc4ce5",
+        "derivation_method": "enumerated from the combination the rule encodes; the expected answer is the rule's own outcome",
+        "derived_from_development": true,
+        "source_identity": "candidate rule CANDIDATE-RULE:amitriptyline|JOINT|05"
+      },
+      "role": "DEVELOPMENT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "DRUG:amitriptyline CYP2C19=NORMAL, CYP2D6=INTERMEDIATE",
+      "visibility": "AUTHOR_VISIBLE"
+    },
+    "question": "what attention level does the candidate release report for this combination?",
+    "request": {
+      "care_setting": null,
+      "medications": [
+        "DRUG:amitriptyline"
+      ],
+      "mode": "VALIDATION",
+      "phenotypes": {
+        "GENE:CYP2C19": "NORMAL",
+        "GENE:CYP2D6": "INTERMEDIATE"
+      }
+    }
+  },
+  {
+    "expected": {
+      "attention_level": "HIGH",
+      "outcome": "ATTENTION"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W4-DEV-AMITRIPTYLIN-NORMAL-POOR-01",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate release PGX-CANDIDATE-REL-20260906-001; not a governed artifact, executable in DEMO and VALIDATION only, pending external expert review",
+        "release_manifest_hash": "sha256:0cd22a88f086a2d408e3ac4da0738eba5233f500ab277ccbf4033a8c14581d01",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:670677a31c936c466560573f1f2292d2841ed7431bd4d8ccb1ef8a9b158f869b",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": false,
+      "is_validation_evidence": false,
+      "no_pii_assertion": "These cases carry gene symbols, drug names, phenotype labels and a care setting from a closed vocabulary. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "internal consistency: the rule and the expectation have one author, so agreement confirms the encoding and nothing about the science",
+      "provenance": {
+        "author": "pgx-closure-wave04 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "PMID 27997040, DOI 10.1002/cpt.597",
+        "derivation_family_fingerprint": "sha256:05be0e5c41e89e35d1d46843b767753850aae8ea2f667783ba420b45ea11646f",
+        "derivation_method": "enumerated from the combination the rule encodes; the expected answer is the rule's own outcome",
+        "derived_from_development": true,
+        "source_identity": "candidate rule CANDIDATE-RULE:amitriptyline|JOINT|06"
+      },
+      "role": "DEVELOPMENT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "DRUG:amitriptyline CYP2C19=NORMAL, CYP2D6=POOR",
+      "visibility": "AUTHOR_VISIBLE"
+    },
+    "question": "what attention level does the candidate release report for this combination?",
+    "request": {
+      "care_setting": null,
+      "medications": [
+        "DRUG:amitriptyline"
+      ],
+      "mode": "VALIDATION",
+      "phenotypes": {
+        "GENE:CYP2C19": "NORMAL",
+        "GENE:CYP2D6": "POOR"
+      }
+    }
+  },
+  {
+    "expected": {
+      "attention_level": "HIGH",
+      "outcome": "ATTENTION"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W4-DEV-AMITRIPTYLIN-INTERMEDIATE-ULTRARAPID-01",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate release PGX-CANDIDATE-REL-20260906-001; not a governed artifact, executable in DEMO and VALIDATION only, pending external expert review",
+        "release_manifest_hash": "sha256:0cd22a88f086a2d408e3ac4da0738eba5233f500ab277ccbf4033a8c14581d01",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:359d32a56af807e483b55ec563b4de982d8e5401b72c6bc35e5682be53a8ba76",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": false,
+      "is_validation_evidence": false,
+      "no_pii_assertion": "These cases carry gene symbols, drug names, phenotype labels and a care setting from a closed vocabulary. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "internal consistency: the rule and the expectation have one author, so agreement confirms the encoding and nothing about the science",
+      "provenance": {
+        "author": "pgx-closure-wave04 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "PMID 27997040, DOI 10.1002/cpt.597",
+        "derivation_family_fingerprint": "sha256:5901b72c3da475d7171cd60f9c332e660c4b593889aae7ef9ac174819620e7a0",
+        "derivation_method": "enumerated from the combination the rule encodes; the expected answer is the rule's own outcome",
+        "derived_from_development": true,
+        "source_identity": "candidate rule CANDIDATE-RULE:amitriptyline|JOINT|07"
+      },
+      "role": "DEVELOPMENT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "DRUG:amitriptyline CYP2C19=INTERMEDIATE, CYP2D6=ULTRARAPID",
+      "visibility": "AUTHOR_VISIBLE"
+    },
+    "question": "what attention level does the candidate release report for this combination?",
+    "request": {
+      "care_setting": null,
+      "medications": [
+        "DRUG:amitriptyline"
+      ],
+      "mode": "VALIDATION",
+      "phenotypes": {
+        "GENE:CYP2C19": "INTERMEDIATE",
+        "GENE:CYP2D6": "ULTRARAPID"
+      }
+    }
+  },
+  {
+    "expected": {
+      "attention_level": "NO_ACTIVE_ATTENTION",
+      "outcome": "ATTENTION"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W4-DEV-AMITRIPTYLIN-INTERMEDIATE-NORMAL-01",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate release PGX-CANDIDATE-REL-20260906-001; not a governed artifact, executable in DEMO and VALIDATION only, pending external expert review",
+        "release_manifest_hash": "sha256:0cd22a88f086a2d408e3ac4da0738eba5233f500ab277ccbf4033a8c14581d01",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:fb4172c00f65c464cc4d96b591448a4529baeb28f57d7244dafa341338c26418",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": false,
+      "is_validation_evidence": false,
+      "no_pii_assertion": "These cases carry gene symbols, drug names, phenotype labels and a care setting from a closed vocabulary. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "internal consistency: the rule and the expectation have one author, so agreement confirms the encoding and nothing about the science",
+      "provenance": {
+        "author": "pgx-closure-wave04 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "PMID 27997040, DOI 10.1002/cpt.597",
+        "derivation_family_fingerprint": "sha256:36b1976b90c0a8c456a0829de26e219f8d2eda5e4bba76712659bec5471048ef",
+        "derivation_method": "enumerated from the combination the rule encodes; the expected answer is the rule's own outcome",
+        "derived_from_development": true,
+        "source_identity": "candidate rule CANDIDATE-RULE:amitriptyline|JOINT|08"
+      },
+      "role": "DEVELOPMENT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "DRUG:amitriptyline CYP2C19=INTERMEDIATE, CYP2D6=NORMAL",
+      "visibility": "AUTHOR_VISIBLE"
+    },
+    "question": "what attention level does the candidate release report for this combination?",
+    "request": {
+      "care_setting": null,
+      "medications": [
+        "DRUG:amitriptyline"
+      ],
+      "mode": "VALIDATION",
+      "phenotypes": {
+        "GENE:CYP2C19": "INTERMEDIATE",
+        "GENE:CYP2D6": "NORMAL"
+      }
+    }
+  },
+  {
+    "expected": {
+      "attention_level": "MEDIUM",
+      "outcome": "ATTENTION"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W4-DEV-AMITRIPTYLIN-INTERMEDIATE-INTERMEDIATE-01",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate release PGX-CANDIDATE-REL-20260906-001; not a governed artifact, executable in DEMO and VALIDATION only, pending external expert review",
+        "release_manifest_hash": "sha256:0cd22a88f086a2d408e3ac4da0738eba5233f500ab277ccbf4033a8c14581d01",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:f65c68d6d1f4b66fc307451554d8a911367dae1444f11d6d4de074f5b5021548",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": false,
+      "is_validation_evidence": false,
+      "no_pii_assertion": "These cases carry gene symbols, drug names, phenotype labels and a care setting from a closed vocabulary. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "internal consistency: the rule and the expectation have one author, so agreement confirms the encoding and nothing about the science",
+      "provenance": {
+        "author": "pgx-closure-wave04 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "PMID 27997040, DOI 10.1002/cpt.597",
+        "derivation_family_fingerprint": "sha256:dea3e846f6d8f218ed5a32eb386c7e23aad6fbba7260852fe6172e619860c02e",
+        "derivation_method": "enumerated from the combination the rule encodes; the expected answer is the rule's own outcome",
+        "derived_from_development": true,
+        "source_identity": "candidate rule CANDIDATE-RULE:amitriptyline|JOINT|09"
+      },
+      "role": "DEVELOPMENT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "DRUG:amitriptyline CYP2C19=INTERMEDIATE, CYP2D6=INTERMEDIATE",
+      "visibility": "AUTHOR_VISIBLE"
+    },
+    "question": "what attention level does the candidate release report for this combination?",
+    "request": {
+      "care_setting": null,
+      "medications": [
+        "DRUG:amitriptyline"
+      ],
+      "mode": "VALIDATION",
+      "phenotypes": {
+        "GENE:CYP2C19": "INTERMEDIATE",
+        "GENE:CYP2D6": "INTERMEDIATE"
+      }
+    }
+  },
+  {
+    "expected": {
+      "attention_level": "HIGH",
+      "outcome": "ATTENTION"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W4-DEV-AMITRIPTYLIN-INTERMEDIATE-POOR-01",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate release PGX-CANDIDATE-REL-20260906-001; not a governed artifact, executable in DEMO and VALIDATION only, pending external expert review",
+        "release_manifest_hash": "sha256:0cd22a88f086a2d408e3ac4da0738eba5233f500ab277ccbf4033a8c14581d01",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:eadba219bf250feb1db94f1964a49cdc63e99bde9b8124eb138146ae96a40ee5",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": false,
+      "is_validation_evidence": false,
+      "no_pii_assertion": "These cases carry gene symbols, drug names, phenotype labels and a care setting from a closed vocabulary. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "internal consistency: the rule and the expectation have one author, so agreement confirms the encoding and nothing about the science",
+      "provenance": {
+        "author": "pgx-closure-wave04 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "PMID 27997040, DOI 10.1002/cpt.597",
+        "derivation_family_fingerprint": "sha256:5446a118309663cd8c1bac7f2fe4e7956c7950c9293e5b13730d7d5e71b5627b",
+        "derivation_method": "enumerated from the combination the rule encodes; the expected answer is the rule's own outcome",
+        "derived_from_development": true,
+        "source_identity": "candidate rule CANDIDATE-RULE:amitriptyline|JOINT|10"
+      },
+      "role": "DEVELOPMENT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "DRUG:amitriptyline CYP2C19=INTERMEDIATE, CYP2D6=POOR",
+      "visibility": "AUTHOR_VISIBLE"
+    },
+    "question": "what attention level does the candidate release report for this combination?",
+    "request": {
+      "care_setting": null,
+      "medications": [
+        "DRUG:amitriptyline"
+      ],
+      "mode": "VALIDATION",
+      "phenotypes": {
+        "GENE:CYP2C19": "INTERMEDIATE",
+        "GENE:CYP2D6": "POOR"
+      }
+    }
+  },
+  {
+    "expected": {
+      "attention_level": "HIGH",
+      "outcome": "ATTENTION"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W4-DEV-AMITRIPTYLIN-POOR-POOR-01",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate release PGX-CANDIDATE-REL-20260906-001; not a governed artifact, executable in DEMO and VALIDATION only, pending external expert review",
+        "release_manifest_hash": "sha256:0cd22a88f086a2d408e3ac4da0738eba5233f500ab277ccbf4033a8c14581d01",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:c01f67bf3ce8333966dea14387b390282fe3d42580c6165d3a63cbbd469cc57d",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": false,
+      "is_validation_evidence": false,
+      "no_pii_assertion": "These cases carry gene symbols, drug names, phenotype labels and a care setting from a closed vocabulary. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "internal consistency: the rule and the expectation have one author, so agreement confirms the encoding and nothing about the science",
+      "provenance": {
+        "author": "pgx-closure-wave04 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "PMID 27997040, DOI 10.1002/cpt.597",
+        "derivation_family_fingerprint": "sha256:c9ee1794bfc1b7d584e3c4904bae9ec261b9e5808d59973cc93b210edc11c5ba",
+        "derivation_method": "enumerated from the combination the rule encodes; the expected answer is the rule's own outcome",
+        "derived_from_development": true,
+        "source_identity": "candidate rule CANDIDATE-RULE:amitriptyline|JOINT|11"
+      },
+      "role": "DEVELOPMENT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "DRUG:amitriptyline CYP2C19=POOR, CYP2D6=POOR",
+      "visibility": "AUTHOR_VISIBLE"
+    },
+    "question": "what attention level does the candidate release report for this combination?",
+    "request": {
+      "care_setting": null,
+      "medications": [
+        "DRUG:amitriptyline"
+      ],
+      "mode": "VALIDATION",
+      "phenotypes": {
+        "GENE:CYP2C19": "POOR",
+        "GENE:CYP2D6": "POOR"
+      }
+    }
+  },
+  {
+    "expected": {
+      "attention_level": "HIGH",
+      "outcome": "ATTENTION"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W4-DEV-AMITRIPTYLIN-POOR-INTERMEDIATE-02",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate release PGX-CANDIDATE-REL-20260906-001; not a governed artifact, executable in DEMO and VALIDATION only, pending external expert review",
+        "release_manifest_hash": "sha256:0cd22a88f086a2d408e3ac4da0738eba5233f500ab277ccbf4033a8c14581d01",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:4030d0de49b8de4c07319f12ffa17bb6a85038c8f59ce44d5b01ad0f46213c3b",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": false,
+      "is_validation_evidence": false,
+      "no_pii_assertion": "These cases carry gene symbols, drug names, phenotype labels and a care setting from a closed vocabulary. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "internal consistency: the rule and the expectation have one author, so agreement confirms the encoding and nothing about the science",
+      "provenance": {
+        "author": "pgx-closure-wave04 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "PMID 27997040, DOI 10.1002/cpt.597",
+        "derivation_family_fingerprint": "sha256:c9ee1794bfc1b7d584e3c4904bae9ec261b9e5808d59973cc93b210edc11c5ba",
+        "derivation_method": "enumerated from the combination the rule encodes; the expected answer is the rule's own outcome",
+        "derived_from_development": true,
+        "source_identity": "candidate rule CANDIDATE-RULE:amitriptyline|JOINT|11"
+      },
+      "role": "DEVELOPMENT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "DRUG:amitriptyline CYP2C19=POOR, CYP2D6=INTERMEDIATE",
+      "visibility": "AUTHOR_VISIBLE"
+    },
+    "question": "what attention level does the candidate release report for this combination?",
+    "request": {
+      "care_setting": null,
+      "medications": [
+        "DRUG:amitriptyline"
+      ],
+      "mode": "VALIDATION",
+      "phenotypes": {
+        "GENE:CYP2C19": "POOR",
+        "GENE:CYP2D6": "INTERMEDIATE"
+      }
+    }
+  },
+  {
+    "expected": {
+      "attention_level": "HIGH",
+      "outcome": "ATTENTION"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W4-DEV-AMITRIPTYLIN-POOR-ULTRARAPID-03",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate release PGX-CANDIDATE-REL-20260906-001; not a governed artifact, executable in DEMO and VALIDATION only, pending external expert review",
+        "release_manifest_hash": "sha256:0cd22a88f086a2d408e3ac4da0738eba5233f500ab277ccbf4033a8c14581d01",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:e09c1b1e0ef6c798658c404f95929b80148fdb86c0b145c43ef931ae9422929b",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": false,
+      "is_validation_evidence": false,
+      "no_pii_assertion": "These cases carry gene symbols, drug names, phenotype labels and a care setting from a closed vocabulary. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "internal consistency: the rule and the expectation have one author, so agreement confirms the encoding and nothing about the science",
+      "provenance": {
+        "author": "pgx-closure-wave04 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "PMID 27997040, DOI 10.1002/cpt.597",
+        "derivation_family_fingerprint": "sha256:c9ee1794bfc1b7d584e3c4904bae9ec261b9e5808d59973cc93b210edc11c5ba",
+        "derivation_method": "enumerated from the combination the rule encodes; the expected answer is the rule's own outcome",
+        "derived_from_development": true,
+        "source_identity": "candidate rule CANDIDATE-RULE:amitriptyline|JOINT|11"
+      },
+      "role": "DEVELOPMENT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "DRUG:amitriptyline CYP2C19=POOR, CYP2D6=ULTRARAPID",
+      "visibility": "AUTHOR_VISIBLE"
+    },
+    "question": "what attention level does the candidate release report for this combination?",
+    "request": {
+      "care_setting": null,
+      "medications": [
+        "DRUG:amitriptyline"
+      ],
+      "mode": "VALIDATION",
+      "phenotypes": {
+        "GENE:CYP2C19": "POOR",
+        "GENE:CYP2D6": "ULTRARAPID"
+      }
+    }
+  },
+  {
+    "expected": {
+      "attention_level": "HIGH",
+      "outcome": "ATTENTION"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W4-DEV-AMITRIPTYLIN-POOR-NORMAL-01",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate release PGX-CANDIDATE-REL-20260906-001; not a governed artifact, executable in DEMO and VALIDATION only, pending external expert review",
+        "release_manifest_hash": "sha256:0cd22a88f086a2d408e3ac4da0738eba5233f500ab277ccbf4033a8c14581d01",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:905c6ca273521b822063058b2f7f96867123ffef8b6eb35967944a0361acced1",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": false,
+      "is_validation_evidence": false,
+      "no_pii_assertion": "These cases carry gene symbols, drug names, phenotype labels and a care setting from a closed vocabulary. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "internal consistency: the rule and the expectation have one author, so agreement confirms the encoding and nothing about the science",
+      "provenance": {
+        "author": "pgx-closure-wave04 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "PMID 27997040, DOI 10.1002/cpt.597",
+        "derivation_family_fingerprint": "sha256:4314637592f8748ebbe81c7f09977c311c2b9b6afa5dc68f9f9b1c109bd81425",
+        "derivation_method": "enumerated from the combination the rule encodes; the expected answer is the rule's own outcome",
+        "derived_from_development": true,
+        "source_identity": "candidate rule CANDIDATE-RULE:amitriptyline|JOINT|12"
+      },
+      "role": "DEVELOPMENT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "DRUG:amitriptyline CYP2C19=POOR, CYP2D6=NORMAL",
+      "visibility": "AUTHOR_VISIBLE"
+    },
+    "question": "what attention level does the candidate release report for this combination?",
+    "request": {
+      "care_setting": null,
+      "medications": [
+        "DRUG:amitriptyline"
+      ],
+      "mode": "VALIDATION",
+      "phenotypes": {
+        "GENE:CYP2C19": "POOR",
+        "GENE:CYP2D6": "NORMAL"
+      }
+    }
+  },
+  {
+    "expected": {
+      "attention_level": "HIGH",
+      "outcome": "ATTENTION"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W4-DEV-CLOPIDOGREL-INTERMEDIATE-01",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate release PGX-CANDIDATE-REL-20260906-001; not a governed artifact, executable in DEMO and VALIDATION only, pending external expert review",
+        "release_manifest_hash": "sha256:0cd22a88f086a2d408e3ac4da0738eba5233f500ab277ccbf4033a8c14581d01",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:dbc7142278cc2653f23272a93dbfbfb593f638776b0c06ac798dfd987c83c2b9",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": false,
+      "is_validation_evidence": false,
+      "no_pii_assertion": "These cases carry gene symbols, drug names, phenotype labels and a care setting from a closed vocabulary. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "internal consistency: the rule and the expectation have one author, so agreement confirms the encoding and nothing about the science",
+      "provenance": {
+        "author": "pgx-closure-wave04 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "PMID 35034351, DOI 10.1002/cpt.2526",
+        "derivation_family_fingerprint": "sha256:402264758a39e945c4632a225525ddbb0c771209c28731a7e5bcc0051659d6ee",
+        "derivation_method": "enumerated from the combination the rule encodes; the expected answer is the rule's own outcome",
+        "derived_from_development": true,
+        "source_identity": "candidate rule CANDIDATE-RULE:clopidogrel|CYP2C19|INTERMEDIATE"
+      },
+      "role": "DEVELOPMENT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "DRUG:clopidogrel CYP2C19=INTERMEDIATE",
+      "visibility": "AUTHOR_VISIBLE"
+    },
+    "question": "what attention level does the candidate release report for this combination?",
+    "request": {
+      "care_setting": "ACS_OR_PCI",
+      "medications": [
+        "DRUG:clopidogrel"
+      ],
+      "mode": "VALIDATION",
+      "phenotypes": {
+        "GENE:CYP2C19": "INTERMEDIATE"
+      }
+    }
+  },
+  {
+    "expected": {
+      "attention_level": "NO_ACTIVE_ATTENTION",
+      "outcome": "ATTENTION"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W4-DEV-CLOPIDOGREL-NORMAL-01",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate release PGX-CANDIDATE-REL-20260906-001; not a governed artifact, executable in DEMO and VALIDATION only, pending external expert review",
+        "release_manifest_hash": "sha256:0cd22a88f086a2d408e3ac4da0738eba5233f500ab277ccbf4033a8c14581d01",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:b46b24bf4b78e7a171abd137bfa0407c1fcd3cd8b224fb70c934e04de16569ea",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": false,
+      "is_validation_evidence": false,
+      "no_pii_assertion": "These cases carry gene symbols, drug names, phenotype labels and a care setting from a closed vocabulary. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "internal consistency: the rule and the expectation have one author, so agreement confirms the encoding and nothing about the science",
+      "provenance": {
+        "author": "pgx-closure-wave04 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "PMID 35034351, DOI 10.1002/cpt.2526",
+        "derivation_family_fingerprint": "sha256:043c4dc03099b9a4e92b725cb41315896ea1f6f554796996f5f5060cc7ada23a",
+        "derivation_method": "enumerated from the combination the rule encodes; the expected answer is the rule's own outcome",
+        "derived_from_development": true,
+        "source_identity": "candidate rule CANDIDATE-RULE:clopidogrel|CYP2C19|NORMAL"
+      },
+      "role": "DEVELOPMENT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "DRUG:clopidogrel CYP2C19=NORMAL",
+      "visibility": "AUTHOR_VISIBLE"
+    },
+    "question": "what attention level does the candidate release report for this combination?",
+    "request": {
+      "care_setting": "ACS_OR_PCI",
+      "medications": [
+        "DRUG:clopidogrel"
+      ],
+      "mode": "VALIDATION",
+      "phenotypes": {
+        "GENE:CYP2C19": "NORMAL"
+      }
+    }
+  },
+  {
+    "expected": {
+      "attention_level": "HIGH",
+      "outcome": "ATTENTION"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W4-DEV-CLOPIDOGREL-POOR-01",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate release PGX-CANDIDATE-REL-20260906-001; not a governed artifact, executable in DEMO and VALIDATION only, pending external expert review",
+        "release_manifest_hash": "sha256:0cd22a88f086a2d408e3ac4da0738eba5233f500ab277ccbf4033a8c14581d01",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:a6827727c31df38fac40a0c009719e16d2a1b66392e96a900b5bfac7e3c910cb",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": false,
+      "is_validation_evidence": false,
+      "no_pii_assertion": "These cases carry gene symbols, drug names, phenotype labels and a care setting from a closed vocabulary. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "internal consistency: the rule and the expectation have one author, so agreement confirms the encoding and nothing about the science",
+      "provenance": {
+        "author": "pgx-closure-wave04 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "PMID 35034351, DOI 10.1002/cpt.2526",
+        "derivation_family_fingerprint": "sha256:8eaa912ce52acc7fb32baf4fb6a748e2c195ad24ae9a8a5189780aa48089c24e",
+        "derivation_method": "enumerated from the combination the rule encodes; the expected answer is the rule's own outcome",
+        "derived_from_development": true,
+        "source_identity": "candidate rule CANDIDATE-RULE:clopidogrel|CYP2C19|POOR"
+      },
+      "role": "DEVELOPMENT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "DRUG:clopidogrel CYP2C19=POOR",
+      "visibility": "AUTHOR_VISIBLE"
+    },
+    "question": "what attention level does the candidate release report for this combination?",
+    "request": {
+      "care_setting": "ACS_OR_PCI",
+      "medications": [
+        "DRUG:clopidogrel"
+      ],
+      "mode": "VALIDATION",
+      "phenotypes": {
+        "GENE:CYP2C19": "POOR"
+      }
+    }
+  },
+  {
+    "expected": {
+      "attention_level": "NO_ACTIVE_ATTENTION",
+      "outcome": "ATTENTION"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W4-DEV-CLOPIDOGREL-RAPID-01",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate release PGX-CANDIDATE-REL-20260906-001; not a governed artifact, executable in DEMO and VALIDATION only, pending external expert review",
+        "release_manifest_hash": "sha256:0cd22a88f086a2d408e3ac4da0738eba5233f500ab277ccbf4033a8c14581d01",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:dd26ee9e769e008b88059a1f40c5d20462269bcc3c03cf7a0eef0cba6e88d5c3",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": false,
+      "is_validation_evidence": false,
+      "no_pii_assertion": "These cases carry gene symbols, drug names, phenotype labels and a care setting from a closed vocabulary. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "internal consistency: the rule and the expectation have one author, so agreement confirms the encoding and nothing about the science",
+      "provenance": {
+        "author": "pgx-closure-wave04 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "PMID 35034351, DOI 10.1002/cpt.2526",
+        "derivation_family_fingerprint": "sha256:3e0df5ea5d21237b064e21c4dc5005e76aba9d5a7654580a0482b1d66f9ecb90",
+        "derivation_method": "enumerated from the combination the rule encodes; the expected answer is the rule's own outcome",
+        "derived_from_development": true,
+        "source_identity": "candidate rule CANDIDATE-RULE:clopidogrel|CYP2C19|RAPID"
+      },
+      "role": "DEVELOPMENT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "DRUG:clopidogrel CYP2C19=RAPID",
+      "visibility": "AUTHOR_VISIBLE"
+    },
+    "question": "what attention level does the candidate release report for this combination?",
+    "request": {
+      "care_setting": "ACS_OR_PCI",
+      "medications": [
+        "DRUG:clopidogrel"
+      ],
+      "mode": "VALIDATION",
+      "phenotypes": {
+        "GENE:CYP2C19": "RAPID"
+      }
+    }
+  },
+  {
+    "expected": {
+      "attention_level": "NO_ACTIVE_ATTENTION",
+      "outcome": "ATTENTION"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W4-DEV-CLOPIDOGREL-ULTRARAPID-01",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate release PGX-CANDIDATE-REL-20260906-001; not a governed artifact, executable in DEMO and VALIDATION only, pending external expert review",
+        "release_manifest_hash": "sha256:0cd22a88f086a2d408e3ac4da0738eba5233f500ab277ccbf4033a8c14581d01",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:0c31a561a58002f706b2b42bf80d35a2322a84052c7746386281e22b2a7475cd",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": false,
+      "is_validation_evidence": false,
+      "no_pii_assertion": "These cases carry gene symbols, drug names, phenotype labels and a care setting from a closed vocabulary. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "internal consistency: the rule and the expectation have one author, so agreement confirms the encoding and nothing about the science",
+      "provenance": {
+        "author": "pgx-closure-wave04 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "PMID 35034351, DOI 10.1002/cpt.2526",
+        "derivation_family_fingerprint": "sha256:591414e6eca53acd9e4294adb41b6030f6db696c39a401346f37d075b0546863",
+        "derivation_method": "enumerated from the combination the rule encodes; the expected answer is the rule's own outcome",
+        "derived_from_development": true,
+        "source_identity": "candidate rule CANDIDATE-RULE:clopidogrel|CYP2C19|ULTRARAPID"
+      },
+      "role": "DEVELOPMENT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "DRUG:clopidogrel CYP2C19=ULTRARAPID",
+      "visibility": "AUTHOR_VISIBLE"
+    },
+    "question": "what attention level does the candidate release report for this combination?",
+    "request": {
+      "care_setting": "ACS_OR_PCI",
+      "medications": [
+        "DRUG:clopidogrel"
+      ],
+      "mode": "VALIDATION",
+      "phenotypes": {
+        "GENE:CYP2C19": "ULTRARAPID"
+      }
+    }
+  },
+  {
+    "expected": {
+      "attention_level": "LOW",
+      "outcome": "ATTENTION"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W4-DEV-CODEINE-INTERMEDIATE-01",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate release PGX-CANDIDATE-REL-20260906-001; not a governed artifact, executable in DEMO and VALIDATION only, pending external expert review",
+        "release_manifest_hash": "sha256:0cd22a88f086a2d408e3ac4da0738eba5233f500ab277ccbf4033a8c14581d01",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:aad3f86d4d674ef75e6c6385274ad9e1dee81ddf737113e0917ba306c539fcd7",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": false,
+      "is_validation_evidence": false,
+      "no_pii_assertion": "These cases carry gene symbols, drug names, phenotype labels and a care setting from a closed vocabulary. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "internal consistency: the rule and the expectation have one author, so agreement confirms the encoding and nothing about the science",
+      "provenance": {
+        "author": "pgx-closure-wave04 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "PMID 33387367, DOI 10.1002/cpt.2149",
+        "derivation_family_fingerprint": "sha256:b1891c9e3d6e67e0cbb3b9c3ac8826db58e3f0e748266cb40c1fd826db1aa29b",
+        "derivation_method": "enumerated from the combination the rule encodes; the expected answer is the rule's own outcome",
+        "derived_from_development": true,
+        "source_identity": "candidate rule CANDIDATE-RULE:codeine|CYP2D6|INTERMEDIATE"
+      },
+      "role": "DEVELOPMENT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "DRUG:codeine CYP2D6=INTERMEDIATE",
+      "visibility": "AUTHOR_VISIBLE"
+    },
+    "question": "what attention level does the candidate release report for this combination?",
+    "request": {
+      "care_setting": null,
+      "medications": [
+        "DRUG:codeine"
+      ],
+      "mode": "VALIDATION",
+      "phenotypes": {
+        "GENE:CYP2D6": "INTERMEDIATE"
+      }
+    }
+  },
+  {
+    "expected": {
+      "attention_level": "NO_ACTIVE_ATTENTION",
+      "outcome": "ATTENTION"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W4-DEV-CODEINE-NORMAL-01",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate release PGX-CANDIDATE-REL-20260906-001; not a governed artifact, executable in DEMO and VALIDATION only, pending external expert review",
+        "release_manifest_hash": "sha256:0cd22a88f086a2d408e3ac4da0738eba5233f500ab277ccbf4033a8c14581d01",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:19252fc67c6733e73b0ded244aa39f43d444f30ef1844b3eaf4fd1d520a98c6d",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": false,
+      "is_validation_evidence": false,
+      "no_pii_assertion": "These cases carry gene symbols, drug names, phenotype labels and a care setting from a closed vocabulary. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "internal consistency: the rule and the expectation have one author, so agreement confirms the encoding and nothing about the science",
+      "provenance": {
+        "author": "pgx-closure-wave04 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "PMID 33387367, DOI 10.1002/cpt.2149",
+        "derivation_family_fingerprint": "sha256:3842dcffab4b6a9575b7d53b501c19583d391a88b49336503a9ea44d2e4331e8",
+        "derivation_method": "enumerated from the combination the rule encodes; the expected answer is the rule's own outcome",
+        "derived_from_development": true,
+        "source_identity": "candidate rule CANDIDATE-RULE:codeine|CYP2D6|NORMAL"
+      },
+      "role": "DEVELOPMENT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "DRUG:codeine CYP2D6=NORMAL",
+      "visibility": "AUTHOR_VISIBLE"
+    },
+    "question": "what attention level does the candidate release report for this combination?",
+    "request": {
+      "care_setting": null,
+      "medications": [
+        "DRUG:codeine"
+      ],
+      "mode": "VALIDATION",
+      "phenotypes": {
+        "GENE:CYP2D6": "NORMAL"
+      }
+    }
+  },
+  {
+    "expected": {
+      "attention_level": "HIGH",
+      "outcome": "ATTENTION"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W4-DEV-CODEINE-POOR-01",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate release PGX-CANDIDATE-REL-20260906-001; not a governed artifact, executable in DEMO and VALIDATION only, pending external expert review",
+        "release_manifest_hash": "sha256:0cd22a88f086a2d408e3ac4da0738eba5233f500ab277ccbf4033a8c14581d01",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:a10c055c4fc95af7148052780f6eace57a22fe66ba03461ca0961295db598456",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": false,
+      "is_validation_evidence": false,
+      "no_pii_assertion": "These cases carry gene symbols, drug names, phenotype labels and a care setting from a closed vocabulary. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "internal consistency: the rule and the expectation have one author, so agreement confirms the encoding and nothing about the science",
+      "provenance": {
+        "author": "pgx-closure-wave04 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "PMID 33387367, DOI 10.1002/cpt.2149",
+        "derivation_family_fingerprint": "sha256:e3e3610320cb842c2764807c5b9e551c92188c473f99cff1224546cc85a672e8",
+        "derivation_method": "enumerated from the combination the rule encodes; the expected answer is the rule's own outcome",
+        "derived_from_development": true,
+        "source_identity": "candidate rule CANDIDATE-RULE:codeine|CYP2D6|POOR"
+      },
+      "role": "DEVELOPMENT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "DRUG:codeine CYP2D6=POOR",
+      "visibility": "AUTHOR_VISIBLE"
+    },
+    "question": "what attention level does the candidate release report for this combination?",
+    "request": {
+      "care_setting": null,
+      "medications": [
+        "DRUG:codeine"
+      ],
+      "mode": "VALIDATION",
+      "phenotypes": {
+        "GENE:CYP2D6": "POOR"
+      }
+    }
+  },
+  {
+    "expected": {
+      "attention_level": "HIGH",
+      "outcome": "ATTENTION"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W4-DEV-CODEINE-ULTRARAPID-01",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate release PGX-CANDIDATE-REL-20260906-001; not a governed artifact, executable in DEMO and VALIDATION only, pending external expert review",
+        "release_manifest_hash": "sha256:0cd22a88f086a2d408e3ac4da0738eba5233f500ab277ccbf4033a8c14581d01",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:e4136dd5343ab9112753409307703e2d8c6ea8296d176c69c66f95316ed097db",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": false,
+      "is_validation_evidence": false,
+      "no_pii_assertion": "These cases carry gene symbols, drug names, phenotype labels and a care setting from a closed vocabulary. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "internal consistency: the rule and the expectation have one author, so agreement confirms the encoding and nothing about the science",
+      "provenance": {
+        "author": "pgx-closure-wave04 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "PMID 33387367, DOI 10.1002/cpt.2149",
+        "derivation_family_fingerprint": "sha256:76947d8db1dda60cf7fe4244bf6bcbfc025ad8d1c024a328ef5733409e744ddb",
+        "derivation_method": "enumerated from the combination the rule encodes; the expected answer is the rule's own outcome",
+        "derived_from_development": true,
+        "source_identity": "candidate rule CANDIDATE-RULE:codeine|CYP2D6|ULTRARAPID"
+      },
+      "role": "DEVELOPMENT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "DRUG:codeine CYP2D6=ULTRARAPID",
+      "visibility": "AUTHOR_VISIBLE"
+    },
+    "question": "what attention level does the candidate release report for this combination?",
+    "request": {
+      "care_setting": null,
+      "medications": [
+        "DRUG:codeine"
+      ],
+      "mode": "VALIDATION",
+      "phenotypes": {
+        "GENE:CYP2D6": "ULTRARAPID"
+      }
+    }
+  },
+  {
+    "expected": {
+      "attention_level": "LOW",
+      "outcome": "ATTENTION"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W4-DEV-OMEPRAZOLE-INTERMEDIATE-01",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate release PGX-CANDIDATE-REL-20260906-001; not a governed artifact, executable in DEMO and VALIDATION only, pending external expert review",
+        "release_manifest_hash": "sha256:0cd22a88f086a2d408e3ac4da0738eba5233f500ab277ccbf4033a8c14581d01",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:9b3517a0b67464c466741c98c9fe46a32bef86e6ff301ec7afe868c2dc174e0d",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": false,
+      "is_validation_evidence": false,
+      "no_pii_assertion": "These cases carry gene symbols, drug names, phenotype labels and a care setting from a closed vocabulary. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "internal consistency: the rule and the expectation have one author, so agreement confirms the encoding and nothing about the science",
+      "provenance": {
+        "author": "pgx-closure-wave04 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "PMID 32770672, DOI 10.1002/cpt.2015",
+        "derivation_family_fingerprint": "sha256:a992907eb08df75ddc671ce83a8fbabca4055c75b1954328438c05fc61377340",
+        "derivation_method": "enumerated from the combination the rule encodes; the expected answer is the rule's own outcome",
+        "derived_from_development": true,
+        "source_identity": "candidate rule CANDIDATE-RULE:omeprazole|CYP2C19|INTERMEDIATE"
+      },
+      "role": "DEVELOPMENT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "DRUG:omeprazole CYP2C19=INTERMEDIATE",
+      "visibility": "AUTHOR_VISIBLE"
+    },
+    "question": "what attention level does the candidate release report for this combination?",
+    "request": {
+      "care_setting": null,
+      "medications": [
+        "DRUG:omeprazole"
+      ],
+      "mode": "VALIDATION",
+      "phenotypes": {
+        "GENE:CYP2C19": "INTERMEDIATE"
+      }
+    }
+  },
+  {
+    "expected": {
+      "attention_level": "LOW",
+      "outcome": "ATTENTION"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W4-DEV-OMEPRAZOLE-NORMAL-01",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate release PGX-CANDIDATE-REL-20260906-001; not a governed artifact, executable in DEMO and VALIDATION only, pending external expert review",
+        "release_manifest_hash": "sha256:0cd22a88f086a2d408e3ac4da0738eba5233f500ab277ccbf4033a8c14581d01",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:8bdebafd38686870331e044a14bb03e667229bc935a7e18f4309781bc704a361",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": false,
+      "is_validation_evidence": false,
+      "no_pii_assertion": "These cases carry gene symbols, drug names, phenotype labels and a care setting from a closed vocabulary. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "internal consistency: the rule and the expectation have one author, so agreement confirms the encoding and nothing about the science",
+      "provenance": {
+        "author": "pgx-closure-wave04 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "PMID 32770672, DOI 10.1002/cpt.2015",
+        "derivation_family_fingerprint": "sha256:2abcfe61afda28d46750d6deb92f98e74cc0b7c6980e9995e2b7f73c43b1bf61",
+        "derivation_method": "enumerated from the combination the rule encodes; the expected answer is the rule's own outcome",
+        "derived_from_development": true,
+        "source_identity": "candidate rule CANDIDATE-RULE:omeprazole|CYP2C19|NORMAL"
+      },
+      "role": "DEVELOPMENT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "DRUG:omeprazole CYP2C19=NORMAL",
+      "visibility": "AUTHOR_VISIBLE"
+    },
+    "question": "what attention level does the candidate release report for this combination?",
+    "request": {
+      "care_setting": null,
+      "medications": [
+        "DRUG:omeprazole"
+      ],
+      "mode": "VALIDATION",
+      "phenotypes": {
+        "GENE:CYP2C19": "NORMAL"
+      }
+    }
+  },
+  {
+    "expected": {
+      "attention_level": "LOW",
+      "outcome": "ATTENTION"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W4-DEV-OMEPRAZOLE-POOR-01",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate release PGX-CANDIDATE-REL-20260906-001; not a governed artifact, executable in DEMO and VALIDATION only, pending external expert review",
+        "release_manifest_hash": "sha256:0cd22a88f086a2d408e3ac4da0738eba5233f500ab277ccbf4033a8c14581d01",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:af6bec21a1a7f2bf26584c48e939c16454333a60ce9f3db9078137db1e9b7ef1",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": false,
+      "is_validation_evidence": false,
+      "no_pii_assertion": "These cases carry gene symbols, drug names, phenotype labels and a care setting from a closed vocabulary. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "internal consistency: the rule and the expectation have one author, so agreement confirms the encoding and nothing about the science",
+      "provenance": {
+        "author": "pgx-closure-wave04 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "PMID 32770672, DOI 10.1002/cpt.2015",
+        "derivation_family_fingerprint": "sha256:3f41d21d4a9a835c10c21733e1daf9d70736a4692809caa898f985e2f9e86bca",
+        "derivation_method": "enumerated from the combination the rule encodes; the expected answer is the rule's own outcome",
+        "derived_from_development": true,
+        "source_identity": "candidate rule CANDIDATE-RULE:omeprazole|CYP2C19|POOR"
+      },
+      "role": "DEVELOPMENT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "DRUG:omeprazole CYP2C19=POOR",
+      "visibility": "AUTHOR_VISIBLE"
+    },
+    "question": "what attention level does the candidate release report for this combination?",
+    "request": {
+      "care_setting": null,
+      "medications": [
+        "DRUG:omeprazole"
+      ],
+      "mode": "VALIDATION",
+      "phenotypes": {
+        "GENE:CYP2C19": "POOR"
+      }
+    }
+  },
+  {
+    "expected": {
+      "attention_level": "LOW",
+      "outcome": "ATTENTION"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W4-DEV-OMEPRAZOLE-RAPID-01",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate release PGX-CANDIDATE-REL-20260906-001; not a governed artifact, executable in DEMO and VALIDATION only, pending external expert review",
+        "release_manifest_hash": "sha256:0cd22a88f086a2d408e3ac4da0738eba5233f500ab277ccbf4033a8c14581d01",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:57166b3cfe3129fde729a116c8ed4536f34634fd2c7e4801f00baeefbcde71eb",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": false,
+      "is_validation_evidence": false,
+      "no_pii_assertion": "These cases carry gene symbols, drug names, phenotype labels and a care setting from a closed vocabulary. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "internal consistency: the rule and the expectation have one author, so agreement confirms the encoding and nothing about the science",
+      "provenance": {
+        "author": "pgx-closure-wave04 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "PMID 32770672, DOI 10.1002/cpt.2015",
+        "derivation_family_fingerprint": "sha256:91033bfb1ce7da542275925e41801d3af33256c18dd49b3aa83255472e43fac6",
+        "derivation_method": "enumerated from the combination the rule encodes; the expected answer is the rule's own outcome",
+        "derived_from_development": true,
+        "source_identity": "candidate rule CANDIDATE-RULE:omeprazole|CYP2C19|RAPID"
+      },
+      "role": "DEVELOPMENT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "DRUG:omeprazole CYP2C19=RAPID",
+      "visibility": "AUTHOR_VISIBLE"
+    },
+    "question": "what attention level does the candidate release report for this combination?",
+    "request": {
+      "care_setting": null,
+      "medications": [
+        "DRUG:omeprazole"
+      ],
+      "mode": "VALIDATION",
+      "phenotypes": {
+        "GENE:CYP2C19": "RAPID"
+      }
+    }
+  },
+  {
+    "expected": {
+      "attention_level": "MEDIUM",
+      "outcome": "ATTENTION"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W4-DEV-OMEPRAZOLE-ULTRARAPID-01",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate release PGX-CANDIDATE-REL-20260906-001; not a governed artifact, executable in DEMO and VALIDATION only, pending external expert review",
+        "release_manifest_hash": "sha256:0cd22a88f086a2d408e3ac4da0738eba5233f500ab277ccbf4033a8c14581d01",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:69ff0a0ca5ea1d662d5d3b726cd6041cde7c07fa42cb5e4b735c119cc0dbe8ea",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": false,
+      "is_validation_evidence": false,
+      "no_pii_assertion": "These cases carry gene symbols, drug names, phenotype labels and a care setting from a closed vocabulary. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "internal consistency: the rule and the expectation have one author, so agreement confirms the encoding and nothing about the science",
+      "provenance": {
+        "author": "pgx-closure-wave04 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "PMID 32770672, DOI 10.1002/cpt.2015",
+        "derivation_family_fingerprint": "sha256:92343c6170918a7228c42cc42363d84abce1d20768812339dcd86b1d8fed1b3c",
+        "derivation_method": "enumerated from the combination the rule encodes; the expected answer is the rule's own outcome",
+        "derived_from_development": true,
+        "source_identity": "candidate rule CANDIDATE-RULE:omeprazole|CYP2C19|ULTRARAPID"
+      },
+      "role": "DEVELOPMENT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "DRUG:omeprazole CYP2C19=ULTRARAPID",
+      "visibility": "AUTHOR_VISIBLE"
+    },
+    "question": "what attention level does the candidate release report for this combination?",
+    "request": {
+      "care_setting": null,
+      "medications": [
+        "DRUG:omeprazole"
+      ],
+      "mode": "VALIDATION",
+      "phenotypes": {
+        "GENE:CYP2C19": "ULTRARAPID"
+      }
+    }
+  }
+]

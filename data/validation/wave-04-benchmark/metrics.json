@@ -1,0 +1,14 @@
+{
+  "attention_agreement": 1.0,
+  "coverage_agreement": 1.0,
+  "deterministic_repeatability": 1.0,
+  "evidence_traceability": 1.0,
+  "expert_reserved_payloads_read": 0,
+  "failed_case_count": 0,
+  "latency_p50_ms": 5.1278,
+  "latency_p95_ms": 5.3031,
+  "refusal_correctness": 1.0,
+  "scored_case_count": 55,
+  "system_failure_rate": 0.0,
+  "unsafe_false_reassurance_count": 0
+}

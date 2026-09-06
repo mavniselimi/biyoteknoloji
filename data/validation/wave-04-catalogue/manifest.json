@@ -1,0 +1,44 @@
+{
+  "artifacts": [
+    {
+      "byte_length": 79256,
+      "relative_path": "development.json",
+      "sha256": "sha256:79d7dc04f34fa5307c008b134bb47c93a250494fd4d9250486b0678be09f19a4"
+    },
+    {
+      "byte_length": 48948,
+      "relative_path": "internal-holdout.json",
+      "sha256": "sha256:a00f4e5f7f82d7df35f93e541f40a5eb42e2722d96b73b2cc32d77875c388ed9"
+    },
+    {
+      "byte_length": 29234,
+      "relative_path": "expert-reserved.json",
+      "sha256": "sha256:333220aa0982974194aefea4d019fbebca334864457d5fbe933afbdd59218fb8"
+    },
+    {
+      "byte_length": 633,
+      "relative_path": "separation-audit.json",
+      "sha256": "sha256:306134c7b41f34b5e3d7ddd67e98cfcc27e6adb6da756ba99e61cf439fb576e6"
+    }
+  ],
+  "authority_state": "INTERNAL_VALIDATION",
+  "case_total": 67,
+  "catalogue_version": "pgx-wave04-validation-catalogue/1",
+  "development_count": 34,
+  "expert_holdout_count": 12,
+  "expert_reserved_carry_no_expected_answer": true,
+  "internal_holdout_count": 21,
+  "limitations": [
+    "one process authored the candidate rules, these cases and the expected answers for two of the three partitions; no partition here is independent of the build it tests, and a passing separation audit says the partitions do not leak into each other, not that any of them is independent evidence",
+    "the DEVELOPMENT partition can only confirm that the ruleset encodes what its author intended; it is internal consistency evidence and is never validation of the science",
+    "the INTERNAL_HOLDOUT partition tests refusal and boundary behaviour that no rule states, so a ruleset can encode every rule correctly and still fail it; that makes it a stronger check than the development partition and still not an external one",
+    "the EXPERT_HOLDOUT partition carries no expected answers at all, because recording one would be inventing an expert judgment; it is reserved unopened for a later external reviewer",
+    "results from this catalogue may be described as INTERNAL_VALIDATION or LITERATURE_DERIVED_VALIDATION and as nothing else"
+  ],
+  "release_manifest_hash": "sha256:0cd22a88f086a2d408e3ac4da0738eba5233f500ab277ccbf4033a8c14581d01",
+  "release_public_id": "PGX-CANDIDATE-REL-20260906-001",
+  "review_state": "PENDING_EXTERNAL_EXPERT_REVIEW",
+  "ruleset_content_hash": "sha256:29ca1949b33522f81f745b5b51e61b75913ad4e8584c852bfe2b96cc0fc7c71a",
+  "sealed_before_any_benchmark_run": true,
+  "separation_issue_count": 0
+}

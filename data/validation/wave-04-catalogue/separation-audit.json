@@ -1,0 +1,23 @@
+{
+  "audit_version": "pgx-wp18-separation-audit/1",
+  "checked_case_count": 67,
+  "checked_rules": [
+    "CONTENT_DUPLICATE_ACROSS_PARTITIONS",
+    "CONTENT_DUPLICATE_WITHIN_PARTITION",
+    "DERIVATION_FAMILY_SPLIT",
+    "DEVELOPMENT_RELABELLED_AS_HOLDOUT",
+    "HOLDOUT_DERIVED_FROM_DEVELOPMENT",
+    "HOLDOUT_PROVENANCE_MISSING",
+    "PAYLOAD_HASH_MISMATCH",
+    "RELEASE_COMPATIBILITY_CONFLICT",
+    "RESTRICTED_FIELD_IN_PUBLIC_MANIFEST",
+    "ROLE_OVERLAP"
+  ],
+  "development_count": 34,
+  "expert_holdout_count": 12,
+  "internal_holdout_count": 21,
+  "is_clean": true,
+  "issue_codes": [],
+  "issue_count": 0,
+  "issues": []
+}
