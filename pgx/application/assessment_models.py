@@ -27,6 +27,8 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Any, Dict, Mapping, Optional, Sequence, Tuple
 
+from pgx.domain.candidate_claims import (execution_basis_of,
+                                         permits_execution)
 from pgx.domain.claims import (DEFAULT_CLAIM_BOUNDARY, ClaimBoundary,
                                OperationMode, PermittedInputKind)
 from pgx.domain.hashing import sha256_digest
@@ -216,7 +218,7 @@ class AssessmentInput:
         # tell a caller their claim boundary is unapproved when the real
         # problem is that they asked for PILOT.
         if boundary.is_mode_enabled(self.mode) \
-                and not boundary.permits_execution(self.mode):
+                and not permits_execution(boundary, self.mode):
             raise AssessmentInputError(
                 "the claim boundary is %r. No assessment executes until named "
                 "humans have approved the intended purpose, or until a "
@@ -227,7 +229,7 @@ class AssessmentInput:
                 location="$.claim_boundary",
                 detail={"phase": boundary.phase.value,
                         "status": boundary.status,
-                        "execution_basis": boundary.execution_basis})
+                        "execution_basis": execution_basis_of(boundary)})
         if not boundary.is_mode_enabled(self.mode):
             raise AssessmentInputError(
                 "operation mode %s is not enabled in %s"

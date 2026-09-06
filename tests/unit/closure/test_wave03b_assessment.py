@@ -22,8 +22,9 @@ from pgx.application.candidate_assessment_service import (
 from pgx.application.candidate_release import (CandidateReleaseError,
                                                CandidateReleaseResolver,
                                                load_active_candidate_release)
-from pgx.domain.claims import (P0_CANDIDATE_CLAIM_BOUNDARY, P0_CLAIM_BOUNDARY,
-                               OperationMode, PermittedInputKind)
+from pgx.domain.candidate_claims import P0_CANDIDATE_CLAIM_BOUNDARY
+from pgx.domain.claims import (P0_CLAIM_BOUNDARY, OperationMode,
+                               PermittedInputKind)
 from pgx.domain.enums import AttentionLevel, CoverageStatus, Phenotype
 from pgx.engine.phenotype_models import (PhenotypeObservation, PhenotypeProfile)
 

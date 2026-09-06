@@ -111,7 +111,7 @@
       "verdict": "PASS"
     },
     {
-      "evidence": "345 python modules scanned for the five prohibited authority terms, 0 offenders; candidate boundary is_approved=False; P0 boundary is_approved=False; expert-review package untouched",
+      "evidence": "347 python modules scanned for the five prohibited authority terms, 0 offenders; candidate boundary is_approved=False; P0 boundary is_approved=False; expert-review package untouched",
       "gate": "G10",
       "requirement": "No external approval, independent validation or final THS-6 claim was fabricated.",
       "verdict": "PASS"

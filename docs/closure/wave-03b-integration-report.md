@@ -25,24 +25,38 @@ Everything Wave 3 produced is preserved unchanged: its report, its manifest,
 `PGX-CANDIDATE-EVIDENCE-WAVE03`, `PGX-CANDIDATE-RELEASE-WAVE03`, and the
 rejection of `PGX-DATA-20260830-900`. Wave 3B supersedes by lineage.
 
-## 2. The authority path — narrowed, not widened
+## 2. The authority path — a new type, not a relaxed one
 
-`is_approved` was **not** made permissive. `ClaimBoundary` gained an
-`authority` field defaulting to the pre-existing meaning, a `permits_execution`
-predicate admitting two distinct bases, and a new
-`P0_CANDIDATE_CLAIM_BOUNDARY` identical to P0 in every restriction.
+`is_approved` was **not** made permissive, and `pgx/domain/claims.py` was not
+edited at all. The provisional boundary lives in a new module,
+`pgx/domain/candidate_claims.py`, holding `ClaimBoundaryAuthority`, a
+`CandidateClaimBoundary` subclass, and `P0_CANDIDATE_CLAIM_BOUNDARY` — identical
+to P0 in every restriction.
 
-`is_approved` was **narrowed**: a boundary whose authority is provisional now
-returns `False` regardless of its status text. That was not a precaution. The
-first version of the candidate boundary made `is_approved` return **`True`** —
-the property was a substring test for "DRAFT" and "AWAITING" over free text,
-and the status `PROJECT_TEAM_PROVISIONAL / PENDING EXTERNAL EXPERT REVIEW`
-contains neither. A boundary signed by nobody reported itself as approved. The
-authority check now runs first.
+**Why a new module.** The first version of this work put those additions inside
+`claims.py`, which is a frozen WP-01 legacy baseline artifact pinned in
+`data/legacy-baseline/manifest.json` with `mutable_legacy_state: false`;
+`scripts/amend_legacy_manifest.py` refuses to amend a legacy entry at all. The
+edit was caught by `tests/unit/test_manifest_amendment.py::test_every_legacy_
+artifact_hash_still_matches_disk`, the guard that exists for exactly this. The
+file was restored to its baseline bytes and the whole baseline — 64 legacy and
+22 evidence artifacts — matches disk again.
+
+**Why a distinct type, independent of that.** `ClaimBoundary.is_approved` is a
+substring test for "DRAFT" and "AWAITING" over a free-text status, and the
+candidate status `PROJECT_TEAM_PROVISIONAL / PENDING EXTERNAL EXPERT REVIEW`
+contains neither — so a candidate boundary built as a plain `ClaimBoundary`
+reported itself **approved**. A boundary signed by nobody claimed a human
+approval. `CandidateClaimBoundary.is_approved` does not read the status; it
+returns the constant `False`, so no wording can move it. The frozen class keeps
+its WP-00 behaviour for every boundary that is not this one.
 
 `permits_execution` cannot enable a mode the boundary does not already enable,
 so a provisional boundary can never unlock `PILOT`. That needs the signatures.
-`ADR 0001` records the change, as `architecture.md` section 23 requires.
+`tests/unit/engine/test_wp14_boundaries.py` now admits a second boundary owner
+and pays for it with a check that no boundary either owner ships is approved or
+enables `PILOT`. `ADR 0001` records the decision, as `architecture.md`
+section 23 requires.
 
 ## 3. Honest acquisition vocabulary
 
@@ -182,7 +196,7 @@ answer — the candidate path gets its attention level from
 `risk_models.aggregate_attention`, the same function the governed path uses, so
 the two cannot drift on the one question where drifting would matter.
 
-## 7. Five boundary guards fired; none was weakened
+## 7. Seven boundary guards fired; none was weakened
 
 | Guard | What it caught | How it was answered |
 |---|---|---|
@@ -191,6 +205,15 @@ the two cannot drift on the one question where drifting would matter.
 | `data/rulesets` is empty | the candidate ruleset sat where `FrozenRulesetRegistry` scans | moved to `data/candidate-rulesets` |
 | engine/application inventories | three unregistered modules | registered by name, with the WP-14 architecture note updated |
 | artifact role map | a second snapshot family made "missing" meaningless for both | artifacts now name their family; missing is computed within it |
+| WP-01 legacy baseline hashes | the candidate boundary had been added inside the frozen `pgx/domain/claims.py` | the file was restored to its baseline bytes; the boundary moved to `pgx/domain/candidate_claims.py` (section 2) |
+| only one module constructs a `ClaimBoundary` | the new module is a second owner | the exemption is explicit and paid for by a check that no boundary either owner ships is approved or enables `PILOT` |
+
+The baseline guard fired late — during Wave 4, not Wave 3B — because the suite
+that carries it, `tests/unit/test_manifest_amendment.py`, sits at the top level
+of `tests/unit` and was not in the per-package sweep Wave 3B ran. It is in the
+sweep now. Nothing about the finding was environmental: the amendment tool
+refuses to amend a legacy entry at all, so there was never a sanctioned way to
+bless the edit, only a wrong one and a right one.
 
 Adding `care_setting` to `semantic_content` also broke 63 application tests,
 because `build_input_snapshot` builds the hashed document separately. Both

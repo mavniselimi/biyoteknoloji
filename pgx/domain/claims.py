@@ -44,12 +44,8 @@ __all__ = [
     "CANONICAL_CLINICAL_WARNING",
     "CANONICAL_CLINICAL_WARNING_EN",
     "CANONICAL_CLINICAL_WARNING_TR",
-    "CANDIDATE_CLAIM_BOUNDARY_STATUS",
-    "CANDIDATE_CLAIM_BOUNDARY_VERSION",
     "CLAIM_BOUNDARY_STATUS",
     "CLAIM_BOUNDARY_VERSION",
-    "ClaimBoundaryAuthority",
-    "P0_CANDIDATE_CLAIM_BOUNDARY",
     "CLAIM_SCANNER_VERSION",
     "DEFAULT_CLAIM_BOUNDARY",
     "P0_CLAIM_BOUNDARY",
@@ -353,41 +349,6 @@ class ProhibitedClaimError(ClaimBoundaryError):
 P0_ENABLED_MODES = frozenset({OperationMode.DEMO, OperationMode.VALIDATION})
 
 
-class ClaimBoundaryAuthority(str, Enum):
-    """Who stands behind a claim boundary, and therefore what it may permit.
-
-    This exists because ``is_approved`` answers exactly one question - has the
-    approval record in ``docs/architecture/intended-purpose.md`` section 11
-    been signed by the four named people - and that question has exactly one
-    correct answer today: no. Widening ``is_approved`` so a candidate build
-    could run would redefine "approved" to mean "provisional", which is the
-    single change this project must never make.
-
-    So the candidate path gets its own member instead. A boundary carrying
-    ``PROJECT_TEAM_PROVISIONAL`` is not approved, reports itself as not
-    approved, and is permitted to execute only in the modes P0 already
-    enables. Nothing about the human approval requirement moves.
-
-    ``HUMAN_APPROVAL_REQUIRED`` is the default, so every boundary that existed
-    before this member did behaves exactly as it did.
-    """
-
-    HUMAN_APPROVAL_REQUIRED = "HUMAN_APPROVAL_REQUIRED"
-    PROJECT_TEAM_PROVISIONAL = "PROJECT_TEAM_PROVISIONAL"
-
-    def __str__(self) -> str:
-        return self.value
-
-
-#: The status a provisional candidate boundary carries. Spelled once so the
-#: boundary, the report, the API and the UI cannot disagree about it, and
-#: worded so that no reader can mistake it for an approval.
-CANDIDATE_CLAIM_BOUNDARY_STATUS = (
-    "PROJECT_TEAM_PROVISIONAL / PENDING EXTERNAL EXPERT REVIEW")
-
-CANDIDATE_CLAIM_BOUNDARY_VERSION = "0.1.0-candidate-provisional"
-
-
 @dataclass(frozen=True)
 class ClaimBoundary:
     """Immutable declaration of what the product may and may not claim.
@@ -407,10 +368,6 @@ class ClaimBoundary:
     warning_by_language: Mapping[str, str] = field(
         default_factory=lambda: CANONICAL_CLINICAL_WARNING
     )
-    #: Defaults to the pre-existing meaning, so a boundary constructed by any
-    #: code written before this field existed is unchanged in every respect.
-    authority: ClaimBoundaryAuthority = \
-        ClaimBoundaryAuthority.HUMAN_APPROVAL_REQUIRED
 
     # -- mode questions --------------------------------------------------
 
@@ -449,61 +406,8 @@ class ClaimBoundary:
         gates may read this flag, but no code may set it to ``True`` without
         the recorded approval artifacts named in
         ``docs/architecture/intended-purpose.md``.
-
-        The authority check comes first and is not a formality. Without it
-        this property is a substring test over a free-text status, and a
-        provisional boundary whose status happened to avoid the words "draft"
-        and "awaiting" would report itself as approved - which is exactly what
-        the first version of the candidate boundary did, and exactly the
-        redefinition of "approved" this project must never make. A boundary
-        that names a provisional authority is never approved, whatever its
-        status says.
         """
-        if self.authority is ClaimBoundaryAuthority.PROJECT_TEAM_PROVISIONAL:
-            return False
         return "DRAFT" not in self.status.upper() and "AWAITING" not in self.status.upper()
-
-    @property
-    def is_provisional(self) -> bool:
-        """``True`` for a project-team candidate boundary. Never an approval.
-
-        Deliberately a separate question from :attr:`is_approved`, and both
-        can be false at once: that is the state ``P0_CLAIM_BOUNDARY`` is in
-        and must stay in.
-        """
-        return self.authority is ClaimBoundaryAuthority.PROJECT_TEAM_PROVISIONAL
-
-    def permits_execution(self, mode: OperationMode) -> bool:
-        """Whether an assessment may run at all under this boundary.
-
-        Two ways in, and they are not equivalent:
-
-        * an **approved** boundary, meaning the section 11 record is signed;
-        * a **provisional** boundary, meaning the project team recorded a
-          candidate decision and is running the candidate build in a mode P0
-          already enables.
-
-        The second is narrower on purpose. A provisional boundary cannot
-        enable a mode that P0 does not, so it can never be the thing that
-        unlocks ``PILOT``; if a caller wants that, they need the signatures,
-        which is the whole point.
-        """
-        if not isinstance(mode, OperationMode):
-            raise TypeError("mode must be an OperationMode")
-        if not self.is_mode_enabled(mode):
-            return False
-        if self.is_approved:
-            return True
-        return self.is_provisional and mode in P0_ENABLED_MODES
-
-    @property
-    def execution_basis(self) -> str:
-        """Why execution is or is not permitted, for a reader of a report."""
-        if self.is_approved:
-            return "APPROVED"
-        if self.is_provisional:
-            return ClaimBoundaryAuthority.PROJECT_TEAM_PROVISIONAL.value
-        return "NOT_PERMITTED_PENDING_HUMAN_APPROVAL"
 
 
 #: The P0 claim boundary. All prohibited categories apply; PILOT is disabled;
@@ -519,32 +423,6 @@ P0_CLAIM_BOUNDARY = ClaimBoundary(
 
 #: The boundary used when a caller does not pass one explicitly.
 DEFAULT_CLAIM_BOUNDARY = P0_CLAIM_BOUNDARY
-
-
-#: The boundary the candidate build runs under.
-#:
-#: Identical to ``P0_CLAIM_BOUNDARY`` in every restriction - the same prohibited
-#: categories, the same permitted input kinds, the same two modes, the same
-#: canonical warning. It differs in exactly one respect: it records that a
-#: project team took provisional responsibility for running the candidate
-#: prototype, so ``permits_execution`` returns true for DEMO and VALIDATION.
-#:
-#: ``is_approved`` is ``False`` here, and stays ``False``. Anything that reads
-#: that flag to decide whether a human has signed keeps getting the right
-#: answer.
-#:
-#: This is **not** the default. A caller has to name it, which means the
-#: candidate path is visible at every call site rather than inherited by
-#: accident.
-P0_CANDIDATE_CLAIM_BOUNDARY = ClaimBoundary(
-    phase=ClaimPhase.P0,
-    enabled_modes=P0_ENABLED_MODES,
-    prohibited_categories=frozenset(ProhibitedClaimCategory),
-    permitted_input_kinds=frozenset(PermittedInputKind),
-    version=CANDIDATE_CLAIM_BOUNDARY_VERSION,
-    status=CANDIDATE_CLAIM_BOUNDARY_STATUS,
-    authority=ClaimBoundaryAuthority.PROJECT_TEAM_PROVISIONAL,
-)
 
 
 def is_mode_enabled(

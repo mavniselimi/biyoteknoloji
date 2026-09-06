@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import ast
+import hashlib
 import json
 import os
 import unittest
@@ -13,8 +14,12 @@ from pgx.closure.candidate_dq_criteria import (PERMITTED_BLOCKING_CODES,
 from pgx.closure.capture_payloads import (CAPTURE_LIMITATIONS,
                                           build_capture_files,
                                           build_capture_reads)
-from pgx.domain.claims import (P0_CANDIDATE_CLAIM_BOUNDARY, P0_CLAIM_BOUNDARY,
-                               ClaimBoundaryAuthority, OperationMode)
+from pgx.domain.candidate_claims import (P0_CANDIDATE_CLAIM_BOUNDARY,
+                                         CandidateClaimBoundary,
+                                         ClaimBoundaryAuthority,
+                                         execution_basis_of, is_provisional,
+                                         permits_execution)
+from pgx.domain.claims import P0_CLAIM_BOUNDARY, OperationMode
 from pgx.ingestion.snapshots import SnapshotKind
 from pgx.normalization.artifacts import role_of
 from pgx.normalization.quality_decision import (LEDGER_PATH, QualityDecision,
@@ -71,37 +76,98 @@ def _call_args(tree, function, attribute):
     return calls
 
 
+class FrozenBaselineTest(unittest.TestCase):
+    """``pgx/domain/claims.py`` is WP-01 baseline evidence and does not move."""
+
+    def test_the_frozen_claims_module_matches_the_wp01_baseline(self):
+        """The guard that caught the first version of this work.
+
+        The candidate boundary was originally added inside ``claims.py``. That
+        file is pinned in the WP-01 legacy baseline with
+        ``mutable_legacy_state: false``, and ``amend_legacy_manifest.py``
+        refuses to amend a legacy entry at all - the baseline is evidence of
+        what WP-00 shipped, and evidence that is rewritten when it becomes
+        inconvenient is not evidence. The boundary moved to its own module and
+        this asserts the frozen file is byte-for-byte what it was.
+        """
+        manifest = os.path.join(REPO, "data", "legacy-baseline",
+                                "manifest.json")
+        with open(manifest, encoding="utf-8") as handle:
+            document = json.load(handle)
+        pinned = [e for e in document["artifacts"]
+                  if e["path"] == "pgx/domain/claims.py"]
+        self.assertEqual(len(pinned), 1)
+        self.assertFalse(pinned[0]["mutable_legacy_state"])
+        with open(os.path.join(REPO, "pgx", "domain", "claims.py"),
+                  "rb") as handle:
+            digest = hashlib.sha256(handle.read()).hexdigest()
+        self.assertEqual(digest, pinned[0]["sha256"])
+
+    def test_the_candidate_boundary_lives_outside_the_frozen_module(self):
+        self.assertEqual(CandidateClaimBoundary.__module__,
+                         "pgx.domain.candidate_claims")
+
+
 class ClaimBoundaryTest(unittest.TestCase):
     """The candidate boundary must never become an approval."""
 
     def test_the_p0_boundary_is_unchanged_and_still_refuses(self):
         self.assertFalse(P0_CLAIM_BOUNDARY.is_approved)
-        self.assertFalse(P0_CLAIM_BOUNDARY.is_provisional)
+        self.assertFalse(is_provisional(P0_CLAIM_BOUNDARY))
+        self.assertNotIsInstance(P0_CLAIM_BOUNDARY, CandidateClaimBoundary)
         for mode in OperationMode:
-            self.assertFalse(P0_CLAIM_BOUNDARY.permits_execution(mode),
+            self.assertFalse(permits_execution(P0_CLAIM_BOUNDARY, mode),
                              mode.value)
+
+    def test_the_frozen_class_gained_no_candidate_behaviour(self):
+        """The provisional vocabulary exists only on the candidate type.
+
+        If these attributes appeared on the base class, the frozen module
+        would have been edited - which is the thing that must not happen.
+        """
+        for name in ("authority", "is_provisional", "permits_execution",
+                     "execution_basis"):
+            self.assertFalse(hasattr(P0_CLAIM_BOUNDARY, name), name)
 
     def test_the_candidate_boundary_is_not_approved(self):
         self.assertFalse(P0_CANDIDATE_CLAIM_BOUNDARY.is_approved)
         self.assertTrue(P0_CANDIDATE_CLAIM_BOUNDARY.is_provisional)
-        self.assertEqual(P0_CANDIDATE_CLAIM_BOUNDARY.execution_basis,
+        self.assertTrue(is_provisional(P0_CANDIDATE_CLAIM_BOUNDARY))
+        self.assertEqual(execution_basis_of(P0_CANDIDATE_CLAIM_BOUNDARY),
                          "PROJECT_TEAM_PROVISIONAL")
 
     def test_a_provisional_status_cannot_manufacture_an_approval(self):
-        """The exact defect the authority check was added to close.
+        """The exact defect the separate type was created to close.
 
-        ``is_approved`` was a substring test over free text. A provisional
-        boundary whose status avoided the words "draft" and "awaiting" - as
-        this one's does - reported itself as approved.
+        ``ClaimBoundary.is_approved`` is a substring test over free text. A
+        provisional boundary whose status avoids the words "draft" and
+        "awaiting" - as this one's does - reports itself as approved. The
+        frozen class still behaves that way, because it is frozen; the
+        candidate class overrides the property to a constant instead.
         """
-        status = P0_CANDIDATE_CLAIM_BOUNDARY.status.upper()
-        self.assertNotIn("DRAFT", status)
-        self.assertNotIn("AWAITING", status)
+        from pgx.domain.claims import ClaimBoundary, ClaimPhase
+        status = P0_CANDIDATE_CLAIM_BOUNDARY.status
+        self.assertNotIn("DRAFT", status.upper())
+        self.assertNotIn("AWAITING", status.upper())
+        # The hazard, demonstrated on the frozen class rather than asserted:
+        # the same status on a plain ClaimBoundary really does read approved.
+        naive = ClaimBoundary(phase=ClaimPhase.P0, status=status)
+        self.assertTrue(naive.is_approved)
+        # And closed on the candidate class, which does not read the status.
         self.assertFalse(P0_CANDIDATE_CLAIM_BOUNDARY.is_approved)
+
+    def test_the_candidate_class_cannot_be_given_another_authority(self):
+        with self.assertRaises(ValueError):
+            CandidateClaimBoundary(
+                phase=P0_CLAIM_BOUNDARY.phase,
+                authority=ClaimBoundaryAuthority.HUMAN_APPROVAL_REQUIRED)
 
     def test_a_provisional_boundary_cannot_unlock_pilot(self):
         self.assertFalse(
             P0_CANDIDATE_CLAIM_BOUNDARY.permits_execution(OperationMode.PILOT))
+        self.assertFalse(
+            permits_execution(P0_CANDIDATE_CLAIM_BOUNDARY,
+                              OperationMode.PILOT))
 
     def test_the_candidate_boundary_restricts_exactly_as_p0_does(self):
         self.assertEqual(P0_CANDIDATE_CLAIM_BOUNDARY.prohibited_categories,
@@ -113,11 +179,14 @@ class ClaimBoundaryTest(unittest.TestCase):
         self.assertEqual(P0_CANDIDATE_CLAIM_BOUNDARY.warning_by_language,
                          P0_CLAIM_BOUNDARY.warning_by_language)
 
-    def test_the_default_authority_preserves_the_old_meaning(self):
+    def test_an_ordinary_boundary_is_never_treated_as_provisional(self):
         from pgx.domain.claims import ClaimBoundary, ClaimPhase
         made = ClaimBoundary(phase=ClaimPhase.P0)
-        self.assertIs(made.authority,
-                      ClaimBoundaryAuthority.HUMAN_APPROVAL_REQUIRED)
+        self.assertFalse(is_provisional(made))
+        self.assertEqual(execution_basis_of(made),
+                         "NOT_PERMITTED_PENDING_HUMAN_APPROVAL")
+        self.assertEqual(ClaimBoundaryAuthority.HUMAN_APPROVAL_REQUIRED.value,
+                         "HUMAN_APPROVAL_REQUIRED")
 
 
 class VocabularyTest(unittest.TestCase):

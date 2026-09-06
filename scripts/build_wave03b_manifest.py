@@ -22,8 +22,9 @@ from pgx.closure.candidate_dq_criteria import (  # noqa: E402
     PERMITTED_BLOCKING_CODES, evaluate_candidate_criteria)
 from pgx.closure.wave03b_build import build_candidate_interpretations  # noqa: E402
 from pgx.domain.authority import PROHIBITED_AUTHORITY_TERMS  # noqa: E402
-from pgx.domain.claims import (P0_CANDIDATE_CLAIM_BOUNDARY,  # noqa: E402
-                               P0_CLAIM_BOUNDARY)
+from pgx.domain.candidate_claims import (  # noqa: E402
+    P0_CANDIDATE_CLAIM_BOUNDARY)
+from pgx.domain.claims import P0_CLAIM_BOUNDARY  # noqa: E402
 from pgx.normalization.quality_decision import (LEDGER_PATH,  # noqa: E402
                                                 QualityDecision, load_ledger)
 

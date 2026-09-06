@@ -364,29 +364,69 @@ class TestWp14ReachesForNothingItWasNotGiven(unittest.TestCase):
                                   imported=name):
                     self.assertFalse(name.startswith("tests."))
 
-    def test_only_wp00_constructs_a_claim_boundary(self):
+    #: The only two modules under ``pgx/`` that may construct a claim
+    #: boundary. ``claims.py`` is the WP-00 owner of the type and the P0
+    #: instance. ``candidate_claims.py`` was added because ``claims.py`` is a
+    #: frozen WP-01 baseline artifact and could not be edited to carry the
+    #: provisional candidate boundary; it is exempted here and paid for by
+    #: ``test_no_boundary_an_owner_ships_is_approved_or_enables_pilot``, which
+    #: checks what the exemption could otherwise hide.
+    BOUNDARY_OWNERS = (os.path.join("pgx", "domain", "claims.py"),
+                       os.path.join("pgx", "domain", "candidate_claims.py"))
+
+    def test_only_a_boundary_owner_constructs_a_claim_boundary(self):
         """The one thing a fixture may do that production code may not.
 
         ``synthetic_claim_boundary()`` builds a boundary whose status reads as
-        approved, and it lives in a test fixture. ``pgx/domain/claims.py``
-        legitimately defines the type and the P0 instance - that is the module
-        that owns it - and nothing else under ``pgx/`` constructs one, so no
-        service can quietly hand itself a boundary that permits execution.
+        approved, and it lives in a test fixture. The two owner modules
+        legitimately define the type and its instances, and nothing else under
+        ``pgx/`` constructs one, so no service can quietly hand itself a
+        boundary that permits execution.
         """
-        owner = os.path.join("pgx", "domain", "claims.py")
         for root, dirs, files in os.walk(os.path.join(REPO_ROOT, "pgx")):
             dirs[:] = [name for name in dirs if name != "__pycache__"]
             for name in sorted(files):
                 if not name.endswith(".py"):
                     continue
                 path = os.path.join(root, name)
-                if os.path.relpath(path, REPO_ROOT) == owner:
+                if os.path.relpath(path, REPO_ROOT) in self.BOUNDARY_OWNERS:
                     continue
                 text = source(path)
                 with self.subTest(module=os.path.relpath(path, REPO_ROOT)):
                     self.assertNotIn("ClaimBoundary(", text)
                     self.assertNotIn("DEFAULT_CLAIM_BOUNDARY =", text)
                     self.assertNotIn("is_approved = True", text)
+
+    def test_no_boundary_an_owner_ships_is_approved_or_enables_pilot(self):
+        """What the second owner buys itself an exemption to do, checked.
+
+        An owner may *build* a boundary; neither may *bless* one. Every
+        boundary either module exposes at import time is inspected as an
+        object rather than as text, so a status string, an overridden
+        property or a future field cannot talk its way past this.
+        """
+        import importlib
+
+        from pgx.domain.claims import ClaimBoundary, OperationMode
+
+        found = []
+        for relative in self.BOUNDARY_OWNERS:
+            module_name = relative[:-len(".py")].replace(os.sep, ".")
+            module = importlib.import_module(module_name)
+            for name in sorted(dir(module)):
+                value = getattr(module, name)
+                if isinstance(value, ClaimBoundary):
+                    found.append((module_name, name, value))
+        # P0_CLAIM_BOUNDARY, DEFAULT_CLAIM_BOUNDARY and the candidate one.
+        self.assertGreaterEqual(len(found), 3)
+        self.assertEqual(
+            {module_name for module_name, _, _ in found},
+            {relative[:-len(".py")].replace(os.sep, ".")
+             for relative in self.BOUNDARY_OWNERS})
+        for module_name, name, boundary in found:
+            with self.subTest(module=module_name, constant=name):
+                self.assertFalse(boundary.is_approved)
+                self.assertNotIn(OperationMode.PILOT, boundary.enabled_modes)
 
     def test_the_boundary_wp00_ships_is_not_approved(self):
         """The other half: the module that may build one builds an

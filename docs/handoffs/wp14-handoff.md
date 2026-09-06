@@ -154,7 +154,7 @@ wrong: below `LOW` makes absence lose to a real finding and vanish; above
 ## 7. What was verified, and how
 
 4,687 tests pass across WP-00-WP-15 as this is written, 16 skipped (they require PostgreSQL,
-which is unavailable in this environment). WP-14 contributes 445 of them:
+which is unavailable in this environment). WP-14 contributes 446 of them:
 
 | Tests | File |
 |---|---|
@@ -164,7 +164,7 @@ which is unavailable in this environment). WP-14 contributes 445 of them:
 | 40 | `tests/unit/application/test_assessment_cli.py` |
 | 30 | `tests/unit/engine/test_risk_execution.py` |
 | 33 | `tests/unit/engine/test_risk_legacy_regression.py` |
-| 41 | `tests/unit/engine/test_wp14_boundaries.py` |
+| 42 | `tests/unit/engine/test_wp14_boundaries.py` |
 | 37 | `tests/unit/engine/test_wp14_documentation.py` |
 | 56 | `tests/unit/infrastructure/test_assessment_persistence.py` |
 | 38 | `tests/safety/test_assessment_safety.py` |

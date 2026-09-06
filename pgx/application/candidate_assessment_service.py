@@ -31,8 +31,10 @@ from pgx.application.candidate_release import (CandidateReleaseError,
                                                CandidateReleaseResolver,
                                                PinnedCandidateRelease)
 from pgx.domain.authority import CandidateAuthorityState
+from pgx.domain.candidate_claims import (P0_CANDIDATE_CLAIM_BOUNDARY,
+                                         execution_basis_of)
 from pgx.domain.claims import (CANONICAL_CLINICAL_WARNING, ClaimBoundary,
-                               OperationMode, P0_CANDIDATE_CLAIM_BOUNDARY)
+                               OperationMode)
 from pgx.domain.hashing import sha256_digest
 from pgx.engine.candidate_evaluation import (CandidateEvaluation,
                                              evaluate_candidate)
@@ -104,7 +106,8 @@ class CandidateAssessmentService:
             release, available, detail = None, False, str(exc)
         return {
             "active_candidate_release": release,
-            "claim_boundary_execution_basis": self._boundary.execution_basis,
+            "claim_boundary_execution_basis": execution_basis_of(
+                self._boundary),
             "claim_boundary_is_approved": self._boundary.is_approved,
             "claim_boundary_status": self._boundary.status,
             "detail": detail,
