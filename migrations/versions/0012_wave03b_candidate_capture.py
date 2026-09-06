@@ -46,12 +46,14 @@ has no WP-04 run either, and the honest place to say so is its own
 
 from __future__ import annotations
 
+from typing import Union
+
 from alembic import op
 
-revision = "0012_wave03b_candidate_capture"
-down_revision = "0011_wp23_auth_audit"
-branch_labels = None
-depends_on = None
+revision: str = "0012_wave03b_candidate_capture"
+down_revision: Union[str, None] = "0011_wp23_auth_audit"
+branch_labels: Union[str, None] = None
+depends_on: Union[str, None] = None
 
 _ACQUISITION_MODES_BEFORE = (
     "'NOT_DETERMINED', 'MANUAL_DOWNLOAD', 'OFFICIAL_API', "

@@ -170,8 +170,12 @@ class TestTheAdaptersStayInTheirLayer(unittest.TestCase):
     #: name - and reads nothing; publication itself is delegated to
     #: ``serialization``. Everything else in the package works on values, which
     #: is what makes it testable without a disk.
-    FILESYSTEM_MODULES = ("builder.py", "legacy.py", "registry.py",
-                          "serialization.py")
+    #: ``candidate.py`` writes and reads the candidate ruleset artifact, which
+    #: is the same job ``builder.py`` and ``registry.py`` do for a governed
+    #: one - a five-file directory with its own checksums, sealed once and
+    #: verified byte for byte on every read.
+    FILESYSTEM_MODULES = ("builder.py", "candidate.py", "legacy.py",
+                          "registry.py", "serialization.py")
 
     def test_only_these_modules_touch_the_filesystem(self):
         from tests.unit.rules._support import imports_of, rules_modules

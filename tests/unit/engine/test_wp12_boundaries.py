@@ -110,8 +110,16 @@ class TestTheEnginePackageStaysInItsLayer(unittest.TestCase):
     #: *formats* the timestamps a stored row already holds, and reads none. The
     #: distinction is asserted rather than assumed by
     #: ``test_the_read_model_reads_no_clock`` below.
+    #: A service stamps when a result was produced; a matcher must not. The
+    #: candidate service is exempt for the same reason ``assessment_service``
+    #: is - it records ``computed_at`` on the result and nothing else - and the
+    #: candidate release module because a release manifest records instants.
+    #: Neither clock reaches the evaluation:
+    #: ``pgx/engine/candidate_evaluation.py`` is not exempt and imports none.
     CLOCK_BEARING_MODULES = ("assessment_service.py",
-                             "assessment_read_model.py")
+                             "assessment_read_model.py",
+                             "candidate_assessment_service.py",
+                             "candidate_release.py")
 
     def test_it_needs_no_clock(self):
         """A matcher whose answer could depend on when it ran would make an

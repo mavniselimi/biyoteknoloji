@@ -63,6 +63,7 @@ SNAPSHOT_REQUIRED_KEYS: Tuple[str, ...] = (
     "input_kind",
     "case_id",
     "requested_release_public_id",
+    "care_setting",
     "medications",
     "profile",
     "profile_content_hash",
@@ -149,6 +150,7 @@ def build_input_snapshot(assessment_input: Any) -> Dict[str, Any]:
         "case_id": assessment_input.case_id,
         "requested_release_public_id":
             assessment_input.requested_release_public_id,
+        "care_setting": assessment_input.care_setting,
         "medications": list(assessment_input.medications),
         "profile": profile_document,
         "profile_content_hash": sha256_digest(profile_document),
@@ -227,6 +229,7 @@ def rebuild_input_semantic_content(snapshot: Mapping[str, Any]
         _refuse("the snapshot names at least one medication",
                 location="$.medications")
     return {
+        "care_setting": snapshot["care_setting"],
         "input_schema_version": snapshot["input_schema_version"],
         "mode": snapshot["mode"],
         "input_kind": snapshot["input_kind"],

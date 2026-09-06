@@ -1,0 +1,8 @@
+{
+  "generation": 1,
+  "manifest_hash": "sha256:0cd22a88f086a2d408e3ac4da0738eba5233f500ab277ccbf4033a8c14581d01",
+  "note": "The active candidate release. Not a governed active release: the WP-13 active-release pointer is a separate record and is untouched, because a candidate release has not earned it.",
+  "release_public_id": "PGX-CANDIDATE-REL-20260906-001",
+  "supersedes_note": "The Wave 3 standalone release remains as historical evidence. It was never registered, never active, and is superseded rather than rewritten.",
+  "supersedes_standalone_artifact": "PGX-CANDIDATE-RELEASE-WAVE03"
+}

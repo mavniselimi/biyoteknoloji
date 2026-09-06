@@ -46,6 +46,13 @@ __all__ = [
 
 ASSESSMENT_INPUT_SCHEMA_VERSION = "pgx-assessment-input/1"
 
+#: The closed vocabulary of care settings a request may declare.
+#:
+#: Closed, and short, because each member has to correspond to a column of a
+#: guideline table this project actually transcribed. A free-text field here
+#: would be a place for a diagnosis to arrive under another name.
+PERMITTED_CARE_SETTINGS: Tuple[str, ...] = ("ACS_OR_PCI",)
+
 #: Fields whose presence refuses the whole input, with why. Each names a kind
 #: of data this product does not accept in P0: interpreting a genotype is a
 #: scientific act nobody here is authorised to perform, and a clinical
@@ -111,6 +118,22 @@ class AssessmentInput:
     medications: Tuple[str, ...]
     case_id: Optional[str] = None
     requested_release_public_id: Optional[str] = None
+    #: The care setting a request declares, from a closed vocabulary.
+    #:
+    #: **This is not an ``indication``,** which stays refused above. The
+    #: difference is what the field decides. An indication is a clinical
+    #: judgement about a patient, and accepting one would mean this system
+    #: reasoning from a diagnosis. A care setting selects *which column of a
+    #: guideline table applies*: CPIC's clopidogrel guideline states one set of
+    #: recommendations for ACS and/or PCI and a different set for non-ACS,
+    #: non-PCI, and this release transcribed one of them.
+    #:
+    #: The system never infers it. A request that omits it gets a refusal for
+    #: every drug whose evidence is care-setting-specific, because a patient
+    #: taking clopidogrel is not thereby in an ACS or PCI setting, and assuming
+    #: otherwise would apply a column nobody selected. ``None`` is the default
+    #: and is the safe value.
+    care_setting: Optional[str] = None
     input_schema_version: str = ASSESSMENT_INPUT_SCHEMA_VERSION
 
     def __post_init__(self) -> None:
@@ -167,6 +190,19 @@ class AssessmentInput:
                 code="ASSESSMENT_INPUT_INVALID",
                 location="$.requested_release_public_id")
 
+    def _validate_care_setting(self) -> None:
+        if self.care_setting is None:
+            return
+        if self.care_setting not in PERMITTED_CARE_SETTINGS:
+            raise AssessmentInputError(
+                "care_setting %r is not one of %s. The vocabulary is closed "
+                "because each member names a guideline column this project "
+                "transcribed; an unrecognised value is refused rather than "
+                "ignored, which would silently apply the wrong column."
+                % (self.care_setting, ", ".join(PERMITTED_CARE_SETTINGS)),
+                code="ASSESSMENT_CARE_SETTING_UNSUPPORTED",
+                location="$.care_setting")
+
     def require_permitted(self, boundary: ClaimBoundary) -> None:
         """Refuse unless this boundary enables the mode and the input kind.
 
@@ -174,6 +210,7 @@ class AssessmentInput:
         default read here: a service configured with an unapproved boundary
         must not be rescued by a module-level constant.
         """
+        self._validate_care_setting()
         # Order matters: a mode this boundary does not enable is reported by
         # the mode check below, which names the mode. Reporting it here would
         # tell a caller their claim boundary is unapproved when the real
@@ -214,6 +251,7 @@ class AssessmentInput:
         already computed with the same exclusions.
         """
         return {
+            "care_setting": self.care_setting,
             "input_schema_version": self.input_schema_version,
             "mode": self.mode.value,
             "input_kind": self.input_kind.value,

@@ -36,6 +36,19 @@ it*, which this product does not answer at all.
 | `pgx/application/assessment_cli.py` | 10 read-only commands, 12 refused flags |
 | `pgx/infrastructure/db/assessments.py` | the row mapping and the append-only repository |
 | `migrations/versions/0009_wp14_assessments.py` | five tables, immutable after insert |
+| `pgx/engine/candidate_evaluation.py` | coverage and attention for a candidate release, over the same `aggregate_attention` |
+| `pgx/application/candidate_release.py` | the active candidate release, and the resolver that verifies everything it names |
+| `pgx/application/candidate_assessment_service.py` | the application service that executes a candidate release |
+
+The last three arrived with Wave 3B and are a second *artifact* rather than a
+second engine. `assessment_service.py` executes a governed release, and
+`evaluate_axis_finding` verifies a WP-10 approval record for every rule it
+runs; a candidate rule carries none, by design, so it cannot go through that
+path and must not be made to look as though it can. What the candidate path
+does **not** duplicate is the answer: `candidate_evaluation.py` gets its
+attention level from `risk_models.aggregate_attention`, the same function the
+governed path uses, so the two cannot drift on the one question where drifting
+would matter.
 
 `pgx/engine` remains stdlib-only. WP-14's engine modules import `pgx.domain`
 and `pgx.engine` and nothing else: no application module, no infrastructure

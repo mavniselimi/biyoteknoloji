@@ -59,7 +59,7 @@
     },
     {
       "code": "SOURCE_POLICY_NOT_APPROVED",
-      "detail": "20 source entries, 0 approved",
+      "detail": "21 source entries, 0 approved",
       "meaning": "no source policy entry has completed human review, so no source is cleared for use in an executable rule",
       "owner": "a named source-policy approver",
       "unblocks": "the source-policy eligibility gate opens"
@@ -72,7 +72,7 @@
       "unblocks": "those items may cite evidence and become rule sources"
     }
   ],
-  "content_hash": "sha256:ee583bea2becb5ab0e307c375a52342b8a3d5992acdf97b4e8ae1557950918d1",
+  "content_hash": "sha256:bbb7cd6e044e9cf6d7d98bc08b38109c73b646809539f196a2baa2f09fdc68a8",
   "curation_state": {
     "curated_interpretations": 0,
     "eligible_rule_approval_envelopes": 0,
@@ -113,6 +113,6 @@
       "NOT_PUBLICATION_ELIGIBLE"
     ],
     "source_registry_approved": 0,
-    "source_registry_entries": 20
+    "source_registry_entries": 21
   }
 }

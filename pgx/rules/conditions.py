@@ -60,6 +60,9 @@ __all__ = [
     "PROHIBITED_CONDITION_CONSTRUCTS",
     "RULE_PHENOTYPES",
     "CanonicalAxis",
+    "GeneRequirement",
+    "JOINT_CONDITION_KIND",
+    "JointRuleCondition",
     "PhenotypeMatch",
     "RuleCondition",
     "parse_condition",
@@ -72,6 +75,7 @@ CONDITION_SCHEMA_VERSION = "pgx-rule-condition/1"
 
 #: The only condition kind. Named as a constant so adding a second one is a
 #: visible decision in this file rather than a string appearing in a caller.
+JOINT_CONDITION_KIND = "PGX_JOINT_AXIS"
 CONDITION_KIND = "PGX_AXIS"
 
 #: The only two phenotype operators.
@@ -336,6 +340,170 @@ class RuleCondition:
             self.gene_canonical_key, self.drug_canonical_key,
             self.phenotype.operator,
             ",".join(value.value for value in self.phenotype.values))
+
+
+@dataclass(frozen=True, slots=True)
+class GeneRequirement:
+    """One gene of a joint condition, and the phenotypes it accepts.
+
+    A joint condition is a tuple of these plus one drug. Each carries its own
+    :class:`PhenotypeMatch`, so the operators available on one axis are exactly
+    the operators available on any axis - there is no weaker grammar hiding
+    inside the joint form.
+    """
+
+    gene_canonical_key: str
+    phenotype: PhenotypeMatch
+
+    def __post_init__(self) -> None:
+        object.__setattr__(self, "gene_canonical_key", _require_canonical_key(
+            self.gene_canonical_key, "GENE:", "gene_id"))
+        if not isinstance(self.phenotype, PhenotypeMatch):
+            raise ConditionGrammarError(
+                "phenotype must be a PhenotypeMatch",
+                location="$.genes[].phenotype")
+
+    def to_json(self) -> Dict[str, Any]:
+        return {"gene_id": self.gene_canonical_key,
+                "phenotype": self.phenotype.to_json()}
+
+
+@dataclass(frozen=True, slots=True)
+class JointRuleCondition:
+    """Several canonical genes, one canonical drug, one explicit combination.
+
+    **Why this exists.** CPIC's tricyclic antidepressant guideline states an
+    amitriptyline recommendation as a two-dimensional CYP2C19 x CYP2D6 table,
+    and that table is *not* the pointwise combination of its two single-gene
+    tables. Encoding the two axes separately and taking the strongest of the
+    two answers happens to land near the guideline for most cells, and "happens
+    to" is not a property a pharmacogenomic rule may rest on.
+
+    **What it refuses.** Every gene it names must be present and must match.
+    There is no partial evaluation, no fallback to a single gene, and no
+    default for an absent axis - an absent gene means the condition does not
+    apply, which downstream is a coverage answer rather than a finding. That is
+    the whole reason a joint condition is a distinct type instead of a flag on
+    :class:`RuleCondition`: a caller that has not been taught about joint
+    conditions cannot accidentally evaluate one as if it were single-gene,
+    because it is not the same class.
+
+    **What it does not add.** The same phenotype operators, the same refusal of
+    wildcards, negation, ranges and implicit expansion, the same refusal of
+    ``INDETERMINATE``. A joint condition is more specific than a simple one,
+    never looser.
+    """
+
+    genes: Tuple[GeneRequirement, ...]
+    drug_canonical_key: str
+    kind: str = JOINT_CONDITION_KIND
+    condition_schema_version: str = CONDITION_SCHEMA_VERSION
+
+    def __post_init__(self) -> None:
+        if self.kind != JOINT_CONDITION_KIND:
+            raise ConditionGrammarError(
+                "joint condition kind %r is not supported; the only kind is %r"
+                % (self.kind, JOINT_CONDITION_KIND),
+                code="RULE_COND_KIND_UNSUPPORTED", location="$.kind")
+        if self.condition_schema_version != CONDITION_SCHEMA_VERSION:
+            raise ConditionGrammarError(
+                "condition schema version %r is not %r; this parser will not "
+                "guess at the difference"
+                % (self.condition_schema_version, CONDITION_SCHEMA_VERSION),
+                code="RULE_COND_SCHEMA_VERSION",
+                location="$.condition_schema_version")
+        requirements = tuple(self.genes or ())
+        if len(requirements) < 2:
+            raise ConditionGrammarError(
+                "a joint condition names at least two genes; one gene is a "
+                "simple condition and must be written as one, so that nothing "
+                "reading a rule has to ask which kind it really is",
+                code="RULE_COND_JOINT_TOO_FEW_GENES", location="$.genes")
+        for item in requirements:
+            if not isinstance(item, GeneRequirement):
+                raise ConditionGrammarError(
+                    "joint condition genes are GeneRequirement values",
+                    location="$.genes")
+        keys = [item.gene_canonical_key for item in requirements]
+        if len(set(keys)) != len(keys):
+            raise ConditionGrammarError(
+                "a joint condition names each gene once; a repeated gene "
+                "would let one axis be constrained twice, and the two "
+                "constraints could disagree",
+                code="RULE_COND_JOINT_GENE_REPEATED", location="$.genes")
+        # Canonical order, so two rules naming the same genes in different
+        # source order produce one form and therefore one hash.
+        object.__setattr__(self, "genes",
+                           tuple(sorted(requirements,
+                                        key=lambda item:
+                                        item.gene_canonical_key)))
+        object.__setattr__(self, "drug_canonical_key", _require_canonical_key(
+            self.drug_canonical_key, "DRUG:", "drug_id"))
+
+    @property
+    def gene_keys(self) -> Tuple[str, ...]:
+        return tuple(item.gene_canonical_key for item in self.genes)
+
+    @property
+    def joint_axis_key(self) -> str:
+        """The identity of the axis this condition is about.
+
+        Genes joined by ``+`` in canonical order, then the drug. Distinct by
+        construction from any single-gene axis key, so a joint axis and a
+        simple axis can never collide in a coverage table.
+        """
+        return "%s|%s" % ("+".join(self.gene_keys), self.drug_canonical_key)
+
+    def to_json(self) -> Dict[str, Any]:
+        return {
+            "kind": self.kind,
+            "condition_schema_version": self.condition_schema_version,
+            "drug_id": self.drug_canonical_key,
+            "genes": [item.to_json() for item in self.genes],
+        }
+
+    def frozen(self) -> FrozenMapping:
+        return freeze_json(self.to_json())
+
+    def content_hash(self) -> str:
+        return sha256_digest(self.to_json())
+
+    def matches(self, observed: Mapping[str, Phenotype]) -> bool:
+        """Whether an observed phenotype map satisfies every named gene.
+
+        ``observed`` maps canonical gene key to phenotype. A gene this
+        condition names that is absent from the map returns ``False`` - not an
+        error and not a partial match. The caller decides what an absent gene
+        means for coverage; this only answers whether the rule applies.
+        """
+        for item in self.genes:
+            value = observed.get(item.gene_canonical_key)
+            if value is None or value not in item.phenotype.phenotypes:
+                return False
+        return True
+
+    def expand(self) -> Tuple[Tuple["CanonicalAxis", ...], ...]:
+        """Every combination this condition covers, for rule-to-rule comparison.
+
+        Returns tuples of axes rather than axes, because a joint condition
+        covers *combinations*: two rules overlap only when they cover the same
+        combination, not merely when they mention the same gene.
+        """
+        import itertools
+        per_gene = [
+            [CanonicalAxis(gene_canonical_key=item.gene_canonical_key,
+                           drug_canonical_key=self.drug_canonical_key,
+                           phenotype=value)
+             for value in item.phenotype.values]
+            for item in self.genes]
+        return tuple(tuple(combination)
+                     for combination in itertools.product(*per_gene))
+
+    def __str__(self) -> str:
+        return "%s %s" % (self.drug_canonical_key, " & ".join(
+            "%s%s{%s}" % (item.gene_canonical_key, item.phenotype.operator,
+                          ",".join(v.value for v in item.phenotype.values))
+            for item in self.genes))
 
 
 @dataclass(frozen=True, slots=True)

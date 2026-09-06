@@ -4,6 +4,17 @@
   "additionalProperties": false,
   "description": "One canonical assessment question. PILOT is absent from the mode enumeration rather than merely refused at runtime: a document that could express a PILOT assessment could be stored, and the mode is disabled in P0. The medication list is canonically sorted and unique, so the order a caller typed in cannot reach the hash. content_hash covers what was asked and not the asking - case_id and requested_release_public_id are recorded but excluded, because they label the run rather than the question, and including them would make two identical questions hash differently. No genotype, diplotype, activity score, VCF, EHR or clinical narrative property exists here at all. additionalProperties is false throughout, which is where the boundary is actually enforced: a dose, a recommendation, a preferred or safer flag, a suitability score, a ranking, a treatment or a rendered sentence cannot be attached to any of these documents by anything downstream, because the schema refuses every property it does not name. WP-14 calculates structured facts; WP-15 renders them.",
   "properties": {
+    "care_setting": {
+      "description": "The care setting a request declares, from a closed vocabulary, or null. Not an indication: an indication is a clinical judgement about a patient and is refused outright, while a care setting selects which column of a guideline table applies. Never inferred; null is the safe value and produces a refusal for any drug whose evidence is care-setting-specific.",
+      "enum": [
+        "ACS_OR_PCI",
+        null
+      ],
+      "type": [
+        "string",
+        "null"
+      ]
+    },
     "case_id": {
       "anyOf": [
         {
@@ -67,6 +78,7 @@
     }
   },
   "required": [
+    "care_setting",
     "case_id",
     "content_hash",
     "input_kind",

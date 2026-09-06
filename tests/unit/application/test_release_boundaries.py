@@ -344,10 +344,16 @@ class TestReleaseAndIngestionStaySeparate(unittest.TestCase):
     #: input and pinned-release contracts, and - unlike WP-12 and WP-13 - a
     #: real *service*, because executing an assessment does transition state:
     #: it writes an immutable record and an audit event, atomically.
+    #: WP-14, plus the two candidate-track modules. Those two execute a
+    #: candidate release rather than a governed one, which is a different
+    #: artifact with different provenance, but the same layer: they resolve a
+    #: release, check the claim boundary, and hand the work to the engine.
     ASSESSMENT_MODULES = ("assessment_cli.py", "assessment_gate_status.py",
                           "assessment_models.py", "assessment_read_model.py",
                           "assessment_schema.py", "assessment_service.py",
-                          "assessment_snapshot.py")
+                          "assessment_snapshot.py",
+                          "candidate_assessment_service.py",
+                          "candidate_release.py")
 
     #: WP-15. The same four shapes again: a service, a CLI, the schema loader
     #: and a gate-status builder. The reporting *logic* lives in

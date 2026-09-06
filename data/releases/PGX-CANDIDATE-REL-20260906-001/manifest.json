@@ -1,0 +1,40 @@
+{
+  "authority_state": "PROJECT_TEAM_PROVISIONAL",
+  "built_by": "pgx-closure-wave03b automated pass (NOT A HUMAN)",
+  "canonical_build_content_hash": "sha256:9c0ebc65b74bb88ee5244aad014efe271450375bdf0b40c58d6fcf41f19d3c0d",
+  "canonical_build_key": "PGX-DATA-20260906-001/9c0ebc65b74bb88e",
+  "capture_snapshot_content_hash": "sha256:5f3e82a6f2c7ce6f50c0228338ff2465e4937a9a5d3eaa6aaa0a30f6e09e1c42",
+  "capture_snapshot_manifest_hash": "sha256:4075ce582f11489b036570d0896f77c9f712f100651d7ae5fa620df3518210d4",
+  "dataset_public_id": "PGX-DATA-20260906-001",
+  "dq_decision": "ACCEPTED_FOR_CANDIDATE_USE",
+  "dq_decision_id": "DQD-2710a01c386e9a1885f62a8e",
+  "dq_report_hash": "sha256:bbe4d90937a5b68feaa797113d746a70362704214d172f1c2344bc26efbbefe4",
+  "is_governed_release": false,
+  "limitations": [
+    "This is a candidate release. It is not a governed release bundle, is not registered through the WP-13 release service, and is executable in DEMO and VALIDATION only.",
+    "Its dataset's data-quality gate did not pass; the accepting decision names the blocking issues it accepted over.",
+    "Its rules, interpretations and validation results have been reviewed by nobody outside this project.",
+    "It supports four drugs and two genes and refuses everything else, including a CYP2D6 rapid metabolizer, an indeterminate phenotype, and clopidogrel without a declared care setting."
+  ],
+  "manifest_hash": "sha256:0cd22a88f086a2d408e3ac4da0738eba5233f500ab277ccbf4033a8c14581d01",
+  "permitted_modes": [
+    "DEMO",
+    "VALIDATION"
+  ],
+  "prohibited_modes": [
+    "PILOT"
+  ],
+  "release_public_id": "PGX-CANDIDATE-REL-20260906-001",
+  "release_schema_version": "pgx-candidate-release/1",
+  "review_state": "PENDING_EXTERNAL_EXPERT_REVIEW",
+  "ruleset_content_hash": "sha256:29ca1949b33522f81f745b5b51e61b75913ad4e8584c852bfe2b96cc0fc7c71a",
+  "ruleset_file_digests": {
+    "checksums.sha256": "sha256:0551b6f9ea055694fca22066c7d657b3b21ad826062ef2b988c772265f4cbeda",
+    "manifest.json": "sha256:8fd1d0c7eee375095334a083a46073e155534067c589b5ff004240234eb75772",
+    "provenance.json": "sha256:0cdee317dc886b9a22f237bc28438b6a6dae0a4f0d7e020372871d434104daf2",
+    "rules.ndjson": "sha256:bf3f37416550ad7803b0688e155fa6a4cf1e3e46a781aa4886215eb24f052f72"
+  },
+  "ruleset_key": "PGX-CANDIDATE-RULESET-WAVE03B",
+  "source_policy_content_hash": "sha256:d50d15a81c4e6c5f585d34ce1fbec9651b1072e143e47f4a83689ec899b489ab",
+  "status": "ACTIVE"
+}

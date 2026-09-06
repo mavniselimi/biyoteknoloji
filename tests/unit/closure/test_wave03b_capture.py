@@ -99,7 +99,8 @@ class VocabularyTest(unittest.TestCase):
         self.assertIn("TRANSCRIPTION_CAPTURE", text)
         self.assertIn("ck_source_policies_acquisition_mode_enum", text)
         self.assertIn("ck_raw_snapshots_kind_enum", text)
-        self.assertIn('down_revision = "0011_wp23_auth_audit"', text)
+        self.assertIn('down_revision: Union[str, None] = '
+                      '"0011_wp23_auth_audit"', text)
 
     def test_the_migration_downgrade_refuses_to_destroy_provenance(self):
         path = os.path.join(REPO, "migrations", "versions",

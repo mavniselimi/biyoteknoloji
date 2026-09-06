@@ -59,7 +59,7 @@
     },
     {
       "code": "SOURCE_POLICY_NOT_APPROVED",
-      "detail": "20 source entries, 0 approved",
+      "detail": "21 source entries, 0 approved",
       "meaning": "no source policy entry has completed human review, so no source is cleared for use in an executable rule",
       "owner": "a named source-policy approver",
       "unblocks": "the source-policy eligibility gate opens"
@@ -72,7 +72,7 @@
       "unblocks": "those items may cite evidence and become rule sources"
     }
   ],
-  "content_hash": "sha256:19ab5f79be934c9cc08ecd3decf25c9ea26f5cca00b0556a5f4843af0a2a2a63",
+  "content_hash": "sha256:8d3e07abfea78bd8c07b267988993826730aced20e4e5767d0759e6ff04db488",
   "executable_rulesets": [],
   "gate_status_version": "pgx-wp11-gate-status/1",
   "note": "No rule, ruleset or approval was created to make this attempt succeed. Manufacturing one would be the exact failure the curation and approval workflow exists to prevent.",

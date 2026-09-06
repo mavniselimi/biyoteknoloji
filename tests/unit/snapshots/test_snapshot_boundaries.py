@@ -268,6 +268,11 @@ class TestTheApplicationLayerInventory(unittest.TestCase):
         # and the engine; neither module here decides whether a metric has a
         # value.
         "benchmark_cli.py", "benchmark_schema.py",
+        # Wave 3B. The candidate assessment path: a resolver over the active
+        # candidate release, and the service that executes it. Registered here
+        # rather than exempted, so a third one cannot arrive unnoticed.
+        "candidate_assessment_service.py",
+        "candidate_release.py",
         "canonical_schema.py", "canonical_service.py",
         "coverage_cli.py", "coverage_gate_status.py", "coverage_schema.py",
         "curation_protocol_cli.py", "curation_schema.py",

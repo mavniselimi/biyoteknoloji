@@ -1,0 +1,37 @@
+{
+  "authority_state": "INTERNAL_VALIDATION",
+  "built_by": "pgx-closure-wave03b automated curation pass (NOT A HUMAN CURATOR)",
+  "care_setting_required": {
+    "DRUG:clopidogrel": [
+      "ACS_OR_PCI"
+    ]
+  },
+  "content_hash": "sha256:29ca1949b33522f81f745b5b51e61b75913ad4e8584c852bfe2b96cc0fc7c71a",
+  "expected_gene_scope": {
+    "DRUG:amitriptyline": [
+      "GENE:CYP2C19",
+      "GENE:CYP2D6"
+    ],
+    "DRUG:clopidogrel": [
+      "GENE:CYP2C19"
+    ],
+    "DRUG:codeine": [
+      "GENE:CYP2D6"
+    ],
+    "DRUG:omeprazole": [
+      "GENE:CYP2C19"
+    ]
+  },
+  "is_governed_ruleset": false,
+  "joint_rule_count": 12,
+  "permitted_modes": [
+    "DEMO",
+    "VALIDATION"
+  ],
+  "refusal_count": 13,
+  "review_state": "PENDING_EXTERNAL_EXPERT_REVIEW",
+  "rule_count": 26,
+  "ruleset_key": "PGX-CANDIDATE-RULESET-WAVE03B",
+  "schema_version": "pgx-candidate-ruleset/1",
+  "scope_note": "A candidate ruleset. It is not a governed FROZEN ruleset, is not registered with WP-11, executes in DEMO and VALIDATION only, and has been reviewed by nobody outside this project."
+}

@@ -47,16 +47,26 @@ WP13_ENGINE_MODULES = ("coverage.py", "coverage_errors.py",
 #: legitimately name attention, risk and assessment concepts - which is why
 #: the per-work-package lists exist at all: a check that WP-12 names no
 #: assessment type is meaningless run over the assessment engine.
-WP14_ENGINE_MODULES = ("risk.py", "risk_errors.py", "risk_legacy.py",
+WP14_ENGINE_MODULES = ("candidate_evaluation.py", "risk.py",
+                       "risk_errors.py", "risk_legacy.py",
                        "risk_models.py")
 
 #: WP-14's application modules.
+#: ``candidate_assessment_service.py`` and ``candidate_release.py`` are here
+#: for the same reason the rest are: they are the application side of the
+#: assessment engine. They execute a candidate release, which
+#: ``assessment_service.py`` cannot - a candidate rule carries no WP-10
+#: approval envelope, and ``evaluate_axis_finding`` verifies one - so they read
+#: the engine directly, which is the dependency running in the correct
+#: direction.
 ASSESSMENT_APPLICATION_MODULES = ("assessment_cli.py", "assessment_models.py",
                                   "assessment_gate_status.py",
                                   "assessment_read_model.py",
                                   "assessment_schema.py",
                                   "assessment_service.py",
-                                  "assessment_snapshot.py")
+                                  "assessment_snapshot.py",
+                                  "candidate_assessment_service.py",
+                                  "candidate_release.py")
 
 
 def source(path: str) -> str:
