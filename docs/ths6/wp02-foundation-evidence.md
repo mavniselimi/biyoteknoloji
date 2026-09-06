@@ -147,7 +147,7 @@ output, not off the source file:
 
 | Property | Resolved value |
 |---|---|
-| `postgres` database / published port | `pgx_dev` / `5432` |
+| `postgres` database / published port | `pgx_dev` / `55433` (moved from `5432` in Wave 4B: PostgreSQL's default port is the one a developer machine most often already has, and a shadowed publish presents as `role "pgx_dev" does not exist`) |
 | `postgres-test` database / published port | `pgx_test` / `55432` |
 | `postgres-test` storage | `tmpfs: [/var/lib/postgresql/data]`, **no volume entry** |
 | `container_name` occurrences | **0** |

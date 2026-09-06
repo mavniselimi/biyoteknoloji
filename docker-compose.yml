@@ -2,7 +2,7 @@
 #
 # Two services, deliberately separate:
 #
-#   postgres       persistent development database  (pgx_dev,  host port 5432)
+#   postgres       persistent development database  (pgx_dev,  host port 55433)
 #   postgres-test  disposable test database         (pgx_test, host port 55432)
 #
 # The test service exists because integration tests are destructive: they run
@@ -34,7 +34,18 @@ services:
       # Deterministic collation, so index and ordering behaviour is stable.
       POSTGRES_INITDB_ARGS: "--encoding=UTF8 --locale=C"
     ports:
-      - "${POSTGRES_HOST_PORT:-5432}:5432"
+      # 55433, not 5432. PostgreSQL's default port is the one a
+      # developer machine most often already has: a native install, a
+      # Homebrew service, another project's container. When one is
+      # listening, `docker compose up` succeeds, the published port is
+      # silently shadowed, and every connection reaches the *other*
+      # server - which answers, and then fails with
+      # `role "pgx_dev" does not exist`. That is a confusing error a
+      # long way from its cause, and it cost a day. A high port that
+      # nothing else claims removes the collision rather than
+      # documenting it. Override with POSTGRES_HOST_PORT if 55433 is
+      # taken here too.
+      - "${POSTGRES_HOST_PORT:-55433}:5432"
     volumes:
       - pgx_postgres_data:/var/lib/postgresql/data
     healthcheck:
