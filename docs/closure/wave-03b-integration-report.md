@@ -221,6 +221,12 @@ sides carry it now, and so does the published schema.
 
 ## 8. The gate
 
+> **CORRECTED IN WAVE 4B — see section 8A.** The table immediately below is
+> what this wave originally recorded. Two rows were wrong and are struck
+> through; nothing else in this report is changed. The original wording is
+> kept because a report that quietly acquires a different verdict teaches
+> nobody anything.
+
 | | Requirement | Verdict |
 |---|---|---|
 | G1 | Core evidence capture with honest retrieval semantics | **PASS** |
@@ -229,13 +235,51 @@ sides carry it now, and so does the published schema.
 | G4 | Core curation records with complete provenance | **PASS** |
 | G5 | Amitriptyline represented by an actual joint two-gene rule model | **PASS** |
 | G6 | Core candidate ruleset frozen and executable | **PASS** |
-| G7 | Candidate release ACTIVE through the release service | **PASS** |
-| G8 | Main assessment service consumes that active release | **PASS** |
+| G7 | ~~Candidate release ACTIVE through the release service~~ | ~~**PASS**~~ → reworded, 8A |
+| G8 | ~~Main assessment service consumes that active release~~ | ~~**PASS**~~ → **BLOCKED**, 8A |
 | G9 | Required safety and fail-closed tests pass | **PASS** |
 | G10 | No external approval or final THS-6 claim fabricated | **PASS** |
 
-27 tests in `tests/unit/closure/test_wave03b_assessment.py` assert G5, G8 and
-G9 directly: clopidogrel refuses without a care setting and resolves with one;
+## 8A. Correction (Wave 4B)
+
+**G7 said too much by omission.** "ACTIVE through the release service" reads
+as though the WP-13 governed release registry had activated this release. It
+had not, and nothing in Wave 3B put it there. `ACTIVE` is a state in the
+*candidate-only* lifecycle recorded in
+`data/releases/active-candidate-release.json` and resolved by
+`CandidateReleaseResolver`. The gate now says so in its own text, and its
+evidence records that the governed `active-release.json` pointer does not
+exist and was not written. The verdict is unchanged because the fact was
+always true; only the sentence was misleading.
+
+**G8 was a wrong measurement, and is now BLOCKED.** It passed because the
+manifest builder constructed a `CandidateAssessmentService` itself and asked
+that object what it resolved. That measures a constructor. It says nothing
+about the deployment, and the browser evidence in the same wave proved the
+gap: every authenticated page answered `AUTHENTICATION_NOT_CONFIGURED`, and
+`/system` reported no active release, while this gate read PASS.
+
+`build_deployment_provider` composes the WP-23 capabilities and never sets
+`assessment_service` or `release_resolver`. So no request — API or browser —
+could reach the candidate release, whatever this gate said.
+
+The gate now builds the real provider through `apps.api.main.build_provider`
+and asks it. On a host with the `web` extra installed it currently reports:
+
+```
+BLOCKED: the composed runtime track is None, so the deployed application
+does not run the candidate release. Set PGX_RUNTIME_TRACK=CANDIDATE for a
+candidate deployment.
+```
+
+That is the true state of the deployment at commit `8abae4b`. G8 becomes PASS
+when the composition root the API and the browser actually use resolves and
+executes the candidate release, and not before.
+
+**Gate summary after correction: 9 PASS, 1 BLOCKED.**
+
+27 tests in `tests/unit/closure/test_wave03b_assessment.py` assert G5 and G9
+directly, and assert the *service's* behaviour rather than the deployment's: clopidogrel refuses without a care setting and resolves with one;
 amitriptyline needs both genes and never falls back; CYP2D6 `RAPID` refuses; an
 indeterminate observation cannot even be constructed; `PILOT` is rejected;
 `DEMO` and `VALIDATION` work; a missing, non-active, pointer-mismatched or

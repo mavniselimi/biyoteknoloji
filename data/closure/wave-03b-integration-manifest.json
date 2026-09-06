@@ -51,8 +51,8 @@
     }
   ],
   "gate_summary": {
-    "blocked": 0,
-    "passed": 10,
+    "blocked": 1,
+    "passed": 9,
     "total": 10
   },
   "gates": [
@@ -93,16 +93,16 @@
       "verdict": "PASS"
     },
     {
-      "evidence": "PGX-CANDIDATE-REL-20260906-001 status=ACTIVE manifest=sha256:0cd22a88f086a2d408e3ac4da0738eba5233f500ab277ccbf4033a8c14581d01 generation=1",
+      "evidence": "PGX-CANDIDATE-REL-20260906-001 status=ACTIVE manifest=sha256:0cd22a88f086a2d408e3ac4da0738eba5233f500ab277ccbf4033a8c14581d01 candidate-pointer generation=1; the governed WP-13 active-release pointer does not exist and was not written; this release is not registered, approved or published through the governed registry",
       "gate": "G7",
-      "requirement": "The candidate release is ACTIVE through the release service.",
+      "requirement": "The candidate release is ACTIVE in the candidate-only lifecycle (NOT the governed WP-13 release registry).",
       "verdict": "PASS"
     },
     {
-      "evidence": "CandidateAssessmentService resolves PGX-CANDIDATE-REL-20260906-001; boundary basis PROJECT_TEAM_PROVISIONAL, is_approved=False",
+      "evidence": "BLOCKED: the composed runtime track is None, so the deployed application does not run the candidate release. Set PGX_RUNTIME_TRACK=CANDIDATE for a candidate deployment.",
       "gate": "G8",
-      "requirement": "The main assessment service consumes that active release.",
-      "verdict": "PASS"
+      "requirement": "The real application composition used by the API and the browser resolves and executes the candidate release.",
+      "verdict": "BLOCKED"
     },
     {
       "evidence": "tests/unit/closure/test_wave03b_assessment.py: 27 tests, all passing; covers care-setting refusal, joint two-gene requirement, CYP2D6 RAPID refusal, indeterminate refusal, PILOT rejection, missing/tampered release, and that no refusal is reported as NO_ACTIVE_ATTENTION",

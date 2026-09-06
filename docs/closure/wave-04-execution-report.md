@@ -12,6 +12,29 @@ Every figure below is read from
 `data/closure/wave-04-execution-manifest.json`, which is generated from the
 artifacts. Results are labelled `INTERNAL_VALIDATION` and nothing stronger.
 
+> **CORRECTION (Wave 4B).** The measurements in this report stand; the status
+> word placed on them at the end of the wave did not. The wave was summarised
+> as a `COMPLETE CANDIDATE PROJECT`. With WP-C14A `PARTIAL` and WP-C14
+> `BLOCKED` in this very table, that phrase was not available, and the
+> Wave 3B G8 gate that appeared to support it was measuring a constructor
+> rather than the deployment (see `wave-03b-integration-report.md` §8A).
+>
+> The truthful status at commit `8abae4b` is:
+>
+> ```
+> CANDIDATE SCIENTIFIC ENGINE COMPLETE
+> INTERNAL CONSISTENCY BENCHMARK COMPLETE
+> RUNTIME / PRODUCT COMPOSITION INCOMPLETE
+> PENDING EXTERNAL EXPERT REVIEW
+> ```
+>
+> Nothing measured here is withdrawn: 67 sealed cases, 55 scored, zero unsafe
+> false reassurance, the joint amitriptyline rules, the fail-closed refusals
+> and the PostgreSQL round-trip are all real and remain. What was withdrawn is
+> a word about the whole, claimed while a third of the jury flow answered 503.
+> Wave 4B is the wave that closes the runtime and product gap;
+> `wave-04b-runtime-product-report.md` records it.
+
 ## 1. The validation catalogue (WP-C10) — COMPLETE
 
 67 cases, sealed before any benchmark ran. The seal refuses to be rewritten,

@@ -44,6 +44,68 @@ def _digest(*parts):
         return "sha256:" + hashlib.sha256(handle.read()).hexdigest()
 
 
+def _probe_real_composition(pinned):
+    """Ask the deployed composition root what it runs. Never construct it here.
+
+    Returns ``{"passed": bool, "detail": str}``. Every failure mode is a
+    distinct sentence, because "G8 is blocked" without the reason is the kind
+    of gate that gets waved through.
+    """
+    try:
+        from apps.api.main import build_provider
+    except Exception as error:  # noqa: BLE001 - the host, not the code
+        return {"passed": False,
+                "detail": ("BLOCKED: this host cannot import the API edge "
+                           "(%s: %s), so the deployed composition cannot be "
+                           "asked. Run this gate on a host with the 'web' "
+                           "extra installed."
+                           % (type(error).__name__, error))}
+    try:
+        provider = build_provider()
+    except Exception as error:  # noqa: BLE001
+        return {"passed": False,
+                "detail": ("BLOCKED: building the real provider raised %s: %s"
+                           % (type(error).__name__, error))}
+
+    track = getattr(provider, "runtime_track", None)
+    track_name = getattr(track, "value", track)
+    if track_name != "CANDIDATE":
+        return {"passed": False,
+                "detail": ("BLOCKED: the composed runtime track is %r, so the "
+                           "deployed application does not run the candidate "
+                           "release. Set PGX_RUNTIME_TRACK=CANDIDATE for a "
+                           "candidate deployment." % (track_name,))}
+    try:
+        service = provider.require_candidate_assessment_service()
+        resolved = provider.require_candidate_release()
+    except Exception as error:  # noqa: BLE001
+        return {"passed": False,
+                "detail": ("BLOCKED: the composed provider refused the "
+                           "candidate capability (%s: %s)"
+                           % (type(error).__name__, error))}
+
+    expected = pinned.release_public_id if pinned else None
+    got = getattr(resolved, "release_public_id", None)
+    state = service.gate_state()
+    if got != expected or state["active_candidate_release"] != expected:
+        return {"passed": False,
+                "detail": ("BLOCKED: the composition resolved %r and the "
+                           "composed service resolved %r; this manifest "
+                           "verified %r. A provider that runs a different "
+                           "release than the one measured here is the failure "
+                           "this gate exists to catch."
+                           % (got, state["active_candidate_release"],
+                              expected))}
+    return {"passed": True,
+            "detail": ("apps.api.main.build_provider composes track=CANDIDATE; "
+                       "provider.require_candidate_release() resolves %s and "
+                       "provider.require_candidate_assessment_service() runs "
+                       "it; boundary basis %s, is_approved=%s. The browser "
+                       "and the API read this same provider."
+                       % (got, state["claim_boundary_execution_basis"],
+                          state["claim_boundary_is_approved"]))}
+
+
 def main() -> int:
     gates = []
 
@@ -126,25 +188,43 @@ def main() -> int:
             ", ".join(pinned.ruleset.permitted_modes),
             pinned.ruleset.content_hash()) if pinned else release_error)
 
-    gate("G7", "The candidate release is ACTIVE through the release service.",
-         pinned is not None and pinned.manifest["status"] == "ACTIVE",
-         "%s status=%s manifest=%s generation=%d"
+    # G7 says one thing and must not be read as saying the other. "ACTIVE"
+    # here is a state in the *candidate-only* lifecycle, recorded in
+    # data/releases/active-candidate-release.json and resolved by
+    # CandidateReleaseResolver. It is not the WP-13 governed release registry:
+    # that registry's active pointer is a separate record, this release was
+    # never registered in it, and nothing in this wave put it there.
+    governed_pointer = os.path.join(REPO, "data", "releases",
+                                    "active-release.json")
+    gate("G7", "The candidate release is ACTIVE in the candidate-only "
+               "lifecycle (NOT the governed WP-13 release registry).",
+         pinned is not None and pinned.manifest["status"] == "ACTIVE"
+         and not os.path.exists(governed_pointer),
+         "%s status=%s manifest=%s candidate-pointer generation=%d; the "
+         "governed WP-13 active-release pointer does not exist and was not "
+         "written; this release is not registered, approved or published "
+         "through the governed registry"
          % (pinned.release_public_id, pinned.manifest["status"],
             pinned.manifest["manifest_hash"], pinned.pointer_generation)
          if pinned else release_error)
 
-    from pgx.application.candidate_assessment_service import (
-        CandidateAssessmentService)
-    state = CandidateAssessmentService(repo_root=REPO).gate_state()
-    gate("G8", "The main assessment service consumes that active release.",
-         state["release_available"]
-         and state["active_candidate_release"] == (
-             pinned.release_public_id if pinned else None),
-         "CandidateAssessmentService resolves %s; boundary basis %s, "
-         "is_approved=%s"
-         % (state["active_candidate_release"],
-            state["claim_boundary_execution_basis"],
-            state["claim_boundary_is_approved"]))
+    # G8 asks whether the *deployed application* runs the candidate release,
+    # and the only answer that counts comes from the composition root the API
+    # and the browser actually use. An earlier version of this gate passed
+    # because this function constructed a CandidateAssessmentService itself.
+    # That measured the constructor, not the deployment: a service nothing
+    # composes is a service no request reaches, and the browser proved it -
+    # every authenticated page answered AUTHENTICATION_NOT_CONFIGURED and
+    # /system reported no active release while this gate read PASS.
+    #
+    # So the probe now builds the real provider and asks it, and it reports
+    # BLOCKED when the composition is absent, when the host cannot import the
+    # API edge, or when the provider resolves anything other than the
+    # candidate release this manifest just verified.
+    composition = _probe_real_composition(pinned)
+    gate("G8", "The real application composition used by the API and the "
+               "browser resolves and executes the candidate release.",
+         composition["passed"], composition["detail"])
 
     gate("G9", "Required safety and fail-closed tests pass.", True,
          "tests/unit/closure/test_wave03b_assessment.py: 27 tests, all "
