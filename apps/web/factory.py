@@ -25,6 +25,7 @@ from fastapi import FastAPI
 from apps.api.config import ApiSettings
 from apps.api.provider import ServiceProvider
 from apps.web import WEB_TITLE, WEB_VERSION
+from apps.api.errors import ApiError
 from apps.web.config import WebSettings, load_web_settings
 from apps.web.dependencies import WebProvider
 from apps.web.routers import pages as page_router
@@ -121,6 +122,23 @@ def _install_error_handler(app: FastAPI) -> None:
         code = by_status.get(error.status_code, "INTERNAL_ERROR")
         if not _is_page_request(request):
             return _json_failure(request, code)
+        result = render_error_page(_environment(request), code=code)
+        return HTMLResponse(result.html, status_code=result.status,
+                            headers=result.headers)
+
+    @app.exception_handler(ApiError)
+    async def _refusal(request: Request, error: ApiError):
+        """A typed refusal renders its page without a server-error traceback.
+
+        The same reasoning as the API's handler: a handler registered for
+        ``Exception`` is routed through ``ServerErrorMiddleware``, which logs
+        the traceback at ERROR level first. An anonymous visitor reaching a
+        page that needs a session is not a server error, and a log full of
+        them is a log nobody reads when something real breaks.
+        """
+        code, details = map_exception(error)
+        if not _is_page_request(request):
+            return _json_failure(request, code, details)
         result = render_error_page(_environment(request), code=code)
         return HTMLResponse(result.html, status_code=result.status,
                             headers=result.headers)

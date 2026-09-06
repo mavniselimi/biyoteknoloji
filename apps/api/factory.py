@@ -37,7 +37,8 @@ from starlette.responses import JSONResponse
 from apps.api import API_TITLE, API_VERSION
 from apps.api.config import ApiSettings, load_settings
 from apps.api.dependencies import ServiceProvider
-from apps.api.errors import (ERROR_CATALOGUE, error_envelope, map_exception,
+from apps.api.errors import (ApiError, ERROR_CATALOGUE, error_envelope,
+                             map_exception,
                              status_for_code)
 from apps.api.middleware import (BodySizeLimitMiddleware,
                                  ProhibitedFieldMiddleware,
@@ -101,6 +102,25 @@ def _install_exception_handlers(app: FastAPI) -> None:
                      413: "REQUEST_TOO_LARGE", 422: "REQUEST_MALFORMED"}
         return _respond(request,
                         by_status.get(error.status_code, "INTERNAL_ERROR"))
+
+    @app.exception_handler(ApiError)
+    async def _refusal(request: Request, error: ApiError) -> JSONResponse:
+        """A typed refusal is an answer, not a server error.
+
+        Registered separately from the catch-all below, and the difference is
+        not cosmetic. Starlette routes a handler registered for ``Exception``
+        through ``ServerErrorMiddleware``, which logs the traceback at ERROR
+        level before delegating. Every anonymous ``GET /cases`` therefore
+        printed a full ASGI exception group ending in
+        ``UnauthenticatedError: UNAUTHENTICATED`` - for the single most
+        ordinary event in the application's life, a request from somebody who
+        is not logged in.
+
+        Handled here, the same refusal produces the same 401 body with no
+        traceback, and the catch-all keeps its job: an exception nobody
+        planned for is still logged, loudly.
+        """
+        return _respond(request, error.code, dict(error.details))
 
     @app.exception_handler(Exception)
     async def _unexpected(request: Request, error: Exception) -> JSONResponse:

@@ -202,14 +202,39 @@ def build_deployment_probes(composition: Any, *,
     )
 
 
+#: HTTP methods that never change governed state. Everything else runs inside
+#: a governed transaction; see :class:`RequestScopeMiddleware`.
+SAFE_METHODS = frozenset({"GET", "HEAD", "OPTIONS", "TRACE"})
+
+
 class RequestScopeMiddleware:
-    """Open one request scope per request and close it afterwards.
+    """Open one request scope per request, and commit what a mutation wrote.
 
     Raw ASGI rather than ``BaseHTTPMiddleware``: the latter runs the handler
     in a separate task, and a ``ContextVar`` set in the middleware's task is
     then not visible in the handler's. That failure is silent - every
     capability raises "outside a request scope" - and it is exactly the kind
     of thing that works in a unit test and not under a server.
+
+    **Why the transaction is opened here.**
+
+    WP-24 built ``RequestScope.governed_transaction`` and no route ever
+    entered it. ``RequestScope.close`` rolls back anything uncommitted, so
+    every governed mutation served over HTTP was flushed and then discarded.
+    The visible symptom was the worst possible one: a login returned
+    ``Set-Cookie`` for a session row that had just been rolled back, so the
+    browser held a token for a session the store had never heard of and the
+    next request answered 401. The login *looked* like it worked. Nothing
+    raised, nothing logged, and the audit trail recorded neither the login
+    nor its absence.
+
+    Opening it per request, for unsafe methods only, puts the boundary where
+    HTTP already draws it and in exactly one place. A ``GET`` opens no
+    transaction, so a read path cannot commit anything by accident; a
+    ``POST`` that returns a refusal response still commits, because a refusal
+    the audit trail recorded is a refusal that happened; and a ``POST`` that
+    raises rolls back both the change and its audit row together, which is
+    the invariant ``governed_transaction`` exists to hold.
     """
 
     def __init__(self, app: Any, composition: Any) -> None:
@@ -220,8 +245,13 @@ class RequestScopeMiddleware:
         if scope.get("type") != "http":
             await self.app(scope, receive, send)
             return
-        with self._composition.request_scope():
-            await self.app(scope, receive, send)
+        method = (scope.get("method") or "GET").upper()
+        with self._composition.request_scope() as request_scope:
+            if method in SAFE_METHODS:
+                await self.app(scope, receive, send)
+                return
+            with request_scope.governed_transaction():
+                await self.app(scope, receive, send)
 
 
 def compose_runtime_track(provider: ServiceProvider,
