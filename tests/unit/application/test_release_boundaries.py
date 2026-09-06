@@ -360,6 +360,7 @@ class TestReleaseAndIngestionStaySeparate(unittest.TestCase):
                           # pgx/application without a line in this tuple is a
                           # module nobody decided to put there.
                           "candidate_composition.py",
+                          "candidate_documents.py",
                           "candidate_release.py",
                           "runtime_track.py")
 

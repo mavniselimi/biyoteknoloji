@@ -316,11 +316,16 @@ def render_system_page(env: PageEnvironment, *,
     """
     version: Optional[Mapping[str, Any]] = None
     readiness: Optional[Mapping[str, Any]] = None
+    tracks: Optional[Mapping[str, Any]] = None
     try:
         version = client.get_system_version(
             request_id=env.request_id).document
     except WebError:
         version = None
+    try:
+        tracks = client.runtime_tracks(request_id=env.request_id).document
+    except WebError:
+        tracks = None
     try:
         readiness = client.get_readiness(request_id=env.request_id).document
     except WebError:
@@ -328,9 +333,53 @@ def render_system_page(env: PageEnvironment, *,
 
     context = env.context("web.system")
     context["model"] = build_system_page(version, readiness,
+                                         tracks=tracks,
                                          locale=env.locale)
     return _render("web.system", context, status=200,
                    request_id=env.request_id)
+
+
+def _candidate_benchmark():
+    """The committed Wave 4 catalogue and benchmark, read from disk.
+
+    Read here rather than recomputed, and read from the sealed artifacts
+    rather than from a live run, because the number on this page has to be the
+    number in the evidence pack. Returns ``None`` when the artifacts are
+    absent, and the page then says the measurement is unavailable instead of
+    showing a zero nobody measured.
+    """
+    import io as _io
+    import json as _json
+    import os as _os
+
+    root = _os.path.dirname(_os.path.dirname(_os.path.dirname(
+        _os.path.abspath(__file__))))
+    catalogue = _os.path.join(root, "data", "closure", "wave-04-catalogue",
+                              "manifest.json")
+    metrics = _os.path.join(root, "data", "closure", "wave-04-benchmark",
+                            "metrics.json")
+    if not (_os.path.isfile(catalogue) and _os.path.isfile(metrics)):
+        return None
+    with _io.open(catalogue, encoding="utf-8") as handle:
+        catalogue_document = _json.load(handle)
+    with _io.open(metrics, encoding="utf-8") as handle:
+        metric_document = _json.load(handle)
+    return {
+        "label": catalogue_document.get("authority_state"),
+        "case_total": catalogue_document.get("case_total"),
+        "development_count": catalogue_document.get("development_count"),
+        "internal_holdout_count":
+            catalogue_document.get("internal_holdout_count"),
+        "expert_holdout_count":
+            catalogue_document.get("expert_holdout_count"),
+        "scored_case_count": metric_document.get("scored_case_count"),
+        "failed_case_count": metric_document.get("failed_case_count"),
+        "unsafe_false_reassurance_count":
+            metric_document.get("unsafe_false_reassurance_count"),
+        "expert_reserved_payloads_read":
+            metric_document.get("expert_reserved_payloads_read"),
+        "limitations": catalogue_document.get("limitations") or [],
+    }
 
 
 def render_validation_page(env: PageEnvironment, *,
@@ -345,6 +394,7 @@ def render_validation_page(env: PageEnvironment, *,
     test can hand it a synthetic one without touching the filesystem.
     """
     context = env.context("web.validation")
+    context["candidate_benchmark"] = _candidate_benchmark()
     context["model"] = build_validation_board(
         development_case_count=development_case_count,
         blockers=blockers, feed=feed, locale=env.locale)

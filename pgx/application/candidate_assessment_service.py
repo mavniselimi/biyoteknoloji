@@ -41,6 +41,7 @@ from pgx.engine.candidate_evaluation import (CandidateEvaluation,
 
 __all__ = [
     "CANDIDATE_ASSESSMENT_VERSION",
+    "candidate_request_to_input",
     "CandidateAssessmentResult",
     "CandidateAssessmentService",
 ]
@@ -155,3 +156,57 @@ class CandidateAssessmentService:
             claim_boundary_status=self._boundary.status,
             claim_boundary_is_approved=self._boundary.is_approved,
             computed_at=self._clock())
+
+
+def _observations_to_mapping(observations):
+    """The request's list of observations as the normaliser's gene map.
+
+    A list on the wire and a mapping in the application, and the collapse
+    refuses a repeated gene rather than letting the later entry win: a caller
+    that sent POOR and then NORMAL for one gene would otherwise receive a
+    confident assessment of whichever happened to be last.
+
+    Written here rather than imported from ``apps.api.adapters.request``,
+    where the same rule lives for the governed wire contract. The application
+    layer must not know a transport exists - ``tests/unit/api/
+    test_wp16_boundaries.py`` asserts it - and the two are twelve lines each
+    rather than one shared dependency pointing the wrong way.
+    """
+    from pgx.application.assessment_models import AssessmentInputError
+
+    mapping = {}
+    for index, entry in enumerate(observations):
+        gene = entry["gene"]
+        if gene in mapping:
+            raise AssessmentInputError(
+                "two observations name the same gene",
+                code="ASSESSMENT_INPUT_INVALID",
+                location="$.profile.observations[%d].gene" % index)
+        mapping[gene] = entry["value"]
+    return mapping
+
+
+def candidate_request_to_input(document):
+    """One request document to one canonical candidate input.
+
+    The whole conversion in one application-layer function, because the caller
+    that needs it most is the server-rendered interface - and
+    ``tests/unit/web/test_wp17_boundaries.py`` forbids that layer from
+    importing an engine. It is right to: a page that could normalise a
+    phenotype profile is a page that could disagree with the service about
+    what the profile means.
+    """
+    from pgx.application.candidate_documents import candidate_assessment_input
+    from pgx.domain.claims import PermittedInputKind
+    from pgx.engine.phenotype_normalization import normalize_profile
+
+    profile_document = document["profile"]
+    profile = normalize_profile(
+        _observations_to_mapping(profile_document["observations"]),
+        profile_id=profile_document.get("profile_id"),
+        contract_version=profile_document.get("input_contract_version")
+        or "pgx-phenotype-input/1")
+    return candidate_assessment_input(
+        document, profile=profile,
+        mode=OperationMode(document["mode"]),
+        input_kind=PermittedInputKind(document["input_kind"]))

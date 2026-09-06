@@ -8,7 +8,7 @@
   "asgi_runtime_tests_executed": false,
   "authentication_implemented": false,
   "authentication_note": "WP-16 defines an immutable Principal, three governed roles, a route-level role matrix and a resolver that refuses. It implements no password, session, token, cookie or CSRF mechanism. The production default establishes no principal at all and reports the API as not ready.",
-  "blocker_count": 5,
+  "blocker_count": 4,
   "blockers": [
     {
       "blocking": true,
@@ -27,11 +27,6 @@
     },
     {
       "blocking": true,
-      "code": "API_NO_DATABASE_RUNTIME",
-      "detail": "no database connection is configured or its driver is not installed, so no assessment can be stored or read through the API"
-    },
-    {
-      "blocking": true,
       "code": "API_RUNTIME_NOT_VERIFIED",
       "detail": "no successful runtime verification is recorded: api_source_sha256 changed since verification; the evidence describes a different repository state"
     }
@@ -42,7 +37,7 @@
   "contract_model_count": 43,
   "contract_version": "pgx-api-contract/1",
   "database_dependencies_available": true,
-  "database_reachable": false,
+  "database_reachable": true,
   "declared_route_count": 14,
   "dependency_availability": {
     "alembic": {

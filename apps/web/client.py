@@ -70,6 +70,7 @@ CLIENT_OPERATIONS: Mapping[str, str] = {
     # provisional answer as a governed one.
     "create_candidate_assessment": "CandidateAssessmentResponse",
     "candidate_drug_catalogue": "CandidateDrugCatalogueResponse",
+    "runtime_tracks": "RuntimeTracksResponse",
 }
 
 
@@ -110,6 +111,11 @@ class PgxApiClient:
     def candidate_drug_catalogue(
             self, *, request_id: str) -> ClientResponse:  # pragma: no cover
         """Wave 4B. The candidate ruleset's own scope."""
+        raise NotImplementedError
+
+    def runtime_tracks(
+            self, *, request_id: str) -> ClientResponse:  # pragma: no cover
+        """Wave 4B. Both release tracks, unmerged."""
         raise NotImplementedError
 
     def get_assessment(self, assessment_id: str, *, request_id: str
@@ -202,6 +208,9 @@ class UnavailableApiClient(PgxApiClient):
     def candidate_drug_catalogue(self, *, request_id):
         return self._refuse(request_id)
 
+    def runtime_tracks(self, *, request_id):
+        return self._refuse(request_id)
+
     def get_assessment(self, assessment_id, *, request_id):
         del assessment_id
         return self._refuse(request_id)
@@ -260,6 +269,33 @@ class InProcessApiClient(PgxApiClient):
             raise _as_web_error(error, request_id) from error
         return _validated("AssessmentResponse", page_document, request_id)
 
+    def runtime_tracks(self, *, request_id: str) -> ClientResponse:
+        """Both release tracks, described side by side.
+
+        The candidate half comes from the composed candidate runtime; the
+        governed half from whatever governed resolver this deployment has,
+        which in this repository is none. Reporting both, unmerged, is the
+        point: a reader has to be able to see at once that a candidate release
+        is active *and* that no governed release is - because the second fact
+        is what stops the first from being read as approval.
+        """
+        from pgx.application.candidate_composition import (
+            CandidateRuntime, describe_runtime_tracks)
+
+        try:
+            runtime = None
+            if getattr(self._provider.runtime_track, "is_candidate", False):
+                runtime = CandidateRuntime(
+                    self._provider.settings.candidate_repo_root)
+            document = describe_runtime_tracks(
+                active_track=self._provider.runtime_track,
+                candidate_runtime=runtime,
+                governed_release_resolver=self._provider.release_resolver)
+        except Exception as error:  # noqa: BLE001
+            raise _as_web_error(error, request_id) from error
+        return ClientResponse(model="RuntimeTracksResponse",
+                              document=document, request_id=request_id)
+
     def candidate_drug_catalogue(self, *, request_id: str) -> ClientResponse:
         """The drugs the active candidate ruleset can actually answer for.
 
@@ -310,8 +346,10 @@ class InProcessApiClient(PgxApiClient):
         provisional answer as a governed one.
         """
         from pgx.application.assessment_snapshot import build_input_snapshot
+        from pgx.application.candidate_assessment_service import (
+            candidate_request_to_input)
         from pgx.application.candidate_documents import (
-            candidate_assessment_document, candidate_request_to_input)
+            candidate_assessment_document)
 
         request_id = context.request_id or ""
         try:
@@ -470,6 +508,10 @@ class HttpApiClient(PgxApiClient):
                        details={"components": ["candidate_runtime"]})
 
     def candidate_drug_catalogue(self, *, request_id):
+        raise WebError("SERVICE_NOT_READY", request_id=request_id,
+                       details={"components": ["candidate_runtime"]})
+
+    def runtime_tracks(self, *, request_id):
         raise WebError("SERVICE_NOT_READY", request_id=request_id,
                        details={"components": ["candidate_runtime"]})
 

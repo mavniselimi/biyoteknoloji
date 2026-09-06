@@ -54,6 +54,30 @@
 </aside>
 
 
+<h2>Aday iç tutarlılık ölçümü</h2>
+<p>
+  <span class="label-inline">Etiket:</span>
+  <code>INTERNAL_VALIDATION</code>
+</p>
+<div class="table-scroll">
+<table class="data-table">
+  <caption>Aday iç tutarlılık ölçümü</caption>
+  <tbody>
+    <tr><th scope="row">case_total</th><td><code>67</code></td></tr>
+    <tr><th scope="row">development</th><td><code>34</code></td></tr>
+    <tr><th scope="row">internal_holdout</th><td><code>21</code></td></tr>
+    <tr><th scope="row">expert_reserved</th><td><code>12</code></td></tr>
+    <tr><th scope="row">scored</th><td><code>55</code></td></tr>
+    <tr><th scope="row">failed</th><td><code>0</code></td></tr>
+    <tr><th scope="row">unsafe_false_reassurance</th><td><code>0</code></td></tr>
+    <tr><th scope="row">expert_reserved_payloads_read</th><td><code>0</code></td></tr>
+  </tbody>
+</table>
+</div>
+<h3>Sınırlamalar</h3>
+<ul>
+<li class="muted">one process authored the candidate rules, these cases and the expected answers for two of the three partitions; no partition here is independent of the build it tests, and a passing separation audit says the partitions do not leak into each other, not that any of them is independent evidence</li><li class="muted">the DEVELOPMENT partition can only confirm that the ruleset encodes what its author intended; it is internal consistency evidence and is never validation of the science</li><li class="muted">the INTERNAL_HOLDOUT partition tests refusal and boundary behaviour that no rule states, so a ruleset can encode every rule correctly and still fail it; that makes it a stronger check than the development partition and still not an external one</li><li class="muted">the EXPERT_HOLDOUT partition carries no expected answers at all, because recording one would be inventing an expert judgment; it is reserved unopened for a later external reviewer</li><li class="muted">results from this catalogue may be described as INTERNAL_VALIDATION or LITERATURE_DERIVED_VALIDATION and as nothing else</li></ul>
+
 <div class="notice notice-unavailable" role="status">
   <p><strong>Uygulanmadı.</strong> Doğrulama veri kümesi mimarisi ve holdout ayrımı henüz uygulanmamıştır. Bu sayfa yalnızca boş durumu gösterir.</p>
   <p>Bu depoda hiçbir doğrulama çalıştırması yapılmamıştır.</p>

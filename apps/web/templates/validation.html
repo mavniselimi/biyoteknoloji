@@ -1,5 +1,32 @@
 {% extends "base.html" %}
 {% block content %}
+{% if candidate_benchmark %}
+<h2>{{ text['validation.candidate_benchmark'] }}</h2>
+<p>
+  <span class="label-inline">{{ text['validation.label'] }}:</span>
+  <code>{{ candidate_benchmark.label }}</code>
+</p>
+<div class="table-scroll">
+<table class="data-table">
+  <caption>{{ text['validation.candidate_benchmark'] }}</caption>
+  <tbody>
+    <tr><th scope="row">case_total</th><td><code>{{ candidate_benchmark.case_total }}</code></td></tr>
+    <tr><th scope="row">development</th><td><code>{{ candidate_benchmark.development_count }}</code></td></tr>
+    <tr><th scope="row">internal_holdout</th><td><code>{{ candidate_benchmark.internal_holdout_count }}</code></td></tr>
+    <tr><th scope="row">expert_reserved</th><td><code>{{ candidate_benchmark.expert_holdout_count }}</code></td></tr>
+    <tr><th scope="row">scored</th><td><code>{{ candidate_benchmark.scored_case_count }}</code></td></tr>
+    <tr><th scope="row">failed</th><td><code>{{ candidate_benchmark.failed_case_count }}</code></td></tr>
+    <tr><th scope="row">unsafe_false_reassurance</th><td><code>{{ candidate_benchmark.unsafe_false_reassurance_count }}</code></td></tr>
+    <tr><th scope="row">expert_reserved_payloads_read</th><td><code>{{ candidate_benchmark.expert_reserved_payloads_read }}</code></td></tr>
+  </tbody>
+</table>
+</div>
+<h3>{{ text['validation.limitations'] }}</h3>
+<ul>
+  {% for item in candidate_benchmark.limitations %}<li class="muted">{{ item }}</li>{% endfor %}
+</ul>
+{% endif %}
+
 {#
   An empty state, not a dashboard with zeros in it.
 

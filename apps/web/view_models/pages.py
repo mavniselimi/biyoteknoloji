@@ -334,6 +334,15 @@ class SystemPageModel:
     version_unavailable_note: str
     claim_boundary_phase: str
     claim_boundary_approved: bool
+    #: Wave 4B. The two release tracks, side by side and never merged. A
+    #: single "the release" row would let a reader take a provisional
+    #: candidate release for a governed one, which is the one confusion this
+    #: page exists to prevent.
+    runtime_tracks_available: bool
+    active_track: str
+    candidate_rows: Tuple[Tuple[str, str], ...]
+    governed_rows: Tuple[Tuple[str, str], ...]
+    track_note: str
     readiness_available: bool
     readiness_status: str
     readiness_components: Tuple[Tuple[str, bool, bool, str], ...]
@@ -353,8 +362,20 @@ _SYSTEM_VERSION_FIELDS: Tuple[str, ...] = (
     "protocol_version", "source_policy_version")
 
 
+def _track_rows(state: Mapping[str, Any], keys) -> Tuple[Tuple[str, str], ...]:
+    rows = []
+    for key in keys:
+        value = state.get(key)
+        if isinstance(value, (list, tuple)):
+            value = ", ".join(str(item) for item in value)
+        rows.append((key, ABSENT_MARKER if value in (None, "")
+                     else str(value)))
+    return tuple(rows)
+
+
 def build_system_page(version: Optional[Mapping[str, Any]],
                       readiness: Optional[Mapping[str, Any]], *,
+                      tracks: Optional[Mapping[str, Any]] = None,
                       locale: str = "tr") -> SystemPageModel:
     rows: List[Tuple[str, str]] = []
     if version is not None:
@@ -373,7 +394,20 @@ def build_system_page(version: Optional[Mapping[str, Any]],
                 bool(item.get("blocking")),
                 display(item.get("detail"), location="$.readiness.detail")))
 
+    candidate_state = (tracks or {}).get("candidate") or {}
+    governed_state = (tracks or {}).get("governed") or {}
     return SystemPageModel(
+        runtime_tracks_available=tracks is not None,
+        active_track=str((tracks or {}).get("active_track") or ABSENT_MARKER),
+        candidate_rows=_track_rows(candidate_state, (
+            "track", "composed", "release_public_id", "dataset_public_id",
+            "ruleset_key", "ruleset_content_hash", "manifest_hash",
+            "permitted_modes", "authority", "review_state",
+            "claim_boundary_status", "claim_boundary_is_approved",
+            "rule_count", "detail")),
+        governed_rows=_track_rows(governed_state, (
+            "track", "composed", "release_public_id", "authority", "detail")),
+        track_note=str(candidate_state.get("governed_registry_note") or ""),
         version_available=version is not None,
         version_rows=tuple(rows),
         version_unavailable_note=ui("system.version_unavailable", locale),

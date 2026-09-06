@@ -267,6 +267,28 @@ UI_TEXT: Mapping[str, Mapping[str, str]] = {
 
     # -- assessment --------------------------------------------------------
     # -- Wave 4B: the candidate track's own screens ----------------------
+    "expert.pending_state": {"tr": "Dış uzman değerlendirme durumu",
+                             "en": "External expert review state"},
+    "expert.pending_note": {
+        "tr": "Hiçbir dış uzman bu aday sürümü henüz incelemedi. Uzman için "
+              "ayrılmış vakalar mühürlü tutulur ve beklenen yanıtları yoktur; "
+              "bu sayfada uzman görüşü, puanı, yorumu veya imzası yer almaz.",
+        "en": "No external expert has reviewed this candidate release. The "
+              "expert-reserved cases are kept sealed and carry no expected "
+              "answers; no expert judgement, score, comment or signature "
+              "appears on this page."},
+    "validation.candidate_benchmark": {
+        "tr": "Aday iç tutarlılık ölçümü",
+        "en": "Candidate internal consistency benchmark"},
+    "validation.label": {"tr": "Etiket", "en": "Label"},
+    "validation.limitations": {"tr": "Sınırlamalar", "en": "Limitations"},
+    "system.runtime_tracks": {"tr": "Çalışma hatları",
+                              "en": "Runtime tracks"},
+    "system.active_track": {"tr": "Etkin hat", "en": "Active track"},
+    "system.candidate_track": {"tr": "Aday hattı (CANDIDATE)",
+                               "en": "Candidate track (CANDIDATE)"},
+    "system.governed_track": {"tr": "Yönetişimli hat (GOVERNED)",
+                              "en": "Governed track (GOVERNED)"},
     "candidate.heading": {"tr": "Aday değerlendirme",
                           "en": "Candidate assessment"},
     "candidate.demo_notice": {

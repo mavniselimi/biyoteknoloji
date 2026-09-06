@@ -1,0 +1,220 @@
+{
+  "amitriptyline_case": "WP17-CASE-P1",
+  "amitriptyline_missing_gene_case": "WP17-CASE-INSUFFICIENT",
+  "anonymous_denial_status": 401,
+  "base_url": "https://127.0.0.1:8443",
+  "browser": "chromium via playwright",
+  "case_count": 7,
+  "clopidogrel_case": "WP17-CASE-P1",
+  "console": [
+    {
+      "text": "Failed to load resource: the server responded with a status of 401 (Unauthorized)",
+      "type": "error"
+    },
+    {
+      "text": "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "type": "error"
+    },
+    {
+      "text": "Failed to load resource: the server responded with a status of 401 (Unauthorized)",
+      "type": "error"
+    }
+  ],
+  "console_error_count": 3,
+  "cookies_after_logout": [
+    "__Host-pgx_preauth"
+  ],
+  "failures": [],
+  "logout_control_present": true,
+  "not_found_status": 404,
+  "overflow_pages": [],
+  "pages_without_warning": [],
+  "post_logout_status": 401,
+  "session_cookies": [
+    "__Host-pgx_session"
+  ],
+  "steps": [
+    {
+      "canonical_warning": true,
+      "found": {
+        "warning": true
+      },
+      "horizontal_overflow": false,
+      "name": "01-landing",
+      "note": "unauthenticated entry point",
+      "text_length": 1332,
+      "title": "PGx Platform V2 g\u00f6sterim aray\u00fcz\u00fc - PGx Platform V2",
+      "url": "/"
+    },
+    {
+      "canonical_warning": true,
+      "found": {},
+      "horizontal_overflow": false,
+      "name": "02-anonymous-denied",
+      "note": "anonymous request for a guarded page",
+      "text_length": 1361,
+      "title": "PGx Platform V2 g\u00f6sterim aray\u00fcz\u00fc - PGx Platform V2",
+      "url": "/cases"
+    },
+    {
+      "canonical_warning": true,
+      "found": {},
+      "horizontal_overflow": false,
+      "name": "03-not-found",
+      "note": "unknown path",
+      "text_length": 1342,
+      "title": "PGx Platform V2 g\u00f6sterim aray\u00fcz\u00fc - PGx Platform V2",
+      "url": "/no-such-page"
+    },
+    {
+      "canonical_warning": true,
+      "found": {},
+      "horizontal_overflow": false,
+      "name": "04-login-form",
+      "note": "the form a demonstrator sees",
+      "text_length": 1544,
+      "title": "Oturum a\u00e7ma - PGx Platform V2",
+      "url": "/login"
+    },
+    {
+      "canonical_warning": true,
+      "found": {},
+      "horizontal_overflow": false,
+      "name": "05-login-refused",
+      "note": "wrong password is refused",
+      "text_length": 1663,
+      "title": "Oturum a\u00e7ma - PGx Platform V2",
+      "url": "/login"
+    },
+    {
+      "canonical_warning": true,
+      "found": {},
+      "horizontal_overflow": false,
+      "name": "06-logged-in",
+      "note": "authenticated session established",
+      "text_length": 1767,
+      "title": "Oturum a\u00e7ma - PGx Platform V2",
+      "url": "/login"
+    },
+    {
+      "canonical_warning": true,
+      "found": {},
+      "horizontal_overflow": false,
+      "name": "07-case-catalogue",
+      "note": "development case catalogue",
+      "text_length": 2476,
+      "title": "Geli\u015ftirme vakalar\u0131 - PGx Platform V2",
+      "url": "/cases"
+    },
+    {
+      "canonical_warning": true,
+      "found": {
+        "care_setting_control": true
+      },
+      "horizontal_overflow": false,
+      "name": "08-case-input",
+      "note": "case input: observations and the form",
+      "text_length": 2783,
+      "title": "Vaka - PGx Platform V2",
+      "url": "/cases/WP17-CASE-INSUFFICIENT"
+    },
+    {
+      "canonical_warning": true,
+      "found": {
+        "pending_review": true,
+        "provisional": true,
+        "refusal_code": true,
+        "release": true
+      },
+      "horizontal_overflow": false,
+      "name": "09-clopidogrel-refused",
+      "note": "clopidogrel with no declared care setting",
+      "text_length": 2679,
+      "title": "De\u011ferlendirme - PGx Platform V2",
+      "url": "/cases/WP17-CASE-P1/assess"
+    },
+    {
+      "canonical_warning": true,
+      "found": {
+        "pending_review": true,
+        "provisional": true,
+        "release": true,
+        "ruleset": true
+      },
+      "horizontal_overflow": false,
+      "name": "10-clopidogrel-assessed",
+      "note": "clopidogrel in ACS_OR_PCI",
+      "text_length": 2988,
+      "title": "De\u011ferlendirme - PGx Platform V2",
+      "url": "/cases/WP17-CASE-P1/assess"
+    },
+    {
+      "canonical_warning": true,
+      "found": {
+        "release": true
+      },
+      "horizontal_overflow": false,
+      "name": "11-amitriptyline-joint",
+      "note": "amitriptyline with both genes observed",
+      "text_length": 3119,
+      "title": "De\u011ferlendirme - PGx Platform V2",
+      "url": "/cases/WP17-CASE-P1/assess"
+    },
+    {
+      "canonical_warning": true,
+      "found": {
+        "refused_block": true
+      },
+      "horizontal_overflow": false,
+      "name": "12-amitriptyline-missing-gene",
+      "note": "amitriptyline without both required genes",
+      "text_length": 2773,
+      "title": "De\u011ferlendirme - PGx Platform V2",
+      "url": "/cases/WP17-CASE-INSUFFICIENT/assess"
+    },
+    {
+      "canonical_warning": true,
+      "found": {},
+      "horizontal_overflow": false,
+      "name": "13-validation",
+      "note": "validation dashboard",
+      "text_length": 10081,
+      "title": "Do\u011frulama panosu - PGx Platform V2",
+      "url": "/validation"
+    },
+    {
+      "canonical_warning": true,
+      "found": {},
+      "horizontal_overflow": false,
+      "name": "14-system",
+      "note": "system and release information",
+      "text_length": 3166,
+      "title": "Sistem bilgisi - PGx Platform V2",
+      "url": "/system"
+    },
+    {
+      "canonical_warning": true,
+      "found": {},
+      "horizontal_overflow": false,
+      "name": "15-logged-out",
+      "note": "after logout",
+      "text_length": 1544,
+      "title": "Oturum a\u00e7ma - PGx Platform V2",
+      "url": "/logout"
+    },
+    {
+      "canonical_warning": true,
+      "found": {},
+      "horizontal_overflow": false,
+      "name": "16-post-logout-denied",
+      "note": "the session no longer authorises",
+      "text_length": 1361,
+      "title": "PGx Platform V2 g\u00f6sterim aray\u00fcz\u00fc - PGx Platform V2",
+      "url": "/cases"
+    }
+  ],
+  "viewport": {
+    "height": 900,
+    "width": 1440
+  }
+}

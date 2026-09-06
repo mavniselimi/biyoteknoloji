@@ -1,0 +1,351 @@
+{
+  "browser": {
+    "anonymous_denial_status": 401,
+    "browser": "chromium via playwright",
+    "console": [
+      {
+        "text": "Failed to load resource: the server responded with a status of 401 (Unauthorized)",
+        "type": "error"
+      },
+      {
+        "text": "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "type": "error"
+      },
+      {
+        "text": "Failed to load resource: the server responded with a status of 401 (Unauthorized)",
+        "type": "error"
+      }
+    ],
+    "console_error_count": 3,
+    "cookies_after_logout": [
+      "__Host-pgx_preauth"
+    ],
+    "executed": true,
+    "expectation_failures": [],
+    "not_found_status": 404,
+    "pages_with_overflow": [],
+    "pages_without_canonical_warning": [],
+    "post_logout_status": 401,
+    "screenshots": [
+      "01-landing.png",
+      "02-anonymous-denied.png",
+      "03-not-found.png",
+      "04-login-form.png",
+      "05-login-refused.png",
+      "06-logged-in.png",
+      "07-case-catalogue.png",
+      "08-case-input.png",
+      "09-clopidogrel-refused.png",
+      "10-clopidogrel-assessed.png",
+      "11-amitriptyline-joint.png",
+      "12-amitriptyline-missing-gene.png",
+      "13-validation.png",
+      "14-system.png",
+      "15-logged-out.png",
+      "16-post-logout-denied.png"
+    ],
+    "session_cookies": [
+      "__Host-pgx_session"
+    ],
+    "step_count": 16,
+    "steps": [
+      {
+        "canonical_warning": true,
+        "checks": {
+          "warning": true
+        },
+        "horizontal_overflow": false,
+        "name": "01-landing",
+        "url": "/"
+      },
+      {
+        "canonical_warning": true,
+        "checks": {},
+        "horizontal_overflow": false,
+        "name": "02-anonymous-denied",
+        "url": "/cases"
+      },
+      {
+        "canonical_warning": true,
+        "checks": {},
+        "horizontal_overflow": false,
+        "name": "03-not-found",
+        "url": "/no-such-page"
+      },
+      {
+        "canonical_warning": true,
+        "checks": {},
+        "horizontal_overflow": false,
+        "name": "04-login-form",
+        "url": "/login"
+      },
+      {
+        "canonical_warning": true,
+        "checks": {},
+        "horizontal_overflow": false,
+        "name": "05-login-refused",
+        "url": "/login"
+      },
+      {
+        "canonical_warning": true,
+        "checks": {},
+        "horizontal_overflow": false,
+        "name": "06-logged-in",
+        "url": "/login"
+      },
+      {
+        "canonical_warning": true,
+        "checks": {},
+        "horizontal_overflow": false,
+        "name": "07-case-catalogue",
+        "url": "/cases"
+      },
+      {
+        "canonical_warning": true,
+        "checks": {
+          "care_setting_control": true
+        },
+        "horizontal_overflow": false,
+        "name": "08-case-input",
+        "url": "/cases/WP17-CASE-INSUFFICIENT"
+      },
+      {
+        "canonical_warning": true,
+        "checks": {
+          "pending_review": true,
+          "provisional": true,
+          "refusal_code": true,
+          "release": true
+        },
+        "horizontal_overflow": false,
+        "name": "09-clopidogrel-refused",
+        "url": "/cases/WP17-CASE-P1/assess"
+      },
+      {
+        "canonical_warning": true,
+        "checks": {
+          "pending_review": true,
+          "provisional": true,
+          "release": true,
+          "ruleset": true
+        },
+        "horizontal_overflow": false,
+        "name": "10-clopidogrel-assessed",
+        "url": "/cases/WP17-CASE-P1/assess"
+      },
+      {
+        "canonical_warning": true,
+        "checks": {
+          "release": true
+        },
+        "horizontal_overflow": false,
+        "name": "11-amitriptyline-joint",
+        "url": "/cases/WP17-CASE-P1/assess"
+      },
+      {
+        "canonical_warning": true,
+        "checks": {
+          "refused_block": true
+        },
+        "horizontal_overflow": false,
+        "name": "12-amitriptyline-missing-gene",
+        "url": "/cases/WP17-CASE-INSUFFICIENT/assess"
+      },
+      {
+        "canonical_warning": true,
+        "checks": {},
+        "horizontal_overflow": false,
+        "name": "13-validation",
+        "url": "/validation"
+      },
+      {
+        "canonical_warning": true,
+        "checks": {},
+        "horizontal_overflow": false,
+        "name": "14-system",
+        "url": "/system"
+      },
+      {
+        "canonical_warning": true,
+        "checks": {},
+        "horizontal_overflow": false,
+        "name": "15-logged-out",
+        "url": "/logout"
+      },
+      {
+        "canonical_warning": true,
+        "checks": {},
+        "horizontal_overflow": false,
+        "name": "16-post-logout-denied",
+        "url": "/cases"
+      }
+    ],
+    "viewport": {
+      "height": 900,
+      "width": 1440
+    }
+  },
+  "commit": "",
+  "composition": {
+    "authority_state": "PROJECT_TEAM_PROVISIONAL",
+    "available": true,
+    "claim_boundary_is_approved": false,
+    "claim_boundary_status": "PROJECT_TEAM_PROVISIONAL / PENDING EXTERNAL EXPERT REVIEW",
+    "dataset_public_id": "PGX-DATA-20260906-001",
+    "manifest_hash": "sha256:0cd22a88f086a2d408e3ac4da0738eba5233f500ab277ccbf4033a8c14581d01",
+    "release_public_id": "PGX-CANDIDATE-REL-20260906-001",
+    "review_state": "PENDING_EXTERNAL_EXPERT_REVIEW",
+    "ruleset_content_hash": "sha256:29ca1949b33522f81f745b5b51e61b75913ad4e8584c852bfe2b96cc0fc7c71a",
+    "ruleset_key": "PGX-CANDIDATE-RULESET-WAVE03B",
+    "runtime_track": "CANDIDATE",
+    "security_capabilities": {
+      "audit_reader_composed": true,
+      "audit_sink_composed": true,
+      "authentication_service_composed": true,
+      "candidate_assessment_service_composed": true,
+      "candidate_release_composed": true,
+      "csrf_service_composed": true,
+      "rate_limiter_composed": true,
+      "runtime_track": "CANDIDATE",
+      "user_administration_composed": true
+    }
+  },
+  "environment_class": "LOCAL_REPRESENTATIVE_ENVIRONMENT",
+  "environment_note": "A locally provisioned representative environment: real PostgreSQL 16.13, the declared dependencies installed, authentication, CSRF, authorisation, rate limiting and audit all composed, LLM off, no P1/P2 feature enabled, and no uncontrolled network dependency. It is not external staging and is not described as one.",
+  "files": [
+    {
+      "path": "data/closure/wave-04b-browser/01-landing.png",
+      "sha256": "sha256:b703d7fb2c68c1be355ae8980710760a8e483599fff89cbcd8fba07dd8dc1748"
+    },
+    {
+      "path": "data/closure/wave-04b-browser/02-anonymous-denied.png",
+      "sha256": "sha256:7c008b31ab40c6210c53db1268f3babecdd6e7ecdfea65ad00e2445465c9dc99"
+    },
+    {
+      "path": "data/closure/wave-04b-browser/03-not-found.png",
+      "sha256": "sha256:3e0c8f8c05a9f2a5d1bcbf8f5252e66f2d986d84f5dfdfd87f0aff5368abe803"
+    },
+    {
+      "path": "data/closure/wave-04b-browser/04-login-form.png",
+      "sha256": "sha256:9eb54fbd7ecb2d16fcb5836c60bd5c2a787f97222105a9d8042b6300cf4bcb17"
+    },
+    {
+      "path": "data/closure/wave-04b-browser/05-login-refused.png",
+      "sha256": "sha256:134aa0acfa1945fc0c0fcd46f02b4903ef79b4f7fa576b89aef0435279f5f71f"
+    },
+    {
+      "path": "data/closure/wave-04b-browser/06-logged-in.png",
+      "sha256": "sha256:82d545f48bf039d67bfdd4f389015be3358b055d9bbe6400192da26d86198b57"
+    },
+    {
+      "path": "data/closure/wave-04b-browser/07-case-catalogue.png",
+      "sha256": "sha256:054674472fd5493f235bfceafbb41311e76af87a4c17260ca21d2807de193dd7"
+    },
+    {
+      "path": "data/closure/wave-04b-browser/08-case-input.png",
+      "sha256": "sha256:68bdf214659a444838d0052edf9f3c06f62fa36663288603590da8ed13b5b72f"
+    },
+    {
+      "path": "data/closure/wave-04b-browser/09-clopidogrel-refused.png",
+      "sha256": "sha256:6f50f3f45fdb2c243660b0a5805942c4c2ba2839f79443eb98dcd7d387a2a64f"
+    },
+    {
+      "path": "data/closure/wave-04b-browser/10-clopidogrel-assessed.png",
+      "sha256": "sha256:0f81531e587fcaecdedd3903db866e6731c78e5eabf74192ae954231bde787a6"
+    },
+    {
+      "path": "data/closure/wave-04b-browser/11-amitriptyline-joint.png",
+      "sha256": "sha256:131e528202f4869bbd4feaed9ae3b6ed55daf18b1c30a34b1c8b039079898870"
+    },
+    {
+      "path": "data/closure/wave-04b-browser/12-amitriptyline-missing-gene.png",
+      "sha256": "sha256:8b7f600b4fdf9b5f0ca69d2ff1b2122957a37ae0298d79267c0b2ac6f5af16ca"
+    },
+    {
+      "path": "data/closure/wave-04b-browser/13-validation.png",
+      "sha256": "sha256:9d9392fc63d23ab88d78edaeca17c0450ea9771a9f90febfb8f5862fd9e2d2f8"
+    },
+    {
+      "path": "data/closure/wave-04b-browser/14-system.png",
+      "sha256": "sha256:1281e062b3b1b67ad93518ef83712df9d39ccf58b749db164ce51bca5458f824"
+    },
+    {
+      "path": "data/closure/wave-04b-browser/15-logged-out.png",
+      "sha256": "sha256:595981f6359f9695b323a8a9f4138a09a8a983a4857c5b4602af7523683fe97c"
+    },
+    {
+      "path": "data/closure/wave-04b-browser/16-post-logout-denied.png",
+      "sha256": "sha256:2fa83cf9ee23c834f2fe81ad2898c52ef62314d05b69158752bac30b2beb5e4b"
+    },
+    {
+      "path": "data/closure/wave-04b-browser/jury-flow.json",
+      "sha256": "sha256:75684e246ca8787c4e0bf4df00597d25fa37dcabc7a07e6950aea369018ef8ac"
+    }
+  ],
+  "manifest_version": "pgx-closure-wave04b-manifest/1",
+  "screen_requirements": [
+    {
+      "needle": "CANDIDATE",
+      "path": "/system",
+      "requirement": "candidate runtime state named",
+      "satisfied": true
+    },
+    {
+      "needle": "GOVERNED",
+      "path": "/system",
+      "requirement": "governed runtime state named separately",
+      "satisfied": true
+    },
+    {
+      "needle": "PGX-CANDIDATE-REL",
+      "path": "/system",
+      "requirement": "candidate release identity",
+      "satisfied": true
+    },
+    {
+      "needle": "PROJECT_TEAM_PROVISIONAL",
+      "path": "/system",
+      "requirement": "provisional authority",
+      "satisfied": true
+    },
+    {
+      "needle": "INTERNAL_VALIDATION",
+      "path": "/validation",
+      "requirement": "internal validation label",
+      "satisfied": true
+    },
+    {
+      "needle": "PENDING_EXTERNAL_EXPERT_REVIEW",
+      "path": "/expert-reviews/demo-1",
+      "requirement": "pending external review",
+      "satisfied": true
+    }
+  ],
+  "status_vocabulary": [
+    "COMPLETE CANDIDATE PROJECT",
+    "SOURCE_GROUNDED",
+    "PROJECT_TEAM_PROVISIONAL",
+    "INTERNALLY_VALIDATED",
+    "PENDING_EXTERNAL_EXPERT_REVIEW"
+  ],
+  "still_unavailable": [
+    "No external expert has reviewed any of this.",
+    "No independent validation exists.",
+    "No clinical validation exists.",
+    "The candidate source policy remains PENDING_REVIEW and the ordinary DQ gate still fails on its two structural blockers.",
+    "The candidate DQ decision keeps permits_transition = false; candidate-only acceptance is not governed publication approval.",
+    "THS-6 is not closed and no THS-6 gate was touched."
+  ],
+  "work_packages": [
+    {
+      "subject": "product surface and demo UX closure",
+      "verdict": "PASS",
+      "work_package": "WP-C14A"
+    },
+    {
+      "subject": "representative candidate demonstration",
+      "verdict": "PASS",
+      "work_package": "WP-C14"
+    }
+  ]
+}

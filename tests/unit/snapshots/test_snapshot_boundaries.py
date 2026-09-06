@@ -272,6 +272,11 @@ class TestTheApplicationLayerInventory(unittest.TestCase):
         # candidate release, and the service that executes it. Registered here
         # rather than exempted, so a third one cannot arrive unnoticed.
         "candidate_assessment_service.py",
+        # Wave 4B. The candidate track's composition, its document
+        # rendering and the runtime-track vocabulary, registered by name like
+        # every other module in this layer.
+        "candidate_composition.py",
+        "candidate_documents.py",
         "candidate_release.py",
         "canonical_schema.py", "canonical_service.py",
         "coverage_cli.py", "coverage_gate_status.py", "coverage_schema.py",
@@ -303,6 +308,8 @@ class TestTheApplicationLayerInventory(unittest.TestCase):
         "rule_gate_status.py",
         "rule_service.py", "rules_cli.py", "rules_schema.py",
         "ruleset_service.py",
+        # Wave 4B. GOVERNED or CANDIDATE, chosen once and never inferred.
+        "runtime_track.py",
         # WP-20: the safety gate command and its published schemas, on the
         # same terms as WP-19. pgx/safety holds the registry, the detectors
         # and the negative-control wiring, and imports nothing from the

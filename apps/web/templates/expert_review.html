@@ -14,6 +14,12 @@
   reviewer would fill it in and believe it was recorded.
 #}
 
+<div class="notice" role="status">
+  <p><strong>{{ text['expert.pending_state'] }}:</strong>
+    <code>PENDING_EXTERNAL_EXPERT_REVIEW</code></p>
+  <p class="muted">{{ text['expert.pending_note'] }}</p>
+</div>
+
 {% if not model.available %}
 <div class="notice notice-unavailable" role="status">
   <p><strong>{{ text['status.unavailable'] }}.</strong> {{ model.unavailable_note }}</p>

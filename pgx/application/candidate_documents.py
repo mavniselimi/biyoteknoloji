@@ -36,7 +36,6 @@ __all__ = [
     "CANDIDATE_ASSESSMENT_DOCUMENT_VERSION",
     "candidate_assessment_document",
     "candidate_assessment_input",
-    "candidate_request_to_input",
     "refusal_codes_of",
 ]
 
@@ -136,28 +135,3 @@ def candidate_assessment_input(payload: Mapping[str, Any], *, profile: Any,
         return base
     return replace(base, care_setting=str(care_setting))
 
-
-def candidate_request_to_input(document: Mapping[str, Any]) -> Any:
-    """One request document to one canonical candidate input.
-
-    The whole conversion, in the application layer, because the caller that
-    needs it most is the server-rendered interface - and
-    ``tests/unit/web/test_wp17_boundaries.py`` forbids that layer from
-    importing an engine. It is right to: a page that could normalise a
-    phenotype profile is a page that could disagree with the service about
-    what the profile means.
-    """
-    from apps.api.adapters.request import observations_to_mapping
-    from pgx.domain.claims import OperationMode, PermittedInputKind
-    from pgx.engine.phenotype_normalization import normalize_profile
-
-    profile_document = document["profile"]
-    profile = normalize_profile(
-        observations_to_mapping(profile_document["observations"]),
-        profile_id=profile_document.get("profile_id"),
-        contract_version=profile_document.get("input_contract_version")
-        or "pgx-phenotype-input/1")
-    return candidate_assessment_input(
-        document, profile=profile,
-        mode=OperationMode(document["mode"]),
-        input_kind=PermittedInputKind(document["input_kind"]))
