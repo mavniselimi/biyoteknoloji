@@ -64,6 +64,12 @@ CLIENT_OPERATIONS: Mapping[str, str] = {
     "get_evidence": "EvidenceDetailResponse",
     "get_system_version": "SystemVersionResponse",
     "get_readiness": "ReadinessResponse",
+    # Wave 4B. A distinct model name, because a candidate assessment is a
+    # different document under a different authority and a reader that could
+    # not tell the two apart is a reader that will eventually show a
+    # provisional answer as a governed one.
+    "create_candidate_assessment": "CandidateAssessmentResponse",
+    "candidate_drug_catalogue": "CandidateDrugCatalogueResponse",
 }
 
 
@@ -92,6 +98,18 @@ class PgxApiClient:
     def create_assessment(self, document: Mapping[str, Any], *,
                           context: ExecutionContext
                           ) -> ClientResponse:  # pragma: no cover - protocol
+        raise NotImplementedError
+
+    def create_candidate_assessment(
+            self, document: Mapping[str, Any], *,
+            context: ExecutionContext
+    ) -> ClientResponse:  # pragma: no cover - protocol
+        """Wave 4B. Reachable only on a candidate deployment."""
+        raise NotImplementedError
+
+    def candidate_drug_catalogue(
+            self, *, request_id: str) -> ClientResponse:  # pragma: no cover
+        """Wave 4B. The candidate ruleset's own scope."""
         raise NotImplementedError
 
     def get_assessment(self, assessment_id: str, *, request_id: str
@@ -177,6 +195,13 @@ class UnavailableApiClient(PgxApiClient):
         del document, context
         return self._refuse(getattr(context, "request_id", "") or "")
 
+    def create_candidate_assessment(self, document, *, context):
+        del document
+        return self._refuse(getattr(context, "request_id", "") or "")
+
+    def candidate_drug_catalogue(self, *, request_id):
+        return self._refuse(request_id)
+
     def get_assessment(self, assessment_id, *, request_id):
         del assessment_id
         return self._refuse(request_id)
@@ -234,6 +259,73 @@ class InProcessApiClient(PgxApiClient):
         except Exception as error:  # noqa: BLE001 - mapped, never displayed
             raise _as_web_error(error, request_id) from error
         return _validated("AssessmentResponse", page_document, request_id)
+
+    def candidate_drug_catalogue(self, *, request_id: str) -> ClientResponse:
+        """The drugs the active candidate ruleset can actually answer for.
+
+        Read from the pinned ruleset's own scope rather than from a governed
+        coverage manifest, because the candidate track has no governed
+        manifest and inventing one would be the sort of parallel artifact this
+        project keeps refusing to build. Four drugs, two genes, and the care
+        setting each one requires - which is exactly what the form needs to
+        offer honestly.
+        """
+        try:
+            pinned = self._provider.require_candidate_release()
+            scope = pinned.ruleset.expected_gene_scope
+            required = pinned.ruleset.care_setting_required
+            items = [
+                # ``drug`` and ``display_name`` are the keys the case
+                # page's model reads, so the candidate catalogue speaks the
+                # same shape as the governed one rather than teaching the
+                # page a second vocabulary.
+                {"drug": drug,
+                 "display_name": drug.split(":", 1)[-1],
+                 "gene_keys": list(genes),
+                 "care_settings": list(required.get(drug) or ())}
+                for drug, genes in sorted(scope.items())]
+        except Exception as error:  # noqa: BLE001
+            raise _as_web_error(error, request_id) from error
+        return ClientResponse(model="CandidateDrugCatalogueResponse",
+                              document={"items": items,
+                                        "release_public_id":
+                                            pinned.release_public_id},
+                              request_id=request_id)
+
+    def create_candidate_assessment(self, document: Mapping[str, Any], *,
+                                    context: ExecutionContext
+                                    ) -> ClientResponse:
+        """One candidate assessment, through the composed candidate service.
+
+        The same provider the API routers hold, the same service, and the same
+        document builder - so the page and the endpoint cannot describe one
+        assessment differently. There is no evaluator on this side of the
+        application: this method resolves a capability and formats what comes
+        back.
+
+        Deliberately a separate method from :meth:`create_assessment` rather
+        than a branch inside it. The two produce documents with different
+        shapes under different authorities, and a caller that could not tell
+        which one it received is a caller that will eventually show a
+        provisional answer as a governed one.
+        """
+        from pgx.application.assessment_snapshot import build_input_snapshot
+        from pgx.application.candidate_documents import (
+            candidate_assessment_document, candidate_request_to_input)
+
+        request_id = context.request_id or ""
+        try:
+            assessment_input = candidate_request_to_input(document)
+            service = self._provider.require_candidate_assessment_service()
+            result = service.execute(assessment_input)
+            page_document = candidate_assessment_document(
+                result, case_id=document.get("case_id"),
+                input_snapshot=build_input_snapshot(assessment_input))
+        except Exception as error:  # noqa: BLE001 - mapped, never displayed
+            raise _as_web_error(error, request_id) from error
+        return ClientResponse(model="CandidateAssessmentResponse",
+                              document=page_document,
+                              request_id=request_id)
 
     def get_assessment(self, assessment_id: str, *,
                        request_id: str) -> ClientResponse:
@@ -363,6 +455,23 @@ class HttpApiClient(PgxApiClient):
         return httpx.Client(base_url=self._base_url, timeout=self._timeout,
                             transport=self._transport,
                             headers=self._headers)
+
+    def create_candidate_assessment(self, document, *, context):
+        """Not offered over HTTP.
+
+        The candidate track is composed in-process; a deployment that reached
+        it across the network would be one where the interface and the
+        candidate service were configured separately, and could disagree
+        about which release is active. Refused rather than implemented.
+        """
+        del document
+        raise WebError("SERVICE_NOT_READY",
+                       request_id=getattr(context, "request_id", "") or "",
+                       details={"components": ["candidate_runtime"]})
+
+    def candidate_drug_catalogue(self, *, request_id):
+        raise WebError("SERVICE_NOT_READY", request_id=request_id,
+                       details={"components": ["candidate_runtime"]})
 
     def _request(self, method: str, path: str, *, model: str,
                  request_id: str, json: Any = None,

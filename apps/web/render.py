@@ -58,6 +58,11 @@ TEMPLATE_NAMES: Tuple[str, ...] = (
     "cases.html",
     "case_detail.html",
     "assessment.html",
+    # Wave 4B. The candidate track's own result page. A separate template
+    # rather than the governed one with extra rows: the two describe answers
+    # under different authorities, and a reader has to be able to tell which
+    # is in front of them.
+    "candidate_assessment.html",
     "evidence.html",
     "validation.html",
     "expert_review.html",

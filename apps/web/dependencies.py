@@ -141,5 +141,14 @@ class WebProvider:
         the form is rendered disabled with the reason stated, rather than
         rendered live and failing after the operator has filled it in.
         """
+        # ``self.csrf`` is the module-level *refusing* verifier once WP-23
+        # replaced WP-17's static one, so asking whether it is configured
+        # answers "no" on every deployment that has real session CSRF - which
+        # left every state-changing form disabled on exactly the deployments
+        # able to offer one. What makes a form offerable is that a verifier
+        # can be built for this visitor's session; whether one actually was
+        # is a per-request question, and the route asks it with
+        # ``csrf_for(session).configured`` before enabling the control.
         return bool(self.settings.state_changing_routes_available
-                    and self.csrf.configured)
+                    and (self.csrf_factory is not None
+                         or self.csrf.configured))

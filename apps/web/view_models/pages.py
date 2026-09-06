@@ -894,7 +894,13 @@ def build_login_page(*, authentication_configured: bool = False,
         logout_note=(ui("login.logout_available", locale) if signed_in
                      else ui("login.logout_unavailable", locale)),
         form_enabled=bool(form_enabled and csrf_token and not signed_in),
-        csrf_token=csrf_token if form_enabled else None,
+        # Carried whenever one exists, not only when the *login* form is
+        # enabled. A signed-in visitor sees no login form and does see a
+        # logout form, and that form needs a token too - dropping it here
+        # left every sign-out failing CSRF with 403 while the button looked
+        # perfectly ordinary. ``form_enabled`` still governs the login form
+        # alone, which is the question it was asking.
+        csrf_token=csrf_token,
         failed=bool(failed),
         failure_note=(ui("login.failed", locale) if failed else ""),
         rate_limited=bool(rate_limited),

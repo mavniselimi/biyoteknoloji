@@ -41,6 +41,7 @@ from pgx.reporting.templates import FIELD_LABELS, require_locale
 __all__ = [
     "PageResult",
     "render_assessment_page",
+    "render_candidate_assessment_page",
     "render_case_detail_page",
     "render_cases_page",
     "render_error_page",
@@ -216,7 +217,8 @@ def render_cases_page(env: PageEnvironment, *,
 def render_case_detail_page(env: PageEnvironment, *, case: Any,
                             client: PgxApiClient,
                             submit_available: bool = False,
-                            csrf_token: Optional[str] = None) -> PageResult:
+                            csrf_token: Optional[str] = None,
+                            candidate_track: bool = False) -> PageResult:
     """One case, with the pinned release's medication catalogue.
 
     The catalogue call is allowed to fail without failing the page: a case's
@@ -229,7 +231,15 @@ def render_case_detail_page(env: PageEnvironment, *, case: Any,
     drugs: List[Mapping[str, Any]] = []
     drugs_available = True
     try:
-        response = client.list_drugs(request_id=env.request_id)
+        # On the candidate track the catalogue comes from the candidate
+        # ruleset's own scope: there is no governed coverage manifest, and the
+        # governed accessor refuses with a track mismatch rather than pretend
+        # there is one. Same page, same control, honest source.
+        if candidate_track:
+            response = client.candidate_drug_catalogue(
+                request_id=env.request_id)
+        else:
+            response = client.list_drugs(request_id=env.request_id)
         drugs = list(response.document.get("items") or ())
     except WebError:
         drugs_available = False
@@ -261,6 +271,31 @@ def render_assessment_page(env: PageEnvironment, *,
     context["model"] = build_assessment_page(document, locale=env.locale)
     return _render("web.assessment", context, status=status,
                    request_id=env.request_id)
+
+
+def render_candidate_assessment_page(env: PageEnvironment, *,
+                                     document: Mapping[str, Any],
+                                     status: int = 200) -> PageResult:
+    """The candidate assessment screen.
+
+    Its own template, not the governed one with extra rows. The governed page
+    is built around a stored assessment identity and a governed release; this
+    one is built around a provisional authority, a pending review state and a
+    refusal list that must be visible beside the attention level rather than
+    folded into it. Two pages, because they are describing two different kinds
+    of answer, and a reader has to be able to tell which one is in front of
+    them without reading the small print.
+    """
+    from apps.web.view_models.candidate_assessment import (
+        build_candidate_assessment_page)
+
+    context = env.context("web.assessment")
+    context["model"] = build_candidate_assessment_page(document,
+                                                       locale=env.locale)
+    route = web_route("web.assessment")
+    html = render_page("candidate_assessment.html", context)
+    return PageResult(html=html, status=status, route_name=route.name,
+                      request_id=env.request_id)
 
 
 def render_evidence_page(env: PageEnvironment, *,

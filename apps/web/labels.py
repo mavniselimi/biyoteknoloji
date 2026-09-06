@@ -266,6 +266,41 @@ UI_TEXT: Mapping[str, Mapping[str, str]] = {
               "indication, dose or free text."},
 
     # -- assessment --------------------------------------------------------
+    # -- Wave 4B: the candidate track's own screens ----------------------
+    "candidate.heading": {"tr": "Aday değerlendirme",
+                          "en": "Candidate assessment"},
+    "candidate.demo_notice": {
+        "tr": "Bu ekran yalnızca sentetik veya yayından türetilmiş gösterim "
+              "girdileriyle çalışır. Gerçek hasta verisi, VCF dosyası veya "
+              "hasta kayıt sistemi bağlantısı desteklenmez.",
+        "en": "This screen runs only on synthetic or literature-derived "
+              "demonstration input. Real patient data, VCF files and health "
+              "record connections are not supported."},
+    "candidate.refusal_notice": {
+        "tr": "Reddedilen eksenler dikkat düzeyinden ayrı listelenir. Bir "
+              "reddin dikkat bulgusu yokluğu olarak gösterilmesi yanıltıcı "
+              "olurdu.",
+        "en": "Refused axes are listed separately from the attention level. "
+              "Showing a refusal as an absence of attention would be "
+              "misleading."},
+    "candidate.authority": {"tr": "Yetki durumu", "en": "Authority state"},
+    "candidate.release": {"tr": "Aday sürüm", "en": "Candidate release"},
+    "candidate.refusals": {"tr": "Reddedilen eksenler",
+                           "en": "Refused axes"},
+    "candidate.lineage": {"tr": "Kanıt zinciri", "en": "Evidence lineage"},
+    "candidate.no_refusals": {"tr": "Reddedilen eksen yok.",
+                              "en": "No axis was refused."},
+    "candidate.joint": {"tr": "Ortak iki gen kuralı",
+                        "en": "Joint two-gene rule"},
+    "candidate.single": {"tr": "Tek gen kuralı", "en": "Single-gene rule"},
+    "candidate.care_setting": {"tr": "Klinik bağlam", "en": "Care setting"},
+    "candidate.care_setting_help": {
+        "tr": "Klopidogrel için ACS/PCI bağlamı zorunludur. Bağlam "
+              "bildirilmezse eksen reddedilir.",
+        "en": "Clopidogrel requires an ACS/PCI context. Without a declared "
+              "context the axis is refused."},
+    "candidate.care_setting_none": {"tr": "Bildirilmedi",
+                                    "en": "Not declared"},
     "assessment.heading": {"tr": "Değerlendirme", "en": "Assessment"},
     "assessment.overall": {"tr": "Genel durum", "en": "Overall status"},
     "assessment.status_pair_note": {

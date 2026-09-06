@@ -96,3 +96,25 @@ def build_assessment_request(case: Any, *, medications: Sequence[str],
         },
         "medications": sorted(selected),
     }
+
+
+#: The care settings the form may offer. The empty string means "not
+#: declared", which is a real answer the candidate ruleset acts on: clopidogrel
+#: refuses without a declared context rather than assuming one.
+PERMITTED_FORM_CARE_SETTINGS = ("", "ACS_OR_PCI")
+
+
+def read_care_setting(value):
+    """The care setting a form submitted, or a refusal.
+
+    Validated against a closed set here rather than passed through to the
+    application, so a browser cannot put arbitrary text into a field that
+    decides whether a clopidogrel axis is answered or refused. The location is
+    reported, never the value.
+    """
+    text = (value or "").strip()
+    if text not in PERMITTED_FORM_CARE_SETTINGS:
+        raise WebError("REQUEST_CONTRACT_VIOLATION",
+                       details={"issues": [{"location": "$.care_setting",
+                                            "code": "PATTERN_MISMATCH"}]})
+    return text or None

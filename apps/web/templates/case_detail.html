@@ -71,6 +71,21 @@
   <p class="muted">{{ model.no_free_text_note }}</p>
 
   {% if model.submit_available %}
+  <fieldset class="care-setting">
+    <legend>{{ text['candidate.care_setting'] }}</legend>
+    <p class="muted" id="care-setting-help">{{ text['candidate.care_setting_help'] }}</p>
+    <label for="care-setting-none">
+      <input type="radio" id="care-setting-none" name="care_setting" value=""
+             checked aria-describedby="care-setting-help">
+      {{ text['candidate.care_setting_none'] }}
+    </label>
+    <label for="care-setting-acs">
+      <input type="radio" id="care-setting-acs" name="care_setting"
+             value="ACS_OR_PCI" aria-describedby="care-setting-help">
+      <code>ACS_OR_PCI</code>
+    </label>
+  </fieldset>
+
   <button type="submit" class="primary">{{ text['case.submit'] }}</button>
   {% else %}
   <div class="notice notice-unavailable" role="status">

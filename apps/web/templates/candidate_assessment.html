@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+{% block content %}
+{#
+  Nothing here is computed. Every code, hash and label comes from the view
+  model, which was built from the one candidate assessment document the
+  application service produced.
+
+  The order of the blocks is the argument this page makes: what answered,
+  under whose authority, what it answered, what it refused, and what each
+  answer is made of. A reader who stops after the first two blocks has still
+  read that this is provisional and unreviewed.
+#}
+<h2>{{ text['candidate.heading'] }}</h2>
+<p class="muted">{{ model.demo_notice }}</p>
+
+<h3>{{ text['candidate.authority'] }}</h3>
+<dl class="fact-list">
+  <div><dt>{{ text['candidate.authority'] }}</dt>
+    <dd><code>{{ model.authority_state }}</code>
+      <span class="status-blocked">{{ model.review_state }}</span></dd></div>
+  <div><dt>{{ text['system.claim_boundary'] }}</dt>
+    <dd><code>{{ model.claim_boundary_status }}</code>
+      {% if model.claim_boundary_is_approved %}
+      <span class="status-ok">{{ text['status.ready'] }}</span>
+      {% else %}
+      <span class="status-blocked">{{ text['status.not_ready'] }}</span>
+      {% endif %}</dd></div>
+</dl>
+<p class="muted">{{ model.governed_registry_note }}</p>
+
+<h3>{{ text['candidate.release'] }}</h3>
+<dl class="fact-list">
+  <div><dt>release</dt><dd><code>{{ model.release_public_id }}</code></dd></div>
+  <div><dt>manifest</dt><dd><code>{{ model.manifest_hash }}</code></dd></div>
+  <div><dt>dataset</dt><dd><code>{{ model.dataset_public_id }}</code></dd></div>
+  <div><dt>ruleset</dt><dd><code>{{ model.ruleset_key }}</code></dd></div>
+  <div><dt>ruleset hash</dt><dd><code>{{ model.ruleset_content_hash }}</code></dd></div>
+  <div><dt>input hash</dt><dd><code>{{ model.input_hash }}</code></dd></div>
+  <div><dt>output hash</dt><dd><code>{{ model.output_hash }}</code></dd></div>
+  <div><dt>case</dt><dd><code>{{ model.case_id }}</code></dd></div>
+  <div><dt>computed</dt><dd><code>{{ model.computed_at }}</code></dd></div>
+</dl>
+
+<h3>{{ text['assessment.overall'] }}</h3>
+<dl class="fact-list">
+  <div><dt>{{ field['attention'] }}</dt>
+    <dd><code>{{ model.attention_level }}</code> {{ model.attention_label }}</dd></div>
+  <div><dt>{{ field['coverage'] }}</dt>
+    <dd><code>{{ model.coverage_status }}</code></dd></div>
+</dl>
+<p class="muted">{{ text['assessment.status_pair_note'] }}</p>
+
+<h3>{{ text['candidate.refusals'] }}</h3>
+<p class="muted">{{ model.refusal_notice }}</p>
+{% if model.refused %}
+<ul class="refusal-list">
+  {% for code in model.refusal_codes %}
+  <li><code class="status-code">{{ code }}</code></li>
+  {% endfor %}
+</ul>
+{% else %}
+<p class="empty-state">{{ text['candidate.no_refusals'] }}</p>
+{% endif %}
+
+<h3>{{ text['assessment.medications'] }}</h3>
+{% for medication in model.medications %}
+<section class="medication" aria-labelledby="candidate-medication-{{ loop.index }}">
+  <h4 id="candidate-medication-{{ loop.index }}"><code>{{ medication.drug }}</code></h4>
+  <dl class="fact-list">
+    <div><dt>{{ field['attention'] }}</dt>
+      <dd><code>{{ medication.attention_level }}</code></dd></div>
+    <div><dt>{{ field['coverage'] }}</dt>
+      <dd><code>{{ medication.coverage_status }}</code></dd></div>
+    <div><dt>{{ text['candidate.care_setting'] }}</dt>
+      <dd><code>{{ medication.care_setting }}</code></dd></div>
+  </dl>
+  {% if medication.refused %}
+  <ul class="refusal-list">
+    {% for code in medication.reason_codes %}
+    <li><code class="status-code">{{ code }}</code></li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+
+  <div class="table-scroll">
+  <table class="data-table axis-table">
+    <caption>{{ text['candidate.lineage'] }}</caption>
+    <thead>
+      <tr>
+        <th scope="col">{{ field['gene'] }}</th>
+        <th scope="col">{{ field['coverage'] }}</th>
+        <th scope="col">{{ field['attention'] }}</th>
+        <th scope="col">{{ field['reason_code'] }}</th>
+        <th scope="col">rule</th>
+        <th scope="col">{{ field['evidence'] }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for axis in medication.axes %}
+      <tr data-refused="{{ 'true' if axis.refused else 'false' }}">
+        <th scope="row"><code>{{ axis.genes }}</code>
+          <span class="muted">{% if axis.is_joint %}{{ text['candidate.joint'] }}{% else %}{{ text['candidate.single'] }}{% endif %}</span></th>
+        <td><code>{{ axis.coverage_status }}</code></td>
+        <td><code>{{ axis.attention_level }}</code></td>
+        <td>
+          {% if axis.reason_codes %}
+          {% for code in axis.reason_codes %}<code class="status-code">{{ code }}</code>{% endfor %}
+          {% else %}<span class="absent">&#8212;</span>{% endif %}
+        </td>
+        <td>
+          <code>{{ axis.matched_rule_key }}</code><br>
+          <code class="muted">{{ axis.rule_content_hash }}</code><br>
+          <code class="muted">{{ axis.interpretation_key }}</code>
+        </td>
+        <td>
+          {% for record in axis.capture_record_ids %}<code class="muted">{{ record }}</code><br>{% endfor %}
+          {% for citation in axis.citations %}<span class="muted">{{ citation }}</span><br>{% endfor %}
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  </div>
+</section>
+{% endfor %}
+{% endblock %}

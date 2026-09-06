@@ -49,6 +49,10 @@ FRAMEWORK_FREE_MODULES: Tuple[str, ...] = (
     "validation_feed.py",
     os.path.join("view_models", "__init__.py"),
     os.path.join("view_models", "assessment.py"),
+    # Wave 4B. The candidate track's assessment model: a separate page,
+    # because a candidate answer and a governed one carry different
+    # authorities and a reader must be able to tell which is in front of them.
+    os.path.join("view_models", "candidate_assessment.py"),
     os.path.join("view_models", "base.py"),
     os.path.join("view_models", "pages.py"),
     os.path.join("view_models", "preservation.py"),

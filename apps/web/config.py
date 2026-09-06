@@ -179,10 +179,24 @@ def load_web_settings(env: Optional[Mapping[str, str]] = None,
     return WebSettings(
         api=api_settings,
         locale=locale,
-        # Never read from the environment. There is no CSRF verifier to
-        # configure, and a variable that could claim otherwise would be a
-        # variable somebody sets.
-        csrf_configured=False,
+        # Derived, never read from the environment. A variable that could
+        # claim CSRF is configured would be a variable somebody sets while it
+        # is not - so this follows the only thing that makes a token
+        # bindable: a session provider.
+        #
+        # WP-17 hard-coded ``False`` and said why: the only verifier then in
+        # existence was a fixture holding one process-global token. WP-23
+        # replaced it with SessionBoundCsrfVerifier, which the login form has
+        # been using ever since - so the comment outlived the fact, and every
+        # state-changing form on an authenticated deployment stayed disabled
+        # because of it. The __post_init__ guards below still refuse the
+        # unsafe combinations, so this cannot become a claim without a
+        # session behind it.
+        # SESSION only, not merely "some resolver exists". A CSRF token is
+        # bound to a session's own secret, and a static development token has
+        # no session to bind to - so a deployment on static tokens keeps its
+        # forms disabled, exactly as before.
+        csrf_configured=bool(api_settings.production_authentication_available),
         static_asset_version=(source.get(_ENV_PREFIX + "ASSET_VERSION")
                               or "1").strip(),
         max_form_bytes=_integer(source, "MAX_FORM_BYTES", 16 * 1024),

@@ -16,7 +16,9 @@ from fastapi.responses import HTMLResponse
 from apps.api.dependencies import require_access
 from apps.web.dependencies import WebProvider
 from apps.web.errors import WebError
-from apps.web.pages import (PageEnvironment, PageResult, render_assessment_page,
+from apps.web.pages import (PageEnvironment, PageResult,
+                            render_assessment_page,
+                            render_candidate_assessment_page,
                             render_case_detail_page, render_cases_page,
                             render_error_page, render_evidence_page,
                             render_expert_review_page, render_home_page,
@@ -297,10 +299,29 @@ async def case_detail(request: Request, case_id: str,
     if case is None:
         return _failure(request, provider, WebError("RESOURCE_NOT_FOUND"),
                         route_name=_CASES.name)
+    # The token has to be bound to *this* visitor's session, not issued by
+    # the module-level refusing verifier: a form carrying an unbound token is
+    # a form that fails after the operator has filled it in.
+    session = provider.authenticate(_session_token(request))
+    verifier = provider.csrf_for(session.session if session else None)
     return _respond(render_case_detail_page(
         _environment(request, provider), case=case, client=provider.client,
-        submit_available=provider.forms_available,
-        csrf_token=provider.csrf.issue()))
+        submit_available=provider.forms_available and verifier.configured,
+        csrf_token=verifier.issue() if verifier.configured else None,
+        candidate_track=_is_candidate_track(request)))
+
+
+def _is_candidate_track(request: Request) -> bool:
+    """Whether this deployment composed the candidate track.
+
+    Read from the application's own provider, never from the request: the
+    track is a deployment decision and a form field that could change it
+    would be a way to ask an unapproved release for an answer.
+    """
+    from pgx.application.runtime_track import RuntimeTrack
+
+    provider = getattr(request.app.state, "provider", None)
+    return getattr(provider, "runtime_track", None) is RuntimeTrack.CANDIDATE
 
 
 @router.post(_ASSESS.path, name=_ASSESS.name, response_class=HTMLResponse)
@@ -308,11 +329,22 @@ async def submit_assessment(
         request: Request, case_id: str,
         csrf_token: Optional[str] = Form(default=None),
         medications: Optional[List[str]] = Form(default=None),
+        care_setting: Optional[str] = Form(default=None),
         principal: Any = Depends(require_access(_ASSESS.access,
                                                 _ASSESS.name)),
         provider: WebProvider = Depends(get_web_provider)) -> HTMLResponse:
+    """Submit one synthetic assessment on whichever track is composed.
+
+    The dispatch is on the *composed* track, never on anything the form sent.
+    A browser cannot ask for the candidate service by posting a field, and a
+    governed deployment has no candidate service to reach - the provider
+    refuses it with the typed track mismatch. So this branch selects a
+    formatter, not an authority.
+    """
+    session = provider.authenticate(_session_token(request))
     try:
-        provider.csrf.verify(csrf_token)
+        provider.csrf_for(session.session if session else None).verify(
+            csrf_token)
     except CsrfError:
         return _failure(request, provider, WebError("FORBIDDEN_ROLE"),
                         route_name=_CASES.name)
@@ -334,6 +366,14 @@ async def submit_assessment(
             channel=ExecutionChannel.API,
             request_id=environment.request_id or None,
             authenticated_by=principal.authenticated_by)
+        if _is_candidate_track(request):
+            from apps.web.submission import read_care_setting
+
+            document["care_setting"] = read_care_setting(care_setting)
+            response = provider.client.create_candidate_assessment(
+                document, context=context)
+            return _respond(render_candidate_assessment_page(
+                environment, document=response.document, status=200))
         response = provider.client.create_assessment(document, context=context)
     except WebError as error:
         return _failure(request, provider, error, route_name=_CASES.name)
