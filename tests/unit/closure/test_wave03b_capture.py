@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+import ast
 import json
 import os
 import unittest
@@ -26,6 +27,48 @@ DATASET_ID = "PGX-DATA-20260906-001"
 SNAPSHOT = os.path.join(REPO, "data", "raw", "cpic-guideline-capture",
                         DATASET_ID)
 BUILD = os.path.join(REPO, "data", "canonical", DATASET_ID)
+MIGRATION = os.path.join(REPO, "migrations", "versions",
+                         "0012_wave03b_candidate_capture.py")
+
+
+def _migration_source():
+    with open(MIGRATION, encoding="utf-8") as handle:
+        return handle.read()
+
+
+def _string_constants(tree):
+    """Module-level ``NAME = "literal"`` bindings, annotated or not."""
+    found = {}
+    for node in tree.body:
+        if isinstance(node, ast.AnnAssign):
+            targets = [node.target]
+        elif isinstance(node, ast.Assign):
+            targets = node.targets
+        else:
+            continue
+        if not isinstance(node.value, ast.Constant):
+            continue
+        if not isinstance(node.value.value, str):
+            continue
+        for target in targets:
+            if isinstance(target, ast.Name):
+                found[target.id] = node.value.value
+    return found
+
+
+def _call_args(tree, function, attribute):
+    """Positional args of every ``op.<attribute>(...)`` inside ``function``."""
+    calls = []
+    for node in ast.walk(tree):
+        if not isinstance(node, ast.FunctionDef) or node.name != function:
+            continue
+        for inner in ast.walk(node):
+            if not isinstance(inner, ast.Call):
+                continue
+            func = inner.func
+            if isinstance(func, ast.Attribute) and func.attr == attribute:
+                calls.append(inner.args)
+    return calls
 
 
 class ClaimBoundaryTest(unittest.TestCase):
@@ -91,23 +134,63 @@ class VocabularyTest(unittest.TestCase):
         self.assertLessEqual(len(SnapshotKind.TRANSCRIPTION_CAPTURE.value), 24)
 
     def test_the_migration_widens_both_constraints(self):
-        path = os.path.join(REPO, "migrations", "versions",
-                            "0012_wave03b_candidate_capture.py")
-        with open(path, encoding="utf-8") as handle:
-            text = handle.read()
+        text = _migration_source()
         self.assertIn("AGENT_TARGETED_RETRIEVAL", text)
         self.assertIn("TRANSCRIPTION_CAPTURE", text)
-        self.assertIn("ck_source_policies_acquisition_mode_enum", text)
-        self.assertIn("ck_raw_snapshots_kind_enum", text)
         self.assertIn('down_revision: Union[str, None] = '
                       '"0011_wp23_auth_audit"', text)
+        constants = _string_constants(ast.parse(text))
+        # The full constraint names are composed, never written out. The
+        # metadata naming convention is ``ck_%(table_name)s_%(constraint_name)
+        # s``, so ``create_check_constraint`` prepends ``ck_<table>_`` itself
+        # and must be given the suffix alone. An earlier version of this test
+        # searched the source for the finished names and passed on the module
+        # docstring, which quotes the double-prefixed mistake - so the
+        # assertion is now on the composed value, which prose cannot satisfy.
+        self.assertEqual(
+            "ck_%s_%s" % ("source_policies",
+                          constants["_ACQUISITION_CONSTRAINT_SUFFIX"]),
+            "ck_" + "source_policies" + "_" + "acquisition_mode_enum")
+        self.assertEqual(
+            "ck_%s_%s" % ("raw_snapshots",
+                          constants["_SNAPSHOT_KIND_CONSTRAINT_SUFFIX"]),
+            "ck_" + "raw_snapshots" + "_" + "kind_enum")
+
+    def test_the_migration_gives_alembic_the_suffix_and_not_the_full_name(self):
+        """The defect a real PostgreSQL round-trip surfaced.
+
+        ``drop_constraint`` takes the finished name; ``create_check_constraint``
+        takes the suffix. Passing the finished name to both created
+        ``ck_source_policies_ck_source_policies_acquisition_mode_enum``: the
+        rule was still enforced, so nothing failed, but the name a later
+        migration would drop no longer existed.
+        """
+        tree = ast.parse(_migration_source())
+        dropped = _call_args(tree, "_replace_check", "drop_constraint")
+        self.assertEqual(len(dropped), 1)
+        composed = dropped[0][0]
+        self.assertIsInstance(composed, ast.BinOp)
+        self.assertIsInstance(composed.op, ast.Mod)
+        self.assertEqual(composed.left.value, "ck_%s_%s")
+        created = _call_args(tree, "_replace_check", "create_check_constraint")
+        self.assertEqual(len(created), 1)
+        self.assertIsInstance(created[0][0], ast.Name)
+        self.assertEqual(created[0][0].id, "suffix")
+        # Every call site passes a declared suffix constant, not a literal.
+        for node in ast.walk(tree):
+            if not isinstance(node, ast.Call):
+                continue
+            if not isinstance(node.func, ast.Name):
+                continue
+            if node.func.id != "_replace_check":
+                continue
+            self.assertIsInstance(node.args[1], ast.Name)
+            self.assertIn(node.args[1].id,
+                          ("_ACQUISITION_CONSTRAINT_SUFFIX",
+                           "_SNAPSHOT_KIND_CONSTRAINT_SUFFIX"))
 
     def test_the_migration_downgrade_refuses_to_destroy_provenance(self):
-        path = os.path.join(REPO, "migrations", "versions",
-                            "0012_wave03b_candidate_capture.py")
-        with open(path, encoding="utf-8") as handle:
-            text = handle.read()
-        self.assertIn("refusing to downgrade", text)
+        self.assertIn("refusing to downgrade", _migration_source())
 
 
 class CapturePayloadTest(unittest.TestCase):

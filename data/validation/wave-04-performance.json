@@ -1,0 +1,24 @@
+{
+  "authority_state": "PROJECT_TEAM_PROVISIONAL",
+  "error_count": 0,
+  "error_rate": 0.0,
+  "latency_max_ms": 17.3415,
+  "latency_mean_ms": 5.2192,
+  "latency_min_ms": 4.3531,
+  "latency_p50_ms": 5.1345,
+  "latency_p95_ms": 5.8514,
+  "latency_p99_ms": 6.5556,
+  "limitations": [
+    "in-process: the candidate assessment service is called directly, so no HTTP, ASGI, serialisation, authentication or database cost is included",
+    "no database: this host has no Python PostgreSQL driver, so no persistence happened and none is measured",
+    "single process, single thread, no concurrency; these are not throughput figures",
+    "the release artifacts are read once at resolution and held, as they are in a real run, so filesystem cost appears once rather than per request"
+  ],
+  "measurement": "in-process candidate assessment service",
+  "release_manifest_hash": "sha256:0cd22a88f086a2d408e3ac4da0738eba5233f500ab277ccbf4033a8c14581d01",
+  "release_public_id": "PGX-CANDIDATE-REL-20260906-001",
+  "review_state": "PENDING_EXTERNAL_EXPERT_REVIEW",
+  "ruleset_content_hash": "sha256:29ca1949b33522f81f745b5b51e61b75913ad4e8584c852bfe2b96cc0fc7c71a",
+  "run_count": 1000,
+  "schema_version": "pgx-wave04-performance/1"
+}

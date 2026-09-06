@@ -1,0 +1,141 @@
+{
+  "api_route_count": 14,
+  "web_route_count": 15,
+  "web_routes": [
+    {
+      "access": "AccessPolicy(public=True, permitted_roles=frozenset())",
+      "method": "GET",
+      "name": "web.home",
+      "nav_key": "nav.home",
+      "path": "/",
+      "requires_csrf": false,
+      "template": "home.html"
+    },
+    {
+      "access": "AccessPolicy(public=True, permitted_roles=frozenset())",
+      "method": "GET",
+      "name": "web.login",
+      "nav_key": "nav.login",
+      "path": "/login",
+      "requires_csrf": false,
+      "template": "login.html"
+    },
+    {
+      "access": "AccessPolicy(public=True, permitted_roles=frozenset())",
+      "method": "POST",
+      "name": "web.login_submit",
+      "nav_key": null,
+      "path": "/login",
+      "requires_csrf": true,
+      "template": "login.html"
+    },
+    {
+      "access": "AccessPolicy(public=True, permitted_roles=frozenset())",
+      "method": "POST",
+      "name": "web.logout",
+      "nav_key": null,
+      "path": "/logout",
+      "requires_csrf": true,
+      "template": "login.html"
+    },
+    {
+      "access": "AccessPolicy(public=False, permitted_roles=frozenset({<Role.ADMIN: 'ADMIN'>, <Role.DEMO_USER: 'DEMO_USER'>, <Role.EXPERT_REVIEWER: 'EXPERT_REVIEWER'>}))",
+      "method": "GET",
+      "name": "web.cases",
+      "nav_key": "nav.cases",
+      "path": "/cases",
+      "requires_csrf": false,
+      "template": "cases.html"
+    },
+    {
+      "access": "AccessPolicy(public=False, permitted_roles=frozenset({<Role.ADMIN: 'ADMIN'>, <Role.DEMO_USER: 'DEMO_USER'>, <Role.EXPERT_REVIEWER: 'EXPERT_REVIEWER'>}))",
+      "method": "GET",
+      "name": "web.case_detail",
+      "nav_key": null,
+      "path": "/cases/{case_id}",
+      "requires_csrf": false,
+      "template": "case_detail.html"
+    },
+    {
+      "access": "AccessPolicy(public=False, permitted_roles=frozenset({<Role.ADMIN: 'ADMIN'>, <Role.DEMO_USER: 'DEMO_USER'>, <Role.EXPERT_REVIEWER: 'EXPERT_REVIEWER'>}))",
+      "method": "POST",
+      "name": "web.case_assess",
+      "nav_key": null,
+      "path": "/cases/{case_id}/assess",
+      "requires_csrf": true,
+      "template": "assessment.html"
+    },
+    {
+      "access": "AccessPolicy(public=False, permitted_roles=frozenset({<Role.ADMIN: 'ADMIN'>, <Role.DEMO_USER: 'DEMO_USER'>, <Role.EXPERT_REVIEWER: 'EXPERT_REVIEWER'>}))",
+      "method": "GET",
+      "name": "web.assessment",
+      "nav_key": null,
+      "path": "/assessments/{assessment_id}",
+      "requires_csrf": false,
+      "template": "assessment.html"
+    },
+    {
+      "access": "AccessPolicy(public=False, permitted_roles=frozenset({<Role.ADMIN: 'ADMIN'>, <Role.DEMO_USER: 'DEMO_USER'>, <Role.EXPERT_REVIEWER: 'EXPERT_REVIEWER'>}))",
+      "method": "GET",
+      "name": "web.evidence",
+      "nav_key": null,
+      "path": "/evidence/{evidence_id}",
+      "requires_csrf": false,
+      "template": "evidence.html"
+    },
+    {
+      "access": "AccessPolicy(public=False, permitted_roles=frozenset({<Role.ADMIN: 'ADMIN'>, <Role.DEMO_USER: 'DEMO_USER'>, <Role.EXPERT_REVIEWER: 'EXPERT_REVIEWER'>}))",
+      "method": "GET",
+      "name": "web.validation",
+      "nav_key": "nav.validation",
+      "path": "/validation",
+      "requires_csrf": false,
+      "template": "validation.html"
+    },
+    {
+      "access": "AccessPolicy(public=False, permitted_roles=frozenset({<Role.EXPERT_REVIEWER: 'EXPERT_REVIEWER'>}))",
+      "method": "GET",
+      "name": "web.expert_review",
+      "nav_key": "nav.expert_review",
+      "path": "/expert-reviews/{case_id}",
+      "requires_csrf": false,
+      "template": "expert_review.html"
+    },
+    {
+      "access": "AccessPolicy(public=False, permitted_roles=frozenset({<Role.EXPERT_REVIEWER: 'EXPERT_REVIEWER'>}))",
+      "method": "POST",
+      "name": "web.expert_review_expected",
+      "nav_key": null,
+      "path": "/expert-reviews/{case_id}/expected",
+      "requires_csrf": true,
+      "template": "expert_review.html"
+    },
+    {
+      "access": "AccessPolicy(public=False, permitted_roles=frozenset({<Role.EXPERT_REVIEWER: 'EXPERT_REVIEWER'>}))",
+      "method": "POST",
+      "name": "web.expert_review_reveal",
+      "nav_key": null,
+      "path": "/expert-reviews/{case_id}/reveal",
+      "requires_csrf": true,
+      "template": "expert_review.html"
+    },
+    {
+      "access": "AccessPolicy(public=False, permitted_roles=frozenset({<Role.EXPERT_REVIEWER: 'EXPERT_REVIEWER'>}))",
+      "method": "POST",
+      "name": "web.expert_review_complete",
+      "nav_key": null,
+      "path": "/expert-reviews/{case_id}/complete",
+      "requires_csrf": true,
+      "template": "expert_review.html"
+    },
+    {
+      "access": "AccessPolicy(public=True, permitted_roles=frozenset())",
+      "method": "GET",
+      "name": "web.system",
+      "nav_key": "nav.system",
+      "path": "/system",
+      "requires_csrf": false,
+      "template": "system.html"
+    }
+  ]
+}

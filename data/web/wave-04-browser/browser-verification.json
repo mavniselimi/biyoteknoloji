@@ -1,0 +1,221 @@
+{
+  "base_url": "http://127.0.0.1:8010",
+  "browser": "chromium via playwright",
+  "console_errors_and_warnings": [
+    {
+      "text": "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "type": "error"
+    },
+    {
+      "text": "Failed to load resource: the server responded with a status of 503 (Service Unavailable)",
+      "type": "error"
+    },
+    {
+      "text": "Failed to load resource: the server responded with a status of 503 (Service Unavailable)",
+      "type": "error"
+    },
+    {
+      "text": "Failed to load resource: the server responded with a status of 503 (Service Unavailable)",
+      "type": "error"
+    },
+    {
+      "text": "Failed to load resource: the server responded with a status of 503 (Service Unavailable)",
+      "type": "error"
+    },
+    {
+      "text": "Failed to load resource: the server responded with a status of 503 (Service Unavailable)",
+      "type": "error"
+    },
+    {
+      "text": "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "type": "error"
+    }
+  ],
+  "pages": [
+    {
+      "broken_layout": false,
+      "error_code": null,
+      "flow_role": "Case Input entry point / landing",
+      "has_canonical_warning": true,
+      "mentions_pending_expert_review": true,
+      "name": "home",
+      "nav_links": [
+        "/",
+        "/cases",
+        "/login",
+        "/system",
+        "/validation"
+      ],
+      "path": "/",
+      "screenshot": "home.png",
+      "status": 200,
+      "title": "PGx Platform V2 gösterim arayüzü - PGx Platform V2",
+      "visible_text_length": 1331
+    },
+    {
+      "broken_layout": false,
+      "error_code": null,
+      "flow_role": "Authentication",
+      "has_canonical_warning": true,
+      "mentions_pending_expert_review": true,
+      "name": "login",
+      "nav_links": [
+        "/",
+        "/cases",
+        "/login",
+        "/system",
+        "/validation"
+      ],
+      "path": "/login",
+      "screenshot": "login.png",
+      "status": 200,
+      "title": "Oturum açma - PGx Platform V2",
+      "visible_text_length": 1727
+    },
+    {
+      "broken_layout": false,
+      "error_code": "NOT_READY",
+      "flow_role": "System / Release Information",
+      "has_canonical_warning": true,
+      "mentions_pending_expert_review": true,
+      "name": "system",
+      "nav_links": [
+        "/",
+        "/cases",
+        "/login",
+        "/system",
+        "/validation"
+      ],
+      "path": "/system",
+      "screenshot": "system.png",
+      "status": 200,
+      "title": "Sistem bilgisi - PGx Platform V2",
+      "visible_text_length": 2510
+    },
+    {
+      "broken_layout": false,
+      "error_code": "AUTHENTICATION_NOT_CONFIGURED",
+      "flow_role": "Case Input (development cases list)",
+      "has_canonical_warning": true,
+      "mentions_pending_expert_review": true,
+      "name": "cases",
+      "nav_links": [
+        "/",
+        "/cases",
+        "/login",
+        "/system",
+        "/validation"
+      ],
+      "path": "/cases",
+      "screenshot": "cases.png",
+      "status": 503,
+      "title": "PGx Platform V2 gösterim arayüzü - PGx Platform V2",
+      "visible_text_length": 1447
+    },
+    {
+      "broken_layout": false,
+      "error_code": "AUTHENTICATION_NOT_CONFIGURED",
+      "flow_role": "Validation Dashboard",
+      "has_canonical_warning": true,
+      "mentions_pending_expert_review": true,
+      "name": "validation",
+      "nav_links": [
+        "/",
+        "/cases",
+        "/login",
+        "/system",
+        "/validation"
+      ],
+      "path": "/validation",
+      "screenshot": "validation.png",
+      "status": 503,
+      "title": "PGx Platform V2 gösterim arayüzü - PGx Platform V2",
+      "visible_text_length": 1447
+    },
+    {
+      "broken_layout": false,
+      "error_code": "AUTHENTICATION_NOT_CONFIGURED",
+      "flow_role": "Assessment (unknown id)",
+      "has_canonical_warning": true,
+      "mentions_pending_expert_review": true,
+      "name": "assessment-unknown",
+      "nav_links": [
+        "/",
+        "/cases",
+        "/login",
+        "/system",
+        "/validation"
+      ],
+      "path": "/assessments/PGX-ASM-00000000-000",
+      "screenshot": "assessment-unknown.png",
+      "status": 503,
+      "title": "PGx Platform V2 gösterim arayüzü - PGx Platform V2",
+      "visible_text_length": 1447
+    },
+    {
+      "broken_layout": false,
+      "error_code": "AUTHENTICATION_NOT_CONFIGURED",
+      "flow_role": "Finding Detail / Evidence (unknown id)",
+      "has_canonical_warning": true,
+      "mentions_pending_expert_review": true,
+      "name": "evidence-unknown",
+      "nav_links": [
+        "/",
+        "/cases",
+        "/login",
+        "/system",
+        "/validation"
+      ],
+      "path": "/evidence/unknown",
+      "screenshot": "evidence-unknown.png",
+      "status": 503,
+      "title": "PGx Platform V2 gösterim arayüzü - PGx Platform V2",
+      "visible_text_length": 1447
+    },
+    {
+      "broken_layout": false,
+      "error_code": "AUTHENTICATION_NOT_CONFIGURED",
+      "flow_role": "Expert Review",
+      "has_canonical_warning": true,
+      "mentions_pending_expert_review": true,
+      "name": "expert-review",
+      "nav_links": [
+        "/",
+        "/cases",
+        "/login",
+        "/system",
+        "/validation"
+      ],
+      "path": "/expert-reviews/demo-1",
+      "screenshot": "expert-review.png",
+      "status": 503,
+      "title": "PGx Platform V2 gösterim arayüzü - PGx Platform V2",
+      "visible_text_length": 1447
+    },
+    {
+      "broken_layout": false,
+      "error_code": "NOT_FOUND",
+      "flow_role": "404 handling",
+      "has_canonical_warning": true,
+      "mentions_pending_expert_review": true,
+      "name": "not-found",
+      "nav_links": [
+        "/",
+        "/cases",
+        "/login",
+        "/system",
+        "/validation"
+      ],
+      "path": "/no-such-page",
+      "screenshot": "not-found.png",
+      "status": 404,
+      "title": "PGx Platform V2 gösterim arayüzü - PGx Platform V2",
+      "visible_text_length": 1341
+    }
+  ],
+  "schema_version": "pgx-wave04-browser-verification/1",
+  "viewport": {
+    "height": 900,
+    "width": 1440
+  }
+}

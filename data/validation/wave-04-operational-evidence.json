@@ -1,0 +1,77 @@
+{
+  "schema_version": "pgx-wave04-operational-evidence/1",
+  "environment": {
+    "device_vm": {
+      "note": "the user's machine, where the repository lives",
+      "python": "3.10.12",
+      "network_egress": "none; pypi.org returns HTTP 403 through the proxy",
+      "absent_packages": ["alembic", "fastapi", "httpx", "psycopg", "pydantic",
+                          "sqlalchemy", "starlette", "uvicorn"],
+      "present_packages": ["jinja2"]
+    },
+    "cloud_container": {
+      "note": "an ephemeral Linux container, used for the checks the device VM cannot perform",
+      "python": "3.11",
+      "network_egress": "pypi.org and api.github.com both return HTTP 403",
+      "present": ["alembic 1.19.1", "fastapi 0.141.1", "httpx 0.28.1",
+                  "jinja2 3.1.6", "playwright + chromium", "pydantic 2.13.3",
+                  "sqlalchemy 2.0.52", "uvicorn 0.46.0",
+                  "PostgreSQL 16.13 server"],
+      "absent": ["psycopg"]
+    }
+  },
+  "database": {
+    "state": "VERIFIED",
+    "server": "PostgreSQL 16.13 (Ubuntu 16.13-0ubuntu0.24.04.1) x86_64",
+    "database": "pgx_w4",
+    "migration_head": "0012_wave03b_candidate_capture",
+    "migrations_applied": 12,
+    "tables_created": 65,
+    "how": "alembic could not connect - no psycopg driver - so the full upgrade was emitted with 'alembic upgrade head --sql' in offline mode and applied through psql with ON_ERROR_STOP=1",
+    "defect_found_and_fixed": {
+      "what": "migration 0012 passed the full constraint name to op.create_check_constraint, and the metadata naming convention ck_%(table_name)s_%(constraint_name)s prefixed it again",
+      "observed": "ck_source_policies_ck_source_policies_acquisition_mode_enum",
+      "consequence": "the check still worked, but under a name no later migration could drop",
+      "found_by": "applying the migration to a real PostgreSQL server; the emitted SQL reads correctly either way",
+      "fix": "pass the suffix and let the convention compose the name"
+    },
+    "round_trip": {
+      "acquisition_mode": {
+        "constraint": "ck_source_policies_acquisition_mode_enum",
+        "accepts_AGENT_TARGETED_RETRIEVAL": true,
+        "rejects_invented_value": true,
+        "rejected_example": "SCRAPED",
+        "read_back": "rt.capture | AGENT_TARGETED_RETRIEVAL | PENDING_REVIEW"
+      },
+      "snapshot_kind": {
+        "constraint": "ck_raw_snapshots_kind_enum",
+        "accepts_TRANSCRIPTION_CAPTURE": true,
+        "rejects_invented_value": true,
+        "rejected_example": "SCRAPE",
+        "read_back": "PGX-DATA-20260906-001 | TRANSCRIPTION_CAPTURE | SEALED | complete=false"
+      }
+    }
+  },
+  "application_runtime": {
+    "state": "VERIFIED",
+    "how": "apps.web.main:app served by uvicorn 0.46.0 on 127.0.0.1:8010 in the cloud container",
+    "startup": "Application startup complete",
+    "note": "a localhost process in an ephemeral container is not a staging environment and is not described as one"
+  },
+  "performance": {
+    "state": "VERIFIED_IN_PROCESS",
+    "run_count": 1000,
+    "note": "see data/validation/wave-04-performance.json for percentiles and the limitations that bound them"
+  },
+  "blocked": [
+    {"code": "OR-01", "subject": "uv.lock", "reason": "no package index is reachable from either environment"},
+    {"code": "OR-02", "subject": "CI linter pins", "reason": "the lockfile is the pin; blocked on OR-01"},
+    {"code": "OR-03", "subject": "CI action SHAs", "reason": "api.github.com returns HTTP 403"},
+    {"code": "OR-04", "subject": "wheel and sdist", "reason": "hatchling cannot be installed"},
+    {"code": "OR-05", "subject": "psycopg", "reason": "no package index; the database was exercised through psql rather than through the application's own driver, so the ORM path remains unexercised"},
+    {"code": "OR-06", "subject": "container image and SBOM", "reason": "no container runtime with a daemon"},
+    {"code": "OR-07", "subject": "staging deployment", "reason": "no deployment target; a localhost process is not staging"},
+    {"code": "OR-10", "subject": "WP-19 verification artifacts", "reason": "regenerating them on either available host records import failures that do not exist on a provisioned one"},
+    {"code": "W4-01", "subject": "authenticated web flow", "reason": "no authentication provider can be composed without a database driver, so every page behind authentication returns AUTHENTICATION_NOT_CONFIGURED 503"}
+  ]
+}

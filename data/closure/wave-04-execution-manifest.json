@@ -1,0 +1,443 @@
+{
+  "benchmark": {
+    "all_thresholds_met": true,
+    "authority_state": "INTERNAL_VALIDATION",
+    "catalogue_manifest_hash": "sha256:f133a56e1d0d111c239a2c51b0030f34eb68c43fe89fc14d3febc2aee12d7251",
+    "declared_thresholds": {
+      "attention_agreement_min": 1.0,
+      "coverage_agreement_min": 1.0,
+      "deterministic_repeatability_min": 1.0,
+      "evidence_traceability_min": 1.0,
+      "expert_reserved_payloads_read_max": 0,
+      "refusal_correctness_min": 1.0,
+      "system_failure_rate_max": 0.0,
+      "unsafe_false_reassurance_max": 0
+    },
+    "expert_reserved_case_ids": [
+      "PGX-VAL-W4-EXP-01-TWO-DRUGS-ONE-GENE",
+      "PGX-VAL-W4-EXP-02-TWO-DRUGS-ONE-GENE-NORMAL",
+      "PGX-VAL-W4-EXP-03-ALL-FOUR-DRUGS",
+      "PGX-VAL-W4-EXP-04-ALL-FOUR-DRUGS-MIXED",
+      "PGX-VAL-W4-EXP-05-COVERED-AND-OUT-OF-SCOPE",
+      "PGX-VAL-W4-EXP-06-COVERED-AND-TWO-OUT-OF-SCOPE",
+      "PGX-VAL-W4-EXP-07-EXTRA-GENE-OBSERVED",
+      "PGX-VAL-W4-EXP-08-EXTRA-GENE-OBSERVED-CLOPIDOGREL",
+      "PGX-VAL-W4-EXP-09-AMITRIPTYLINE-WITH-A-SECOND-DRUG",
+      "PGX-VAL-W4-EXP-10-IRRELEVANT-CARE-SETTING",
+      "PGX-VAL-W4-EXP-11-NO-ACTIVE-ATTENTION-BESIDE-A-REFUSAL",
+      "PGX-VAL-W4-EXP-12-EVERY-AXIS-REFUSED"
+    ],
+    "expert_reserved_payloads_read": 0,
+    "label": "INTERNAL_VALIDATION",
+    "label_note": "Internal validation only. The rules, the cases and the expected answers for two of three partitions share one author, so this measures whether the software does what that author intended. It is not clinical, independent or expert validation.",
+    "metrics": {
+      "attention_agreement": 1.0,
+      "coverage_agreement": 1.0,
+      "deterministic_repeatability": 1.0,
+      "evidence_traceability": 1.0,
+      "expert_reserved_payloads_read": 0,
+      "failed_case_count": 0,
+      "latency_p50_ms": 5.1278,
+      "latency_p95_ms": 5.3031,
+      "refusal_correctness": 1.0,
+      "scored_case_count": 55,
+      "system_failure_rate": 0.0,
+      "unsafe_false_reassurance_count": 0
+    },
+    "release_manifest_hash": "sha256:0cd22a88f086a2d408e3ac4da0738eba5233f500ab277ccbf4033a8c14581d01",
+    "release_public_id": "PGX-CANDIDATE-REL-20260906-001",
+    "review_state": "PENDING_EXTERNAL_EXPERT_REVIEW",
+    "ruleset_content_hash": "sha256:29ca1949b33522f81f745b5b51e61b75913ad4e8584c852bfe2b96cc0fc7c71a",
+    "threshold_notes": {
+      "attention_agreement_min": "1.0 rather than a tolerance. Every scored case is either a combination the ruleset encodes or a refusal the scope rules state; there is no case here whose answer is a matter of degree, so any disagreement is a defect rather than noise.",
+      "system_failure_rate_max": "0.0. An unhandled exception during a benchmark is not a low score; it means the run does not describe the software.",
+      "unsafe_false_reassurance_max": "0, and not negotiable. A weaker-than-expected level, or NO_ACTIVE_ATTENTION where a refusal was expected, is the failure mode this product exists to prevent."
+    },
+    "threshold_verdicts": {
+      "attention_agreement": true,
+      "coverage_agreement": true,
+      "deterministic_repeatability": true,
+      "evidence_traceability": true,
+      "expert_reserved_payloads_read": true,
+      "refusal_correctness": true,
+      "system_failure_rate": true,
+      "unsafe_false_reassurance": true
+    }
+  },
+  "browser_verification": {
+    "blocked_pages": 5,
+    "canonical_warning_on_every_page": true,
+    "no_broken_layout": true,
+    "page_count": 9,
+    "served_pages": 3,
+    "viewport": {
+      "height": 900,
+      "width": 1440
+    }
+  },
+  "catalogue": {
+    "artifacts": [
+      {
+        "byte_length": 79256,
+        "relative_path": "development.json",
+        "sha256": "sha256:79d7dc04f34fa5307c008b134bb47c93a250494fd4d9250486b0678be09f19a4"
+      },
+      {
+        "byte_length": 48948,
+        "relative_path": "internal-holdout.json",
+        "sha256": "sha256:a00f4e5f7f82d7df35f93e541f40a5eb42e2722d96b73b2cc32d77875c388ed9"
+      },
+      {
+        "byte_length": 29234,
+        "relative_path": "expert-reserved.json",
+        "sha256": "sha256:333220aa0982974194aefea4d019fbebca334864457d5fbe933afbdd59218fb8"
+      },
+      {
+        "byte_length": 633,
+        "relative_path": "separation-audit.json",
+        "sha256": "sha256:306134c7b41f34b5e3d7ddd67e98cfcc27e6adb6da756ba99e61cf439fb576e6"
+      }
+    ],
+    "authority_state": "INTERNAL_VALIDATION",
+    "case_total": 67,
+    "catalogue_version": "pgx-wave04-validation-catalogue/1",
+    "development_count": 34,
+    "expert_holdout_count": 12,
+    "expert_reserved_carry_no_expected_answer": true,
+    "internal_holdout_count": 21,
+    "limitations": [
+      "one process authored the candidate rules, these cases and the expected answers for two of the three partitions; no partition here is independent of the build it tests, and a passing separation audit says the partitions do not leak into each other, not that any of them is independent evidence",
+      "the DEVELOPMENT partition can only confirm that the ruleset encodes what its author intended; it is internal consistency evidence and is never validation of the science",
+      "the INTERNAL_HOLDOUT partition tests refusal and boundary behaviour that no rule states, so a ruleset can encode every rule correctly and still fail it; that makes it a stronger check than the development partition and still not an external one",
+      "the EXPERT_HOLDOUT partition carries no expected answers at all, because recording one would be inventing an expert judgment; it is reserved unopened for a later external reviewer",
+      "results from this catalogue may be described as INTERNAL_VALIDATION or LITERATURE_DERIVED_VALIDATION and as nothing else"
+    ],
+    "release_manifest_hash": "sha256:0cd22a88f086a2d408e3ac4da0738eba5233f500ab277ccbf4033a8c14581d01",
+    "release_public_id": "PGX-CANDIDATE-REL-20260906-001",
+    "review_state": "PENDING_EXTERNAL_EXPERT_REVIEW",
+    "ruleset_content_hash": "sha256:29ca1949b33522f81f745b5b51e61b75913ad4e8584c852bfe2b96cc0fc7c71a",
+    "sealed_before_any_benchmark_run": true,
+    "separation_issue_count": 0
+  },
+  "files": [
+    {
+      "byte_length": 426,
+      "path": "data/validation/wave-04-catalogue/checksums.sha256",
+      "sha256": "sha256:eab54eaf5c1b1202fde75b3bc117ce8b610987b7126d8d64a3f6c27ebf36a9da"
+    },
+    {
+      "byte_length": 79256,
+      "path": "data/validation/wave-04-catalogue/development.json",
+      "sha256": "sha256:79d7dc04f34fa5307c008b134bb47c93a250494fd4d9250486b0678be09f19a4"
+    },
+    {
+      "byte_length": 29234,
+      "path": "data/validation/wave-04-catalogue/expert-reserved.json",
+      "sha256": "sha256:333220aa0982974194aefea4d019fbebca334864457d5fbe933afbdd59218fb8"
+    },
+    {
+      "byte_length": 48948,
+      "path": "data/validation/wave-04-catalogue/internal-holdout.json",
+      "sha256": "sha256:a00f4e5f7f82d7df35f93e541f40a5eb42e2722d96b73b2cc32d77875c388ed9"
+    },
+    {
+      "byte_length": 2449,
+      "path": "data/validation/wave-04-catalogue/manifest.json",
+      "sha256": "sha256:f133a56e1d0d111c239a2c51b0030f34eb68c43fe89fc14d3febc2aee12d7251"
+    },
+    {
+      "byte_length": 633,
+      "path": "data/validation/wave-04-catalogue/separation-audit.json",
+      "sha256": "sha256:306134c7b41f34b5e3d7ddd67e98cfcc27e6adb6da756ba99e61cf439fb576e6"
+    },
+    {
+      "byte_length": 108,
+      "path": "data/validation/wave-04-benchmark/access-ledger.json",
+      "sha256": "sha256:1944b6741fa5d0ca0ee266f18912c3927789263c95c909922eda4d5c7ea5ea36"
+    },
+    {
+      "byte_length": 3,
+      "path": "data/validation/wave-04-benchmark/disagreements.json",
+      "sha256": "sha256:37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "byte_length": 378,
+      "path": "data/validation/wave-04-benchmark/metrics.json",
+      "sha256": "sha256:6180aaf5c02c56cf4e36c40454965590a99edd60e29d87eb45471bce1ea7d47d"
+    },
+    {
+      "byte_length": 70498,
+      "path": "data/validation/wave-04-benchmark/per-case-results.json",
+      "sha256": "sha256:195c14ff53966c05d87dd8f4a884cbe547391587c976c187b3a1fcf735252be4"
+    },
+    {
+      "byte_length": 3181,
+      "path": "data/validation/wave-04-benchmark/run-manifest.json",
+      "sha256": "sha256:f17938bdaded6f8b524b553e9ec96d8dc32d0763822d883aa4bf31ccf8344c70"
+    },
+    {
+      "byte_length": 140613,
+      "path": "data/web/wave-04-browser/assessment-unknown.png",
+      "sha256": "sha256:7a858954f91eeb8c2f06fc08e51a655a886b99d5c6af577a1a1787e260a59c65"
+    },
+    {
+      "byte_length": 6202,
+      "path": "data/web/wave-04-browser/browser-verification.json",
+      "sha256": "sha256:4071172e035f5453ab5cb6dd2f314362c44e1f3544f753a9888fbdf93a6afe9f"
+    },
+    {
+      "byte_length": 140686,
+      "path": "data/web/wave-04-browser/cases.png",
+      "sha256": "sha256:12544a1f780b8ea557cf3ab8bcb5d8b85fcc0b5ad765b2dfa0c50d7ef451a11a"
+    },
+    {
+      "byte_length": 140575,
+      "path": "data/web/wave-04-browser/evidence-unknown.png",
+      "sha256": "sha256:306d00b4bc53fa9e931ba6618dcb717eac3e40306376e4b26a54916ab381877f"
+    },
+    {
+      "byte_length": 140213,
+      "path": "data/web/wave-04-browser/expert-review.png",
+      "sha256": "sha256:70bdd8de7e0391649cc88f4d0d49cbf5854e9ab902992fe4129c0a977bcca657"
+    },
+    {
+      "byte_length": 129884,
+      "path": "data/web/wave-04-browser/home.png",
+      "sha256": "sha256:1eef2c7fcc17981956dab05609ecc753a4d0c24b326d73d1c64e3548a8646b35"
+    },
+    {
+      "byte_length": 149333,
+      "path": "data/web/wave-04-browser/login.png",
+      "sha256": "sha256:23e758b8e270099fc6f51ad13cd6fda6f108d468f222e44dfdf3a8a82cce047c"
+    },
+    {
+      "byte_length": 133343,
+      "path": "data/web/wave-04-browser/not-found.png",
+      "sha256": "sha256:2911bfaa9700cf601aff2a28a4a7351d5e8f71429d4bbcda2e1b373424636e7f"
+    },
+    {
+      "byte_length": 220688,
+      "path": "data/web/wave-04-browser/system.png",
+      "sha256": "sha256:1d7bc6dc65dd67a86078d2a4c90f53a444279739f0ae0aee87ee800e3e6c82c2"
+    },
+    {
+      "byte_length": 140669,
+      "path": "data/web/wave-04-browser/validation.png",
+      "sha256": "sha256:06bec52012174ceaf5e17b802530b344134e0daf73f1b448aeda56bb821d2efe"
+    },
+    {
+      "byte_length": 1224,
+      "path": "data/validation/wave-04-performance.json",
+      "sha256": "sha256:3d89be1029914edfb5bec265efd22d1bf87abd3c31a2d58a32a99c9619600f08"
+    },
+    {
+      "byte_length": 4431,
+      "path": "data/validation/wave-04-operational-evidence.json",
+      "sha256": "sha256:87e0c1fa1cb5988ee2e52a9ed39b75479944e099d69f11fd3e917ca8336f9a78"
+    },
+    {
+      "byte_length": 4884,
+      "path": "data/web/wave-04-route-audit.json",
+      "sha256": "sha256:7e5b5b846220de2b84d7080dd481195072dedd1549536d225f3e65b24be5e2db"
+    }
+  ],
+  "label": "INTERNAL_VALIDATION",
+  "manifest_version": "pgx-closure-wave04-manifest/1",
+  "operational_evidence": {
+    "application_runtime": {
+      "how": "apps.web.main:app served by uvicorn 0.46.0 on 127.0.0.1:8010 in the cloud container",
+      "note": "a localhost process in an ephemeral container is not a staging environment and is not described as one",
+      "startup": "Application startup complete",
+      "state": "VERIFIED"
+    },
+    "blocked": [
+      {
+        "code": "OR-01",
+        "reason": "no package index is reachable from either environment",
+        "subject": "uv.lock"
+      },
+      {
+        "code": "OR-02",
+        "reason": "the lockfile is the pin; blocked on OR-01",
+        "subject": "CI linter pins"
+      },
+      {
+        "code": "OR-03",
+        "reason": "api.github.com returns HTTP 403",
+        "subject": "CI action SHAs"
+      },
+      {
+        "code": "OR-04",
+        "reason": "hatchling cannot be installed",
+        "subject": "wheel and sdist"
+      },
+      {
+        "code": "OR-05",
+        "reason": "no package index; the database was exercised through psql rather than through the application's own driver, so the ORM path remains unexercised",
+        "subject": "psycopg"
+      },
+      {
+        "code": "OR-06",
+        "reason": "no container runtime with a daemon",
+        "subject": "container image and SBOM"
+      },
+      {
+        "code": "OR-07",
+        "reason": "no deployment target; a localhost process is not staging",
+        "subject": "staging deployment"
+      },
+      {
+        "code": "OR-10",
+        "reason": "regenerating them on either available host records import failures that do not exist on a provisioned one",
+        "subject": "WP-19 verification artifacts"
+      },
+      {
+        "code": "W4-01",
+        "reason": "no authentication provider can be composed without a database driver, so every page behind authentication returns AUTHENTICATION_NOT_CONFIGURED 503",
+        "subject": "authenticated web flow"
+      }
+    ],
+    "database": {
+      "database": "pgx_w4",
+      "defect_found_and_fixed": {
+        "consequence": "the check still worked, but under a name no later migration could drop",
+        "fix": "pass the suffix and let the convention compose the name",
+        "found_by": "applying the migration to a real PostgreSQL server; the emitted SQL reads correctly either way",
+        "observed": "ck_source_policies_ck_source_policies_acquisition_mode_enum",
+        "what": "migration 0012 passed the full constraint name to op.create_check_constraint, and the metadata naming convention ck_%(table_name)s_%(constraint_name)s prefixed it again"
+      },
+      "how": "alembic could not connect - no psycopg driver - so the full upgrade was emitted with 'alembic upgrade head --sql' in offline mode and applied through psql with ON_ERROR_STOP=1",
+      "migration_head": "0012_wave03b_candidate_capture",
+      "migrations_applied": 12,
+      "round_trip": {
+        "acquisition_mode": {
+          "accepts_AGENT_TARGETED_RETRIEVAL": true,
+          "constraint": "ck_source_policies_acquisition_mode_enum",
+          "read_back": "rt.capture | AGENT_TARGETED_RETRIEVAL | PENDING_REVIEW",
+          "rejected_example": "SCRAPED",
+          "rejects_invented_value": true
+        },
+        "snapshot_kind": {
+          "accepts_TRANSCRIPTION_CAPTURE": true,
+          "constraint": "ck_raw_snapshots_kind_enum",
+          "read_back": "PGX-DATA-20260906-001 | TRANSCRIPTION_CAPTURE | SEALED | complete=false",
+          "rejected_example": "SCRAPE",
+          "rejects_invented_value": true
+        }
+      },
+      "server": "PostgreSQL 16.13 (Ubuntu 16.13-0ubuntu0.24.04.1) x86_64",
+      "state": "VERIFIED",
+      "tables_created": 65
+    },
+    "environment": {
+      "cloud_container": {
+        "absent": [
+          "psycopg"
+        ],
+        "network_egress": "pypi.org and api.github.com both return HTTP 403",
+        "note": "an ephemeral Linux container, used for the checks the device VM cannot perform",
+        "present": [
+          "alembic 1.19.1",
+          "fastapi 0.141.1",
+          "httpx 0.28.1",
+          "jinja2 3.1.6",
+          "playwright + chromium",
+          "pydantic 2.13.3",
+          "sqlalchemy 2.0.52",
+          "uvicorn 0.46.0",
+          "PostgreSQL 16.13 server"
+        ],
+        "python": "3.11"
+      },
+      "device_vm": {
+        "absent_packages": [
+          "alembic",
+          "fastapi",
+          "httpx",
+          "psycopg",
+          "pydantic",
+          "sqlalchemy",
+          "starlette",
+          "uvicorn"
+        ],
+        "network_egress": "none; pypi.org returns HTTP 403 through the proxy",
+        "note": "the user's machine, where the repository lives",
+        "present_packages": [
+          "jinja2"
+        ],
+        "python": "3.10.12"
+      }
+    },
+    "performance": {
+      "note": "see data/validation/wave-04-performance.json for percentiles and the limitations that bound them",
+      "run_count": 1000,
+      "state": "VERIFIED_IN_PROCESS"
+    },
+    "schema_version": "pgx-wave04-operational-evidence/1"
+  },
+  "performance": {
+    "authority_state": "PROJECT_TEAM_PROVISIONAL",
+    "error_count": 0,
+    "error_rate": 0.0,
+    "latency_max_ms": 17.3415,
+    "latency_mean_ms": 5.2192,
+    "latency_min_ms": 4.3531,
+    "latency_p50_ms": 5.1345,
+    "latency_p95_ms": 5.8514,
+    "latency_p99_ms": 6.5556,
+    "limitations": [
+      "in-process: the candidate assessment service is called directly, so no HTTP, ASGI, serialisation, authentication or database cost is included",
+      "no database: this host has no Python PostgreSQL driver, so no persistence happened and none is measured",
+      "single process, single thread, no concurrency; these are not throughput figures",
+      "the release artifacts are read once at resolution and held, as they are in a real run, so filesystem cost appears once rather than per request"
+    ],
+    "measurement": "in-process candidate assessment service",
+    "release_manifest_hash": "sha256:0cd22a88f086a2d408e3ac4da0738eba5233f500ab277ccbf4033a8c14581d01",
+    "release_public_id": "PGX-CANDIDATE-REL-20260906-001",
+    "review_state": "PENDING_EXTERNAL_EXPERT_REVIEW",
+    "ruleset_content_hash": "sha256:29ca1949b33522f81f745b5b51e61b75913ad4e8584c852bfe2b96cc0fc7c71a",
+    "run_count": 1000,
+    "schema_version": "pgx-wave04-performance/1"
+  },
+  "route_audit": {
+    "api_route_count": 14,
+    "web_route_count": 15
+  },
+  "work_package_summary": {
+    "BLOCKED": 1,
+    "COMPLETE": 2,
+    "PARTIAL": 2
+  },
+  "work_packages": [
+    {
+      "evidence": "67 cases sealed before any benchmark run: 34 development, 21 internal holdout, 12 expert reserved; 0 separation issues; reserved cases carry no expected answer",
+      "subject": "validation catalogue and holdout closure",
+      "verdict": "COMPLETE",
+      "work_package": "WP-C10"
+    },
+    {
+      "evidence": "55 cases scored, 0 failures, 0 unsafe false reassurance, all declared thresholds met, 0 reserved payloads read",
+      "subject": "benchmark and metrics",
+      "verdict": "COMPLETE",
+      "work_package": "WP-C11"
+    },
+    {
+      "evidence": "PostgreSQL 16.13 migration round-trip to head 0012 verified, both new vocabulary values accepted and invented ones rejected, 1,000-assessment run at p50 5.135 ms / p95 5.851 ms with 0 errors; 9 residuals remain blocked on network egress or a missing driver",
+      "subject": "operational evidence",
+      "verdict": "PARTIAL",
+      "work_package": "WP-C13"
+    },
+    {
+      "evidence": "15 web routes and 14 API routes audited; 9 pages verified through Chromium at 1440x900, 3 served and 5 returning an honest AUTHENTICATION_NOT_CONFIGURED 503; canonical warning present on every page; no broken layout; the web surface is not wired to the candidate release, which /system reports accurately",
+      "subject": "product surface and demo UX closure",
+      "verdict": "PARTIAL",
+      "work_package": "WP-C14A"
+    },
+    {
+      "evidence": "its prerequisites are a deployed web/API in a production-like environment and a real PostgreSQL behind the application. The database exists; the deployment does not, and a localhost process in an ephemeral container is not staging. Four of the six jury-flow screens are behind authentication, which cannot be composed without a driver that cannot be installed.",
+      "subject": "representative candidate demonstration",
+      "verdict": "BLOCKED",
+      "work_package": "WP-C14"
+    }
+  ]
+}

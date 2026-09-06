@@ -66,16 +66,27 @@ _SNAPSHOT_KINDS_BEFORE = "'ACQUISITION', 'CACHE_REPLAY', 'LEGACY_IMPORT'"
 _SNAPSHOT_KINDS_AFTER = _SNAPSHOT_KINDS_BEFORE + ", 'TRANSCRIPTION_CAPTURE'"
 
 
-def _replace_check(table: str, name: str, expression: str) -> None:
-    op.drop_constraint(name, table, type_="check")
-    op.create_check_constraint(name, table, expression)
+#: The metadata naming convention is ``ck_%(table_name)s_%(constraint_name)s``,
+#: so ``create_check_constraint`` is given the *suffix* and composes the rest.
+#: Passing the full name produces
+#: ``ck_source_policies_ck_source_policies_acquisition_mode_enum``, which is a
+#: differently-named constraint carrying the right rule - so the check still
+#: works and the name a later migration would drop no longer exists. A real
+#: PostgreSQL round-trip is what surfaced this; the emitted SQL reads correctly
+#: either way.
+_ACQUISITION_CONSTRAINT_SUFFIX = "acquisition_mode_enum"
+_SNAPSHOT_KIND_CONSTRAINT_SUFFIX = "kind_enum"
+
+
+def _replace_check(table: str, suffix: str, expression: str) -> None:
+    op.drop_constraint("ck_%s_%s" % (table, suffix), table, type_="check")
+    op.create_check_constraint(suffix, table, expression)
 
 
 def upgrade() -> None:
-    _replace_check("source_policies",
-                   "ck_source_policies_acquisition_mode_enum",
+    _replace_check("source_policies", _ACQUISITION_CONSTRAINT_SUFFIX,
                    "acquisition_mode IN (%s)" % _ACQUISITION_MODES_AFTER)
-    _replace_check("raw_snapshots", "ck_raw_snapshots_kind_enum",
+    _replace_check("raw_snapshots", _SNAPSHOT_KIND_CONSTRAINT_SUFFIX,
                    "snapshot_kind IN (%s)" % _SNAPSHOT_KINDS_AFTER)
 
 
@@ -96,8 +107,7 @@ def downgrade() -> None:
                 "Reclassifying them would misdescribe how those records were "
                 "obtained; remove or re-source them deliberately first."
                 % (count, table, column, value))
-    _replace_check("source_policies",
-                   "ck_source_policies_acquisition_mode_enum",
+    _replace_check("source_policies", _ACQUISITION_CONSTRAINT_SUFFIX,
                    "acquisition_mode IN (%s)" % _ACQUISITION_MODES_BEFORE)
-    _replace_check("raw_snapshots", "ck_raw_snapshots_kind_enum",
+    _replace_check("raw_snapshots", _SNAPSHOT_KIND_CONSTRAINT_SUFFIX,
                    "snapshot_kind IN (%s)" % _SNAPSHOT_KINDS_BEFORE)
