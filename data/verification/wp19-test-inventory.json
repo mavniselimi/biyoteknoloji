@@ -1,7 +1,7 @@
 {
-  "category_rule_count": 142,
-  "discovered_test_count": 7461,
-  "inventoried_test_count": 7461,
+  "category_rule_count": 145,
+  "discovered_test_count": 7664,
+  "inventoried_test_count": 7664,
   "known_stdout_markers": [
     "CONFIGURATION_FAILURE"
   ],
@@ -12,7 +12,7 @@
   "requirement_registry_version": "pgx-wp19-requirements/1",
   "start_directory": "tests",
   "stdout_note": "Test outcomes come from the test runner's recorded result, never from words found in stdout. Several negative tests print CONFIGURATION_FAILURE on purpose while passing; a CI job that grepped for it would fail a green suite.",
-  "suite_count": 274,
+  "suite_count": 282,
   "suites": [
     {
       "assigned_by": "package-adversarial",
@@ -214,6 +214,29 @@
       "test_count": 29,
       "test_id_sha256": "72f1e2f32f8f8eef7fcbc1a95c83329604637cf2abf6e6fb3a4731f5adb4b160",
       "work_package": "WP-16"
+    },
+    {
+      "assigned_by": "integration-wave04b-candidate-composition",
+      "category": "INTEGRATION",
+      "command": "python -m unittest tests.integration.api.test_candidate_runtime_composition -v",
+      "criticality": "P0_CRITICAL",
+      "dependencies": [],
+      "evidence": [
+        "docs/closure/wave-03b-integration-report.md"
+      ],
+      "module": "tests.integration.api.test_candidate_runtime_composition",
+      "offline": true,
+      "permitted_skip_reasons": [],
+      "requirements": [
+        "VER-REQ-009"
+      ],
+      "safety_invariants": [],
+      "skip_policy": "NEVER",
+      "suite_id": "tests.integration.api.test_candidate_runtime_composition",
+      "synthetic_fixtures": false,
+      "test_count": 12,
+      "test_id_sha256": "ae9bc247afe54797f1eec49fae5287440d00d5d199cd2cbc2ebf380ea467295d",
+      "work_package": "WP-C14A"
     },
     {
       "assigned_by": "package-postgres",
@@ -593,8 +616,8 @@
       "skip_policy": "ENVIRONMENT_DEPENDENCY",
       "suite_id": "tests.integration.web.test_browser_e2e",
       "synthetic_fixtures": false,
-      "test_count": 13,
-      "test_id_sha256": "329924bac7f214348bd727bc0ac51e18e4367115ffb85651f492091795674271",
+      "test_count": 14,
+      "test_id_sha256": "6113d13f047abacea378c5b0f1ef516d61c7909f3a25154f729b9aaba8636eb3",
       "work_package": "WP-17"
     },
     {
@@ -1526,8 +1549,118 @@
       "skip_policy": "NEVER",
       "suite_id": "tests.unit.closure.test_h01_decision",
       "synthetic_fixtures": false,
-      "test_count": 37,
-      "test_id_sha256": "0dafd98d253074068321d61d73f0d4374ddec76a4c469e6151a19b7817ff603a",
+      "test_count": 39,
+      "test_id_sha256": "1244805cedafca886b273f751a359eaf42282f23900249eac57ed7b1604c1c1a",
+      "work_package": "WP-C00/WP-C03"
+    },
+    {
+      "assigned_by": "package-closure",
+      "category": "UNIT",
+      "command": "python -m unittest tests.unit.closure.test_wave03_authority -v",
+      "criticality": "IMPORTANT",
+      "dependencies": [],
+      "evidence": [
+        "docs/closure/wp-c00-legacy-candidate-dispositions.md",
+        "docs/closure/checkpoints/README.md"
+      ],
+      "module": "tests.unit.closure.test_wave03_authority",
+      "offline": true,
+      "permitted_skip_reasons": [],
+      "requirements": [],
+      "safety_invariants": [],
+      "skip_policy": "NEVER",
+      "suite_id": "tests.unit.closure.test_wave03_authority",
+      "synthetic_fixtures": false,
+      "test_count": 21,
+      "test_id_sha256": "f7163e2bbd91f635137dd02173f6cdede6a1b30dad1e543747e06a1a80f247fd",
+      "work_package": "WP-C00/WP-C03"
+    },
+    {
+      "assigned_by": "package-closure",
+      "category": "UNIT",
+      "command": "python -m unittest tests.unit.closure.test_wave03_release -v",
+      "criticality": "IMPORTANT",
+      "dependencies": [],
+      "evidence": [
+        "docs/closure/wp-c00-legacy-candidate-dispositions.md",
+        "docs/closure/checkpoints/README.md"
+      ],
+      "module": "tests.unit.closure.test_wave03_release",
+      "offline": true,
+      "permitted_skip_reasons": [],
+      "requirements": [],
+      "safety_invariants": [],
+      "skip_policy": "NEVER",
+      "suite_id": "tests.unit.closure.test_wave03_release",
+      "synthetic_fixtures": false,
+      "test_count": 28,
+      "test_id_sha256": "c528f11edb77ce63f7d7f1bdfd32b8833eda16d1f1253c3cf1ba688c347c6597",
+      "work_package": "WP-C00/WP-C03"
+    },
+    {
+      "assigned_by": "package-closure",
+      "category": "UNIT",
+      "command": "python -m unittest tests.unit.closure.test_wave03_science -v",
+      "criticality": "IMPORTANT",
+      "dependencies": [],
+      "evidence": [
+        "docs/closure/wp-c00-legacy-candidate-dispositions.md",
+        "docs/closure/checkpoints/README.md"
+      ],
+      "module": "tests.unit.closure.test_wave03_science",
+      "offline": true,
+      "permitted_skip_reasons": [],
+      "requirements": [],
+      "safety_invariants": [],
+      "skip_policy": "NEVER",
+      "suite_id": "tests.unit.closure.test_wave03_science",
+      "synthetic_fixtures": false,
+      "test_count": 44,
+      "test_id_sha256": "adf8fbec62ec0edd66a699c9b8579f835d1a25d54d5166936858f53c0efb5beb",
+      "work_package": "WP-C00/WP-C03"
+    },
+    {
+      "assigned_by": "package-closure",
+      "category": "UNIT",
+      "command": "python -m unittest tests.unit.closure.test_wave03b_assessment -v",
+      "criticality": "IMPORTANT",
+      "dependencies": [],
+      "evidence": [
+        "docs/closure/wp-c00-legacy-candidate-dispositions.md",
+        "docs/closure/checkpoints/README.md"
+      ],
+      "module": "tests.unit.closure.test_wave03b_assessment",
+      "offline": true,
+      "permitted_skip_reasons": [],
+      "requirements": [],
+      "safety_invariants": [],
+      "skip_policy": "NEVER",
+      "suite_id": "tests.unit.closure.test_wave03b_assessment",
+      "synthetic_fixtures": false,
+      "test_count": 27,
+      "test_id_sha256": "0af4bb0488619440df821b6a93a505a00fd9da2c1d16db82586d6d4104d890a1",
+      "work_package": "WP-C00/WP-C03"
+    },
+    {
+      "assigned_by": "package-closure",
+      "category": "UNIT",
+      "command": "python -m unittest tests.unit.closure.test_wave03b_capture -v",
+      "criticality": "IMPORTANT",
+      "dependencies": [],
+      "evidence": [
+        "docs/closure/wp-c00-legacy-candidate-dispositions.md",
+        "docs/closure/checkpoints/README.md"
+      ],
+      "module": "tests.unit.closure.test_wave03b_capture",
+      "offline": true,
+      "permitted_skip_reasons": [],
+      "requirements": [],
+      "safety_invariants": [],
+      "skip_policy": "NEVER",
+      "suite_id": "tests.unit.closure.test_wave03b_capture",
+      "synthetic_fixtures": false,
+      "test_count": 39,
+      "test_id_sha256": "580fb1fcdcea8757971cdcd93de50a832b90a953301f17548f7f2376618b1da0",
       "work_package": "WP-C00/WP-C03"
     },
     {
@@ -1571,8 +1704,8 @@
       "skip_policy": "ENVIRONMENT_DEPENDENCY",
       "suite_id": "tests.unit.closure.test_wp_c03_checkpoints",
       "synthetic_fixtures": false,
-      "test_count": 31,
-      "test_id_sha256": "8c781daa2ad26d0a0952596e7ddafe69d8b180482e204f1e4a150429ed223d1d",
+      "test_count": 32,
+      "test_id_sha256": "719748eb6dade326be88e21d4d542b9d0d2a1496f52490581c66c3832282a431",
       "work_package": "WP-C03"
     },
     {
@@ -2060,6 +2193,32 @@
       "work_package": "WP-10"
     },
     {
+      "assigned_by": "invariant-wave04b-audit-read-back",
+      "category": "DOMAIN_INVARIANT",
+      "command": "python -m unittest tests.unit.deployment.test_audit_read_back -v",
+      "criticality": "P0_CRITICAL",
+      "dependencies": [],
+      "evidence": [
+        "docs/closure/wave-04b-runtime-product-report.md"
+      ],
+      "module": "tests.unit.deployment.test_audit_read_back",
+      "offline": true,
+      "permitted_skip_reasons": [],
+      "requirements": [
+        "VER-REQ-025"
+      ],
+      "safety_invariants": [
+        "SAFETY-INV-007",
+        "SAFETY-INV-012"
+      ],
+      "skip_policy": "NEVER",
+      "suite_id": "tests.unit.deployment.test_audit_read_back",
+      "synthetic_fixtures": true,
+      "test_count": 4,
+      "test_id_sha256": "8d5c9302ddafe2715137fbe9b45e19ff82346fab3248436f78a62fde15c2f142",
+      "work_package": "WP-23"
+    },
+    {
       "assigned_by": "security-wp24-cli-and-ci",
       "category": "SECURITY_BOUNDARY",
       "command": "python -m unittest tests.unit.deployment.test_cli_and_ci -v",
@@ -2170,6 +2329,32 @@
       "synthetic_fixtures": false,
       "test_count": 36,
       "test_id_sha256": "0cbbc928bc4419b9b88506dc67df7fcd823120f95106f799cf5385e1b7d54bce",
+      "work_package": "WP-24"
+    },
+    {
+      "assigned_by": "invariant-wave04b-request-scope",
+      "category": "DOMAIN_INVARIANT",
+      "command": "python -m unittest tests.unit.deployment.test_request_scope_transaction -v",
+      "criticality": "P0_CRITICAL",
+      "dependencies": [],
+      "evidence": [
+        "docs/closure/wave-04b-runtime-product-report.md"
+      ],
+      "module": "tests.unit.deployment.test_request_scope_transaction",
+      "offline": true,
+      "permitted_skip_reasons": [],
+      "requirements": [
+        "VER-REQ-025"
+      ],
+      "safety_invariants": [
+        "SAFETY-INV-007",
+        "SAFETY-INV-012"
+      ],
+      "skip_policy": "NEVER",
+      "suite_id": "tests.unit.deployment.test_request_scope_transaction",
+      "synthetic_fixtures": true,
+      "test_count": 12,
+      "test_id_sha256": "2d55f24e8adf292d2dec25d58fdcf688a69987eb930558595a177411bb070304",
       "work_package": "WP-24"
     },
     {
@@ -2749,8 +2934,8 @@
       "skip_policy": "NEVER",
       "suite_id": "tests.unit.engine.test_wp14_boundaries",
       "synthetic_fixtures": false,
-      "test_count": 41,
-      "test_id_sha256": "8e1d6895d7965c764ed1a8ef7dc9d76435053a4a231e2c8675ac3f9fa7faa16a",
+      "test_count": 42,
+      "test_id_sha256": "0d01a61f0cacbec3ac318c3674e8516b6a62e6811fa4217da2fbe712a976bcec",
       "work_package": "WP-12/WP-13/WP-14"
     },
     {
@@ -3421,8 +3606,8 @@
       "skip_policy": "NEVER",
       "suite_id": "tests.unit.normalization.test_artifact_extraction",
       "synthetic_fixtures": false,
-      "test_count": 31,
-      "test_id_sha256": "632778dc147dcf6fa1a0ccd69e6421f4fe583af6b44287243d7dbbd75855a83e",
+      "test_count": 32,
+      "test_id_sha256": "445193baf6d7692487fca55c8d13e6269712a5af1700c7efde6eca4257c5a2e1",
       "work_package": "WP-07"
     },
     {
@@ -3653,8 +3838,8 @@
       "skip_policy": "NEVER",
       "suite_id": "tests.unit.normalization.test_quality_decision",
       "synthetic_fixtures": false,
-      "test_count": 30,
-      "test_id_sha256": "7e532bd36db3537a8af810e5be3dc0d71d5315ae567b825bf379eea3ef8bfdba",
+      "test_count": 34,
+      "test_id_sha256": "de24ba8e04f6ae5bd99e02ee490f3b25e844313746213a9a7590f1fd44e6841f",
       "work_package": "WP-07"
     },
     {
@@ -5108,8 +5293,8 @@
       "skip_policy": "NEVER",
       "suite_id": "tests.unit.scientific.test_registry_config",
       "synthetic_fixtures": false,
-      "test_count": 29,
-      "test_id_sha256": "a37397008dc48429a9632a2508e4ed9b6993534b2744fa85b14369a32575825a",
+      "test_count": 35,
+      "test_id_sha256": "0d7d8b3c0b27c6e69a3c5d94b943011775a0d80fadabc897f7b9f25a1a8f3b9f",
       "work_package": "WP-05"
     },
     {

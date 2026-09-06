@@ -23,7 +23,7 @@
       "present": true,
       "reason": "the API gate status the system page reports",
       "required": true,
-      "sha256": "sha256:05a171a81ba2c5175263ab5e4c31e7e3276c98b3d3094a4fe0d65702bec5efaf"
+      "sha256": "sha256:f54f6ddc9c9b72f7b2f3787369bcbcce7f4922b24b081cf11cae257b6d34203d"
     },
     {
       "matches_pinned": null,
@@ -31,7 +31,7 @@
       "present": true,
       "reason": "the interface gate status the system page reports",
       "required": true,
-      "sha256": "sha256:22cc917ba5e8e7f872cd9d0e12f24af6752e17332f367e6263380e8a29aba2ba"
+      "sha256": "sha256:a884ec017bf5771d37fb9ed9a81217491d0a4b5391136ad31f469ae546a22ada"
     },
     {
       "matches_pinned": null,
@@ -87,7 +87,7 @@
       "present": true,
       "reason": "the reviewed source registry; a build without it must fail to load a policy rather than quietly find none",
       "required": true,
-      "sha256": "sha256:1765ef403cf704aa1af4f5709d79c95bc559ca3079a2b6daaffcd2fd0ab9c574"
+      "sha256": "sha256:d50d15a81c4e6c5f585d34ce1fbec9651b1072e143e47f4a83689ec899b489ab"
     }
   ],
   "checksum_mismatches": [],
@@ -128,7 +128,7 @@
     ".sql.gz",
     ".dump"
   ],
-  "manifest_hash": "sha256:2662e9eba2835a2dfc87d2bd0c75bea2b92b57db3d844d188f78d262c5d626b9",
+  "manifest_hash": "sha256:e7fa875b7ef830fef87789fd62a940b695191c02a492c04c9ab44e2bff66f082",
   "missing_required": [],
   "note": "An allowlist of files, never a directory. A directory is a promise about what somebody will remember not to put in it.",
   "runtime_asset_manifest_version": "pgx-wp24-runtime-asset-manifest/1",

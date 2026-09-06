@@ -1,8 +1,104 @@
 {
-  "asgi_runtime_status": "PASS",
+  "asgi_runtime_status": "BLOCKED",
   "benchmark_gate_status": "BLOCKED",
-  "blocker_count": 4,
+  "blocker_count": 20,
   "blockers": [
+    {
+      "blocking": true,
+      "code": "VERIFICATION_CATEGORY_NOT_EXERCISED",
+      "detail": "category UNIT has no executed result",
+      "owner": "whoever runs the suite"
+    },
+    {
+      "blocking": true,
+      "code": "VERIFICATION_CATEGORY_NOT_EXERCISED",
+      "detail": "category DOMAIN_INVARIANT has no executed result",
+      "owner": "whoever runs the suite"
+    },
+    {
+      "blocking": true,
+      "code": "VERIFICATION_CATEGORY_NOT_EXERCISED",
+      "detail": "category FAILURE_NEGATIVE has no executed result",
+      "owner": "whoever runs the suite"
+    },
+    {
+      "blocking": true,
+      "code": "VERIFICATION_CATEGORY_NOT_EXERCISED",
+      "detail": "category INTEGRATION has no executed result",
+      "owner": "whoever runs the suite"
+    },
+    {
+      "blocking": true,
+      "code": "VERIFICATION_CATEGORY_NOT_EXERCISED",
+      "detail": "category POSTGRESQL_INTEGRATION has no executed result",
+      "owner": "whoever runs the suite"
+    },
+    {
+      "blocking": true,
+      "code": "VERIFICATION_CATEGORY_NOT_EXERCISED",
+      "detail": "category MIGRATION has no executed result",
+      "owner": "whoever runs the suite"
+    },
+    {
+      "blocking": true,
+      "code": "VERIFICATION_CATEGORY_NOT_EXERCISED",
+      "detail": "category API_CONTRACT has no executed result",
+      "owner": "whoever runs the suite"
+    },
+    {
+      "blocking": true,
+      "code": "VERIFICATION_CATEGORY_NOT_EXERCISED",
+      "detail": "category ASGI_RUNTIME has no executed result",
+      "owner": "whoever runs the suite"
+    },
+    {
+      "blocking": true,
+      "code": "VERIFICATION_CATEGORY_NOT_EXERCISED",
+      "detail": "category BROWSER_E2E has no executed result",
+      "owner": "whoever runs the suite"
+    },
+    {
+      "blocking": true,
+      "code": "VERIFICATION_CATEGORY_NOT_EXERCISED",
+      "detail": "category SNAPSHOT has no executed result",
+      "owner": "whoever runs the suite"
+    },
+    {
+      "blocking": true,
+      "code": "VERIFICATION_CATEGORY_NOT_EXERCISED",
+      "detail": "category ARTIFACT_SCHEMA has no executed result",
+      "owner": "whoever runs the suite"
+    },
+    {
+      "blocking": true,
+      "code": "VERIFICATION_CATEGORY_NOT_EXERCISED",
+      "detail": "category REPRODUCIBILITY has no executed result",
+      "owner": "whoever runs the suite"
+    },
+    {
+      "blocking": true,
+      "code": "VERIFICATION_CATEGORY_NOT_EXERCISED",
+      "detail": "category LEGACY_REGRESSION has no executed result",
+      "owner": "whoever runs the suite"
+    },
+    {
+      "blocking": true,
+      "code": "VERIFICATION_CATEGORY_NOT_EXERCISED",
+      "detail": "category VALIDATION_PARTITION has no executed result",
+      "owner": "whoever runs the suite"
+    },
+    {
+      "blocking": true,
+      "code": "VERIFICATION_CATEGORY_NOT_EXERCISED",
+      "detail": "category SECURITY_BOUNDARY has no executed result",
+      "owner": "whoever runs the suite"
+    },
+    {
+      "blocking": true,
+      "code": "VERIFICATION_CATEGORY_NOT_EXERCISED",
+      "detail": "category OFFLINE_INDEPENDENCE has no executed result",
+      "owner": "whoever runs the suite"
+    },
     {
       "blocking": true,
       "code": "VERIFICATION_CLAIM_BOUNDARY_NOT_APPROVED",
@@ -17,9 +113,9 @@
     },
     {
       "blocking": true,
-      "code": "VERIFICATION_POSTGRESQL_NOT_EXERCISED",
-      "detail": "category POSTGRESQL_INTEGRATION executed only skips: PostgreSQL integration tests require psycopg, which is not installed in this environment. Install the project with `uv sync`, start the disposable database with",
-      "owner": "deployment (start the disposable test database)"
+      "code": "VERIFICATION_RUN_STALE",
+      "detail": "the run was recorded on a different host or stack (Linux/CPython 3.11.15) than this one (Linux/CPython 3.11.15); a verification result does not travel between machines",
+      "owner": "whoever runs the suite"
     },
     {
       "blocking": true,
@@ -28,180 +124,116 @@
       "owner": "WP-20 safety gate"
     }
   ],
-  "browser_e2e_status": "PASS",
+  "browser_e2e_status": "BLOCKED",
   "category_status": {
     "API_CONTRACT": {
-      "errored": 0,
-      "executed": 347,
-      "failed": 0,
+      "executed": 0,
       "inventoried": 347,
-      "outcome": "PASS",
-      "passed": 347,
-      "reason": "",
-      "skipped": 0
+      "outcome": "BLOCKED",
+      "reason": "no executed result for this category in any profile run here"
     },
     "ARTIFACT_SCHEMA": {
-      "errored": 0,
-      "executed": 575,
-      "failed": 0,
+      "executed": 0,
       "inventoried": 575,
-      "outcome": "PASS",
-      "passed": 575,
-      "reason": "",
-      "skipped": 0
+      "outcome": "BLOCKED",
+      "reason": "no executed result for this category in any profile run here"
     },
     "ASGI_RUNTIME": {
-      "errored": 0,
-      "executed": 50,
-      "failed": 0,
+      "executed": 0,
       "inventoried": 50,
-      "outcome": "PASS",
-      "passed": 49,
-      "reason": "",
-      "skipped": 1
+      "outcome": "BLOCKED",
+      "reason": "no executed result for this category in any profile run here"
     },
     "BROWSER_E2E": {
-      "errored": 0,
-      "executed": 13,
-      "failed": 0,
-      "inventoried": 13,
-      "outcome": "PASS",
-      "passed": 12,
-      "reason": "",
-      "skipped": 1
+      "executed": 0,
+      "inventoried": 14,
+      "outcome": "BLOCKED",
+      "reason": "no executed result for this category in any profile run here"
     },
     "DOMAIN_INVARIANT": {
-      "errored": 0,
-      "executed": 1031,
-      "failed": 0,
-      "inventoried": 1031,
-      "outcome": "PASS",
-      "passed": 1023,
-      "reason": "",
-      "skipped": 8
+      "executed": 0,
+      "inventoried": 1047,
+      "outcome": "BLOCKED",
+      "reason": "no executed result for this category in any profile run here"
     },
     "FAILURE_NEGATIVE": {
-      "errored": 0,
-      "executed": 97,
-      "failed": 0,
+      "executed": 0,
       "inventoried": 97,
-      "outcome": "PASS",
-      "passed": 97,
-      "reason": "",
-      "skipped": 0
+      "outcome": "BLOCKED",
+      "reason": "no executed result for this category in any profile run here"
     },
     "INTEGRATION": {
-      "errored": 0,
-      "executed": 115,
-      "failed": 0,
-      "inventoried": 115,
-      "outcome": "PASS",
-      "passed": 115,
-      "reason": "",
-      "skipped": 0
+      "executed": 0,
+      "inventoried": 127,
+      "outcome": "BLOCKED",
+      "reason": "no executed result for this category in any profile run here"
     },
     "LEGACY_REGRESSION": {
-      "errored": 0,
-      "executed": 409,
-      "failed": 0,
+      "executed": 0,
       "inventoried": 409,
-      "outcome": "PASS",
-      "passed": 409,
-      "reason": "",
-      "skipped": 0
+      "outcome": "BLOCKED",
+      "reason": "no executed result for this category in any profile run here"
     },
     "MIGRATION": {
-      "errored": 0,
-      "executed": 140,
-      "failed": 0,
+      "executed": 0,
       "inventoried": 140,
-      "outcome": "PASS",
-      "passed": 131,
-      "reason": "",
-      "skipped": 9
+      "outcome": "BLOCKED",
+      "reason": "no executed result for this category in any profile run here"
     },
     "OFFLINE_INDEPENDENCE": {
-      "errored": 0,
-      "executed": 25,
-      "failed": 0,
+      "executed": 0,
       "inventoried": 25,
-      "outcome": "PASS",
-      "passed": 25,
-      "reason": "",
-      "skipped": 0
+      "outcome": "BLOCKED",
+      "reason": "no executed result for this category in any profile run here"
     },
     "POSTGRESQL_INTEGRATION": {
-      "errored": 0,
-      "executed": 72,
-      "failed": 0,
+      "executed": 0,
       "inventoried": 72,
       "outcome": "BLOCKED",
-      "passed": 0,
-      "reason": "PostgreSQL integration tests require psycopg, which is not installed in this environment. Install the project with `uv sync`, start the disposable database with `docker compose --profile test up -d postgres-test`, and retry. This skip is NOT a pass: the WP-02 acceptance report records the PostgreSQL criteria as BLOCKED.",
-      "skipped": 72
+      "reason": "no executed result for this category in any profile run here"
     },
     "REPRODUCIBILITY": {
-      "errored": 0,
-      "executed": 146,
-      "failed": 0,
+      "executed": 0,
       "inventoried": 146,
-      "outcome": "PASS",
-      "passed": 146,
-      "reason": "",
-      "skipped": 0
+      "outcome": "BLOCKED",
+      "reason": "no executed result for this category in any profile run here"
     },
     "SECURITY_BOUNDARY": {
-      "errored": 0,
-      "executed": 751,
-      "failed": 0,
+      "executed": 0,
       "inventoried": 751,
-      "outcome": "PASS",
-      "passed": 751,
-      "reason": "",
-      "skipped": 0
+      "outcome": "BLOCKED",
+      "reason": "no executed result for this category in any profile run here"
     },
     "SNAPSHOT": {
-      "errored": 0,
-      "executed": 252,
-      "failed": 0,
+      "executed": 0,
       "inventoried": 252,
-      "outcome": "PASS",
-      "passed": 251,
-      "reason": "",
-      "skipped": 1
+      "outcome": "BLOCKED",
+      "reason": "no executed result for this category in any profile run here"
     },
     "UNIT": {
-      "errored": 0,
-      "executed": 3234,
-      "failed": 0,
-      "inventoried": 3234,
-      "outcome": "PASS",
-      "passed": 3230,
-      "reason": "",
-      "skipped": 4
+      "executed": 0,
+      "inventoried": 3408,
+      "outcome": "BLOCKED",
+      "reason": "no executed result for this category in any profile run here"
     },
     "VALIDATION_PARTITION": {
-      "errored": 0,
-      "executed": 204,
-      "failed": 0,
+      "executed": 0,
       "inventoried": 204,
-      "outcome": "PASS",
-      "passed": 204,
-      "reason": "",
-      "skipped": 0
+      "outcome": "BLOCKED",
+      "reason": "no executed result for this category in any profile run here"
     }
   },
   "claim_boundary_approved": false,
   "claim_boundary_status": "DRAFT / AWAITING HUMAN AND SCIENTIFIC REVIEW",
   "counts": {
-    "discovered": 7461,
-    "errored": 0,
-    "executed": 7461,
-    "failed": 0,
-    "not_executed": 0,
-    "passed": 7365,
-    "skipped": 96,
-    "unexplained_skips": 0
+    "discovered": 7664,
+    "errored": null,
+    "executed": null,
+    "failed": null,
+    "not_executed": null,
+    "passed": null,
+    "skipped": null,
+    "unexplained_skips": null
   },
   "coverage": {
     "branch_percent": null,
@@ -239,8 +271,8 @@
   },
   "coverage_tool_available": false,
   "critical_requirement_count": 20,
-  "discovered_test_count": 7461,
-  "execution_status": "PASS",
+  "discovered_test_count": 7664,
+  "execution_status": "BLOCKED",
   "flaky": null,
   "flaky_repeat_status": null,
   "gate_status_schema_version": "pgx-wp19-gate-status/1",
@@ -249,179 +281,8 @@
   "not_scientific_validation": "Everything in this document is software verification. A green suite means the software behaved as its tests describe. It is not a validated ruleset, a reviewed validation case, an expert opinion, a clinical result, or an approval. Those are produced by people under WP-21 and WP-22 and cannot be produced by running tests. WP-22's review module is implemented and its test suite is green; that means the software records a review correctly, and says nothing about whether an expert conducted one.",
   "numeric_validation_metric_count": 0,
   "postgresql_test_status": "BLOCKED",
-  "profile_results": {
-    "full": {
-      "blocked_categories": [
-        "POSTGRESQL_INTEGRATION"
-      ],
-      "blocked_reason": "",
-      "categories": {
-        "API_CONTRACT": {
-          "errored": 0,
-          "executed": 347,
-          "failed": 0,
-          "outcome": "PASS",
-          "passed": 347,
-          "reason": "",
-          "skipped": 0
-        },
-        "ARTIFACT_SCHEMA": {
-          "errored": 0,
-          "executed": 575,
-          "failed": 0,
-          "outcome": "PASS",
-          "passed": 575,
-          "reason": "",
-          "skipped": 0
-        },
-        "ASGI_RUNTIME": {
-          "errored": 0,
-          "executed": 50,
-          "failed": 0,
-          "outcome": "PASS",
-          "passed": 49,
-          "reason": "",
-          "skipped": 1
-        },
-        "BROWSER_E2E": {
-          "errored": 0,
-          "executed": 13,
-          "failed": 0,
-          "outcome": "PASS",
-          "passed": 12,
-          "reason": "",
-          "skipped": 1
-        },
-        "DOMAIN_INVARIANT": {
-          "errored": 0,
-          "executed": 1031,
-          "failed": 0,
-          "outcome": "PASS",
-          "passed": 1023,
-          "reason": "",
-          "skipped": 8
-        },
-        "FAILURE_NEGATIVE": {
-          "errored": 0,
-          "executed": 97,
-          "failed": 0,
-          "outcome": "PASS",
-          "passed": 97,
-          "reason": "",
-          "skipped": 0
-        },
-        "INTEGRATION": {
-          "errored": 0,
-          "executed": 115,
-          "failed": 0,
-          "outcome": "PASS",
-          "passed": 115,
-          "reason": "",
-          "skipped": 0
-        },
-        "LEGACY_REGRESSION": {
-          "errored": 0,
-          "executed": 409,
-          "failed": 0,
-          "outcome": "PASS",
-          "passed": 409,
-          "reason": "",
-          "skipped": 0
-        },
-        "MIGRATION": {
-          "errored": 0,
-          "executed": 140,
-          "failed": 0,
-          "outcome": "PASS",
-          "passed": 131,
-          "reason": "",
-          "skipped": 9
-        },
-        "OFFLINE_INDEPENDENCE": {
-          "errored": 0,
-          "executed": 25,
-          "failed": 0,
-          "outcome": "PASS",
-          "passed": 25,
-          "reason": "",
-          "skipped": 0
-        },
-        "POSTGRESQL_INTEGRATION": {
-          "errored": 0,
-          "executed": 72,
-          "failed": 0,
-          "outcome": "BLOCKED",
-          "passed": 0,
-          "reason": "PostgreSQL integration tests require psycopg, which is not installed in this environment. Install the project with `uv sync`, start the disposable database with `docker compose --profile test up -d postgres-test`, and retry. This skip is NOT a pass: the WP-02 acceptance report records the PostgreSQL criteria as BLOCKED.",
-          "skipped": 72
-        },
-        "REPRODUCIBILITY": {
-          "errored": 0,
-          "executed": 146,
-          "failed": 0,
-          "outcome": "PASS",
-          "passed": 146,
-          "reason": "",
-          "skipped": 0
-        },
-        "SECURITY_BOUNDARY": {
-          "errored": 0,
-          "executed": 751,
-          "failed": 0,
-          "outcome": "PASS",
-          "passed": 751,
-          "reason": "",
-          "skipped": 0
-        },
-        "SNAPSHOT": {
-          "errored": 0,
-          "executed": 252,
-          "failed": 0,
-          "outcome": "PASS",
-          "passed": 251,
-          "reason": "",
-          "skipped": 1
-        },
-        "UNIT": {
-          "errored": 0,
-          "executed": 3234,
-          "failed": 0,
-          "outcome": "PASS",
-          "passed": 3230,
-          "reason": "",
-          "skipped": 4
-        },
-        "VALIDATION_PARTITION": {
-          "errored": 0,
-          "executed": 204,
-          "failed": 0,
-          "outcome": "PASS",
-          "passed": 204,
-          "reason": "",
-          "skipped": 0
-        }
-      },
-      "issue_codes": [
-        "VERIFY_CATEGORY_BLOCKED"
-      ],
-      "outcome": "PASS",
-      "profile": "full",
-      "stdout_note": "Test outcomes come from the test runner's recorded result, never from words found in stdout. Several negative tests print CONFIGURATION_FAILURE on purpose while passing; a CI job that grepped for it would fail a green suite.",
-      "summary": {
-        "discovered": 7461,
-        "errored": 0,
-        "executed": 7461,
-        "failed": 0,
-        "not_executed": 0,
-        "passed": 7365,
-        "skipped": 96,
-        "unexplained_skips": 0
-      }
-    }
-  },
-  "profiles_executed": [
-    "full"
-  ],
+  "profile_results": {},
+  "profiles_executed": [],
   "release_may_proceed": false,
   "reproducibility": null,
   "reproducibility_status": null,
@@ -465,7 +326,7 @@
     "VER-REQ-007": {
       "criticality": "P0_CRITICAL",
       "is_covered": true,
-      "test_count": 354,
+      "test_count": 355,
       "title": "The same input and release bundle produce the same assessment"
     },
     "VER-REQ-008": {
@@ -477,13 +338,13 @@
     "VER-REQ-009": {
       "criticality": "P0_CRITICAL",
       "is_covered": true,
-      "test_count": 505,
+      "test_count": 517,
       "title": "The API's error and security contracts hold"
     },
     "VER-REQ-010": {
       "criticality": "P0_CRITICAL",
       "is_covered": true,
-      "test_count": 332,
+      "test_count": 333,
       "title": "Every rendered page carries the clinical warning, and access is refused where it must be"
     },
     "VER-REQ-011": {
@@ -525,7 +386,7 @@
     "VER-REQ-017": {
       "criticality": "IMPORTANT",
       "is_covered": true,
-      "test_count": 432,
+      "test_count": 437,
       "title": "Canonicalisation is deterministic and refuses ambiguous input"
     },
     "VER-REQ-018": {
@@ -537,7 +398,7 @@
     "VER-REQ-019": {
       "criticality": "IMPORTANT",
       "is_covered": true,
-      "test_count": 233,
+      "test_count": 239,
       "title": "Source policy decides what may be published, and fails closed"
     },
     "VER-REQ-020": {
@@ -573,7 +434,7 @@
     "VER-REQ-025": {
       "criticality": "P0_CRITICAL",
       "is_covered": true,
-      "test_count": 163,
+      "test_count": 179,
       "title": "A deployment reports what it has, and every document says plainly what did not happen"
     },
     "VER-REQ-026": {
@@ -584,8 +445,8 @@
     }
   },
   "run_evidence_path": "data/verification/wp19-verification-run.json",
-  "run_evidence_reason": "",
-  "run_evidence_status": "VERIFIED",
+  "run_evidence_reason": "the run was recorded on a different host or stack (Linux/CPython 3.11.15) than this one (Linux/CPython 3.11.15); a verification result does not travel between machines",
+  "run_evidence_status": "STALE_EVIDENCE_REJECTED",
   "safety_gate_note": "WP-19 maps existing tests to the safety invariants so that thin coverage is visible. WP-20 owns the registry, the negative controls and the blocking gate, and this document reports WP-20's *measured* state rather than asserting or inferring one. Where WP-20 has not been run here, the state is reported as absent - never as satisfied.",
   "safety_gate_reason": "the WP-20 safety gate reports BLOCKED with 11 blocker(s)",
   "safety_gate_status": "BLOCKED",

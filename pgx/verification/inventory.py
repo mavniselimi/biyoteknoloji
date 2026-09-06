@@ -440,6 +440,28 @@ _MODULE_RULES: Tuple[CategoryRule, ...] = (
     # change committed without its audit record are safety defects rather
     # than wrong values; the honest-reporting tests are a security boundary
     # because the thing they defend is a document nobody can be misled by.
+    # Wave 4B. The transaction boundary the middleware draws, and the
+    # difference between a typed refusal and a server error. A domain
+    # invariant on the same reasoning as the composition tests above: a login
+    # that returns a session cookie for a session that was rolled back is a
+    # safety defect, not a wrong value.
+    CategoryRule(
+        "invariant-wave04b-request-scope",
+        "tests.unit.deployment.test_request_scope_transaction",
+        Category.DOMAIN_INVARIANT, "WP-24", Criticality.P0_CRITICAL,
+        synthetic_fixtures=True,
+        evidence=("docs/closure/wave-04b-runtime-product-report.md",)),
+    CategoryRule(
+        "invariant-wave04b-audit-read-back",
+        "tests.unit.deployment.test_audit_read_back",
+        Category.DOMAIN_INVARIANT, "WP-23", Criticality.P0_CRITICAL,
+        synthetic_fixtures=True,
+        evidence=("docs/closure/wave-04b-runtime-product-report.md",)),
+    CategoryRule(
+        "integration-wave04b-candidate-composition",
+        "tests.integration.api.test_candidate_runtime_composition",
+        Category.INTEGRATION, "WP-C14A", Criticality.P0_CRITICAL,
+        evidence=("docs/closure/wave-03b-integration-report.md",)),
     CategoryRule(
         "invariant-wp24-composition",
         "tests.unit.deployment.test_composition",

@@ -2,7 +2,7 @@
   "categories": [
     {
       "category": "UNIT",
-      "module_count": 112,
+      "module_count": 117,
       "modules": [
         "tests.unit.api.test_wp16_documentation",
         "tests.unit.application.test_assessment_cli",
@@ -19,6 +19,11 @@
         "tests.unit.application.test_rollback",
         "tests.unit.benchmark.test_cli",
         "tests.unit.closure.test_h01_decision",
+        "tests.unit.closure.test_wave03_authority",
+        "tests.unit.closure.test_wave03_release",
+        "tests.unit.closure.test_wave03_science",
+        "tests.unit.closure.test_wave03b_assessment",
+        "tests.unit.closure.test_wave03b_capture",
         "tests.unit.closure.test_wp_c00_dispositions",
         "tests.unit.closure.test_wp_c03_checkpoints",
         "tests.unit.curation.test_conflict_and_insufficiency",
@@ -118,12 +123,12 @@
         "tests.unit.web.test_wp17_boundaries"
       ],
       "static_outcome": "BLOCKED",
-      "test_count": 3234,
-      "test_id_sha256": "633b119a647ab042e440a07760f753065bb12f6856719180e7b365e7300fc6f5"
+      "test_count": 3408,
+      "test_id_sha256": "7e29f4dfc475c5796c3d78efa8f61ba65905ce3d3a5d4f0193105e61a84293c3"
     },
     {
       "category": "DOMAIN_INVARIANT",
-      "module_count": 42,
+      "module_count": 44,
       "modules": [
         "tests.safety.test_assessment_safety",
         "tests.safety.test_coverage_safety",
@@ -132,7 +137,9 @@
         "tests.unit.benchmark.test_metric_computation",
         "tests.unit.benchmark.test_metric_definitions",
         "tests.unit.benchmark.test_metric_values",
+        "tests.unit.deployment.test_audit_read_back",
         "tests.unit.deployment.test_composition",
+        "tests.unit.deployment.test_request_scope_transaction",
         "tests.unit.domain.test_dependency_boundaries",
         "tests.unit.domain.test_hashing",
         "tests.unit.domain.test_identifiers",
@@ -169,8 +176,8 @@
         "tests.unit.web.test_safety"
       ],
       "static_outcome": "BLOCKED",
-      "test_count": 1031,
-      "test_id_sha256": "d4542e67ca851220652c1ad4dd7f1e9bbc368663615ae06b71a544b648b6ceea"
+      "test_count": 1047,
+      "test_id_sha256": "946688bd7cfa582b9a3c396ef0067ffc582e978fd12e2dfec6d2fe77b0896017"
     },
     {
       "category": "FAILURE_NEGATIVE",
@@ -188,8 +195,9 @@
     },
     {
       "category": "INTEGRATION",
-      "module_count": 6,
+      "module_count": 7,
       "modules": [
+        "tests.integration.api.test_candidate_runtime_composition",
         "tests.integration.engine.test_assessment_end_to_end",
         "tests.integration.engine.test_coverage_end_to_end",
         "tests.integration.engine.test_wp11_integration",
@@ -198,8 +206,8 @@
         "tests.unit.web.test_e2e_flow"
       ],
       "static_outcome": "BLOCKED",
-      "test_count": 115,
-      "test_id_sha256": "2381c4cceb0dca11fc732e3af4aee3723a1e6f70310302c395ea3632bded1e41"
+      "test_count": 127,
+      "test_id_sha256": "57d2da1e7d6058b35ee387ce386686a19b32333f8150b8d29ce8918a1401d4a2"
     },
     {
       "category": "POSTGRESQL_INTEGRATION",
@@ -269,8 +277,8 @@
         "tests.integration.web.test_browser_e2e"
       ],
       "static_outcome": "BLOCKED",
-      "test_count": 13,
-      "test_id_sha256": "329924bac7f214348bd727bc0ac51e18e4367115ffb85651f492091795674271"
+      "test_count": 14,
+      "test_id_sha256": "6113d13f047abacea378c5b0f1ef516d61c7909f3a25154f729b9aaba8636eb3"
     },
     {
       "category": "SNAPSHOT",
@@ -755,8 +763,8 @@
         "tests.integration.engine.test_assessment_end_to_end"
       ],
       "source": "architecture.md section 12; SAFETY-INV-006, SAFETY-INV-009",
-      "test_count": 354,
-      "test_id_sha256": "e32f17a1f2465443359544d27557e2eae573398a4bf422a62f39efa008a98d93",
+      "test_count": 355,
+      "test_id_sha256": "26ecdbf05c1eb6a081421f441e25edd71dffbd814e47acb9dd0ad31c62f1d3a4",
       "title": "The same input and release bundle produce the same assessment",
       "work_packages": [
         "WP-14"
@@ -818,18 +826,20 @@
         "ARTIFACT_SCHEMA",
         "ASGI_RUNTIME",
         "DOMAIN_INVARIANT",
+        "INTEGRATION",
         "SECURITY_BOUNDARY",
         "UNIT"
       ],
       "criticality": "P0_CRITICAL",
       "is_covered": true,
-      "module_count": 17,
+      "module_count": 18,
       "modules": [
         "tests.contract.test_wp12_schemas",
         "tests.contract.test_wp13_schemas",
         "tests.contract.test_wp14_schemas",
         "tests.contract.test_wp15_schemas",
         "tests.integration.api.test_asgi_runtime",
+        "tests.integration.api.test_candidate_runtime_composition",
         "tests.unit.api.test_assessment_flow",
         "tests.unit.api.test_catalogue_evidence_version",
         "tests.unit.api.test_contracts",
@@ -852,8 +862,8 @@
         "tests.integration.api"
       ],
       "source": "docs/architecture/wp16-fastapi-application.md; schemas/wp16/error-contract.schema.json",
-      "test_count": 505,
-      "test_id_sha256": "99aabbe21ce007ebf9968511b4f0da374792d4c362f0c308c2837a246e2b2139",
+      "test_count": 517,
+      "test_id_sha256": "44b2ad1acee67905f442280ab312ea09a317e5f074a51a55d0d8d223c6162109",
       "title": "The API's error and security contracts hold",
       "work_packages": [
         "WP-16"
@@ -898,8 +908,8 @@
         "tests.integration.web"
       ],
       "source": "docs/architecture/wp17-server-rendered-web.md",
-      "test_count": 332,
-      "test_id_sha256": "70d527ad8ca2844604d637871c49ed76943398634e322b2e6204aa57d71498e7",
+      "test_count": 333,
+      "test_id_sha256": "053f9db33759f5aab9705008d66d072a826e252d1fc6e4c92413df57b0d39ff2",
       "title": "Every rendered page carries the clinical warning, and access is refused where it must be",
       "work_packages": [
         "WP-17"
@@ -1167,8 +1177,8 @@
         "tests.unit.test_wp07_schema"
       ],
       "source": "architecture.md section 7; docs/evidence/wp07-dq-validation.md",
-      "test_count": 432,
-      "test_id_sha256": "c773ae5acd682c6c4b77710b7ab6c984ce64669e92f0bd9710797f5ca9d7e517",
+      "test_count": 437,
+      "test_id_sha256": "1bcd106e67295f8ee7fadb826d54d1e7885467e53d941cc930e1f85c923de2b6",
       "title": "Canonicalisation is deterministic and refuses ambiguous input",
       "work_packages": [
         "WP-07"
@@ -1238,8 +1248,8 @@
         "tests.unit.test_schema_rendering"
       ],
       "source": "docs/evidence/wp05-validation.md; config/scientific-sources",
-      "test_count": 233,
-      "test_id_sha256": "66896b9f254161ded765a870401af88acc025f705534a5d25e45d2ae78da41a3",
+      "test_count": 239,
+      "test_id_sha256": "879cccb8ca9dd50174a88f309c3767f3749ddf706b802ddf4183497675e606b8",
       "title": "Source policy decides what may be published, and fails closed",
       "work_packages": [
         "WP-05"
@@ -1462,12 +1472,14 @@
       ],
       "criticality": "P0_CRITICAL",
       "is_covered": true,
-      "module_count": 5,
+      "module_count": 7,
       "modules": [
+        "tests.unit.deployment.test_audit_read_back",
         "tests.unit.deployment.test_cli_and_ci",
         "tests.unit.deployment.test_composition",
         "tests.unit.deployment.test_container_and_build",
         "tests.unit.deployment.test_honest_reporting",
+        "tests.unit.deployment.test_request_scope_transaction",
         "tests.unit.deployment.test_schemas_and_persistence"
       ],
       "note": "Two failures, and the second is the one this repository is actually exposed to. The first is a runtime that shares a database session between requests or commits a governed change without the record of it - both invisible in a query and both asserted here through transaction shape rather than final state. The second is a report that reads as a success because a measurement nobody took came back as zero, or because a rehearsal on a laptop serialised under a name that means staging. Almost every WP-24 status in this repository is BLOCKED, so the tests that matter are the ones proving BLOCKED cannot be mistaken for anything else: null rather than zero, a rehearsal label that travels into the artifact, and a TEST_ONLY_REHEARSAL that cannot close a gate. Mapped to SAFETY-INV-007 and -012 because atomic audit and repeat-run determinism are the two the WP-20 registry names WP-24 as owing.",
@@ -1480,8 +1492,8 @@
         "tests.unit.deployment"
       ],
       "source": "architecture.md section 14; docs/architecture/wp24-deployment-reliability.md; docs/evidence/wp24-build-provenance-report.md",
-      "test_count": 163,
-      "test_id_sha256": "2975576aa5014d4ec91e8f17a7f3ec9644e04008ba46e3ed7d5003ef04aec40b",
+      "test_count": 179,
+      "test_id_sha256": "d5a95e34fa52f5949412ef9e4316b23ea50561f7a95749e66d1536fc0b221ea5",
       "title": "A deployment reports what it has, and every document says plainly what did not happen",
       "work_packages": [
         "WP-24"
@@ -1609,6 +1621,11 @@
   "unmapped_safety_invariants": [],
   "unmapped_supporting_modules": [
     "tests.unit.closure.test_h01_decision",
+    "tests.unit.closure.test_wave03_authority",
+    "tests.unit.closure.test_wave03_release",
+    "tests.unit.closure.test_wave03_science",
+    "tests.unit.closure.test_wave03b_assessment",
+    "tests.unit.closure.test_wave03b_capture",
     "tests.unit.closure.test_wp_c00_dispositions",
     "tests.unit.closure.test_wp_c03_checkpoints",
     "tests.unit.engine.test_wp12_documentation",
