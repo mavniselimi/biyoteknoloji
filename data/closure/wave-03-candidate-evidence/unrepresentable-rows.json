@@ -1,0 +1,86 @@
+[
+  {
+    "classification": "Strong",
+    "context": "ACS and/or PCI",
+    "drug": "clopidogrel",
+    "gene": "CYP2C19",
+    "implication_verbatim": "Likely reduced platelet inhibition; likely increased residual platelet aggregation; likely increased risk for adverse cardiovascular events",
+    "project_phenotype": null,
+    "recommendation_verbatim": "Avoid standard dose clopidogrel (75 mg) if possible. Use prasugrel or ticagrelor at standard dose if no contraindication.",
+    "retrieval_key": "cpic.clopidogrel.cyp2c19",
+    "source_phenotype": "CYP2C19 likely intermediate metabolizer",
+    "unrepresentable_reason": "the project's phenotype vocabulary has five determinate members and no member for a likely assignment. Mapping it to INTERMEDIATE would assert a determination the source explicitly declined to make, and the guideline's own footnote says 'likely' marks uncertainty in the phenotype assignment"
+  },
+  {
+    "classification": "Strong",
+    "context": "ACS and/or PCI",
+    "drug": "clopidogrel",
+    "gene": "CYP2C19",
+    "implication_verbatim": "Likely significantly reduced platelet inhibition; likely increased residual platelet aggregation; likely increased risk for adverse cardiovascular events",
+    "project_phenotype": null,
+    "recommendation_verbatim": "Avoid clopidogrel if possible. Use prasugrel or ticagrelor at standard dose if no contraindication.",
+    "retrieval_key": "cpic.clopidogrel.cyp2c19",
+    "source_phenotype": "CYP2C19 likely poor metabolizer",
+    "unrepresentable_reason": "same as likely intermediate: there is no member for a likely assignment, and POOR would overstate what the source concluded"
+  },
+  {
+    "classification": "No recommendation",
+    "context": "ACS and/or PCI",
+    "drug": "clopidogrel",
+    "gene": "CYP2C19",
+    "implication_verbatim": "n/a",
+    "project_phenotype": null,
+    "recommendation_verbatim": "No recommendation",
+    "retrieval_key": "cpic.clopidogrel.cyp2c19",
+    "source_phenotype": "Indeterminate",
+    "unrepresentable_reason": "the source records no recommendation for it, and the project's condition grammar refuses INDETERMINATE as a rule phenotype because it describes the input rather than a phenotype a rule is about"
+  },
+  {
+    "classification": "Optional",
+    "context": "all indications",
+    "drug": "omeprazole",
+    "gene": "CYP2C19",
+    "implication_verbatim": "Likely increased plasma concentration of PPI compared to CYP2C19 NMs; likely increased chance of efficacy and potentially toxicity",
+    "project_phenotype": null,
+    "recommendation_verbatim": "Initiate standard starting daily dose. For chronic therapy (>12 weeks) and efficacy achieved, consider 50% reduction in daily dose and monitor for continued efficacy.",
+    "retrieval_key": "cpic.omeprazole.cyp2c19",
+    "source_phenotype": "CYP2C19 likely intermediate metabolizer",
+    "unrepresentable_reason": "the project's phenotype vocabulary has five determinate members and no member for a likely assignment. Mapping it to INTERMEDIATE would assert a determination the source explicitly declined to make, and the guideline's own footnote says 'likely' marks uncertainty in the phenotype assignment"
+  },
+  {
+    "classification": "Moderate",
+    "context": "all indications",
+    "drug": "omeprazole",
+    "gene": "CYP2C19",
+    "implication_verbatim": "Likely increased plasma concentration of PPI compared to CYP2C19 NMs; likely increased chance of efficacy and potentially toxicity",
+    "project_phenotype": null,
+    "recommendation_verbatim": "Initiate standard starting daily dose. For chronic therapy (>12 weeks) and efficacy achieved, consider 50% reduction in daily dose and monitor for continued efficacy.",
+    "retrieval_key": "cpic.omeprazole.cyp2c19",
+    "source_phenotype": "CYP2C19 likely poor metabolizer",
+    "unrepresentable_reason": "same as likely intermediate: there is no member for a likely assignment, and POOR would overstate what the source concluded"
+  },
+  {
+    "classification": "No recommendation",
+    "context": "all indications",
+    "drug": "omeprazole",
+    "gene": "CYP2C19",
+    "implication_verbatim": "N/A",
+    "project_phenotype": null,
+    "recommendation_verbatim": "No recommendation",
+    "retrieval_key": "cpic.omeprazole.cyp2c19",
+    "source_phenotype": "Indeterminate",
+    "unrepresentable_reason": "the source records no recommendation for it, and the project's condition grammar refuses INDETERMINATE as a rule phenotype because it describes the input rather than a phenotype a rule is about"
+  },
+  {
+    "classification": "No recommendation",
+    "context": "all indications",
+    "drug": "codeine",
+    "gene": "CYP2D6",
+    "implication_verbatim": "n/a",
+    "project_phenotype": null,
+    "recommendation_verbatim": "No recommendation",
+    "retrieval_key": "cpic.codeine.cyp2d6",
+    "source_phenotype": "CYP2D6 Indeterminate",
+    "unrepresentable_reason": "same as Indeterminate: the source states 'No recommendation', which is not a finding to encode"
+  }
+]

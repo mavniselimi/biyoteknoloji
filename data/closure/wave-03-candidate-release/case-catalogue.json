@@ -1,0 +1,2262 @@
+[
+  {
+    "content": {
+      "context": "ACS and/or PCI",
+      "drug": "clopidogrel",
+      "gene": "CYP2C19",
+      "phenotype": "ULTRARAPID"
+    },
+    "expected": {
+      "attention_level": "NO_ACTIVE_ATTENTION",
+      "outcome": "ATTENTION"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W03-DEV-CLOPIDOGREL-CYP2C19-ULTRARAPID",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate ruleset PGX-CANDIDATE-RULESET-WAVE03 in candidate release PGX-CANDIDATE-RELEASE-WAVE03; neither is a governed artifact, both are executable in DEMO and VALIDATION only, and both are pending external expert review",
+        "release_manifest_hash": "sha256:47e376610d4a928109d72f6a9ead14a1d1025b8d776b9d1aaf8db6d468915511",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:e64fb513bdf7ad7b3dc7669c625b1a08b3436b532181f46ec076d0a532de5bba",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": false,
+      "is_validation_evidence": false,
+      "no_pii_assertion": "These cases carry gene symbols, drug names and phenotype labels only. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "the candidate rule for this combination was authored from the same table row; agreement here confirms the encoding and nothing about the science",
+      "provenance": {
+        "author": "pgx-closure-wave03 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "CPIC via ClinPGx PA166104948, PMID 35034351, DOI 10.1002/cpt.2526",
+        "derivation_family_fingerprint": "sha256:377454921cbf9fe245c36a2eda72f9f2c7a22a2c4bbfd994d6ff75803048aedf",
+        "derivation_method": "read from the guideline's single-axis recommendation table and mapped to an attention level by this project",
+        "derived_from_development": true,
+        "source_identity": "CPIC single-axis recommendation table: clopidogrel / CYP2C19 / ULTRARAPID"
+      },
+      "role": "DEVELOPMENT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "clopidogrel / CYP2C19 / ULTRARAPID",
+      "visibility": "AUTHOR_VISIBLE"
+    }
+  },
+  {
+    "content": {
+      "context": "ACS and/or PCI",
+      "drug": "clopidogrel",
+      "gene": "CYP2C19",
+      "phenotype": "RAPID"
+    },
+    "expected": {
+      "attention_level": "NO_ACTIVE_ATTENTION",
+      "outcome": "ATTENTION"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W03-DEV-CLOPIDOGREL-CYP2C19-RAPID",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate ruleset PGX-CANDIDATE-RULESET-WAVE03 in candidate release PGX-CANDIDATE-RELEASE-WAVE03; neither is a governed artifact, both are executable in DEMO and VALIDATION only, and both are pending external expert review",
+        "release_manifest_hash": "sha256:47e376610d4a928109d72f6a9ead14a1d1025b8d776b9d1aaf8db6d468915511",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:fd533cd0cfa50ae559df9b63ae0fc20e6f3558a2ee20b03d8983cb3240066df8",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": false,
+      "is_validation_evidence": false,
+      "no_pii_assertion": "These cases carry gene symbols, drug names and phenotype labels only. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "the candidate rule for this combination was authored from the same table row; agreement here confirms the encoding and nothing about the science",
+      "provenance": {
+        "author": "pgx-closure-wave03 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "CPIC via ClinPGx PA166104948, PMID 35034351, DOI 10.1002/cpt.2526",
+        "derivation_family_fingerprint": "sha256:c5d4f039abe1b4d64e7e39a15957015b71071ef9feac905045956d04af49476b",
+        "derivation_method": "read from the guideline's single-axis recommendation table and mapped to an attention level by this project",
+        "derived_from_development": true,
+        "source_identity": "CPIC single-axis recommendation table: clopidogrel / CYP2C19 / RAPID"
+      },
+      "role": "DEVELOPMENT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "clopidogrel / CYP2C19 / RAPID",
+      "visibility": "AUTHOR_VISIBLE"
+    }
+  },
+  {
+    "content": {
+      "context": "ACS and/or PCI",
+      "drug": "clopidogrel",
+      "gene": "CYP2C19",
+      "phenotype": "NORMAL"
+    },
+    "expected": {
+      "attention_level": "NO_ACTIVE_ATTENTION",
+      "outcome": "ATTENTION"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W03-DEV-CLOPIDOGREL-CYP2C19-NORMAL",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate ruleset PGX-CANDIDATE-RULESET-WAVE03 in candidate release PGX-CANDIDATE-RELEASE-WAVE03; neither is a governed artifact, both are executable in DEMO and VALIDATION only, and both are pending external expert review",
+        "release_manifest_hash": "sha256:47e376610d4a928109d72f6a9ead14a1d1025b8d776b9d1aaf8db6d468915511",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:66d6be84a7d893731ce9a2ce232b5e2bb2cbe76740294b3b70be3ff9826a2a20",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": false,
+      "is_validation_evidence": false,
+      "no_pii_assertion": "These cases carry gene symbols, drug names and phenotype labels only. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "the candidate rule for this combination was authored from the same table row; agreement here confirms the encoding and nothing about the science",
+      "provenance": {
+        "author": "pgx-closure-wave03 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "CPIC via ClinPGx PA166104948, PMID 35034351, DOI 10.1002/cpt.2526",
+        "derivation_family_fingerprint": "sha256:efccf4e27c536077fe35988535cfddfdd74ee9a5d20c987a40f73446f9d18432",
+        "derivation_method": "read from the guideline's single-axis recommendation table and mapped to an attention level by this project",
+        "derived_from_development": true,
+        "source_identity": "CPIC single-axis recommendation table: clopidogrel / CYP2C19 / NORMAL"
+      },
+      "role": "DEVELOPMENT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "clopidogrel / CYP2C19 / NORMAL",
+      "visibility": "AUTHOR_VISIBLE"
+    }
+  },
+  {
+    "content": {
+      "context": "ACS and/or PCI",
+      "drug": "clopidogrel",
+      "gene": "CYP2C19",
+      "phenotype": "INTERMEDIATE"
+    },
+    "expected": {
+      "attention_level": "HIGH",
+      "outcome": "ATTENTION"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W03-DEV-CLOPIDOGREL-CYP2C19-INTERMEDIATE",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate ruleset PGX-CANDIDATE-RULESET-WAVE03 in candidate release PGX-CANDIDATE-RELEASE-WAVE03; neither is a governed artifact, both are executable in DEMO and VALIDATION only, and both are pending external expert review",
+        "release_manifest_hash": "sha256:47e376610d4a928109d72f6a9ead14a1d1025b8d776b9d1aaf8db6d468915511",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:428d08ad3c668a45f47bca2d26a7dbdd72d29537f308d0017e80ac0921b0b7e8",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": false,
+      "is_validation_evidence": false,
+      "no_pii_assertion": "These cases carry gene symbols, drug names and phenotype labels only. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "the candidate rule for this combination was authored from the same table row; agreement here confirms the encoding and nothing about the science",
+      "provenance": {
+        "author": "pgx-closure-wave03 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "CPIC via ClinPGx PA166104948, PMID 35034351, DOI 10.1002/cpt.2526",
+        "derivation_family_fingerprint": "sha256:70e6f015e4dacd211938e7a0f839d0dcf3fa837de3a23487845260dcf9fdff5f",
+        "derivation_method": "read from the guideline's single-axis recommendation table and mapped to an attention level by this project",
+        "derived_from_development": true,
+        "source_identity": "CPIC single-axis recommendation table: clopidogrel / CYP2C19 / INTERMEDIATE"
+      },
+      "role": "DEVELOPMENT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "clopidogrel / CYP2C19 / INTERMEDIATE",
+      "visibility": "AUTHOR_VISIBLE"
+    }
+  },
+  {
+    "content": {
+      "context": "ACS and/or PCI",
+      "drug": "clopidogrel",
+      "gene": "CYP2C19",
+      "phenotype": "POOR"
+    },
+    "expected": {
+      "attention_level": "HIGH",
+      "outcome": "ATTENTION"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W03-DEV-CLOPIDOGREL-CYP2C19-POOR",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate ruleset PGX-CANDIDATE-RULESET-WAVE03 in candidate release PGX-CANDIDATE-RELEASE-WAVE03; neither is a governed artifact, both are executable in DEMO and VALIDATION only, and both are pending external expert review",
+        "release_manifest_hash": "sha256:47e376610d4a928109d72f6a9ead14a1d1025b8d776b9d1aaf8db6d468915511",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:f5748db664b88705a2c8cb9c623e0285ee0bc163c01ac9515e1d698310482f74",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": false,
+      "is_validation_evidence": false,
+      "no_pii_assertion": "These cases carry gene symbols, drug names and phenotype labels only. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "the candidate rule for this combination was authored from the same table row; agreement here confirms the encoding and nothing about the science",
+      "provenance": {
+        "author": "pgx-closure-wave03 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "CPIC via ClinPGx PA166104948, PMID 35034351, DOI 10.1002/cpt.2526",
+        "derivation_family_fingerprint": "sha256:d3edbb0acec6622dc7d52e13fa82910c7b2e1a28050b9f8176b770668df14264",
+        "derivation_method": "read from the guideline's single-axis recommendation table and mapped to an attention level by this project",
+        "derived_from_development": true,
+        "source_identity": "CPIC single-axis recommendation table: clopidogrel / CYP2C19 / POOR"
+      },
+      "role": "DEVELOPMENT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "clopidogrel / CYP2C19 / POOR",
+      "visibility": "AUTHOR_VISIBLE"
+    }
+  },
+  {
+    "content": {
+      "context": "all indications",
+      "drug": "omeprazole",
+      "gene": "CYP2C19",
+      "phenotype": "ULTRARAPID"
+    },
+    "expected": {
+      "attention_level": "MEDIUM",
+      "outcome": "ATTENTION"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W03-DEV-OMEPRAZOLE-CYP2C19-ULTRARAPID",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate ruleset PGX-CANDIDATE-RULESET-WAVE03 in candidate release PGX-CANDIDATE-RELEASE-WAVE03; neither is a governed artifact, both are executable in DEMO and VALIDATION only, and both are pending external expert review",
+        "release_manifest_hash": "sha256:47e376610d4a928109d72f6a9ead14a1d1025b8d776b9d1aaf8db6d468915511",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:04fa15363a119f7d239fc91d6da7b2dd800b22f58b7c42c7fd1bb32e70ffce87",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": false,
+      "is_validation_evidence": false,
+      "no_pii_assertion": "These cases carry gene symbols, drug names and phenotype labels only. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "the candidate rule for this combination was authored from the same table row; agreement here confirms the encoding and nothing about the science",
+      "provenance": {
+        "author": "pgx-closure-wave03 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "CPIC via ClinPGx PA166219103, PMID 32770672, DOI 10.1002/cpt.2015",
+        "derivation_family_fingerprint": "sha256:e1add3bbf8d78a5f208ed8d6c979780759805f9a9e9301cbd9c330f68cc4dff2",
+        "derivation_method": "read from the guideline's single-axis recommendation table and mapped to an attention level by this project",
+        "derived_from_development": true,
+        "source_identity": "CPIC single-axis recommendation table: omeprazole / CYP2C19 / ULTRARAPID"
+      },
+      "role": "DEVELOPMENT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "omeprazole / CYP2C19 / ULTRARAPID",
+      "visibility": "AUTHOR_VISIBLE"
+    }
+  },
+  {
+    "content": {
+      "context": "all indications",
+      "drug": "omeprazole",
+      "gene": "CYP2C19",
+      "phenotype": "RAPID"
+    },
+    "expected": {
+      "attention_level": "LOW",
+      "outcome": "ATTENTION"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W03-DEV-OMEPRAZOLE-CYP2C19-RAPID",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate ruleset PGX-CANDIDATE-RULESET-WAVE03 in candidate release PGX-CANDIDATE-RELEASE-WAVE03; neither is a governed artifact, both are executable in DEMO and VALIDATION only, and both are pending external expert review",
+        "release_manifest_hash": "sha256:47e376610d4a928109d72f6a9ead14a1d1025b8d776b9d1aaf8db6d468915511",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:4fb72a190ea8f3c9516a82569285f339b9dc4692d54cd540c796feb21c084bf6",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": false,
+      "is_validation_evidence": false,
+      "no_pii_assertion": "These cases carry gene symbols, drug names and phenotype labels only. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "the candidate rule for this combination was authored from the same table row; agreement here confirms the encoding and nothing about the science",
+      "provenance": {
+        "author": "pgx-closure-wave03 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "CPIC via ClinPGx PA166219103, PMID 32770672, DOI 10.1002/cpt.2015",
+        "derivation_family_fingerprint": "sha256:fb805959e158b49fbb77a9307e11eb8cd942b57385ddd97c669d7156ba4aae96",
+        "derivation_method": "read from the guideline's single-axis recommendation table and mapped to an attention level by this project",
+        "derived_from_development": true,
+        "source_identity": "CPIC single-axis recommendation table: omeprazole / CYP2C19 / RAPID"
+      },
+      "role": "DEVELOPMENT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "omeprazole / CYP2C19 / RAPID",
+      "visibility": "AUTHOR_VISIBLE"
+    }
+  },
+  {
+    "content": {
+      "context": "all indications",
+      "drug": "omeprazole",
+      "gene": "CYP2C19",
+      "phenotype": "NORMAL"
+    },
+    "expected": {
+      "attention_level": "LOW",
+      "outcome": "ATTENTION"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W03-DEV-OMEPRAZOLE-CYP2C19-NORMAL",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate ruleset PGX-CANDIDATE-RULESET-WAVE03 in candidate release PGX-CANDIDATE-RELEASE-WAVE03; neither is a governed artifact, both are executable in DEMO and VALIDATION only, and both are pending external expert review",
+        "release_manifest_hash": "sha256:47e376610d4a928109d72f6a9ead14a1d1025b8d776b9d1aaf8db6d468915511",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:ecac4e9f30557a2ed77a716b32d039bff2365eeb58eac716f9c9d1cea64343c8",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": false,
+      "is_validation_evidence": false,
+      "no_pii_assertion": "These cases carry gene symbols, drug names and phenotype labels only. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "the candidate rule for this combination was authored from the same table row; agreement here confirms the encoding and nothing about the science",
+      "provenance": {
+        "author": "pgx-closure-wave03 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "CPIC via ClinPGx PA166219103, PMID 32770672, DOI 10.1002/cpt.2015",
+        "derivation_family_fingerprint": "sha256:517b0c37e1375536108a7fbcae8250793dce4d457bf86a0316781c69c98de6db",
+        "derivation_method": "read from the guideline's single-axis recommendation table and mapped to an attention level by this project",
+        "derived_from_development": true,
+        "source_identity": "CPIC single-axis recommendation table: omeprazole / CYP2C19 / NORMAL"
+      },
+      "role": "DEVELOPMENT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "omeprazole / CYP2C19 / NORMAL",
+      "visibility": "AUTHOR_VISIBLE"
+    }
+  },
+  {
+    "content": {
+      "context": "all indications",
+      "drug": "omeprazole",
+      "gene": "CYP2C19",
+      "phenotype": "INTERMEDIATE"
+    },
+    "expected": {
+      "attention_level": "LOW",
+      "outcome": "ATTENTION"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W03-DEV-OMEPRAZOLE-CYP2C19-INTERMEDIATE",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate ruleset PGX-CANDIDATE-RULESET-WAVE03 in candidate release PGX-CANDIDATE-RELEASE-WAVE03; neither is a governed artifact, both are executable in DEMO and VALIDATION only, and both are pending external expert review",
+        "release_manifest_hash": "sha256:47e376610d4a928109d72f6a9ead14a1d1025b8d776b9d1aaf8db6d468915511",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:eb8fe24ebbdc045c9fe2bbdfffdee92d1ab3e0e301ecad0fa4efe9ae8aa3e3a7",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": false,
+      "is_validation_evidence": false,
+      "no_pii_assertion": "These cases carry gene symbols, drug names and phenotype labels only. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "the candidate rule for this combination was authored from the same table row; agreement here confirms the encoding and nothing about the science",
+      "provenance": {
+        "author": "pgx-closure-wave03 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "CPIC via ClinPGx PA166219103, PMID 32770672, DOI 10.1002/cpt.2015",
+        "derivation_family_fingerprint": "sha256:996731e5678dc7bc7de683700ff87aab133c214b8791e9aea80254ed9c8367f3",
+        "derivation_method": "read from the guideline's single-axis recommendation table and mapped to an attention level by this project",
+        "derived_from_development": true,
+        "source_identity": "CPIC single-axis recommendation table: omeprazole / CYP2C19 / INTERMEDIATE"
+      },
+      "role": "DEVELOPMENT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "omeprazole / CYP2C19 / INTERMEDIATE",
+      "visibility": "AUTHOR_VISIBLE"
+    }
+  },
+  {
+    "content": {
+      "context": "all indications",
+      "drug": "omeprazole",
+      "gene": "CYP2C19",
+      "phenotype": "POOR"
+    },
+    "expected": {
+      "attention_level": "LOW",
+      "outcome": "ATTENTION"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W03-DEV-OMEPRAZOLE-CYP2C19-POOR",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate ruleset PGX-CANDIDATE-RULESET-WAVE03 in candidate release PGX-CANDIDATE-RELEASE-WAVE03; neither is a governed artifact, both are executable in DEMO and VALIDATION only, and both are pending external expert review",
+        "release_manifest_hash": "sha256:47e376610d4a928109d72f6a9ead14a1d1025b8d776b9d1aaf8db6d468915511",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:8dc180d32787dafaab415946dcb651828461a847528eb134e473a0ffbf0c8f3a",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": false,
+      "is_validation_evidence": false,
+      "no_pii_assertion": "These cases carry gene symbols, drug names and phenotype labels only. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "the candidate rule for this combination was authored from the same table row; agreement here confirms the encoding and nothing about the science",
+      "provenance": {
+        "author": "pgx-closure-wave03 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "CPIC via ClinPGx PA166219103, PMID 32770672, DOI 10.1002/cpt.2015",
+        "derivation_family_fingerprint": "sha256:3c28ec1e77d883328abece217bdbb468d8286acac803113fc8e131c2d3951404",
+        "derivation_method": "read from the guideline's single-axis recommendation table and mapped to an attention level by this project",
+        "derived_from_development": true,
+        "source_identity": "CPIC single-axis recommendation table: omeprazole / CYP2C19 / POOR"
+      },
+      "role": "DEVELOPMENT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "omeprazole / CYP2C19 / POOR",
+      "visibility": "AUTHOR_VISIBLE"
+    }
+  },
+  {
+    "content": {
+      "context": "all indications",
+      "drug": "codeine",
+      "gene": "CYP2D6",
+      "phenotype": "ULTRARAPID"
+    },
+    "expected": {
+      "attention_level": "HIGH",
+      "outcome": "ATTENTION"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W03-DEV-CODEINE-CYP2D6-ULTRARAPID",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate ruleset PGX-CANDIDATE-RULESET-WAVE03 in candidate release PGX-CANDIDATE-RELEASE-WAVE03; neither is a governed artifact, both are executable in DEMO and VALIDATION only, and both are pending external expert review",
+        "release_manifest_hash": "sha256:47e376610d4a928109d72f6a9ead14a1d1025b8d776b9d1aaf8db6d468915511",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:cd6ba7b19465f004d3d16b302035b7db7b65be12104d4e717ea13d8aaa559f81",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": false,
+      "is_validation_evidence": false,
+      "no_pii_assertion": "These cases carry gene symbols, drug names and phenotype labels only. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "the candidate rule for this combination was authored from the same table row; agreement here confirms the encoding and nothing about the science",
+      "provenance": {
+        "author": "pgx-closure-wave03 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "CPIC via ClinPGx PA166104996, PMID 33387367, DOI 10.1002/cpt.2149",
+        "derivation_family_fingerprint": "sha256:7ba6bab8d1e93ad822ed87e245fe8070219a3026002db42abeee89465fbabb83",
+        "derivation_method": "read from the guideline's single-axis recommendation table and mapped to an attention level by this project",
+        "derived_from_development": true,
+        "source_identity": "CPIC single-axis recommendation table: codeine / CYP2D6 / ULTRARAPID"
+      },
+      "role": "DEVELOPMENT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "codeine / CYP2D6 / ULTRARAPID",
+      "visibility": "AUTHOR_VISIBLE"
+    }
+  },
+  {
+    "content": {
+      "context": "all indications",
+      "drug": "codeine",
+      "gene": "CYP2D6",
+      "phenotype": "NORMAL"
+    },
+    "expected": {
+      "attention_level": "NO_ACTIVE_ATTENTION",
+      "outcome": "ATTENTION"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W03-DEV-CODEINE-CYP2D6-NORMAL",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate ruleset PGX-CANDIDATE-RULESET-WAVE03 in candidate release PGX-CANDIDATE-RELEASE-WAVE03; neither is a governed artifact, both are executable in DEMO and VALIDATION only, and both are pending external expert review",
+        "release_manifest_hash": "sha256:47e376610d4a928109d72f6a9ead14a1d1025b8d776b9d1aaf8db6d468915511",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:afdcf06a1369c081005530501b77ac28802f2a6ea4ed02ab70865d6442948a52",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": false,
+      "is_validation_evidence": false,
+      "no_pii_assertion": "These cases carry gene symbols, drug names and phenotype labels only. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "the candidate rule for this combination was authored from the same table row; agreement here confirms the encoding and nothing about the science",
+      "provenance": {
+        "author": "pgx-closure-wave03 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "CPIC via ClinPGx PA166104996, PMID 33387367, DOI 10.1002/cpt.2149",
+        "derivation_family_fingerprint": "sha256:e62a44c5c3c9972072872e5b46d45bb03787846c9f8b56f67e39a5f51ad3e91b",
+        "derivation_method": "read from the guideline's single-axis recommendation table and mapped to an attention level by this project",
+        "derived_from_development": true,
+        "source_identity": "CPIC single-axis recommendation table: codeine / CYP2D6 / NORMAL"
+      },
+      "role": "DEVELOPMENT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "codeine / CYP2D6 / NORMAL",
+      "visibility": "AUTHOR_VISIBLE"
+    }
+  },
+  {
+    "content": {
+      "context": "all indications",
+      "drug": "codeine",
+      "gene": "CYP2D6",
+      "phenotype": "INTERMEDIATE"
+    },
+    "expected": {
+      "attention_level": "LOW",
+      "outcome": "ATTENTION"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W03-DEV-CODEINE-CYP2D6-INTERMEDIATE",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate ruleset PGX-CANDIDATE-RULESET-WAVE03 in candidate release PGX-CANDIDATE-RELEASE-WAVE03; neither is a governed artifact, both are executable in DEMO and VALIDATION only, and both are pending external expert review",
+        "release_manifest_hash": "sha256:47e376610d4a928109d72f6a9ead14a1d1025b8d776b9d1aaf8db6d468915511",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:f75c9d53570c000f00123524eb746c31690367b9eba112de93fe06a12faf813d",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": false,
+      "is_validation_evidence": false,
+      "no_pii_assertion": "These cases carry gene symbols, drug names and phenotype labels only. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "the candidate rule for this combination was authored from the same table row; agreement here confirms the encoding and nothing about the science",
+      "provenance": {
+        "author": "pgx-closure-wave03 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "CPIC via ClinPGx PA166104996, PMID 33387367, DOI 10.1002/cpt.2149",
+        "derivation_family_fingerprint": "sha256:1ec47cb5e1e94a711e0140c4529628f5fefd1eda39fffdd59b7cc6f7a7052a81",
+        "derivation_method": "read from the guideline's single-axis recommendation table and mapped to an attention level by this project",
+        "derived_from_development": true,
+        "source_identity": "CPIC single-axis recommendation table: codeine / CYP2D6 / INTERMEDIATE"
+      },
+      "role": "DEVELOPMENT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "codeine / CYP2D6 / INTERMEDIATE",
+      "visibility": "AUTHOR_VISIBLE"
+    }
+  },
+  {
+    "content": {
+      "context": "all indications",
+      "drug": "codeine",
+      "gene": "CYP2D6",
+      "phenotype": "POOR"
+    },
+    "expected": {
+      "attention_level": "HIGH",
+      "outcome": "ATTENTION"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W03-DEV-CODEINE-CYP2D6-POOR",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate ruleset PGX-CANDIDATE-RULESET-WAVE03 in candidate release PGX-CANDIDATE-RELEASE-WAVE03; neither is a governed artifact, both are executable in DEMO and VALIDATION only, and both are pending external expert review",
+        "release_manifest_hash": "sha256:47e376610d4a928109d72f6a9ead14a1d1025b8d776b9d1aaf8db6d468915511",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:fb39e97ace5a6400876c134f65166185ab86209cdb54991d314755820d67d16e",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": false,
+      "is_validation_evidence": false,
+      "no_pii_assertion": "These cases carry gene symbols, drug names and phenotype labels only. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "the candidate rule for this combination was authored from the same table row; agreement here confirms the encoding and nothing about the science",
+      "provenance": {
+        "author": "pgx-closure-wave03 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "CPIC via ClinPGx PA166104996, PMID 33387367, DOI 10.1002/cpt.2149",
+        "derivation_family_fingerprint": "sha256:25d40ad546861913080f37a73dff52a67d6989341e6172335c5301d0df8223ec",
+        "derivation_method": "read from the guideline's single-axis recommendation table and mapped to an attention level by this project",
+        "derived_from_development": true,
+        "source_identity": "CPIC single-axis recommendation table: codeine / CYP2D6 / POOR"
+      },
+      "role": "DEVELOPMENT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "codeine / CYP2D6 / POOR",
+      "visibility": "AUTHOR_VISIBLE"
+    }
+  },
+  {
+    "content": {
+      "context": "higher initial doses, e.g. depression",
+      "drug": "amitriptyline",
+      "gene": "CYP2D6",
+      "phenotype": "ULTRARAPID"
+    },
+    "expected": {
+      "attention_level": "HIGH",
+      "outcome": "ATTENTION"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W03-DEV-AMITRIPTYLINE-CYP2D6-ULTRARAPID",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate ruleset PGX-CANDIDATE-RULESET-WAVE03 in candidate release PGX-CANDIDATE-RELEASE-WAVE03; neither is a governed artifact, both are executable in DEMO and VALIDATION only, and both are pending external expert review",
+        "release_manifest_hash": "sha256:47e376610d4a928109d72f6a9ead14a1d1025b8d776b9d1aaf8db6d468915511",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:5b1f42d07f3e5142246b1485557dd947d1be60aaa2f32cafa236e0e673f38614",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": false,
+      "is_validation_evidence": false,
+      "no_pii_assertion": "These cases carry gene symbols, drug names and phenotype labels only. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "the candidate rule for this combination was authored from the same table row; agreement here confirms the encoding and nothing about the science",
+      "provenance": {
+        "author": "pgx-closure-wave03 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "CPIC via ClinPGx PA166105006, PMID 27997040, DOI 10.1002/cpt.597",
+        "derivation_family_fingerprint": "sha256:0159179336f5676ee764c6d07df39c13a828d22a844a6247afea53e330e9796e",
+        "derivation_method": "read from the guideline's single-axis recommendation table and mapped to an attention level by this project",
+        "derived_from_development": true,
+        "source_identity": "CPIC single-axis recommendation table: amitriptyline / CYP2D6 / ULTRARAPID"
+      },
+      "role": "DEVELOPMENT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "amitriptyline / CYP2D6 / ULTRARAPID",
+      "visibility": "AUTHOR_VISIBLE"
+    }
+  },
+  {
+    "content": {
+      "context": "higher initial doses, e.g. depression",
+      "drug": "amitriptyline",
+      "gene": "CYP2D6",
+      "phenotype": "NORMAL"
+    },
+    "expected": {
+      "attention_level": "NO_ACTIVE_ATTENTION",
+      "outcome": "ATTENTION"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W03-DEV-AMITRIPTYLINE-CYP2D6-NORMAL",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate ruleset PGX-CANDIDATE-RULESET-WAVE03 in candidate release PGX-CANDIDATE-RELEASE-WAVE03; neither is a governed artifact, both are executable in DEMO and VALIDATION only, and both are pending external expert review",
+        "release_manifest_hash": "sha256:47e376610d4a928109d72f6a9ead14a1d1025b8d776b9d1aaf8db6d468915511",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:bc42ccb2a4e70aee7caeec06077621d0618216dcc2310860857819d149715868",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": false,
+      "is_validation_evidence": false,
+      "no_pii_assertion": "These cases carry gene symbols, drug names and phenotype labels only. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "the candidate rule for this combination was authored from the same table row; agreement here confirms the encoding and nothing about the science",
+      "provenance": {
+        "author": "pgx-closure-wave03 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "CPIC via ClinPGx PA166105006, PMID 27997040, DOI 10.1002/cpt.597",
+        "derivation_family_fingerprint": "sha256:ad099518503ec6d551f0907fd37f77361a0e9caaa6f0cec6d02f51170043c448",
+        "derivation_method": "read from the guideline's single-axis recommendation table and mapped to an attention level by this project",
+        "derived_from_development": true,
+        "source_identity": "CPIC single-axis recommendation table: amitriptyline / CYP2D6 / NORMAL"
+      },
+      "role": "DEVELOPMENT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "amitriptyline / CYP2D6 / NORMAL",
+      "visibility": "AUTHOR_VISIBLE"
+    }
+  },
+  {
+    "content": {
+      "context": "higher initial doses, e.g. depression",
+      "drug": "amitriptyline",
+      "gene": "CYP2D6",
+      "phenotype": "INTERMEDIATE"
+    },
+    "expected": {
+      "attention_level": "MEDIUM",
+      "outcome": "ATTENTION"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W03-DEV-AMITRIPTYLINE-CYP2D6-INTERMEDIATE",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate ruleset PGX-CANDIDATE-RULESET-WAVE03 in candidate release PGX-CANDIDATE-RELEASE-WAVE03; neither is a governed artifact, both are executable in DEMO and VALIDATION only, and both are pending external expert review",
+        "release_manifest_hash": "sha256:47e376610d4a928109d72f6a9ead14a1d1025b8d776b9d1aaf8db6d468915511",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:fe21ed66f4713545500c22a3c9fbe325f7e5b9be99f440108c89616e5ffabaeb",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": false,
+      "is_validation_evidence": false,
+      "no_pii_assertion": "These cases carry gene symbols, drug names and phenotype labels only. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "the candidate rule for this combination was authored from the same table row; agreement here confirms the encoding and nothing about the science",
+      "provenance": {
+        "author": "pgx-closure-wave03 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "CPIC via ClinPGx PA166105006, PMID 27997040, DOI 10.1002/cpt.597",
+        "derivation_family_fingerprint": "sha256:00de95e40248810ae286c3ffede9689e2995934f545d45fee6ad694296a7d870",
+        "derivation_method": "read from the guideline's single-axis recommendation table and mapped to an attention level by this project",
+        "derived_from_development": true,
+        "source_identity": "CPIC single-axis recommendation table: amitriptyline / CYP2D6 / INTERMEDIATE"
+      },
+      "role": "DEVELOPMENT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "amitriptyline / CYP2D6 / INTERMEDIATE",
+      "visibility": "AUTHOR_VISIBLE"
+    }
+  },
+  {
+    "content": {
+      "context": "higher initial doses, e.g. depression",
+      "drug": "amitriptyline",
+      "gene": "CYP2D6",
+      "phenotype": "POOR"
+    },
+    "expected": {
+      "attention_level": "HIGH",
+      "outcome": "ATTENTION"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W03-DEV-AMITRIPTYLINE-CYP2D6-POOR",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate ruleset PGX-CANDIDATE-RULESET-WAVE03 in candidate release PGX-CANDIDATE-RELEASE-WAVE03; neither is a governed artifact, both are executable in DEMO and VALIDATION only, and both are pending external expert review",
+        "release_manifest_hash": "sha256:47e376610d4a928109d72f6a9ead14a1d1025b8d776b9d1aaf8db6d468915511",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:f848302e32cfaa9172ed00d5210da21637ca88313e42bdec0344ade8dc770f7c",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": false,
+      "is_validation_evidence": false,
+      "no_pii_assertion": "These cases carry gene symbols, drug names and phenotype labels only. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "the candidate rule for this combination was authored from the same table row; agreement here confirms the encoding and nothing about the science",
+      "provenance": {
+        "author": "pgx-closure-wave03 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "CPIC via ClinPGx PA166105006, PMID 27997040, DOI 10.1002/cpt.597",
+        "derivation_family_fingerprint": "sha256:1ca87ee4f39effef04469d53ea84a8d3d557961bc050829ec1168e8001258cbf",
+        "derivation_method": "read from the guideline's single-axis recommendation table and mapped to an attention level by this project",
+        "derived_from_development": true,
+        "source_identity": "CPIC single-axis recommendation table: amitriptyline / CYP2D6 / POOR"
+      },
+      "role": "DEVELOPMENT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "amitriptyline / CYP2D6 / POOR",
+      "visibility": "AUTHOR_VISIBLE"
+    }
+  },
+  {
+    "content": {
+      "context": "higher initial doses, e.g. depression",
+      "drug": "amitriptyline",
+      "gene": "CYP2C19",
+      "phenotype": "ULTRARAPID"
+    },
+    "expected": {
+      "attention_level": "HIGH",
+      "outcome": "ATTENTION"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W03-DEV-AMITRIPTYLINE-CYP2C19-ULTRARAPID",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate ruleset PGX-CANDIDATE-RULESET-WAVE03 in candidate release PGX-CANDIDATE-RELEASE-WAVE03; neither is a governed artifact, both are executable in DEMO and VALIDATION only, and both are pending external expert review",
+        "release_manifest_hash": "sha256:47e376610d4a928109d72f6a9ead14a1d1025b8d776b9d1aaf8db6d468915511",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:8169b74fc0c694a6c0b9bf39a495940452bfe341f16d51811577430b46da3f84",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": false,
+      "is_validation_evidence": false,
+      "no_pii_assertion": "These cases carry gene symbols, drug names and phenotype labels only. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "the candidate rule for this combination was authored from the same table row; agreement here confirms the encoding and nothing about the science",
+      "provenance": {
+        "author": "pgx-closure-wave03 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "CPIC via ClinPGx PA166105006, PMID 27997040, DOI 10.1002/cpt.597",
+        "derivation_family_fingerprint": "sha256:7e22d9b5262c9aa899f07e82fac057a59b229bdb519875c90e7a1c9bdb6fec79",
+        "derivation_method": "read from the guideline's single-axis recommendation table and mapped to an attention level by this project",
+        "derived_from_development": true,
+        "source_identity": "CPIC single-axis recommendation table: amitriptyline / CYP2C19 / ULTRARAPID"
+      },
+      "role": "DEVELOPMENT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "amitriptyline / CYP2C19 / ULTRARAPID",
+      "visibility": "AUTHOR_VISIBLE"
+    }
+  },
+  {
+    "content": {
+      "context": "higher initial doses, e.g. depression",
+      "drug": "amitriptyline",
+      "gene": "CYP2C19",
+      "phenotype": "RAPID"
+    },
+    "expected": {
+      "attention_level": "HIGH",
+      "outcome": "ATTENTION"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W03-DEV-AMITRIPTYLINE-CYP2C19-RAPID",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate ruleset PGX-CANDIDATE-RULESET-WAVE03 in candidate release PGX-CANDIDATE-RELEASE-WAVE03; neither is a governed artifact, both are executable in DEMO and VALIDATION only, and both are pending external expert review",
+        "release_manifest_hash": "sha256:47e376610d4a928109d72f6a9ead14a1d1025b8d776b9d1aaf8db6d468915511",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:96b598cd30fad2925dd6f82d03f5e52335c6d9e73880180fd7826cc77cf1959d",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": false,
+      "is_validation_evidence": false,
+      "no_pii_assertion": "These cases carry gene symbols, drug names and phenotype labels only. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "the candidate rule for this combination was authored from the same table row; agreement here confirms the encoding and nothing about the science",
+      "provenance": {
+        "author": "pgx-closure-wave03 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "CPIC via ClinPGx PA166105006, PMID 27997040, DOI 10.1002/cpt.597",
+        "derivation_family_fingerprint": "sha256:0fb26c310d7762539c7d4025b74a90af03e672a9675ae7f9e65fbc34e2e6f020",
+        "derivation_method": "read from the guideline's single-axis recommendation table and mapped to an attention level by this project",
+        "derived_from_development": true,
+        "source_identity": "CPIC single-axis recommendation table: amitriptyline / CYP2C19 / RAPID"
+      },
+      "role": "DEVELOPMENT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "amitriptyline / CYP2C19 / RAPID",
+      "visibility": "AUTHOR_VISIBLE"
+    }
+  },
+  {
+    "content": {
+      "context": "higher initial doses, e.g. depression",
+      "drug": "amitriptyline",
+      "gene": "CYP2C19",
+      "phenotype": "NORMAL"
+    },
+    "expected": {
+      "attention_level": "NO_ACTIVE_ATTENTION",
+      "outcome": "ATTENTION"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W03-DEV-AMITRIPTYLINE-CYP2C19-NORMAL",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate ruleset PGX-CANDIDATE-RULESET-WAVE03 in candidate release PGX-CANDIDATE-RELEASE-WAVE03; neither is a governed artifact, both are executable in DEMO and VALIDATION only, and both are pending external expert review",
+        "release_manifest_hash": "sha256:47e376610d4a928109d72f6a9ead14a1d1025b8d776b9d1aaf8db6d468915511",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:9a86f76df90c63dd49e107a8ceb7414f75753344779c1b34e990188bf59df791",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": false,
+      "is_validation_evidence": false,
+      "no_pii_assertion": "These cases carry gene symbols, drug names and phenotype labels only. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "the candidate rule for this combination was authored from the same table row; agreement here confirms the encoding and nothing about the science",
+      "provenance": {
+        "author": "pgx-closure-wave03 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "CPIC via ClinPGx PA166105006, PMID 27997040, DOI 10.1002/cpt.597",
+        "derivation_family_fingerprint": "sha256:da262b4a86d75c0e6c0323330f9a4491665e9c02319ba4f9304946250a05aa91",
+        "derivation_method": "read from the guideline's single-axis recommendation table and mapped to an attention level by this project",
+        "derived_from_development": true,
+        "source_identity": "CPIC single-axis recommendation table: amitriptyline / CYP2C19 / NORMAL"
+      },
+      "role": "DEVELOPMENT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "amitriptyline / CYP2C19 / NORMAL",
+      "visibility": "AUTHOR_VISIBLE"
+    }
+  },
+  {
+    "content": {
+      "context": "higher initial doses, e.g. depression",
+      "drug": "amitriptyline",
+      "gene": "CYP2C19",
+      "phenotype": "INTERMEDIATE"
+    },
+    "expected": {
+      "attention_level": "NO_ACTIVE_ATTENTION",
+      "outcome": "ATTENTION"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W03-DEV-AMITRIPTYLINE-CYP2C19-INTERMEDIATE",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate ruleset PGX-CANDIDATE-RULESET-WAVE03 in candidate release PGX-CANDIDATE-RELEASE-WAVE03; neither is a governed artifact, both are executable in DEMO and VALIDATION only, and both are pending external expert review",
+        "release_manifest_hash": "sha256:47e376610d4a928109d72f6a9ead14a1d1025b8d776b9d1aaf8db6d468915511",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:5fc4622b9eb35a54c7dba5a77b152978d2bec13487061717b88d3c8f0a222fd9",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": false,
+      "is_validation_evidence": false,
+      "no_pii_assertion": "These cases carry gene symbols, drug names and phenotype labels only. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "the candidate rule for this combination was authored from the same table row; agreement here confirms the encoding and nothing about the science",
+      "provenance": {
+        "author": "pgx-closure-wave03 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "CPIC via ClinPGx PA166105006, PMID 27997040, DOI 10.1002/cpt.597",
+        "derivation_family_fingerprint": "sha256:fea98116229ccb8713cdeb7297affa38e1d9d4447ca2560bd3909f9d2f53b455",
+        "derivation_method": "read from the guideline's single-axis recommendation table and mapped to an attention level by this project",
+        "derived_from_development": true,
+        "source_identity": "CPIC single-axis recommendation table: amitriptyline / CYP2C19 / INTERMEDIATE"
+      },
+      "role": "DEVELOPMENT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "amitriptyline / CYP2C19 / INTERMEDIATE",
+      "visibility": "AUTHOR_VISIBLE"
+    }
+  },
+  {
+    "content": {
+      "context": "higher initial doses, e.g. depression",
+      "drug": "amitriptyline",
+      "gene": "CYP2C19",
+      "phenotype": "POOR"
+    },
+    "expected": {
+      "attention_level": "HIGH",
+      "outcome": "ATTENTION"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W03-DEV-AMITRIPTYLINE-CYP2C19-POOR",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate ruleset PGX-CANDIDATE-RULESET-WAVE03 in candidate release PGX-CANDIDATE-RELEASE-WAVE03; neither is a governed artifact, both are executable in DEMO and VALIDATION only, and both are pending external expert review",
+        "release_manifest_hash": "sha256:47e376610d4a928109d72f6a9ead14a1d1025b8d776b9d1aaf8db6d468915511",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:ac2fe61251d9255bfcad35708db641a51a9d0a0d4b5e687c5e5524c97016a9aa",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": false,
+      "is_validation_evidence": false,
+      "no_pii_assertion": "These cases carry gene symbols, drug names and phenotype labels only. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "the candidate rule for this combination was authored from the same table row; agreement here confirms the encoding and nothing about the science",
+      "provenance": {
+        "author": "pgx-closure-wave03 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "CPIC via ClinPGx PA166105006, PMID 27997040, DOI 10.1002/cpt.597",
+        "derivation_family_fingerprint": "sha256:f045cfd76c2f9139a112343865d73940fea2441de875782e7c40d905bf97b4d6",
+        "derivation_method": "read from the guideline's single-axis recommendation table and mapped to an attention level by this project",
+        "derived_from_development": true,
+        "source_identity": "CPIC single-axis recommendation table: amitriptyline / CYP2C19 / POOR"
+      },
+      "role": "DEVELOPMENT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "amitriptyline / CYP2C19 / POOR",
+      "visibility": "AUTHOR_VISIBLE"
+    }
+  },
+  {
+    "content": {
+      "CYP2C19": "ULTRARAPID",
+      "CYP2D6": "ULTRARAPID",
+      "context": "higher initial doses, e.g. depression",
+      "drug": "amitriptyline"
+    },
+    "expected": {
+      "joint_classification": "Optional",
+      "joint_recommendation": "Avoid amitriptyline use.",
+      "outcome": "ATTENTION_NOT_WEAKER_THAN_JOINT_TABLE"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W03-INT-AMI-ULTRARAPID-ULTRARAPID",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate ruleset PGX-CANDIDATE-RULESET-WAVE03 in candidate release PGX-CANDIDATE-RELEASE-WAVE03; neither is a governed artifact, both are executable in DEMO and VALIDATION only, and both are pending external expert review",
+        "release_manifest_hash": "sha256:47e376610d4a928109d72f6a9ead14a1d1025b8d776b9d1aaf8db6d468915511",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:1a7572f544776397b6e13232c5d6556b312726aaf4dc1c9a46a7ec865dd03f37",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": true,
+      "is_validation_evidence": true,
+      "no_pii_assertion": "These cases carry gene symbols, drug names and phenotype labels only. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "the candidate rules carry one gene each and cannot express this cell; the case checks that combining them never comes out weaker than the guideline's own joint answer",
+      "provenance": {
+        "author": "pgx-closure-wave03 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "CPIC via ClinPGx PA166105006, PMID 27997040, DOI 10.1002/cpt.597",
+        "derivation_family_fingerprint": "sha256:99fdcb6886232edf763014e6f36147ba75c7fd5a764b7361bc7a013aed3bc853",
+        "derivation_method": "read from the guideline's joint two-gene table, which no candidate rule encodes",
+        "derived_from_development": false,
+        "source_identity": "CPIC tricyclic antidepressant guideline Table 4 (joint CYP2C19 x CYP2D6 recommendation): ULTRARAPID x ULTRARAPID"
+      },
+      "role": "INTERNAL_HOLDOUT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "amitriptyline joint ULTRARAPID + ULTRARAPID",
+      "visibility": "RESTRICTED"
+    }
+  },
+  {
+    "content": {
+      "CYP2C19": "RAPID",
+      "CYP2D6": "ULTRARAPID",
+      "context": "higher initial doses, e.g. depression",
+      "drug": "amitriptyline"
+    },
+    "expected": {
+      "joint_classification": "Optional",
+      "joint_recommendation": "Avoid amitriptyline use.",
+      "outcome": "ATTENTION_NOT_WEAKER_THAN_JOINT_TABLE"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W03-INT-AMI-RAPID-ULTRARAPID",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate ruleset PGX-CANDIDATE-RULESET-WAVE03 in candidate release PGX-CANDIDATE-RELEASE-WAVE03; neither is a governed artifact, both are executable in DEMO and VALIDATION only, and both are pending external expert review",
+        "release_manifest_hash": "sha256:47e376610d4a928109d72f6a9ead14a1d1025b8d776b9d1aaf8db6d468915511",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:494b44dbc1ecee7d03a65f9ef189edd51a0497fe4ec7f3c99f3596180664b32c",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": true,
+      "is_validation_evidence": true,
+      "no_pii_assertion": "These cases carry gene symbols, drug names and phenotype labels only. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "the candidate rules carry one gene each and cannot express this cell; the case checks that combining them never comes out weaker than the guideline's own joint answer",
+      "provenance": {
+        "author": "pgx-closure-wave03 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "CPIC via ClinPGx PA166105006, PMID 27997040, DOI 10.1002/cpt.597",
+        "derivation_family_fingerprint": "sha256:e024a64800b48c67a490329253b4fbfa324bac3348bd36ae6bc5e3b67031699f",
+        "derivation_method": "read from the guideline's joint two-gene table, which no candidate rule encodes",
+        "derived_from_development": false,
+        "source_identity": "CPIC tricyclic antidepressant guideline Table 4 (joint CYP2C19 x CYP2D6 recommendation): RAPID x ULTRARAPID"
+      },
+      "role": "INTERNAL_HOLDOUT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "amitriptyline joint RAPID + ULTRARAPID",
+      "visibility": "RESTRICTED"
+    }
+  },
+  {
+    "content": {
+      "CYP2C19": "ULTRARAPID",
+      "CYP2D6": "NORMAL",
+      "context": "higher initial doses, e.g. depression",
+      "drug": "amitriptyline"
+    },
+    "expected": {
+      "joint_classification": "Optional",
+      "joint_recommendation": "Consider alternative drug not metabolized by CYP2C19.",
+      "outcome": "ATTENTION_NOT_WEAKER_THAN_JOINT_TABLE"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W03-INT-AMI-ULTRARAPID-NORMAL",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate ruleset PGX-CANDIDATE-RULESET-WAVE03 in candidate release PGX-CANDIDATE-RELEASE-WAVE03; neither is a governed artifact, both are executable in DEMO and VALIDATION only, and both are pending external expert review",
+        "release_manifest_hash": "sha256:47e376610d4a928109d72f6a9ead14a1d1025b8d776b9d1aaf8db6d468915511",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:65cd5bfda11f0b1f6cef21efa7ff0ac5ae697f8c674ab04d8e1289290fa1e817",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": true,
+      "is_validation_evidence": true,
+      "no_pii_assertion": "These cases carry gene symbols, drug names and phenotype labels only. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "the candidate rules carry one gene each and cannot express this cell; the case checks that combining them never comes out weaker than the guideline's own joint answer",
+      "provenance": {
+        "author": "pgx-closure-wave03 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "CPIC via ClinPGx PA166105006, PMID 27997040, DOI 10.1002/cpt.597",
+        "derivation_family_fingerprint": "sha256:cc4981eab5143548ed9250fed99e039d4174ab3bd90d59bda86e1a8ffd266f58",
+        "derivation_method": "read from the guideline's joint two-gene table, which no candidate rule encodes",
+        "derived_from_development": false,
+        "source_identity": "CPIC tricyclic antidepressant guideline Table 4 (joint CYP2C19 x CYP2D6 recommendation): ULTRARAPID x NORMAL"
+      },
+      "role": "INTERNAL_HOLDOUT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "amitriptyline joint ULTRARAPID + NORMAL",
+      "visibility": "RESTRICTED"
+    }
+  },
+  {
+    "content": {
+      "CYP2C19": "RAPID",
+      "CYP2D6": "NORMAL",
+      "context": "higher initial doses, e.g. depression",
+      "drug": "amitriptyline"
+    },
+    "expected": {
+      "joint_classification": "Optional",
+      "joint_recommendation": "Consider alternative drug not metabolized by CYP2C19.",
+      "outcome": "ATTENTION_NOT_WEAKER_THAN_JOINT_TABLE"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W03-INT-AMI-RAPID-NORMAL",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate ruleset PGX-CANDIDATE-RULESET-WAVE03 in candidate release PGX-CANDIDATE-RELEASE-WAVE03; neither is a governed artifact, both are executable in DEMO and VALIDATION only, and both are pending external expert review",
+        "release_manifest_hash": "sha256:47e376610d4a928109d72f6a9ead14a1d1025b8d776b9d1aaf8db6d468915511",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:fe05018c760ea3f419258d0e985dff894ff3f17bc42c90159f501c1e11f810ba",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": true,
+      "is_validation_evidence": true,
+      "no_pii_assertion": "These cases carry gene symbols, drug names and phenotype labels only. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "the candidate rules carry one gene each and cannot express this cell; the case checks that combining them never comes out weaker than the guideline's own joint answer",
+      "provenance": {
+        "author": "pgx-closure-wave03 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "CPIC via ClinPGx PA166105006, PMID 27997040, DOI 10.1002/cpt.597",
+        "derivation_family_fingerprint": "sha256:e6e5039931bfc58545c9aeaa918cf7956a275db054a0c964cf512f24a982f4ca",
+        "derivation_method": "read from the guideline's joint two-gene table, which no candidate rule encodes",
+        "derived_from_development": false,
+        "source_identity": "CPIC tricyclic antidepressant guideline Table 4 (joint CYP2C19 x CYP2D6 recommendation): RAPID x NORMAL"
+      },
+      "role": "INTERNAL_HOLDOUT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "amitriptyline joint RAPID + NORMAL",
+      "visibility": "RESTRICTED"
+    }
+  },
+  {
+    "content": {
+      "CYP2C19": "ULTRARAPID",
+      "CYP2D6": "INTERMEDIATE",
+      "context": "higher initial doses, e.g. depression",
+      "drug": "amitriptyline"
+    },
+    "expected": {
+      "joint_classification": "Optional",
+      "joint_recommendation": "Consider alternative drug not metabolized by CYP2C19.",
+      "outcome": "ATTENTION_NOT_WEAKER_THAN_JOINT_TABLE"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W03-INT-AMI-ULTRARAPID-INTERMEDIATE",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate ruleset PGX-CANDIDATE-RULESET-WAVE03 in candidate release PGX-CANDIDATE-RELEASE-WAVE03; neither is a governed artifact, both are executable in DEMO and VALIDATION only, and both are pending external expert review",
+        "release_manifest_hash": "sha256:47e376610d4a928109d72f6a9ead14a1d1025b8d776b9d1aaf8db6d468915511",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:be051f34ef7e36e9a83a6b87faddf8752761ee7cb07942067cc6654b3d71fd3a",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": true,
+      "is_validation_evidence": true,
+      "no_pii_assertion": "These cases carry gene symbols, drug names and phenotype labels only. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "the candidate rules carry one gene each and cannot express this cell; the case checks that combining them never comes out weaker than the guideline's own joint answer",
+      "provenance": {
+        "author": "pgx-closure-wave03 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "CPIC via ClinPGx PA166105006, PMID 27997040, DOI 10.1002/cpt.597",
+        "derivation_family_fingerprint": "sha256:a4a00fb55e99dde31ca615816f77e5da9e2d24e00e41dc82759e7da139b6c6a2",
+        "derivation_method": "read from the guideline's joint two-gene table, which no candidate rule encodes",
+        "derived_from_development": false,
+        "source_identity": "CPIC tricyclic antidepressant guideline Table 4 (joint CYP2C19 x CYP2D6 recommendation): ULTRARAPID x INTERMEDIATE"
+      },
+      "role": "INTERNAL_HOLDOUT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "amitriptyline joint ULTRARAPID + INTERMEDIATE",
+      "visibility": "RESTRICTED"
+    }
+  },
+  {
+    "content": {
+      "CYP2C19": "RAPID",
+      "CYP2D6": "INTERMEDIATE",
+      "context": "higher initial doses, e.g. depression",
+      "drug": "amitriptyline"
+    },
+    "expected": {
+      "joint_classification": "Optional",
+      "joint_recommendation": "Consider alternative drug not metabolized by CYP2C19.",
+      "outcome": "ATTENTION_NOT_WEAKER_THAN_JOINT_TABLE"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W03-INT-AMI-RAPID-INTERMEDIATE",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate ruleset PGX-CANDIDATE-RULESET-WAVE03 in candidate release PGX-CANDIDATE-RELEASE-WAVE03; neither is a governed artifact, both are executable in DEMO and VALIDATION only, and both are pending external expert review",
+        "release_manifest_hash": "sha256:47e376610d4a928109d72f6a9ead14a1d1025b8d776b9d1aaf8db6d468915511",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:1ee62cf6bcdc38becfe638bb0cfceb5f396068a781042901e26ccc0c99385737",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": true,
+      "is_validation_evidence": true,
+      "no_pii_assertion": "These cases carry gene symbols, drug names and phenotype labels only. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "the candidate rules carry one gene each and cannot express this cell; the case checks that combining them never comes out weaker than the guideline's own joint answer",
+      "provenance": {
+        "author": "pgx-closure-wave03 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "CPIC via ClinPGx PA166105006, PMID 27997040, DOI 10.1002/cpt.597",
+        "derivation_family_fingerprint": "sha256:671bf4c0e037684ff0c62b49526322b3f0b26ac6f0ce20b3bac456bf4e4f0a52",
+        "derivation_method": "read from the guideline's joint two-gene table, which no candidate rule encodes",
+        "derived_from_development": false,
+        "source_identity": "CPIC tricyclic antidepressant guideline Table 4 (joint CYP2C19 x CYP2D6 recommendation): RAPID x INTERMEDIATE"
+      },
+      "role": "INTERNAL_HOLDOUT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "amitriptyline joint RAPID + INTERMEDIATE",
+      "visibility": "RESTRICTED"
+    }
+  },
+  {
+    "content": {
+      "CYP2C19": "ULTRARAPID",
+      "CYP2D6": "POOR",
+      "context": "higher initial doses, e.g. depression",
+      "drug": "amitriptyline"
+    },
+    "expected": {
+      "joint_classification": "Optional",
+      "joint_recommendation": "Avoid amitriptyline use.",
+      "outcome": "ATTENTION_NOT_WEAKER_THAN_JOINT_TABLE"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W03-INT-AMI-ULTRARAPID-POOR",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate ruleset PGX-CANDIDATE-RULESET-WAVE03 in candidate release PGX-CANDIDATE-RELEASE-WAVE03; neither is a governed artifact, both are executable in DEMO and VALIDATION only, and both are pending external expert review",
+        "release_manifest_hash": "sha256:47e376610d4a928109d72f6a9ead14a1d1025b8d776b9d1aaf8db6d468915511",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:220af4ea7798d4a9668442a1417e2e6b5eea2b5a03f586a6975f20ae155187fb",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": true,
+      "is_validation_evidence": true,
+      "no_pii_assertion": "These cases carry gene symbols, drug names and phenotype labels only. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "the candidate rules carry one gene each and cannot express this cell; the case checks that combining them never comes out weaker than the guideline's own joint answer",
+      "provenance": {
+        "author": "pgx-closure-wave03 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "CPIC via ClinPGx PA166105006, PMID 27997040, DOI 10.1002/cpt.597",
+        "derivation_family_fingerprint": "sha256:f3416635222bf8ca48653cd9831e56489d7d499cc6f322b79f094be96fab83f0",
+        "derivation_method": "read from the guideline's joint two-gene table, which no candidate rule encodes",
+        "derived_from_development": false,
+        "source_identity": "CPIC tricyclic antidepressant guideline Table 4 (joint CYP2C19 x CYP2D6 recommendation): ULTRARAPID x POOR"
+      },
+      "role": "INTERNAL_HOLDOUT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "amitriptyline joint ULTRARAPID + POOR",
+      "visibility": "RESTRICTED"
+    }
+  },
+  {
+    "content": {
+      "CYP2C19": "RAPID",
+      "CYP2D6": "POOR",
+      "context": "higher initial doses, e.g. depression",
+      "drug": "amitriptyline"
+    },
+    "expected": {
+      "joint_classification": "Optional",
+      "joint_recommendation": "Avoid amitriptyline use.",
+      "outcome": "ATTENTION_NOT_WEAKER_THAN_JOINT_TABLE"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W03-INT-AMI-RAPID-POOR",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate ruleset PGX-CANDIDATE-RULESET-WAVE03 in candidate release PGX-CANDIDATE-RELEASE-WAVE03; neither is a governed artifact, both are executable in DEMO and VALIDATION only, and both are pending external expert review",
+        "release_manifest_hash": "sha256:47e376610d4a928109d72f6a9ead14a1d1025b8d776b9d1aaf8db6d468915511",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:a782107a6ea7139649fcc5cf71c4c7913cf6f84aa6f5406aa97be6ffce271c26",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": true,
+      "is_validation_evidence": true,
+      "no_pii_assertion": "These cases carry gene symbols, drug names and phenotype labels only. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "the candidate rules carry one gene each and cannot express this cell; the case checks that combining them never comes out weaker than the guideline's own joint answer",
+      "provenance": {
+        "author": "pgx-closure-wave03 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "CPIC via ClinPGx PA166105006, PMID 27997040, DOI 10.1002/cpt.597",
+        "derivation_family_fingerprint": "sha256:30daeb10d421873154b9aa3fa866363016fd3fa30bb7d7df84bf571f2a31d0d6",
+        "derivation_method": "read from the guideline's joint two-gene table, which no candidate rule encodes",
+        "derived_from_development": false,
+        "source_identity": "CPIC tricyclic antidepressant guideline Table 4 (joint CYP2C19 x CYP2D6 recommendation): RAPID x POOR"
+      },
+      "role": "INTERNAL_HOLDOUT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "amitriptyline joint RAPID + POOR",
+      "visibility": "RESTRICTED"
+    }
+  },
+  {
+    "content": {
+      "CYP2C19": "NORMAL",
+      "CYP2D6": "ULTRARAPID",
+      "context": "higher initial doses, e.g. depression",
+      "drug": "amitriptyline"
+    },
+    "expected": {
+      "joint_classification": "Strong",
+      "joint_recommendation": "Avoid amitriptyline use. If amitriptyline is warranted, consider titrating to a higher target dose (compared to normal metabolizers).",
+      "outcome": "ATTENTION_NOT_WEAKER_THAN_JOINT_TABLE"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W03-INT-AMI-NORMAL-ULTRARAPID",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate ruleset PGX-CANDIDATE-RULESET-WAVE03 in candidate release PGX-CANDIDATE-RELEASE-WAVE03; neither is a governed artifact, both are executable in DEMO and VALIDATION only, and both are pending external expert review",
+        "release_manifest_hash": "sha256:47e376610d4a928109d72f6a9ead14a1d1025b8d776b9d1aaf8db6d468915511",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:a7cafdb71bac5374cad4dbbe1d0f7d5bf8aa74eef9e464b4fa0d5c06d1946c95",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": true,
+      "is_validation_evidence": true,
+      "no_pii_assertion": "These cases carry gene symbols, drug names and phenotype labels only. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "the candidate rules carry one gene each and cannot express this cell; the case checks that combining them never comes out weaker than the guideline's own joint answer",
+      "provenance": {
+        "author": "pgx-closure-wave03 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "CPIC via ClinPGx PA166105006, PMID 27997040, DOI 10.1002/cpt.597",
+        "derivation_family_fingerprint": "sha256:e68866c2e2edae02dbca443d598fe7b41a6d2c12e44c09e84bf29cb068dfc21d",
+        "derivation_method": "read from the guideline's joint two-gene table, which no candidate rule encodes",
+        "derived_from_development": false,
+        "source_identity": "CPIC tricyclic antidepressant guideline Table 4 (joint CYP2C19 x CYP2D6 recommendation): NORMAL x ULTRARAPID"
+      },
+      "role": "INTERNAL_HOLDOUT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "amitriptyline joint NORMAL + ULTRARAPID",
+      "visibility": "RESTRICTED"
+    }
+  },
+  {
+    "content": {
+      "CYP2C19": "NORMAL",
+      "CYP2D6": "NORMAL",
+      "context": "higher initial doses, e.g. depression",
+      "drug": "amitriptyline"
+    },
+    "expected": {
+      "joint_classification": "Strong",
+      "joint_recommendation": "Initiate therapy with recommended starting dose.",
+      "outcome": "ATTENTION_NOT_WEAKER_THAN_JOINT_TABLE"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W03-INT-AMI-NORMAL-NORMAL",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate ruleset PGX-CANDIDATE-RULESET-WAVE03 in candidate release PGX-CANDIDATE-RELEASE-WAVE03; neither is a governed artifact, both are executable in DEMO and VALIDATION only, and both are pending external expert review",
+        "release_manifest_hash": "sha256:47e376610d4a928109d72f6a9ead14a1d1025b8d776b9d1aaf8db6d468915511",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:5ce13473c2aef1f5c1d2265c84afd1ad6258e45a50d06221c9356bbb65ed817b",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": true,
+      "is_validation_evidence": true,
+      "no_pii_assertion": "These cases carry gene symbols, drug names and phenotype labels only. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "the candidate rules carry one gene each and cannot express this cell; the case checks that combining them never comes out weaker than the guideline's own joint answer",
+      "provenance": {
+        "author": "pgx-closure-wave03 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "CPIC via ClinPGx PA166105006, PMID 27997040, DOI 10.1002/cpt.597",
+        "derivation_family_fingerprint": "sha256:4383615903851ee93bb7de484918879048321627e4237c40e0e1914f36637875",
+        "derivation_method": "read from the guideline's joint two-gene table, which no candidate rule encodes",
+        "derived_from_development": false,
+        "source_identity": "CPIC tricyclic antidepressant guideline Table 4 (joint CYP2C19 x CYP2D6 recommendation): NORMAL x NORMAL"
+      },
+      "role": "INTERNAL_HOLDOUT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "amitriptyline joint NORMAL + NORMAL",
+      "visibility": "RESTRICTED"
+    }
+  },
+  {
+    "content": {
+      "CYP2C19": "NORMAL",
+      "CYP2D6": "INTERMEDIATE",
+      "context": "higher initial doses, e.g. depression",
+      "drug": "amitriptyline"
+    },
+    "expected": {
+      "joint_classification": "Moderate",
+      "joint_recommendation": "Consider 25% reduction of recommended starting dose.",
+      "outcome": "ATTENTION_NOT_WEAKER_THAN_JOINT_TABLE"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W03-INT-AMI-NORMAL-INTERMEDIATE",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate ruleset PGX-CANDIDATE-RULESET-WAVE03 in candidate release PGX-CANDIDATE-RELEASE-WAVE03; neither is a governed artifact, both are executable in DEMO and VALIDATION only, and both are pending external expert review",
+        "release_manifest_hash": "sha256:47e376610d4a928109d72f6a9ead14a1d1025b8d776b9d1aaf8db6d468915511",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:a09e1c739b843de23b0a294258f8f6f790e05a730c1ce419b1fa2fdf69eecc3f",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": true,
+      "is_validation_evidence": true,
+      "no_pii_assertion": "These cases carry gene symbols, drug names and phenotype labels only. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "the candidate rules carry one gene each and cannot express this cell; the case checks that combining them never comes out weaker than the guideline's own joint answer",
+      "provenance": {
+        "author": "pgx-closure-wave03 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "CPIC via ClinPGx PA166105006, PMID 27997040, DOI 10.1002/cpt.597",
+        "derivation_family_fingerprint": "sha256:03856c8e3c78c7c90458f17ac0e667479b2e3bfd8cc8cd14b795a44a5ba75208",
+        "derivation_method": "read from the guideline's joint two-gene table, which no candidate rule encodes",
+        "derived_from_development": false,
+        "source_identity": "CPIC tricyclic antidepressant guideline Table 4 (joint CYP2C19 x CYP2D6 recommendation): NORMAL x INTERMEDIATE"
+      },
+      "role": "INTERNAL_HOLDOUT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "amitriptyline joint NORMAL + INTERMEDIATE",
+      "visibility": "RESTRICTED"
+    }
+  },
+  {
+    "content": {
+      "CYP2C19": "NORMAL",
+      "CYP2D6": "POOR",
+      "context": "higher initial doses, e.g. depression",
+      "drug": "amitriptyline"
+    },
+    "expected": {
+      "joint_classification": "Strong",
+      "joint_recommendation": "Avoid amitriptyline use. If amitriptyline is warranted, consider 50% reduction of recommended starting dose.",
+      "outcome": "ATTENTION_NOT_WEAKER_THAN_JOINT_TABLE"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W03-INT-AMI-NORMAL-POOR",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate ruleset PGX-CANDIDATE-RULESET-WAVE03 in candidate release PGX-CANDIDATE-RELEASE-WAVE03; neither is a governed artifact, both are executable in DEMO and VALIDATION only, and both are pending external expert review",
+        "release_manifest_hash": "sha256:47e376610d4a928109d72f6a9ead14a1d1025b8d776b9d1aaf8db6d468915511",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:49b53ec84393c4a8b0398707bac9d6d311ddbe659b4bf6b137422e5aa93581a3",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": true,
+      "is_validation_evidence": true,
+      "no_pii_assertion": "These cases carry gene symbols, drug names and phenotype labels only. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "the candidate rules carry one gene each and cannot express this cell; the case checks that combining them never comes out weaker than the guideline's own joint answer",
+      "provenance": {
+        "author": "pgx-closure-wave03 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "CPIC via ClinPGx PA166105006, PMID 27997040, DOI 10.1002/cpt.597",
+        "derivation_family_fingerprint": "sha256:9d4ef2660a7e2434ef7625857fa85b49aacf637df23f3d817e01b44488a3b9e6",
+        "derivation_method": "read from the guideline's joint two-gene table, which no candidate rule encodes",
+        "derived_from_development": false,
+        "source_identity": "CPIC tricyclic antidepressant guideline Table 4 (joint CYP2C19 x CYP2D6 recommendation): NORMAL x POOR"
+      },
+      "role": "INTERNAL_HOLDOUT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "amitriptyline joint NORMAL + POOR",
+      "visibility": "RESTRICTED"
+    }
+  },
+  {
+    "content": {
+      "CYP2C19": "INTERMEDIATE",
+      "CYP2D6": "ULTRARAPID",
+      "context": "higher initial doses, e.g. depression",
+      "drug": "amitriptyline"
+    },
+    "expected": {
+      "joint_classification": "Optional",
+      "joint_recommendation": "Avoid amitriptyline use.",
+      "outcome": "ATTENTION_NOT_WEAKER_THAN_JOINT_TABLE"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W03-INT-AMI-INTERMEDIATE-ULTRARAPID",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate ruleset PGX-CANDIDATE-RULESET-WAVE03 in candidate release PGX-CANDIDATE-RELEASE-WAVE03; neither is a governed artifact, both are executable in DEMO and VALIDATION only, and both are pending external expert review",
+        "release_manifest_hash": "sha256:47e376610d4a928109d72f6a9ead14a1d1025b8d776b9d1aaf8db6d468915511",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:38d0803a9a68f574ad6e013f45dc4852b56a0c2bf1274c5b8dd4e38703e1f917",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": true,
+      "is_validation_evidence": true,
+      "no_pii_assertion": "These cases carry gene symbols, drug names and phenotype labels only. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "the candidate rules carry one gene each and cannot express this cell; the case checks that combining them never comes out weaker than the guideline's own joint answer",
+      "provenance": {
+        "author": "pgx-closure-wave03 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "CPIC via ClinPGx PA166105006, PMID 27997040, DOI 10.1002/cpt.597",
+        "derivation_family_fingerprint": "sha256:61dfa7b660b431fad133eed71baa64facfc49d4d2a9a565ed41847e9a0b885d4",
+        "derivation_method": "read from the guideline's joint two-gene table, which no candidate rule encodes",
+        "derived_from_development": false,
+        "source_identity": "CPIC tricyclic antidepressant guideline Table 4 (joint CYP2C19 x CYP2D6 recommendation): INTERMEDIATE x ULTRARAPID"
+      },
+      "role": "INTERNAL_HOLDOUT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "amitriptyline joint INTERMEDIATE + ULTRARAPID",
+      "visibility": "RESTRICTED"
+    }
+  },
+  {
+    "content": {
+      "CYP2C19": "INTERMEDIATE",
+      "CYP2D6": "NORMAL",
+      "context": "higher initial doses, e.g. depression",
+      "drug": "amitriptyline"
+    },
+    "expected": {
+      "joint_classification": "Strong",
+      "joint_recommendation": "Initiate therapy with recommended starting dose.",
+      "outcome": "ATTENTION_NOT_WEAKER_THAN_JOINT_TABLE"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W03-INT-AMI-INTERMEDIATE-NORMAL",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate ruleset PGX-CANDIDATE-RULESET-WAVE03 in candidate release PGX-CANDIDATE-RELEASE-WAVE03; neither is a governed artifact, both are executable in DEMO and VALIDATION only, and both are pending external expert review",
+        "release_manifest_hash": "sha256:47e376610d4a928109d72f6a9ead14a1d1025b8d776b9d1aaf8db6d468915511",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:cffbaea838a19720e1c93e9a27f84f248e2b21a328b9ba8660ef0cef6c5e1043",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": true,
+      "is_validation_evidence": true,
+      "no_pii_assertion": "These cases carry gene symbols, drug names and phenotype labels only. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "the candidate rules carry one gene each and cannot express this cell; the case checks that combining them never comes out weaker than the guideline's own joint answer",
+      "provenance": {
+        "author": "pgx-closure-wave03 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "CPIC via ClinPGx PA166105006, PMID 27997040, DOI 10.1002/cpt.597",
+        "derivation_family_fingerprint": "sha256:45b9b3782634167aed7b764628fdeaa939656b44260015f16597a7b2b88e64b1",
+        "derivation_method": "read from the guideline's joint two-gene table, which no candidate rule encodes",
+        "derived_from_development": false,
+        "source_identity": "CPIC tricyclic antidepressant guideline Table 4 (joint CYP2C19 x CYP2D6 recommendation): INTERMEDIATE x NORMAL"
+      },
+      "role": "INTERNAL_HOLDOUT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "amitriptyline joint INTERMEDIATE + NORMAL",
+      "visibility": "RESTRICTED"
+    }
+  },
+  {
+    "content": {
+      "CYP2C19": "INTERMEDIATE",
+      "CYP2D6": "INTERMEDIATE",
+      "context": "higher initial doses, e.g. depression",
+      "drug": "amitriptyline"
+    },
+    "expected": {
+      "joint_classification": "Optional",
+      "joint_recommendation": "Consider 25% reduction of recommended starting dose.",
+      "outcome": "ATTENTION_NOT_WEAKER_THAN_JOINT_TABLE"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W03-INT-AMI-INTERMEDIATE-INTERMEDIATE",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate ruleset PGX-CANDIDATE-RULESET-WAVE03 in candidate release PGX-CANDIDATE-RELEASE-WAVE03; neither is a governed artifact, both are executable in DEMO and VALIDATION only, and both are pending external expert review",
+        "release_manifest_hash": "sha256:47e376610d4a928109d72f6a9ead14a1d1025b8d776b9d1aaf8db6d468915511",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:03f295d05a76bd77cb7a16724877e21d0703cb05122bef6214b1d02ab7961cbe",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": true,
+      "is_validation_evidence": true,
+      "no_pii_assertion": "These cases carry gene symbols, drug names and phenotype labels only. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "the candidate rules carry one gene each and cannot express this cell; the case checks that combining them never comes out weaker than the guideline's own joint answer",
+      "provenance": {
+        "author": "pgx-closure-wave03 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "CPIC via ClinPGx PA166105006, PMID 27997040, DOI 10.1002/cpt.597",
+        "derivation_family_fingerprint": "sha256:08d10a58847b66a2a2ad736bad3511eed39e71d24d46a77f270408b0a39629ad",
+        "derivation_method": "read from the guideline's joint two-gene table, which no candidate rule encodes",
+        "derived_from_development": false,
+        "source_identity": "CPIC tricyclic antidepressant guideline Table 4 (joint CYP2C19 x CYP2D6 recommendation): INTERMEDIATE x INTERMEDIATE"
+      },
+      "role": "INTERNAL_HOLDOUT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "amitriptyline joint INTERMEDIATE + INTERMEDIATE",
+      "visibility": "RESTRICTED"
+    }
+  },
+  {
+    "content": {
+      "CYP2C19": "INTERMEDIATE",
+      "CYP2D6": "POOR",
+      "context": "higher initial doses, e.g. depression",
+      "drug": "amitriptyline"
+    },
+    "expected": {
+      "joint_classification": "Optional",
+      "joint_recommendation": "Avoid amitriptyline use. If amitriptyline is warranted, consider 50% reduction of recommended starting dose.",
+      "outcome": "ATTENTION_NOT_WEAKER_THAN_JOINT_TABLE"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W03-INT-AMI-INTERMEDIATE-POOR",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate ruleset PGX-CANDIDATE-RULESET-WAVE03 in candidate release PGX-CANDIDATE-RELEASE-WAVE03; neither is a governed artifact, both are executable in DEMO and VALIDATION only, and both are pending external expert review",
+        "release_manifest_hash": "sha256:47e376610d4a928109d72f6a9ead14a1d1025b8d776b9d1aaf8db6d468915511",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:91973b3cff2d05ac3f59bbc22ff6f1d4abfd84a0177c25ff5b87741852fca028",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": true,
+      "is_validation_evidence": true,
+      "no_pii_assertion": "These cases carry gene symbols, drug names and phenotype labels only. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "the candidate rules carry one gene each and cannot express this cell; the case checks that combining them never comes out weaker than the guideline's own joint answer",
+      "provenance": {
+        "author": "pgx-closure-wave03 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "CPIC via ClinPGx PA166105006, PMID 27997040, DOI 10.1002/cpt.597",
+        "derivation_family_fingerprint": "sha256:2ef18049221d25cb59b7d1f431ca7560a56ced892f1e5bd126e671ea6d87be67",
+        "derivation_method": "read from the guideline's joint two-gene table, which no candidate rule encodes",
+        "derived_from_development": false,
+        "source_identity": "CPIC tricyclic antidepressant guideline Table 4 (joint CYP2C19 x CYP2D6 recommendation): INTERMEDIATE x POOR"
+      },
+      "role": "INTERNAL_HOLDOUT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "amitriptyline joint INTERMEDIATE + POOR",
+      "visibility": "RESTRICTED"
+    }
+  },
+  {
+    "content": {
+      "CYP2C19": "POOR",
+      "CYP2D6": "ULTRARAPID",
+      "context": "higher initial doses, e.g. depression",
+      "drug": "amitriptyline"
+    },
+    "expected": {
+      "joint_classification": "Optional",
+      "joint_recommendation": "Avoid amitriptyline use.",
+      "outcome": "ATTENTION_NOT_WEAKER_THAN_JOINT_TABLE"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W03-INT-AMI-POOR-ULTRARAPID",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate ruleset PGX-CANDIDATE-RULESET-WAVE03 in candidate release PGX-CANDIDATE-RELEASE-WAVE03; neither is a governed artifact, both are executable in DEMO and VALIDATION only, and both are pending external expert review",
+        "release_manifest_hash": "sha256:47e376610d4a928109d72f6a9ead14a1d1025b8d776b9d1aaf8db6d468915511",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:51d881c44008c610fff00c6f0497b94eee917b8e96de38655fa967de96f00452",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": true,
+      "is_validation_evidence": true,
+      "no_pii_assertion": "These cases carry gene symbols, drug names and phenotype labels only. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "the candidate rules carry one gene each and cannot express this cell; the case checks that combining them never comes out weaker than the guideline's own joint answer",
+      "provenance": {
+        "author": "pgx-closure-wave03 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "CPIC via ClinPGx PA166105006, PMID 27997040, DOI 10.1002/cpt.597",
+        "derivation_family_fingerprint": "sha256:09470c3ce88cda305459337c03df54d8dbf209658ef7306ed972543dada44211",
+        "derivation_method": "read from the guideline's joint two-gene table, which no candidate rule encodes",
+        "derived_from_development": false,
+        "source_identity": "CPIC tricyclic antidepressant guideline Table 4 (joint CYP2C19 x CYP2D6 recommendation): POOR x ULTRARAPID"
+      },
+      "role": "INTERNAL_HOLDOUT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "amitriptyline joint POOR + ULTRARAPID",
+      "visibility": "RESTRICTED"
+    }
+  },
+  {
+    "content": {
+      "CYP2C19": "POOR",
+      "CYP2D6": "NORMAL",
+      "context": "higher initial doses, e.g. depression",
+      "drug": "amitriptyline"
+    },
+    "expected": {
+      "joint_classification": "Moderate",
+      "joint_recommendation": "Avoid amitriptyline use. If amitriptyline is warranted, consider a 50% reduction of recommended starting dose.",
+      "outcome": "ATTENTION_NOT_WEAKER_THAN_JOINT_TABLE"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W03-INT-AMI-POOR-NORMAL",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate ruleset PGX-CANDIDATE-RULESET-WAVE03 in candidate release PGX-CANDIDATE-RELEASE-WAVE03; neither is a governed artifact, both are executable in DEMO and VALIDATION only, and both are pending external expert review",
+        "release_manifest_hash": "sha256:47e376610d4a928109d72f6a9ead14a1d1025b8d776b9d1aaf8db6d468915511",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:0190bcf553fce2c1fc267c1e9ef6bd8cbc003e72edf9a4dfa481c0ca7b655b3e",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": true,
+      "is_validation_evidence": true,
+      "no_pii_assertion": "These cases carry gene symbols, drug names and phenotype labels only. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "the candidate rules carry one gene each and cannot express this cell; the case checks that combining them never comes out weaker than the guideline's own joint answer",
+      "provenance": {
+        "author": "pgx-closure-wave03 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "CPIC via ClinPGx PA166105006, PMID 27997040, DOI 10.1002/cpt.597",
+        "derivation_family_fingerprint": "sha256:013327e6a3d69348bd034fb98b54d7f7c8011f13949a872ccc9e8570fc802e2c",
+        "derivation_method": "read from the guideline's joint two-gene table, which no candidate rule encodes",
+        "derived_from_development": false,
+        "source_identity": "CPIC tricyclic antidepressant guideline Table 4 (joint CYP2C19 x CYP2D6 recommendation): POOR x NORMAL"
+      },
+      "role": "INTERNAL_HOLDOUT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "amitriptyline joint POOR + NORMAL",
+      "visibility": "RESTRICTED"
+    }
+  },
+  {
+    "content": {
+      "CYP2C19": "POOR",
+      "CYP2D6": "INTERMEDIATE",
+      "context": "higher initial doses, e.g. depression",
+      "drug": "amitriptyline"
+    },
+    "expected": {
+      "joint_classification": "Optional",
+      "joint_recommendation": "Avoid amitriptyline use.",
+      "outcome": "ATTENTION_NOT_WEAKER_THAN_JOINT_TABLE"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W03-INT-AMI-POOR-INTERMEDIATE",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate ruleset PGX-CANDIDATE-RULESET-WAVE03 in candidate release PGX-CANDIDATE-RELEASE-WAVE03; neither is a governed artifact, both are executable in DEMO and VALIDATION only, and both are pending external expert review",
+        "release_manifest_hash": "sha256:47e376610d4a928109d72f6a9ead14a1d1025b8d776b9d1aaf8db6d468915511",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:6ed2076327c89823d891423f6ddf6d37a014134cc55b22c92f0cd8a4da8860d6",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": true,
+      "is_validation_evidence": true,
+      "no_pii_assertion": "These cases carry gene symbols, drug names and phenotype labels only. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "the candidate rules carry one gene each and cannot express this cell; the case checks that combining them never comes out weaker than the guideline's own joint answer",
+      "provenance": {
+        "author": "pgx-closure-wave03 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "CPIC via ClinPGx PA166105006, PMID 27997040, DOI 10.1002/cpt.597",
+        "derivation_family_fingerprint": "sha256:43e0b9c163d85beab070a4f2ac7944a7594fd1aa9bc676e78a360226f2cfe590",
+        "derivation_method": "read from the guideline's joint two-gene table, which no candidate rule encodes",
+        "derived_from_development": false,
+        "source_identity": "CPIC tricyclic antidepressant guideline Table 4 (joint CYP2C19 x CYP2D6 recommendation): POOR x INTERMEDIATE"
+      },
+      "role": "INTERNAL_HOLDOUT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "amitriptyline joint POOR + INTERMEDIATE",
+      "visibility": "RESTRICTED"
+    }
+  },
+  {
+    "content": {
+      "CYP2C19": "POOR",
+      "CYP2D6": "POOR",
+      "context": "higher initial doses, e.g. depression",
+      "drug": "amitriptyline"
+    },
+    "expected": {
+      "joint_classification": "Optional",
+      "joint_recommendation": "Avoid amitriptyline use.",
+      "outcome": "ATTENTION_NOT_WEAKER_THAN_JOINT_TABLE"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W03-INT-AMI-POOR-POOR",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate ruleset PGX-CANDIDATE-RULESET-WAVE03 in candidate release PGX-CANDIDATE-RELEASE-WAVE03; neither is a governed artifact, both are executable in DEMO and VALIDATION only, and both are pending external expert review",
+        "release_manifest_hash": "sha256:47e376610d4a928109d72f6a9ead14a1d1025b8d776b9d1aaf8db6d468915511",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:70fe532c26f7b013e54fb7d21e32807962bb96df9afecbba2a8af14bd774d84b",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": true,
+      "is_validation_evidence": true,
+      "no_pii_assertion": "These cases carry gene symbols, drug names and phenotype labels only. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "the candidate rules carry one gene each and cannot express this cell; the case checks that combining them never comes out weaker than the guideline's own joint answer",
+      "provenance": {
+        "author": "pgx-closure-wave03 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "CPIC via ClinPGx PA166105006, PMID 27997040, DOI 10.1002/cpt.597",
+        "derivation_family_fingerprint": "sha256:aa4e2d83ab83162290446440132284015ecddc0b19dfb652ced5aea7c9c13333",
+        "derivation_method": "read from the guideline's joint two-gene table, which no candidate rule encodes",
+        "derived_from_development": false,
+        "source_identity": "CPIC tricyclic antidepressant guideline Table 4 (joint CYP2C19 x CYP2D6 recommendation): POOR x POOR"
+      },
+      "role": "INTERNAL_HOLDOUT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "amitriptyline joint POOR + POOR",
+      "visibility": "RESTRICTED"
+    }
+  },
+  {
+    "content": {
+      "drug": "clopidogrel",
+      "gene": "CYP2C19",
+      "project_phenotype": null,
+      "source_phenotype": "CYP2C19 likely intermediate metabolizer"
+    },
+    "expected": {
+      "outcome": "REFUSE_FAIL_CLOSED",
+      "reason_code": "PHENOTYPE_NOT_REPRESENTABLE"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W03-EXP-01-CLOPIDOGREL-PNR",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate ruleset PGX-CANDIDATE-RULESET-WAVE03 in candidate release PGX-CANDIDATE-RELEASE-WAVE03; neither is a governed artifact, both are executable in DEMO and VALIDATION only, and both are pending external expert review",
+        "release_manifest_hash": "sha256:47e376610d4a928109d72f6a9ead14a1d1025b8d776b9d1aaf8db6d468915511",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:f3032fcc8a2f58ca3bee4b35c8cc1d8ef45d0e4336e479e51235d09628547422",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": true,
+      "is_validation_evidence": true,
+      "no_pii_assertion": "These cases carry gene symbols, drug names and phenotype labels only. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "sealed for a later external reviewer; this wave recorded the case and did not evaluate the build against it",
+      "provenance": {
+        "author": "pgx-closure-wave03 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "CPIC first-release scope; see data/closure/wave-03-candidate-evidence/refusals.json",
+        "derivation_family_fingerprint": "sha256:850304356b91c24b8f895235e7f924dbeac145d0c68c2b7388fcd990a6b8b138",
+        "derivation_method": "derived from a phenotype the source states no recommendation for, states no row for, or this project's vocabulary cannot carry",
+        "derived_from_development": false,
+        "source_identity": "first-release refusal surface: clopidogrel / CYP2C19 / CYP2C19 likely intermediate metabolizer (PHENOTYPE_NOT_REPRESENTABLE)"
+      },
+      "role": "EXPERT_HOLDOUT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "refuse clopidogrel / CYP2C19 / CYP2C19 likely intermediate metabolizer",
+      "visibility": "RESTRICTED"
+    }
+  },
+  {
+    "content": {
+      "drug": "clopidogrel",
+      "gene": "CYP2C19",
+      "project_phenotype": null,
+      "source_phenotype": "CYP2C19 likely poor metabolizer"
+    },
+    "expected": {
+      "outcome": "REFUSE_FAIL_CLOSED",
+      "reason_code": "PHENOTYPE_NOT_REPRESENTABLE"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W03-EXP-02-CLOPIDOGREL-PNR",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate ruleset PGX-CANDIDATE-RULESET-WAVE03 in candidate release PGX-CANDIDATE-RELEASE-WAVE03; neither is a governed artifact, both are executable in DEMO and VALIDATION only, and both are pending external expert review",
+        "release_manifest_hash": "sha256:47e376610d4a928109d72f6a9ead14a1d1025b8d776b9d1aaf8db6d468915511",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:7fbed431bf8bc185fd9aad31b7cd1d54ea9dfc5132cd36992bb042ce333c0e3b",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": true,
+      "is_validation_evidence": true,
+      "no_pii_assertion": "These cases carry gene symbols, drug names and phenotype labels only. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "sealed for a later external reviewer; this wave recorded the case and did not evaluate the build against it",
+      "provenance": {
+        "author": "pgx-closure-wave03 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "CPIC first-release scope; see data/closure/wave-03-candidate-evidence/refusals.json",
+        "derivation_family_fingerprint": "sha256:bd703f80d2b8fb8369405c6c98a9ab431e885416e20d1cb5754d1a33b9f851cc",
+        "derivation_method": "derived from a phenotype the source states no recommendation for, states no row for, or this project's vocabulary cannot carry",
+        "derived_from_development": false,
+        "source_identity": "first-release refusal surface: clopidogrel / CYP2C19 / CYP2C19 likely poor metabolizer (PHENOTYPE_NOT_REPRESENTABLE)"
+      },
+      "role": "EXPERT_HOLDOUT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "refuse clopidogrel / CYP2C19 / CYP2C19 likely poor metabolizer",
+      "visibility": "RESTRICTED"
+    }
+  },
+  {
+    "content": {
+      "drug": "clopidogrel",
+      "gene": "CYP2C19",
+      "project_phenotype": "INDETERMINATE",
+      "source_phenotype": "Indeterminate"
+    },
+    "expected": {
+      "outcome": "REFUSE_FAIL_CLOSED",
+      "reason_code": "PHENOTYPE_NOT_REPRESENTABLE"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W03-EXP-03-CLOPIDOGREL-PNR",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate ruleset PGX-CANDIDATE-RULESET-WAVE03 in candidate release PGX-CANDIDATE-RELEASE-WAVE03; neither is a governed artifact, both are executable in DEMO and VALIDATION only, and both are pending external expert review",
+        "release_manifest_hash": "sha256:47e376610d4a928109d72f6a9ead14a1d1025b8d776b9d1aaf8db6d468915511",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:ccddcbda1dbf6885ad0f62f52b70751b5a5008509fb4c7cdc3fb6b2dba1c51e5",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": true,
+      "is_validation_evidence": true,
+      "no_pii_assertion": "These cases carry gene symbols, drug names and phenotype labels only. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "sealed for a later external reviewer; this wave recorded the case and did not evaluate the build against it",
+      "provenance": {
+        "author": "pgx-closure-wave03 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "CPIC first-release scope; see data/closure/wave-03-candidate-evidence/refusals.json",
+        "derivation_family_fingerprint": "sha256:cc689ed003190a220f8fdcbbb74253407146a7b7153df192c631b477fb416b90",
+        "derivation_method": "derived from a phenotype the source states no recommendation for, states no row for, or this project's vocabulary cannot carry",
+        "derived_from_development": false,
+        "source_identity": "first-release refusal surface: clopidogrel / CYP2C19 / Indeterminate (PHENOTYPE_NOT_REPRESENTABLE)"
+      },
+      "role": "EXPERT_HOLDOUT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "refuse clopidogrel / CYP2C19 / Indeterminate",
+      "visibility": "RESTRICTED"
+    }
+  },
+  {
+    "content": {
+      "drug": "omeprazole",
+      "gene": "CYP2C19",
+      "project_phenotype": null,
+      "source_phenotype": "CYP2C19 likely intermediate metabolizer"
+    },
+    "expected": {
+      "outcome": "REFUSE_FAIL_CLOSED",
+      "reason_code": "PHENOTYPE_NOT_REPRESENTABLE"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W03-EXP-04-OMEPRAZOLE-PNR",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate ruleset PGX-CANDIDATE-RULESET-WAVE03 in candidate release PGX-CANDIDATE-RELEASE-WAVE03; neither is a governed artifact, both are executable in DEMO and VALIDATION only, and both are pending external expert review",
+        "release_manifest_hash": "sha256:47e376610d4a928109d72f6a9ead14a1d1025b8d776b9d1aaf8db6d468915511",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:9ca142fcc38de727018ad3171844cdc9d6dcc69bdb639c99e8c4928515f98573",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": true,
+      "is_validation_evidence": true,
+      "no_pii_assertion": "These cases carry gene symbols, drug names and phenotype labels only. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "sealed for a later external reviewer; this wave recorded the case and did not evaluate the build against it",
+      "provenance": {
+        "author": "pgx-closure-wave03 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "CPIC first-release scope; see data/closure/wave-03-candidate-evidence/refusals.json",
+        "derivation_family_fingerprint": "sha256:7b5e0e0158c3d4b9c76079a9483d54f9b9afc6bb1dd47d13aba7db0bd04ba733",
+        "derivation_method": "derived from a phenotype the source states no recommendation for, states no row for, or this project's vocabulary cannot carry",
+        "derived_from_development": false,
+        "source_identity": "first-release refusal surface: omeprazole / CYP2C19 / CYP2C19 likely intermediate metabolizer (PHENOTYPE_NOT_REPRESENTABLE)"
+      },
+      "role": "EXPERT_HOLDOUT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "refuse omeprazole / CYP2C19 / CYP2C19 likely intermediate metabolizer",
+      "visibility": "RESTRICTED"
+    }
+  },
+  {
+    "content": {
+      "drug": "omeprazole",
+      "gene": "CYP2C19",
+      "project_phenotype": null,
+      "source_phenotype": "CYP2C19 likely poor metabolizer"
+    },
+    "expected": {
+      "outcome": "REFUSE_FAIL_CLOSED",
+      "reason_code": "PHENOTYPE_NOT_REPRESENTABLE"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W03-EXP-05-OMEPRAZOLE-PNR",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate ruleset PGX-CANDIDATE-RULESET-WAVE03 in candidate release PGX-CANDIDATE-RELEASE-WAVE03; neither is a governed artifact, both are executable in DEMO and VALIDATION only, and both are pending external expert review",
+        "release_manifest_hash": "sha256:47e376610d4a928109d72f6a9ead14a1d1025b8d776b9d1aaf8db6d468915511",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:7d1a53cf2c77d9549ad180ebb036269cf557eafb634b73209420328aab9e6031",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": true,
+      "is_validation_evidence": true,
+      "no_pii_assertion": "These cases carry gene symbols, drug names and phenotype labels only. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "sealed for a later external reviewer; this wave recorded the case and did not evaluate the build against it",
+      "provenance": {
+        "author": "pgx-closure-wave03 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "CPIC first-release scope; see data/closure/wave-03-candidate-evidence/refusals.json",
+        "derivation_family_fingerprint": "sha256:06e3b5ed4429a9bd0d7cbff9323322fd1d5e57854ac4437c357426efc1fbbfd9",
+        "derivation_method": "derived from a phenotype the source states no recommendation for, states no row for, or this project's vocabulary cannot carry",
+        "derived_from_development": false,
+        "source_identity": "first-release refusal surface: omeprazole / CYP2C19 / CYP2C19 likely poor metabolizer (PHENOTYPE_NOT_REPRESENTABLE)"
+      },
+      "role": "EXPERT_HOLDOUT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "refuse omeprazole / CYP2C19 / CYP2C19 likely poor metabolizer",
+      "visibility": "RESTRICTED"
+    }
+  },
+  {
+    "content": {
+      "drug": "omeprazole",
+      "gene": "CYP2C19",
+      "project_phenotype": "INDETERMINATE",
+      "source_phenotype": "Indeterminate"
+    },
+    "expected": {
+      "outcome": "REFUSE_FAIL_CLOSED",
+      "reason_code": "PHENOTYPE_NOT_REPRESENTABLE"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W03-EXP-06-OMEPRAZOLE-PNR",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate ruleset PGX-CANDIDATE-RULESET-WAVE03 in candidate release PGX-CANDIDATE-RELEASE-WAVE03; neither is a governed artifact, both are executable in DEMO and VALIDATION only, and both are pending external expert review",
+        "release_manifest_hash": "sha256:47e376610d4a928109d72f6a9ead14a1d1025b8d776b9d1aaf8db6d468915511",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:39dd15b72b8d056422c1934e7af566428bb46c5909df165e1b55475ba9f6d4e9",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": true,
+      "is_validation_evidence": true,
+      "no_pii_assertion": "These cases carry gene symbols, drug names and phenotype labels only. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "sealed for a later external reviewer; this wave recorded the case and did not evaluate the build against it",
+      "provenance": {
+        "author": "pgx-closure-wave03 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "CPIC first-release scope; see data/closure/wave-03-candidate-evidence/refusals.json",
+        "derivation_family_fingerprint": "sha256:bb1f1dd808dd4010e5b2ccbdb0491e0451224c895e2798a3c474b929a490256a",
+        "derivation_method": "derived from a phenotype the source states no recommendation for, states no row for, or this project's vocabulary cannot carry",
+        "derived_from_development": false,
+        "source_identity": "first-release refusal surface: omeprazole / CYP2C19 / Indeterminate (PHENOTYPE_NOT_REPRESENTABLE)"
+      },
+      "role": "EXPERT_HOLDOUT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "refuse omeprazole / CYP2C19 / Indeterminate",
+      "visibility": "RESTRICTED"
+    }
+  },
+  {
+    "content": {
+      "drug": "codeine",
+      "gene": "CYP2D6",
+      "project_phenotype": "INDETERMINATE",
+      "source_phenotype": "CYP2D6 Indeterminate"
+    },
+    "expected": {
+      "outcome": "REFUSE_FAIL_CLOSED",
+      "reason_code": "PHENOTYPE_NOT_REPRESENTABLE"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W03-EXP-07-CODEINE-PNR",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate ruleset PGX-CANDIDATE-RULESET-WAVE03 in candidate release PGX-CANDIDATE-RELEASE-WAVE03; neither is a governed artifact, both are executable in DEMO and VALIDATION only, and both are pending external expert review",
+        "release_manifest_hash": "sha256:47e376610d4a928109d72f6a9ead14a1d1025b8d776b9d1aaf8db6d468915511",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:26750f5313fc6ea655b955392f02da003c24e2d18748bbf8cb5179f618693d4b",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": true,
+      "is_validation_evidence": true,
+      "no_pii_assertion": "These cases carry gene symbols, drug names and phenotype labels only. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "sealed for a later external reviewer; this wave recorded the case and did not evaluate the build against it",
+      "provenance": {
+        "author": "pgx-closure-wave03 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "CPIC first-release scope; see data/closure/wave-03-candidate-evidence/refusals.json",
+        "derivation_family_fingerprint": "sha256:ca6eafcda20c951c5cde3e326e984c7114e4dac62848155c7a3a61c9fdc3f60c",
+        "derivation_method": "derived from a phenotype the source states no recommendation for, states no row for, or this project's vocabulary cannot carry",
+        "derived_from_development": false,
+        "source_identity": "first-release refusal surface: codeine / CYP2D6 / CYP2D6 Indeterminate (PHENOTYPE_NOT_REPRESENTABLE)"
+      },
+      "role": "EXPERT_HOLDOUT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "refuse codeine / CYP2D6 / CYP2D6 Indeterminate",
+      "visibility": "RESTRICTED"
+    }
+  },
+  {
+    "content": {
+      "drug": "codeine",
+      "gene": "CYP2D6",
+      "project_phenotype": "RAPID",
+      "source_phenotype": "(no CYP2D6 rapid metabolizer row exists)"
+    },
+    "expected": {
+      "outcome": "REFUSE_FAIL_CLOSED",
+      "reason_code": "AXIS_ABSENT_FROM_SOURCE"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W03-EXP-08-CODEINE-AAS",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate ruleset PGX-CANDIDATE-RULESET-WAVE03 in candidate release PGX-CANDIDATE-RELEASE-WAVE03; neither is a governed artifact, both are executable in DEMO and VALIDATION only, and both are pending external expert review",
+        "release_manifest_hash": "sha256:47e376610d4a928109d72f6a9ead14a1d1025b8d776b9d1aaf8db6d468915511",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:e3d89c7892c176cbbff69fcbcfda439176fe60e8ae4d2850ea55d13ee7fab3fc",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": true,
+      "is_validation_evidence": true,
+      "no_pii_assertion": "These cases carry gene symbols, drug names and phenotype labels only. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "sealed for a later external reviewer; this wave recorded the case and did not evaluate the build against it",
+      "provenance": {
+        "author": "pgx-closure-wave03 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "CPIC first-release scope; see data/closure/wave-03-candidate-evidence/refusals.json",
+        "derivation_family_fingerprint": "sha256:3af992b02f9781c9073e23f4303662a42469de5b9fa1423519db92cb69de0c8f",
+        "derivation_method": "derived from a phenotype the source states no recommendation for, states no row for, or this project's vocabulary cannot carry",
+        "derived_from_development": false,
+        "source_identity": "first-release refusal surface: codeine / CYP2D6 / (no CYP2D6 rapid metabolizer row exists) (AXIS_ABSENT_FROM_SOURCE)"
+      },
+      "role": "EXPERT_HOLDOUT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "refuse codeine / CYP2D6 / (no CYP2D6 rapid metabolizer row exists)",
+      "visibility": "RESTRICTED"
+    }
+  },
+  {
+    "content": {
+      "drug": "amitriptyline",
+      "gene": "CYP2D6",
+      "project_phenotype": "RAPID",
+      "source_phenotype": "(no CYP2D6 rapid metabolizer row exists)"
+    },
+    "expected": {
+      "outcome": "REFUSE_FAIL_CLOSED",
+      "reason_code": "AXIS_ABSENT_FROM_SOURCE"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W03-EXP-09-AMITRIPTYLINE-AAS",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate ruleset PGX-CANDIDATE-RULESET-WAVE03 in candidate release PGX-CANDIDATE-RELEASE-WAVE03; neither is a governed artifact, both are executable in DEMO and VALIDATION only, and both are pending external expert review",
+        "release_manifest_hash": "sha256:47e376610d4a928109d72f6a9ead14a1d1025b8d776b9d1aaf8db6d468915511",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:1390e9cdf4c0f3887f2d1ca7cd98ec7e0a6eb71b886b26b07df51f2b9e2c1f9c",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": true,
+      "is_validation_evidence": true,
+      "no_pii_assertion": "These cases carry gene symbols, drug names and phenotype labels only. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "sealed for a later external reviewer; this wave recorded the case and did not evaluate the build against it",
+      "provenance": {
+        "author": "pgx-closure-wave03 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "CPIC first-release scope; see data/closure/wave-03-candidate-evidence/refusals.json",
+        "derivation_family_fingerprint": "sha256:e6ac1fc5c9de83b873b5de996f7196978b38e339e346b61e5047004759b7b77f",
+        "derivation_method": "derived from a phenotype the source states no recommendation for, states no row for, or this project's vocabulary cannot carry",
+        "derived_from_development": false,
+        "source_identity": "first-release refusal surface: amitriptyline / CYP2D6 / (no CYP2D6 rapid metabolizer row exists) (AXIS_ABSENT_FROM_SOURCE)"
+      },
+      "role": "EXPERT_HOLDOUT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "refuse amitriptyline / CYP2D6 / (no CYP2D6 rapid metabolizer row exists)",
+      "visibility": "RESTRICTED"
+    }
+  },
+  {
+    "content": {
+      "drug": "amitriptyline",
+      "gene": "CYP2C19",
+      "project_phenotype": null,
+      "source_phenotype": "CYP2C19 likely intermediate metabolizer"
+    },
+    "expected": {
+      "outcome": "REFUSE_FAIL_CLOSED",
+      "reason_code": "SOURCE_ROW_ABSENT"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W03-EXP-10-AMITRIPTYLINE-SRA",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate ruleset PGX-CANDIDATE-RULESET-WAVE03 in candidate release PGX-CANDIDATE-RELEASE-WAVE03; neither is a governed artifact, both are executable in DEMO and VALIDATION only, and both are pending external expert review",
+        "release_manifest_hash": "sha256:47e376610d4a928109d72f6a9ead14a1d1025b8d776b9d1aaf8db6d468915511",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:7393d3c606a535759a9d2d9f30f86c85f1719b82e27d964e9fde7f5ba5ae4aa3",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": true,
+      "is_validation_evidence": true,
+      "no_pii_assertion": "These cases carry gene symbols, drug names and phenotype labels only. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "sealed for a later external reviewer; this wave recorded the case and did not evaluate the build against it",
+      "provenance": {
+        "author": "pgx-closure-wave03 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "CPIC first-release scope; see data/closure/wave-03-candidate-evidence/refusals.json",
+        "derivation_family_fingerprint": "sha256:f4c5e928aea1542a71a390a7de7058903abf4702fabb798617b4e929388ad5c0",
+        "derivation_method": "derived from a phenotype the source states no recommendation for, states no row for, or this project's vocabulary cannot carry",
+        "derived_from_development": false,
+        "source_identity": "first-release refusal surface: amitriptyline / CYP2C19 / CYP2C19 likely intermediate metabolizer (SOURCE_ROW_ABSENT)"
+      },
+      "role": "EXPERT_HOLDOUT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "refuse amitriptyline / CYP2C19 / CYP2C19 likely intermediate metabolizer",
+      "visibility": "RESTRICTED"
+    }
+  },
+  {
+    "content": {
+      "drug": "amitriptyline",
+      "gene": "CYP2C19",
+      "project_phenotype": null,
+      "source_phenotype": "CYP2C19 likely poor metabolizer"
+    },
+    "expected": {
+      "outcome": "REFUSE_FAIL_CLOSED",
+      "reason_code": "SOURCE_ROW_ABSENT"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W03-EXP-11-AMITRIPTYLINE-SRA",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate ruleset PGX-CANDIDATE-RULESET-WAVE03 in candidate release PGX-CANDIDATE-RELEASE-WAVE03; neither is a governed artifact, both are executable in DEMO and VALIDATION only, and both are pending external expert review",
+        "release_manifest_hash": "sha256:47e376610d4a928109d72f6a9ead14a1d1025b8d776b9d1aaf8db6d468915511",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:f79ec272e4f61a1be0d867f658c665c8c0121e3f8e2f9a3b2170f2d2a0e9487b",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": true,
+      "is_validation_evidence": true,
+      "no_pii_assertion": "These cases carry gene symbols, drug names and phenotype labels only. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "sealed for a later external reviewer; this wave recorded the case and did not evaluate the build against it",
+      "provenance": {
+        "author": "pgx-closure-wave03 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "CPIC first-release scope; see data/closure/wave-03-candidate-evidence/refusals.json",
+        "derivation_family_fingerprint": "sha256:3e387cef9f024461a55e77ae74679b2c6e3f319ebaba8900f013dd2e7db06378",
+        "derivation_method": "derived from a phenotype the source states no recommendation for, states no row for, or this project's vocabulary cannot carry",
+        "derived_from_development": false,
+        "source_identity": "first-release refusal surface: amitriptyline / CYP2C19 / CYP2C19 likely poor metabolizer (SOURCE_ROW_ABSENT)"
+      },
+      "role": "EXPERT_HOLDOUT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "refuse amitriptyline / CYP2C19 / CYP2C19 likely poor metabolizer",
+      "visibility": "RESTRICTED"
+    }
+  },
+  {
+    "content": {
+      "drug": "amitriptyline",
+      "gene": "CYP2C19",
+      "project_phenotype": "INDETERMINATE",
+      "source_phenotype": "Indeterminate"
+    },
+    "expected": {
+      "outcome": "REFUSE_FAIL_CLOSED",
+      "reason_code": "PHENOTYPE_NOT_REPRESENTABLE"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W03-EXP-12-AMITRIPTYLINE-PNR",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate ruleset PGX-CANDIDATE-RULESET-WAVE03 in candidate release PGX-CANDIDATE-RELEASE-WAVE03; neither is a governed artifact, both are executable in DEMO and VALIDATION only, and both are pending external expert review",
+        "release_manifest_hash": "sha256:47e376610d4a928109d72f6a9ead14a1d1025b8d776b9d1aaf8db6d468915511",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:02131cb83ce1548ee401310cdf41245d91d7b3096f92f403f53c229f49838e44",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": true,
+      "is_validation_evidence": true,
+      "no_pii_assertion": "These cases carry gene symbols, drug names and phenotype labels only. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "sealed for a later external reviewer; this wave recorded the case and did not evaluate the build against it",
+      "provenance": {
+        "author": "pgx-closure-wave03 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "CPIC first-release scope; see data/closure/wave-03-candidate-evidence/refusals.json",
+        "derivation_family_fingerprint": "sha256:de8e69b8ec449bf3e8b05e844c2b5f78ef318d0893be452a9edf7634d1c81ae1",
+        "derivation_method": "derived from a phenotype the source states no recommendation for, states no row for, or this project's vocabulary cannot carry",
+        "derived_from_development": false,
+        "source_identity": "first-release refusal surface: amitriptyline / CYP2C19 / Indeterminate (PHENOTYPE_NOT_REPRESENTABLE)"
+      },
+      "role": "EXPERT_HOLDOUT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "refuse amitriptyline / CYP2C19 / Indeterminate",
+      "visibility": "RESTRICTED"
+    }
+  },
+  {
+    "content": {
+      "drug": "amitriptyline",
+      "gene": "CYP2D6",
+      "project_phenotype": "INDETERMINATE",
+      "source_phenotype": "CYP2D6 Indeterminate"
+    },
+    "expected": {
+      "outcome": "REFUSE_FAIL_CLOSED",
+      "reason_code": "PHENOTYPE_NOT_REPRESENTABLE"
+    },
+    "metadata": {
+      "case_id": "PGX-VAL-W03-EXP-13-AMITRIPTYLINE-PNR",
+      "classification": "PUBLISHED_LITERATURE_DERIVED",
+      "compatibility": {
+        "is_pinned_to_release": false,
+        "note": "candidate ruleset PGX-CANDIDATE-RULESET-WAVE03 in candidate release PGX-CANDIDATE-RELEASE-WAVE03; neither is a governed artifact, both are executable in DEMO and VALIDATION only, and both are pending external expert review",
+        "release_manifest_hash": "sha256:47e376610d4a928109d72f6a9ead14a1d1025b8d776b9d1aaf8db6d468915511",
+        "schema_version": "pgx-wp18-release-compatibility/1"
+      },
+      "content_fingerprint": "sha256:0d689f1af4f540b1db402ba9567fb7de62a1a025155b48897d0364be24c89213",
+      "created_at": "2026-09-06T12:00:00Z",
+      "is_holdout": true,
+      "is_validation_evidence": true,
+      "no_pii_assertion": "These cases carry gene symbols, drug names and phenotype labels only. No patient, sample, identifier, date of birth or free text of any kind is present, and none was available to the process that built them.",
+      "notes": "sealed for a later external reviewer; this wave recorded the case and did not evaluate the build against it",
+      "provenance": {
+        "author": "pgx-closure-wave03 automated pass (NOT A HUMAN CASE AUTHOR)",
+        "citation": "CPIC first-release scope; see data/closure/wave-03-candidate-evidence/refusals.json",
+        "derivation_family_fingerprint": "sha256:34c82af711a7e3097a5b63ed04eb63c79b144eaba89c39d59f5a90f683a9405e",
+        "derivation_method": "derived from a phenotype the source states no recommendation for, states no row for, or this project's vocabulary cannot carry",
+        "derived_from_development": false,
+        "source_identity": "first-release refusal surface: amitriptyline / CYP2D6 / CYP2D6 Indeterminate (PHENOTYPE_NOT_REPRESENTABLE)"
+      },
+      "role": "EXPERT_HOLDOUT",
+      "schema_version": "pgx-wp18-validation-case/1",
+      "title": "refuse amitriptyline / CYP2D6 / CYP2D6 Indeterminate",
+      "visibility": "RESTRICTED"
+    }
+  }
+]

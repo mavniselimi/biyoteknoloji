@@ -1,0 +1,80 @@
+{
+  "artifact_count": 6,
+  "artifacts": [
+    {
+      "byte_length": 33487,
+      "relative_path": "candidate-ruleset.json",
+      "sha256": "sha256:1438c1018f3054e518651ac959c0a7f1155307377a157312e10c4728640633d0"
+    },
+    {
+      "byte_length": 131383,
+      "relative_path": "case-catalogue.json",
+      "sha256": "sha256:01217eec3ff29bdfe4d9f7ef5a0ec588e2e183b16608cad45244b643e706c600"
+    },
+    {
+      "byte_length": 633,
+      "relative_path": "separation-audit.json",
+      "sha256": "sha256:f77944c6e68d8f28628a517946d248afe9ec80265e310afbb5d3df3d1bd2670b"
+    },
+    {
+      "byte_length": 28122,
+      "relative_path": "evaluation-results.json",
+      "sha256": "sha256:74d1b7196884e0e47a57ef34e05093548435cd0170a4abb9f1fba7a46760b1eb"
+    },
+    {
+      "byte_length": 35717,
+      "relative_path": "access-ledger.json",
+      "sha256": "sha256:9376ed77e2f01834ff3cc4da030d412c4b5697247e5415bdf355ea9ecadef289"
+    },
+    {
+      "byte_length": 1505,
+      "relative_path": "evaluation-summary.json",
+      "sha256": "sha256:39ef8cd7e0d0d9cf1d21f8bf94f82b56abe4556e60389cf5098b3103e5c2c827"
+    }
+  ],
+  "authority_state": "INTERNAL_VALIDATION",
+  "built_at": "2026-09-06T12:31:55Z",
+  "citations": [
+    "Annotation of CPIC Guideline for clopidogrel and CYP2C19 (2022 Update), PMID 35034351, DOI 10.1002/cpt.2526",
+    "Annotation of CPIC Guideline for lansoprazole, omeprazole, pantoprazole and CYP2C19 (August 2020 (published 2021)), PMID 32770672, DOI 10.1002/cpt.2015",
+    "Annotation of CPIC Guideline for amitriptyline and CYP2C19, CYP2D6 (2016 Update, with the October 2019 CYP2D6 genotype-to-phenotype translation change applied by CPIC after publication), PMID 27997040, DOI 10.1002/cpt.597",
+    "Annotation of CPIC Guideline for codeine and CYP2D6 (December 2020 opioids guideline (supersedes the 2014 and 2012 codeine guidelines)), PMID 33387367, DOI 10.1002/cpt.2149"
+  ],
+  "is_governed_release": false,
+  "permitted_channels": [
+    "DEMO",
+    "VALIDATION"
+  ],
+  "release_key": "PGX-CANDIDATE-RELEASE-WAVE03",
+  "release_version": "pgx-wave03-candidate-release/1",
+  "review_state": "PENDING_EXTERNAL_EXPERT_REVIEW",
+  "scope_note": "A candidate release. It is not a governed release bundle, is not registered with WP-13, is executable in DEMO and VALIDATION only, and has been reviewed by nobody outside this project.",
+  "summary": {
+    "authority_state": "INTERNAL_VALIDATION",
+    "case_total": 56,
+    "catalogue_limitations": [
+      "one process authored the candidate rules, these cases and their expected answers; no partition here is independent of the build it tests, and a passing separation audit says the partitions do not leak into each other, not that any of them is independent evidence",
+      "the INTERNAL_HOLDOUT partition tests against the guideline's joint table, which no candidate rule encodes; that makes it a stronger check than the development partition and still not an external one",
+      "the EXPERT_HOLDOUT partition is sealed and was not evaluated in this wave; it is reserved so that a later external reviewer has material this build has not been scored against",
+      "an external expert should bring their own cases: a catalogue this project wrote cannot tell that project what it failed to think of"
+    ],
+    "catalogue_version": "pgx-wave03-candidate-cases/1",
+    "development_count": 23,
+    "evaluated_count": 43,
+    "evaluation_version": "pgx-wave03-candidate-evaluation/1",
+    "expert_holdout_count": 13,
+    "expert_payloads_read": 0,
+    "failed_count": 0,
+    "internal_holdout_count": 20,
+    "ledger_chain_broken_at": null,
+    "ledger_chain_ok": true,
+    "passed_count": 43,
+    "permitted_channels": [
+      "DEMO",
+      "VALIDATION"
+    ],
+    "review_state": "PENDING_EXTERNAL_EXPERT_REVIEW",
+    "ruleset_content_hash": "sha256:47e376610d4a928109d72f6a9ead14a1d1025b8d776b9d1aaf8db6d468915511",
+    "separation_issue_count": 0
+  }
+}

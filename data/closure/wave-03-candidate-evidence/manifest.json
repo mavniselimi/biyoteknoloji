@@ -1,0 +1,84 @@
+{
+  "artifact_count": 10,
+  "artifacts": [
+    {
+      "byte_length": 1717,
+      "relative_path": "licence-bases.json",
+      "sha256": "sha256:5e6c7e4ae1e025fd919e56f5aca275c692122195fe8c64eae7453b72cd67a4d5"
+    },
+    {
+      "byte_length": 1266,
+      "relative_path": "interfaces.json",
+      "sha256": "sha256:a230e12c9ea9e8c2f65000ea7457699d0f1015b66242734e9d1d410498b468d3"
+    },
+    {
+      "byte_length": 3385,
+      "relative_path": "retrievals.json",
+      "sha256": "sha256:a7717cd379a423f2b473020f8b18cc0e95ab405059fcdd6d0ca33446573d2902"
+    },
+    {
+      "byte_length": 18536,
+      "relative_path": "source-rows.json",
+      "sha256": "sha256:103510a24d06210ace91dba4246cd770977659f8f169a990a96696e290ab5247"
+    },
+    {
+      "byte_length": 5912,
+      "relative_path": "amitriptyline-joint-table.json",
+      "sha256": "sha256:83561b096f13b4f9000ea8f6ea038af0929be05d3ac7571cdc41602ac8b8ce5d"
+    },
+    {
+      "byte_length": 5010,
+      "relative_path": "unrepresentable-rows.json",
+      "sha256": "sha256:2d113821cd7d956c62a721869d328b4bf14a0c19f1af8a16343c930050bb79f3"
+    },
+    {
+      "byte_length": 19037,
+      "relative_path": "curations.json",
+      "sha256": "sha256:b34ff1631dc12e364dfdc3495426b3c1a38406793691e2fccf616ffb6e6dc7ca"
+    },
+    {
+      "byte_length": 5042,
+      "relative_path": "joint-consistency-checks.json",
+      "sha256": "sha256:94f79ce6ac00b05c974a89f368e285728fcb5b484c7e9f7e8daf28f71ab1cc7d"
+    },
+    {
+      "byte_length": 5350,
+      "relative_path": "refusals.json",
+      "sha256": "sha256:dce18d3f206eaec73871442df9d476ff7654c5a53efdc2b6730bcc359f21e604"
+    },
+    {
+      "byte_length": 33487,
+      "relative_path": "candidate-ruleset.json",
+      "sha256": "sha256:1438c1018f3054e518651ac959c0a7f1155307377a157312e10c4728640633d0"
+    }
+  ],
+  "authority_state": "SOURCE_GROUNDED_INTERNAL_DECISION",
+  "candidate_ruleset_content_hash": "sha256:47e376610d4a928109d72f6a9ead14a1d1025b8d776b9d1aaf8db6d468915511",
+  "content_hash": "sha256:7fb4ceb1afa7a9c23c4ec03203088e7f48186c4c97cb949eee9a0da835af6088",
+  "curation_count": 23,
+  "evidence_set_id": "PGX-CANDIDATE-EVIDENCE-WAVE03",
+  "evidence_set_version": "pgx-wave03-candidate-evidence/1",
+  "is_canonical_dataset": false,
+  "is_raw_snapshot": false,
+  "joint_check_count": 20,
+  "joint_understatement_count": 0,
+  "limitations": [
+    "no byte-level hash of the served document exists: the retrieval tool returns rendered page text, not the HTTP response body",
+    "no per-request timestamp exists: each retrieval records the date it happened on and a measured instant it provably preceded",
+    "no full text of any guideline, supplement or publication is stored in this repository; only the recommendation rows and the citation",
+    "no source's programmatic interface was called, and no page other than the ones named here was fetched",
+    "the reading is this project's own; none of the cited organizations has seen it, reviewed it, or endorsed it",
+    "this is not a WP-04 raw snapshot and must not be read as one: no acquisition run backs it and no SnapshotKind describes it",
+    "this is not a canonical dataset: it has not been through WP-06 normalization, identity allocation or duplicate resolution",
+    "the interpretation of each recommendation into an attention level is this project's own and has been reviewed by nobody outside it"
+  ],
+  "refusal_count": 13,
+  "retrieval_classification": "AGENT_ASSISTED_TARGETED_RETRIEVAL",
+  "retrieval_count": 4,
+  "review_state": "PENDING_EXTERNAL_EXPERT_REVIEW",
+  "rule_count": 23,
+  "sealed_at": "2026-09-06T12:26:02Z",
+  "source_row_count": 30,
+  "total_byte_count": 98742,
+  "unrepresentable_row_count": 7
+}

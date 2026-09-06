@@ -1,0 +1,162 @@
+[
+  {
+    "combined_level": "HIGH",
+    "cyp2c19_phenotype": "ULTRARAPID",
+    "cyp2d6_phenotype": "ULTRARAPID",
+    "joint_level": "HIGH",
+    "joint_recommendation": "Avoid amitriptyline use.",
+    "understates": false
+  },
+  {
+    "combined_level": "HIGH",
+    "cyp2c19_phenotype": "RAPID",
+    "cyp2d6_phenotype": "ULTRARAPID",
+    "joint_level": "HIGH",
+    "joint_recommendation": "Avoid amitriptyline use.",
+    "understates": false
+  },
+  {
+    "combined_level": "HIGH",
+    "cyp2c19_phenotype": "ULTRARAPID",
+    "cyp2d6_phenotype": "NORMAL",
+    "joint_level": "HIGH",
+    "joint_recommendation": "Consider alternative drug not metabolized by CYP2C19.",
+    "understates": false
+  },
+  {
+    "combined_level": "HIGH",
+    "cyp2c19_phenotype": "RAPID",
+    "cyp2d6_phenotype": "NORMAL",
+    "joint_level": "HIGH",
+    "joint_recommendation": "Consider alternative drug not metabolized by CYP2C19.",
+    "understates": false
+  },
+  {
+    "combined_level": "HIGH",
+    "cyp2c19_phenotype": "ULTRARAPID",
+    "cyp2d6_phenotype": "INTERMEDIATE",
+    "joint_level": "HIGH",
+    "joint_recommendation": "Consider alternative drug not metabolized by CYP2C19.",
+    "understates": false
+  },
+  {
+    "combined_level": "HIGH",
+    "cyp2c19_phenotype": "RAPID",
+    "cyp2d6_phenotype": "INTERMEDIATE",
+    "joint_level": "HIGH",
+    "joint_recommendation": "Consider alternative drug not metabolized by CYP2C19.",
+    "understates": false
+  },
+  {
+    "combined_level": "HIGH",
+    "cyp2c19_phenotype": "ULTRARAPID",
+    "cyp2d6_phenotype": "POOR",
+    "joint_level": "HIGH",
+    "joint_recommendation": "Avoid amitriptyline use.",
+    "understates": false
+  },
+  {
+    "combined_level": "HIGH",
+    "cyp2c19_phenotype": "RAPID",
+    "cyp2d6_phenotype": "POOR",
+    "joint_level": "HIGH",
+    "joint_recommendation": "Avoid amitriptyline use.",
+    "understates": false
+  },
+  {
+    "combined_level": "HIGH",
+    "cyp2c19_phenotype": "NORMAL",
+    "cyp2d6_phenotype": "ULTRARAPID",
+    "joint_level": "HIGH",
+    "joint_recommendation": "Avoid amitriptyline use. If amitriptyline is warranted, consider titrating to a higher target dose (compared to normal metabolizers).",
+    "understates": false
+  },
+  {
+    "combined_level": "NO_ACTIVE_ATTENTION",
+    "cyp2c19_phenotype": "NORMAL",
+    "cyp2d6_phenotype": "NORMAL",
+    "joint_level": "NO_ACTIVE_ATTENTION",
+    "joint_recommendation": "Initiate therapy with recommended starting dose.",
+    "understates": false
+  },
+  {
+    "combined_level": "MEDIUM",
+    "cyp2c19_phenotype": "NORMAL",
+    "cyp2d6_phenotype": "INTERMEDIATE",
+    "joint_level": "MEDIUM",
+    "joint_recommendation": "Consider 25% reduction of recommended starting dose.",
+    "understates": false
+  },
+  {
+    "combined_level": "HIGH",
+    "cyp2c19_phenotype": "NORMAL",
+    "cyp2d6_phenotype": "POOR",
+    "joint_level": "HIGH",
+    "joint_recommendation": "Avoid amitriptyline use. If amitriptyline is warranted, consider 50% reduction of recommended starting dose.",
+    "understates": false
+  },
+  {
+    "combined_level": "HIGH",
+    "cyp2c19_phenotype": "INTERMEDIATE",
+    "cyp2d6_phenotype": "ULTRARAPID",
+    "joint_level": "HIGH",
+    "joint_recommendation": "Avoid amitriptyline use.",
+    "understates": false
+  },
+  {
+    "combined_level": "NO_ACTIVE_ATTENTION",
+    "cyp2c19_phenotype": "INTERMEDIATE",
+    "cyp2d6_phenotype": "NORMAL",
+    "joint_level": "NO_ACTIVE_ATTENTION",
+    "joint_recommendation": "Initiate therapy with recommended starting dose.",
+    "understates": false
+  },
+  {
+    "combined_level": "MEDIUM",
+    "cyp2c19_phenotype": "INTERMEDIATE",
+    "cyp2d6_phenotype": "INTERMEDIATE",
+    "joint_level": "MEDIUM",
+    "joint_recommendation": "Consider 25% reduction of recommended starting dose.",
+    "understates": false
+  },
+  {
+    "combined_level": "HIGH",
+    "cyp2c19_phenotype": "INTERMEDIATE",
+    "cyp2d6_phenotype": "POOR",
+    "joint_level": "HIGH",
+    "joint_recommendation": "Avoid amitriptyline use. If amitriptyline is warranted, consider 50% reduction of recommended starting dose.",
+    "understates": false
+  },
+  {
+    "combined_level": "HIGH",
+    "cyp2c19_phenotype": "POOR",
+    "cyp2d6_phenotype": "ULTRARAPID",
+    "joint_level": "HIGH",
+    "joint_recommendation": "Avoid amitriptyline use.",
+    "understates": false
+  },
+  {
+    "combined_level": "HIGH",
+    "cyp2c19_phenotype": "POOR",
+    "cyp2d6_phenotype": "NORMAL",
+    "joint_level": "HIGH",
+    "joint_recommendation": "Avoid amitriptyline use. If amitriptyline is warranted, consider a 50% reduction of recommended starting dose.",
+    "understates": false
+  },
+  {
+    "combined_level": "HIGH",
+    "cyp2c19_phenotype": "POOR",
+    "cyp2d6_phenotype": "INTERMEDIATE",
+    "joint_level": "HIGH",
+    "joint_recommendation": "Avoid amitriptyline use.",
+    "understates": false
+  },
+  {
+    "combined_level": "HIGH",
+    "cyp2c19_phenotype": "POOR",
+    "cyp2d6_phenotype": "POOR",
+    "joint_level": "HIGH",
+    "joint_recommendation": "Avoid amitriptyline use.",
+    "understates": false
+  }
+]

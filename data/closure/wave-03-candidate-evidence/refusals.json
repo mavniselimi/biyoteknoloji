@@ -1,0 +1,106 @@
+[
+  {
+    "drug": "clopidogrel",
+    "gene": "CYP2C19",
+    "project_phenotype": null,
+    "reason": "the project's phenotype vocabulary has five determinate members and no member for a likely assignment. Mapping it to INTERMEDIATE would assert a determination the source explicitly declined to make, and the guideline's own footnote says 'likely' marks uncertainty in the phenotype assignment",
+    "reason_code": "PHENOTYPE_NOT_REPRESENTABLE",
+    "source_phenotype": "CYP2C19 likely intermediate metabolizer"
+  },
+  {
+    "drug": "clopidogrel",
+    "gene": "CYP2C19",
+    "project_phenotype": null,
+    "reason": "same as likely intermediate: there is no member for a likely assignment, and POOR would overstate what the source concluded",
+    "reason_code": "PHENOTYPE_NOT_REPRESENTABLE",
+    "source_phenotype": "CYP2C19 likely poor metabolizer"
+  },
+  {
+    "drug": "clopidogrel",
+    "gene": "CYP2C19",
+    "project_phenotype": "INDETERMINATE",
+    "reason": "the source records no recommendation for it, and the project's condition grammar refuses INDETERMINATE as a rule phenotype because it describes the input rather than a phenotype a rule is about",
+    "reason_code": "PHENOTYPE_NOT_REPRESENTABLE",
+    "source_phenotype": "Indeterminate"
+  },
+  {
+    "drug": "omeprazole",
+    "gene": "CYP2C19",
+    "project_phenotype": null,
+    "reason": "the project's phenotype vocabulary has five determinate members and no member for a likely assignment. Mapping it to INTERMEDIATE would assert a determination the source explicitly declined to make, and the guideline's own footnote says 'likely' marks uncertainty in the phenotype assignment",
+    "reason_code": "PHENOTYPE_NOT_REPRESENTABLE",
+    "source_phenotype": "CYP2C19 likely intermediate metabolizer"
+  },
+  {
+    "drug": "omeprazole",
+    "gene": "CYP2C19",
+    "project_phenotype": null,
+    "reason": "same as likely intermediate: there is no member for a likely assignment, and POOR would overstate what the source concluded",
+    "reason_code": "PHENOTYPE_NOT_REPRESENTABLE",
+    "source_phenotype": "CYP2C19 likely poor metabolizer"
+  },
+  {
+    "drug": "omeprazole",
+    "gene": "CYP2C19",
+    "project_phenotype": "INDETERMINATE",
+    "reason": "the source records no recommendation for it, and the project's condition grammar refuses INDETERMINATE as a rule phenotype because it describes the input rather than a phenotype a rule is about",
+    "reason_code": "PHENOTYPE_NOT_REPRESENTABLE",
+    "source_phenotype": "Indeterminate"
+  },
+  {
+    "drug": "codeine",
+    "gene": "CYP2D6",
+    "project_phenotype": "INDETERMINATE",
+    "reason": "same as Indeterminate: the source states 'No recommendation', which is not a finding to encode",
+    "reason_code": "PHENOTYPE_NOT_REPRESENTABLE",
+    "source_phenotype": "CYP2D6 Indeterminate"
+  },
+  {
+    "drug": "codeine",
+    "gene": "CYP2D6",
+    "project_phenotype": "RAPID",
+    "reason": "CPIC's CYP2D6 phenotype model has no rapid metabolizer band; the guideline table states ultrarapid, normal, intermediate and poor only. The project's vocabulary has a RAPID member, but using it here would present an answer the regulator evidence does not contain",
+    "reason_code": "AXIS_ABSENT_FROM_SOURCE",
+    "source_phenotype": "(no CYP2D6 rapid metabolizer row exists)"
+  },
+  {
+    "drug": "amitriptyline",
+    "gene": "CYP2D6",
+    "project_phenotype": "RAPID",
+    "reason": "CPIC's CYP2D6 phenotype model has no rapid metabolizer band; the guideline table states ultrarapid, normal, intermediate and poor only. The project's vocabulary has a RAPID member, but using it here would present an answer the regulator evidence does not contain",
+    "reason_code": "AXIS_ABSENT_FROM_SOURCE",
+    "source_phenotype": "(no CYP2D6 rapid metabolizer row exists)"
+  },
+  {
+    "drug": "amitriptyline",
+    "gene": "CYP2C19",
+    "project_phenotype": null,
+    "reason": "the 2016 tricyclic antidepressant guideline predates CPIC's likely-phenotype labels and states no row for this phenotype; there is nothing to carry, and this project may not extrapolate one from a neighbouring row",
+    "reason_code": "SOURCE_ROW_ABSENT",
+    "source_phenotype": "CYP2C19 likely intermediate metabolizer"
+  },
+  {
+    "drug": "amitriptyline",
+    "gene": "CYP2C19",
+    "project_phenotype": null,
+    "reason": "the 2016 tricyclic antidepressant guideline predates CPIC's likely-phenotype labels and states no row for this phenotype; there is nothing to carry, and this project may not extrapolate one from a neighbouring row",
+    "reason_code": "SOURCE_ROW_ABSENT",
+    "source_phenotype": "CYP2C19 likely poor metabolizer"
+  },
+  {
+    "drug": "amitriptyline",
+    "gene": "CYP2C19",
+    "project_phenotype": "INDETERMINATE",
+    "reason": "the source records no recommendation for it, and the project's condition grammar refuses INDETERMINATE as a rule phenotype because it describes the input rather than a phenotype a rule is about",
+    "reason_code": "PHENOTYPE_NOT_REPRESENTABLE",
+    "source_phenotype": "Indeterminate"
+  },
+  {
+    "drug": "amitriptyline",
+    "gene": "CYP2D6",
+    "project_phenotype": "INDETERMINATE",
+    "reason": "same as Indeterminate: the source states 'No recommendation', which is not a finding to encode",
+    "reason_code": "PHENOTYPE_NOT_REPRESENTABLE",
+    "source_phenotype": "CYP2D6 Indeterminate"
+  }
+]

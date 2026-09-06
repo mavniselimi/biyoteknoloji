@@ -1,0 +1,166 @@
+[
+  {
+    "classification": "Optional",
+    "cyp2c19_project_phenotypes": [
+      "ULTRARAPID",
+      "RAPID"
+    ],
+    "cyp2c19_source_phenotype": "CYP2C19 Ultrarapid or Rapid metabolizer",
+    "cyp2d6_project_phenotype": "ULTRARAPID",
+    "cyp2d6_source_phenotype": "CYP2D6 Ultrarapid metabolizer",
+    "recommendation_verbatim": "Avoid amitriptyline use."
+  },
+  {
+    "classification": "Optional",
+    "cyp2c19_project_phenotypes": [
+      "ULTRARAPID",
+      "RAPID"
+    ],
+    "cyp2c19_source_phenotype": "CYP2C19 Ultrarapid or Rapid metabolizer",
+    "cyp2d6_project_phenotype": "NORMAL",
+    "cyp2d6_source_phenotype": "CYP2D6 Normal metabolizer",
+    "recommendation_verbatim": "Consider alternative drug not metabolized by CYP2C19."
+  },
+  {
+    "classification": "Optional",
+    "cyp2c19_project_phenotypes": [
+      "ULTRARAPID",
+      "RAPID"
+    ],
+    "cyp2c19_source_phenotype": "CYP2C19 Ultrarapid or Rapid metabolizer",
+    "cyp2d6_project_phenotype": "INTERMEDIATE",
+    "cyp2d6_source_phenotype": "CYP2D6 Intermediate metabolizer",
+    "recommendation_verbatim": "Consider alternative drug not metabolized by CYP2C19."
+  },
+  {
+    "classification": "Optional",
+    "cyp2c19_project_phenotypes": [
+      "ULTRARAPID",
+      "RAPID"
+    ],
+    "cyp2c19_source_phenotype": "CYP2C19 Ultrarapid or Rapid metabolizer",
+    "cyp2d6_project_phenotype": "POOR",
+    "cyp2d6_source_phenotype": "CYP2D6 Poor metabolizer",
+    "recommendation_verbatim": "Avoid amitriptyline use."
+  },
+  {
+    "classification": "Strong",
+    "cyp2c19_project_phenotypes": [
+      "NORMAL"
+    ],
+    "cyp2c19_source_phenotype": "CYP2C19 Normal metabolizer",
+    "cyp2d6_project_phenotype": "ULTRARAPID",
+    "cyp2d6_source_phenotype": "CYP2D6 Ultrarapid metabolizer",
+    "recommendation_verbatim": "Avoid amitriptyline use. If amitriptyline is warranted, consider titrating to a higher target dose (compared to normal metabolizers)."
+  },
+  {
+    "classification": "Strong",
+    "cyp2c19_project_phenotypes": [
+      "NORMAL"
+    ],
+    "cyp2c19_source_phenotype": "CYP2C19 Normal metabolizer",
+    "cyp2d6_project_phenotype": "NORMAL",
+    "cyp2d6_source_phenotype": "CYP2D6 Normal metabolizer",
+    "recommendation_verbatim": "Initiate therapy with recommended starting dose."
+  },
+  {
+    "classification": "Moderate",
+    "cyp2c19_project_phenotypes": [
+      "NORMAL"
+    ],
+    "cyp2c19_source_phenotype": "CYP2C19 Normal metabolizer",
+    "cyp2d6_project_phenotype": "INTERMEDIATE",
+    "cyp2d6_source_phenotype": "CYP2D6 Intermediate metabolizer",
+    "recommendation_verbatim": "Consider 25% reduction of recommended starting dose."
+  },
+  {
+    "classification": "Strong",
+    "cyp2c19_project_phenotypes": [
+      "NORMAL"
+    ],
+    "cyp2c19_source_phenotype": "CYP2C19 Normal metabolizer",
+    "cyp2d6_project_phenotype": "POOR",
+    "cyp2d6_source_phenotype": "CYP2D6 Poor metabolizer",
+    "recommendation_verbatim": "Avoid amitriptyline use. If amitriptyline is warranted, consider 50% reduction of recommended starting dose."
+  },
+  {
+    "classification": "Optional",
+    "cyp2c19_project_phenotypes": [
+      "INTERMEDIATE"
+    ],
+    "cyp2c19_source_phenotype": "CYP2C19 Intermediate metabolizer",
+    "cyp2d6_project_phenotype": "ULTRARAPID",
+    "cyp2d6_source_phenotype": "CYP2D6 Ultrarapid metabolizer",
+    "recommendation_verbatim": "Avoid amitriptyline use."
+  },
+  {
+    "classification": "Strong",
+    "cyp2c19_project_phenotypes": [
+      "INTERMEDIATE"
+    ],
+    "cyp2c19_source_phenotype": "CYP2C19 Intermediate metabolizer",
+    "cyp2d6_project_phenotype": "NORMAL",
+    "cyp2d6_source_phenotype": "CYP2D6 Normal metabolizer",
+    "recommendation_verbatim": "Initiate therapy with recommended starting dose."
+  },
+  {
+    "classification": "Optional",
+    "cyp2c19_project_phenotypes": [
+      "INTERMEDIATE"
+    ],
+    "cyp2c19_source_phenotype": "CYP2C19 Intermediate metabolizer",
+    "cyp2d6_project_phenotype": "INTERMEDIATE",
+    "cyp2d6_source_phenotype": "CYP2D6 Intermediate metabolizer",
+    "recommendation_verbatim": "Consider 25% reduction of recommended starting dose."
+  },
+  {
+    "classification": "Optional",
+    "cyp2c19_project_phenotypes": [
+      "INTERMEDIATE"
+    ],
+    "cyp2c19_source_phenotype": "CYP2C19 Intermediate metabolizer",
+    "cyp2d6_project_phenotype": "POOR",
+    "cyp2d6_source_phenotype": "CYP2D6 Poor metabolizer",
+    "recommendation_verbatim": "Avoid amitriptyline use. If amitriptyline is warranted, consider 50% reduction of recommended starting dose."
+  },
+  {
+    "classification": "Optional",
+    "cyp2c19_project_phenotypes": [
+      "POOR"
+    ],
+    "cyp2c19_source_phenotype": "CYP2C19 Poor metabolizer",
+    "cyp2d6_project_phenotype": "ULTRARAPID",
+    "cyp2d6_source_phenotype": "CYP2D6 Ultrarapid metabolizer",
+    "recommendation_verbatim": "Avoid amitriptyline use."
+  },
+  {
+    "classification": "Moderate",
+    "cyp2c19_project_phenotypes": [
+      "POOR"
+    ],
+    "cyp2c19_source_phenotype": "CYP2C19 Poor metabolizer",
+    "cyp2d6_project_phenotype": "NORMAL",
+    "cyp2d6_source_phenotype": "CYP2D6 Normal metabolizer",
+    "recommendation_verbatim": "Avoid amitriptyline use. If amitriptyline is warranted, consider a 50% reduction of recommended starting dose."
+  },
+  {
+    "classification": "Optional",
+    "cyp2c19_project_phenotypes": [
+      "POOR"
+    ],
+    "cyp2c19_source_phenotype": "CYP2C19 Poor metabolizer",
+    "cyp2d6_project_phenotype": "INTERMEDIATE",
+    "cyp2d6_source_phenotype": "CYP2D6 Intermediate metabolizer",
+    "recommendation_verbatim": "Avoid amitriptyline use."
+  },
+  {
+    "classification": "Optional",
+    "cyp2c19_project_phenotypes": [
+      "POOR"
+    ],
+    "cyp2c19_source_phenotype": "CYP2C19 Poor metabolizer",
+    "cyp2d6_project_phenotype": "POOR",
+    "cyp2d6_source_phenotype": "CYP2D6 Poor metabolizer",
+    "recommendation_verbatim": "Avoid amitriptyline use."
+  }
+]

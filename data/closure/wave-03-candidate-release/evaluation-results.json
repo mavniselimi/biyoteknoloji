@@ -1,0 +1,831 @@
+[
+  {
+    "case_id": "PGX-VAL-W03-DEV-CLOPIDOGREL-CYP2C19-ULTRARAPID",
+    "claim_supported": "SOFTWARE_VERIFICATION",
+    "detail": "expected NO_ACTIVE_ATTENTION, observed NO_ACTIVE_ATTENTION",
+    "evaluated": true,
+    "observed": {
+      "attention_level": "NO_ACTIVE_ATTENTION",
+      "axes_without_a_rule": [],
+      "detail": "precedence maximum over 1 matched candidate rule(s)",
+      "matched_rule_keys": [
+        "CANDIDATE-RULE:clopidogrel|CYP2C19|ULTRARAPID"
+      ],
+      "outcome": "ATTENTION"
+    },
+    "passed": true,
+    "role": "DEVELOPMENT"
+  },
+  {
+    "case_id": "PGX-VAL-W03-DEV-CLOPIDOGREL-CYP2C19-RAPID",
+    "claim_supported": "SOFTWARE_VERIFICATION",
+    "detail": "expected NO_ACTIVE_ATTENTION, observed NO_ACTIVE_ATTENTION",
+    "evaluated": true,
+    "observed": {
+      "attention_level": "NO_ACTIVE_ATTENTION",
+      "axes_without_a_rule": [],
+      "detail": "precedence maximum over 1 matched candidate rule(s)",
+      "matched_rule_keys": [
+        "CANDIDATE-RULE:clopidogrel|CYP2C19|RAPID"
+      ],
+      "outcome": "ATTENTION"
+    },
+    "passed": true,
+    "role": "DEVELOPMENT"
+  },
+  {
+    "case_id": "PGX-VAL-W03-DEV-CLOPIDOGREL-CYP2C19-NORMAL",
+    "claim_supported": "SOFTWARE_VERIFICATION",
+    "detail": "expected NO_ACTIVE_ATTENTION, observed NO_ACTIVE_ATTENTION",
+    "evaluated": true,
+    "observed": {
+      "attention_level": "NO_ACTIVE_ATTENTION",
+      "axes_without_a_rule": [],
+      "detail": "precedence maximum over 1 matched candidate rule(s)",
+      "matched_rule_keys": [
+        "CANDIDATE-RULE:clopidogrel|CYP2C19|NORMAL"
+      ],
+      "outcome": "ATTENTION"
+    },
+    "passed": true,
+    "role": "DEVELOPMENT"
+  },
+  {
+    "case_id": "PGX-VAL-W03-DEV-CLOPIDOGREL-CYP2C19-INTERMEDIATE",
+    "claim_supported": "SOFTWARE_VERIFICATION",
+    "detail": "expected HIGH, observed HIGH",
+    "evaluated": true,
+    "observed": {
+      "attention_level": "HIGH",
+      "axes_without_a_rule": [],
+      "detail": "precedence maximum over 1 matched candidate rule(s)",
+      "matched_rule_keys": [
+        "CANDIDATE-RULE:clopidogrel|CYP2C19|INTERMEDIATE"
+      ],
+      "outcome": "ATTENTION"
+    },
+    "passed": true,
+    "role": "DEVELOPMENT"
+  },
+  {
+    "case_id": "PGX-VAL-W03-DEV-CLOPIDOGREL-CYP2C19-POOR",
+    "claim_supported": "SOFTWARE_VERIFICATION",
+    "detail": "expected HIGH, observed HIGH",
+    "evaluated": true,
+    "observed": {
+      "attention_level": "HIGH",
+      "axes_without_a_rule": [],
+      "detail": "precedence maximum over 1 matched candidate rule(s)",
+      "matched_rule_keys": [
+        "CANDIDATE-RULE:clopidogrel|CYP2C19|POOR"
+      ],
+      "outcome": "ATTENTION"
+    },
+    "passed": true,
+    "role": "DEVELOPMENT"
+  },
+  {
+    "case_id": "PGX-VAL-W03-DEV-OMEPRAZOLE-CYP2C19-ULTRARAPID",
+    "claim_supported": "SOFTWARE_VERIFICATION",
+    "detail": "expected MEDIUM, observed MEDIUM",
+    "evaluated": true,
+    "observed": {
+      "attention_level": "MEDIUM",
+      "axes_without_a_rule": [],
+      "detail": "precedence maximum over 1 matched candidate rule(s)",
+      "matched_rule_keys": [
+        "CANDIDATE-RULE:omeprazole|CYP2C19|ULTRARAPID"
+      ],
+      "outcome": "ATTENTION"
+    },
+    "passed": true,
+    "role": "DEVELOPMENT"
+  },
+  {
+    "case_id": "PGX-VAL-W03-DEV-OMEPRAZOLE-CYP2C19-RAPID",
+    "claim_supported": "SOFTWARE_VERIFICATION",
+    "detail": "expected LOW, observed LOW",
+    "evaluated": true,
+    "observed": {
+      "attention_level": "LOW",
+      "axes_without_a_rule": [],
+      "detail": "precedence maximum over 1 matched candidate rule(s)",
+      "matched_rule_keys": [
+        "CANDIDATE-RULE:omeprazole|CYP2C19|RAPID"
+      ],
+      "outcome": "ATTENTION"
+    },
+    "passed": true,
+    "role": "DEVELOPMENT"
+  },
+  {
+    "case_id": "PGX-VAL-W03-DEV-OMEPRAZOLE-CYP2C19-NORMAL",
+    "claim_supported": "SOFTWARE_VERIFICATION",
+    "detail": "expected LOW, observed LOW",
+    "evaluated": true,
+    "observed": {
+      "attention_level": "LOW",
+      "axes_without_a_rule": [],
+      "detail": "precedence maximum over 1 matched candidate rule(s)",
+      "matched_rule_keys": [
+        "CANDIDATE-RULE:omeprazole|CYP2C19|NORMAL"
+      ],
+      "outcome": "ATTENTION"
+    },
+    "passed": true,
+    "role": "DEVELOPMENT"
+  },
+  {
+    "case_id": "PGX-VAL-W03-DEV-OMEPRAZOLE-CYP2C19-INTERMEDIATE",
+    "claim_supported": "SOFTWARE_VERIFICATION",
+    "detail": "expected LOW, observed LOW",
+    "evaluated": true,
+    "observed": {
+      "attention_level": "LOW",
+      "axes_without_a_rule": [],
+      "detail": "precedence maximum over 1 matched candidate rule(s)",
+      "matched_rule_keys": [
+        "CANDIDATE-RULE:omeprazole|CYP2C19|INTERMEDIATE"
+      ],
+      "outcome": "ATTENTION"
+    },
+    "passed": true,
+    "role": "DEVELOPMENT"
+  },
+  {
+    "case_id": "PGX-VAL-W03-DEV-OMEPRAZOLE-CYP2C19-POOR",
+    "claim_supported": "SOFTWARE_VERIFICATION",
+    "detail": "expected LOW, observed LOW",
+    "evaluated": true,
+    "observed": {
+      "attention_level": "LOW",
+      "axes_without_a_rule": [],
+      "detail": "precedence maximum over 1 matched candidate rule(s)",
+      "matched_rule_keys": [
+        "CANDIDATE-RULE:omeprazole|CYP2C19|POOR"
+      ],
+      "outcome": "ATTENTION"
+    },
+    "passed": true,
+    "role": "DEVELOPMENT"
+  },
+  {
+    "case_id": "PGX-VAL-W03-DEV-CODEINE-CYP2D6-ULTRARAPID",
+    "claim_supported": "SOFTWARE_VERIFICATION",
+    "detail": "expected HIGH, observed HIGH",
+    "evaluated": true,
+    "observed": {
+      "attention_level": "HIGH",
+      "axes_without_a_rule": [],
+      "detail": "precedence maximum over 1 matched candidate rule(s)",
+      "matched_rule_keys": [
+        "CANDIDATE-RULE:codeine|CYP2D6|ULTRARAPID"
+      ],
+      "outcome": "ATTENTION"
+    },
+    "passed": true,
+    "role": "DEVELOPMENT"
+  },
+  {
+    "case_id": "PGX-VAL-W03-DEV-CODEINE-CYP2D6-NORMAL",
+    "claim_supported": "SOFTWARE_VERIFICATION",
+    "detail": "expected NO_ACTIVE_ATTENTION, observed NO_ACTIVE_ATTENTION",
+    "evaluated": true,
+    "observed": {
+      "attention_level": "NO_ACTIVE_ATTENTION",
+      "axes_without_a_rule": [],
+      "detail": "precedence maximum over 1 matched candidate rule(s)",
+      "matched_rule_keys": [
+        "CANDIDATE-RULE:codeine|CYP2D6|NORMAL"
+      ],
+      "outcome": "ATTENTION"
+    },
+    "passed": true,
+    "role": "DEVELOPMENT"
+  },
+  {
+    "case_id": "PGX-VAL-W03-DEV-CODEINE-CYP2D6-INTERMEDIATE",
+    "claim_supported": "SOFTWARE_VERIFICATION",
+    "detail": "expected LOW, observed LOW",
+    "evaluated": true,
+    "observed": {
+      "attention_level": "LOW",
+      "axes_without_a_rule": [],
+      "detail": "precedence maximum over 1 matched candidate rule(s)",
+      "matched_rule_keys": [
+        "CANDIDATE-RULE:codeine|CYP2D6|INTERMEDIATE"
+      ],
+      "outcome": "ATTENTION"
+    },
+    "passed": true,
+    "role": "DEVELOPMENT"
+  },
+  {
+    "case_id": "PGX-VAL-W03-DEV-CODEINE-CYP2D6-POOR",
+    "claim_supported": "SOFTWARE_VERIFICATION",
+    "detail": "expected HIGH, observed HIGH",
+    "evaluated": true,
+    "observed": {
+      "attention_level": "HIGH",
+      "axes_without_a_rule": [],
+      "detail": "precedence maximum over 1 matched candidate rule(s)",
+      "matched_rule_keys": [
+        "CANDIDATE-RULE:codeine|CYP2D6|POOR"
+      ],
+      "outcome": "ATTENTION"
+    },
+    "passed": true,
+    "role": "DEVELOPMENT"
+  },
+  {
+    "case_id": "PGX-VAL-W03-DEV-AMITRIPTYLINE-CYP2D6-ULTRARAPID",
+    "claim_supported": "SOFTWARE_VERIFICATION",
+    "detail": "expected HIGH, observed HIGH",
+    "evaluated": true,
+    "observed": {
+      "attention_level": "HIGH",
+      "axes_without_a_rule": [],
+      "detail": "precedence maximum over 1 matched candidate rule(s)",
+      "matched_rule_keys": [
+        "CANDIDATE-RULE:amitriptyline|CYP2D6|ULTRARAPID"
+      ],
+      "outcome": "ATTENTION"
+    },
+    "passed": true,
+    "role": "DEVELOPMENT"
+  },
+  {
+    "case_id": "PGX-VAL-W03-DEV-AMITRIPTYLINE-CYP2D6-NORMAL",
+    "claim_supported": "SOFTWARE_VERIFICATION",
+    "detail": "expected NO_ACTIVE_ATTENTION, observed NO_ACTIVE_ATTENTION",
+    "evaluated": true,
+    "observed": {
+      "attention_level": "NO_ACTIVE_ATTENTION",
+      "axes_without_a_rule": [],
+      "detail": "precedence maximum over 1 matched candidate rule(s)",
+      "matched_rule_keys": [
+        "CANDIDATE-RULE:amitriptyline|CYP2D6|NORMAL"
+      ],
+      "outcome": "ATTENTION"
+    },
+    "passed": true,
+    "role": "DEVELOPMENT"
+  },
+  {
+    "case_id": "PGX-VAL-W03-DEV-AMITRIPTYLINE-CYP2D6-INTERMEDIATE",
+    "claim_supported": "SOFTWARE_VERIFICATION",
+    "detail": "expected MEDIUM, observed MEDIUM",
+    "evaluated": true,
+    "observed": {
+      "attention_level": "MEDIUM",
+      "axes_without_a_rule": [],
+      "detail": "precedence maximum over 1 matched candidate rule(s)",
+      "matched_rule_keys": [
+        "CANDIDATE-RULE:amitriptyline|CYP2D6|INTERMEDIATE"
+      ],
+      "outcome": "ATTENTION"
+    },
+    "passed": true,
+    "role": "DEVELOPMENT"
+  },
+  {
+    "case_id": "PGX-VAL-W03-DEV-AMITRIPTYLINE-CYP2D6-POOR",
+    "claim_supported": "SOFTWARE_VERIFICATION",
+    "detail": "expected HIGH, observed HIGH",
+    "evaluated": true,
+    "observed": {
+      "attention_level": "HIGH",
+      "axes_without_a_rule": [],
+      "detail": "precedence maximum over 1 matched candidate rule(s)",
+      "matched_rule_keys": [
+        "CANDIDATE-RULE:amitriptyline|CYP2D6|POOR"
+      ],
+      "outcome": "ATTENTION"
+    },
+    "passed": true,
+    "role": "DEVELOPMENT"
+  },
+  {
+    "case_id": "PGX-VAL-W03-DEV-AMITRIPTYLINE-CYP2C19-ULTRARAPID",
+    "claim_supported": "SOFTWARE_VERIFICATION",
+    "detail": "expected HIGH, observed HIGH",
+    "evaluated": true,
+    "observed": {
+      "attention_level": "HIGH",
+      "axes_without_a_rule": [],
+      "detail": "precedence maximum over 1 matched candidate rule(s)",
+      "matched_rule_keys": [
+        "CANDIDATE-RULE:amitriptyline|CYP2C19|ULTRARAPID"
+      ],
+      "outcome": "ATTENTION"
+    },
+    "passed": true,
+    "role": "DEVELOPMENT"
+  },
+  {
+    "case_id": "PGX-VAL-W03-DEV-AMITRIPTYLINE-CYP2C19-RAPID",
+    "claim_supported": "SOFTWARE_VERIFICATION",
+    "detail": "expected HIGH, observed HIGH",
+    "evaluated": true,
+    "observed": {
+      "attention_level": "HIGH",
+      "axes_without_a_rule": [],
+      "detail": "precedence maximum over 1 matched candidate rule(s)",
+      "matched_rule_keys": [
+        "CANDIDATE-RULE:amitriptyline|CYP2C19|RAPID"
+      ],
+      "outcome": "ATTENTION"
+    },
+    "passed": true,
+    "role": "DEVELOPMENT"
+  },
+  {
+    "case_id": "PGX-VAL-W03-DEV-AMITRIPTYLINE-CYP2C19-NORMAL",
+    "claim_supported": "SOFTWARE_VERIFICATION",
+    "detail": "expected NO_ACTIVE_ATTENTION, observed NO_ACTIVE_ATTENTION",
+    "evaluated": true,
+    "observed": {
+      "attention_level": "NO_ACTIVE_ATTENTION",
+      "axes_without_a_rule": [],
+      "detail": "precedence maximum over 1 matched candidate rule(s)",
+      "matched_rule_keys": [
+        "CANDIDATE-RULE:amitriptyline|CYP2C19|NORMAL"
+      ],
+      "outcome": "ATTENTION"
+    },
+    "passed": true,
+    "role": "DEVELOPMENT"
+  },
+  {
+    "case_id": "PGX-VAL-W03-DEV-AMITRIPTYLINE-CYP2C19-INTERMEDIATE",
+    "claim_supported": "SOFTWARE_VERIFICATION",
+    "detail": "expected NO_ACTIVE_ATTENTION, observed NO_ACTIVE_ATTENTION",
+    "evaluated": true,
+    "observed": {
+      "attention_level": "NO_ACTIVE_ATTENTION",
+      "axes_without_a_rule": [],
+      "detail": "precedence maximum over 1 matched candidate rule(s)",
+      "matched_rule_keys": [
+        "CANDIDATE-RULE:amitriptyline|CYP2C19|INTERMEDIATE"
+      ],
+      "outcome": "ATTENTION"
+    },
+    "passed": true,
+    "role": "DEVELOPMENT"
+  },
+  {
+    "case_id": "PGX-VAL-W03-DEV-AMITRIPTYLINE-CYP2C19-POOR",
+    "claim_supported": "SOFTWARE_VERIFICATION",
+    "detail": "expected HIGH, observed HIGH",
+    "evaluated": true,
+    "observed": {
+      "attention_level": "HIGH",
+      "axes_without_a_rule": [],
+      "detail": "precedence maximum over 1 matched candidate rule(s)",
+      "matched_rule_keys": [
+        "CANDIDATE-RULE:amitriptyline|CYP2C19|POOR"
+      ],
+      "outcome": "ATTENTION"
+    },
+    "passed": true,
+    "role": "DEVELOPMENT"
+  },
+  {
+    "case_id": "PGX-VAL-W03-INT-AMI-ULTRARAPID-ULTRARAPID",
+    "claim_supported": "INTERNAL_VALIDATION",
+    "detail": "guideline joint answer implies at least HIGH; combining the single-gene candidate rules gives HIGH",
+    "evaluated": true,
+    "observed": {
+      "attention_level": "HIGH",
+      "axes_without_a_rule": [],
+      "detail": "precedence maximum over 2 matched candidate rule(s)",
+      "matched_rule_keys": [
+        "CANDIDATE-RULE:amitriptyline|CYP2C19|ULTRARAPID",
+        "CANDIDATE-RULE:amitriptyline|CYP2D6|ULTRARAPID"
+      ],
+      "outcome": "ATTENTION"
+    },
+    "passed": true,
+    "role": "INTERNAL_HOLDOUT"
+  },
+  {
+    "case_id": "PGX-VAL-W03-INT-AMI-RAPID-ULTRARAPID",
+    "claim_supported": "INTERNAL_VALIDATION",
+    "detail": "guideline joint answer implies at least HIGH; combining the single-gene candidate rules gives HIGH",
+    "evaluated": true,
+    "observed": {
+      "attention_level": "HIGH",
+      "axes_without_a_rule": [],
+      "detail": "precedence maximum over 2 matched candidate rule(s)",
+      "matched_rule_keys": [
+        "CANDIDATE-RULE:amitriptyline|CYP2C19|RAPID",
+        "CANDIDATE-RULE:amitriptyline|CYP2D6|ULTRARAPID"
+      ],
+      "outcome": "ATTENTION"
+    },
+    "passed": true,
+    "role": "INTERNAL_HOLDOUT"
+  },
+  {
+    "case_id": "PGX-VAL-W03-INT-AMI-ULTRARAPID-NORMAL",
+    "claim_supported": "INTERNAL_VALIDATION",
+    "detail": "guideline joint answer implies at least HIGH; combining the single-gene candidate rules gives HIGH",
+    "evaluated": true,
+    "observed": {
+      "attention_level": "HIGH",
+      "axes_without_a_rule": [],
+      "detail": "precedence maximum over 2 matched candidate rule(s)",
+      "matched_rule_keys": [
+        "CANDIDATE-RULE:amitriptyline|CYP2C19|ULTRARAPID",
+        "CANDIDATE-RULE:amitriptyline|CYP2D6|NORMAL"
+      ],
+      "outcome": "ATTENTION"
+    },
+    "passed": true,
+    "role": "INTERNAL_HOLDOUT"
+  },
+  {
+    "case_id": "PGX-VAL-W03-INT-AMI-RAPID-NORMAL",
+    "claim_supported": "INTERNAL_VALIDATION",
+    "detail": "guideline joint answer implies at least HIGH; combining the single-gene candidate rules gives HIGH",
+    "evaluated": true,
+    "observed": {
+      "attention_level": "HIGH",
+      "axes_without_a_rule": [],
+      "detail": "precedence maximum over 2 matched candidate rule(s)",
+      "matched_rule_keys": [
+        "CANDIDATE-RULE:amitriptyline|CYP2C19|RAPID",
+        "CANDIDATE-RULE:amitriptyline|CYP2D6|NORMAL"
+      ],
+      "outcome": "ATTENTION"
+    },
+    "passed": true,
+    "role": "INTERNAL_HOLDOUT"
+  },
+  {
+    "case_id": "PGX-VAL-W03-INT-AMI-ULTRARAPID-INTERMEDIATE",
+    "claim_supported": "INTERNAL_VALIDATION",
+    "detail": "guideline joint answer implies at least HIGH; combining the single-gene candidate rules gives HIGH",
+    "evaluated": true,
+    "observed": {
+      "attention_level": "HIGH",
+      "axes_without_a_rule": [],
+      "detail": "precedence maximum over 2 matched candidate rule(s)",
+      "matched_rule_keys": [
+        "CANDIDATE-RULE:amitriptyline|CYP2C19|ULTRARAPID",
+        "CANDIDATE-RULE:amitriptyline|CYP2D6|INTERMEDIATE"
+      ],
+      "outcome": "ATTENTION"
+    },
+    "passed": true,
+    "role": "INTERNAL_HOLDOUT"
+  },
+  {
+    "case_id": "PGX-VAL-W03-INT-AMI-RAPID-INTERMEDIATE",
+    "claim_supported": "INTERNAL_VALIDATION",
+    "detail": "guideline joint answer implies at least HIGH; combining the single-gene candidate rules gives HIGH",
+    "evaluated": true,
+    "observed": {
+      "attention_level": "HIGH",
+      "axes_without_a_rule": [],
+      "detail": "precedence maximum over 2 matched candidate rule(s)",
+      "matched_rule_keys": [
+        "CANDIDATE-RULE:amitriptyline|CYP2C19|RAPID",
+        "CANDIDATE-RULE:amitriptyline|CYP2D6|INTERMEDIATE"
+      ],
+      "outcome": "ATTENTION"
+    },
+    "passed": true,
+    "role": "INTERNAL_HOLDOUT"
+  },
+  {
+    "case_id": "PGX-VAL-W03-INT-AMI-ULTRARAPID-POOR",
+    "claim_supported": "INTERNAL_VALIDATION",
+    "detail": "guideline joint answer implies at least HIGH; combining the single-gene candidate rules gives HIGH",
+    "evaluated": true,
+    "observed": {
+      "attention_level": "HIGH",
+      "axes_without_a_rule": [],
+      "detail": "precedence maximum over 2 matched candidate rule(s)",
+      "matched_rule_keys": [
+        "CANDIDATE-RULE:amitriptyline|CYP2C19|ULTRARAPID",
+        "CANDIDATE-RULE:amitriptyline|CYP2D6|POOR"
+      ],
+      "outcome": "ATTENTION"
+    },
+    "passed": true,
+    "role": "INTERNAL_HOLDOUT"
+  },
+  {
+    "case_id": "PGX-VAL-W03-INT-AMI-RAPID-POOR",
+    "claim_supported": "INTERNAL_VALIDATION",
+    "detail": "guideline joint answer implies at least HIGH; combining the single-gene candidate rules gives HIGH",
+    "evaluated": true,
+    "observed": {
+      "attention_level": "HIGH",
+      "axes_without_a_rule": [],
+      "detail": "precedence maximum over 2 matched candidate rule(s)",
+      "matched_rule_keys": [
+        "CANDIDATE-RULE:amitriptyline|CYP2C19|RAPID",
+        "CANDIDATE-RULE:amitriptyline|CYP2D6|POOR"
+      ],
+      "outcome": "ATTENTION"
+    },
+    "passed": true,
+    "role": "INTERNAL_HOLDOUT"
+  },
+  {
+    "case_id": "PGX-VAL-W03-INT-AMI-NORMAL-ULTRARAPID",
+    "claim_supported": "INTERNAL_VALIDATION",
+    "detail": "guideline joint answer implies at least HIGH; combining the single-gene candidate rules gives HIGH",
+    "evaluated": true,
+    "observed": {
+      "attention_level": "HIGH",
+      "axes_without_a_rule": [],
+      "detail": "precedence maximum over 2 matched candidate rule(s)",
+      "matched_rule_keys": [
+        "CANDIDATE-RULE:amitriptyline|CYP2C19|NORMAL",
+        "CANDIDATE-RULE:amitriptyline|CYP2D6|ULTRARAPID"
+      ],
+      "outcome": "ATTENTION"
+    },
+    "passed": true,
+    "role": "INTERNAL_HOLDOUT"
+  },
+  {
+    "case_id": "PGX-VAL-W03-INT-AMI-NORMAL-NORMAL",
+    "claim_supported": "INTERNAL_VALIDATION",
+    "detail": "guideline joint answer implies at least NO_ACTIVE_ATTENTION; combining the single-gene candidate rules gives NO_ACTIVE_ATTENTION",
+    "evaluated": true,
+    "observed": {
+      "attention_level": "NO_ACTIVE_ATTENTION",
+      "axes_without_a_rule": [],
+      "detail": "precedence maximum over 2 matched candidate rule(s)",
+      "matched_rule_keys": [
+        "CANDIDATE-RULE:amitriptyline|CYP2C19|NORMAL",
+        "CANDIDATE-RULE:amitriptyline|CYP2D6|NORMAL"
+      ],
+      "outcome": "ATTENTION"
+    },
+    "passed": true,
+    "role": "INTERNAL_HOLDOUT"
+  },
+  {
+    "case_id": "PGX-VAL-W03-INT-AMI-NORMAL-INTERMEDIATE",
+    "claim_supported": "INTERNAL_VALIDATION",
+    "detail": "guideline joint answer implies at least MEDIUM; combining the single-gene candidate rules gives MEDIUM",
+    "evaluated": true,
+    "observed": {
+      "attention_level": "MEDIUM",
+      "axes_without_a_rule": [],
+      "detail": "precedence maximum over 2 matched candidate rule(s)",
+      "matched_rule_keys": [
+        "CANDIDATE-RULE:amitriptyline|CYP2C19|NORMAL",
+        "CANDIDATE-RULE:amitriptyline|CYP2D6|INTERMEDIATE"
+      ],
+      "outcome": "ATTENTION"
+    },
+    "passed": true,
+    "role": "INTERNAL_HOLDOUT"
+  },
+  {
+    "case_id": "PGX-VAL-W03-INT-AMI-NORMAL-POOR",
+    "claim_supported": "INTERNAL_VALIDATION",
+    "detail": "guideline joint answer implies at least HIGH; combining the single-gene candidate rules gives HIGH",
+    "evaluated": true,
+    "observed": {
+      "attention_level": "HIGH",
+      "axes_without_a_rule": [],
+      "detail": "precedence maximum over 2 matched candidate rule(s)",
+      "matched_rule_keys": [
+        "CANDIDATE-RULE:amitriptyline|CYP2C19|NORMAL",
+        "CANDIDATE-RULE:amitriptyline|CYP2D6|POOR"
+      ],
+      "outcome": "ATTENTION"
+    },
+    "passed": true,
+    "role": "INTERNAL_HOLDOUT"
+  },
+  {
+    "case_id": "PGX-VAL-W03-INT-AMI-INTERMEDIATE-ULTRARAPID",
+    "claim_supported": "INTERNAL_VALIDATION",
+    "detail": "guideline joint answer implies at least HIGH; combining the single-gene candidate rules gives HIGH",
+    "evaluated": true,
+    "observed": {
+      "attention_level": "HIGH",
+      "axes_without_a_rule": [],
+      "detail": "precedence maximum over 2 matched candidate rule(s)",
+      "matched_rule_keys": [
+        "CANDIDATE-RULE:amitriptyline|CYP2C19|INTERMEDIATE",
+        "CANDIDATE-RULE:amitriptyline|CYP2D6|ULTRARAPID"
+      ],
+      "outcome": "ATTENTION"
+    },
+    "passed": true,
+    "role": "INTERNAL_HOLDOUT"
+  },
+  {
+    "case_id": "PGX-VAL-W03-INT-AMI-INTERMEDIATE-NORMAL",
+    "claim_supported": "INTERNAL_VALIDATION",
+    "detail": "guideline joint answer implies at least NO_ACTIVE_ATTENTION; combining the single-gene candidate rules gives NO_ACTIVE_ATTENTION",
+    "evaluated": true,
+    "observed": {
+      "attention_level": "NO_ACTIVE_ATTENTION",
+      "axes_without_a_rule": [],
+      "detail": "precedence maximum over 2 matched candidate rule(s)",
+      "matched_rule_keys": [
+        "CANDIDATE-RULE:amitriptyline|CYP2C19|INTERMEDIATE",
+        "CANDIDATE-RULE:amitriptyline|CYP2D6|NORMAL"
+      ],
+      "outcome": "ATTENTION"
+    },
+    "passed": true,
+    "role": "INTERNAL_HOLDOUT"
+  },
+  {
+    "case_id": "PGX-VAL-W03-INT-AMI-INTERMEDIATE-INTERMEDIATE",
+    "claim_supported": "INTERNAL_VALIDATION",
+    "detail": "guideline joint answer implies at least MEDIUM; combining the single-gene candidate rules gives MEDIUM",
+    "evaluated": true,
+    "observed": {
+      "attention_level": "MEDIUM",
+      "axes_without_a_rule": [],
+      "detail": "precedence maximum over 2 matched candidate rule(s)",
+      "matched_rule_keys": [
+        "CANDIDATE-RULE:amitriptyline|CYP2C19|INTERMEDIATE",
+        "CANDIDATE-RULE:amitriptyline|CYP2D6|INTERMEDIATE"
+      ],
+      "outcome": "ATTENTION"
+    },
+    "passed": true,
+    "role": "INTERNAL_HOLDOUT"
+  },
+  {
+    "case_id": "PGX-VAL-W03-INT-AMI-INTERMEDIATE-POOR",
+    "claim_supported": "INTERNAL_VALIDATION",
+    "detail": "guideline joint answer implies at least HIGH; combining the single-gene candidate rules gives HIGH",
+    "evaluated": true,
+    "observed": {
+      "attention_level": "HIGH",
+      "axes_without_a_rule": [],
+      "detail": "precedence maximum over 2 matched candidate rule(s)",
+      "matched_rule_keys": [
+        "CANDIDATE-RULE:amitriptyline|CYP2C19|INTERMEDIATE",
+        "CANDIDATE-RULE:amitriptyline|CYP2D6|POOR"
+      ],
+      "outcome": "ATTENTION"
+    },
+    "passed": true,
+    "role": "INTERNAL_HOLDOUT"
+  },
+  {
+    "case_id": "PGX-VAL-W03-INT-AMI-POOR-ULTRARAPID",
+    "claim_supported": "INTERNAL_VALIDATION",
+    "detail": "guideline joint answer implies at least HIGH; combining the single-gene candidate rules gives HIGH",
+    "evaluated": true,
+    "observed": {
+      "attention_level": "HIGH",
+      "axes_without_a_rule": [],
+      "detail": "precedence maximum over 2 matched candidate rule(s)",
+      "matched_rule_keys": [
+        "CANDIDATE-RULE:amitriptyline|CYP2C19|POOR",
+        "CANDIDATE-RULE:amitriptyline|CYP2D6|ULTRARAPID"
+      ],
+      "outcome": "ATTENTION"
+    },
+    "passed": true,
+    "role": "INTERNAL_HOLDOUT"
+  },
+  {
+    "case_id": "PGX-VAL-W03-INT-AMI-POOR-NORMAL",
+    "claim_supported": "INTERNAL_VALIDATION",
+    "detail": "guideline joint answer implies at least HIGH; combining the single-gene candidate rules gives HIGH",
+    "evaluated": true,
+    "observed": {
+      "attention_level": "HIGH",
+      "axes_without_a_rule": [],
+      "detail": "precedence maximum over 2 matched candidate rule(s)",
+      "matched_rule_keys": [
+        "CANDIDATE-RULE:amitriptyline|CYP2C19|POOR",
+        "CANDIDATE-RULE:amitriptyline|CYP2D6|NORMAL"
+      ],
+      "outcome": "ATTENTION"
+    },
+    "passed": true,
+    "role": "INTERNAL_HOLDOUT"
+  },
+  {
+    "case_id": "PGX-VAL-W03-INT-AMI-POOR-INTERMEDIATE",
+    "claim_supported": "INTERNAL_VALIDATION",
+    "detail": "guideline joint answer implies at least HIGH; combining the single-gene candidate rules gives HIGH",
+    "evaluated": true,
+    "observed": {
+      "attention_level": "HIGH",
+      "axes_without_a_rule": [],
+      "detail": "precedence maximum over 2 matched candidate rule(s)",
+      "matched_rule_keys": [
+        "CANDIDATE-RULE:amitriptyline|CYP2C19|POOR",
+        "CANDIDATE-RULE:amitriptyline|CYP2D6|INTERMEDIATE"
+      ],
+      "outcome": "ATTENTION"
+    },
+    "passed": true,
+    "role": "INTERNAL_HOLDOUT"
+  },
+  {
+    "case_id": "PGX-VAL-W03-INT-AMI-POOR-POOR",
+    "claim_supported": "INTERNAL_VALIDATION",
+    "detail": "guideline joint answer implies at least HIGH; combining the single-gene candidate rules gives HIGH",
+    "evaluated": true,
+    "observed": {
+      "attention_level": "HIGH",
+      "axes_without_a_rule": [],
+      "detail": "precedence maximum over 2 matched candidate rule(s)",
+      "matched_rule_keys": [
+        "CANDIDATE-RULE:amitriptyline|CYP2C19|POOR",
+        "CANDIDATE-RULE:amitriptyline|CYP2D6|POOR"
+      ],
+      "outcome": "ATTENTION"
+    },
+    "passed": true,
+    "role": "INTERNAL_HOLDOUT"
+  },
+  {
+    "case_id": "PGX-VAL-W03-EXP-01-CLOPIDOGREL-PNR",
+    "evaluated": false,
+    "reason": "sealed for external review; this wave listed its metadata and did not evaluate the build against it",
+    "role": "EXPERT_HOLDOUT"
+  },
+  {
+    "case_id": "PGX-VAL-W03-EXP-02-CLOPIDOGREL-PNR",
+    "evaluated": false,
+    "reason": "sealed for external review; this wave listed its metadata and did not evaluate the build against it",
+    "role": "EXPERT_HOLDOUT"
+  },
+  {
+    "case_id": "PGX-VAL-W03-EXP-03-CLOPIDOGREL-PNR",
+    "evaluated": false,
+    "reason": "sealed for external review; this wave listed its metadata and did not evaluate the build against it",
+    "role": "EXPERT_HOLDOUT"
+  },
+  {
+    "case_id": "PGX-VAL-W03-EXP-04-OMEPRAZOLE-PNR",
+    "evaluated": false,
+    "reason": "sealed for external review; this wave listed its metadata and did not evaluate the build against it",
+    "role": "EXPERT_HOLDOUT"
+  },
+  {
+    "case_id": "PGX-VAL-W03-EXP-05-OMEPRAZOLE-PNR",
+    "evaluated": false,
+    "reason": "sealed for external review; this wave listed its metadata and did not evaluate the build against it",
+    "role": "EXPERT_HOLDOUT"
+  },
+  {
+    "case_id": "PGX-VAL-W03-EXP-06-OMEPRAZOLE-PNR",
+    "evaluated": false,
+    "reason": "sealed for external review; this wave listed its metadata and did not evaluate the build against it",
+    "role": "EXPERT_HOLDOUT"
+  },
+  {
+    "case_id": "PGX-VAL-W03-EXP-07-CODEINE-PNR",
+    "evaluated": false,
+    "reason": "sealed for external review; this wave listed its metadata and did not evaluate the build against it",
+    "role": "EXPERT_HOLDOUT"
+  },
+  {
+    "case_id": "PGX-VAL-W03-EXP-08-CODEINE-AAS",
+    "evaluated": false,
+    "reason": "sealed for external review; this wave listed its metadata and did not evaluate the build against it",
+    "role": "EXPERT_HOLDOUT"
+  },
+  {
+    "case_id": "PGX-VAL-W03-EXP-09-AMITRIPTYLINE-AAS",
+    "evaluated": false,
+    "reason": "sealed for external review; this wave listed its metadata and did not evaluate the build against it",
+    "role": "EXPERT_HOLDOUT"
+  },
+  {
+    "case_id": "PGX-VAL-W03-EXP-10-AMITRIPTYLINE-SRA",
+    "evaluated": false,
+    "reason": "sealed for external review; this wave listed its metadata and did not evaluate the build against it",
+    "role": "EXPERT_HOLDOUT"
+  },
+  {
+    "case_id": "PGX-VAL-W03-EXP-11-AMITRIPTYLINE-SRA",
+    "evaluated": false,
+    "reason": "sealed for external review; this wave listed its metadata and did not evaluate the build against it",
+    "role": "EXPERT_HOLDOUT"
+  },
+  {
+    "case_id": "PGX-VAL-W03-EXP-12-AMITRIPTYLINE-PNR",
+    "evaluated": false,
+    "reason": "sealed for external review; this wave listed its metadata and did not evaluate the build against it",
+    "role": "EXPERT_HOLDOUT"
+  },
+  {
+    "case_id": "PGX-VAL-W03-EXP-13-AMITRIPTYLINE-PNR",
+    "evaluated": false,
+    "reason": "sealed for external review; this wave listed its metadata and did not evaluate the build against it",
+    "role": "EXPERT_HOLDOUT"
+  }
+]

@@ -1,0 +1,776 @@
+{
+  "authority_state": "INTERNAL_VALIDATION",
+  "built_by": "pgx-closure-wave03 automated curation pass (no human curator)",
+  "content_hash": "sha256:47e376610d4a928109d72f6a9ead14a1d1025b8d776b9d1aaf8db6d468915511",
+  "coverage": {
+    "GENE:CYP2C19|DRUG:amitriptyline": [
+      "ULTRARAPID",
+      "RAPID",
+      "NORMAL",
+      "INTERMEDIATE",
+      "POOR"
+    ],
+    "GENE:CYP2C19|DRUG:clopidogrel": [
+      "ULTRARAPID",
+      "RAPID",
+      "NORMAL",
+      "INTERMEDIATE",
+      "POOR"
+    ],
+    "GENE:CYP2C19|DRUG:omeprazole": [
+      "ULTRARAPID",
+      "RAPID",
+      "NORMAL",
+      "INTERMEDIATE",
+      "POOR"
+    ],
+    "GENE:CYP2D6|DRUG:amitriptyline": [
+      "ULTRARAPID",
+      "NORMAL",
+      "INTERMEDIATE",
+      "POOR"
+    ],
+    "GENE:CYP2D6|DRUG:codeine": [
+      "ULTRARAPID",
+      "NORMAL",
+      "INTERMEDIATE",
+      "POOR"
+    ]
+  },
+  "permitted_channels": [
+    "DEMO",
+    "VALIDATION"
+  ],
+  "refusals": [
+    {
+      "drug": "clopidogrel",
+      "gene": "CYP2C19",
+      "project_phenotype": null,
+      "reason": "the project's phenotype vocabulary has five determinate members and no member for a likely assignment. Mapping it to INTERMEDIATE would assert a determination the source explicitly declined to make, and the guideline's own footnote says 'likely' marks uncertainty in the phenotype assignment",
+      "reason_code": "PHENOTYPE_NOT_REPRESENTABLE",
+      "source_phenotype": "CYP2C19 likely intermediate metabolizer"
+    },
+    {
+      "drug": "clopidogrel",
+      "gene": "CYP2C19",
+      "project_phenotype": null,
+      "reason": "same as likely intermediate: there is no member for a likely assignment, and POOR would overstate what the source concluded",
+      "reason_code": "PHENOTYPE_NOT_REPRESENTABLE",
+      "source_phenotype": "CYP2C19 likely poor metabolizer"
+    },
+    {
+      "drug": "clopidogrel",
+      "gene": "CYP2C19",
+      "project_phenotype": "INDETERMINATE",
+      "reason": "the source records no recommendation for it, and the project's condition grammar refuses INDETERMINATE as a rule phenotype because it describes the input rather than a phenotype a rule is about",
+      "reason_code": "PHENOTYPE_NOT_REPRESENTABLE",
+      "source_phenotype": "Indeterminate"
+    },
+    {
+      "drug": "omeprazole",
+      "gene": "CYP2C19",
+      "project_phenotype": null,
+      "reason": "the project's phenotype vocabulary has five determinate members and no member for a likely assignment. Mapping it to INTERMEDIATE would assert a determination the source explicitly declined to make, and the guideline's own footnote says 'likely' marks uncertainty in the phenotype assignment",
+      "reason_code": "PHENOTYPE_NOT_REPRESENTABLE",
+      "source_phenotype": "CYP2C19 likely intermediate metabolizer"
+    },
+    {
+      "drug": "omeprazole",
+      "gene": "CYP2C19",
+      "project_phenotype": null,
+      "reason": "same as likely intermediate: there is no member for a likely assignment, and POOR would overstate what the source concluded",
+      "reason_code": "PHENOTYPE_NOT_REPRESENTABLE",
+      "source_phenotype": "CYP2C19 likely poor metabolizer"
+    },
+    {
+      "drug": "omeprazole",
+      "gene": "CYP2C19",
+      "project_phenotype": "INDETERMINATE",
+      "reason": "the source records no recommendation for it, and the project's condition grammar refuses INDETERMINATE as a rule phenotype because it describes the input rather than a phenotype a rule is about",
+      "reason_code": "PHENOTYPE_NOT_REPRESENTABLE",
+      "source_phenotype": "Indeterminate"
+    },
+    {
+      "drug": "codeine",
+      "gene": "CYP2D6",
+      "project_phenotype": "INDETERMINATE",
+      "reason": "same as Indeterminate: the source states 'No recommendation', which is not a finding to encode",
+      "reason_code": "PHENOTYPE_NOT_REPRESENTABLE",
+      "source_phenotype": "CYP2D6 Indeterminate"
+    },
+    {
+      "drug": "codeine",
+      "gene": "CYP2D6",
+      "project_phenotype": "RAPID",
+      "reason": "CPIC's CYP2D6 phenotype model has no rapid metabolizer band; the guideline table states ultrarapid, normal, intermediate and poor only. The project's vocabulary has a RAPID member, but using it here would present an answer the regulator evidence does not contain",
+      "reason_code": "AXIS_ABSENT_FROM_SOURCE",
+      "source_phenotype": "(no CYP2D6 rapid metabolizer row exists)"
+    },
+    {
+      "drug": "amitriptyline",
+      "gene": "CYP2D6",
+      "project_phenotype": "RAPID",
+      "reason": "CPIC's CYP2D6 phenotype model has no rapid metabolizer band; the guideline table states ultrarapid, normal, intermediate and poor only. The project's vocabulary has a RAPID member, but using it here would present an answer the regulator evidence does not contain",
+      "reason_code": "AXIS_ABSENT_FROM_SOURCE",
+      "source_phenotype": "(no CYP2D6 rapid metabolizer row exists)"
+    },
+    {
+      "drug": "amitriptyline",
+      "gene": "CYP2C19",
+      "project_phenotype": null,
+      "reason": "the 2016 tricyclic antidepressant guideline predates CPIC's likely-phenotype labels and states no row for this phenotype; there is nothing to carry, and this project may not extrapolate one from a neighbouring row",
+      "reason_code": "SOURCE_ROW_ABSENT",
+      "source_phenotype": "CYP2C19 likely intermediate metabolizer"
+    },
+    {
+      "drug": "amitriptyline",
+      "gene": "CYP2C19",
+      "project_phenotype": null,
+      "reason": "the 2016 tricyclic antidepressant guideline predates CPIC's likely-phenotype labels and states no row for this phenotype; there is nothing to carry, and this project may not extrapolate one from a neighbouring row",
+      "reason_code": "SOURCE_ROW_ABSENT",
+      "source_phenotype": "CYP2C19 likely poor metabolizer"
+    },
+    {
+      "drug": "amitriptyline",
+      "gene": "CYP2C19",
+      "project_phenotype": "INDETERMINATE",
+      "reason": "the source records no recommendation for it, and the project's condition grammar refuses INDETERMINATE as a rule phenotype because it describes the input rather than a phenotype a rule is about",
+      "reason_code": "PHENOTYPE_NOT_REPRESENTABLE",
+      "source_phenotype": "Indeterminate"
+    },
+    {
+      "drug": "amitriptyline",
+      "gene": "CYP2D6",
+      "project_phenotype": "INDETERMINATE",
+      "reason": "same as Indeterminate: the source states 'No recommendation', which is not a finding to encode",
+      "reason_code": "PHENOTYPE_NOT_REPRESENTABLE",
+      "source_phenotype": "CYP2D6 Indeterminate"
+    }
+  ],
+  "review_state": "PENDING_EXTERNAL_EXPERT_REVIEW",
+  "rules": [
+    {
+      "authority_state": "SOURCE_GROUNDED_INTERNAL_DECISION",
+      "condition": {
+        "condition_schema_version": "pgx-rule-condition/1",
+        "drug_id": "DRUG:clopidogrel",
+        "gene_id": "GENE:CYP2C19",
+        "kind": "PGX_AXIS",
+        "phenotype": {
+          "operator": "EXACT",
+          "values": [
+            "ULTRARAPID"
+          ]
+        }
+      },
+      "content_hash": "sha256:b4411476047087cbd1340a2cbb60725f6d92955f5998ea1cc1afc40635b6be74",
+      "curated_by": "pgx-closure-wave03 automated curation pass (no human curator)",
+      "curation_key": "clopidogrel|CYP2C19|ULTRARAPID",
+      "outcome": {
+        "attention_level": "NO_ACTIVE_ATTENTION",
+        "rationale_reference": "candidate-curation:clopidogrel|CYP2C19|ULTRARAPID"
+      },
+      "retrieval_key": "cpic.clopidogrel.cyp2c19",
+      "review_state": "PENDING_EXTERNAL_EXPERT_REVIEW",
+      "rule_key": "CANDIDATE-RULE:clopidogrel|CYP2C19|ULTRARAPID",
+      "source_classification": "Strong",
+      "source_recommendation": "use at standard dose (75 mg/day)"
+    },
+    {
+      "authority_state": "SOURCE_GROUNDED_INTERNAL_DECISION",
+      "condition": {
+        "condition_schema_version": "pgx-rule-condition/1",
+        "drug_id": "DRUG:clopidogrel",
+        "gene_id": "GENE:CYP2C19",
+        "kind": "PGX_AXIS",
+        "phenotype": {
+          "operator": "EXACT",
+          "values": [
+            "RAPID"
+          ]
+        }
+      },
+      "content_hash": "sha256:d3e96f5ebce5708b5fb09403fd0cdac186c3dd0f358a85b0814fd3efd2ea9280",
+      "curated_by": "pgx-closure-wave03 automated curation pass (no human curator)",
+      "curation_key": "clopidogrel|CYP2C19|RAPID",
+      "outcome": {
+        "attention_level": "NO_ACTIVE_ATTENTION",
+        "rationale_reference": "candidate-curation:clopidogrel|CYP2C19|RAPID"
+      },
+      "retrieval_key": "cpic.clopidogrel.cyp2c19",
+      "review_state": "PENDING_EXTERNAL_EXPERT_REVIEW",
+      "rule_key": "CANDIDATE-RULE:clopidogrel|CYP2C19|RAPID",
+      "source_classification": "Strong",
+      "source_recommendation": "use at standard dose (75 mg/day)"
+    },
+    {
+      "authority_state": "SOURCE_GROUNDED_INTERNAL_DECISION",
+      "condition": {
+        "condition_schema_version": "pgx-rule-condition/1",
+        "drug_id": "DRUG:clopidogrel",
+        "gene_id": "GENE:CYP2C19",
+        "kind": "PGX_AXIS",
+        "phenotype": {
+          "operator": "EXACT",
+          "values": [
+            "NORMAL"
+          ]
+        }
+      },
+      "content_hash": "sha256:ef0c5c13d182c22ab1f53f34d74123ea57e30eb8038607ae7882a64ebb20baa5",
+      "curated_by": "pgx-closure-wave03 automated curation pass (no human curator)",
+      "curation_key": "clopidogrel|CYP2C19|NORMAL",
+      "outcome": {
+        "attention_level": "NO_ACTIVE_ATTENTION",
+        "rationale_reference": "candidate-curation:clopidogrel|CYP2C19|NORMAL"
+      },
+      "retrieval_key": "cpic.clopidogrel.cyp2c19",
+      "review_state": "PENDING_EXTERNAL_EXPERT_REVIEW",
+      "rule_key": "CANDIDATE-RULE:clopidogrel|CYP2C19|NORMAL",
+      "source_classification": "Strong",
+      "source_recommendation": "use at standard dose (75 mg/day)"
+    },
+    {
+      "authority_state": "SOURCE_GROUNDED_INTERNAL_DECISION",
+      "condition": {
+        "condition_schema_version": "pgx-rule-condition/1",
+        "drug_id": "DRUG:clopidogrel",
+        "gene_id": "GENE:CYP2C19",
+        "kind": "PGX_AXIS",
+        "phenotype": {
+          "operator": "EXACT",
+          "values": [
+            "INTERMEDIATE"
+          ]
+        }
+      },
+      "content_hash": "sha256:254bbf5f2a7a90aec81da87240fc80475796ad89c6a2ed6b4495324903c7e408",
+      "curated_by": "pgx-closure-wave03 automated curation pass (no human curator)",
+      "curation_key": "clopidogrel|CYP2C19|INTERMEDIATE",
+      "outcome": {
+        "attention_level": "HIGH",
+        "rationale_reference": "candidate-curation:clopidogrel|CYP2C19|INTERMEDIATE"
+      },
+      "retrieval_key": "cpic.clopidogrel.cyp2c19",
+      "review_state": "PENDING_EXTERNAL_EXPERT_REVIEW",
+      "rule_key": "CANDIDATE-RULE:clopidogrel|CYP2C19|INTERMEDIATE",
+      "source_classification": "Strong",
+      "source_recommendation": "Avoid standard dose clopidogrel (75 mg) if possible. Use prasugrel or ticagrelor at standard dose if no contraindication."
+    },
+    {
+      "authority_state": "SOURCE_GROUNDED_INTERNAL_DECISION",
+      "condition": {
+        "condition_schema_version": "pgx-rule-condition/1",
+        "drug_id": "DRUG:clopidogrel",
+        "gene_id": "GENE:CYP2C19",
+        "kind": "PGX_AXIS",
+        "phenotype": {
+          "operator": "EXACT",
+          "values": [
+            "POOR"
+          ]
+        }
+      },
+      "content_hash": "sha256:3401d466113ab04d708304252ad238bfc6b71077d988352e62779d3fb8645119",
+      "curated_by": "pgx-closure-wave03 automated curation pass (no human curator)",
+      "curation_key": "clopidogrel|CYP2C19|POOR",
+      "outcome": {
+        "attention_level": "HIGH",
+        "rationale_reference": "candidate-curation:clopidogrel|CYP2C19|POOR"
+      },
+      "retrieval_key": "cpic.clopidogrel.cyp2c19",
+      "review_state": "PENDING_EXTERNAL_EXPERT_REVIEW",
+      "rule_key": "CANDIDATE-RULE:clopidogrel|CYP2C19|POOR",
+      "source_classification": "Strong",
+      "source_recommendation": "Avoid clopidogrel if possible. Use prasugrel or ticagrelor at standard dose if no contraindication."
+    },
+    {
+      "authority_state": "SOURCE_GROUNDED_INTERNAL_DECISION",
+      "condition": {
+        "condition_schema_version": "pgx-rule-condition/1",
+        "drug_id": "DRUG:omeprazole",
+        "gene_id": "GENE:CYP2C19",
+        "kind": "PGX_AXIS",
+        "phenotype": {
+          "operator": "EXACT",
+          "values": [
+            "ULTRARAPID"
+          ]
+        }
+      },
+      "content_hash": "sha256:47d5151a03af35a4790fca1964ac52a8e20dedc716b0d28cc612a56b2d432319",
+      "curated_by": "pgx-closure-wave03 automated curation pass (no human curator)",
+      "curation_key": "omeprazole|CYP2C19|ULTRARAPID",
+      "outcome": {
+        "attention_level": "MEDIUM",
+        "rationale_reference": "candidate-curation:omeprazole|CYP2C19|ULTRARAPID"
+      },
+      "retrieval_key": "cpic.omeprazole.cyp2c19",
+      "review_state": "PENDING_EXTERNAL_EXPERT_REVIEW",
+      "rule_key": "CANDIDATE-RULE:omeprazole|CYP2C19|ULTRARAPID",
+      "source_classification": "Optional",
+      "source_recommendation": "Increase starting daily dose by 100%. Daily dose may be given in divided doses. Monitor for efficacy."
+    },
+    {
+      "authority_state": "SOURCE_GROUNDED_INTERNAL_DECISION",
+      "condition": {
+        "condition_schema_version": "pgx-rule-condition/1",
+        "drug_id": "DRUG:omeprazole",
+        "gene_id": "GENE:CYP2C19",
+        "kind": "PGX_AXIS",
+        "phenotype": {
+          "operator": "EXACT",
+          "values": [
+            "RAPID"
+          ]
+        }
+      },
+      "content_hash": "sha256:6f1f28b1fa9f78ec73b34c39d23bf7f352d9cf908f2d93c1b3bef974e3b611b8",
+      "curated_by": "pgx-closure-wave03 automated curation pass (no human curator)",
+      "curation_key": "omeprazole|CYP2C19|RAPID",
+      "outcome": {
+        "attention_level": "LOW",
+        "rationale_reference": "candidate-curation:omeprazole|CYP2C19|RAPID"
+      },
+      "retrieval_key": "cpic.omeprazole.cyp2c19",
+      "review_state": "PENDING_EXTERNAL_EXPERT_REVIEW",
+      "rule_key": "CANDIDATE-RULE:omeprazole|CYP2C19|RAPID",
+      "source_classification": "Moderate",
+      "source_recommendation": "Initiate standard starting daily dose. Consider increasing dose by 50-100% for the treatment of H. pylori infection and erosive esophagitis. Daily dose may be given in divided doses. Monitor for efficacy."
+    },
+    {
+      "authority_state": "SOURCE_GROUNDED_INTERNAL_DECISION",
+      "condition": {
+        "condition_schema_version": "pgx-rule-condition/1",
+        "drug_id": "DRUG:omeprazole",
+        "gene_id": "GENE:CYP2C19",
+        "kind": "PGX_AXIS",
+        "phenotype": {
+          "operator": "EXACT",
+          "values": [
+            "NORMAL"
+          ]
+        }
+      },
+      "content_hash": "sha256:7c74bfeee1155978b82379dffb87c6406a1cbbff853627cbf81d438f265f6fc5",
+      "curated_by": "pgx-closure-wave03 automated curation pass (no human curator)",
+      "curation_key": "omeprazole|CYP2C19|NORMAL",
+      "outcome": {
+        "attention_level": "LOW",
+        "rationale_reference": "candidate-curation:omeprazole|CYP2C19|NORMAL"
+      },
+      "retrieval_key": "cpic.omeprazole.cyp2c19",
+      "review_state": "PENDING_EXTERNAL_EXPERT_REVIEW",
+      "rule_key": "CANDIDATE-RULE:omeprazole|CYP2C19|NORMAL",
+      "source_classification": "Moderate",
+      "source_recommendation": "Initiate standard starting daily dose. Consider increasing dose by 50-100% for the treatment of H. pylori infection and erosive esophagitis. Daily dose may be given in divided doses. Monitor for efficacy."
+    },
+    {
+      "authority_state": "SOURCE_GROUNDED_INTERNAL_DECISION",
+      "condition": {
+        "condition_schema_version": "pgx-rule-condition/1",
+        "drug_id": "DRUG:omeprazole",
+        "gene_id": "GENE:CYP2C19",
+        "kind": "PGX_AXIS",
+        "phenotype": {
+          "operator": "EXACT",
+          "values": [
+            "INTERMEDIATE"
+          ]
+        }
+      },
+      "content_hash": "sha256:8222333717d29d9f9660e4644354dffcd6f1debf38e3f4811899c6568fe9fd94",
+      "curated_by": "pgx-closure-wave03 automated curation pass (no human curator)",
+      "curation_key": "omeprazole|CYP2C19|INTERMEDIATE",
+      "outcome": {
+        "attention_level": "LOW",
+        "rationale_reference": "candidate-curation:omeprazole|CYP2C19|INTERMEDIATE"
+      },
+      "retrieval_key": "cpic.omeprazole.cyp2c19",
+      "review_state": "PENDING_EXTERNAL_EXPERT_REVIEW",
+      "rule_key": "CANDIDATE-RULE:omeprazole|CYP2C19|INTERMEDIATE",
+      "source_classification": "Optional",
+      "source_recommendation": "Initiate standard starting daily dose. For chronic therapy (>12 weeks) and efficacy achieved, consider 50% reduction in daily dose and monitor for continued efficacy."
+    },
+    {
+      "authority_state": "SOURCE_GROUNDED_INTERNAL_DECISION",
+      "condition": {
+        "condition_schema_version": "pgx-rule-condition/1",
+        "drug_id": "DRUG:omeprazole",
+        "gene_id": "GENE:CYP2C19",
+        "kind": "PGX_AXIS",
+        "phenotype": {
+          "operator": "EXACT",
+          "values": [
+            "POOR"
+          ]
+        }
+      },
+      "content_hash": "sha256:916b03223dcc35cc96c6af0855bffc1e6b3ada459f77c4b978fdb5f4c1ca95e5",
+      "curated_by": "pgx-closure-wave03 automated curation pass (no human curator)",
+      "curation_key": "omeprazole|CYP2C19|POOR",
+      "outcome": {
+        "attention_level": "LOW",
+        "rationale_reference": "candidate-curation:omeprazole|CYP2C19|POOR"
+      },
+      "retrieval_key": "cpic.omeprazole.cyp2c19",
+      "review_state": "PENDING_EXTERNAL_EXPERT_REVIEW",
+      "rule_key": "CANDIDATE-RULE:omeprazole|CYP2C19|POOR",
+      "source_classification": "Moderate",
+      "source_recommendation": "Initiate standard starting daily dose. For chronic therapy (>12 weeks) and efficacy achieved, consider 50% reduction in daily dose and monitor for continued efficacy."
+    },
+    {
+      "authority_state": "SOURCE_GROUNDED_INTERNAL_DECISION",
+      "condition": {
+        "condition_schema_version": "pgx-rule-condition/1",
+        "drug_id": "DRUG:codeine",
+        "gene_id": "GENE:CYP2D6",
+        "kind": "PGX_AXIS",
+        "phenotype": {
+          "operator": "EXACT",
+          "values": [
+            "ULTRARAPID"
+          ]
+        }
+      },
+      "content_hash": "sha256:8962b5d48d1fbf3e328524a135ec9e8afc5b899638f59d5135dd2656769a08af",
+      "curated_by": "pgx-closure-wave03 automated curation pass (no human curator)",
+      "curation_key": "codeine|CYP2D6|ULTRARAPID",
+      "outcome": {
+        "attention_level": "HIGH",
+        "rationale_reference": "candidate-curation:codeine|CYP2D6|ULTRARAPID"
+      },
+      "retrieval_key": "cpic.codeine.cyp2d6",
+      "review_state": "PENDING_EXTERNAL_EXPERT_REVIEW",
+      "rule_key": "CANDIDATE-RULE:codeine|CYP2D6|ULTRARAPID",
+      "source_classification": "Strong",
+      "source_recommendation": "Avoid codeine use because of potential for serious toxicity. If opioid use is warranted, consider a non-tramadol opioid."
+    },
+    {
+      "authority_state": "SOURCE_GROUNDED_INTERNAL_DECISION",
+      "condition": {
+        "condition_schema_version": "pgx-rule-condition/1",
+        "drug_id": "DRUG:codeine",
+        "gene_id": "GENE:CYP2D6",
+        "kind": "PGX_AXIS",
+        "phenotype": {
+          "operator": "EXACT",
+          "values": [
+            "NORMAL"
+          ]
+        }
+      },
+      "content_hash": "sha256:4de82ce5cd5230ef772f318e469295feb3a0926375d1129587f6900e463484ca",
+      "curated_by": "pgx-closure-wave03 automated curation pass (no human curator)",
+      "curation_key": "codeine|CYP2D6|NORMAL",
+      "outcome": {
+        "attention_level": "NO_ACTIVE_ATTENTION",
+        "rationale_reference": "candidate-curation:codeine|CYP2D6|NORMAL"
+      },
+      "retrieval_key": "cpic.codeine.cyp2d6",
+      "review_state": "PENDING_EXTERNAL_EXPERT_REVIEW",
+      "rule_key": "CANDIDATE-RULE:codeine|CYP2D6|NORMAL",
+      "source_classification": "Strong",
+      "source_recommendation": "Use codeine label recommended age- or weight-specific dosing"
+    },
+    {
+      "authority_state": "SOURCE_GROUNDED_INTERNAL_DECISION",
+      "condition": {
+        "condition_schema_version": "pgx-rule-condition/1",
+        "drug_id": "DRUG:codeine",
+        "gene_id": "GENE:CYP2D6",
+        "kind": "PGX_AXIS",
+        "phenotype": {
+          "operator": "EXACT",
+          "values": [
+            "INTERMEDIATE"
+          ]
+        }
+      },
+      "content_hash": "sha256:e24ebc902c9877539a7def2600480cdc30d670b3f26aef37b6b5fca88dc5bf25",
+      "curated_by": "pgx-closure-wave03 automated curation pass (no human curator)",
+      "curation_key": "codeine|CYP2D6|INTERMEDIATE",
+      "outcome": {
+        "attention_level": "LOW",
+        "rationale_reference": "candidate-curation:codeine|CYP2D6|INTERMEDIATE"
+      },
+      "retrieval_key": "cpic.codeine.cyp2d6",
+      "review_state": "PENDING_EXTERNAL_EXPERT_REVIEW",
+      "rule_key": "CANDIDATE-RULE:codeine|CYP2D6|INTERMEDIATE",
+      "source_classification": "Moderate",
+      "source_recommendation": "Use codeine label recommended age- or weight-specific dosing. If no response and opioid use is warranted, consider a non-tramadol opioid"
+    },
+    {
+      "authority_state": "SOURCE_GROUNDED_INTERNAL_DECISION",
+      "condition": {
+        "condition_schema_version": "pgx-rule-condition/1",
+        "drug_id": "DRUG:codeine",
+        "gene_id": "GENE:CYP2D6",
+        "kind": "PGX_AXIS",
+        "phenotype": {
+          "operator": "EXACT",
+          "values": [
+            "POOR"
+          ]
+        }
+      },
+      "content_hash": "sha256:8ff1c1b547f3d19ec0e92142521fa4a7d9513315faa88bf28b83bfa696237fc6",
+      "curated_by": "pgx-closure-wave03 automated curation pass (no human curator)",
+      "curation_key": "codeine|CYP2D6|POOR",
+      "outcome": {
+        "attention_level": "HIGH",
+        "rationale_reference": "candidate-curation:codeine|CYP2D6|POOR"
+      },
+      "retrieval_key": "cpic.codeine.cyp2d6",
+      "review_state": "PENDING_EXTERNAL_EXPERT_REVIEW",
+      "rule_key": "CANDIDATE-RULE:codeine|CYP2D6|POOR",
+      "source_classification": "Strong",
+      "source_recommendation": "Avoid codeine use because of possibility of diminished analgesia. If opioid use is warranted, consider a non-tramadol opioid."
+    },
+    {
+      "authority_state": "SOURCE_GROUNDED_INTERNAL_DECISION",
+      "condition": {
+        "condition_schema_version": "pgx-rule-condition/1",
+        "drug_id": "DRUG:amitriptyline",
+        "gene_id": "GENE:CYP2D6",
+        "kind": "PGX_AXIS",
+        "phenotype": {
+          "operator": "EXACT",
+          "values": [
+            "ULTRARAPID"
+          ]
+        }
+      },
+      "content_hash": "sha256:42dc40858c9e7858e389a17a7c090c6383637e15bdd9bbfaad7fbbc232189bc3",
+      "curated_by": "pgx-closure-wave03 automated curation pass (no human curator)",
+      "curation_key": "amitriptyline|CYP2D6|ULTRARAPID",
+      "outcome": {
+        "attention_level": "HIGH",
+        "rationale_reference": "candidate-curation:amitriptyline|CYP2D6|ULTRARAPID"
+      },
+      "retrieval_key": "cpic.amitriptyline.cyp2c19_cyp2d6",
+      "review_state": "PENDING_EXTERNAL_EXPERT_REVIEW",
+      "rule_key": "CANDIDATE-RULE:amitriptyline|CYP2D6|ULTRARAPID",
+      "source_classification": "Strong",
+      "source_recommendation": "Avoid tricyclic use due to potential lack of efficacy. Consider alternative drug not metabolized by CYP2D6. If a TCA is warranted, consider titrating to a higher target dose (compared to normal metabolizers). Utilize therapeutic drug monitoring to guide dose adjustments."
+    },
+    {
+      "authority_state": "SOURCE_GROUNDED_INTERNAL_DECISION",
+      "condition": {
+        "condition_schema_version": "pgx-rule-condition/1",
+        "drug_id": "DRUG:amitriptyline",
+        "gene_id": "GENE:CYP2D6",
+        "kind": "PGX_AXIS",
+        "phenotype": {
+          "operator": "EXACT",
+          "values": [
+            "NORMAL"
+          ]
+        }
+      },
+      "content_hash": "sha256:df7e0f597c470cb6b9e2225d50fb0347f1a4e30c8614320111282dc15a0d6538",
+      "curated_by": "pgx-closure-wave03 automated curation pass (no human curator)",
+      "curation_key": "amitriptyline|CYP2D6|NORMAL",
+      "outcome": {
+        "attention_level": "NO_ACTIVE_ATTENTION",
+        "rationale_reference": "candidate-curation:amitriptyline|CYP2D6|NORMAL"
+      },
+      "retrieval_key": "cpic.amitriptyline.cyp2c19_cyp2d6",
+      "review_state": "PENDING_EXTERNAL_EXPERT_REVIEW",
+      "rule_key": "CANDIDATE-RULE:amitriptyline|CYP2D6|NORMAL",
+      "source_classification": "Strong",
+      "source_recommendation": "Initiate therapy with recommended starting dose."
+    },
+    {
+      "authority_state": "SOURCE_GROUNDED_INTERNAL_DECISION",
+      "condition": {
+        "condition_schema_version": "pgx-rule-condition/1",
+        "drug_id": "DRUG:amitriptyline",
+        "gene_id": "GENE:CYP2D6",
+        "kind": "PGX_AXIS",
+        "phenotype": {
+          "operator": "EXACT",
+          "values": [
+            "INTERMEDIATE"
+          ]
+        }
+      },
+      "content_hash": "sha256:373d39722bd71ea61a5ff5ff55c3431d44b5857ea3be62bb273bb54a3f200069",
+      "curated_by": "pgx-closure-wave03 automated curation pass (no human curator)",
+      "curation_key": "amitriptyline|CYP2D6|INTERMEDIATE",
+      "outcome": {
+        "attention_level": "MEDIUM",
+        "rationale_reference": "candidate-curation:amitriptyline|CYP2D6|INTERMEDIATE"
+      },
+      "retrieval_key": "cpic.amitriptyline.cyp2c19_cyp2d6",
+      "review_state": "PENDING_EXTERNAL_EXPERT_REVIEW",
+      "rule_key": "CANDIDATE-RULE:amitriptyline|CYP2D6|INTERMEDIATE",
+      "source_classification": "Moderate",
+      "source_recommendation": "Consider 25% reduction of recommended starting dose. Utilize therapeutic drug monitoring to guide dose adjustments."
+    },
+    {
+      "authority_state": "SOURCE_GROUNDED_INTERNAL_DECISION",
+      "condition": {
+        "condition_schema_version": "pgx-rule-condition/1",
+        "drug_id": "DRUG:amitriptyline",
+        "gene_id": "GENE:CYP2D6",
+        "kind": "PGX_AXIS",
+        "phenotype": {
+          "operator": "EXACT",
+          "values": [
+            "POOR"
+          ]
+        }
+      },
+      "content_hash": "sha256:b9113cfef5b106dcf247d29d03eb220a529b71b71e8fae650691c994bacd6076",
+      "curated_by": "pgx-closure-wave03 automated curation pass (no human curator)",
+      "curation_key": "amitriptyline|CYP2D6|POOR",
+      "outcome": {
+        "attention_level": "HIGH",
+        "rationale_reference": "candidate-curation:amitriptyline|CYP2D6|POOR"
+      },
+      "retrieval_key": "cpic.amitriptyline.cyp2c19_cyp2d6",
+      "review_state": "PENDING_EXTERNAL_EXPERT_REVIEW",
+      "rule_key": "CANDIDATE-RULE:amitriptyline|CYP2D6|POOR",
+      "source_classification": "Strong",
+      "source_recommendation": "Avoid tricyclic use due to potential for side effects. Consider alternative drug not metabolized by CYP2D6. If a TCA is warranted, consider 50% reduction of recommended starting dose. Utilize therapeutic drug monitoring to guide dose adjustments."
+    },
+    {
+      "authority_state": "SOURCE_GROUNDED_INTERNAL_DECISION",
+      "condition": {
+        "condition_schema_version": "pgx-rule-condition/1",
+        "drug_id": "DRUG:amitriptyline",
+        "gene_id": "GENE:CYP2C19",
+        "kind": "PGX_AXIS",
+        "phenotype": {
+          "operator": "EXACT",
+          "values": [
+            "ULTRARAPID"
+          ]
+        }
+      },
+      "content_hash": "sha256:7789e5f8747e9babdc72ebaa26ee03593f6c541d563349ecbc80519b69a49fe0",
+      "curated_by": "pgx-closure-wave03 automated curation pass (no human curator)",
+      "curation_key": "amitriptyline|CYP2C19|ULTRARAPID",
+      "outcome": {
+        "attention_level": "HIGH",
+        "rationale_reference": "candidate-curation:amitriptyline|CYP2C19|ULTRARAPID"
+      },
+      "retrieval_key": "cpic.amitriptyline.cyp2c19_cyp2d6",
+      "review_state": "PENDING_EXTERNAL_EXPERT_REVIEW",
+      "rule_key": "CANDIDATE-RULE:amitriptyline|CYP2C19|ULTRARAPID",
+      "source_classification": "Optional",
+      "source_recommendation": "Avoid tertiary amine use due to potential for sub-optimal response. Consider alternative drug not metabolized by CYP2C19. TCAs without major CYP2C19 metabolism include the secondary amines nortriptyline and desipramine. If a tertiary amine is warranted, utilize therapeutic drug monitoring to guide dose adjustments."
+    },
+    {
+      "authority_state": "SOURCE_GROUNDED_INTERNAL_DECISION",
+      "condition": {
+        "condition_schema_version": "pgx-rule-condition/1",
+        "drug_id": "DRUG:amitriptyline",
+        "gene_id": "GENE:CYP2C19",
+        "kind": "PGX_AXIS",
+        "phenotype": {
+          "operator": "EXACT",
+          "values": [
+            "RAPID"
+          ]
+        }
+      },
+      "content_hash": "sha256:258a1909b930d300c1bcf368ff615946a25384d57c4161310eb23d6da779f697",
+      "curated_by": "pgx-closure-wave03 automated curation pass (no human curator)",
+      "curation_key": "amitriptyline|CYP2C19|RAPID",
+      "outcome": {
+        "attention_level": "HIGH",
+        "rationale_reference": "candidate-curation:amitriptyline|CYP2C19|RAPID"
+      },
+      "retrieval_key": "cpic.amitriptyline.cyp2c19_cyp2d6",
+      "review_state": "PENDING_EXTERNAL_EXPERT_REVIEW",
+      "rule_key": "CANDIDATE-RULE:amitriptyline|CYP2C19|RAPID",
+      "source_classification": "Optional",
+      "source_recommendation": "Avoid tertiary amine use due to potential for sub-optimal response. Consider alternative drug not metabolized by CYP2C19. TCAs without major CYP2C19 metabolism include the secondary amines nortriptyline and desipramine. If a tertiary amine is warranted, utilize therapeutic drug monitoring to guide dose adjustments."
+    },
+    {
+      "authority_state": "SOURCE_GROUNDED_INTERNAL_DECISION",
+      "condition": {
+        "condition_schema_version": "pgx-rule-condition/1",
+        "drug_id": "DRUG:amitriptyline",
+        "gene_id": "GENE:CYP2C19",
+        "kind": "PGX_AXIS",
+        "phenotype": {
+          "operator": "EXACT",
+          "values": [
+            "NORMAL"
+          ]
+        }
+      },
+      "content_hash": "sha256:f48887f79120959363b02e0b6b67ab383acac64dd5425797ed7f3b8f4eeb9443",
+      "curated_by": "pgx-closure-wave03 automated curation pass (no human curator)",
+      "curation_key": "amitriptyline|CYP2C19|NORMAL",
+      "outcome": {
+        "attention_level": "NO_ACTIVE_ATTENTION",
+        "rationale_reference": "candidate-curation:amitriptyline|CYP2C19|NORMAL"
+      },
+      "retrieval_key": "cpic.amitriptyline.cyp2c19_cyp2d6",
+      "review_state": "PENDING_EXTERNAL_EXPERT_REVIEW",
+      "rule_key": "CANDIDATE-RULE:amitriptyline|CYP2C19|NORMAL",
+      "source_classification": "Strong",
+      "source_recommendation": "Initiate therapy with recommended starting dose."
+    },
+    {
+      "authority_state": "SOURCE_GROUNDED_INTERNAL_DECISION",
+      "condition": {
+        "condition_schema_version": "pgx-rule-condition/1",
+        "drug_id": "DRUG:amitriptyline",
+        "gene_id": "GENE:CYP2C19",
+        "kind": "PGX_AXIS",
+        "phenotype": {
+          "operator": "EXACT",
+          "values": [
+            "INTERMEDIATE"
+          ]
+        }
+      },
+      "content_hash": "sha256:efd071e808da4620cf266c210f2397f9f6d488da1345975a510b2820bfdb2c65",
+      "curated_by": "pgx-closure-wave03 automated curation pass (no human curator)",
+      "curation_key": "amitriptyline|CYP2C19|INTERMEDIATE",
+      "outcome": {
+        "attention_level": "NO_ACTIVE_ATTENTION",
+        "rationale_reference": "candidate-curation:amitriptyline|CYP2C19|INTERMEDIATE"
+      },
+      "retrieval_key": "cpic.amitriptyline.cyp2c19_cyp2d6",
+      "review_state": "PENDING_EXTERNAL_EXPERT_REVIEW",
+      "rule_key": "CANDIDATE-RULE:amitriptyline|CYP2C19|INTERMEDIATE",
+      "source_classification": "Strong",
+      "source_recommendation": "Initiate therapy with recommended starting dose."
+    },
+    {
+      "authority_state": "SOURCE_GROUNDED_INTERNAL_DECISION",
+      "condition": {
+        "condition_schema_version": "pgx-rule-condition/1",
+        "drug_id": "DRUG:amitriptyline",
+        "gene_id": "GENE:CYP2C19",
+        "kind": "PGX_AXIS",
+        "phenotype": {
+          "operator": "EXACT",
+          "values": [
+            "POOR"
+          ]
+        }
+      },
+      "content_hash": "sha256:537d4f8e13f361da78c030f5009176a74979192968e3b7db8b53a40673257cd4",
+      "curated_by": "pgx-closure-wave03 automated curation pass (no human curator)",
+      "curation_key": "amitriptyline|CYP2C19|POOR",
+      "outcome": {
+        "attention_level": "HIGH",
+        "rationale_reference": "candidate-curation:amitriptyline|CYP2C19|POOR"
+      },
+      "retrieval_key": "cpic.amitriptyline.cyp2c19_cyp2d6",
+      "review_state": "PENDING_EXTERNAL_EXPERT_REVIEW",
+      "rule_key": "CANDIDATE-RULE:amitriptyline|CYP2C19|POOR",
+      "source_classification": "Moderate",
+      "source_recommendation": "Avoid tertiary amine use due to potential for sub-optimal response. Consider alternative drug not metabolized by CYP2C19. TCAs without major CYP2C19 metabolism include the secondary amines nortriptyline and desipramine. For tertiary amines, consider a 50% reduction of the recommended starting dose. Utilize therapeutic drug monitoring to guide dose adjustments."
+    }
+  ],
+  "ruleset_key": "PGX-CANDIDATE-RULESET-WAVE03",
+  "ruleset_version": "pgx-wave03-candidate-ruleset/1"
+}

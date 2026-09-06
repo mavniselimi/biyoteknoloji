@@ -1,0 +1,27 @@
+[
+  {
+    "citation_requirement": "cite the CPIC guideline publication by PMID and DOI, and name the ClinPGx annotation identifier the rows were read from",
+    "interface_key": "clinpgx.guideline_annotation",
+    "interface_kind": "PUBLIC_WEB_PAGE",
+    "interface_url": "https://www.clinpgx.org/guidelineAnnotation/",
+    "licence_basis_key": "cpic.cc0",
+    "organization": "ClinPGx (publishing CPIC-authored guideline content)",
+    "prohibited_here": [
+      "calling api.clinpgx.org: its terms have not been read",
+      "crawling, bulk download, or fetching any page not named in RETRIEVALS",
+      "storing the linked supplements, publications or Excel recommendation files"
+    ]
+  },
+  {
+    "citation_requirement": "quote the dedication's operative sentence and link the file it was read from",
+    "interface_key": "cpic.licence_declaration",
+    "interface_kind": "PUBLIC_REPOSITORY_FILE",
+    "interface_url": "https://github.com/cpicpgx/cpic-data/blob/master/LICENSE.md",
+    "licence_basis_key": "cpic.cc0",
+    "organization": "Clinical Pharmacogenetics Implementation Consortium",
+    "prohibited_here": [
+      "cloning or downloading the cpic-data repository contents",
+      "treating the licence as permission to use any interface"
+    ]
+  }
+]

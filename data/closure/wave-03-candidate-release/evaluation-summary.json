@@ -1,0 +1,28 @@
+{
+  "authority_state": "INTERNAL_VALIDATION",
+  "case_total": 56,
+  "catalogue_limitations": [
+    "one process authored the candidate rules, these cases and their expected answers; no partition here is independent of the build it tests, and a passing separation audit says the partitions do not leak into each other, not that any of them is independent evidence",
+    "the INTERNAL_HOLDOUT partition tests against the guideline's joint table, which no candidate rule encodes; that makes it a stronger check than the development partition and still not an external one",
+    "the EXPERT_HOLDOUT partition is sealed and was not evaluated in this wave; it is reserved so that a later external reviewer has material this build has not been scored against",
+    "an external expert should bring their own cases: a catalogue this project wrote cannot tell that project what it failed to think of"
+  ],
+  "catalogue_version": "pgx-wave03-candidate-cases/1",
+  "development_count": 23,
+  "evaluated_count": 43,
+  "evaluation_version": "pgx-wave03-candidate-evaluation/1",
+  "expert_holdout_count": 13,
+  "expert_payloads_read": 0,
+  "failed_count": 0,
+  "internal_holdout_count": 20,
+  "ledger_chain_broken_at": null,
+  "ledger_chain_ok": true,
+  "passed_count": 43,
+  "permitted_channels": [
+    "DEMO",
+    "VALIDATION"
+  ],
+  "review_state": "PENDING_EXTERNAL_EXPERT_REVIEW",
+  "ruleset_content_hash": "sha256:47e376610d4a928109d72f6a9ead14a1d1025b8d776b9d1aaf8db6d468915511",
+  "separation_issue_count": 0
+}

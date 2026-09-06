@@ -1,0 +1,87 @@
+[
+  {
+    "annotation_id": "PA166104948",
+    "annotation_url": "https://www.clinpgx.org/guidelineAnnotation/PA166104948",
+    "doi": "10.1002/cpt.2526",
+    "drug": "clopidogrel",
+    "genes": [
+      "CYP2C19"
+    ],
+    "guideline_id": "PA166251443",
+    "guideline_url": "https://www.clinpgx.org/guideline/PA166251443",
+    "guideline_version_label": "2022 Update",
+    "interface_key": "clinpgx.guideline_annotation",
+    "observed_not_later_than": "2026-09-06T12:09:12Z",
+    "pmcid": null,
+    "pmid": "35034351",
+    "publication_year": "2022",
+    "retrieval_classification": "AGENT_ASSISTED_TARGETED_RETRIEVAL",
+    "retrieval_key": "cpic.clopidogrel.cyp2c19",
+    "retrieved_on": "2026-09-06",
+    "title": "Annotation of CPIC Guideline for clopidogrel and CYP2C19"
+  },
+  {
+    "annotation_id": "PA166219103",
+    "annotation_url": "https://www.clinpgx.org/guidelineAnnotation/PA166219103",
+    "doi": "10.1002/cpt.2015",
+    "drug": "omeprazole",
+    "genes": [
+      "CYP2C19"
+    ],
+    "guideline_id": "PA166251441",
+    "guideline_url": "https://www.clinpgx.org/guideline/PA166251441",
+    "guideline_version_label": "August 2020 (published 2021)",
+    "interface_key": "clinpgx.guideline_annotation",
+    "observed_not_later_than": "2026-09-06T12:09:12Z",
+    "pmcid": "PMC7868475",
+    "pmid": "32770672",
+    "publication_year": "2021",
+    "retrieval_classification": "AGENT_ASSISTED_TARGETED_RETRIEVAL",
+    "retrieval_key": "cpic.omeprazole.cyp2c19",
+    "retrieved_on": "2026-09-06",
+    "title": "Annotation of CPIC Guideline for lansoprazole, omeprazole, pantoprazole and CYP2C19"
+  },
+  {
+    "annotation_id": "PA166105006",
+    "annotation_url": "https://www.clinpgx.org/guidelineAnnotation/PA166105006",
+    "doi": "10.1002/cpt.597",
+    "drug": "amitriptyline",
+    "genes": [
+      "CYP2C19",
+      "CYP2D6"
+    ],
+    "guideline_id": "PA166251445",
+    "guideline_url": "https://www.clinpgx.org/guideline/PA166251445",
+    "guideline_version_label": "2016 Update, with the October 2019 CYP2D6 genotype-to-phenotype translation change applied by CPIC after publication",
+    "interface_key": "clinpgx.guideline_annotation",
+    "observed_not_later_than": "2026-09-06T12:09:12Z",
+    "pmcid": "PMC5478479",
+    "pmid": "27997040",
+    "publication_year": "2017",
+    "retrieval_classification": "AGENT_ASSISTED_TARGETED_RETRIEVAL",
+    "retrieval_key": "cpic.amitriptyline.cyp2c19_cyp2d6",
+    "retrieved_on": "2026-09-06",
+    "title": "Annotation of CPIC Guideline for amitriptyline and CYP2C19, CYP2D6"
+  },
+  {
+    "annotation_id": "PA166104996",
+    "annotation_url": "https://www.clinpgx.org/guidelineAnnotation/PA166104996",
+    "doi": "10.1002/cpt.2149",
+    "drug": "codeine",
+    "genes": [
+      "CYP2D6"
+    ],
+    "guideline_id": "PA166251454",
+    "guideline_url": "https://www.clinpgx.org/guideline/PA166251454",
+    "guideline_version_label": "December 2020 opioids guideline (supersedes the 2014 and 2012 codeine guidelines)",
+    "interface_key": "clinpgx.guideline_annotation",
+    "observed_not_later_than": "2026-09-06T12:09:12Z",
+    "pmcid": "PMC8249478",
+    "pmid": "33387367",
+    "publication_year": "2021",
+    "retrieval_classification": "AGENT_ASSISTED_TARGETED_RETRIEVAL",
+    "retrieval_key": "cpic.codeine.cyp2d6",
+    "retrieved_on": "2026-09-06",
+    "title": "Annotation of CPIC Guideline for codeine and CYP2D6"
+  }
+]

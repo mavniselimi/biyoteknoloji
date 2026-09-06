@@ -377,9 +377,12 @@ def render_review_record(decisions: Sequence[DatasetQualityDecision]) -> str:
     lines = [
         "# Dataset quality decisions",
         "",
-        "Generated from `%s`. Each row is one named person's verdict on one "
-        "exact build, bound to that build's quality report and to the source "
-        "policy in force. Do not edit by hand." % LEDGER_PATH,
+        "Generated from `%s`. Each row is one named reviewer's verdict on "
+        "one exact build, bound to that build's quality report and to the "
+        "source policy in force. Read the reviewer column: a row may have "
+        "been recorded by an automated project-team pass rather than by a "
+        "person, and such a row says so in its own reviewer name. Do not edit "
+        "by hand." % LEDGER_PATH,
         "",
     ]
     if not decisions:

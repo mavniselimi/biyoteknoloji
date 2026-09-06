@@ -268,13 +268,49 @@ class TestTheReviewRecord(_Tree):
 
 
 class TestNoRealDecisionExistsInThisRepository(unittest.TestCase):
-    """The mechanism is testable; nothing here has been decided."""
+    """What the committed ledger may and may not contain.
+
+    This class asserted an empty ledger when WP-C06 shipped the mechanism, and
+    that assertion was correct for exactly as long as nothing had been decided.
+    Wave 3 recorded the first decision, so the assertion has been replaced
+    rather than deleted: the property that actually matters was never
+    "the ledger is empty" but "no row in it claims more than happened".
+    """
 
     LEDGER = os.path.join(REPO_ROOT, "data", "canonical",
                           "dataset-quality-decisions.ndjson")
 
-    def test_the_committed_ledger_holds_no_decision(self):
-        self.assertEqual(load_ledger(self.LEDGER), ())
+    def test_no_committed_decision_approves_a_dataset(self):
+        for row in load_ledger(self.LEDGER):
+            self.assertIs(
+                row.decision, QualityDecision.REJECTED,
+                "%s carries a committed APPROVED decision. An approval moves "
+                "a dataset towards release, and none has been earned."
+                % row.dataset_public_id)
+
+    def test_an_automated_reviewer_says_so_in_its_own_name(self):
+        for row in load_ledger(self.LEDGER):
+            lowered = row.reviewer_name.lower()
+            if "automated" in lowered or "pass" in lowered:
+                self.assertIn(
+                    "NOT A HUMAN REVIEWER", row.reviewer_name,
+                    "%r reads like a process but does not say so where a "
+                    "reader of the rendered table would see it"
+                    % row.reviewer_name)
+                self.assertEqual(row.reviewer_role,
+                                 "AUTOMATED_PROJECT_TEAM_PASS")
+
+    def test_every_committed_decision_still_describes_its_build(self):
+        for row in load_ledger(self.LEDGER):
+            build = os.path.join(REPO_ROOT, "data", "canonical",
+                                 row.dataset_public_id)
+            if not os.path.isdir(build):
+                continue
+            ok, problems = verify_decision(
+                row, build,
+                os.path.join(REPO_ROOT, "config", "scientific-sources.json"))
+            self.assertTrue(ok, "%s: %s" % (row.dataset_public_id,
+                                            "; ".join(problems)))
 
     def test_the_synthetic_reviewer_is_in_no_committed_artifact(self):
         """A shouted test identity that reached a real file is a defect."""

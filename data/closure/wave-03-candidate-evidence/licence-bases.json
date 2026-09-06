@@ -1,0 +1,35 @@
+[
+  {
+    "basis_key": "cpic.cc0",
+    "does_not_cover": [
+      "the peer-reviewed publications themselves, which are published by their journals under the journals' terms",
+      "any content on a host other than the ones this dedication names",
+      "the manner of acquisition: a licence to reuse content is not permission to crawl, bulk-download or call an interface"
+    ],
+    "evidence_url": "https://github.com/cpicpgx/cpic-data/blob/master/LICENSE.md",
+    "licence_identifier": "CC0-1.0",
+    "organization": "Clinical Pharmacogenetics Implementation Consortium",
+    "permits": [
+      "storing the recommendation content in this repository",
+      "producing derivative works, including computable rules",
+      "redistribution",
+      "commercial use"
+    ],
+    "statement_verbatim": "All curated content published by CPIC is available free of restriction under the CC0 1.0 Universal (CC0 1.0) Public Domain Dedication"
+  },
+  {
+    "basis_key": "clinpgx.robots",
+    "does_not_cover": [
+      "reuse of ClinPGx-authored content, which this basis says nothing about",
+      "the ClinPGx API at api.clinpgx.org, whose terms this project has not been able to read and therefore may not call",
+      "anything under /literature/, which is disallowed for at least one named agent and which this project did not fetch"
+    ],
+    "evidence_url": "https://www.clinpgx.org/robots.txt",
+    "licence_identifier": "NOT_A_LICENCE_ROBOTS_DIRECTIVE_ONLY",
+    "organization": "ClinPGx",
+    "permits": [
+      "retrieving the guideline and guidelineAnnotation paths used here, which no directive disallows for any agent"
+    ],
+    "statement_verbatim": "User-agent: SiteimproveBot / Disallow: /literature/"
+  }
+]
