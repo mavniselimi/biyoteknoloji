@@ -1,0 +1,415 @@
+{
+  "approval_form_sha256_before_recording": "6d9b4c150c45385d1efee971693b83e4d02a79d3de0ac4766ce898821cfb01f1",
+  "attestation_verbatim": "Ben Mehmet Yetiş; eczacı olarak, H01 bilimsel kaynak politikası paketini,\nevidence table'ı, proposed decisions dosyasını ve belirtilen SHA-256\nhashlerini inceledim.\nCPIC, ClinPGx ve DPWG kaynaklarının yalnızca formda belirtilen dar,\nnon-commercial, private araştırma ve citation/normalized-derivation koşulları\naltında kullanılmasını APPROVED WITH CONDITIONS olarak onaylıyorum.\nBilinmeyen API koşullarına sahip otomatik erişimi, scraping'i, bulk download'ı\nve tam metin yeniden dağıtımını onaylamıyorum.\nFDA, TITCK ve diğer kaynakların ilk release dışına ertelenmesini kabul\nediyorum.\nBu onay herhangi bir klinik öneriyi, kuralı, hasta kullanımını veya kaynak\nmetninin yeniden dağıtımını onaylamaz.\nAd soyad: Mehmet Yetiş\nMesleki yeterlilik: Eczacı\nTarih: 06/09/2026\nİmza: M.Yetiş",
+  "checkpoint": "H01-source-policy",
+  "content_hash": "sha256:2b3d3d8737d0606a7ac6545d00bffd9bae790c4f93303c5ce99171a31261ced9",
+  "decision_record_version": "pgx-closure-human-decision/1",
+  "dispositions": [
+    {
+      "decision_id": "H01-D01",
+      "outcome": "ACCEPT_PROPOSED_DEFERRAL",
+      "registry_status": "PENDING_REVIEW",
+      "reviewer_wording": "accept proposed deferral",
+      "source_key": "aha.publications"
+    },
+    {
+      "decision_id": "H01-D02",
+      "outcome": "ACCEPT_PROPOSED_DEFERRAL",
+      "registry_status": "PENDING_REVIEW",
+      "reviewer_wording": "accept proposed deferral",
+      "source_key": "ausnz.publications"
+    },
+    {
+      "decision_id": "H01-D03",
+      "outcome": "DEFER_API_UNTIL_TERMS",
+      "registry_status": "PENDING_REVIEW",
+      "reviewer_wording": "approve only as DEFER_API_UNTIL_TERMS",
+      "source_key": "clinpgx.api"
+    },
+    {
+      "decision_id": "H01-D04",
+      "outcome": "APPROVE_MANUAL_PRIVATE_NONCOMMERCIAL_ONLY",
+      "registry_status": "APPROVED_WITH_RESTRICTIONS",
+      "reviewer_wording": "approve manual/private/non-commercial review and citation only",
+      "source_key": "clinpgx.website"
+    },
+    {
+      "decision_id": "H01-D05",
+      "outcome": "DEFER_API_UNTIL_TERMS",
+      "registry_status": "PENDING_REVIEW",
+      "reviewer_wording": "change to DEFER_API_UNTIL_TERMS",
+      "source_key": "cpic.api"
+    },
+    {
+      "decision_id": "H01-D06",
+      "outcome": "APPROVE_WITH_LICENSE_ATTRIBUTION_DERIVATION_CONDITIONS",
+      "registry_status": "APPROVED_WITH_RESTRICTIONS",
+      "reviewer_wording": "approve with recorded license, attribution and derivation conditions",
+      "source_key": "cpic.database"
+    },
+    {
+      "decision_id": "H01-D07",
+      "outcome": "APPROVE_CITATION_AND_MANUAL_REVIEW_ONLY",
+      "registry_status": "APPROVED_WITH_RESTRICTIONS",
+      "reviewer_wording": "approve citation/manual review only; no full-text redistribution",
+      "source_key": "cpic.publications"
+    },
+    {
+      "decision_id": "H01-D08",
+      "outcome": "ACCEPT_PROPOSED_DEFERRAL",
+      "registry_status": "PENDING_REVIEW",
+      "reviewer_wording": "accept proposed deferral",
+      "source_key": "cpnds.publications"
+    },
+    {
+      "decision_id": "H01-D09",
+      "outcome": "APPROVE_OFFICIAL_PUBLICATION_MANUAL_REVIEW_AND_CITATION_ONLY",
+      "registry_status": "APPROVED_WITH_RESTRICTIONS",
+      "reviewer_wording": "approve official-publication manual review and citation only",
+      "source_key": "dpwg.knmp"
+    },
+    {
+      "decision_id": "H01-D10",
+      "outcome": "ACCEPT_PROPOSED_DEFERRAL",
+      "registry_status": "PENDING_REVIEW",
+      "reviewer_wording": "accept proposed deferral",
+      "source_key": "druglabel.ema"
+    },
+    {
+      "decision_id": "H01-D11",
+      "outcome": "DEFER_OUTSIDE_FIRST_RELEASE_SCOPE",
+      "registry_status": "PENDING_REVIEW",
+      "reviewer_wording": "defer outside first-release scope",
+      "source_key": "druglabel.fda"
+    },
+    {
+      "decision_id": "H01-D12",
+      "outcome": "ACCEPT_PROPOSED_DEFERRAL",
+      "registry_status": "PENDING_REVIEW",
+      "reviewer_wording": "accept proposed deferral",
+      "source_key": "druglabel.hcsc"
+    },
+    {
+      "decision_id": "H01-D13",
+      "outcome": "ACCEPT_PROPOSED_DEFERRAL",
+      "registry_status": "PENDING_REVIEW",
+      "reviewer_wording": "accept proposed deferral",
+      "source_key": "druglabel.pmda"
+    },
+    {
+      "decision_id": "H01-D14",
+      "outcome": "ACCEPT_PROPOSED_DEFERRAL",
+      "registry_status": "PENDING_REVIEW",
+      "reviewer_wording": "accept proposed deferral",
+      "source_key": "druglabel.swissmedic"
+    },
+    {
+      "decision_id": "H01-D15",
+      "outcome": "DEFER_OUTSIDE_FIRST_RELEASE_SCOPE",
+      "registry_status": "PENDING_REVIEW",
+      "reviewer_wording": "defer outside first-release scope",
+      "source_key": "druglabel.titck"
+    },
+    {
+      "decision_id": "H01-D16",
+      "outcome": "ACCEPT_PROPOSED_DEFERRAL_NO_AUTOMATIC_PROVENANCE_APPROVAL",
+      "registry_status": "PENDING_REVIEW",
+      "reviewer_wording": "accept proposed deferral; no automatic provenance approval",
+      "source_key": "internal.legacy_mvp_seed"
+    },
+    {
+      "decision_id": "H01-D17",
+      "outcome": "ACCEPT_PROPOSED_DEFERRAL_NO_AUTOMATIC_PROVENANCE_APPROVAL",
+      "registry_status": "PENDING_REVIEW",
+      "reviewer_wording": "accept proposed deferral; no automatic provenance approval",
+      "source_key": "internal.legacy_probe_outputs"
+    },
+    {
+      "decision_id": "H01-D18",
+      "outcome": "ACCEPT_PROPOSED_DEFERRAL",
+      "registry_status": "PENDING_REVIEW",
+      "reviewer_wording": "accept proposed deferral",
+      "source_key": "internal.manual_normalization"
+    },
+    {
+      "decision_id": "H01-D19",
+      "outcome": "ACCEPT_PROPOSED_FIRST_RELEASE_DEFERRAL",
+      "registry_status": "PENDING_REVIEW",
+      "reviewer_wording": "accept proposed first-release deferral",
+      "source_key": "pubmed.literature"
+    },
+    {
+      "decision_id": "H01-D20",
+      "outcome": "ACCEPT_PROPOSED_DEFERRAL",
+      "registry_status": "PENDING_REVIEW",
+      "reviewer_wording": "accept proposed deferral",
+      "source_key": "rnpgx.publications"
+    }
+  ],
+  "hash_binding": {
+    "reviewed_content_matches": true,
+    "rows": [
+      {
+        "artifact": "docs/closure/checkpoints/H01-source-policy/decision-context.md",
+        "attested_sha256": "6301a248f6d4f498df54b4347b0c353a7ce150629e916dd3cd633e239456d39c",
+        "matches": true,
+        "measured_sha256": "6301a248f6d4f498df54b4347b0c353a7ce150629e916dd3cd633e239456d39c",
+        "role": "SUPPORTING"
+      },
+      {
+        "artifact": "docs/closure/checkpoints/H01-source-policy/evidence-table.csv",
+        "attested_sha256": "7a87b5e9fe488d53abc7afaa1b77ea3b6ff013b3db5db60a6ebc28abae87c7c8",
+        "matches": true,
+        "measured_sha256": "7a87b5e9fe488d53abc7afaa1b77ea3b6ff013b3db5db60a6ebc28abae87c7c8",
+        "role": "REVIEWED_CONTENT"
+      },
+      {
+        "artifact": "docs/closure/checkpoints/H01-source-policy/proposed-decisions.csv",
+        "attested_sha256": "4be498a25e819822343c85d9b8433abda2b26842b31d5e36481aa917ee23e0b2",
+        "matches": true,
+        "measured_sha256": "4be498a25e819822343c85d9b8433abda2b26842b31d5e36481aa917ee23e0b2",
+        "role": "REVIEWED_CONTENT"
+      },
+      {
+        "artifact": "docs/closure/checkpoints/H01-source-policy/risk-summary.md",
+        "attested_sha256": "1356061cdeb9cf0e1e64af3fb914aa61551aa055d926422a0d460d5ee308a7d2",
+        "matches": true,
+        "measured_sha256": "1356061cdeb9cf0e1e64af3fb914aa61551aa055d926422a0d460d5ee308a7d2",
+        "role": "SUPPORTING"
+      },
+      {
+        "artifact": "docs/closure/checkpoints/H01-source-policy/unresolved-questions.md",
+        "attested_sha256": "be31d352758d9a322c586b1fe7acaeb8ceb8a3b7f900ab1f433dbf7038ab8dcc",
+        "matches": true,
+        "measured_sha256": "be31d352758d9a322c586b1fe7acaeb8ceb8a3b7f900ab1f433dbf7038ab8dcc",
+        "role": "SUPPORTING"
+      }
+    ],
+    "supporting_drift": []
+  },
+  "not_approved_by_this_decision": [
+    "H02 curation protocol and scientific interpretation decisions",
+    "H03 intended-purpose and claims-boundary decisions",
+    "any drug, gene or phenotype recommendation",
+    "any patient-facing or clinician-facing clinical use",
+    "any generated pharmacogenetic rule",
+    "any dose or treatment-selection statement",
+    "any evidence extracted after this review",
+    "any legacy data lacking acceptable provenance",
+    "redistribution of any source's text",
+    "automated access whose terms are unknown"
+  ],
+  "note": "A human approved the H01 package under stated conditions. That is recorded here. It does not by itself make any source usable: the registry has its own completeness rules and they are not met.",
+  "preserved_owner_decisions": [
+    "amitriptyline stays in the planned first release and must be modelled as a scientifically reviewed joint CYP2C19 and CYP2D6 decision, not two falsely independent axes",
+    "clopidogrel stays restricted to an explicitly represented ACS/PCI context",
+    "CYP2D6 RAPID must not be used as an expected phenotype",
+    "likely, indeterminate and unrepresentable activity-score cases fail closed",
+    "no FDA-supported claim may be made for an axis FDA evidence does not cover",
+    "the long-term 40-50 drug roadmap remains future scope and is not validated by this approval"
+  ],
+  "prohibited_modes": [
+    "OFFICIAL_API access to any source whose service terms remain unknown",
+    "automated acquisition of any kind under unknown terms",
+    "scraping or crawling any source",
+    "bulk download of any source",
+    "verbatim redistribution of publication or label full text",
+    "commercial use of any approved source",
+    "treating deferral of FDA or TITCK as evidence that a first-release axis is regulator-supported",
+    "expanding the approved source set by implication"
+  ],
+  "registry_change": {
+    "config_scientific_sources_changed": false,
+    "gaps": [
+      {
+        "applies_to": [
+          "cpic.database",
+          "cpic.publications",
+          "clinpgx.website",
+          "dpwg.knmp"
+        ],
+        "gap": "EVIDENCE_NOT_VERIFIED",
+        "what_is_missing": "an official evidence reference this project retrieved itself, carrying the official URL and the retrieval instant",
+        "who_clears_it": "whoever re-retrieves each source's terms document and records url, instant and hash",
+        "why_it_cannot_be_filled_now": "WP-C04 read the primary documents but did not record a per-document retrieval instant or content hash. Writing one now would be inventing the provenance the field exists to carry."
+      },
+      {
+        "applies_to": [
+          "cpic.database",
+          "cpic.publications",
+          "clinpgx.website",
+          "dpwg.knmp"
+        ],
+        "gap": "MISSING_VERSION_POLICY",
+        "what_is_missing": "how a version of this source is identified",
+        "who_clears_it": "source policy owner",
+        "why_it_cannot_be_filled_now": "neither the research nor the attestation states it, and the validator never infers it"
+      },
+      {
+        "applies_to": [
+          "cpic.database",
+          "cpic.publications",
+          "clinpgx.website",
+          "dpwg.knmp"
+        ],
+        "gap": "MISSING_CITATION_POLICY",
+        "what_is_missing": "how this source must be cited",
+        "who_clears_it": "source policy owner",
+        "why_it_cannot_be_filled_now": "neither the research nor the attestation states it"
+      },
+      {
+        "applies_to": [
+          "cpic.database",
+          "cpic.publications",
+          "clinpgx.website",
+          "dpwg.knmp"
+        ],
+        "gap": "NO_CLAIM_CATEGORY_APPROVED",
+        "what_is_missing": "which claim categories each source may be cited for, from the project's ClaimCategory vocabulary",
+        "who_clears_it": "the reviewer, or the H02 scientific reviewer",
+        "why_it_cannot_be_filled_now": "the attestation approves manual review, citation and normalized derivation, which is a use restriction rather than a claim-scope decision. Choosing between PRIMARY_GUIDELINE_RECOMMENDATION, PHENOTYPE_MAPPING and the rest is a scientific scoping act."
+      },
+      {
+        "applies_to": [
+          "cpic.database",
+          "cpic.publications",
+          "clinpgx.website",
+          "dpwg.knmp"
+        ],
+        "gap": "REUSE_PERMISSION_UNKNOWN",
+        "what_is_missing": "all ten reuse dimensions answered ALLOWED, RESTRICTED, PROHIBITED or NOT_APPLICABLE",
+        "who_clears_it": "source policy owner, with the reviewer",
+        "why_it_cannot_be_filled_now": "the attestation answers the dimensions it names and is silent on the others; UNKNOWN blocks exactly as PROHIBITED does"
+      },
+      {
+        "applies_to": [
+          "cpic.database",
+          "cpic.publications",
+          "clinpgx.website",
+          "dpwg.knmp"
+        ],
+        "gap": "REVIEW_EVIDENCE_URLS_MISMATCH",
+        "what_is_missing": "an approving ReviewRecord must cite the official evidence URLs the reviewer relied on",
+        "who_clears_it": "the reviewer, by reviewing the retrieved terms documents directly, or a second reviewer who has",
+        "why_it_cannot_be_filled_now": "this reviewer read the project's H01 package, not each source's own terms page. Listing source URLs there would misstate what they read."
+      }
+    ],
+    "reason": "the registry's own rules require provenance this project has not captured; see registry_readiness_gaps"
+  },
+  "restrictions": [
+    "private, non-commercial research use only",
+    "manual review and citation only; no automated access whose terms are unknown",
+    "normalized internal derivation permitted; verbatim full-text redistribution is not",
+    "no scraping, crawling or bulk download",
+    "pre-existing legacy material derived from an approved source is not thereby provenance-approved and must pass the repository's own provenance and evidence checks independently"
+  ],
+  "reviewer": {
+    "decision": "APPROVED WITH CONDITIONS",
+    "decision_date_supplied_by_reviewer": "2026-09-06",
+    "identity_verification": "NONE_PERFORMED",
+    "identity_verification_note": "No electronic identity verification was performed and this is not a cryptographic signature. What is recorded is that the project owner relayed a typed attestation naming this reviewer.",
+    "name": "Mehmet Yetiş",
+    "provenance": "typed human attestation relayed to this repository by the project owner",
+    "qualification": "Pharmacist / Eczacı",
+    "repository_decision_enum": "APPROVE_WITH_RESTRICTIONS",
+    "repository_status_enum": "APPROVED_WITH_RESTRICTIONS",
+    "role_in_this_decision": "H01 scientific source policy reviewer",
+    "signature_method": "TYPED_NAME",
+    "signature_text_supplied": "M.Yetiş"
+  },
+  "source_outcomes": [
+    {
+      "condition": "recorded licence, attribution and derivation conditions; private non-commercial research only",
+      "permitted_acquisition_modes": [
+        "MANUAL_DOWNLOAD",
+        "INTERNAL_DERIVATION"
+      ],
+      "permitted_reuse": [
+        "LOCAL_STORAGE",
+        "INTERNAL_ANALYSIS",
+        "DERIVED_WORK_CREATION"
+      ],
+      "prohibited_acquisition_modes": [
+        "OFFICIAL_API",
+        "LICENSED_BULK_EXPORT"
+      ],
+      "prohibited_reuse": [
+        "COMMERCIAL_USE",
+        "AUTOMATED_ACQUISITION",
+        "BULK_DOWNLOAD",
+        "VERBATIM_REDISTRIBUTION"
+      ],
+      "source_key": "cpic.database"
+    },
+    {
+      "condition": "citation and manual scientific review only; full text is not redistributed",
+      "permitted_acquisition_modes": [
+        "MANUAL_DOWNLOAD"
+      ],
+      "permitted_reuse": [
+        "LOCAL_STORAGE",
+        "INTERNAL_ANALYSIS"
+      ],
+      "prohibited_acquisition_modes": [
+        "OFFICIAL_API",
+        "LICENSED_BULK_EXPORT",
+        "PUBLICATION_TRANSCRIPTION"
+      ],
+      "prohibited_reuse": [
+        "VERBATIM_REDISTRIBUTION",
+        "COMMERCIAL_USE",
+        "AUTOMATED_ACQUISITION",
+        "BULK_DOWNLOAD"
+      ],
+      "source_key": "cpic.publications"
+    },
+    {
+      "condition": "manual, private, non-commercial scientific review, citation and normalized internal derivation only. The reviewer did not resolve the contradiction in this source's own terms; the approval stays inside the intersection both readings permit.",
+      "permitted_acquisition_modes": [
+        "MANUAL_DOWNLOAD",
+        "INTERNAL_DERIVATION"
+      ],
+      "permitted_reuse": [
+        "LOCAL_STORAGE",
+        "INTERNAL_ANALYSIS",
+        "DERIVED_WORK_CREATION"
+      ],
+      "prohibited_acquisition_modes": [
+        "OFFICIAL_API",
+        "LICENSED_BULK_EXPORT"
+      ],
+      "prohibited_reuse": [
+        "COMMERCIAL_USE",
+        "AUTOMATED_ACQUISITION",
+        "BULK_DOWNLOAD",
+        "VERBATIM_REDISTRIBUTION",
+        "THIRD_PARTY_SHARING"
+      ],
+      "source_key": "clinpgx.website"
+    },
+    {
+      "condition": "official public scientific publications only, manual review and citation. G-Standaard and other licensed datasets are not covered and may not be reproduced.",
+      "permitted_acquisition_modes": [
+        "MANUAL_DOWNLOAD"
+      ],
+      "permitted_reuse": [
+        "LOCAL_STORAGE",
+        "INTERNAL_ANALYSIS"
+      ],
+      "prohibited_acquisition_modes": [
+        "OFFICIAL_API",
+        "LICENSED_BULK_EXPORT",
+        "PUBLICATION_TRANSCRIPTION"
+      ],
+      "prohibited_reuse": [
+        "VERBATIM_REDISTRIBUTION",
+        "COMMERCIAL_USE",
+        "AUTOMATED_ACQUISITION",
+        "BULK_DOWNLOAD",
+        "THIRD_PARTY_SHARING"
+      ],
+      "source_key": "dpwg.knmp"
+    }
+  ],
+  "state": "RECORDED"
+}

@@ -88,8 +88,8 @@ def main() -> int:
 
     sys.stdout.write("checkpoint files written: %d; approval forms "
                      "preserved: %d\n" % (written, preserved))
-    sys.stdout.write("every proposed decision is PENDING_REVIEW; every "
-                     "approval form is blank\n")
+    sys.stdout.write("every proposed-decisions.csv row is PENDING_REVIEW; a "
+                     "preserved form is one a person has filled in\n")
     return 0
 
 

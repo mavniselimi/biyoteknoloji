@@ -1,5 +1,5 @@
 {
-  "approvals_recorded": 0,
+  "approvals_recorded": 1,
   "artifacts": [
     {
       "bytes": 2245,
@@ -9,6 +9,15 @@
       "what_it_does_not_say": "host-bound by design; it is rejected on any other machine",
       "what_it_is": "a recorded execution of the ASGI runtime checks",
       "work_package": "WP-C01"
+    },
+    {
+      "bytes": 17773,
+      "path": "data/closure/h01-source-policy-decision.json",
+      "present": true,
+      "sha256": "sha256:f0d40aa155dd09b992069e9284202615573dde2a8ea0501f10ea25ce5c80ff55",
+      "what_it_does_not_say": "it records a decision; it grants no access and changed no source's registry status",
+      "what_it_is": "the recorded human decision on H01, bound to the digests the reviewer attested to",
+      "work_package": "WP-C03/WP-C04"
     },
     {
       "bytes": 92946,
@@ -65,11 +74,11 @@
       "work_package": "WP-C00"
     },
     {
-      "bytes": 1676,
+      "bytes": 1902,
       "path": "docs/closure/checkpoints/README.md",
       "present": true,
-      "sha256": "sha256:094ba683794f88919c6792175a6d53ee0d0e494d33c002b295c9d1ec1bfe1c03",
-      "what_it_does_not_say": "nothing in any checkpoint is approved",
+      "sha256": "sha256:a4c394cd65466cd8d02316e5113878952a014c82e3cb8a85e413c4e7333e3886",
+      "what_it_does_not_say": "three of the four are still undecided",
       "what_it_is": "the index of the four human decision checkpoints",
       "work_package": "WP-C03"
     },
@@ -91,8 +100,8 @@
   "checkpoints": [
     {
       "approval_form_blank": true,
-      "approved": false,
       "checkpoint": "H00-repository-identity",
+      "decision_recorded": false,
       "files": [
         {
           "path": "docs/closure/checkpoints/H00-repository-identity/README.md",
@@ -133,9 +142,9 @@
       "note": "every proposed decision is PENDING_REVIEW and the approval form carries no name, date or verdict"
     },
     {
-      "approval_form_blank": true,
-      "approved": false,
+      "approval_form_blank": false,
       "checkpoint": "H01-source-policy",
+      "decision_recorded": true,
       "files": [
         {
           "path": "docs/closure/checkpoints/H01-source-policy/README.md",
@@ -170,15 +179,15 @@
         {
           "path": "docs/closure/checkpoints/H01-source-policy/approval-form.md",
           "present": true,
-          "sha256": "sha256:6d9b4c150c45385d1efee971693b83e4d02a79d3de0ac4766ce898821cfb01f1"
+          "sha256": "sha256:7180fab6e23d15833828484d2b55df5d3cba84baeee30252ef19e454fdd2c4fd"
         }
       ],
-      "note": "every proposed decision is PENDING_REVIEW and the approval form carries no name, date or verdict"
+      "note": "a human decision is recorded in this checkpoint's approval form; the proposed-decisions rows still read PENDING_REVIEW because they record what was proposed, not what was decided"
     },
     {
       "approval_form_blank": true,
-      "approved": false,
       "checkpoint": "H02-curation-protocol",
+      "decision_recorded": false,
       "files": [
         {
           "path": "docs/closure/checkpoints/H02-curation-protocol/README.md",
@@ -220,8 +229,8 @@
     },
     {
       "approval_form_blank": true,
-      "approved": false,
       "checkpoint": "H03-claims-boundary",
+      "decision_recorded": false,
       "files": [
         {
           "path": "docs/closure/checkpoints/H03-claims-boundary/README.md",
@@ -262,9 +271,9 @@
       "note": "every proposed decision is PENDING_REVIEW and the approval form carries no name, date or verdict"
     }
   ],
-  "content_hash": "sha256:72a7fabc31de07321c430be2b7bf0b42a4bced2bdc19c59d97652e7b0b4d9c5f",
+  "content_hash": "sha256:dfba484a8bda1cc5b2637b71d123a52ca01500bc65abea4754df66f74d370c6e",
   "manifest_version": "pgx-closure-wave-01-manifest/1",
-  "note": "An intact manifest describing a blocked programme is what this wave was supposed to produce. Nothing here approves a source, a protocol, a claim or a release.",
+  "note": "An intact manifest describing a blocked programme is what this wave was supposed to produce. A recorded human decision on a checkpoint is not the same as a source being usable: the registry has its own completeness rules and no source has met them.",
   "ths6_achieved": false,
   "verification_run": {
     "environment": {

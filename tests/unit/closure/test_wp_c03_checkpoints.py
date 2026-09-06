@@ -96,19 +96,56 @@ class TestNothingIsApproved(unittest.TestCase):
             ids = [row["decision_id"] for row in _rows(_read(path))]
             self.assertEqual(len(ids), len(set(ids)), checkpoint["id"])
 
-    def test_every_approval_form_on_disk_is_the_blank_template(self):
-        """A filled form is a decision. A generated one must be empty.
+    def test_every_undecided_approval_form_is_the_blank_template(self):
+        """A filled form is a decision; a generated one must be empty.
 
         The comparison is against the template rather than a scan for words
         like "approved": the template itself offers APPROVED as one of the
         verdicts to choose, so a substring rule here would match its own
         instructions and prove nothing.
+
+        A checkpoint somebody has decided is exempt, and the exemption is
+        narrow: the next test checks that such a form is exactly what that
+        checkpoint's recorded decision renders, so "decided" cannot become a
+        way to smuggle arbitrary text into a governance file.
         """
+        from pgx.closure.checkpoints import _decided
+
+        checked = 0
         for checkpoint in CHECKPOINTS:
+            if _decided(REPO_ROOT, checkpoint["id"]):
+                continue
+            checked += 1
             path = os.path.join(CHECKPOINT_ROOT, checkpoint["id"],
                                 "approval-form.md")
             with self.subTest(checkpoint=checkpoint["id"]):
                 self.assertEqual(_read(path), _approval_form(checkpoint))
+        self.assertTrue(checked, "no checkpoint is still undecided; this "
+                                 "test would then be checking nothing")
+
+    def test_a_decided_form_is_what_its_decision_record_renders(self):
+        """The only permitted way for a form to differ from the template."""
+        from pgx.closure.checkpoints import _decided
+
+        renderers = {
+            "H01-source-policy": (
+                "pgx.closure.h01_decision", "build_decision",
+                "render_approval_form"),
+        }
+        for checkpoint in CHECKPOINTS:
+            if not _decided(REPO_ROOT, checkpoint["id"]):
+                continue
+            with self.subTest(checkpoint=checkpoint["id"]):
+                self.assertIn(checkpoint["id"], renderers,
+                              "a form was filled in with no decision record "
+                              "behind it")
+                module_name, build, render = renderers[checkpoint["id"]]
+                module = __import__(module_name, fromlist=[build, render])
+                expected = getattr(module, render)(
+                    getattr(module, build)(REPO_ROOT))
+                path = os.path.join(CHECKPOINT_ROOT, checkpoint["id"],
+                                    "approval-form.md")
+                self.assertEqual(_read(path), expected)
 
     def test_the_blank_form_has_no_value_in_any_decision_field(self):
         for checkpoint in CHECKPOINTS:
@@ -303,11 +340,23 @@ class TestH00ReportsTheMeasuredBaseline(unittest.TestCase):
 class TestTheProducer(unittest.TestCase):
 
     def test_the_committed_files_are_what_the_producer_writes(self):
+        """Except a filled-in approval form, which the producer preserves.
+
+        Regenerating over somebody's recorded decision would destroy the only
+        record of it, so the producer leaves such a form alone and this test
+        does the same. The preceding test checks those forms against their
+        decision records instead.
+        """
+        from pgx.closure.checkpoints import _decided
+
         baseline = _baseline()
         if baseline["commit"] == "UNKNOWN":
             self.skipTest("no Git metadata in this tree, so the H00 package "
                           "cannot be regenerated for comparison")
         for relative, text in build_all(REPO_ROOT, baseline).items():
+            if relative.endswith("approval-form.md") and _decided(
+                    REPO_ROOT, relative.split("/")[-2]):
+                continue
             path = os.path.join(REPO_ROOT, *relative.split("/"))
             with self.subTest(file=relative):
                 self.assertEqual(_read(path), text)

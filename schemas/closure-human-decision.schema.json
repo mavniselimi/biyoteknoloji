@@ -1,0 +1,289 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pgx-platform.invalid/schemas/closure-human-decision.schema.json",
+  "title": "PGx closure human decision record",
+  "description": "One decision a named person made about one closure checkpoint, bound to the exact bytes they reviewed. The schema enforces the properties a forged or drifted approval would violate: the record must carry the reviewer's identity, qualification and the provenance of their signature; it must re-state the digests attested to beside the digests measured; and a record whose state is RECORDED must have every reviewed-content digest matching, while one whose state is AWAITING_REATTESTATION must carry the re-attestation request instead. There is deliberately no field in which this record can change a source's registry status.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "decision_record_version",
+    "checkpoint",
+    "state",
+    "hash_binding",
+    "approval_form_sha256_before_recording",
+    "reviewer",
+    "attestation_verbatim",
+    "restrictions",
+    "prohibited_modes",
+    "dispositions",
+    "source_outcomes",
+    "not_approved_by_this_decision",
+    "preserved_owner_decisions",
+    "registry_change",
+    "note",
+    "content_hash"
+  ],
+  "properties": {
+    "decision_record_version": {
+      "const": "pgx-closure-human-decision/1"
+    },
+    "checkpoint": {
+      "type": "string",
+      "minLength": 3
+    },
+    "state": {
+      "enum": ["RECORDED", "AWAITING_REATTESTATION"]
+    },
+    "hash_binding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["rows", "reviewed_content_matches", "supporting_drift"],
+      "properties": {
+        "reviewed_content_matches": {"type": "boolean"},
+        "supporting_drift": {
+          "type": "array",
+          "items": {"type": "string", "minLength": 1}
+        },
+        "rows": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["artifact", "role", "attested_sha256",
+                         "measured_sha256", "matches"],
+            "properties": {
+              "artifact": {"type": "string", "minLength": 1},
+              "role": {"enum": ["REVIEWED_CONTENT", "SUPPORTING"]},
+              "attested_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+              "measured_sha256": {
+                "anyOf": [
+                  {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+                  {"type": "null"}
+                ]
+              },
+              "matches": {"type": "boolean"}
+            }
+          }
+        }
+      }
+    },
+    "approval_form_sha256_before_recording": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "reviewer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name", "qualification", "role_in_this_decision",
+        "decision_date_supplied_by_reviewer", "signature_text_supplied",
+        "signature_method", "provenance", "identity_verification",
+        "identity_verification_note", "decision", "repository_decision_enum",
+        "repository_status_enum"
+      ],
+      "properties": {
+        "name": {"type": "string", "minLength": 2},
+        "qualification": {"type": "string", "minLength": 2},
+        "role_in_this_decision": {"type": "string", "minLength": 2},
+        "decision_date_supplied_by_reviewer": {
+          "type": "string",
+          "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+        },
+        "signature_text_supplied": {"type": "string", "minLength": 1},
+        "signature_method": {
+          "description": "A typed name is a typed name. This vocabulary has no value meaning cryptographic signature, because none was produced.",
+          "enum": ["TYPED_NAME"]
+        },
+        "provenance": {"type": "string", "minLength": 10},
+        "identity_verification": {
+          "description": "No electronic identity verification was performed, and the record may not imply otherwise.",
+          "const": "NONE_PERFORMED"
+        },
+        "identity_verification_note": {"type": "string", "minLength": 40},
+        "decision": {"type": "string", "minLength": 3},
+        "repository_decision_enum": {
+          "enum": ["APPROVE", "APPROVE_WITH_RESTRICTIONS", "REJECT",
+                   "REQUEST_MORE_INFORMATION"]
+        },
+        "repository_status_enum": {
+          "enum": ["UNREGISTERED", "PENDING_REVIEW", "UNDER_REVIEW",
+                   "APPROVED", "APPROVED_WITH_RESTRICTIONS", "REJECTED",
+                   "SUSPENDED"]
+        }
+      }
+    },
+    "attestation_verbatim": {"type": "string", "minLength": 50},
+    "restrictions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"type": "string", "minLength": 10}
+    },
+    "prohibited_modes": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"type": "string", "minLength": 10}
+    },
+    "dispositions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["decision_id", "source_key", "outcome",
+                     "registry_status", "reviewer_wording"],
+        "properties": {
+          "decision_id": {"type": "string", "pattern": "^H0[0-9]-D[0-9]{2}$"},
+          "source_key": {"type": "string", "minLength": 1},
+          "outcome": {"type": "string", "minLength": 3},
+          "registry_status": {
+            "enum": ["UNREGISTERED", "PENDING_REVIEW", "UNDER_REVIEW",
+                     "APPROVED", "APPROVED_WITH_RESTRICTIONS", "REJECTED",
+                     "SUSPENDED"]
+          },
+          "reviewer_wording": {"type": "string", "minLength": 3}
+        }
+      }
+    },
+    "source_outcomes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["source_key", "permitted_acquisition_modes",
+                     "prohibited_acquisition_modes", "permitted_reuse",
+                     "prohibited_reuse", "condition"],
+        "properties": {
+          "source_key": {"type": "string", "minLength": 1},
+          "permitted_acquisition_modes": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "enum": ["MANUAL_DOWNLOAD", "OFFICIAL_API",
+                       "LICENSED_BULK_EXPORT", "PUBLICATION_TRANSCRIPTION",
+                       "INTERNAL_DERIVATION"]
+            }
+          },
+          "prohibited_acquisition_modes": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "enum": ["MANUAL_DOWNLOAD", "OFFICIAL_API",
+                       "LICENSED_BULK_EXPORT", "PUBLICATION_TRANSCRIPTION",
+                       "INTERNAL_DERIVATION"]
+            }
+          },
+          "permitted_reuse": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "enum": ["LOCAL_STORAGE", "INTERNAL_ANALYSIS",
+                       "DERIVED_WORK_CREATION", "AGGREGATED_REDISTRIBUTION",
+                       "VERBATIM_REDISTRIBUTION", "COMMERCIAL_USE",
+                       "AUTOMATED_ACQUISITION", "BULK_DOWNLOAD",
+                       "THIRD_PARTY_SHARING", "PUBLIC_DISPLAY"]
+            }
+          },
+          "prohibited_reuse": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "enum": ["LOCAL_STORAGE", "INTERNAL_ANALYSIS",
+                       "DERIVED_WORK_CREATION", "AGGREGATED_REDISTRIBUTION",
+                       "VERBATIM_REDISTRIBUTION", "COMMERCIAL_USE",
+                       "AUTOMATED_ACQUISITION", "BULK_DOWNLOAD",
+                       "THIRD_PARTY_SHARING", "PUBLIC_DISPLAY"]
+            }
+          },
+          "condition": {"type": "string", "minLength": 20}
+        }
+      }
+    },
+    "not_approved_by_this_decision": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"type": "string", "minLength": 5}
+    },
+    "preserved_owner_decisions": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 10}
+    },
+    "registry_change": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["config_scientific_sources_changed", "reason", "gaps"],
+      "properties": {
+        "config_scientific_sources_changed": {
+          "description": "This record never changes a source's registry status. A true value would mean the file had done something it is defined not to do.",
+          "const": false
+        },
+        "reason": {"type": "string", "minLength": 20},
+        "gaps": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["gap", "applies_to", "what_is_missing",
+                         "why_it_cannot_be_filled_now", "who_clears_it"],
+            "properties": {
+              "gap": {"type": "string", "minLength": 3},
+              "applies_to": {
+                "type": "array",
+                "minItems": 1,
+                "items": {"type": "string", "minLength": 1}
+              },
+              "what_is_missing": {"type": "string", "minLength": 10},
+              "why_it_cannot_be_filled_now": {"type": "string", "minLength": 20},
+              "who_clears_it": {"type": "string", "minLength": 5}
+            }
+          }
+        }
+      }
+    },
+    "reattestation_request": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["why", "changed", "what_is_needed"],
+      "properties": {
+        "why": {"type": "string", "minLength": 10},
+        "changed": {"type": "array", "minItems": 1},
+        "what_is_needed": {"type": "string", "minLength": 20}
+      }
+    },
+    "note": {"type": "string", "minLength": 40},
+    "content_hash": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"}
+  },
+  "allOf": [
+    {
+      "description": "A RECORDED decision must have every reviewed-content digest matching.",
+      "if": {
+        "properties": {"state": {"const": "RECORDED"}},
+        "required": ["state"]
+      },
+      "then": {
+        "properties": {
+          "hash_binding": {
+            "properties": {"reviewed_content_matches": {"const": true}}
+          }
+        },
+        "not": {"required": ["reattestation_request"]}
+      }
+    },
+    {
+      "description": "A drifted decision must carry the re-attestation request and must not read as recorded.",
+      "if": {
+        "properties": {"state": {"const": "AWAITING_REATTESTATION"}},
+        "required": ["state"]
+      },
+      "then": {
+        "required": ["reattestation_request"],
+        "properties": {
+          "hash_binding": {
+            "properties": {"reviewed_content_matches": {"const": false}}
+          }
+        }
+      }
+    }
+  ]
+}

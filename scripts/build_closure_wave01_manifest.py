@@ -24,6 +24,9 @@ import subprocess
 import sys
 
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if REPO_ROOT not in sys.path:
+    sys.path.insert(0, REPO_ROOT)
+
 MANIFEST = os.path.join("data", "closure", "wave-01-execution-manifest.json")
 
 #: path -> (work package, what it is, what it does not say)
@@ -56,7 +59,13 @@ ARTIFACTS = {
         "the screenshots are real captures; the gate is still blocked"),
     "docs/closure/checkpoints/README.md": (
         "WP-C03", "the index of the four human decision checkpoints",
-        "nothing in any checkpoint is approved"),
+        "three of the four are still undecided"),
+    "data/closure/h01-source-policy-decision.json": (
+        "WP-C03/WP-C04",
+        "the recorded human decision on H01, bound to the digests the "
+        "reviewer attested to",
+        "it records a decision; it grants no access and changed no source's "
+        "registry status"),
 }
 
 CHECKPOINTS = ("H00-repository-identity", "H01-source-policy",
@@ -95,6 +104,8 @@ def build(root):
             else 0,
             "what_it_is": what, "what_it_does_not_say": caveat,
         })
+    from pgx.closure.checkpoints import _decided
+
     checkpoints = []
     for name in CHECKPOINTS:
         files = []
@@ -105,12 +116,17 @@ def build(root):
                           "present": os.path.isfile(absolute),
                           "sha256": _sha256(absolute)
                           if os.path.isfile(absolute) else None})
+        decided = _decided(root, name)
         checkpoints.append({
             "checkpoint": name, "files": files,
-            "approved": False,
-            "approval_form_blank": True,
-            "note": "every proposed decision is PENDING_REVIEW and the "
-                    "approval form carries no name, date or verdict",
+            "decision_recorded": decided,
+            "approval_form_blank": not decided,
+            "note": ("a human decision is recorded in this checkpoint's "
+                     "approval form; the proposed-decisions rows still read "
+                     "PENDING_REVIEW because they record what was proposed, "
+                     "not what was decided") if decided else
+                    ("every proposed decision is PENDING_REVIEW and the "
+                     "approval form carries no name, date or verdict"),
         })
 
     run = {}
@@ -137,11 +153,14 @@ def build(root):
         "verification_run": run,
         "artifacts": entries,
         "checkpoints": checkpoints,
-        "approvals_recorded": 0,
+        "approvals_recorded": sum(1 for item in checkpoints
+                                  if item["decision_recorded"]),
         "ths6_achieved": False,
         "note": "An intact manifest describing a blocked programme is what "
-                "this wave was supposed to produce. Nothing here approves a "
-                "source, a protocol, a claim or a release.",
+                "this wave was supposed to produce. A recorded human decision "
+                "on a checkpoint is not the same as a source being usable: "
+                "the registry has its own completeness rules and no source "
+                "has met them.",
     }
     payload["content_hash"] = "sha256:" + hashlib.sha256(json.dumps(
         payload, indent=2, sort_keys=True,

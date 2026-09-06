@@ -200,9 +200,19 @@ record. `BLOCKED_BY_EXTERNAL_ACCESS`.
 ## WP-C03 — governance checkpoints
 
 Four review packages under `docs/closure/checkpoints/`, each with the same
-seven files. **Every proposed decision is `PENDING_REVIEW`; every approval
-form is blank and carries no name, date or verdict.** The producer will not
-overwrite a form a reviewer has filled in.
+seven files. Every row in every `proposed-decisions.csv` reads
+`PENDING_REVIEW`, because those files record what the project proposed rather
+than what was decided. A decision lives in the checkpoint's approval form,
+and the producer will not overwrite a form a reviewer has filled in.
+
+**One of the four has since been decided.** A pharmacist reviewed H01 and
+returned an attestation, recorded in
+`data/closure/h01-source-policy-decision.json` and in that checkpoint's
+approval form, bound to the digests of the exact evidence table and proposed
+decisions they read. H00, H02 and H03 remain undecided and their forms are
+still blank. The H01 decision approves four sources for manual, private,
+non-commercial review, citation and normalized internal derivation, and it
+did **not** change `config/scientific-sources.json` — see below.
 
 | Checkpoint | Decides | Blocks |
 | --- | --- | --- |
@@ -281,6 +291,33 @@ this wave made.
   historical command string. Editing it would falsify a record.
 - Seven absolute paths in tests are negative fixtures — the scanner's own
   test data — and are meant to be there.
+
+## The H01 decision, and why the source registry did not move
+
+The reviewer approved this project's H01 package. The registry demands
+something stricter before any source may carry an approving status: a version
+policy, a citation policy, a licence identifier, approved claim categories,
+all ten reuse dimensions answered, and at least one official evidence
+reference **this project retrieved itself** — "naming a URL is not reading the
+document at it", in the validator's own words, and a verified reference must
+carry the retrieval instant.
+
+WP-C04 established what each source's terms say. It did not record, per
+document, the retrieval instant and content hash the registry requires, and
+those cannot be reconstructed after the fact without inventing them. The
+reviewer also read the package rather than each source's own terms page, so
+their name does not belong in a field meaning "the official evidence URLs
+this reviewer read".
+
+So the decision is recorded in full and the registry is untouched —
+byte-for-byte identical, `pgx-source-policy validate` still reports 20
+sources and **0 approved**, and WP-11 still blocks on
+`SOURCE_POLICY_NOT_APPROVED`. That is the correct outcome rather than a
+failure to apply the approval: writing an approving status into the registry
+would make the repository assert provenance nobody has.
+
+What each of the four approved sources still needs is listed per source in
+the decision record under `registry_change.gaps`.
 
 ## What is still true
 
