@@ -67,3 +67,29 @@ If no real expert is available, the complete candidate project remains demonstra
 | External evaluation | exactly what the named expert actually reviewed and said | blanket approval inferred from limited comments |
 | Post-review final | corrected and revalidated after recorded feedback | clinically validated unless the evidence genuinely supports that phrase |
 
+## Wave 3B — core scientific integration (completion correction)
+
+Inserted between Wave 3 and Wave 4, and required before Wave 4 begins.
+
+Wave 3 produced source-grounded scientific content and left it in a parallel
+subsystem under `pgx/closure`: no core evidence capture, no canonical candidate
+dataset, curations and rules outside the governed lifecycle, a release with
+`is_governed_release=false` that the assessment path did not consume, and
+amitriptyline represented as two single-gene axes combined by maximum
+attention. Its own execution report states all of this. Wave 3B does the
+missing integration.
+
+Three kinds of artifact must stay distinguishable, and no wave may blur them:
+
+| | What it is | Where |
+|---|---|---|
+| Wave 3 standalone candidate artifacts | historical evidence, preserved unchanged | `data/closure/wave-03-candidate-*`, `docs/closure/wave-03-execution-report.md` |
+| Wave 3B integrated candidate artifacts | in the core lifecycle, DEMO/VALIDATION only, `PENDING_EXTERNAL_EXPERT_REVIEW` | `data/raw/cpic-guideline-capture/`, `data/canonical/PGX-DATA-20260906-001/`, `data/candidate-rulesets/`, `data/releases/` |
+| Final externally reviewed artifacts | **do not exist** | — |
+
+The original Wave 3 acceptance criteria are **not** marked passed by Wave 3B.
+Wave 3 built what it built; the parts of its own acceptance that depended on
+integration were unmet, which is why this wave exists.
+
+Wave 3B's own gate is G1-G10 in `docs/closure/wave-03b-integration-report.md`,
+with the verdicts computed in `data/closure/wave-03b-integration-manifest.json`.
