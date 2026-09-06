@@ -45,7 +45,8 @@ from pgx.infrastructure.db.security import (GovernedAuditEventRow,
                                             SqlAlchemyUserRepository)
 from pgx.security.sessions import SessionRecord
 from pgx.security.users import UserRecord
-from pgx.security.vocabulary import SessionRevocationReason, UserStatus
+from pgx.security.vocabulary import (AuthAssurance, AuthMechanism,
+                                     SessionRevocationReason, UserStatus)
 
 __all__ = [
     "SqlAlchemyAuditStore",
@@ -307,8 +308,15 @@ def row_to_audit_event(row: GovernedAuditEventRow) -> GovernedAuditEvent:
         occurred_at=_aware(row.occurred_at),  # type: ignore[arg-type]
         actor_id=row.actor_id,
         actor_role=row.actor_role,
-        auth_mechanism=row.auth_mechanism,
-        auth_assurance=row.auth_assurance,
+        # Through their enums, like ``action`` and ``outcome`` above. Passing
+        # the raw strings made every read of a stored event raise "an audit
+        # event records both the mechanism and its assurance", so the chain
+        # could never advance past its first event: appending reads the head
+        # first. Nothing caught it because no deployment had ever recorded two
+        # governed actions - a real database and a second action is the only
+        # thing that surfaces it.
+        auth_mechanism=AuthMechanism(row.auth_mechanism),
+        auth_assurance=AuthAssurance(row.auth_assurance),
         session_reference=row.session_reference,
         request_id=row.request_id,
         input_hash=row.input_hash,
