@@ -1,0 +1,112 @@
+{
+  "blocked_by_external_access": [
+    {
+      "command": "uv lock --no-cache",
+      "completed_without_it": "nothing; a lock file records a resolution and cannot be hand-authored",
+      "item": "uv.lock",
+      "needed": "network access to a Python package index, or a pre-populated wheel cache",
+      "observed": "No solution found: alembic was not found in the package registry. An index URL (https://pypi.org/simple) could not be queried due to a lack of valid authentication credentials (403 Forbidden)."
+    },
+    {
+      "command": "uv build --out-dir /tmp/dist",
+      "completed_without_it": "the failure was recorded. setuptools was NOT substituted: a different backend produces a different artifact and would not be this project's wheel",
+      "item": "wheel and sdist",
+      "needed": "network access to a package index",
+      "observed": "hatchling was not found in the package registry; the project's build backend is hatchling>=1.24 and PyPI returns 403"
+    },
+    {
+      "command": "scripts/resolve_action_pins.sh",
+      "completed_without_it": "the placeholder pins remain all-zero, which fails loudly rather than resolving to something nobody reviewed",
+      "item": "CI action pin resolution",
+      "needed": "network access to api.github.com, or an authenticated gh CLI",
+      "observed": "api.github.com returned 403 for every tag lookup; the script refused to write a partially pinned workflow"
+    },
+    {
+      "command": "docker info; which syft grype trivy cosign",
+      "completed_without_it": "nothing for this item",
+      "item": "container image build, SBOM, vulnerability scan",
+      "needed": "a container runtime and supply-chain tooling",
+      "observed": "no docker daemon (/var/run/docker.sock absent); syft, grype, trivy and cosign all absent"
+    },
+    {
+      "command": "uv pip install psycopg / pip download psycopg",
+      "completed_without_it": "the schema, the constraints, the append-only trigger and the backup/restore path were all verified directly against the real server",
+      "item": "application-to-PostgreSQL connection, audit chain through the unit of work, transaction paths",
+      "needed": "network access to a package index",
+      "observed": "no matching distribution; the configuration requires postgresql+psycopg"
+    },
+    {
+      "command": "none attempted",
+      "completed_without_it": "nothing. A localhost server and a self-signed certificate would be development evidence and are not staging or TLS evidence",
+      "item": "staging deployment and TLS",
+      "needed": "an authorized staging destination and its credentials",
+      "observed": "no authorized destination and no credentials"
+    }
+  ],
+  "completed": [
+    {
+      "command": "psql: insert, then update, then delete on audit_events",
+      "evidence": "the database refuses to rewrite its own audit trail",
+      "exit_code": 0,
+      "item": "PostgreSQL append-only audit enforcement",
+      "result": "INSERT accepted; UPDATE and DELETE both refused by trigger trg_audit_events_append_only with the message 'audit_events is append-only'"
+    },
+    {
+      "command": "psql: three deliberately invalid inserts",
+      "exit_code": 0,
+      "item": "audit check-constraint enforcement",
+      "result": "blank actor refused (ck_audit_events_actor_not_blank); unknown action refused (ck_audit_events_action_enum); RELEASE_ACTIVATED without new_release_id refused (ck_audit_events_pointer_event_names_new_release)"
+    },
+    {
+      "command": "psql: begin; insert; rollback; then count",
+      "exit_code": 0,
+      "item": "transaction rollback leaves no rows",
+      "result": "0 rows remained"
+    },
+    {
+      "command": "pg_dump -Fc; createdb; pg_restore",
+      "evidence": "restored rows and enforcement were verified, not just the exit status",
+      "exit_code": 0,
+      "item": "backup and restore drill against real PostgreSQL",
+      "result": "dump 316457 bytes, sha256 ee7ea7d19c31f9b76facbdabbcfd3b4baedee3d7092febb7ee11f1950d773002; restored database has 65 tables, migration head 0011_wp23_auth_audit, 1 audit row whose actor and object id match the original, and the append-only trigger still refuses a DELETE"
+    },
+    {
+      "command": "pgx-security secret-scan",
+      "exit_code": 0,
+      "item": "secret scan",
+      "result": "CLEAN, 0 findings"
+    }
+  ],
+  "content_hash": "sha256:a0706bbd8259491da6843d9d4b8793cf48dc0b4db6b26c602a5546d02870a8c7",
+  "environment": {
+    "class": "EPHEMERAL_CLOUD_DEVELOPMENT_CONTAINER",
+    "machine": "x86_64",
+    "mypy": "1.20.2",
+    "note": "Not the maintainer's machine. Every result below is bound to this environment and is not portable evidence.",
+    "postgresql": "16.13 (Ubuntu 16.13-0ubuntu0.24.04.1)",
+    "python": "3.11.15",
+    "ruff": "0.15.11",
+    "system": "Linux",
+    "uv": "0.8.17"
+  },
+  "findings": [
+    {
+      "code": "CI_LINTER_IS_NOT_PINNED",
+      "detail": "pyproject allows ruff>=0.4.0,<1.0 and mypy>=1.9,<2.0, and no lock file pins which version CI installs. With ruff 0.15.11 the lint job reports 9791 findings and the format job would reformat 690 of 790 files; with mypy 1.20.2 the type job reports 1304 errors in 213 of 387 files. Both counts are version-sensitive because newer releases add rules inside the families the project already selects.",
+      "disposition": "REPORTED_NOT_FIXED: reformatting 690 files and resolving 9791 findings is a large unreviewed change and is outside this wave.",
+      "owner": "repository owner",
+      "why_it_matters": "CI's result is not reproducible across time while the linter floats inside a wide range and nothing pins it. The finding is the unpinned range, not the count."
+    }
+  ],
+  "not_attempted_deliberately": [
+    "rollback between two container images: no container runtime, and an application-image rollback would not be a governed-release rollback while no governed release exists",
+    "WP-C13 production performance evidence: this is a development container and any number measured here would describe it, not a deployment"
+  ],
+  "note": "What ran, ran against a real PostgreSQL 16.13 server. What did not run is listed with the command attempted and the exact access still required.",
+  "recorded_at": "2026-09-06T09:38:26Z",
+  "schema_version": "pgx-wpc01-wpc02-operational-evidence/1",
+  "work_packages": [
+    "WP-C01",
+    "WP-C02"
+  ]
+}

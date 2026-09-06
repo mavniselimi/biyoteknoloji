@@ -128,10 +128,10 @@
     },
     "UNIT": {
       "errored": 0,
-      "executed": 3163,
+      "executed": 3234,
       "failed": 0,
       "outcome": "PASS",
-      "passed": 3159,
+      "passed": 3230,
       "reason": "",
       "skipped": 4
     },
@@ -167,9 +167,9 @@
   "hash_seed": "20260904",
   "inputs": {
     "apps_sha256": "a4d6b41be3d1c5bdb5208d5fb980318f6f3aea8ebe22375684333567d382fa13",
-    "combined_sha256": "d00ffc6bc781e344deecf07146d0da0eabc15c83a2559b53f4dd21282a305965",
-    "pgx_sha256": "c29be142329b8d60459c86336a19bd33a0445ab2c886aa09d0f9b7dee352df56",
-    "tests_sha256": "24871a1f5d7ba9a264d60f80b283a81e12fc5d355dfc8b6632181d2635160723"
+    "combined_sha256": "894841773c7d87d2ba6d4bb514361b1bf494958b026d4fcc35d362fa8380a04b",
+    "pgx_sha256": "e032196842e036dcaaf0f9f8f5895636d6c289cddf7083870f1e40cd999057a9",
+    "tests_sha256": "f777ecdf3f963c3d304dc1cb95b2bffa6aa4caf814ec88e7d1e5b4e3746553f6"
   },
   "issue_codes": [
     "VERIFY_CATEGORY_BLOCKED"
@@ -179,12 +179,12 @@
   "profile": "full",
   "schema_version": "pgx-wp19-verification-run/1",
   "summary": {
-    "discovered": 7390,
+    "discovered": 7461,
     "errored": 0,
-    "executed": 7390,
+    "executed": 7461,
     "failed": 0,
     "not_executed": 0,
-    "passed": 7294,
+    "passed": 7365,
     "skipped": 96,
     "unexplained_skips": 0
   }

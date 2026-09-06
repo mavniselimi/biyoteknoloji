@@ -2,7 +2,7 @@
   "categories": [
     {
       "category": "UNIT",
-      "module_count": 110,
+      "module_count": 112,
       "modules": [
         "tests.unit.api.test_wp16_documentation",
         "tests.unit.application.test_assessment_cli",
@@ -18,6 +18,7 @@
         "tests.unit.application.test_report_cli",
         "tests.unit.application.test_rollback",
         "tests.unit.benchmark.test_cli",
+        "tests.unit.closure.test_h01_decision",
         "tests.unit.closure.test_wp_c00_dispositions",
         "tests.unit.closure.test_wp_c03_checkpoints",
         "tests.unit.curation.test_conflict_and_insufficiency",
@@ -75,6 +76,7 @@
         "tests.unit.normalization.test_normalization_boundaries",
         "tests.unit.normalization.test_normalize_cli",
         "tests.unit.normalization.test_normalize_rules",
+        "tests.unit.normalization.test_quality_decision",
         "tests.unit.normalization.test_quality_transition",
         "tests.unit.normalization.test_strict_resolver",
         "tests.unit.normalization.test_wp07_documentation",
@@ -116,8 +118,8 @@
         "tests.unit.web.test_wp17_boundaries"
       ],
       "static_outcome": "BLOCKED",
-      "test_count": 3163,
-      "test_id_sha256": "88540f9ec2bf34ca4e6c4cf63e252e822ba7b221e784aeb0cc1773b625003d7c"
+      "test_count": 3234,
+      "test_id_sha256": "633b119a647ab042e440a07760f753065bb12f6856719180e7b365e7300fc6f5"
     },
     {
       "category": "DOMAIN_INVARIANT",
@@ -1138,7 +1140,7 @@
       ],
       "criticality": "IMPORTANT",
       "is_covered": true,
-      "module_count": 15,
+      "module_count": 16,
       "modules": [
         "tests.unit.normalization.test_artifact_extraction",
         "tests.unit.normalization.test_build_safety",
@@ -1151,6 +1153,7 @@
         "tests.unit.normalization.test_normalization_boundaries",
         "tests.unit.normalization.test_normalize_cli",
         "tests.unit.normalization.test_normalize_rules",
+        "tests.unit.normalization.test_quality_decision",
         "tests.unit.normalization.test_quality_transition",
         "tests.unit.normalization.test_strict_resolver",
         "tests.unit.normalization.test_wp07_documentation",
@@ -1164,8 +1167,8 @@
         "tests.unit.test_wp07_schema"
       ],
       "source": "architecture.md section 7; docs/evidence/wp07-dq-validation.md",
-      "test_count": 402,
-      "test_id_sha256": "4dc5be0494f3c5fc6890a71bb3ccf8abf3d840845e0b5d17a0f1270aa6d6cb37",
+      "test_count": 432,
+      "test_id_sha256": "c773ae5acd682c6c4b77710b7ab6c984ce64669e92f0bd9710797f5ca9d7e517",
       "title": "Canonicalisation is deterministic and refuses ambiguous input",
       "work_packages": [
         "WP-07"
@@ -1605,6 +1608,7 @@
   "unmapped_critical_modules": [],
   "unmapped_safety_invariants": [],
   "unmapped_supporting_modules": [
+    "tests.unit.closure.test_h01_decision",
     "tests.unit.closure.test_wp_c00_dispositions",
     "tests.unit.closure.test_wp_c03_checkpoints",
     "tests.unit.engine.test_wp12_documentation",

@@ -68,8 +68,15 @@ ARTIFACTS = {
         "registry status"),
 }
 
-CHECKPOINTS = ("H00-repository-identity", "H01-source-policy",
-               "H02-curation-protocol", "H03-claims-boundary")
+def _checkpoint_ids():
+    """Read from the producer rather than repeated here.
+
+    A second hard-coded list is a second thing to forget to update, and this
+    manifest exists to say what is there.
+    """
+    from pgx.closure.checkpoints import CHECKPOINTS as _DEFS
+
+    return tuple(item["id"] for item in _DEFS)
 CHECKPOINT_FILES = ("README.md", "decision-context.md", "evidence-table.csv",
                     "proposed-decisions.csv", "unresolved-questions.md",
                     "risk-summary.md", "approval-form.md")
@@ -107,7 +114,7 @@ def build(root):
     from pgx.closure.checkpoints import _decided
 
     checkpoints = []
-    for name in CHECKPOINTS:
+    for name in _checkpoint_ids():
         files = []
         for member in CHECKPOINT_FILES:
             relative = "docs/closure/checkpoints/%s/%s" % (name, member)

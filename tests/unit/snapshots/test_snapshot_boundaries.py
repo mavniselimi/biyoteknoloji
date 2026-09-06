@@ -288,7 +288,11 @@ class TestTheApplicationLayerInventory(unittest.TestCase):
         "ingestion_cli.py",
         "ingestion_service.py",
         "legacy_baseline.py", "normalize_cli.py",
-        "phenotype_cli.py", "phenotype_schema.py", "release_cli.py",
+        "phenotype_cli.py", "phenotype_schema.py",
+        # WP-C06: joins a recorded dataset quality decision to the WP-07
+        # transition an approval causes. Listed here deliberately, which is
+        # what this inventory is for.
+        "quality_decision_service.py", "release_cli.py",
         "release_schema.py", "release_service.py", "report_cli.py",
         "report_gate_status.py", "report_schema.py", "report_service.py",
         "rule_gate_status.py",

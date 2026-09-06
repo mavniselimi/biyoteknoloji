@@ -23,7 +23,8 @@ WP07_MODULES = tuple(
     os.path.join(PACKAGE, name) for name in (
         "__init__.py", "allocation.py", "artifacts.py", "build.py",
         "dedup.py", "errors.py", "extract.py", "legacy_diff.py", "models.py",
-        "normalize.py", "ports.py", "quality.py", "resolver.py",
+        "normalize.py", "ports.py", "quality.py", "quality_decision.py",
+        "resolver.py",
     )
 ) + (os.path.join("pgx", "application", "normalize_cli.py"),)
 

@@ -1,0 +1,201 @@
+{
+  "acquisition": {
+    "dataset_id_allocated": false,
+    "executed": false,
+    "legacy_dataset_reused": false,
+    "note": "no material was retrieved, so no dataset identity was allocated and nothing was sealed. The quarantined legacy dataset was not reused, relabelled or copied.",
+    "snapshot_sealed": false
+  },
+  "artifacts": [
+    {
+      "bytes": 0,
+      "path": "data/canonical/dataset-quality-decisions.ndjson",
+      "present": false,
+      "sha256": null
+    },
+    {
+      "bytes": 17773,
+      "path": "data/closure/h01-source-policy-decision.json",
+      "present": true,
+      "sha256": "sha256:f0d40aa155dd09b992069e9284202615573dde2a8ea0501f10ea25ce5c80ff55"
+    },
+    {
+      "bytes": 6372,
+      "path": "data/closure/wp-c01-c02-operational-evidence.json",
+      "present": true,
+      "sha256": "sha256:8372f91a39d517fde319ebf61d204479a8d4aa36fea371f8c33e1ce6db912e47"
+    },
+    {
+      "bytes": 8668,
+      "path": "data/closure/wp-c05-acquisition-plan.json",
+      "present": true,
+      "sha256": "sha256:c5814ce3f495b36cbbd3b95734d954ffd26748b3339b1c538b77156900c2735c"
+    },
+    {
+      "bytes": 7557,
+      "path": "docs/closure/checkpoints/H02-curation-protocol/clinical-review-table.csv",
+      "present": true,
+      "sha256": "sha256:9a277ff9c85aab5f4b6853e55ceebc51a38ac1e4f2d1638a1c5b73abd724335a"
+    },
+    {
+      "bytes": 4307,
+      "path": "docs/closure/checkpoints/H04-dataset-quality-decision/evidence-table.csv",
+      "present": true,
+      "sha256": "sha256:9f96371b832b398472c1bb2d68687bef2e217e315d195cb416c41b63515e1fcc"
+    },
+    {
+      "bytes": 1393,
+      "path": "docs/closure/checkpoints/H04-dataset-quality-decision/proposed-decisions.csv",
+      "present": true,
+      "sha256": "sha256:6a6a97224162fc6c3b21ebbbde3a22b9bf442f6909c644691bcd54bb5c346fe4"
+    },
+    {
+      "bytes": 5608,
+      "path": "docs/closure/wp-c05-manual-acquisition-checklist.md",
+      "present": true,
+      "sha256": "sha256:c0d1c033f03d1b2b14f7fd8b2b91910751a7b740f2b4119e87750ee7a4f59632"
+    },
+    {
+      "bytes": 4704,
+      "path": "pgx/application/quality_decision_service.py",
+      "present": true,
+      "sha256": "sha256:50e04d80d6a6a6ecc7d754cbf28a69abed23f659502bf16aa892bfe3c5797b2c"
+    },
+    {
+      "bytes": 12928,
+      "path": "pgx/closure/acquisition_plan.py",
+      "present": true,
+      "sha256": "sha256:ade3f3a7267c9eee8b0c65189724f91aab62ffc8836ca3a92589d81cd490cc4d"
+    },
+    {
+      "bytes": 14034,
+      "path": "pgx/closure/h02_package.py",
+      "present": true,
+      "sha256": "sha256:f046f83f016ad7d8a8b63dd053efd83fcffbe951c9270c7da75c3a51a2ec1efd"
+    },
+    {
+      "bytes": 17266,
+      "path": "pgx/normalization/quality_decision.py",
+      "present": true,
+      "sha256": "sha256:1abd744045112f65330fa28396a8d9b092e536ba59174efb3f586fadb8895fd3"
+    }
+  ],
+  "content_hash": "sha256:f23fbbd773b0283da86d24389983eee7f607c1c34ce6e89fe1fb6fc68c0b3a89",
+  "dataset_quality": {
+    "decisions_recorded": 0,
+    "mechanism_implemented": true,
+    "note": "the mechanism is implemented and unit-tested; no real decision exists and none was fabricated"
+  },
+  "git": {
+    "baseline_tag": "baseline/pre-closure-v0.2.0.dev0",
+    "head": "708d6bf5b9752c806a28691c5867afdba4fc687a",
+    "remotes": 0
+  },
+  "h01_enforcement": {
+    "approved_source_count": 4,
+    "decision": "APPROVED WITH CONDITIONS",
+    "registry_changed": false,
+    "reviewed_content_matches": true,
+    "reviewer": "Mehmet Yetiş",
+    "state": "RECORDED"
+  },
+  "manifest_version": "pgx-closure-wave-02-manifest/1",
+  "note": "Nothing in this wave approved a source for use, curated an interpretation, generated a rule, published a dataset or activated a release. One human decision was recorded, on H01, and it did not make any source usable.",
+  "release_activated": false,
+  "ths6_achieved": false,
+  "verification_run": {
+    "environment_class": "EPHEMERAL_CLOUD_DEVELOPMENT_CONTAINER",
+    "outcome": "PASS",
+    "summary": {
+      "discovered": 7461,
+      "errored": 0,
+      "executed": 7461,
+      "failed": 0,
+      "not_executed": 0,
+      "passed": 7365,
+      "skipped": 96,
+      "unexplained_skips": 0
+    }
+  },
+  "wave": "EXECUTION WAVE 2",
+  "work_packages": [
+    {
+      "blocked_by": "BLOCKED_BY_EXTERNAL_ACCESS",
+      "completed": [
+        "migrations executed to head against real PostgreSQL 16.13 (carried over from Wave 1 and re-verified after a restart)",
+        "append-only enforcement on audit_events proven by attempting an UPDATE and a DELETE and having both refused by the trigger",
+        "three audit check constraints proven by three deliberately invalid inserts",
+        "transaction rollback proven to leave no rows"
+      ],
+      "outstanding": [
+        "the application connecting through SQLAlchemy, the audit chain through the unit of work, and transaction paths: all need psycopg, which no reachable index will serve",
+        "uv.lock: uv lock --no-cache fails because PyPI returns 403"
+      ],
+      "state": "PARTIALLY_COMPLETED",
+      "work_package": "WP-C01 residual closure"
+    },
+    {
+      "blocked_by": "BLOCKED_BY_EXTERNAL_ACCESS",
+      "completed": [
+        "backup and restore drill against real PostgreSQL, verifying restored rows, table count, migration head and that the append-only trigger survived the restore",
+        "secret scan clean",
+        "CI-equivalent lint and type checks executed locally"
+      ],
+      "outstanding": [
+        "wheel and sdist: the build backend is hatchling and PyPI returns 403; setuptools was deliberately not substituted",
+        "CI action pins: api.github.com returns 403 and the repository's own resolver refuses to write a partially pinned workflow",
+        "container image, SBOM, vulnerability scan: no container runtime and no supply-chain tooling",
+        "staging and TLS: no authorized destination",
+        "image rollback: no container runtime, and no governed release exists for it to be a release rollback of"
+      ],
+      "state": "PARTIALLY_COMPLETED",
+      "work_package": "WP-C02 operations"
+    },
+    {
+      "blocked_by": "BLOCKED_BY_HUMAN",
+      "completed": [
+        "acquisition matrix derived from the recorded H01 decision, refusing to be broader than it",
+        "manual acquisition checklist prepared for an operator"
+      ],
+      "note": "Also constrained by governance: pgx-source-policy validate still reports 0 approved sources, because the registry requires evidence provenance the project has not captured. Either condition alone would prevent acquisition.",
+      "outstanding": [
+        "every approved acquisition mode is MANUAL_DOWNLOAD, so a person must perform the retrievals; software may not",
+        "no dataset id is allocated and no snapshot is sealed, because no permitted material has been retrieved"
+      ],
+      "state": "BLOCKED_BY_HUMAN",
+      "work_package": "WP-C05 controlled clean acquisition"
+    },
+    {
+      "blocked_by": "BLOCKED_BY_HUMAN",
+      "completed": [
+        "end-to-end audit of the existing mechanism, 18 requirements, recorded in the H04 evidence table including the rows where nothing was missing",
+        "DatasetQualityDecision implemented: APPROVED/REJECTED, reviewer name and role, decision instant, rationale, DQ artifact hash and source-policy hash, all required with no defaults",
+        "append-only ledger with replay refusal, stale-binding refusal and a missing-build refusal",
+        "the approval path wired to the existing WP-07 transition rather than duplicating it; a rejection records and moves nothing",
+        "human-readable review record renderer",
+        "H04 checkpoint package prepared, approval form blank"
+      ],
+      "outstanding": [
+        "no real decision exists: no legitimate dataset to decide about and no named data owner",
+        "database persistence of a decision has never been executed",
+        "an operator command that records a real decision was deliberately not added before a real dataset and a named owner exist"
+      ],
+      "state": "PARTIALLY_COMPLETED",
+      "work_package": "WP-C06 dataset quality decision"
+    },
+    {
+      "blocked_by": "BLOCKED_BY_HUMAN",
+      "completed": [
+        "seven decisions, each in seven parts: source observation, repository assumption, owner direction, proposed representation, safety consequence, open question and the exact decision requested",
+        "every WP-C04 scope contradiction linked to the decision that answers it, declared rather than string-matched",
+        "each proposed decision bound to the protocol and disposition report content hashes",
+        "the H01 approval explicitly stated not to constitute H02 approval"
+      ],
+      "outstanding": [
+        "the decisions themselves, which need a qualified clinical pharmacogenomics reviewer"
+      ],
+      "state": "COMPLETED",
+      "work_package": "H02 preparation"
+    }
+  ]
+}

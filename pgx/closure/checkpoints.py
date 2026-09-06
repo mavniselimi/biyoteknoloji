@@ -37,6 +37,11 @@ PACKAGE_FILES: Tuple[str, ...] = (
     "proposed-decisions.csv", "unresolved-questions.md", "risk-summary.md",
     "approval-form.md")
 
+#: Files a particular checkpoint adds beyond the common seven.
+EXTRA_PACKAGE_FILES: Dict[str, Tuple[str, ...]] = {
+    "H02-curation-protocol": ("clinical-review-table.csv",),
+}
+
 _PENDING = "PENDING_REVIEW"
 
 
@@ -146,6 +151,15 @@ def _readme(checkpoint: Mapping[str, Any]) -> str:
         "| `risk-summary.md` | What goes wrong if this is decided wrongly, "
         "or not decided. |",
         "| `approval-form.md` | Blank. A reviewer fills it in. |",
+    ]
+    for extra in EXTRA_PACKAGE_FILES.get(checkpoint["id"], ()):
+        lines.append("| `%s` | %s |"
+                     % (extra, "Every decision in seven parts: what the "
+                               "source says, what this repository assumes, "
+                               "what the owner directed, what is proposed, "
+                               "what goes wrong, what is unknown, and what "
+                               "you are being asked to decide."))
+    lines += [
         "",
         "## How to use this",
         "",
@@ -389,6 +403,22 @@ def _h01_risks() -> str:
 # H02 - curation protocol
 # ---------------------------------------------------------------------------
 
+def _h02_review_table() -> str:
+    """The seven-part review table, one row per decision."""
+    from pgx.closure.h02_package import H02_DECISIONS
+
+    return render_csv(
+        ["decision_id", "subject", "authoritative_source_observation",
+         "current_repository_assumption", "project_owner_direction",
+         "proposed_technical_representation", "safety_consequence",
+         "unresolved_scientific_question", "exact_human_decision_requested"],
+        [[item["decision_id"], item["subject"], item["source_observation"],
+          item["repository_assumption"], item["owner_direction"] or "none",
+          item["proposed_representation"], item["safety_consequence"],
+          item["open_question"], item["decision_requested"]]
+         for item in H02_DECISIONS])
+
+
 def _h02_evidence(protocol: Mapping[str, Any],
                   dispositions: Mapping[str, Any]) -> str:
     counts = dispositions["counts"]
@@ -425,38 +455,25 @@ def _h02_evidence(protocol: Mapping[str, Any],
     return render_csv(["fact", "value", "read_from"], rows)
 
 
-def _h02_proposals() -> str:
-    rows = [
-        ["H02-D01", "protocol approval",
-         "AWAITING_EXPERT_REVIEW", _PENDING,
-         "APPROVE_THE_PROTOCOL_AS_WRITTEN_OR_NAME_THE_CHANGES",
-         "The protocol declares its own vocabularies DRAFT until a named "
-         "scientist records an approval against its content hash. No such "
-         "record exists.", "curation protocol approver"],
-        ["H02-D02", "vocabulary status",
-         "DRAFT_AWAITING_EXPERT_REVIEW", _PENDING,
-         "APPROVE_OR_REVISE_THE_CURATION_VOCABULARIES",
-         "Every field definition a curator would work to is draft. A "
-         "curator working to a draft vocabulary produces drafts.",
-         "curation protocol approver"],
-    ]
-    for item in SCOPE_CONTRADICTIONS:
+def _h02_proposals(bindings: Mapping[str, str]) -> str:
+    """One row per H02 decision, bound to the bytes it is about."""
+    from pgx.closure.h02_package import H02_DECISIONS, OWNER_DIRECTION_STATUS
+
+    rows = []
+    for item in H02_DECISIONS:
         rows.append([
-            "H02-D%02d" % (len(rows) + 1), item["subject"],
-            "NOT_ADDRESSED_BY_THE_PROTOCOL", _PENDING,
-            "RESOLVE_BEFORE_ANY_CURATION_BEGINS", item["decision_needed"],
-            item["owner"]])
-    rows.append([
-        "H02-D%02d" % (len(rows) + 1),
-        "the 13 unlinked in-scope legacy candidates",
-        "MISSING_EVIDENCE_REQUIRES_CURATOR", _PENDING,
-        "CONFIRM_THAT_THESE_ARE_CURATED_FROM_SOURCE_NOT_FROM_LEGACY_TEXT",
-        "Each names no upstream record. A curator sources evidence for the "
-        "axis; the legacy row's own wording is not evidence and must not be "
-        "the starting point.", "curation protocol approver"])
+            item["decision_id"], item["subject"],
+            (OWNER_DIRECTION_STATUS if item["owner_direction"]
+             else "NOT_ADDRESSED_BY_THE_PROTOCOL"),
+            _PENDING, item["decision_requested"],
+            item["open_question"],
+            "clinical pharmacogenomics reviewer",
+            bindings.get("protocol", ""), bindings.get("dispositions", "")])
     return render_csv(
         ["decision_id", "subject", "current_state", "target_status",
-         "proposed_disposition", "rationale", "decision_owner"], rows)
+         "exact_human_decision_requested", "unresolved_scientific_question",
+         "decision_owner", "bound_protocol_sha256",
+         "bound_disposition_report_sha256"], rows)
 
 
 def _h02_context() -> str:
@@ -486,6 +503,19 @@ def _h02_context() -> str:
                 "",
                 "They are set out in `unresolved-questions.md` and carried "
                 "as decisions `H02-D03` through `H02-D07`.",
+            ]),
+            ("The H01 approval is not an H02 approval", [
+                "A pharmacist has approved this project's source policy. "
+                "That decision says which sources may be used and on what "
+                "terms. It says nothing about how a source's content becomes "
+                "a clinical representation, and it must not be reused here: "
+                "the reviewer was not asked, and did not answer, any of the "
+                "questions in this package.",
+                "",
+                "Each row of `proposed-decisions.csv` is bound to the "
+                "content hash of the protocol and of the legacy disposition "
+                "report it depends on, so an approval recorded here cannot "
+                "later attach to different bytes.",
             ]),
             ("What must not happen", [
                 "The 1,559 legacy candidates carry the previous project's "
@@ -893,6 +923,29 @@ CHECKPOINTS: Tuple[Dict[str, Any], ...] = (
         ],
     },
     {
+        "id": "H04-dataset-quality-decision",
+        "title": "dataset quality decision mechanism and its first decision",
+        "owner": "a named data owner",
+        "not_owner": "the quality report, which reports numbers and decides "
+                     "nothing",
+        "blocks": ["dataset publication", "release activation"],
+        "depends_on": ["a non-legacy dataset, which WP-C05 has not produced"],
+        "summary": "WP-07 already carried the transition an approval causes. "
+                   "What was missing was the decision: no verdict field, so "
+                   "no way to record a rejection; no reviewer role; no "
+                   "binding to the source policy. Wave 2 implemented those "
+                   "and left the working parts alone. Nobody has been named "
+                   "as data owner and there is no legitimate dataset to "
+                   "decide about.",
+        "not_covered": [
+            "This does not approve any dataset; none is eligible.",
+            "A passing quality gate is a precondition for a decision, never "
+            "a decision.",
+            "This does not approve any source (H01), protocol (H02) or "
+            "claim (H03).",
+        ],
+    },
+    {
         "id": "H03-claims-boundary",
         "title": "claims boundary and clinical warning",
         "owner": "clinical and legal approver, jointly",
@@ -963,9 +1016,20 @@ def build_all(root: str, baseline: Mapping[str, Any]) -> Dict[str, str]:
         "H02-curation-protocol": {
             "decision-context.md": _h02_context(),
             "evidence-table.csv": _h02_evidence(protocol, dispositions),
-            "proposed-decisions.csv": _h02_proposals(),
+            "clinical-review-table.csv": _h02_review_table(),
+            "proposed-decisions.csv": _h02_proposals({
+                "protocol": str(protocol.get("content_hash") or ""),
+                "dispositions": str(dispositions.get("content_hash") or ""),
+            }),
             "unresolved-questions.md": _h02_questions(),
             "risk-summary.md": _h02_risks(),
+        },
+        "H04-dataset-quality-decision": {
+            "decision-context.md": _h04_context(),
+            "evidence-table.csv": _h04_evidence(),
+            "proposed-decisions.csv": _h04_proposals(),
+            "unresolved-questions.md": _h04_questions(),
+            "risk-summary.md": _h04_risks(),
         },
         "H03-claims-boundary": {
             "decision-context.md": _h03_context(boundary),
@@ -1012,9 +1076,9 @@ def _index(root: str = ".") -> str:
     lines = [
         "# Human decision checkpoints",
         "",
-        "Four decisions block the first release. None can be made by code. "
-        "%d of the four %s a recorded decision; %d %s outstanding."
-        % (len(CHECKPOINTS) - outstanding,
+        "%d decisions block the first release. None can be made by code. "
+        "%d of them %s a recorded decision; %d %s outstanding."
+        % (len(CHECKPOINTS), len(CHECKPOINTS) - outstanding,
            "carries" if len(CHECKPOINTS) - outstanding == 1 else "carry",
            outstanding, "is" if outstanding == 1 else "are"),
         "",
@@ -1049,3 +1113,242 @@ def _index(root: str = ".") -> str:
     ]
     return "\n".join(lines) + "\n"
 
+
+# ---------------------------------------------------------------------------
+# H04 - dataset quality decision (WP-C06)
+# ---------------------------------------------------------------------------
+
+#: The WP-C06 audit, as data. Each row is one requirement, what the repository
+#: already had, whether it had been executed, what was actually missing, and
+#: what Wave 2 did about it. Rows where the existing implementation was
+#: sufficient say so: the instruction was to implement only proven gaps, and
+#: a table that claimed everything was missing would have justified rewriting
+#: machinery that already worked.
+WP_C06_AUDIT: Tuple[Tuple[str, str, str, str, str], ...] = (
+    ("explicit APPROVED/REJECTED decision semantics",
+     "none - QualityCheckRequest carries no verdict field",
+     "not executed",
+     "a rejection could not be expressed at all, so the only recordable "
+     "outcome was approval",
+     "IMPLEMENTED: QualityDecision with exactly two values, and "
+     "permits_transition false for REJECTED"),
+    ("dataset id",
+     "QualityCheckRequest.dataset_public_id, guarded against the manifest",
+     "exercised by tests/unit/normalization/test_quality_transition.py",
+     "nothing", "REUSED"),
+    ("named reviewer identity",
+     "QualityCheckRequest.reviewed_by, required, no default",
+     "exercised", "nothing", "REUSED"),
+    ("reviewer role",
+     "none - only a name string is recorded",
+     "not executed",
+     "who the reviewer was speaking as was not recorded, so a name could not "
+     "be checked against an authority",
+     "IMPLEMENTED: reviewer_role, required, no default"),
+    ("rationale", "QualityCheckRequest.rationale, required", "exercised",
+     "nothing", "REUSED"),
+    ("decision timestamp",
+     "QualityCheckRequest.reviewed_at, required", "exercised",
+     "no timezone requirement", "IMPLEMENTED: a naive instant is refused"),
+    ("exact DQ artifact hash",
+     "read from the build and written into the audit event",
+     "exercised",
+     "it was recorded but not bound - nothing re-checked it later",
+     "IMPLEMENTED: dq_artifact_hash is bound and re-measured on use"),
+    ("exact source-policy hash",
+     "none - the snapshot manifest has source_policy_content_hash, the "
+     "quality decision has nothing",
+     "not executed",
+     "a decision could not say which source policy was in force when the "
+     "data it approves was acquired",
+     "IMPLEMENTED: source_policy_hash, bound and re-measured"),
+    ("immutable / audited storage",
+     "AuditEvent DATASET_QUALITY_CHECKED through the unit of work",
+     "exercised with a fake unit of work; never against a real database",
+     "the audit row lives only in a database nobody here can reach, so there "
+     "was no durable record in the repository",
+     "IMPLEMENTED: an append-only NDJSON ledger beside the data, in addition "
+     "to the audit event"),
+    ("replay / idempotency refusal",
+     "expected_current_state guard, applied inside the transaction",
+     "exercised",
+     "the guard refuses a second transition but not a second decision",
+     "IMPLEMENTED: a second verdict on the same dataset and report is "
+     "refused and names the standing decision"),
+    ("stale-hash refusal",
+     "verify_build, compare_with_artifacts and schema validation before the "
+     "transaction opens",
+     "exercised",
+     "these check the build against itself, not a decision against the build",
+     "IMPLEMENTED: a decision whose bound digests no longer match is refused "
+     "and the problem names both halves"),
+    ("rejected-decision behaviour", "none", "not executed",
+     "there was no rejection path",
+     "IMPLEMENTED: recorded, audited, transitions nothing, and the record "
+     "says the dataset is not release-eligible"),
+    ("authorization boundary",
+     "the service refuses to invent a reviewer; the CLI states it cannot "
+     "record a decision",
+     "exercised",
+     "no role or authority check, because no role was recorded",
+     "PARTIAL: the role is now recorded; checking it against an authority "
+     "needs the WP-23 role assignments, which are empty by design"),
+    ("dataset lifecycle wiring",
+     "CanonicalDatasetService.record_quality_check performs BUILDING -> "
+     "QUALITY_CHECKED",
+     "exercised with a fake unit of work",
+     "nothing connected a decision to it",
+     "IMPLEMENTED: record_dataset_quality_decision records first, then "
+     "attempts the existing transition only for an approval"),
+    ("database persistence",
+     "the unit of work writes the row and the audit event", "never executed",
+     "no PostgreSQL driver is installable in either available environment",
+     "BLOCKED_BY_EXTERNAL_ACCESS: the path exists and is unit-tested; it has "
+     "not been run against a real database"),
+    ("operator CLI / API path",
+     "pgx-normalize quality-gate reports the gate and says it cannot record "
+     "a decision",
+     "exercised",
+     "there was no command that could record one",
+     "NOT IMPLEMENTED IN THIS WAVE: a command that records a real decision "
+     "should not be added before a real dataset and a named data owner "
+     "exist. The service is callable and tested; the operator surface is a "
+     "deliberate gap, named here rather than filled with a stub."),
+    ("machine-readable decision artifact", "none", "not executed",
+     "the audit event was the only record and it is not in the repository",
+     "IMPLEMENTED: data/canonical/dataset-quality-decisions.ndjson"),
+    ("human-readable review record", "none", "not executed",
+     "nothing rendered the ledger for a reader",
+     "IMPLEMENTED: render_review_record, and this checkpoint package"),
+)
+
+
+def _h04_evidence() -> str:
+    return render_csv(
+        ["requirement", "existing_implementation", "executed_evidence",
+         "missing_piece", "action"],
+        [list(row) for row in WP_C06_AUDIT])
+
+
+def _h04_proposals() -> str:
+    rows = [
+        ["H04-D01", "who may record a dataset quality decision",
+         "nobody is named", _PENDING,
+         "NAME_THE_DATA_OWNER_AND_THEIR_ROLE",
+         "The mechanism requires a reviewer name and a role and invents "
+         "neither. Until a person is named, no decision can be recorded at "
+         "all.", "repository owner, naming a data owner"],
+        ["H04-D02", "the dataset a first decision would be about",
+         "none exists", _PENDING,
+         "AWAIT_A_NON_LEGACY_DATASET",
+         "The only dataset in this repository is the quarantined legacy "
+         "build, which must never be promoted. WP-C05 has not produced a "
+         "replacement, so there is nothing legitimate to decide about.",
+         "whoever completes the acquisition"],
+        ["H04-D03", "whether a role check is required before recording",
+         "role is recorded but not checked", _PENDING,
+         "DECIDE_WHETHER_AN_AUTHORITY_CHECK_IS_REQUIRED",
+         "WP-23's production role assignment set is empty by design, so "
+         "there is nothing to check a role against yet. Whether a decision "
+         "may be recorded before that exists is a governance choice.",
+         "repository owner"],
+        ["H04-D04", "what a rejection obliges",
+         "recorded, transitions nothing", _PENDING,
+         "CONFIRM_THE_REJECTION_SEMANTICS",
+         "A rejection is recorded and moves nothing. Whether it should also "
+         "close the build, require a new build key, or permit a later "
+         "approval of the same report is not decided.",
+         "data owner, with the repository owner"],
+    ]
+    return render_csv(
+        ["decision_id", "subject", "current_state", "target_status",
+         "proposed_disposition", "rationale", "decision_owner"], rows)
+
+
+def _h04_context() -> str:
+    return _document(
+        "H04 - dataset quality decision: what has to be decided",
+        "A dataset does not become usable because a report says its numbers "
+        "are fine. Somebody has to read the report and decide, and this "
+        "checkpoint is where that decision is recorded. WP-C06 asked for the "
+        "mechanism; Wave 2 audited what already existed, implemented the "
+        "parts that were genuinely missing, and left the rest alone.",
+        [
+            ("What already worked", [
+                "WP-07 has carried the transition a decision causes since it "
+                "was written: `BUILDING -> QUALITY_CHECKED`, guarded inside "
+                "the transaction, refusing a replay, verifying the build's "
+                "digests and its schemas before opening one, and refusing to "
+                "invent a reviewer. None of that was rebuilt.",
+            ]),
+            ("What was missing", [
+                "The decision itself. `QualityCheckRequest` has no verdict "
+                "field, so the only outcome it could express was approval - "
+                "a data owner who read the report and said no had nowhere to "
+                "put that. Nothing recorded the reviewer's role, nothing "
+                "bound the decision to the source policy in force, and the "
+                "only record of a decision was an audit row in a database "
+                "nobody in this environment can reach.",
+                "",
+                "The full audit is `evidence-table.csv`, one row per "
+                "requirement, including the rows where the answer was that "
+                "nothing was missing.",
+            ]),
+            ("What is decided here", [
+                "Not the quality of any dataset - there is no legitimate "
+                "dataset to decide about yet. What this checkpoint needs "
+                "first is a named data owner and a decision about whether a "
+                "role may be recorded before there is any authority to check "
+                "it against.",
+            ]),
+        ])
+
+
+def _h04_questions() -> str:
+    return _document(
+        "H04 - unresolved questions",
+        "The mechanism is implemented and tested. What is open is who uses "
+        "it, on what, and under what authority.",
+        [("Open", [
+            "- Who is the data owner? The mechanism requires a name and a "
+            "role and will not supply either.",
+            "- May a decision be recorded while WP-23's role assignment set "
+            "is empty, so that the recorded role can be checked against "
+            "nothing?",
+            "- After a rejection, may the same report be approved later, or "
+            "does a rejection require a new build?",
+            "- Should the ledger live beside the data, in the database, or "
+            "both? It is currently a file, because the database is not "
+            "reachable from either environment here and a decision that "
+            "exists only in an unreachable database is not evidence.",
+            "- Does a decision expire? A source policy read once is not a "
+            "policy forever, and the same argument applies to a dataset "
+            "somebody approved a year ago.",
+         ])])
+
+
+def _h04_risks() -> str:
+    return _document(
+        "H04 - risk summary",
+        "This is the control that stops a generated report from becoming an "
+        "approval by default.",
+        [("If this is decided wrongly", [
+            "- **A passing gate read as an approval.** The report says the "
+            "numbers are within contract. It says nothing about whether the "
+            "data should be used, and the two are easy to conflate.",
+            "- **A decision nobody can attribute.** A name with no role "
+            "behind it cannot be checked against any authority, and reads as "
+            "accountability without being it.",
+            "- **A silent rejection.** A system where saying no leaves no "
+            "trace shows only approvals, which makes the record of decisions "
+            "systematically optimistic.",
+            "- **An approval that outlived its subject.** A regenerated "
+            "report is a different report; the binding exists so an old "
+            "approval cannot quietly attach to it.",
+         ]),
+         ("If this is not decided at all", [
+            "- No dataset can become `QUALITY_CHECKED`, so none can be "
+            "published, so no release can be activated. That is the current "
+            "state and it is correct: there is no legitimate dataset to "
+            "decide about.",
+         ])])

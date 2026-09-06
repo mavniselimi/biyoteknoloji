@@ -46,7 +46,7 @@
       "bytes": 127442,
       "path": "data/ths6/wp25-evidence-registry.json",
       "present": true,
-      "sha256": "sha256:b7ab0f0d886de89db0a54810b3c014dc5ddc30310354231002f2e6001fceaef8",
+      "sha256": "sha256:27f6b934c9d2552d778a6a40c30ed21f272c549314ac7fcef96716ed502c66dd",
       "state": "PRESENT"
     },
     {
@@ -380,7 +380,7 @@
     }
   ],
   "pack_integrity_version": "pgx-wp25-pack-integrity/1",
-  "pack_sha256": "sha256:31d842807d75ab2cf85b8ae7badca3ea9532ec07f09d42510c4e3a1409744879",
+  "pack_sha256": "sha256:c40ad802556176955c4ccfb2712979b041a7d8f6ab296c62a8c5ab3278aa255c",
   "pack_version": "pgx-wp25-evidence-pack/1",
   "present_member_count": 53,
   "refused_member_paths": []

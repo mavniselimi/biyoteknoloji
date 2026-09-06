@@ -1,12 +1,13 @@
 # Human decision checkpoints
 
-Four decisions block the first release. None can be made by code. 1 of the four carries a recorded decision; 3 are outstanding.
+5 decisions block the first release. None can be made by code. 1 of them carries a recorded decision; 4 are outstanding.
 
 | Checkpoint | Decision | Owner | Blocks | Decided |
 | --- | --- | --- | --- | :---: |
 | [`H00-repository-identity`](H00-repository-identity/README.md) | repository identity and baseline | repository owner | release bundle versioning, any push to a remote | no |
 | [`H01-source-policy`](H01-source-policy/README.md) | scientific source policy | source policy approver, with legal counsel on the conflicting terms | all acquisition, curated interpretation, rule creation, release activation | yes |
 | [`H02-curation-protocol`](H02-curation-protocol/README.md) | curation protocol and scientific scope | curation protocol approver and clinical pharmacogenomics reviewer | every curated interpretation, rule creation, validation | no |
+| [`H04-dataset-quality-decision`](H04-dataset-quality-decision/README.md) | dataset quality decision mechanism and its first decision | a named data owner | dataset publication, release activation | no |
 | [`H03-claims-boundary`](H03-claims-boundary/README.md) | claims boundary and clinical warning | clinical and legal approver, jointly | report issuance, the security gate, release activation | no |
 
 Each package holds the same seven files: a README, the decision context, an evidence table citing where each fact was read, the proposed decisions, the unresolved questions, a risk summary, and an approval form.

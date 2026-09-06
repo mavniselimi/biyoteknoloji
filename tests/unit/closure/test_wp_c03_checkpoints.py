@@ -24,7 +24,7 @@ REPO_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(
     os.path.dirname(os.path.abspath(__file__)))))
 CHECKPOINT_ROOT = os.path.join(REPO_ROOT, "docs", "closure", "checkpoints")
 
-EXPECTED_CHECKPOINTS = 4
+EXPECTED_CHECKPOINTS = 5
 EXPECTED_REGISTRY_SOURCES = 20
 
 
@@ -248,25 +248,70 @@ class TestH01CarriesTheSourceResearch(unittest.TestCase):
 
 class TestH02CarriesTheScopeContradictions(unittest.TestCase):
 
-    def test_every_contradiction_becomes_a_decision(self):
+    def test_every_contradiction_is_answered_by_some_decision(self):
+        """Coverage is declared by the package, not matched by wording.
+
+        The review table is written for a clinician and its subjects are
+        rewritten whenever that reads better. A test matching those strings
+        would pass for as long as nobody improved the prose, which is the
+        wrong thing to be sensitive to.
+        """
+        from pgx.closure.h02_package import covered_contradictions
         from pgx.closure.research_findings import SCOPE_CONTRADICTIONS
 
-        path = os.path.join(CHECKPOINT_ROOT, "H02-curation-protocol",
-                            "proposed-decisions.csv")
-        subjects = {row["subject"] for row in _rows(_read(path))}
-        for item in SCOPE_CONTRADICTIONS:
-            with self.subTest(contradiction=item["id"]):
-                self.assertIn(item["subject"], subjects)
+        self.assertEqual(sorted(covered_contradictions()),
+                         sorted(item["id"] for item in SCOPE_CONTRADICTIONS))
 
-    def test_every_contradiction_is_explained_to_the_reviewer(self):
-        from pgx.closure.research_findings import SCOPE_CONTRADICTIONS
+    def test_every_decision_reaches_the_reviewer_table(self):
+        from pgx.closure.h02_package import H02_DECISIONS
 
+        rows = {row["decision_id"]: row for row in _rows(_read(os.path.join(
+            CHECKPOINT_ROOT, "H02-curation-protocol",
+            "clinical-review-table.csv")))}
+        self.assertEqual(sorted(rows),
+                         sorted(item["decision_id"] for item in H02_DECISIONS))
+        for item in H02_DECISIONS:
+            with self.subTest(decision=item["decision_id"]):
+                row = rows[item["decision_id"]]
+                for column in ("authoritative_source_observation",
+                               "current_repository_assumption",
+                               "proposed_technical_representation",
+                               "safety_consequence",
+                               "unresolved_scientific_question",
+                               "exact_human_decision_requested"):
+                    self.assertTrue(row[column].strip(), column)
+
+    def test_the_h01_approval_is_not_reused_for_h02(self):
         text = _read(os.path.join(CHECKPOINT_ROOT, "H02-curation-protocol",
-                                  "unresolved-questions.md"))
-        for item in SCOPE_CONTRADICTIONS:
-            with self.subTest(contradiction=item["id"]):
-                self.assertIn(item["id"], text)
-                self.assertIn(item["decision_needed"], text)
+                                  "decision-context.md"))
+        self.assertIn("H01 approval is not an H02 approval", text)
+
+    def test_every_h02_proposal_is_bound_to_a_content_hash(self):
+        rows = _rows(_read(os.path.join(CHECKPOINT_ROOT,
+                                        "H02-curation-protocol",
+                                        "proposed-decisions.csv")))
+        self.assertTrue(rows)
+        for row in rows:
+            with self.subTest(decision=row["decision_id"]):
+                self.assertTrue(row["bound_protocol_sha256"].startswith(
+                    "sha256:"))
+                self.assertTrue(
+                    row["bound_disposition_report_sha256"].startswith(
+                        "sha256:"))
+
+    def test_owner_directions_stay_pending_clinical_confirmation(self):
+        from pgx.closure.h02_package import (H02_DECISIONS,
+                                             OWNER_DIRECTION_STATUS)
+
+        rows = {row["decision_id"]: row for row in _rows(_read(os.path.join(
+            CHECKPOINT_ROOT, "H02-curation-protocol",
+            "proposed-decisions.csv")))}
+        directed = [item for item in H02_DECISIONS if item["owner_direction"]]
+        self.assertTrue(directed)
+        for item in directed:
+            with self.subTest(decision=item["decision_id"]):
+                self.assertEqual(rows[item["decision_id"]]["current_state"],
+                                 OWNER_DIRECTION_STATUS)
 
     def test_the_protocol_state_is_read_not_asserted(self):
         import json

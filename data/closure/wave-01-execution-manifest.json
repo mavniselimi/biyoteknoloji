@@ -74,10 +74,10 @@
       "work_package": "WP-C00"
     },
     {
-      "bytes": 1902,
+      "bytes": 2100,
       "path": "docs/closure/checkpoints/README.md",
       "present": true,
-      "sha256": "sha256:a4c394cd65466cd8d02316e5113878952a014c82e3cb8a85e413c4e7333e3886",
+      "sha256": "sha256:389cec7b05e2c6563e3ab79a88232e5514e5653fe95e635c5afe80b743376253",
       "what_it_does_not_say": "three of the four are still undecided",
       "what_it_is": "the index of the four human decision checkpoints",
       "work_package": "WP-C03"
@@ -192,12 +192,12 @@
         {
           "path": "docs/closure/checkpoints/H02-curation-protocol/README.md",
           "present": true,
-          "sha256": "sha256:c52c78111bc4efebad1a0234673a0e46f60ee6ed790656b866e756c10188092f"
+          "sha256": "sha256:a107ddc65fc99a93108159c76d2ce6624ade57e887fbb0a7a3260003eb3c2c6e"
         },
         {
           "path": "docs/closure/checkpoints/H02-curation-protocol/decision-context.md",
           "present": true,
-          "sha256": "sha256:dd2b6ec88441cd2e662d2226021cfa9e9413fcaa2504b5a1ec40377b4e76eb97"
+          "sha256": "sha256:d2f35a23c81ffad97f6bf4f8c8bd1a1b0b1b4e677e6ac3a646adf8903cbba042"
         },
         {
           "path": "docs/closure/checkpoints/H02-curation-protocol/evidence-table.csv",
@@ -207,7 +207,7 @@
         {
           "path": "docs/closure/checkpoints/H02-curation-protocol/proposed-decisions.csv",
           "present": true,
-          "sha256": "sha256:d8bfe180ac9301af087eb636625c89ab33cca25b4931b30e05aa1df97b7626ae"
+          "sha256": "sha256:2c4cba201669c3b6b3a29b89fc01483e9a045b19bc08ed6e2b0878b6b49285b1"
         },
         {
           "path": "docs/closure/checkpoints/H02-curation-protocol/unresolved-questions.md",
@@ -223,6 +223,49 @@
           "path": "docs/closure/checkpoints/H02-curation-protocol/approval-form.md",
           "present": true,
           "sha256": "sha256:c589e879a58899021749a13e0e7970c2c69647110eabd45edeaed8f2d22787a7"
+        }
+      ],
+      "note": "every proposed decision is PENDING_REVIEW and the approval form carries no name, date or verdict"
+    },
+    {
+      "approval_form_blank": true,
+      "checkpoint": "H04-dataset-quality-decision",
+      "decision_recorded": false,
+      "files": [
+        {
+          "path": "docs/closure/checkpoints/H04-dataset-quality-decision/README.md",
+          "present": true,
+          "sha256": "sha256:bb6f0bf6c9fc42c33f72d0683223ff8c6fcbc0f4f9a5b2ee35b5d6253673d13f"
+        },
+        {
+          "path": "docs/closure/checkpoints/H04-dataset-quality-decision/decision-context.md",
+          "present": true,
+          "sha256": "sha256:14785066df7d37ce4944c114a15ecd615de1f3248f971a392abe4fdcb41700b0"
+        },
+        {
+          "path": "docs/closure/checkpoints/H04-dataset-quality-decision/evidence-table.csv",
+          "present": true,
+          "sha256": "sha256:9f96371b832b398472c1bb2d68687bef2e217e315d195cb416c41b63515e1fcc"
+        },
+        {
+          "path": "docs/closure/checkpoints/H04-dataset-quality-decision/proposed-decisions.csv",
+          "present": true,
+          "sha256": "sha256:6a6a97224162fc6c3b21ebbbde3a22b9bf442f6909c644691bcd54bb5c346fe4"
+        },
+        {
+          "path": "docs/closure/checkpoints/H04-dataset-quality-decision/unresolved-questions.md",
+          "present": true,
+          "sha256": "sha256:9de2bc6e5847c1cafdb99a73d3d3fb9ab40a67a4c6555acddc6f144e7145f1c8"
+        },
+        {
+          "path": "docs/closure/checkpoints/H04-dataset-quality-decision/risk-summary.md",
+          "present": true,
+          "sha256": "sha256:430922fd13d5f6b6faa66c99f9b0ef8d4b70567434be7bc41cd93527c4d75be0"
+        },
+        {
+          "path": "docs/closure/checkpoints/H04-dataset-quality-decision/approval-form.md",
+          "present": true,
+          "sha256": "sha256:ff0d61f139c6a6504cd4d0e3f1210489b32ac634511b6a1aa5eefcbdb241cef3"
         }
       ],
       "note": "every proposed decision is PENDING_REVIEW and the approval form carries no name, date or verdict"
@@ -271,7 +314,7 @@
       "note": "every proposed decision is PENDING_REVIEW and the approval form carries no name, date or verdict"
     }
   ],
-  "content_hash": "sha256:dfba484a8bda1cc5b2637b71d123a52ca01500bc65abea4754df66f74d370c6e",
+  "content_hash": "sha256:ed98ca6b914026a3f9926956b2a3937bbb1451d4cbdd11c74e617bad04a0ae2a",
   "manifest_version": "pgx-closure-wave-01-manifest/1",
   "note": "An intact manifest describing a blocked programme is what this wave was supposed to produce. A recorded human decision on a checkpoint is not the same as a source being usable: the registry has its own completeness rules and no source has met them.",
   "ths6_achieved": false,

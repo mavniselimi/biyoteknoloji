@@ -172,11 +172,11 @@
     },
     "UNIT": {
       "errored": 0,
-      "executed": 3163,
+      "executed": 3234,
       "failed": 0,
-      "inventoried": 3163,
+      "inventoried": 3234,
       "outcome": "PASS",
-      "passed": 3159,
+      "passed": 3230,
       "reason": "",
       "skipped": 4
     },
@@ -194,12 +194,12 @@
   "claim_boundary_approved": false,
   "claim_boundary_status": "DRAFT / AWAITING HUMAN AND SCIENTIFIC REVIEW",
   "counts": {
-    "discovered": 7390,
+    "discovered": 7461,
     "errored": 0,
-    "executed": 7390,
+    "executed": 7461,
     "failed": 0,
     "not_executed": 0,
-    "passed": 7294,
+    "passed": 7365,
     "skipped": 96,
     "unexplained_skips": 0
   },
@@ -239,7 +239,7 @@
   },
   "coverage_tool_available": false,
   "critical_requirement_count": 20,
-  "discovered_test_count": 7390,
+  "discovered_test_count": 7461,
   "execution_status": "PASS",
   "flaky": null,
   "flaky_repeat_status": null,
@@ -384,10 +384,10 @@
         },
         "UNIT": {
           "errored": 0,
-          "executed": 3163,
+          "executed": 3234,
           "failed": 0,
           "outcome": "PASS",
-          "passed": 3159,
+          "passed": 3230,
           "reason": "",
           "skipped": 4
         },
@@ -408,12 +408,12 @@
       "profile": "full",
       "stdout_note": "Test outcomes come from the test runner's recorded result, never from words found in stdout. Several negative tests print CONFIGURATION_FAILURE on purpose while passing; a CI job that grepped for it would fail a green suite.",
       "summary": {
-        "discovered": 7390,
+        "discovered": 7461,
         "errored": 0,
-        "executed": 7390,
+        "executed": 7461,
         "failed": 0,
         "not_executed": 0,
-        "passed": 7294,
+        "passed": 7365,
         "skipped": 96,
         "unexplained_skips": 0
       }
@@ -525,7 +525,7 @@
     "VER-REQ-017": {
       "criticality": "IMPORTANT",
       "is_covered": true,
-      "test_count": 402,
+      "test_count": 432,
       "title": "Canonicalisation is deterministic and refuses ambiguous input"
     },
     "VER-REQ-018": {

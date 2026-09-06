@@ -290,7 +290,12 @@ class TestReleaseAndIngestionStaySeparate(unittest.TestCase):
     #: WP-07. A CLI, the published-schema loader, and one service holding the
     #: single audited state transition this project performs. The
     #: canonicalization logic itself lives in ``pgx/normalization``.
+    # WP-C06 adds quality_decision_service.py here: it records a dataset
+    # quality decision and hands an approval to the WP-07 transition, which
+    # is the canonicalization lifecycle. Listed deliberately, which is what
+    # this inventory is for.
     CANONICALIZATION_MODULES = ("normalize_cli.py", "canonical_schema.py",
+                                "quality_decision_service.py",
                                 "canonical_service.py")
 
     #: WP-08. A CLI and the published-schema loader. The evidence logic lives

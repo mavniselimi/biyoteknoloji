@@ -1,0 +1,181 @@
+{
+  "acquisition_executed": false,
+  "acquisition_executed_reason": "every approved mode is manual, so no acquisition may be performed by this project's software. What is produced here is the matrix and the checklist a person works through.",
+  "acquisition_plan_version": "pgx-wpc05-acquisition-plan/1",
+  "content_hash": "sha256:bb6d7704cc61cf0893276c2b81aceea36393916c0af20936fb4c3a32ab022791",
+  "dataset_identity": {
+    "allocated": false,
+    "note": "a new dataset id is allocated through the canonical mechanism at the moment real material exists. The quarantined legacy id PGX-DATA-20260830-900 is never reused, relabelled or copied."
+  },
+  "derived_from": {
+    "h01_decision": "APPROVED WITH CONDITIONS",
+    "h01_decision_content_hash": "sha256:2b3d3d8737d0606a7ac6545d00bffd9bae790c4f93303c5ce99171a31261ced9",
+    "h01_decision_state": "RECORDED",
+    "h01_reviewer": "Mehmet Yetiş"
+  },
+  "first_release_axes": [
+    "CYP2C19::amitriptyline",
+    "CYP2C19::clopidogrel",
+    "CYP2C19::omeprazole",
+    "CYP2D6::amitriptyline",
+    "CYP2D6::codeine"
+  ],
+  "note": "This plan grants nothing. It restates an approval already recorded and names what a person must do to act on it.",
+  "prohibited_everywhere": [
+    "OFFICIAL_API access to any source whose service terms remain unknown",
+    "automated acquisition of any kind under unknown terms",
+    "scraping or crawling any source",
+    "bulk download of any source",
+    "verbatim redistribution of publication or label full text",
+    "commercial use of any approved source",
+    "treating deferral of FDA or TITCK as evidence that a first-release axis is regulator-supported",
+    "expanding the approved source set by implication"
+  ],
+  "rows": [
+    {
+      "allowed_local_artifact": "a normalized internal derivation and a citation record; not a copy of the page",
+      "approved_interface": "the website, read manually by a person",
+      "automation_permitted": false,
+      "canonical_entry_point": "https://www.clinpgx.org/",
+      "citation_requirement": "cite ClinPGx with the retrieval instant",
+      "derivation_permitted": true,
+      "expected_destination": "data/raw/wp-c05/<new-dataset-id>/clinpgx-website/",
+      "intended_first_release_axes": [
+        "CYP2C19::amitriptyline",
+        "CYP2C19::clopidogrel",
+        "CYP2C19::omeprazole",
+        "CYP2D6::amitriptyline",
+        "CYP2D6::codeine"
+      ],
+      "operator_action_required": "a person retrieves the document, records the URL, the retrieval instant in UTC, the version identifier and the SHA-256 of the bytes, and places it in the destination",
+      "permitted_acquisition_modes": [
+        "MANUAL_DOWNLOAD"
+      ],
+      "prohibited_acquisition_modes": [
+        "OFFICIAL_API",
+        "LICENSED_BULK_EXPORT"
+      ],
+      "prohibited_reuse": [
+        "COMMERCIAL_USE",
+        "AUTOMATED_ACQUISITION",
+        "BULK_DOWNLOAD",
+        "VERBATIM_REDISTRIBUTION",
+        "THIRD_PARTY_SHARING"
+      ],
+      "redistribution_limitation": "no redistribution of any kind; the source's own terms contradict themselves and the approval stays inside the intersection both readings permit",
+      "source_family": "ClinPGx",
+      "source_key": "clinpgx.website",
+      "version_identifier": "the page's own last-updated date and the retrieval instant",
+      "why_not_automated": "the approval permits manual retrieval only. A script fetching one page is still automated acquisition, which is prohibited for this source."
+    },
+    {
+      "allowed_local_artifact": "the distributed structured data file as downloaded, unmodified",
+      "approved_interface": "the published CPIC guideline database distribution",
+      "automation_permitted": false,
+      "canonical_entry_point": "https://cpicpgx.org/",
+      "citation_requirement": "cite CPIC as the source of every recommendation derived from it, with the recorded release identifier",
+      "derivation_permitted": true,
+      "expected_destination": "data/raw/wp-c05/<new-dataset-id>/cpic-database/",
+      "intended_first_release_axes": [
+        "CYP2C19::amitriptyline",
+        "CYP2C19::clopidogrel",
+        "CYP2C19::omeprazole",
+        "CYP2D6::amitriptyline",
+        "CYP2D6::codeine"
+      ],
+      "operator_action_required": "a person retrieves the document, records the URL, the retrieval instant in UTC, the version identifier and the SHA-256 of the bytes, and places it in the destination",
+      "permitted_acquisition_modes": [
+        "MANUAL_DOWNLOAD"
+      ],
+      "prohibited_acquisition_modes": [
+        "OFFICIAL_API",
+        "LICENSED_BULK_EXPORT"
+      ],
+      "prohibited_reuse": [
+        "COMMERCIAL_USE",
+        "AUTOMATED_ACQUISITION",
+        "BULK_DOWNLOAD",
+        "VERBATIM_REDISTRIBUTION"
+      ],
+      "redistribution_limitation": "no verbatim redistribution; normalized internal derivation only",
+      "source_family": "CPIC",
+      "source_key": "cpic.database",
+      "version_identifier": "the distribution's own release identifier, to be read at retrieval and recorded verbatim",
+      "why_not_automated": "the approval permits manual retrieval only. A script fetching one page is still automated acquisition, which is prohibited for this source."
+    },
+    {
+      "allowed_local_artifact": "a citation record only - author, title, journal, year, DOI. Not the article text.",
+      "approved_interface": "the published guideline papers, read as literature",
+      "automation_permitted": false,
+      "canonical_entry_point": "https://cpicpgx.org/guidelines/",
+      "citation_requirement": "full citation with DOI",
+      "derivation_permitted": false,
+      "expected_destination": "data/raw/wp-c05/<new-dataset-id>/cpic-publications/",
+      "intended_first_release_axes": [
+        "CYP2C19::amitriptyline",
+        "CYP2C19::clopidogrel",
+        "CYP2C19::omeprazole",
+        "CYP2D6::amitriptyline",
+        "CYP2D6::codeine"
+      ],
+      "operator_action_required": "a person retrieves the document, records the URL, the retrieval instant in UTC, the version identifier and the SHA-256 of the bytes, and places it in the destination",
+      "permitted_acquisition_modes": [
+        "MANUAL_DOWNLOAD"
+      ],
+      "prohibited_acquisition_modes": [
+        "OFFICIAL_API",
+        "LICENSED_BULK_EXPORT",
+        "PUBLICATION_TRANSCRIPTION"
+      ],
+      "prohibited_reuse": [
+        "VERBATIM_REDISTRIBUTION",
+        "COMMERCIAL_USE",
+        "AUTOMATED_ACQUISITION",
+        "BULK_DOWNLOAD"
+      ],
+      "redistribution_limitation": "full text is neither stored nor redistributed",
+      "source_family": "CPIC",
+      "source_key": "cpic.publications",
+      "version_identifier": "the DOI and publication year of each guideline consulted",
+      "why_not_automated": "the approval permits manual retrieval only. A script fetching one page is still automated acquisition, which is prohibited for this source."
+    },
+    {
+      "allowed_local_artifact": "a citation record only",
+      "approved_interface": "the official public scientific publications",
+      "automation_permitted": false,
+      "canonical_entry_point": "https://www.knmp.nl/",
+      "citation_requirement": "cite the DPWG recommendation and its publication",
+      "derivation_permitted": false,
+      "expected_destination": "data/raw/wp-c05/<new-dataset-id>/dpwg-knmp/",
+      "intended_first_release_axes": [
+        "CYP2C19::amitriptyline",
+        "CYP2C19::clopidogrel",
+        "CYP2C19::omeprazole",
+        "CYP2D6::amitriptyline",
+        "CYP2D6::codeine"
+      ],
+      "operator_action_required": "a person retrieves the document, records the URL, the retrieval instant in UTC, the version identifier and the SHA-256 of the bytes, and places it in the destination",
+      "permitted_acquisition_modes": [
+        "MANUAL_DOWNLOAD"
+      ],
+      "prohibited_acquisition_modes": [
+        "OFFICIAL_API",
+        "LICENSED_BULK_EXPORT",
+        "PUBLICATION_TRANSCRIPTION"
+      ],
+      "prohibited_reuse": [
+        "VERBATIM_REDISTRIBUTION",
+        "COMMERCIAL_USE",
+        "AUTOMATED_ACQUISITION",
+        "BULK_DOWNLOAD",
+        "THIRD_PARTY_SHARING"
+      ],
+      "redistribution_limitation": "no reproduction of the G-Standaard or any licensed dataset; publications are cited, never redistributed",
+      "source_family": "DPWG / KNMP",
+      "source_key": "dpwg.knmp",
+      "version_identifier": "the publication identifier and date of each recommendation consulted",
+      "why_not_automated": "the approval permits manual retrieval only. A script fetching one page is still automated acquisition, which is prohibited for this source."
+    }
+  ],
+  "work_package": "WP-C05"
+}

@@ -1,7 +1,7 @@
 {
   "category_rule_count": 142,
-  "discovered_test_count": 7390,
-  "inventoried_test_count": 7390,
+  "discovered_test_count": 7461,
+  "inventoried_test_count": 7461,
   "known_stdout_markers": [
     "CONFIGURATION_FAILURE"
   ],
@@ -12,7 +12,7 @@
   "requirement_registry_version": "pgx-wp19-requirements/1",
   "start_directory": "tests",
   "stdout_note": "Test outcomes come from the test runner's recorded result, never from words found in stdout. Several negative tests print CONFIGURATION_FAILURE on purpose while passing; a CI job that grepped for it would fail a green suite.",
-  "suite_count": 272,
+  "suite_count": 274,
   "suites": [
     {
       "assigned_by": "package-adversarial",
@@ -1511,6 +1511,28 @@
     {
       "assigned_by": "package-closure",
       "category": "UNIT",
+      "command": "python -m unittest tests.unit.closure.test_h01_decision -v",
+      "criticality": "IMPORTANT",
+      "dependencies": [],
+      "evidence": [
+        "docs/closure/wp-c00-legacy-candidate-dispositions.md",
+        "docs/closure/checkpoints/README.md"
+      ],
+      "module": "tests.unit.closure.test_h01_decision",
+      "offline": true,
+      "permitted_skip_reasons": [],
+      "requirements": [],
+      "safety_invariants": [],
+      "skip_policy": "NEVER",
+      "suite_id": "tests.unit.closure.test_h01_decision",
+      "synthetic_fixtures": false,
+      "test_count": 37,
+      "test_id_sha256": "0dafd98d253074068321d61d73f0d4374ddec76a4c469e6151a19b7817ff603a",
+      "work_package": "WP-C00/WP-C03"
+    },
+    {
+      "assigned_by": "package-closure",
+      "category": "UNIT",
       "command": "python -m unittest tests.unit.closure.test_wp_c00_dispositions -v",
       "criticality": "IMPORTANT",
       "dependencies": [],
@@ -1549,8 +1571,8 @@
       "skip_policy": "ENVIRONMENT_DEPENDENCY",
       "suite_id": "tests.unit.closure.test_wp_c03_checkpoints",
       "synthetic_fixtures": false,
-      "test_count": 27,
-      "test_id_sha256": "5a53917d315454e564395b94ae4c5faf14108af7d2ea5448575ed2852a2ea4a5",
+      "test_count": 31,
+      "test_id_sha256": "8c781daa2ad26d0a0952596e7ddafe69d8b180482e204f1e4a150429ed223d1d",
       "work_package": "WP-C03"
     },
     {
@@ -3612,6 +3634,27 @@
       "synthetic_fixtures": false,
       "test_count": 21,
       "test_id_sha256": "dc07f90627c4ba29dac10bdc580847c8df4fec7c56020d4121347bac337c2a74",
+      "work_package": "WP-07"
+    },
+    {
+      "assigned_by": "package-normalization",
+      "category": "UNIT",
+      "command": "python -m unittest tests.unit.normalization.test_quality_decision -v",
+      "criticality": "IMPORTANT",
+      "dependencies": [],
+      "evidence": [],
+      "module": "tests.unit.normalization.test_quality_decision",
+      "offline": true,
+      "permitted_skip_reasons": [],
+      "requirements": [
+        "VER-REQ-017"
+      ],
+      "safety_invariants": [],
+      "skip_policy": "NEVER",
+      "suite_id": "tests.unit.normalization.test_quality_decision",
+      "synthetic_fixtures": false,
+      "test_count": 30,
+      "test_id_sha256": "7e532bd36db3537a8af810e5be3dc0d71d5315ae567b825bf379eea3ef8bfdba",
       "work_package": "WP-07"
     },
     {

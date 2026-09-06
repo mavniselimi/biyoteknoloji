@@ -1,17 +1,17 @@
-# H02-curation-protocol - curation protocol and scientific scope
+# H04-dataset-quality-decision - dataset quality decision mechanism and its first decision
 
 **Status: PENDING_REVIEW.** Nothing in this package is approved.
 
-The protocol declares itself draft and its `approval` field is null. Beyond approving it, five places were found where the primary sources do not fit the shape the project has described its scope in, and the protocol is silent on all five.
+WP-07 already carried the transition an approval causes. What was missing was the decision: no verdict field, so no way to record a rejection; no reviewer role; no binding to the source policy. Wave 2 implemented those and left the working parts alone. Nobody has been named as data owner and there is no legitimate dataset to decide about.
 
 ## Who decides
 
 | Field | Value |
 | --- | --- |
-| Decision owner | curation protocol approver and clinical pharmacogenomics reviewer |
-| Cannot be decided by | a maintainer; the protocol says explicitly that owning it is not approving the science it governs |
-| Blocks | every curated interpretation, rule creation, validation |
-| Blocked by | H01-source-policy, for anything to curate from |
+| Decision owner | a named data owner |
+| Cannot be decided by | the quality report, which reports numbers and decides nothing |
+| Blocks | dataset publication, release activation |
+| Blocked by | a non-legacy dataset, which WP-C05 has not produced |
 
 ## The files
 
@@ -23,7 +23,6 @@ The protocol declares itself draft and its `approval` field is null. Beyond appr
 | `unresolved-questions.md` | What is not known, and what would have to happen to know it. |
 | `risk-summary.md` | What goes wrong if this is decided wrongly, or not decided. |
 | `approval-form.md` | Blank. A reviewer fills it in. |
-| `clinical-review-table.csv` | Every decision in seven parts: what the source says, what this repository assumes, what the owner directed, what is proposed, what goes wrong, what is unknown, and what you are being asked to decide. |
 
 ## How to use this
 

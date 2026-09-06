@@ -12,6 +12,12 @@ WP-C04's reading of the primary sources turned up five places where the sources 
 
 They are set out in `unresolved-questions.md` and carried as decisions `H02-D03` through `H02-D07`.
 
+## The H01 approval is not an H02 approval
+
+A pharmacist has approved this project's source policy. That decision says which sources may be used and on what terms. It says nothing about how a source's content becomes a clinical representation, and it must not be reused here: the reviewer was not asked, and did not answer, any of the questions in this package.
+
+Each row of `proposed-decisions.csv` is bound to the content hash of the protocol and of the legacy disposition report it depends on, so an approval recorded here cannot later attach to different bytes.
+
 ## What must not happen
 
 The 1,559 legacy candidates carry the previous project's own risk levels, phenotype strings and plain-language hints. None of that is evidence, and a curation protocol that permitted a curator to start from a legacy row's wording would launder an unreviewed opinion into a curated interpretation. The protocol should be read with that specific failure in mind.

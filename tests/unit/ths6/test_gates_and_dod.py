@@ -309,15 +309,17 @@ class TestDisagreementDetection(unittest.TestCase):
                                     "wp19-test-inventory.json"),
                       encoding="utf-8") as handle:
             inventory = _json.load(handle)
-        with _io.open(_os.path.join(_ROOT, "data", "verification",
-                                    "wp19-verification-run.json"),
-                      encoding="utf-8") as handle:
-            run = _json.load(handle)
         self.assertEqual(inventory["discovered_test_count"],
                          inventory["inventoried_test_count"])
-        self.assertEqual(run["summary"]["discovered"],
-                         inventory["discovered_test_count"])
         self.assertEqual(inventory["load_failures"], [])
+
+        # Deliberately not compared with the recorded run's own count. The
+        # run writes that record when it finishes, so during any run that
+        # follows a change in the number of tests the record is one run
+        # behind by construction, and a test asserting they agree fails on
+        # the run that is in the middle of making them agree. What is
+        # durable, and what the disagreement above was really about, is that
+        # the inventory matches the suite it claims to describe.
 
     def test_no_disagreement_prefers_the_more_favourable_value(self):
         """No resolution says a value was chosen over another.
