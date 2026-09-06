@@ -1,5 +1,7 @@
 # H00-repository-identity - repository identity and baseline
 
+> **Historical checkpoint notice (2026-09-06):** This package was created under the original intermediate-human-gate policy. Its evidence and any genuine human response remain valid audit inputs, but an unsigned form no longer blocks construction of the candidate prototype. Open questions must be resolved in traceable `SOURCE_GROUNDED_INTERNAL_DECISION` or `PROJECT_TEAM_PROVISIONAL` records and remain `PENDING_EXTERNAL_EXPERT_REVIEW`. See `../../current-execution-policy.md`.
+
 **Status: PENDING_REVIEW.** Nothing in this package is approved.
 
 A baseline commit, tree and tag now exist and are measured. What is open is whether they are the ones this project meant, and where - if anywhere - this repository is published.
@@ -27,4 +29,3 @@ A baseline commit, tree and tag now exist and are measured. What is open is whet
 ## How to use this
 
 Read `decision-context.md`, then check `proposed-decisions.csv` against `evidence-table.csv` rather than against the prose - the prose is the project's reading and the evidence is what it read. Then fill in `approval-form.md`. Approving something the evidence table does not support is the failure mode this layout exists to make visible.
-

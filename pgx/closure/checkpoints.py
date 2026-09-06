@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
-"""WP-C03: human decision checkpoints, packaged for review.
+"""WP-C03: historical human decision checkpoints, packaged for review.
 
-Four decisions block the first release and none of them is a decision code
-can make. This module builds one review package per decision, each with the
-same seven files, so that a reviewer opens the same shapes every time and a
-reader can tell at a glance which questions are still open.
+These packages were created under the original intermediate-human-gate policy.
+They remain review and audit inputs, but unsigned packages no longer block the
+candidate prototype under ``docs/closure/current-execution-policy.md``.
+Source-grounded internal decisions are recorded separately and remain pending
+final external expert evaluation.
 
 What a package contains is deliberately limited. It states what the
 repository can be made to show, what the project proposes, and what is not
@@ -122,6 +123,15 @@ def _readme(checkpoint: Mapping[str, Any]) -> str:
     lines = [
         "# %s - %s" % (checkpoint["id"], checkpoint["title"]),
         "",
+        "> **Historical checkpoint notice (2026-09-06):** This package was "
+        "created under the original intermediate-human-gate policy. Its "
+        "evidence and any genuine human response remain valid audit inputs, "
+        "but an unsigned form no longer blocks construction of the candidate "
+        "prototype. Open questions must be resolved in traceable "
+        "`SOURCE_GROUNDED_INTERNAL_DECISION` or `PROJECT_TEAM_PROVISIONAL` "
+        "records and remain `PENDING_EXTERNAL_EXPERT_REVIEW`. See "
+        "`../../current-execution-policy.md`.",
+        "",
         "**Status: %s.** Nothing in this package is approved." % _PENDING,
         "",
         checkpoint["summary"],
@@ -171,7 +181,7 @@ def _readme(checkpoint: Mapping[str, Any]) -> str:
         "make visible.",
         "",
     ]
-    return "\n".join(lines) + "\n"
+    return "\n".join(lines).rstrip("\n") + "\n"
 
 
 def _document(title: str, intro: str,
@@ -1076,13 +1086,20 @@ def _index(root: str = ".") -> str:
     lines = [
         "# Human decision checkpoints",
         "",
-        "%d decisions block the first release. None can be made by code. "
-        "%d of them %s a recorded decision; %d %s outstanding."
+        "> **Current execution-policy notice (2026-09-06):** These packages "
+        "are preserved historical review/audit inputs. Missing intermediate "
+        "external signatures no longer block candidate construction. Their "
+        "open questions must be resolved through transparent internal "
+        "decision records and remain pending the final whole-project external "
+        "expert evaluation. See `../current-execution-policy.md`.",
+        "",
+        "%d checkpoint packages were created under the original policy. "
+        "%d of them %s a recorded human decision; %d %s unsigned."
         % (len(CHECKPOINTS), len(CHECKPOINTS) - outstanding,
            "carries" if len(CHECKPOINTS) - outstanding == 1 else "carry",
            outstanding, "is" if outstanding == 1 else "are"),
         "",
-        "| Checkpoint | Decision | Owner | Blocks | Decided |",
+        "| Checkpoint | Decision | Original owner | Original downstream effect | Decided |",
         "| --- | --- | --- | --- | :---: |",
     ]
     for checkpoint in CHECKPOINTS:
@@ -1111,7 +1128,7 @@ def _index(root: str = ".") -> str:
         "once it stops being blank.",
         "",
     ]
-    return "\n".join(lines) + "\n"
+    return "\n".join(lines).rstrip("\n") + "\n"
 
 
 # ---------------------------------------------------------------------------

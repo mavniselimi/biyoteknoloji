@@ -2,7 +2,9 @@
 
 **Purpose:** Close the existing PGx Platform V2 as a defensible THS-6 prototype.  
 **Mode:** Closure / execution phase. No unnecessary feature expansion.  
-**Core principle:** The software platform already exists; the remaining work is to feed it governed scientific content, execute validation, collect expert evidence, and prove the system in a representative operational environment.
+**Core principle:** The software platform already exists; the project team now completes a source-grounded, internally validated candidate prototype first, then obtains real whole-project external expert evaluation, applies corrections, revalidates, and closes the final evidence pack.
+
+**Current execution policy:** [`docs/closure/current-execution-policy.md`](docs/closure/current-execution-policy.md). Historical checkpoint and wave artifacts retain the policy and facts that applied when they were produced.
 
 ---
 
@@ -21,8 +23,12 @@ to:
 
 ```text
 SCIENTIFICALLY-GOVERNED
-VALIDATED
+INTERNALLY-VALIDATED
+FUNCTIONALLY-COMPLETE-CANDIDATE
+PENDING-EXTERNAL-EXPERT-REVIEW
+↓
 EXPERT-REVIEWED
+CORRECTED-AND-REVALIDATED
 OPERATIONALLY-EXECUTED
 AUDITABLE
 RELEASED
@@ -37,9 +43,31 @@ This is the final closure phase for the current THS-6 objective.
 
 ---
 
-# 2. Final Completion Definition
+# 2. Candidate and Final Completion Definitions
 
-The project is considered closed for the THS-6 objective only when:
+## 2.1 Complete candidate prototype
+
+Intermediate external approval is not required to build the candidate. The candidate is complete when:
+
+```text
+Scientific decisions = SOURCE_GROUNDED_INTERNAL_DECISION
+Authority state = PROJECT_TEAM_PROVISIONAL + PENDING_EXTERNAL_EXPERT_REVIEW
+
+Dataset = SEALED + PROJECT_TEAM_PROVISIONAL quality decision
+Interpretations = SOURCE-GROUNDED + PROJECT_TEAM_PROVISIONAL
+Ruleset = FROZEN + EXECUTABLE in DEMO/VALIDATION candidate mode
+Candidate release = ACTIVE in DEMO/VALIDATION mode
+Internal validation benchmark = EXECUTED
+Operational evidence = RECORDED to the extent available
+Product Surface / Demo UX = CLOSED
+Representative candidate workflow = EXECUTED through the browser
+```
+
+At this point the project may be described as a source-grounded, deterministic, internally validated research prototype. It may not be described as clinically validated, independently validated or externally expert-approved.
+
+## 2.2 Final THS-6 closure
+
+The project is considered finally closed for the THS-6 objective only after the complete candidate has received real external expert evaluation and the post-review correction loop is complete:
 
 ```text
 Gate A = PASS
@@ -53,17 +81,21 @@ Definition of Done = 15 / 15
 
 Representative workflow = EXECUTED
 
-Validated release = ACTIVE
+Final candidate release = ACTIVE
 
-Scientific sources = APPROVED
+Scientific sources = SOURCE-GROUNDED DECISIONS RECORDED
 
-Dataset = SEALED + APPROVED
+Dataset = SEALED + FINAL POST-REVIEW DISPOSITION
 
 Ruleset = FROZEN + EXECUTABLE
 
 Validation benchmark = EXECUTED
 
 Expert review = COMPLETED
+
+Expert feedback = CLASSIFIED + INCORPORATED OR RATIONALLY DISPOSITIONED
+
+Affected validation = RERUN
 
 Operational evidence = RECORDED
 
@@ -84,14 +116,16 @@ Its responsibility is to:
 ```text
 inspect
 → research
+→ record source-grounded internal decisions
 → implement
 → execute
 → validate
 → collect evidence
 → detect blockers
-→ prepare human review
-→ resume after approval
-→ run downstream workflows
+→ complete the candidate project
+→ prepare one late whole-project expert evaluation
+→ preserve and classify real feedback
+→ correct and revalidate
 → rebuild the THS6 evidence pack
 ```
 
@@ -99,13 +133,16 @@ Cowork must not stop at producing TODO documents.
 
 When a task is executable by the agent, it should be executed.
 
-When a task requires human or external authority, Cowork must:
+Missing intermediate external human approval does not stop candidate development. Cowork must instead:
 
-1. prepare everything before the checkpoint,
-2. create the exact review/decision package,
-3. identify the exact human action required,
-4. pause only that dependency,
-5. continue all unrelated work in parallel.
+1. retrieve and compare the strongest authoritative evidence available,
+2. record a replaceable internal decision with rationale, provenance, uncertainty and conflicts,
+3. mark it `SOURCE_GROUNDED_INTERNAL_DECISION` or `PROJECT_TEAM_PROVISIONAL`,
+4. also mark it `PENDING_EXTERNAL_EXPERT_REVIEW`,
+5. fail closed when uncertainty cannot be represented safely,
+6. continue through the candidate scientific pipeline.
+
+External access, licensing restrictions, real-patient-data prohibitions and unsafe unresolved ambiguity remain hard blockers for the affected action. They are not waived by the candidate-first policy.
 
 ---
 
@@ -123,9 +160,12 @@ Cowork can complete these fully:
 - dataset acquisition,
 - normalization,
 - evidence extraction,
-- proposed curation,
-- proposed computable-rule generation,
-- candidate validation-case generation,
+- source-grounded internal source and governance decisions,
+- project-team provisional dataset-quality decisions,
+- source-grounded internal curation,
+- provisional computable-rule generation and candidate ruleset freezing,
+- provisional expected-gene-scope declarations,
+- internal validation/reference-judgment records and holdout assignment,
 - benchmark execution,
 - metric calculation,
 - CI/deployment execution,
@@ -168,20 +208,57 @@ Exact credential/action needed:
 
 and continue unrelated tracks.
 
-## CLASS C — Human Authority Required
+## CLASS C — Real External Human Authority Required at Final Evaluation
 
-Cowork prepares the decision package but must not impersonate the human authority.
+Class C does not block construction or internal validation of the complete candidate prototype. It blocks only claims of external review/approval and final post-review closure.
 
 Examples:
 
-- scientific source approval,
-- curation protocol approval,
-- claims-boundary approval,
-- scientific curation decisions,
-- expected-gene-scope declaration,
-- validation reference judgment,
-- blind expert review,
+- whole-project external scientific evaluation,
+- authentic expert comments, scores and credentials,
+- any claim of independent expert or clinical validation,
 - final attestations.
+
+Cowork may prepare the evaluation package and workflow but must not impersonate the external expert, invent feedback or sign any attestation.
+
+## Authority-state vocabulary
+
+Before final external evaluation, use:
+
+```text
+SOURCE_GROUNDED_INTERNAL_DECISION
+PROJECT_TEAM_PROVISIONAL
+PENDING_EXTERNAL_EXPERT_REVIEW
+INTERNAL_VALIDATION
+LITERATURE_DERIVED_VALIDATION
+SOFTWARE_VERIFICATION
+```
+
+Do not use before the evidence exists:
+
+```text
+EXPERT_APPROVED
+PHYSICIAN_APPROVED
+CLINICALLY_VALIDATED
+INDEPENDENTLY_VALIDATED
+EXTERNAL_REVIEWED
+```
+
+### Candidate authority-state bridge
+
+Existing fields whose semantics mean a real external human approval, signature or independent review must keep that meaning. Do not populate them with an AI identity or silently redefine `APPROVED` to mean provisional.
+
+Where the implementation currently hard-blocks candidate execution on such a field, add the smallest backward-compatible authority-state path that:
+
+- records `SOURCE_GROUNDED_INTERNAL_DECISION` or `PROJECT_TEAM_PROVISIONAL`,
+- records the decision author as the project team or automated research workflow without impersonation,
+- pins evidence and artifact hashes,
+- carries `PENDING_EXTERNAL_EXPERT_REVIEW`,
+- enables only DEMO/VALIDATION candidate behavior,
+- leaves production/clinical and final-expert gates fail-closed,
+- allows a later expert-reviewed decision to supersede rather than erase the provisional record.
+
+Candidate readiness and final THS-6 closure are separate evaluations. A candidate-ready result must never be emitted as final expert-reviewed gate evidence.
 
 ---
 
@@ -200,10 +277,10 @@ flowchart TB
     end
 
     subgraph GOV["Governance Layer"]
-        SP["Approved Source Policy"]
-        CP["Approved Curation Protocol"]
-        CB["Approved Claims Boundary"]
-        HUMAN["Named Human Authorities"]
+        TEAM["Project Team Provisional Authority"]
+        SP["Source-Grounded Internal Source Decision"]
+        CP["Project-Team Provisional Curation Protocol"]
+        CB["Project-Team Provisional Claims Boundary"]
     end
 
     subgraph DATA["Scientific Data Pipeline"]
@@ -248,13 +325,14 @@ flowchart TB
         EH["Expert Holdout"]
         BENCH["Benchmark"]
         MET["Metrics"]
-        EXP["Blind Expert Review"]
+        EXP["Internal Validation Analysis"]
     end
 
     subgraph APP["Application Layer"]
         API["FastAPI"]
         WEB["Web UI"]
         REVIEW["Expert Review UI"]
+        SURFACE["Product Surface / Demo UX"]
     end
 
     subgraph OPS["Operational Layer"]
@@ -272,15 +350,17 @@ flowchart TB
 
     subgraph FINAL["Closure"]
         DEMO["Representative Demonstration"]
+        EXT["Final External Expert Evaluation"]
+        CORR["Feedback Correction + Revalidation"]
         PACK["THS6 Evidence Pack"]
         SIGN["Required Attestations"]
         THS6["THS 6 CLOSED"]
     end
 
     SOURCES --> SP
-    HUMAN --> SP
-    HUMAN --> CP
-    HUMAN --> CB
+    TEAM --> SP
+    TEAM --> CP
+    TEAM --> CB
 
     SP --> ACQ
     ACQ --> RAW
@@ -325,6 +405,10 @@ flowchart TB
     REP --> API
     API --> WEB
     EXP --> REVIEW
+    WEB --> SURFACE
+    REVIEW --> SURFACE
+    ACTIVE --> SURFACE
+    MET --> SURFACE
 
     DB --> API
     AUTH --> API
@@ -337,11 +421,13 @@ flowchart TB
     DB --> BK
     BK --> ROLL
 
-    REP --> DEMO
-    EXP --> DEMO
+    SURFACE --> DEMO
     STAGE --> DEMO
 
-    DEMO --> PACK
+    DEMO --> EXT
+    MET --> EXT
+    EXT --> CORR
+    CORR --> PACK
     MET --> PACK
     AUDIT --> PACK
     CI --> PACK
@@ -368,16 +454,16 @@ Source policy, curation protocol, claims boundary, named authorities.
 Source acquisition, clean dataset, evidence, curation, validated rules, coverage scope.
 
 ## Track D — Validation
-Validation cases, internal holdout, expert holdout, benchmark, metrics.
+Validation cases, internal holdout, cases reserved for final expert evaluation, internal benchmark, metrics.
 
 ## Track E — Expert / Final Closure
-Blind expert review, representative demo, final evidence pack, attestations.
+Product-surface and demo-UX closure, representative candidate demo, final whole-project external expert evaluation, correction/revalidation, final evidence pack, attestations.
 
 ---
 
-# 7. First Validated Release Scope
+# 7. First Candidate Release Scope
 
-The first THS-6 release should remain deliberately small.
+The first candidate release should remain deliberately small and must stay in DEMO/VALIDATION operation modes until final review supports anything broader.
 
 ## Genes
 
@@ -395,7 +481,7 @@ omeprazole
 amitriptyline
 ```
 
-## Gene–Drug Axes
+## Gene–Drug Evidence Axes and Decision Units
 
 ```text
 CYP2C19 × clopidogrel
@@ -404,6 +490,8 @@ CYP2C19 × amitriptyline
 CYP2D6 × codeine
 CYP2D6 × amitriptyline
 ```
+
+The two amitriptyline evidence axes are not independent clinical decisions. The candidate representation must use a joint CYP2C19 + CYP2D6 decision matrix when required by the authoritative source, and must fail closed if either required gene is absent.
 
 ## Phenotypes
 
@@ -415,7 +503,9 @@ RAPID
 ULTRARAPID
 ```
 
-## Target Validated Rules
+This is the cross-project vocabulary, not a declaration that every value applies to every gene. `RAPID` must not be treated as an expected CYP2D6 phenotype. Likely, indeterminate or unrepresentable activity-score states must remain explicit and fail closed rather than map to a neighbouring phenotype.
+
+## Target Internally Validated Candidate Rules
 
 ```text
 ~20–25 rules
@@ -423,7 +513,7 @@ ULTRARAPID
 
 ## Scientific Sources
 
-Minimum:
+Minimum source-grounded internal decision set:
 
 ```text
 CPIC
@@ -431,7 +521,7 @@ DPWG
 ClinPGx
 ```
 
-Preferred defensible release:
+Preferred future evidence expansion when access and terms permit:
 
 ```text
 CPIC
@@ -446,7 +536,7 @@ TITCK
 ```text
 50+ validation cases
 ≥20 INTERNAL_HOLDOUT
-≥10 EXPERT_HOLDOUT
+≥10 CASES RESERVED FOR FINAL EXTERNAL EXPERT EVALUATION
 ```
 
 ---
@@ -596,65 +686,67 @@ Closes major Gate E operational requirements.
 
 ---
 
-## WP-C03 — Governance Review Pack & Approval Launch
+## WP-C03 — Governance Decision Records & Final-Review Preparation
 
 **Track:** B — Governance  
-**Execution class:** A preparation + C decision  
+**Execution class:** A  
 **Dependencies:** None
 
 ### Objective
 
-Prepare and launch the three highest-leverage human approvals in parallel.
+Turn the source-policy, curation-protocol, claims-boundary and dataset-quality questions into transparent project-team decisions that can support candidate construction without pretending to be external approval.
 
-### Human Decisions
+### Candidate Decision Classes
 
-1. Scientific Source Policy Approval
-2. Curation Protocol Approval
-3. Claims Boundary Approval
+1. Source policy: `SOURCE_GROUNDED_INTERNAL_DECISION`
+2. Curation protocol and scope: `PROJECT_TEAM_PROVISIONAL`
+3. Claims boundary and safety wording: `PROJECT_TEAM_PROVISIONAL`
+4. Dataset quality: `PROJECT_TEAM_PROVISIONAL`
+
+Every record also carries `PENDING_EXTERNAL_EXPERT_REVIEW`.
 
 ### Cowork Responsibilities
 
-For each approval, create:
+For each decision:
 
 ```text
-review-package/
-├── source-document.md
-├── executive-summary.md
-├── open-questions.md
-├── identified-risks.md
-├── proposed-decision.md
-├── evidence-index.md
-└── approval-form.md
+internal-decision-record
+├── decision identifier and version
+├── exact source/protocol/artifact hashes
+├── project-team authority state
+├── rationale
+├── uncertainty and conflicts
+├── fail-closed behavior
+├── replaced/superseded decision link
+└── pending-external-expert-review marker
 ```
+
+Historical H00–H04 checkpoint packages and any genuine prior human input remain immutable audit inputs. Blank signature forms remain blank.
 
 ### Acceptance Criteria
 
-Cowork side:
-
-- all three review packages complete,
-- no missing prerequisite remains,
-- exact reviewer role identified.
-
-Human side:
-
-- each item receives APPROVE / REVISE / REJECT,
-- approval metadata recorded by a named person.
+- every decision needed for candidate development has an explicit internal disposition,
+- evidence, versions, rationale, uncertainty and conflicts are traceable,
+- unsafe or unsupported cases fail closed,
+- candidate execution no longer depends on an unsigned intermediate approval form,
+- no record claims external or clinical approval,
+- the eventual whole-project expert package can trace every provisional decision.
 
 ### THS Contribution
 
-Unblocks the entire governed scientific chain.
+Enables the candidate scientific chain while preserving a truthful boundary between project-team decisions and final external expert evidence.
 
 ---
 
-## WP-C04 — Scientific Source Research & Approval Support
+## WP-C04 — Scientific Source Research & Internal Decision Support
 
 **Track:** B / C  
-**Execution class:** A preparation + C approval  
-**Dependencies:** WP-C03 source-policy review may run in parallel
+**Execution class:** A / B  
+**Dependencies:** WP-C03 decision-record format may run in parallel
 
 ### Objective
 
-Collect authoritative source metadata and scientific content required for the first validated release.
+Collect authoritative source metadata and scientific content required for the first candidate release.
 
 ### Scope
 
@@ -688,18 +780,19 @@ For each source collect:
 - licence/terms evidence,
 - version identifiers,
 - acquisition plan per source,
-- approval-ready source packets.
+- source-grounded internal source decisions,
+- inputs for the final external expert package.
 
 ### Acceptance Criteria
 
-- minimum 3 sources approved,
-- preferred 5 sources approved,
-- each approved source has a known version and acquisition method,
+- minimum 3 source families have explicit internal dispositions,
+- each usable source/interface has a known version, provenance, terms basis and permitted acquisition method,
+- unknown-terms interfaces remain unusable even when their source family is scientifically relevant,
 - source-policy content hash can be generated.
 
 ### THS Contribution
 
-Closes the scientific-source root blocker and enables clean acquisition.
+Enables permitted clean acquisition without misrepresenting the internal source decision as external scientific or legal approval.
 
 ---
 
@@ -707,7 +800,7 @@ Closes the scientific-source root blocker and enables clean acquisition.
 
 **Track:** C — Scientific Content  
 **Execution class:** A / B  
-**Dependencies:** Approved sources from WP-C04
+**Dependencies:** Eligible `SOURCE_GROUNDED_INTERNAL_DECISION` source/interface records from WP-C04
 
 ### Objective
 
@@ -750,6 +843,8 @@ A new dataset identifier is mandatory.
 - all in-scope entities resolve,
 - DQ output contains no unhandled blocking issue,
 - evidence is no longer inherited from quarantined legacy content.
+- every acquired source/interface was permitted by a versioned internal decision and by its recorded access/reuse constraints,
+- every scientific-content artifact remains `PENDING_EXTERNAL_EXPERT_REVIEW`.
 
 ### THS Contribution
 
@@ -757,15 +852,15 @@ Creates the first scientifically legitimate dataset chain.
 
 ---
 
-## WP-C06 — Dataset Quality Decision Mechanism & Publication
+## WP-C06 — Dataset Quality Decision Mechanism & Provisional Publication
 
 **Track:** C  
-**Execution class:** A implementation + C decision  
+**Execution class:** A implementation + project-team provisional decision  
 **Dependencies:** WP-C05
 
 ### Objective
 
-Close the known gap where the system can generate a DQ report but cannot record the named human quality decision.
+Ensure the system can record an immutable, source-bound dataset-quality decision and use a project-team provisional decision to advance the candidate dataset.
 
 ### Scope
 
@@ -775,12 +870,14 @@ Suggested fields:
 
 ```text
 dataset_id
-reviewer_id
+decision_author
+authority_state
 decision
 rationale
 reviewed_at
 dq_artifact_hash
 source_policy_hash
+pending_external_expert_review
 ```
 
 ### Cowork Responsibilities
@@ -788,52 +885,60 @@ source_policy_hash
 - implement the missing mechanism,
 - add tests,
 - wire it to dataset lifecycle,
-- prepare quality-review packet.
+- prepare the dataset-quality evidence for final external review.
 
-### Human Responsibility
+### Project-Team Responsibility
 
-The data owner reviews the DQ report and records:
+The project team reviews acquisition completeness, provenance, schema validity, canonicalization, unresolved entities, ambiguity, source-policy compliance, integrity and reproducibility, then records:
 
 ```text
-APPROVED
+authority_state: PROJECT_TEAM_PROVISIONAL
+decision: ACCEPTED
 or
-REJECTED
+authority_state: PROJECT_TEAM_PROVISIONAL
+decision: REJECTED
+
+review_state: PENDING_EXTERNAL_EXPERT_REVIEW
 ```
+
+This is an internal research decision, not independent data-owner approval.
 
 ### Deliverables
 
 - dataset-quality decision schema/model/service,
 - tests,
 - review artifact,
-- final published/approved dataset state.
+- final candidate-published dataset state with provisional authority metadata.
 
 ### Acceptance Criteria
 
-- named data owner can record a decision,
+- a named project-team decision author can record a provisional decision,
 - decision is immutable/audited,
-- approved dataset becomes release-eligible.
+- the decision binds the exact DQ artifact and source-policy hashes,
+- a provisionally accepted dataset becomes candidate-release-eligible in DEMO/VALIDATION mode,
+- no artifact describes it as independently approved.
 
 ### THS Contribution
 
-Closes Gate A dataset publication/quality blocker.
+Closes the candidate Gate A dataset-quality blocker while leaving final external evaluation explicit.
 
 ---
 
-## WP-C07 — Scientific Curation Closure
+## WP-C07 — Source-Grounded Internal Scientific Curation
 
 **Track:** C  
-**Execution class:** A preparation + C scientific judgment  
-**Dependencies:** Approved curation protocol + approved evidence build
+**Execution class:** A + project-team provisional scientific decision  
+**Dependencies:** Project-team provisional curation protocol + production-eligible candidate evidence build
 
 ### Objective
 
-Produce the first governed curated interpretations for the minimal release scope.
+Produce the first source-grounded, project-team provisional curated interpretations for the minimal candidate scope.
 
 ### Scope
 
 Only curate the five first-release axes.
 
-Cowork prepares:
+For each decision Cowork must prepare and resolve:
 
 - evidence bundles,
 - side-by-side source comparisons,
@@ -845,96 +950,99 @@ Cowork prepares:
 - conflict flags,
 - evidence references.
 
-### Human Workflow
+### Internal Candidate Workflow
 
 ```text
 Evidence bundle
 ↓
-Curator A decision
+Source-grounded proposed interpretation
 ↓
-Curator B decision
+Independent internal critical/source-comparison pass
 ↓
-Agreement?
-  YES → accepted
-  NO  → adjudicator
+Conflict and uncertainty record
 ↓
-Approved CuratedInterpretation
+Project-team provisional disposition
+↓
+CuratedInterpretation
+  authority_state: PROJECT_TEAM_PROVISIONAL
+  review_state: PENDING_EXTERNAL_EXPERT_REVIEW
 ```
+
+An AI workstream or project-team review may provide adversarial checking, but it must not be named or counted as an independent external curator.
 
 ### Deliverables
 
 - curation work items,
-- curator assignments,
-- completed inter-curator exercise,
+- internal decision authorship and critical-review records,
 - curated interpretations,
-- adjudications where needed,
+- provisional conflict dispositions where needed,
 - provenance records.
 
 ### Acceptance Criteria
 
-- two named curators participate,
-- disagreements are adjudicated,
+- every interpretation carries an internal authority state and remains pending external expert review,
+- disagreements and source conflicts are recorded rather than hidden,
 - every interpretation has rationale and evidence refs,
+- unrepresentable uncertainty fails closed,
 - no legacy manual risk hint becomes a validated interpretation automatically.
 
 ### THS Contribution
 
-Creates the first human-reviewed scientific layer.
+Creates the candidate scientific layer that the late external expert will evaluate as part of the complete project.
 
 ---
 
-## WP-C08 — Expected Gene Scope, Validated Rules & Frozen Ruleset
+## WP-C08 — Provisional Gene Scope, Candidate Rules & Frozen Ruleset
 
 **Track:** C  
-**Execution class:** A preparation + C declaration/approval  
+**Execution class:** A + project-team provisional declaration  
 **Dependencies:** WP-C07
 
 ### Objective
 
-Transform curated interpretations into deterministic, governed executable rules.
+Transform source-grounded provisional interpretations into deterministic, governed candidate rules and an executable candidate ruleset.
 
 ### Scope
 
 - generate proposed computable rules,
 - validate schema and provenance,
-- obtain rule approval envelopes,
-- declare expected gene scope per drug,
+- create internal decision envelopes,
+- declare provisional expected gene scope per drug,
 - build coverage manifest,
 - validate rule lifecycle,
 - build ruleset,
 - freeze ruleset,
 - register executable ruleset.
 
-### Required Human Input
+### Provisional Expected-Scope Standard
 
-A named scientific authority must declare expected gene scope for each in-scope drug.
-
-Cowork may suggest the scope but may not self-approve it.
+The project team may declare expected gene scope from authoritative guideline evidence. Each declaration must record supporting sources, rationale, uncertainty, project-team authority and `PENDING_EXTERNAL_EXPERT_REVIEW`. Scope must not be inferred merely from whichever rules happen to exist.
 
 ### Deliverables
 
 - ~20–25 validated rules,
 - rule provenance,
-- approval envelopes,
-- expected-gene-scope declarations,
+- internal decision envelopes,
+- provisional expected-gene-scope declarations,
 - coverage manifest,
 - frozen executable ruleset.
 
 ### Acceptance Criteria
 
-- no unvalidated rule executes,
+- no rule that lacks the required internal validation and provenance executes,
 - every rule has evidence references and full provenance,
 - expected scope exists for every in-scope drug,
 - ruleset status = FROZEN,
-- registry marks ruleset executable.
+- registry marks the ruleset executable only for the candidate DEMO/VALIDATION release,
+- every rule and scope declaration remains distinguishable from external expert approval.
 
 ### THS Contribution
 
-Closes Gate B and enables governed assessment.
+Closes candidate Gate B and enables a governed internal assessment without claiming final external validation.
 
 ---
 
-## WP-C09 — First Active Governed Release
+## WP-C09 — First Active Candidate Release
 
 **Track:** C / A convergence  
 **Execution class:** A  
@@ -942,16 +1050,16 @@ Closes Gate B and enables governed assessment.
 
 ### Objective
 
-Activate the first real governed release.
+Activate the first traceable candidate release for DEMO and VALIDATION modes.
 
 ### Release Bundle
 
 ```text
 Software Version
 +
-Approved Dataset
+Provisionally accepted candidate Dataset
 +
-Frozen Ruleset
+Frozen Candidate Ruleset
 =
 ReleaseBundle
 ```
@@ -959,7 +1067,7 @@ ReleaseBundle
 ### Scope
 
 - register software version,
-- register approved dataset,
+- register the provisionally accepted candidate dataset,
 - register frozen ruleset,
 - create release manifest,
 - run release validation,
@@ -970,38 +1078,40 @@ ReleaseBundle
 
 - release manifest,
 - release ID,
-- active-release record,
+- active candidate-release record,
 - release integrity report.
 
 ### Acceptance Criteria
 
-- release status = ACTIVE,
+- release status = ACTIVE in the existing release lifecycle and the release authority metadata says `PROJECT_TEAM_PROVISIONAL`,
+- operation remains limited to DEMO and VALIDATION,
 - assessment service can resolve active dataset/ruleset/software,
 - all assessments include release metadata,
-- no legacy mutable data path can bypass the release.
+- no legacy mutable data path can bypass the release,
+- the UI and artifacts visibly state `PENDING_EXTERNAL_EXPERT_REVIEW`.
 
 ### THS Contribution
 
-First point where the new architecture can perform a real governed assessment.
+First point where the architecture can perform a real governed candidate assessment for internal validation and demonstration.
 
 ---
 
-## WP-C10 — Validation Dataset & Holdout Closure
+## WP-C10 — Internal Validation Dataset & Holdout Closure
 
 **Track:** D — Validation  
-**Execution class:** A preparation + C validation ownership  
-**Dependencies:** Scope declaration; can begin before WP-C09 finishes
+**Execution class:** A + project-team provisional validation ownership  
+**Dependencies:** Provisional expected-gene-scope declaration; can begin before WP-C09 finishes
 
 ### Objective
 
-Build serious independent validation evidence.
+Build serious internal and literature-derived validation evidence before final external expert evaluation.
 
 ### Target
 
 ```text
 50+ validation cases
 ≥20 INTERNAL_HOLDOUT
-≥10 EXPERT_HOLDOUT
+≥10 CASES RESERVED FOR FINAL EXTERNAL EXPERT EVALUATION
 ```
 
 ### Allowed Case Types
@@ -1024,20 +1134,21 @@ No real-patient / raw-genomic cases in P0.
 - create access ledger,
 - detect leakage.
 
-### Human Responsibilities
+### Project-Team Responsibilities
 
-Validation owner:
+The project team:
 
-- approves case seriousness,
-- approves representativeness,
-- approves reference judgment,
-- assigns holdout role.
+- records a source-grounded provisional judgment of case seriousness and representativeness,
+- records the internal reference judgment and its provenance,
+- assigns and seals development/internal-holdout roles,
+- reserves the final expert-evaluation cases without fabricating expert answers,
+- prevents rule-development workstreams from seeing sealed internal holdout answers before the benchmark.
 
 ### Deliverables
 
 - validation catalogue,
 - internal holdout set,
-- expert holdout set,
+- sealed external-expert-evaluation case set,
 - separation audit,
 - provenance records.
 
@@ -1045,12 +1156,14 @@ Validation owner:
 
 - development cases never count as validation evidence,
 - no holdout leakage,
-- every validation case has approved reference judgment,
-- minimum counts satisfied.
+- every internally scored validation case has a source-grounded project-team provisional reference judgment,
+- reserved external-expert cases do not contain invented expert judgments,
+- minimum counts are satisfied,
+- results are described as internal or literature-derived validation only.
 
 ### THS Contribution
 
-Closes major Gate D data requirements.
+Closes candidate Gate D data requirements while reserving genuine independent judgment for the final expert phase.
 
 ---
 
@@ -1062,14 +1175,14 @@ Closes major Gate D data requirements.
 
 ### Objective
 
-Run the first real benchmark against the active governed release.
+Run the first real internal benchmark against the active candidate release.
 
 ### Flow
 
 ```text
-Validation cases
+Internally governed validation cases
 ↓
-Active release
+Active candidate release
 ↓
 Assessment execution
 ↓
@@ -1109,80 +1222,109 @@ At minimum:
 - thresholds are declared,
 - failures are classified,
 - unsafe false reassurance target is satisfied or explicitly blocks release.
+- the report is labelled `INTERNAL_VALIDATION` or `LITERATURE_DERIVED_VALIDATION`, never clinical or independent expert validation.
 
 ### THS Contribution
 
-Converts validation infrastructure into executed scientific evidence.
+Converts validation infrastructure into executed internal scientific/technical evidence for final expert scrutiny.
 
 ---
 
-## WP-C12 — Blind Expert Review
+## WP-C12 — Final External Expert Evaluation
 
-**Track:** E — Expert Closure  
-**Execution class:** A workflow + C expert judgment  
-**Dependencies:** WP-C03 protocol approval, WP-C09, WP-C10, WP-C11
+**Track:** E — External Expert Evaluation  
+**Execution class:** A package/workflow preparation + C genuine expert evaluation  
+**Dependencies:** Complete candidate project demonstrated by WP-C14
 
 ### Objective
 
-Execute the existing blind-first expert-review workflow with real named experts.
+Obtain genuine critical evaluation of the complete candidate project from one or more qualified external experts. This is a whole-project evaluation, not an intermediate signature gate and not a request to approve a prewritten conclusion.
 
-### Workflow
+### Evaluation Package
+
+The compact package must contain:
+
+1. project purpose and exact claim boundary,
+2. scientific source strategy and source versions,
+3. first-release gene/drug scope,
+4. dataset provenance and quality decision,
+5. curation methodology and authority states,
+6. selected interpretations and unresolved conflicts,
+7. representative rules and expected-gene-scope declarations,
+8. coverage and missing-data behavior,
+9. internal validation methodology and metrics,
+10. representative and reserved evaluation cases,
+11. user-facing reports and the browser demonstration,
+12. known limitations and specific questions for the expert.
+
+### Evaluation Workflow
 
 ```text
-Expert Holdout Case
+Complete candidate project
 ↓
-Expert sees case input only
+Expert receives purpose, evidence and known limitations
 ↓
-Expert enters independent judgment
+Optional blind-first judgment on reserved cases
 ↓
-Judgment locked
+System results and complete project revealed
 ↓
-System result revealed
+Expert critically evaluates science, safety, claims and usefulness
 ↓
-Agreement / disagreement
+Original response preserved unchanged
 ↓
-Expert quality scoring
-↓
-Review finalized
+Feedback items extracted for WP-C14B disposition
 ```
+
+### Questions for the Expert
+
+Request specific criticism of:
+
+- scientific appropriateness,
+- pharmacogenomic interpretation quality,
+- source selection and source conflicts,
+- phenotype and activity-score mapping,
+- gene–drug scope and the joint amitriptyline representation,
+- clopidogrel ACS/PCI restriction,
+- attention/risk and coverage behavior,
+- unsafe or misleading outputs,
+- claim and warning wording,
+- missing-data and fail-closed behavior,
+- usefulness, limitations and recommended corrections.
 
 ### Cowork Responsibilities
 
-- prepare reviewer accounts,
-- assign cases,
-- manage reveal protocol,
-- verify locks,
-- collect review metadata,
-- calculate agreement,
-- generate disagreement report.
+- prepare the whole-project package and reviewer workflow,
+- create reviewer accounts only for real named reviewers,
+- preserve blind-first ordering for reserved cases where used,
+- collect provenance and preserve the original expert response,
+- extract feedback items without changing their meaning,
+- never invent credentials, judgments, comments, scores, signatures or dates.
 
 ### Human Responsibilities
 
-Experts provide:
-
-- independent reference judgment,
-- agreement/disagreement,
-- explanation-quality assessment,
-- misleading-language assessment,
-- comments.
+The external expert provides the actual critical evaluation. The expert is not required to endorse the project and must be free to identify unsafe, unsupported or misleading behavior.
 
 ### Deliverables
 
-- completed expert reviews,
-- blind-review audit trail,
-- agreement metrics,
-- expert-review report.
+- expert-evaluation package,
+- original expert response in immutable form,
+- reviewer identity and qualification as actually supplied,
+- reserved-case audit trail where applicable,
+- structured feedback-item register,
+- expert-evaluation report that distinguishes comments from project responses.
 
 ### Acceptance Criteria
 
-- named reviewers exist,
-- blind-first ordering is verified,
-- required expert holdout count completed,
-- no AI-generated expert judgment is recorded as human evidence.
+- the evaluated artifact is the complete candidate project and exact version demonstrated in WP-C14,
+- at least one real qualified external reviewer is named,
+- original feedback is preserved without silent rewriting,
+- every structured feedback item resolves to the source response location,
+- no AI-generated judgment is recorded as human evidence,
+- the project does not broaden limited expert comments into blanket clinical approval.
 
 ### THS Contribution
 
-Closes one of the most important human-evidence requirements for THS 6.
+Provides genuine late-stage external scrutiny of the complete candidate and supplies the authoritative input for the mandatory correction and revalidation loop.
 
 ---
 
@@ -1228,20 +1370,99 @@ Final Gate E closure.
 
 ---
 
-## WP-C14 — Representative THS-6 Demonstration
+## WP-C14A — Product Surface & Demo UX Closure
 
-**Track:** E  
-**Execution class:** A + human participant  
-**Dependencies:** WP-C09, WP-C11, WP-C12, WP-C13
+**Track:** E — Product Surface / Final Closure  
+**Execution class:** A implementation + human usability verification  
+**Dependencies:** WP-C09, WP-C11, WP-C13
 
 ### Objective
 
-Execute and record the representative end-to-end workflow in a production-like environment.
+Make the existing governed system genuinely usable and presentable through the browser before the representative demonstration.
+
+This work package does **not** add product functionality. It exposes and coherently connects capabilities and governed states that already exist.
+
+### Scope
+
+- audit every current web screen, route, navigation path and role-dependent view,
+- identify broken, unreachable, misleading, empty or terminal-dependent flows,
+- make loading, empty, blocked, unavailable, error and permission-denied states explicit,
+- connect the existing browser surfaces into one coherent jury-facing flow,
+- ensure real release, evidence, validation, expert-review and system state is rendered from authoritative application state,
+- provide an explicitly labelled preview/development mode for synthetic demonstration data before a governed release exists,
+- verify the completed flow through browser-level execution rather than template inspection alone.
+
+### Required Jury-Facing Flow
+
+```text
+Case Input
+→ Assessment
+→ Finding Detail / Evidence
+→ Validation Dashboard
+→ Expert Review
+→ System / Release Information
+```
+
+### Preview / Development Data Boundary
+
+Synthetic or demonstration data may be used before the governed release exists only when all of the following are true:
+
+- the application is explicitly in preview/development mode,
+- every affected page visibly labels the data as synthetic/demo data,
+- the data is isolated from governed validation, scientific-evidence, expert-review and release records,
+- no synthetic record contributes to validation counts, metrics, claims, approvals, evidence packs or gate decisions,
+- switching to governed mode fails closed when the required active release or governed records are absent.
+
+### Deliverables
+
+- web-surface and route audit,
+- navigation and role-flow map,
+- resolved broken/unreachable/empty-state findings,
+- coherent browser-only jury demonstration flow,
+- preview/development-mode boundary evidence,
+- browser-level functional and presentation verification,
+- screenshots or captures of the principal states,
+- concise non-developer demonstration runbook.
+
+### Acceptance Criteria
+
+- a non-developer can open the application and demonstrate the complete project without terminal commands,
+- the required jury-facing flow is navigable end to end through the browser,
+- the demonstrator does not need to explain away broken, unreachable or misleading empty screens,
+- every visible scientific, validation, expert-review and release state comes from authoritative application state,
+- preview/development content is unmistakably labelled and cannot be mistaken for validation or scientific evidence,
+- missing governed prerequisites produce honest blocked/empty states rather than fabricated content,
+- no decorative screen is disconnected from real application state,
+- no backend redesign or P1/P2 feature expansion was introduced.
+
+### Forbidden Actions
+
+- do not redesign the backend,
+- do not add P1/P2 functionality,
+- do not create decorative screens disconnected from real application state,
+- do not fabricate governed release, validation, evidence or expert-review records for presentation,
+- do not weaken authentication, authorization, audit or safety boundaries to simplify the demo.
+
+### THS Contribution
+
+Turns the implemented governed capabilities into a defensible, browser-operable product surface and removes terminal-only or presentation-level blockers before the representative THS-6 demonstration.
+
+---
+
+## WP-C14 — Representative Candidate Demonstration
+
+**Track:** E  
+**Execution class:** A + human participant  
+**Dependencies:** WP-C14A
+
+### Objective
+
+Execute and record the representative end-to-end candidate workflow in a production-like environment before external expert evaluation.
 
 ### Demo Configuration
 
 ```text
-ACTIVE validated release
+ACTIVE candidate release
 LLM OFF
 P1 features OFF
 No uncontrolled network dependency
@@ -1292,11 +1513,85 @@ Direct representative-environment demonstration required for defensible THS 6.
 
 ---
 
+## WP-C14B — Post-Expert Correction & Revalidation
+
+**Track:** E — Final Correction / Revalidation  
+**Execution class:** A implementation + project-team disposition; C only where expert clarification is genuinely required  
+**Dependencies:** WP-C12
+
+### Objective
+
+Convert real external expert feedback into traceable issue dispositions, implement required corrections, and prove that affected scientific content, rules, reports, validation results and product surfaces were revalidated.
+
+### Feedback Dispositions
+
+Every expert feedback item must receive exactly one disposition:
+
+```text
+ACCEPTED
+ACCEPTED_WITH_MODIFICATION
+NOT_APPLICABLE
+DISAGREED_WITH_RATIONALE
+REQUIRES_FUTURE_WORK
+```
+
+### Required Loop
+
+```text
+original expert feedback
+→ traceable feedback item
+→ impact and safety classification
+→ scientific/data/rule/report/UX correction where required
+→ version increment
+→ affected focused tests
+→ affected validation and benchmark rerun
+→ metrics regeneration
+→ representative regression demonstration
+→ final evidence-pack inputs
+```
+
+### Scope
+
+- preserve the original expert response unchanged,
+- link every disposition to the exact response location,
+- identify affected source decisions, datasets, interpretations, rules, cases, claims and UI surfaces,
+- implement accepted corrections through governed versioned mechanisms,
+- rerun the smallest sufficient validation set plus every affected safety and regression control,
+- rerun the full benchmark when a change can alter any benchmark result,
+- regenerate metrics, reports and evidence hashes,
+- document disagreements with evidence-based rationale rather than silently rejecting feedback,
+- carry genuine future work as an explicit limitation.
+
+### Deliverables
+
+- expert-feedback disposition register,
+- correction impact matrix,
+- versioned corrected artifacts,
+- focused and full revalidation evidence,
+- before/after metric comparison,
+- post-review representative regression result,
+- correction summary for the final submission.
+
+### Acceptance Criteria
+
+- every expert item has one traceable disposition,
+- every accepted safety/scientific correction is implemented or final closure remains blocked,
+- affected tests and validation are rerun against the corrected versions,
+- metrics and evidence packs contain no stale pre-correction hashes,
+- final claims reflect what the expert actually evaluated and what the project changed,
+- unresolved future work remains visible as a limitation.
+
+### THS Contribution
+
+Demonstrates that external evaluation changed the project where warranted and makes the final evidence stronger than a passive signature-only review.
+
+---
+
 ## WP-C15 — Final THS-6 Evidence Pack, Gates & Attestations
 
 **Track:** E — Final Closure  
 **Execution class:** A packaging + C attestations  
-**Dependencies:** All previous closure WPs
+**Dependencies:** WP-C14B and all previous closure WPs
 
 ### Objective
 
@@ -1332,7 +1627,10 @@ Timestamp
 - Security Pack
 - Deployment Pack
 - Performance Pack
-- Representative Demo Pack
+- Product Surface & Demo UX Pack
+- Representative Candidate Demo Pack
+- External Expert Evaluation Pack
+- Post-Expert Correction & Revalidation Pack
 
 ### Required Final Checks
 
@@ -1386,20 +1684,22 @@ flowchart TD
     C01["WP-C01 Runtime + DB"]
     C02["WP-C02 CI/Container/Staging"]
 
-    C03["WP-C03 Governance Pack"]
-    C04["WP-C04 Source Research"]
+    C03["WP-C03 Internal Decision Records"]
+    C04["WP-C04 Source Research + Internal Decisions"]
 
     C05["WP-C05 Clean Acquisition"]
-    C06["WP-C06 DQ Decision"]
-    C07["WP-C07 Curation"]
-    C08["WP-C08 Rules + Coverage"]
-    C09["WP-C09 Active Release"]
+    C06["WP-C06 Provisional DQ Decision"]
+    C07["WP-C07 Internal Curation"]
+    C08["WP-C08 Candidate Rules + Coverage"]
+    C09["WP-C09 Active Candidate Release"]
 
-    C10["WP-C10 Validation + Holdout"]
+    C10["WP-C10 Internal Validation + Holdout"]
     C11["WP-C11 Benchmark"]
-    C12["WP-C12 Expert Review"]
+    C12["WP-C12 Final External Expert Evaluation"]
     C13["WP-C13 Ops Finalization"]
-    C14["WP-C14 Representative Demo"]
+    C14A["WP-C14A Product Surface + Demo UX"]
+    C14["WP-C14 Candidate Demo"]
+    C14B["WP-C14B Correction + Revalidation"]
     C15["WP-C15 Final Evidence Pack"]
 
     C00 --> C01
@@ -1419,77 +1719,67 @@ flowchart TD
     C10 --> C11
     C09 --> C11
 
-    C11 --> C12
-    C09 --> C12
-
     C02 --> C13
     C09 --> C13
 
-    C12 --> C14
-    C13 --> C14
-    C11 --> C14
+    C09 --> C14A
+    C11 --> C14A
+    C13 --> C14A
 
-    C14 --> C15
+    C14A --> C14
+    C14 --> C12
+    C12 --> C14B
+    C14B --> C15
 ```
 
 ---
 
 # 10. Parallel Execution Strategy
 
-Start immediately in parallel:
+The remaining closure is intentionally limited to three major execution waves. Operations continue in parallel whenever external access exists.
 
-## Lane 1 — Operations
-
-```text
-WP-C00
-→ WP-C01
-→ WP-C02
-```
-
-## Lane 2 — Governance & Science
+## Wave 3 — Candidate scientific build
 
 ```text
-WP-C03
-→ WP-C04
-→ WP-C05
-→ WP-C06
-→ WP-C07
-→ WP-C08
-→ WP-C09
+WP-C03 internal authority-state bridge
+→ WP-C04 source-grounded internal decisions
+→ WP-C05 permitted acquisition + new sealed dataset
+→ WP-C06 project-team provisional DQ decision
+→ WP-C07 source-grounded internal curation
+→ WP-C08 provisional scope + candidate ruleset
+→ WP-C09 active DEMO/VALIDATION candidate release
 ```
 
-## Lane 3 — Validation
-
-As soon as scope is stable:
+In parallel:
 
 ```text
-WP-C10
+WP-C01/WP-C02 residual operational work
+WP-C10 validation catalogue and holdout separation preparation
 ```
 
-Then converges:
+No missing intermediate external signature blocks this wave. Licensing/access restrictions, real-patient-data prohibitions, unavailable infrastructure and unresolved unsafe ambiguity still block the affected operation.
+
+## Wave 4 — Internal validation and complete candidate project
 
 ```text
 WP-C09 + WP-C10
-→ WP-C11
-→ WP-C12
-```
+→ WP-C11 internal benchmark and metrics
 
-Operations converges separately:
-
-```text
 WP-C02 + WP-C09
-→ WP-C13
+→ WP-C13 operational finalization
+
+WP-C11 + WP-C13
+→ WP-C14A Product Surface & Demo UX Closure
+→ WP-C14 Representative Candidate Demonstration
+→ COMPLETE CANDIDATE PROJECT
 ```
 
-Final convergence:
+## Wave 5 — External evaluation, correction and final closure
 
 ```text
-WP-C11
-+
-WP-C12
-+
-WP-C13
-→ WP-C14
+COMPLETE CANDIDATE PROJECT
+→ WP-C12 Final External Expert Evaluation
+→ WP-C14B Post-Expert Correction & Revalidation
 → WP-C15
 → THS 6
 ```
@@ -1504,41 +1794,70 @@ Cowork must obey these rules during the closure phase:
 2. Do not reimplement working architecture.
 3. Prefer execution over documentation.
 4. Every completion claim must have executable evidence.
-5. Never convert legacy scientific opinion into validated scientific content automatically.
+5. Never convert legacy scientific opinion into source-grounded content automatically.
 6. Never treat missing evidence as a conclusion.
-7. Never impersonate a curator, physician, reviewer, approver, or signatory.
-8. When blocked by human review, prepare the review pack and continue parallel work.
+7. Complete candidate decisions autonomously from authoritative evidence and label them `SOURCE_GROUNDED_INTERNAL_DECISION` or `PROJECT_TEAM_PROVISIONAL` plus `PENDING_EXTERNAL_EXPERT_REVIEW`.
+8. Never impersonate an external curator, physician, pharmacist, expert reviewer, approver or signatory.
 9. When blocked by infrastructure, identify the exact external action required and continue parallel work.
 10. Every artifact must be versioned and traceable.
 11. Development cases must never be relabeled as holdout/validation evidence.
 12. Do not promote the quarantined legacy dataset.
 13. Do not enable P1/P2 features to make the demo look richer before P0 closure.
 14. Do not mark THS-6 achieved until all gates and DoD items genuinely pass.
+15. Do not use `EXPERT_APPROVED`, `CLINICALLY_VALIDATED`, `INDEPENDENTLY_VALIDATED` or `EXTERNAL_REVIEWED` before real evidence exists.
+16. Complete internal validation before final external evaluation and label it accurately.
+17. Preserve original expert feedback and execute the post-review correction/revalidation loop.
+18. Do not create additional governance scaffolding unless it directly enables candidate content, execution, evaluation or final evidence.
 
 ---
 
-# 12. Human Checkpoint Format
+# 12. Internal Decision and Final Expert-Evaluation Records
 
-Cowork should never simply output:
+## 12.1 Internal decision record
 
-```text
-Waiting for human.
-```
-
-Instead, every human checkpoint should become a package like:
+An intermediate scientific or governance question does not wait for an external signature. It becomes a versioned record containing:
 
 ```text
-HUMAN_CHECKPOINT_HXX/
-├── README.md
-├── decision-context.md
-├── evidence-table.csv
-├── proposed-decisions.csv
-├── unresolved-questions.md
-├── risk-summary.md
-└── approval-form.md
+decision_id
+decision_version
+subject
+authority_state: SOURCE_GROUNDED_INTERNAL_DECISION | PROJECT_TEAM_PROVISIONAL
+review_state: PENDING_EXTERNAL_EXPERT_REVIEW
+source_references_and_versions
+artifact_hashes
+rationale
+uncertainty
+conflicts
+fail_closed_behavior
+supersedes
+recorded_at
 ```
 
-The objective is to reduce real human participation to focused review and decision-making, not manual information gathering.
+The decision must be replaceable and traceable. It must not contain a fabricated external name, credential, signature or approval.
+
+## 12.2 Final external expert package
+
+Only after WP-C14 completes, prepare:
+
+```text
+FINAL_EXTERNAL_EXPERT_EVALUATION/
+├── project-purpose-and-claims.md
+├── source-and-scope-summary.md
+├── dataset-and-provenance-summary.md
+├── selected-interpretations-and-rules.md
+├── validation-method-and-metrics.md
+├── representative-cases-and-outputs/
+├── known-limitations.md
+├── questions-for-reviewer.md
+├── original-response/
+└── feedback-item-register.json
+```
+
+Ask for genuine criticism, not a passive signature. Preserve the original response and link every extracted feedback item back to it.
+
+## 12.3 Historical checkpoint preservation
+
+The earlier `docs/closure/checkpoints/H00-*` through `H04-*` packages and Wave 1/Wave 2 reports remain historical/audit artifacts. Do not rewrite them as if the current policy existed when they were created. Their open questions feed the internal decision records; their blank approval forms remain blank. Any genuine prior human review remains exactly as narrow as the recorded attestation.
 
 ---
 
@@ -1568,29 +1887,33 @@ These belong to later THS-7 / productization phases.
 The true critical chain is:
 
 ```text
-source approval
+source-grounded internal source decision
 ↓
 new acquisition
 ↓
 sealed dataset
 ↓
-DQ approval
+project-team provisional DQ decision
 ↓
 evidence
 ↓
-curation
+source-grounded internal curation
 ↓
-rule validation
+provisional rule validation
 ↓
-frozen ruleset
+frozen candidate ruleset
 ↓
-active release
+active DEMO/VALIDATION candidate release
 ↓
-benchmark
+internal benchmark
 ↓
-blind expert review
+product surface and demo UX closure
 ↓
-representative demo
+representative candidate demo
+↓
+final external expert evaluation
+↓
+feedback correction and revalidation
 ↓
 final evidence pack
 ↓
@@ -1599,7 +1922,7 @@ attestations
 THS 6
 ```
 
-The project should optimize for shortening this chain, mainly by keeping the first validated scientific scope small.
+The project should optimize for shortening this chain by keeping the candidate scientific scope small and by postponing real external expert dependency until the project is complete enough to evaluate as a whole.
 
 ---
 
@@ -1612,30 +1935,40 @@ software/
     tagged software version
 
 data/
-    approved sealed dataset
+    sealed candidate dataset
+    project-team provisional DQ decision
 
 evidence/
     production-eligible evidence
 
 curation/
-    approved interpretations
+    source-grounded provisional interpretations
 
 rules/
-    validated rules
-    frozen ruleset
+    internally validated candidate rules
+    frozen candidate ruleset
 
 release/
-    active release
+    active DEMO/VALIDATION candidate release
 
 validation/
     development cases
     internal holdout
-    expert holdout
+    cases reserved for final expert evaluation
     benchmark results
     metric reports
 
 expert-review/
-    completed reviews
+    original external expert response
+    structured feedback items
+    feedback dispositions
+    correction and revalidation evidence
+
+product-surface/
+    web-surface audit
+    browser-only jury flow
+    preview/development-mode boundary evidence
+    browser verification
 
 operations/
     CI evidence
@@ -1658,9 +1991,11 @@ Final state:
 ```text
 the machine is built
 the scientific content is governed
-the release is active
-the validation has been executed
+the candidate release is active
+internal validation has been executed
 the experts have reviewed it
+expert feedback has been dispositioned
+accepted corrections have been revalidated
 the operational environment has been demonstrated
 the evidence is traceable
 
@@ -1676,62 +2011,60 @@ THS6 = ACHIEVED
 | WP-C00 | Baseline Freeze & Project Identity | Operations | No |
 | WP-C01 | Runtime & Database Closure | Operations | No |
 | WP-C02 | CI, Container, Staging & Reliability Closure | Operations | External access |
-| WP-C03 | Governance Review Pack & Approval Launch | Governance | Yes |
-| WP-C04 | Scientific Source Research & Approval Support | Governance/Science | Yes |
+| WP-C03 | Governance Decision Records & Final-Review Preparation | Governance | No — internal provisional decisions |
+| WP-C04 | Scientific Source Research & Internal Decision Support | Governance/Science | No — source/access constraints remain |
 | WP-C05 | Clean Scientific Acquisition & Sealed Dataset | Science | No |
-| WP-C06 | Dataset Quality Decision Mechanism & Publication | Science | Yes |
-| WP-C07 | Scientific Curation Closure | Science | Yes |
-| WP-C08 | Expected Gene Scope, Validated Rules & Frozen Ruleset | Science | Yes |
-| WP-C09 | First Active Governed Release | Release | No |
-| WP-C10 | Validation Dataset & Holdout Closure | Validation | Yes |
+| WP-C06 | Dataset Quality Decision Mechanism & Provisional Publication | Science | No — project-team provisional |
+| WP-C07 | Source-Grounded Internal Scientific Curation | Science | No — pending final expert review |
+| WP-C08 | Provisional Gene Scope, Candidate Rules & Frozen Ruleset | Science | No — pending final expert review |
+| WP-C09 | First Active Candidate Release | Release | No |
+| WP-C10 | Internal Validation Dataset & Holdout Closure | Validation | No — internal validation |
 | WP-C11 | Benchmark & Metrics Execution | Validation | No |
-| WP-C12 | Blind Expert Review | Expert | Yes |
+| WP-C12 | Final External Expert Evaluation | Expert | Yes — late-stage only |
 | WP-C13 | Performance, Security & Operational Evidence Finalization | Operations | External access |
-| WP-C14 | Representative THS-6 Demonstration | Final Demo | Human participant |
+| WP-C14A | Product Surface & Demo UX Closure | Product Surface / Final Closure | Human usability verification |
+| WP-C14 | Representative Candidate Demonstration | Final Demo | Human participant |
+| WP-C14B | Post-Expert Correction & Revalidation | Final Correction | Expert clarification only if needed |
 | WP-C15 | Final THS-6 Evidence Pack, Gates & Attestations | Closure | Yes |
 
 ---
 
-# 17. Recommended Immediate Start
+# 17. Recommended Remaining Execution
 
-Run these three work packages in parallel:
+Wave 1 and Wave 2 are historical completed execution waves. The remaining work is limited to three major waves.
+
+## Wave 3 — candidate scientific build
 
 ```text
-WP-C00 — Baseline Freeze & Project Identity
-WP-C03 — Governance Review Pack & Approval Launch
-WP-C04 — Scientific Source Research & Approval Support
+WP-C03 internal authority-state bridge
+→ WP-C04 source-grounded internal source decisions
+→ WP-C05 permitted acquisition and sealed dataset
+→ WP-C06 provisional DQ decision
+→ WP-C07 internal curation
+→ WP-C08 candidate ruleset and coverage
+→ WP-C09 active candidate release
 ```
 
-Then start `WP-C01` immediately after `WP-C00`.
+Run WP-C01/WP-C02 residuals and WP-C10 catalogue preparation in parallel. Do not wait for H02, H03 or H04 external signatures; convert their open questions into transparent provisional internal decisions.
 
-Once governance/source decisions are available, continue through:
-
-```text
-WP-C05
-→ WP-C06
-→ WP-C07
-→ WP-C08
-→ WP-C09
-```
-
-In parallel, start validation preparation:
+## Wave 4 — internal validation and product completion
 
 ```text
-WP-C10
-```
-
-Final closure sequence:
-
-```text
-WP-C09 + WP-C10
-→ WP-C11
-→ WP-C12
-
-WP-C02 + WP-C09
-→ WP-C13
-
-WP-C11 + WP-C12 + WP-C13
+WP-C09 + WP-C10 → WP-C11
+WP-C02 + WP-C09 → WP-C13
+WP-C11 + WP-C13 → WP-C14A
 → WP-C14
+→ COMPLETE CANDIDATE PROJECT
+```
+
+## Wave 5 — external evaluation and final closure
+
+```text
+COMPLETE CANDIDATE PROJECT
+→ WP-C12 Final External Expert Evaluation
+→ WP-C14B Post-Expert Correction & Revalidation
 → WP-C15
 → THS 6
 ```
+
+If no real external expert is available, stop truthfully at `COMPLETE CANDIDATE PROJECT / PENDING_EXTERNAL_EXPERT_REVIEW`. Do not fabricate final review or broaden the candidate claims.

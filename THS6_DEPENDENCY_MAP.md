@@ -1,5 +1,7 @@
 # THS 6 Dependency Map
 
+> **Historical audit notice:** This document preserves the dependency graph measured on 2026-09-05 under the original intermediate-human-gate policy. It is not the current execution sequence. For current candidate-first sequencing, see `docs/closure/current-execution-policy.md`, `docs/closure/remaining-execution-waves.md`, and `PGx_Platform_V2_Final_THS6_Closure_Architecture_WPs.md`. The historical statements below have intentionally not been rewritten as if the new policy existed at audit time.
+
 **Audit type:** read-only dependency reconstruction
 **Audit date:** 2026-09-05 (UTC)
 **Scope note:** this file deliberately contains **no work packages**. It

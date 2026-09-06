@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""Generate the WP-C03 human decision checkpoint packages.
+"""Generate the historical WP-C03 human decision checkpoint packages.
 
     python3 scripts/build_closure_wave01_checkpoints.py
 
@@ -14,7 +14,11 @@ The producer compares what is on disk with the blank template and leaves
 anything else alone, because regenerating over somebody's decision would
 destroy the only record of it.
 
-This script approves nothing and records no name, signature or date.
+The packages remain audit/review inputs under the 2026-09-06 candidate-first
+execution policy. An unsigned form no longer blocks candidate construction;
+internal decisions are recorded separately and remain pending final external
+expert review. This script approves nothing and records no name, signature or
+date.
 """
 
 from __future__ import annotations
@@ -49,6 +53,10 @@ def baseline_facts(root: str) -> dict:
         "UNKNOWN" else "UNKNOWN"
     files = _git(root, "ls-tree", "-r", "--name-only", commit)
     remotes = _git(root, "remote")
+    committed_at = _git(root, "log", "-1", "--format=%cI", commit) or \
+        "UNKNOWN"
+    if committed_at.endswith("Z"):
+        committed_at = committed_at[:-1] + "+00:00"
     return {
         "commit": commit,
         "tree": tree or "UNKNOWN",
@@ -59,8 +67,7 @@ def baseline_facts(root: str) -> dict:
         or "UNKNOWN",
         "author_email": _git(root, "log", "-1", "--format=%ae", commit)
         or "UNKNOWN",
-        "committed_at": _git(root, "log", "-1", "--format=%cI", commit)
-        or "UNKNOWN",
+        "committed_at": committed_at,
         "remote_count": len([line for line in remotes.splitlines() if line]),
     }
 
@@ -88,8 +95,9 @@ def main() -> int:
 
     sys.stdout.write("checkpoint files written: %d; approval forms "
                      "preserved: %d\n" % (written, preserved))
-    sys.stdout.write("every proposed-decisions.csv row is PENDING_REVIEW; a "
-                     "preserved form is one a person has filled in\n")
+    sys.stdout.write("historical proposals remain PENDING_REVIEW; a preserved "
+                     "form is one a person filled in. Candidate execution "
+                     "uses separate provisional internal decision records.\n")
     return 0
 
 
