@@ -164,7 +164,7 @@
       "artifact": "data/verification/wp19-test-inventory.json",
       "byte_length": 230177,
       "category": "VERIFICATION",
-      "sha256": "sha256:424ef94833470064b232289900c3f02219d7644768d5dff52863c875b344f343",
+      "sha256": "sha256:eaaa91e5f0a871480e6a2ba76db4a59c55289a6dcb04fa90c925ad3312e9ba55",
       "what_it_does_not_establish": "an inventory of tests is not evidence that the tests are the right ones",
       "what_it_establishes": "the software verification inventory is current and every module imports on the host that generated it"
     }

@@ -1,7 +1,7 @@
 {
   "category_rule_count": 145,
-  "discovered_test_count": 7770,
-  "inventoried_test_count": 7770,
+  "discovered_test_count": 7771,
+  "inventoried_test_count": 7771,
   "known_stdout_markers": [
     "CONFIGURATION_FAILURE"
   ],
@@ -616,8 +616,8 @@
       "skip_policy": "ENVIRONMENT_DEPENDENCY",
       "suite_id": "tests.integration.web.test_browser_e2e",
       "synthetic_fixtures": false,
-      "test_count": 14,
-      "test_id_sha256": "6113d13f047abacea378c5b0f1ef516d61c7909f3a25154f729b9aaba8636eb3",
+      "test_count": 15,
+      "test_id_sha256": "f5b913fb864474f802eee3123bb1aa08b03107a502338ab379439d09332a1e6e",
       "work_package": "WP-17"
     },
     {

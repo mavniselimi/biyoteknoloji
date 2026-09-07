@@ -146,7 +146,7 @@
     },
     "BROWSER_E2E": {
       "executed": 0,
-      "inventoried": 14,
+      "inventoried": 15,
       "outcome": "BLOCKED",
       "reason": "no executed result for this category in any profile run here"
     },
@@ -226,7 +226,7 @@
   "claim_boundary_approved": false,
   "claim_boundary_status": "DRAFT / AWAITING HUMAN AND SCIENTIFIC REVIEW",
   "counts": {
-    "discovered": 7770,
+    "discovered": 7771,
     "errored": null,
     "executed": null,
     "failed": null,
@@ -271,7 +271,7 @@
   },
   "coverage_tool_available": false,
   "critical_requirement_count": 20,
-  "discovered_test_count": 7770,
+  "discovered_test_count": 7771,
   "execution_status": "BLOCKED",
   "flaky": null,
   "flaky_repeat_status": null,
@@ -344,7 +344,7 @@
     "VER-REQ-010": {
       "criticality": "P0_CRITICAL",
       "is_covered": true,
-      "test_count": 333,
+      "test_count": 334,
       "title": "Every rendered page carries the clinical warning, and access is refused where it must be"
     },
     "VER-REQ-011": {

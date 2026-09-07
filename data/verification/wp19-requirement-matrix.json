@@ -280,8 +280,8 @@
         "tests.integration.web.test_browser_e2e"
       ],
       "static_outcome": "BLOCKED",
-      "test_count": 14,
-      "test_id_sha256": "6113d13f047abacea378c5b0f1ef516d61c7909f3a25154f729b9aaba8636eb3"
+      "test_count": 15,
+      "test_id_sha256": "f5b913fb864474f802eee3123bb1aa08b03107a502338ab379439d09332a1e6e"
     },
     {
       "category": "SNAPSHOT",
@@ -911,8 +911,8 @@
         "tests.integration.web"
       ],
       "source": "docs/architecture/wp17-server-rendered-web.md",
-      "test_count": 333,
-      "test_id_sha256": "053f9db33759f5aab9705008d66d072a826e252d1fc6e4c92413df57b0d39ff2",
+      "test_count": 334,
+      "test_id_sha256": "a008e146976cc88ef208750be601ff73a74b2313336bf264b1d621edaa563a2a",
       "title": "Every rendered page carries the clinical warning, and access is refused where it must be",
       "work_packages": [
         "WP-17"
