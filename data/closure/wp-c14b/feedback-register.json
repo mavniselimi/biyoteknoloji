@@ -1,0 +1,56 @@
+{
+  "dispositions_vocabulary": {
+    "ACCEPTED": "the project agrees and will make the change as described",
+    "ACCEPTED_WITH_MODIFICATION": "the project agrees there is a problem and will fix it differently; the difference must be written down",
+    "DISAGREED_WITH_RATIONALE": "the project does not agree, and records its reasons in full beside the reviewer's; the reviewer's text is never removed",
+    "NOT_APPLICABLE": "the item does not apply to this build, with the reason why",
+    "REQUIRES_FUTURE_WORK": "the project agrees and cannot act now; what is missing and who would clear it are both named"
+  },
+  "empty_because": "No external expert response exists. WP-C12 is a human step and this repository may not author it. These files are the machinery and its vocabulary, ready and empty.",
+  "feedback_kinds_vocabulary": {
+    "FREE_TEXT": "the overall free-text criticism",
+    "QUESTIONNAIRE_ANSWER": "one of the twelve questions",
+    "RESERVED_CASE_DISAGREEMENT": "a reserved case where the reviewer's recorded expectation differs from what the software returned",
+    "RESERVED_CASE_PRODUCT_ANSWER": "a reserved case's product question, answered",
+    "UNSAFE_OUTPUT_REPORT": "an entry in the unsafe-output table"
+  },
+  "impact_classes_vocabulary": {
+    "DOCUMENTATION": "a document only; no executable behaviour changes",
+    "EVIDENCE_OR_CITATION": "provenance, citation or lineage",
+    "PHENOTYPE_MAPPING": "a source term maps differently, or stops mapping",
+    "PRODUCT_PRESENTATION": "what a screen shows or how it is worded",
+    "REFUSAL_BEHAVIOUR": "what is refused, or the reason code it is refused under",
+    "RULESET_SCOPE": "a rule is added or removed from the release",
+    "RULE_CONTENT": "a rule's condition or outcome changes",
+    "SCOPE_OR_GOVERNANCE": "what the project claims, or what it may do"
+  },
+  "item_count": 0,
+  "items": [],
+  "may_not": [
+    "A feedback item may not be created without a preserved response file behind it.",
+    "A disposition may not be recorded without a written rationale.",
+    "A reviewer's text may not be edited; corrections are appended.",
+    "A correction may not be implemented before its item exists."
+  ],
+  "preserved_responses": [],
+  "refusal_codes": {
+    "CONFLICT_OF_INTEREST_NOT_DECLARED": "the conflict-of-interest block was not completed",
+    "CONSENT_NOT_RECORDED": "the consent block was not completed",
+    "HUMAN_REQUIRED_FIELD_REMAINS": "at least one field a person must complete is still HUMAN_REQUIRED",
+    "NOTHING_ANSWERED": "no question, reserved case or free-text field carries content",
+    "NOT_SIGNED": "no signed name and date are recorded",
+    "RELEASE_BINDING_ABSENT": "the response does not name the release and frozen hash it reviewed",
+    "RESPONSE_IS_THE_TEMPLATE": "the file is the blank template, not a response",
+    "REVIEWER_NOT_IDENTIFIED": "no reviewer name or qualification is recorded"
+  },
+  "reviewers": [],
+  "safety_classes_vocabulary": {
+    "INCOMPLETE": "something is missing rather than wrong",
+    "INCORRECT_SCIENCE": "the current behaviour misstates the source, without being unsafe",
+    "MISLEADING_PRESENTATION": "the science is right and the presentation could mislead",
+    "NO_SAFETY_IMPACT": "no clinical reading changes",
+    "UNSAFE_OUTPUT": "the current behaviour could be read as reassurance when it is not"
+  },
+  "schema_version": "pgx-wp-c14b-feedback-register/1",
+  "state": "AWAITING_GENUINE_EXTERNAL_EXPERT_RESPONSE"
+}

@@ -1,0 +1,17 @@
+{
+  "after_metrics": null,
+  "before_metrics": null,
+  "benchmark_rerun": {
+    "executable_item_ids": [],
+    "reason": "no feedback items exist; there is nothing to re-measure and no review has been received",
+    "rerun_required": false,
+    "safety_item_ids": [],
+    "undecided_item_ids": []
+  },
+  "empty_because": "No external expert response exists. WP-C12 is a human step and this repository may not author it. These files are the machinery and its vocabulary, ready and empty.",
+  "item_count": 0,
+  "representative_regression_demonstration": null,
+  "rows": [],
+  "schema_version": "pgx-wp-c14b-correction-impact-matrix/1",
+  "state": "AWAITING_GENUINE_EXTERNAL_EXPERT_RESPONSE"
+}
