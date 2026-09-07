@@ -1,0 +1,203 @@
+{
+  "carried_from_wp25_unchanged": {
+    "all_gates_pass": false,
+    "definition_of_done_enumerated": 15,
+    "definition_of_done_satisfied": 1,
+    "gate_count": 6,
+    "note": "read from WP-25's own artifacts and never overridden here; this inventory reports them and does not compute them",
+    "passing_gate_count": 0,
+    "release_may_proceed": false,
+    "signed_signoff_count": 0,
+    "signoff_role_count": 9,
+    "ths6_achieved": false
+  },
+  "correction_loop": {
+    "feedback_item_count": 0,
+    "state": "AWAITING_GENUINE_EXTERNAL_EXPERT_RESPONSE"
+  },
+  "evidence": [
+    {
+      "artifact": "data/closure/h01-source-policy-decision.json",
+      "byte_length": 17773,
+      "category": "SOURCE_POLICY",
+      "sha256": "sha256:f0d40aa155dd09b992069e9284202615573dde2a8ea0501f10ea25ce5c80ff55",
+      "what_it_does_not_establish": "it approves no rule, no interpretation and no clinical use, and the source registry is still PENDING_REVIEW because six named provenance gaps remain",
+      "what_it_establishes": "a named pharmacist approved four sources under recorded conditions on 2026-09-06, and the five reviewed artifacts still hash to what he attested"
+    },
+    {
+      "artifact": "data/canonical/PGX-DATA-20260906-001/manifest.json",
+      "byte_length": 3230,
+      "category": "DATASET",
+      "sha256": "sha256:857ce009a0e197fc9d79b13d197da4f6a1ac0d4a5e299fb4da0ae61c0c3e427d",
+      "what_it_does_not_establish": "it is not an approved dataset; its lifecycle state is BUILDING",
+      "what_it_establishes": "the canonical dataset exists, is content-hashed, and holds 35 observations over 4 drugs and 2 genes"
+    },
+    {
+      "artifact": "data/canonical/PGX-DATA-20260906-001/dq-report.json",
+      "byte_length": 4655,
+      "category": "DATA_QUALITY",
+      "sha256": "sha256:ad4352cd2edc86e6dd0ee9b9d48bbcf2edfd54cb6718332255f4a805edbdf09c",
+      "what_it_does_not_establish": "the gate FAILED on SNAPSHOT_COMPLETENESS_UNKNOWN and SOURCE_POLICY_NOT_APPROVED; the candidate decision accepted it over both and keeps permits_transition false",
+      "what_it_establishes": "the data-quality gate ran and recorded its findings"
+    },
+    {
+      "artifact": "data/candidate-rulesets/PGX-CANDIDATE-RULESET-WAVE03B/manifest.json",
+      "byte_length": 1078,
+      "category": "RULESET",
+      "sha256": "sha256:8fd1d0c7eee375095334a083a46073e155534067c589b5ff004240234eb75772",
+      "what_it_does_not_establish": "no rule carries a WP-10 approval envelope, because no approving curator exists; is_governed_ruleset is false",
+      "what_it_establishes": "26 candidate rules, 12 of them joint, with 13 recorded curation refusals, frozen under one content hash"
+    },
+    {
+      "artifact": "data/candidate-rulesets/PGX-CANDIDATE-RULESET-WAVE03B/rules.ndjson",
+      "byte_length": 46825,
+      "category": "RULESET",
+      "sha256": "sha256:bf3f37416550ad7803b0688e155fa6a4cf1e3e46a781aa4886215eb24f052f72",
+      "what_it_does_not_establish": "provenance completeness is not scientific correctness",
+      "what_it_establishes": "each rule names its capture records, citations, interpretation key and source policy status"
+    },
+    {
+      "artifact": "data/candidate-rulesets/PGX-CANDIDATE-RULESET-WAVE03B/provenance.json",
+      "byte_length": 35996,
+      "category": "RULESET",
+      "sha256": "sha256:0cdee317dc886b9a22f237bc28438b6a6dae0a4f0d7e020372871d434104daf2",
+      "what_it_does_not_establish": "the refusals were decided by an automated pass with no second reader",
+      "what_it_establishes": "the thirteen refusals are recorded as data, with source term, reason and code"
+    },
+    {
+      "artifact": "data/releases/PGX-CANDIDATE-REL-20260906-001/manifest.json",
+      "byte_length": 2457,
+      "category": "RELEASE",
+      "sha256": "sha256:536fd5c83902737cb6059e9c9ad6c5bb2ed7b1ae1c7e7cb70b3458526e46f461",
+      "what_it_does_not_establish": "it is not registered in the WP-13 governed registry and the governed active-release pointer does not exist",
+      "what_it_establishes": "an active candidate release exists, pinned to one dataset and one ruleset, permitting DEMO and VALIDATION and prohibiting PILOT"
+    },
+    {
+      "artifact": "data/closure/wave-04-catalogue/manifest.json",
+      "byte_length": 2449,
+      "category": "VALIDATION",
+      "sha256": "sha256:f133a56e1d0d111c239a2c51b0030f34eb68c43fe89fc14d3febc2aee12d7251",
+      "what_it_does_not_establish": "the partitions are separated from each other and none of them is independent of the build it tests",
+      "what_it_establishes": "67 cases in three partitions, sealed before any benchmark ran, with a clean ten-rule separation audit"
+    },
+    {
+      "artifact": "data/closure/wave-04-catalogue/separation-audit.json",
+      "byte_length": 633,
+      "category": "VALIDATION",
+      "sha256": "sha256:306134c7b41f34b5e3d7ddd67e98cfcc27e6adb6da756ba99e61cf439fb576e6",
+      "what_it_does_not_establish": "separation is not independence",
+      "what_it_establishes": "zero separation issues across ten checks"
+    },
+    {
+      "artifact": "data/closure/wave-04-benchmark/metrics.json",
+      "byte_length": 378,
+      "category": "VALIDATION",
+      "sha256": "sha256:6180aaf5c02c56cf4e36c40454965590a99edd60e29d87eb45471bce1ea7d47d",
+      "what_it_does_not_establish": "agreement with expectations the same process wrote is internal consistency evidence, not accuracy against clinical truth",
+      "what_it_establishes": "55 cases scored; attention, coverage, refusal-reason and traceability agreement all 1.0; zero unsafe false reassurances; zero reserved payloads read"
+    },
+    {
+      "artifact": "data/closure/wave-04-benchmark/run-manifest.json",
+      "byte_length": 3181,
+      "category": "VALIDATION",
+      "sha256": "sha256:f17938bdaded6f8b524b553e9ec96d8dc32d0763822d883aa4bf31ccf8344c70",
+      "what_it_does_not_establish": "it did not run the twelve reserved cases and was not meant to",
+      "what_it_establishes": "the benchmark run is reproducible and identifies exactly what it ran against"
+    },
+    {
+      "artifact": "data/closure/wave-04-operational-evidence.json",
+      "byte_length": 4974,
+      "category": "OPERATIONAL",
+      "sha256": "sha256:ae1890c9e3f7b8b29089c09b8e0e888515ecfbeaa7a6a09067b6bf1e8c1a4675",
+      "what_it_does_not_establish": "each blocked item carries a measured reason; blocked is not skipped and is not passed",
+      "what_it_establishes": "what was verified operationally, per item"
+    },
+    {
+      "artifact": "data/closure/wave-04b-runtime-product-manifest.json",
+      "byte_length": 11191,
+      "category": "PRODUCT",
+      "sha256": "sha256:d37c716c794732d5e523fca414f58c882ddadc2112ea818e89608af22d1b66e2",
+      "what_it_does_not_establish": "it ran in one local representative environment on one machine; it is not external staging and there has been no staging deployment",
+      "what_it_establishes": "WP-C14A and WP-C14 pass on measurement: the composed application reaches the candidate release over a real database with authentication, CSRF, authorisation, rate limiting and audit, and the sixteen-step flow completes with no expectation failure"
+    },
+    {
+      "artifact": "data/closure/wave-05-frozen-candidate-version.json",
+      "byte_length": 12627,
+      "category": "FREEZE",
+      "sha256": "sha256:bddbad9efef7589c46dba6352b5d90cea855806ff374ff9c5ea3dbcb8fbf94ad",
+      "what_it_does_not_establish": "freezing approves nothing",
+      "what_it_establishes": "58 artifacts hashed under one combined hash, so the version an expert reviews cannot later be confused with a changed one"
+    },
+    {
+      "artifact": "data/expert-package/package-manifest.json",
+      "byte_length": 6301,
+      "category": "EXPERT_PACKAGE",
+      "sha256": "sha256:d2b620f2fba0f21d20eeb4314cbc41ee1ba3ccb90ad98f0d9e49a374109d10ce",
+      "what_it_does_not_establish": "it has not been reviewed; it is the thing to be reviewed",
+      "what_it_establishes": "the evaluation package exists, is complete, and is bound by hash to the frozen version"
+    },
+    {
+      "artifact": "data/expert-package/expert-reserved-seal.json",
+      "byte_length": 22653,
+      "category": "EXPERT_PACKAGE",
+      "sha256": "sha256:6e12c2c9b2d6c79b9f50530b28b2ef1eb3858f6baa1695ec7146f60ec1b2fb24",
+      "what_it_does_not_establish": "a byte hash proves a case did not change, not that it is a good question",
+      "what_it_establishes": "the twelve reserved cases are byte-hashed, carry no expected answer, and this project's own access policy refused all twelve payload reads to the process that built the package"
+    },
+    {
+      "artifact": "data/closure/wp-c14b/feedback-register.json",
+      "byte_length": 3475,
+      "category": "CORRECTION_LOOP",
+      "sha256": "sha256:ce7f3d1a3b463aa969f7ee1438ffa4a007534e3126349f956e457094bcd6e279",
+      "what_it_does_not_establish": "it is empty, and it refuses to hold an item with no real response behind it",
+      "what_it_establishes": "the post-review correction machinery exists and runs"
+    },
+    {
+      "artifact": "data/ths6/wp25-ths6-status.json",
+      "byte_length": 2935,
+      "category": "THS6",
+      "sha256": "sha256:8a03561f47132776b461514a599f1f1b193d732c63896ca3f1d1ba46cd850b1b",
+      "what_it_does_not_establish": "ths6_achieved is false, release_may_proceed is false, no gate passes and the Definition of Done stands at 1 of 15",
+      "what_it_establishes": "the evidence-pack software is implemented and produces an honest status"
+    },
+    {
+      "artifact": "data/verification/wp19-test-inventory.json",
+      "byte_length": 230177,
+      "category": "VERIFICATION",
+      "sha256": "sha256:424ef94833470064b232289900c3f02219d7644768d5dff52863c875b344f343",
+      "what_it_does_not_establish": "an inventory of tests is not evidence that the tests are the right ones",
+      "what_it_establishes": "the software verification inventory is current and every module imports on the host that generated it"
+    }
+  ],
+  "evidence_item_count": 19,
+  "expert_dependent_fields": {
+    "correction_loop_outcome": "HUMAN_REQUIRED",
+    "external_expert_disposition_summary": "HUMAN_REQUIRED",
+    "external_expert_findings_summary": "HUMAN_REQUIRED",
+    "external_expert_review_received": "HUMAN_REQUIRED",
+    "revalidation_outcome": "HUMAN_REQUIRED"
+  },
+  "frozen_version": {
+    "combined_hash": "sha256:0f444d6018ebaab026ba11a1bd14388d6d94162fdd306346a222f0c5997f1184",
+    "commit": "6422568123fd491940a7d2f837a22e5d01decbb2",
+    "release_public_id": "PGX-CANDIDATE-REL-20260906-001"
+  },
+  "is_final": false,
+  "missing_artifacts": [],
+  "schema_version": "pgx-wp-c15-pre-final-inventory/1",
+  "status": "PRE-EXPERT / NOT FINAL",
+  "templates_prepared_unsigned": [
+    "data/closure/wp-c15/templates/final-gate-report.template.json",
+    "data/closure/wp-c15/templates/definition-of-done.template.json",
+    "data/closure/wp-c15/templates/human-attestation-packet.template.json",
+    "data/closure/wp-c15/templates/final-release-decision.template.json",
+    "data/closure/wp-c15/templates/ths6-summary.template.json"
+  ],
+  "what_this_inventory_is_not": [
+    "It is not the final THS-6 evidence pack.",
+    "It is not a gate report; no gate was evaluated by writing it.",
+    "It is not signed, and nothing in it may be signed until the work each attestation names has actually been done.",
+    "It does not make any claim about clinical validity."
+  ],
+  "why_not_final": "WP-C12 has not happened. No external expert has reviewed any of this, so no correction loop has run, no revalidation has run, and no attestation exists to sign."
+}

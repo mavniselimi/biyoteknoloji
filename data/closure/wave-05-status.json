@@ -1,0 +1,172 @@
+{
+  "autonomous_preparation_complete": true,
+  "check_count": 22,
+  "checks": [
+    {
+      "check": "the evaluated candidate version is frozen under one hash",
+      "passed": true,
+      "scope": "B1"
+    },
+    {
+      "check": "the evaluation package has all sixteen sections and an index",
+      "passed": true,
+      "scope": "B2"
+    },
+    {
+      "check": "the package states it has not been reviewed",
+      "passed": true,
+      "scope": "B2"
+    },
+    {
+      "check": "twelve reserved cases are byte-sealed",
+      "passed": true,
+      "scope": "B3"
+    },
+    {
+      "check": "no reserved case carries an expected answer",
+      "passed": true,
+      "scope": "B3"
+    },
+    {
+      "check": "no reserved payload read was allowed, and the ledger chain is intact",
+      "passed": true,
+      "scope": "B3"
+    },
+    {
+      "check": "no reserved case was evaluated against the build",
+      "passed": true,
+      "scope": "B3"
+    },
+    {
+      "check": "the reviewer worksheet has twelve cases and no answers",
+      "passed": true,
+      "scope": "B3"
+    },
+    {
+      "check": "all seven reviewer workflow documents exist",
+      "passed": true,
+      "scope": "B4"
+    },
+    {
+      "check": "the questionnaire asks all twelve criticism areas",
+      "passed": true,
+      "scope": "B4"
+    },
+    {
+      "check": "the response template is a template and is unsigned",
+      "passed": true,
+      "scope": "B4"
+    },
+    {
+      "check": "the correction register exists and is empty",
+      "passed": true,
+      "scope": "B5"
+    },
+    {
+      "check": "all five dispositions are defined",
+      "passed": true,
+      "scope": "B5"
+    },
+    {
+      "check": "the impact matrix is empty and demands nothing invented",
+      "passed": true,
+      "scope": "B5"
+    },
+    {
+      "check": "the WP-C15 inventory is PRE-EXPERT / NOT FINAL",
+      "passed": true,
+      "scope": "B6"
+    },
+    {
+      "check": "five unsigned templates are prepared",
+      "passed": true,
+      "scope": "B6"
+    },
+    {
+      "check": "every expert-dependent field is HUMAN_REQUIRED",
+      "passed": true,
+      "scope": "B6"
+    },
+    {
+      "check": "THS-6 is not achieved",
+      "passed": true,
+      "scope": "GUARD"
+    },
+    {
+      "check": "the release may not proceed",
+      "passed": true,
+      "scope": "GUARD"
+    },
+    {
+      "check": "no gate passes",
+      "passed": true,
+      "scope": "GUARD"
+    },
+    {
+      "check": "the Definition of Done is not 15/15",
+      "passed": true,
+      "scope": "GUARD"
+    },
+    {
+      "check": "no external expert response is preserved",
+      "passed": true,
+      "scope": "GUARD"
+    }
+  ],
+  "exact_human_action_required": [
+    "Recruit an external pharmacogenetics expert - a clinical pharmacologist, clinical pharmacist, medical geneticist or pharmacogenomics scientist - who is not this project.",
+    "Send them docs/expert-package/README.md and the four JSON companions in data/expert-package/.",
+    "Have them complete the conflict-of-interest and consent forms BEFORE reading the scientific sections.",
+    "Have them answer the twelve reserved cases blind-first, recording their expectation before running anything.",
+    "Have them sign and date the review personally.",
+    "Import it with: python3 scripts/wp_c14b_intake.py --response <file> --reviewer-slug <name>"
+  ],
+  "failed_checks": [],
+  "frozen_version": {
+    "artifact_count": 58,
+    "combined_hash": "sha256:0f444d6018ebaab026ba11a1bd14388d6d94162fdd306346a222f0c5997f1184",
+    "commit": "6422568123fd491940a7d2f837a22e5d01decbb2",
+    "release_public_id": "PGX-CANDIDATE-REL-20260906-001"
+  },
+  "package_manifest_sha256": "sha256:d2b620f2fba0f21d20eeb4314cbc41ee1ba3ccb90ad98f0d9e49a374109d10ce",
+  "schema_version": "pgx-wave05-status/1",
+  "status_vocabulary": [
+    "AUTONOMOUS PREPARATION COMPLETE",
+    "AWAITING GENUINE EXTERNAL EXPERT EVALUATION",
+    "WP-C12 HUMAN STEP OPEN",
+    "WP-C14B NOT STARTED",
+    "WP-C15 NOT FINAL"
+  ],
+  "wave": "Wave 5",
+  "what_this_status_is_not": [
+    "It is not a claim that the software is correct.",
+    "It is not a claim that anything has been reviewed.",
+    "Completing the autonomous scope is the successful end of what this session could do without a person, not the end of the work."
+  ],
+  "work_packages": [
+    {
+      "autonomous_part": "COMPLETE",
+      "human_part": "NOT_STARTED",
+      "state": "HUMAN_STEP_OPEN",
+      "subject": "final external expert evaluation",
+      "who": "an external pharmacogenetics expert, recruited by the project owner",
+      "work_package": "WP-C12"
+    },
+    {
+      "autonomous_part": "MACHINERY_COMPLETE_AND_EMPTY",
+      "human_part": "BLOCKED_ON_WP-C12",
+      "state": "NOT_STARTED",
+      "subject": "post-expert correction and revalidation",
+      "who": "the project, once a real response exists",
+      "work_package": "WP-C14B"
+    },
+    {
+      "autonomous_part": "PRE-EXPERT_INVENTORY_AND_TEMPLATES_COMPLETE",
+      "human_part": "BLOCKED_ON_WP-C12_AND_WP-C14B",
+      "state": "NOT_FINAL",
+      "subject": "final THS-6 evidence pack",
+      "who": "the nine named signoff roles, none of them signed",
+      "work_package": "WP-C15"
+    }
+  ]
+}

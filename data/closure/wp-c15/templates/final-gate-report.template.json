@@ -1,0 +1,57 @@
+{
+  "all_gates_pass": "HUMAN_REQUIRED",
+  "gates": [
+    {
+      "current_wp25_blocker_count": 5,
+      "evaluated_at": "HUMAN_REQUIRED",
+      "evaluated_by": "HUMAN_REQUIRED",
+      "final_status": "HUMAN_REQUIRED",
+      "gate_id": "GATE-A",
+      "title": "Gate A - Scientific Data"
+    },
+    {
+      "current_wp25_blocker_count": 7,
+      "evaluated_at": "HUMAN_REQUIRED",
+      "evaluated_by": "HUMAN_REQUIRED",
+      "final_status": "HUMAN_REQUIRED",
+      "gate_id": "GATE-B",
+      "title": "Gate B - Rules"
+    },
+    {
+      "current_wp25_blocker_count": 9,
+      "evaluated_at": "HUMAN_REQUIRED",
+      "evaluated_by": "HUMAN_REQUIRED",
+      "final_status": "HUMAN_REQUIRED",
+      "gate_id": "GATE-C",
+      "title": "Gate C - Core Safety"
+    },
+    {
+      "current_wp25_blocker_count": 9,
+      "evaluated_at": "HUMAN_REQUIRED",
+      "evaluated_by": "HUMAN_REQUIRED",
+      "final_status": "HUMAN_REQUIRED",
+      "gate_id": "GATE-D",
+      "title": "Gate D - Validation"
+    },
+    {
+      "current_wp25_blocker_count": 10,
+      "evaluated_at": "HUMAN_REQUIRED",
+      "evaluated_by": "HUMAN_REQUIRED",
+      "final_status": "HUMAN_REQUIRED",
+      "gate_id": "GATE-E",
+      "title": "Gate E - Operational"
+    },
+    {
+      "current_wp25_blocker_count": 5,
+      "evaluated_at": "HUMAN_REQUIRED",
+      "evaluated_by": "HUMAN_REQUIRED",
+      "final_status": "HUMAN_REQUIRED",
+      "gate_id": "GATE-F",
+      "title": "Gate F - THS 6"
+    }
+  ],
+  "note": "A gate's final status is set by evaluating it after the expert review and correction loop, not by filling this in.",
+  "schema_version": "pgx-wp-c15-final-gate-report/1-template",
+  "state": "TEMPLATE_NOT_A_REPORT",
+  "status": "PRE-EXPERT / NOT FINAL"
+}

@@ -1,0 +1,27 @@
+{
+  "conditions": "HUMAN_REQUIRED",
+  "decided_at": "HUMAN_REQUIRED",
+  "decided_by": "HUMAN_REQUIRED",
+  "decision": "HUMAN_REQUIRED",
+  "decision_vocabulary": [
+    "APPROVE",
+    "APPROVE_WITH_CONDITIONS",
+    "REFUSE",
+    "DEFER"
+  ],
+  "note": "Recording APPROVE here changes nothing on its own. The candidate release is not in the governed registry, and putting it there is a separate governed act.",
+  "preconditions_that_must_hold_first": [
+    "a genuine external expert response exists and is preserved",
+    "every feedback item carries a disposition and a written rationale",
+    "the benchmark has been rerun and before/after metrics recorded",
+    "the data-quality gate's two blocking findings are cleared, or a named human accepts them in a governed decision",
+    "the source registry's six provenance gaps are cleared",
+    "the release is registered through the WP-13 governed path"
+  ],
+  "professional_qualification": "HUMAN_REQUIRED",
+  "rationale": "HUMAN_REQUIRED",
+  "release_public_id": "PGX-CANDIDATE-REL-20260906-001",
+  "schema_version": "pgx-wp-c15-final-release-decision/1-template",
+  "state": "TEMPLATE_NOT_A_DECISION",
+  "status": "PRE-EXPERT / NOT FINAL"
+}

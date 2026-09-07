@@ -1,0 +1,145 @@
+{
+  "identity_verification": "NONE_PERFORMED",
+  "identity_verification_note": "This project performs no electronic identity verification and holds no signature infrastructure. An attestation records that a typed statement naming a person was relayed to this repository.",
+  "note": "Each packet binds what the signatory must have read to the hashes of those artifacts, so an attestation cannot later be read as covering a different version.",
+  "packets": [
+    {
+      "attests_to": "I have reviewed each registered source against the source review checklist and I approve its use as scientific evidence.",
+      "must_have_reviewed": [
+        "config/scientific-sources.json",
+        "docs/scientific/source-review-checklist.md",
+        "docs/scientific/source-strategy.md"
+      ],
+      "professional_qualification": "HUMAN_REQUIRED",
+      "reviewed_artifact_hashes": "HUMAN_REQUIRED",
+      "role": "Scientific source approver",
+      "role_id": "SIGN-01",
+      "signatory_name": "HUMAN_REQUIRED",
+      "signature_text": "HUMAN_REQUIRED",
+      "signed_at": "HUMAN_REQUIRED"
+    },
+    {
+      "attests_to": "I confirm the canonical dataset is built from a complete, sealed snapshot and that its published identity is immutable.",
+      "must_have_reviewed": [
+        "data/canonical/PGX-DATA-20260830-900/manifest.json",
+        "data/canonical/PGX-DATA-20260830-900/dq-report.json"
+      ],
+      "professional_qualification": "HUMAN_REQUIRED",
+      "reviewed_artifact_hashes": "HUMAN_REQUIRED",
+      "role": "Data owner",
+      "role_id": "SIGN-02",
+      "signatory_name": "HUMAN_REQUIRED",
+      "signature_text": "HUMAN_REQUIRED",
+      "signed_at": "HUMAN_REQUIRED"
+    },
+    {
+      "attests_to": "I confirm every interpretation was curated under the approved protocol and that each rule carries complete approval metadata.",
+      "must_have_reviewed": [
+        "docs/scientific/curation-protocol-v1.md",
+        "data/rulesets/wp11-real-gate-status.json"
+      ],
+      "professional_qualification": "HUMAN_REQUIRED",
+      "reviewed_artifact_hashes": "HUMAN_REQUIRED",
+      "role": "Curation lead",
+      "role_id": "SIGN-03",
+      "signatory_name": "HUMAN_REQUIRED",
+      "signature_text": "HUMAN_REQUIRED",
+      "signed_at": "HUMAN_REQUIRED"
+    },
+    {
+      "attests_to": "I approve the claim boundary: what this system may state, what it may not, and the wording of each refusal.",
+      "must_have_reviewed": [
+        "docs/architecture/intended-purpose.md",
+        "docs/risk-management/safety-contract.md",
+        "data/safety/wp20-real-gate-status.json"
+      ],
+      "professional_qualification": "HUMAN_REQUIRED",
+      "reviewed_artifact_hashes": "HUMAN_REQUIRED",
+      "role": "Clinical safety authority",
+      "role_id": "SIGN-04",
+      "signatory_name": "HUMAN_REQUIRED",
+      "signature_text": "HUMAN_REQUIRED",
+      "signed_at": "HUMAN_REQUIRED"
+    },
+    {
+      "attests_to": "I confirm the validation set is adequate for the intended use and that the holdout set was not used in rule development.",
+      "must_have_reviewed": [
+        "data/validation/wp18-real-gate-status.json",
+        "data/validation/wp18-separation-audit.json",
+        "docs/validation/holdout-separation-policy.md"
+      ],
+      "professional_qualification": "HUMAN_REQUIRED",
+      "reviewed_artifact_hashes": "HUMAN_REQUIRED",
+      "role": "Validation owner",
+      "role_id": "SIGN-05",
+      "signatory_name": "HUMAN_REQUIRED",
+      "signature_text": "HUMAN_REQUIRED",
+      "signed_at": "HUMAN_REQUIRED"
+    },
+    {
+      "attests_to": "I confirm the review protocol was approved before review began and that each recorded review was performed blind-first.",
+      "must_have_reviewed": [
+        "docs/validation/expert-protocol.md",
+        "data/expert-review/wp22-protocol-manifest.json",
+        "data/expert-review/wp22-real-gate-status.json"
+      ],
+      "professional_qualification": "HUMAN_REQUIRED",
+      "reviewed_artifact_hashes": "HUMAN_REQUIRED",
+      "role": "Expert review chair",
+      "role_id": "SIGN-06",
+      "signatory_name": "HUMAN_REQUIRED",
+      "signature_text": "HUMAN_REQUIRED",
+      "signed_at": "HUMAN_REQUIRED"
+    },
+    {
+      "attests_to": "I confirm authentication, authorisation and the audit trail were exercised against real governed stores and that the chain verifies.",
+      "must_have_reviewed": [
+        "data/security/wp23-real-gate-status.json",
+        "docs/security/rbac-matrix.md",
+        "docs/security/audit-policy.md"
+      ],
+      "professional_qualification": "HUMAN_REQUIRED",
+      "reviewed_artifact_hashes": "HUMAN_REQUIRED",
+      "role": "Security owner",
+      "role_id": "SIGN-07",
+      "signatory_name": "HUMAN_REQUIRED",
+      "signature_text": "HUMAN_REQUIRED",
+      "signed_at": "HUMAN_REQUIRED"
+    },
+    {
+      "attests_to": "I confirm the staging deployment, its health checks, its backup and restore, and its reliability drills were executed and observed.",
+      "must_have_reviewed": [
+        "data/deployment/wp24-real-gate-status.json",
+        "data/deployment/wp24-gate-e-status.json",
+        "docs/operations/staging-deployment-runbook.md"
+      ],
+      "professional_qualification": "HUMAN_REQUIRED",
+      "reviewed_artifact_hashes": "HUMAN_REQUIRED",
+      "role": "Platform owner",
+      "role_id": "SIGN-08",
+      "signatory_name": "HUMAN_REQUIRED",
+      "signature_text": "HUMAN_REQUIRED",
+      "signed_at": "HUMAN_REQUIRED"
+    },
+    {
+      "attests_to": "I authorise this release: I have read the evidence pack, I accept its stated limitations, and I accept responsibility for the decision.",
+      "must_have_reviewed": [
+        "data/deployment/wp24-release-validation.json",
+        "data/ths6/wp25-ths6-status.json",
+        "docs/ths6/final/executive-summary.md"
+      ],
+      "professional_qualification": "HUMAN_REQUIRED",
+      "reviewed_artifact_hashes": "HUMAN_REQUIRED",
+      "role": "Release approver",
+      "role_id": "SIGN-09",
+      "signatory_name": "HUMAN_REQUIRED",
+      "signature_text": "HUMAN_REQUIRED",
+      "signed_at": "HUMAN_REQUIRED"
+    }
+  ],
+  "schema_version": "pgx-wp-c15-human-attestation/1-template",
+  "signature_mechanism": "TYPED_NAME",
+  "signed_count": 0,
+  "state": "TEMPLATE_NOT_AN_ATTESTATION",
+  "status": "PRE-EXPERT / NOT FINAL"
+}

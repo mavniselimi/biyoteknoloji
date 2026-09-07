@@ -1,7 +1,7 @@
 {
   "category_rule_count": 145,
-  "discovered_test_count": 7664,
-  "inventoried_test_count": 7664,
+  "discovered_test_count": 7770,
+  "inventoried_test_count": 7770,
   "known_stdout_markers": [
     "CONFIGURATION_FAILURE"
   ],
@@ -12,7 +12,7 @@
   "requirement_registry_version": "pgx-wp19-requirements/1",
   "start_directory": "tests",
   "stdout_note": "Test outcomes come from the test runner's recorded result, never from words found in stdout. Several negative tests print CONFIGURATION_FAILURE on purpose while passing; a CI job that grepped for it would fail a green suite.",
-  "suite_count": 282,
+  "suite_count": 285,
   "suites": [
     {
       "assigned_by": "package-adversarial",
@@ -1666,6 +1666,28 @@
     {
       "assigned_by": "package-closure",
       "category": "UNIT",
+      "command": "python -m unittest tests.unit.closure.test_wave05_expert_package -v",
+      "criticality": "IMPORTANT",
+      "dependencies": [],
+      "evidence": [
+        "docs/closure/wp-c00-legacy-candidate-dispositions.md",
+        "docs/closure/checkpoints/README.md"
+      ],
+      "module": "tests.unit.closure.test_wave05_expert_package",
+      "offline": true,
+      "permitted_skip_reasons": [],
+      "requirements": [],
+      "safety_invariants": [],
+      "skip_policy": "NEVER",
+      "suite_id": "tests.unit.closure.test_wave05_expert_package",
+      "synthetic_fixtures": false,
+      "test_count": 35,
+      "test_id_sha256": "11f2b8d937047eeebb4f7854851d39249175db12fa5099e29f99973412721b97",
+      "work_package": "WP-C00/WP-C03"
+    },
+    {
+      "assigned_by": "package-closure",
+      "category": "UNIT",
       "command": "python -m unittest tests.unit.closure.test_wp_c00_dispositions -v",
       "criticality": "IMPORTANT",
       "dependencies": [],
@@ -1707,6 +1729,50 @@
       "test_count": 32,
       "test_id_sha256": "719748eb6dade326be88e21d4d542b9d0d2a1496f52490581c66c3832282a431",
       "work_package": "WP-C03"
+    },
+    {
+      "assigned_by": "package-closure",
+      "category": "UNIT",
+      "command": "python -m unittest tests.unit.closure.test_wp_c14b -v",
+      "criticality": "IMPORTANT",
+      "dependencies": [],
+      "evidence": [
+        "docs/closure/wp-c00-legacy-candidate-dispositions.md",
+        "docs/closure/checkpoints/README.md"
+      ],
+      "module": "tests.unit.closure.test_wp_c14b",
+      "offline": true,
+      "permitted_skip_reasons": [],
+      "requirements": [],
+      "safety_invariants": [],
+      "skip_policy": "NEVER",
+      "suite_id": "tests.unit.closure.test_wp_c14b",
+      "synthetic_fixtures": false,
+      "test_count": 42,
+      "test_id_sha256": "55ae576ab1df6fc402a62d2c5291063c20cbaf79708b7faf32208759bdfde296",
+      "work_package": "WP-C00/WP-C03"
+    },
+    {
+      "assigned_by": "package-closure",
+      "category": "UNIT",
+      "command": "python -m unittest tests.unit.closure.test_wp_c15_pre_final -v",
+      "criticality": "IMPORTANT",
+      "dependencies": [],
+      "evidence": [
+        "docs/closure/wp-c00-legacy-candidate-dispositions.md",
+        "docs/closure/checkpoints/README.md"
+      ],
+      "module": "tests.unit.closure.test_wp_c15_pre_final",
+      "offline": true,
+      "permitted_skip_reasons": [],
+      "requirements": [],
+      "safety_invariants": [],
+      "skip_policy": "NEVER",
+      "suite_id": "tests.unit.closure.test_wp_c15_pre_final",
+      "synthetic_fixtures": false,
+      "test_count": 29,
+      "test_id_sha256": "77c4fa701b16afd6abfae1548ab3b76f606da0d31b962f759626471078a54faf",
+      "work_package": "WP-C00/WP-C03"
     },
     {
       "assigned_by": "package-curation",

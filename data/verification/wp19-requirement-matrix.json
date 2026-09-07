@@ -2,7 +2,7 @@
   "categories": [
     {
       "category": "UNIT",
-      "module_count": 117,
+      "module_count": 120,
       "modules": [
         "tests.unit.api.test_wp16_documentation",
         "tests.unit.application.test_assessment_cli",
@@ -24,8 +24,11 @@
         "tests.unit.closure.test_wave03_science",
         "tests.unit.closure.test_wave03b_assessment",
         "tests.unit.closure.test_wave03b_capture",
+        "tests.unit.closure.test_wave05_expert_package",
         "tests.unit.closure.test_wp_c00_dispositions",
         "tests.unit.closure.test_wp_c03_checkpoints",
+        "tests.unit.closure.test_wp_c14b",
+        "tests.unit.closure.test_wp_c15_pre_final",
         "tests.unit.curation.test_conflict_and_insufficiency",
         "tests.unit.curation.test_curation_boundaries",
         "tests.unit.curation.test_curation_protocol_cli",
@@ -123,8 +126,8 @@
         "tests.unit.web.test_wp17_boundaries"
       ],
       "static_outcome": "BLOCKED",
-      "test_count": 3408,
-      "test_id_sha256": "7e29f4dfc475c5796c3d78efa8f61ba65905ce3d3a5d4f0193105e61a84293c3"
+      "test_count": 3514,
+      "test_id_sha256": "62a3e926cb1b5a6c2a883baf2edbecd9f6c9664e54b99583d7ce815b7bafeaaa"
     },
     {
       "category": "DOMAIN_INVARIANT",
@@ -1626,8 +1629,11 @@
     "tests.unit.closure.test_wave03_science",
     "tests.unit.closure.test_wave03b_assessment",
     "tests.unit.closure.test_wave03b_capture",
+    "tests.unit.closure.test_wave05_expert_package",
     "tests.unit.closure.test_wp_c00_dispositions",
     "tests.unit.closure.test_wp_c03_checkpoints",
+    "tests.unit.closure.test_wp_c14b",
+    "tests.unit.closure.test_wp_c15_pre_final",
     "tests.unit.engine.test_wp12_documentation",
     "tests.unit.engine.test_wp13_documentation",
     "tests.unit.engine.test_wp14_documentation"

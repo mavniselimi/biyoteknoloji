@@ -1,0 +1,101 @@
+{
+  "all_items_satisfied": "HUMAN_REQUIRED",
+  "enumerated_count": 15,
+  "items": [
+    {
+      "dod_id": "P0-DOD-001",
+      "evidence_ids": "HUMAN_REQUIRED",
+      "final_state": "HUMAN_REQUIRED",
+      "observable_condition": "the web prototype computes and displays an assessment produced from governed content, end to end, at least once"
+    },
+    {
+      "dod_id": "P0-DOD-002",
+      "evidence_ids": "HUMAN_REQUIRED",
+      "final_state": "HUMAN_REQUIRED",
+      "observable_condition": "the same input, evaluated twice against the same release, produces byte-identical facts - which requires a release to exist"
+    },
+    {
+      "dod_id": "P0-DOD-003",
+      "evidence_ids": "HUMAN_REQUIRED",
+      "final_state": "HUMAN_REQUIRED",
+      "observable_condition": "each finding in a produced report resolves to a governed evidence record"
+    },
+    {
+      "dod_id": "P0-DOD-004",
+      "evidence_ids": "HUMAN_REQUIRED",
+      "final_state": "HUMAN_REQUIRED",
+      "observable_condition": "coverage is computed over governed content and rendered as its own axis, never folded into a risk value"
+    },
+    {
+      "dod_id": "P0-DOD-005",
+      "evidence_ids": "HUMAN_REQUIRED",
+      "final_state": "HUMAN_REQUIRED",
+      "observable_condition": "three independent version identifiers exist for one running system, and a rollback between two released versions has been executed"
+    },
+    {
+      "dod_id": "P0-DOD-006",
+      "evidence_ids": "HUMAN_REQUIRED",
+      "final_state": "HUMAN_REQUIRED",
+      "observable_condition": "the validation case store holds at least fifty authored cases"
+    },
+    {
+      "dod_id": "P0-DOD-007",
+      "evidence_ids": "HUMAN_REQUIRED",
+      "final_state": "HUMAN_REQUIRED",
+      "observable_condition": "a holdout set exists and the separation audit shows no case in it influenced rule development"
+    },
+    {
+      "dod_id": "P0-DOD-008",
+      "evidence_ids": "HUMAN_REQUIRED",
+      "final_state": "HUMAN_REQUIRED",
+      "observable_condition": "a continuous integration provider has executed the safety gate and recorded every invariant passing"
+    },
+    {
+      "dod_id": "P0-DOD-009",
+      "evidence_ids": "HUMAN_REQUIRED",
+      "final_state": "HUMAN_REQUIRED",
+      "observable_condition": "the protocol carries a signatory and at least one blind-first review is recorded complete"
+    },
+    {
+      "dod_id": "P0-DOD-010",
+      "evidence_ids": "HUMAN_REQUIRED",
+      "final_state": "HUMAN_REQUIRED",
+      "observable_condition": "a completed review records that the reviewer used the interactive workflow"
+    },
+    {
+      "dod_id": "P0-DOD-011",
+      "evidence_ids": "HUMAN_REQUIRED",
+      "final_state": "HUMAN_REQUIRED",
+      "observable_condition": "at least one metric has a computed value attributed to a named release"
+    },
+    {
+      "dod_id": "P0-DOD-012",
+      "evidence_ids": "HUMAN_REQUIRED",
+      "final_state": "HUMAN_REQUIRED",
+      "observable_condition": "governed audit events exist in a real store and the hash chain verifies"
+    },
+    {
+      "dod_id": "P0-DOD-013",
+      "evidence_ids": "HUMAN_REQUIRED",
+      "final_state": "HUMAN_REQUIRED",
+      "observable_condition": "a staging environment has been deployed, its health endpoint observed answering, and a reliability report produced from executed drills"
+    },
+    {
+      "dod_id": "P0-DOD-014",
+      "evidence_ids": "HUMAN_REQUIRED",
+      "final_state": "HUMAN_REQUIRED",
+      "observable_condition": "every registered claim names required evidence, and each named item resolves to an artifact present in the repository"
+    },
+    {
+      "dod_id": "P0-DOD-015",
+      "evidence_ids": "HUMAN_REQUIRED",
+      "final_state": "HUMAN_REQUIRED",
+      "observable_condition": "the representative demonstration runs to completion offline, with the language model disabled and every P1 feature off, and produces a result rather than an empty state"
+    }
+  ],
+  "note": "An item becomes satisfied when its observable condition is observed. Writing 15 here would not satisfy anything.",
+  "satisfied_count": "HUMAN_REQUIRED",
+  "schema_version": "pgx-wp-c15-definition-of-done/1-template",
+  "state": "TEMPLATE_NOT_A_REPORT",
+  "status": "PRE-EXPERT / NOT FINAL"
+}

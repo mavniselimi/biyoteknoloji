@@ -1,0 +1,19 @@
+{
+  "definition_of_done_satisfied_count": "HUMAN_REQUIRED",
+  "external_expert_review_received": false,
+  "note": "THS-6 closes when its conditions are observed to hold. This template records that they do not.",
+  "passing_gate_count": "HUMAN_REQUIRED",
+  "release_may_proceed": false,
+  "schema_version": "pgx-wp-c15-ths6-summary/1-template",
+  "signed_attestation_count": 0,
+  "state": "TEMPLATE_NOT_A_SUMMARY",
+  "status": "PRE-EXPERT / NOT FINAL",
+  "ths6_achieved": false,
+  "ths6_achieved_note": "False, and not HUMAN_REQUIRED. A template that left this blank could be completed by filling it in; the honest current value is false and it is recorded as false.",
+  "unmet_conditions": [
+    "gates GATE-A, GATE-B, GATE-C, GATE-D, GATE-E, GATE-F are not PASS",
+    "14 of 15 Definition of Done items are not satisfied",
+    "the representative demonstration has not been executed (preflight stopped at DEMO-02)",
+    "9 of 9 sign-off roles are unsigned"
+  ]
+}

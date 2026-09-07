@@ -58,6 +58,32 @@ complete candidate project
 
 If no real expert is available, the complete candidate project remains demonstrable, but claims must remain limited to a source-grounded, internally validated research prototype. External review and final post-review claims may not be fabricated.
 
+### Wave 5 status — autonomous scope complete, human step open
+
+The parts of Wave 5 that do not require a person are done, measured in
+`data/closure/wave-05-status.json` by twenty-two checks:
+
+```text
+AUTONOMOUS PREPARATION COMPLETE
+AWAITING GENUINE EXTERNAL EXPERT EVALUATION
+WP-C12 HUMAN STEP OPEN
+WP-C14B NOT STARTED
+WP-C15 NOT FINAL
+```
+
+| | State | Where |
+|---|---|---|
+| Frozen evaluated version | 58 artifacts, one combined hash | `data/closure/wave-05-frozen-candidate-version.json` |
+| Evaluation package | 16 sections, 7 reviewer documents, 4 JSON companions | `docs/expert-package/`, `data/expert-package/` |
+| Reserved-case boundary | 12 sealed, no expected answers, 12 payload reads refused | `data/expert-package/expert-reserved-seal.json` |
+| WP-C14B machinery | built, empty, refuses a fabricated response | `pgx/closure/wp_c14b.py`, `data/closure/wp-c14b/` |
+| WP-C15 inventory | `PRE-EXPERT / NOT FINAL`, 5 unsigned templates | `data/closure/wp-c15/` |
+
+WP-C12 itself cannot proceed here: a real external expert response is a human
+step and nothing in this repository may author one. Rebuild every Wave 5
+artifact with `python3 scripts/build_wave05_artifacts.py`, which runs the four
+builders in the one order that converges.
+
 ## Authority-state boundary
 
 | Stage | Permitted description | Not permitted |
