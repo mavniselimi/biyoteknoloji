@@ -237,7 +237,35 @@ tests catch.
 Until step 6 succeeds with a real response, WP-C14B has nothing to correct and
 WP-C15 cannot be final.
 
-## 10. What Wave 5 deliberately did not do
+## 10. One residual this wave found and did not fix
+
+`data/api/wp16-real-gate-status.json` no longer describes the tree. Its
+`error_code_count` is 45; the API now declares 47, and its own note says the
+verified `api_source_sha256` has changed. Wave 4B added the typed `ApiError`
+handler and the runtime-track assertions and did not refresh it, and the
+device VM cannot run the WP-16 suite - it has no fastapi - so nothing noticed.
+
+It was **not** refreshed here, deliberately. Regenerating it on a host that
+has the web stack flips `api_dependencies_available` and
+`database_dependencies_available` from false to true, and both are probes that
+`pgx/ths6/gate_matrix.py`, `pgx/ths6/claim_registry.py` and `pgx/ths6/demo.py`
+read. A THS-6 gate result must not move as a side effect of which machine
+happened to run a builder during a documentation wave.
+
+What clears it: run `python -m apps.api.artifacts` on the host the project
+actually deploys from, then evaluate what the two flipped probes do to Gate C
+and Gate E and record that evaluation. It is a small job and it is a THS-6
+job, not a Wave 5 one.
+
+The same reasoning leaves `data/web/wp17-real-gate-status.json` alone. It
+records `browser_runtime_available: false`, which is true of the device VM and
+of the project owner's Mac, and false only of the session container that has
+playwright installed. `data/deployment/wp24-runtime-asset-manifest.json`
+checksums both files and is stale on that container for the same reason. Three
+artifacts, one cause: a document that measures the machine is supposed to
+differ between machines.
+
+## 11. What Wave 5 deliberately did not do
 
 - It did not author, simulate, summarise or anticipate an expert's judgment.
 - It did not open or score the twelve reserved cases.
