@@ -1,0 +1,151 @@
+{
+  "file_count": 27,
+  "files": [
+    {
+      "path": "data/expert-package/expert-reserved-seal.json",
+      "sha256": "sha256:6e12c2c9b2d6c79b9f50530b28b2ef1eb3858f6baa1695ec7146f60ec1b2fb24"
+    },
+    {
+      "path": "data/expert-package/expert-reserved-worksheet.json",
+      "sha256": "sha256:3c72fc12f12f0192471f4335d701aae806639156832b352144ab8d866507dda3"
+    },
+    {
+      "path": "data/expert-package/reviewer-response-template.json",
+      "sha256": "sha256:d154c18a1a2b15660d35ecf5a966df79768bc3428198406acac13e87cfd79238"
+    },
+    {
+      "path": "docs/expert-package/01-purpose-and-claim-boundary.md",
+      "sha256": "sha256:440294bd48631e58cb4098eb578e25e492d5d95f8e029bce36e3263bbd35449d"
+    },
+    {
+      "path": "docs/expert-package/02-demo-and-validation-only-scope.md",
+      "sha256": "sha256:98e7c6f800b49ee1a90bb0fc3433bdfb7251b735b32c9d27deb8b9ab3d6147cf"
+    },
+    {
+      "path": "docs/expert-package/03-scientific-source-strategy.md",
+      "sha256": "sha256:45005e60a6882948ebae0e2a64df6ff6bac7a6a1a7ae092306eb8843262c4346"
+    },
+    {
+      "path": "docs/expert-package/04-h01-decision-and-its-limits.md",
+      "sha256": "sha256:f76878881f08e3689669b896c8a880341c0a3708b867a571b2de35ae2dcee7d8"
+    },
+    {
+      "path": "docs/expert-package/05-dataset-provenance-and-dq-decision.md",
+      "sha256": "sha256:d962e0dab68d10e0eff376058e2775b07baa2e665c4ab7e14922b92167cf3f97"
+    },
+    {
+      "path": "docs/expert-package/06-four-drugs-two-genes.md",
+      "sha256": "sha256:099c4ab42845885c5ee9eede0362f7aa66bca8193859fcfcb0d15d534d307ef8"
+    },
+    {
+      "path": "docs/expert-package/07-curation-methodology.md",
+      "sha256": "sha256:0dd68f9c99b724f18602043618d3dfe86cf161c925851e8c69a555f0ad6b1105"
+    },
+    {
+      "path": "docs/expert-package/08-amitriptyline-joint-representation.md",
+      "sha256": "sha256:25a27094ece4da2c751063b7d8d2a20cc2ca0194b68d674339c3e7e2739b104f"
+    },
+    {
+      "path": "docs/expert-package/09-clopidogrel-acs-pci-restriction.md",
+      "sha256": "sha256:f74c0192dd40d44e0920cf48cbf1a78eadf6957e770d3d37c288b2be40a830ed"
+    },
+    {
+      "path": "docs/expert-package/10-phenotype-and-activity-score-refusals.md",
+      "sha256": "sha256:21c13ca78e7afeea021a0229ec2592d61e6621d13971327af7cf8db764f1366d"
+    },
+    {
+      "path": "docs/expert-package/11-rule-and-release-lineage.md",
+      "sha256": "sha256:32dc59d47bd5573822b7269444c8e7aa1f0e25fef905a47cd4189250b891a795"
+    },
+    {
+      "path": "docs/expert-package/12-internal-validation-methodology.md",
+      "sha256": "sha256:13994669b037b8ffe36f1e7a0905b82b37111bfa3c3fb9b1091d017829c5e643"
+    },
+    {
+      "path": "docs/expert-package/13-non-independence-limitation.md",
+      "sha256": "sha256:65fa347938d4aefe2e66f8813546c8ba575a83b19dd13693155665ebf2ad5635"
+    },
+    {
+      "path": "docs/expert-package/14-representative-demonstration.md",
+      "sha256": "sha256:c02f247a64180e9f9236b5eb956a6ee9ab3fd7071e3ea2a8be1df46c88e8e44b"
+    },
+    {
+      "path": "docs/expert-package/15-known-limitations.md",
+      "sha256": "sha256:0fb83cfd27c0be55504d1a2103c413708e39487b6d2f72aea3b26ee0cd8d2b20"
+    },
+    {
+      "path": "docs/expert-package/16-questions-for-the-expert.md",
+      "sha256": "sha256:8ede23fe3ebd515711640c419291b5040fe6b6fa31c2556a70eef144399e06a6"
+    },
+    {
+      "path": "docs/expert-package/README.md",
+      "sha256": "sha256:e1b00275accfb55390e81efbc14d894bccdaa7e1bc0b58d7e5982df62d7a2692"
+    },
+    {
+      "path": "docs/expert-package/reviewer/00-reviewer-instructions.md",
+      "sha256": "sha256:a0d7228c9a706a6d8e1ee4cadd10aee537c02bad4392f44d82542f540efd6757"
+    },
+    {
+      "path": "docs/expert-package/reviewer/01-qualification-and-identity.md",
+      "sha256": "sha256:151bfce8f701dad8d6d6d68282a56599b787b0e5091f7646398959527af0f546"
+    },
+    {
+      "path": "docs/expert-package/reviewer/02-conflict-of-interest.md",
+      "sha256": "sha256:a63fd38acec40747d2f4750c35abf91096df821d07a003fcb9bf4410290c816a"
+    },
+    {
+      "path": "docs/expert-package/reviewer/03-consent-and-data-handling.md",
+      "sha256": "sha256:e32872a806737661b80f74eafcf9d16ad7d5b8403ab25ba9cdaa7e161a4f7c39"
+    },
+    {
+      "path": "docs/expert-package/reviewer/04-blind-first-workflow.md",
+      "sha256": "sha256:93c46390be00ab5b8b29b1abc175aa9b6d15b53d8013dc30d24d16843b6f30cc"
+    },
+    {
+      "path": "docs/expert-package/reviewer/05-review-questionnaire.md",
+      "sha256": "sha256:1941f1e4b9db2a293395344763407c656878ba9e6211e1bb7c1c156e36f8d545"
+    },
+    {
+      "path": "docs/expert-package/reviewer/06-submission-procedure.md",
+      "sha256": "sha256:a5755a1bfd3e32d16e59742be2111b610c5fb30f9edc33ae6513f0974ec4d3b0"
+    }
+  ],
+  "frozen_version": {
+    "artifact_count": 58,
+    "combined_hash": "sha256:0f444d6018ebaab026ba11a1bd14388d6d94162fdd306346a222f0c5997f1184",
+    "commit": "6422568123fd491940a7d2f837a22e5d01decbb2",
+    "release_public_id": "PGX-CANDIDATE-REL-20260906-001"
+  },
+  "missing_files": [],
+  "pre_template_manifest_hash": "sha256:675fdcb0fa519d92f14f4446a5b0719a146f63ec535ae72130b7e161087a6c7f",
+  "questions_for_the_expert": [
+    "Q01-SCIENTIFIC-APPROPRIATENESS",
+    "Q02-PGX-INTERPRETATION-QUALITY",
+    "Q03-SOURCE-SELECTION",
+    "Q04-SOURCE-CONFLICT-HANDLING",
+    "Q05-PHENOTYPE-AND-ACTIVITY-SCORE-MAPPING",
+    "Q06-AMITRIPTYLINE-JOINT-REPRESENTATION",
+    "Q07-CLOPIDOGREL-ACS-PCI-RESTRICTION",
+    "Q08-COVERAGE-AND-MISSING-DATA",
+    "Q09-UNSAFE-REASSURANCE",
+    "Q10-WARNINGS-AND-CLAIMS",
+    "Q11-USEFULNESS",
+    "Q12-RECOMMENDED-CORRECTIONS"
+  ],
+  "reserved_cases": {
+    "count": 12,
+    "evaluated_against_the_build": false,
+    "expected_is_null_for_every_case": true,
+    "payload_reads_allowed": 0
+  },
+  "review_state": "PENDING_EXTERNAL_EXPERT_REVIEW",
+  "reviewed_by_anyone_outside_this_project": false,
+  "schema_version": "pgx-wave05-expert-package/1",
+  "status": "PRE-EXPERT / NOT FINAL",
+  "what_this_package_is_not": [
+    "It has not been reviewed. It is the thing to be reviewed.",
+    "It contains no expert judgment, no approval and no signature.",
+    "It is not independent validation and is not clinical validation.",
+    "Nothing in it changes the candidate release's authority state, which remains PROJECT_TEAM_PROVISIONAL."
+  ]
+}

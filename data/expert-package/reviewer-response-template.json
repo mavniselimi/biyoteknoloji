@@ -1,0 +1,141 @@
+{
+  "blind_first_confirmation": {
+    "note": "HUMAN_REQUIRED",
+    "recorded_expectations_before_running_the_software": "HUMAN_REQUIRED"
+  },
+  "conflict_of_interest": {
+    "declaration": "HUMAN_REQUIRED",
+    "has_competing_product_interest": "HUMAN_REQUIRED",
+    "has_financial_interest_in_this_project": "HUMAN_REQUIRED",
+    "has_personal_relationship_with_the_author": "HUMAN_REQUIRED",
+    "other_interests_to_declare": "HUMAN_REQUIRED"
+  },
+  "consent": {
+    "consents_to_name_being_recorded": "HUMAN_REQUIRED",
+    "understands_no_patient_data_is_involved": "HUMAN_REQUIRED",
+    "understands_review_will_be_stored_and_published_in_repository": "HUMAN_REQUIRED"
+  },
+  "correction_priority_vocabulary": [
+    "P0",
+    "P1",
+    "P2",
+    "P3",
+    "NONE"
+  ],
+  "not_an_approval": "Completing this form is a scientific review. It is not approval for clinical use, not independent validation, and not a release decision.",
+  "overall_free_text_criticism": "HUMAN_REQUIRED",
+  "questionnaire": [
+    {
+      "answer": "HUMAN_REQUIRED",
+      "correction_priority": "HUMAN_REQUIRED",
+      "question": "Is the overall scientific approach appropriate for what this software claims to be, and where is it not?",
+      "question_id": "Q01-SCIENTIFIC-APPROPRIATENESS",
+      "severity": "HUMAN_REQUIRED"
+    },
+    {
+      "answer": "HUMAN_REQUIRED",
+      "correction_priority": "HUMAN_REQUIRED",
+      "question": "Is the pharmacogenetic interpretation of each covered axis correct, and where would you interpret differently?",
+      "question_id": "Q02-PGX-INTERPRETATION-QUALITY",
+      "severity": "HUMAN_REQUIRED"
+    },
+    {
+      "answer": "HUMAN_REQUIRED",
+      "correction_priority": "HUMAN_REQUIRED",
+      "question": "Are the selected sources the right ones for a first release, and what is missing or should not be there?",
+      "question_id": "Q03-SOURCE-SELECTION",
+      "severity": "HUMAN_REQUIRED"
+    },
+    {
+      "answer": "HUMAN_REQUIRED",
+      "correction_priority": "HUMAN_REQUIRED",
+      "question": "Where sources disagree, is the project's handling defensible, and what would you do instead?",
+      "question_id": "Q04-SOURCE-CONFLICT-HANDLING",
+      "severity": "HUMAN_REQUIRED"
+    },
+    {
+      "answer": "HUMAN_REQUIRED",
+      "correction_priority": "HUMAN_REQUIRED",
+      "question": "Is the phenotype vocabulary and its mapping from source terms correct, including what the project refuses to map?",
+      "question_id": "Q05-PHENOTYPE-AND-ACTIVITY-SCORE-MAPPING",
+      "severity": "HUMAN_REQUIRED"
+    },
+    {
+      "answer": "HUMAN_REQUIRED",
+      "correction_priority": "HUMAN_REQUIRED",
+      "question": "Is modelling amitriptyline as one joint CYP2C19+CYP2D6 decision correct, and is the twelve-cell table right?",
+      "question_id": "Q06-AMITRIPTYLINE-JOINT-REPRESENTATION",
+      "severity": "HUMAN_REQUIRED"
+    },
+    {
+      "answer": "HUMAN_REQUIRED",
+      "correction_priority": "HUMAN_REQUIRED",
+      "question": "Is restricting clopidogrel to an explicitly declared ACS/PCI context correct, and is refusing without it the right behaviour?",
+      "question_id": "Q07-CLOPIDOGREL-ACS-PCI-RESTRICTION",
+      "severity": "HUMAN_REQUIRED"
+    },
+    {
+      "answer": "HUMAN_REQUIRED",
+      "correction_priority": "HUMAN_REQUIRED",
+      "question": "Is the coverage and missing-data behaviour correct, and does the output make the difference between a finding and a refusal clear?",
+      "question_id": "Q08-COVERAGE-AND-MISSING-DATA",
+      "severity": "HUMAN_REQUIRED"
+    },
+    {
+      "answer": "HUMAN_REQUIRED",
+      "correction_priority": "HUMAN_REQUIRED",
+      "question": "Is there anywhere a clinician could read this output as reassurance when it is not? Name each place.",
+      "question_id": "Q09-UNSAFE-REASSURANCE",
+      "severity": "HUMAN_REQUIRED"
+    },
+    {
+      "answer": "HUMAN_REQUIRED",
+      "correction_priority": "HUMAN_REQUIRED",
+      "question": "Are the warnings and the claim boundary adequate, honest and correctly placed?",
+      "question_id": "Q10-WARNINGS-AND-CLAIMS",
+      "severity": "HUMAN_REQUIRED"
+    },
+    {
+      "answer": "HUMAN_REQUIRED",
+      "correction_priority": "HUMAN_REQUIRED",
+      "question": "Would this be useful to a pharmacist or clinician in its intended demonstration role, and what would make it useless?",
+      "question_id": "Q11-USEFULNESS",
+      "severity": "HUMAN_REQUIRED"
+    },
+    {
+      "answer": "HUMAN_REQUIRED",
+      "correction_priority": "HUMAN_REQUIRED",
+      "question": "What must be corrected before this could be considered further, in your order of priority?",
+      "question_id": "Q12-RECOMMENDED-CORRECTIONS",
+      "severity": "HUMAN_REQUIRED"
+    }
+  ],
+  "reserved_case_answers": "HUMAN_REQUIRED",
+  "reviewed_frozen_combined_hash": "sha256:0f444d6018ebaab026ba11a1bd14388d6d94162fdd306346a222f0c5997f1184",
+  "reviewed_package_manifest_hash": "sha256:675fdcb0fa519d92f14f4446a5b0719a146f63ec535ae72130b7e161087a6c7f",
+  "reviewed_release_public_id": "PGX-CANDIDATE-REL-20260906-001",
+  "reviewer": {
+    "affiliation": "HUMAN_REQUIRED",
+    "contact": "HUMAN_REQUIRED",
+    "identity_verification": "NONE_PERFORMED",
+    "identity_verification_note": "This project performs no electronic identity verification and this is not a cryptographic signature.",
+    "name": "HUMAN_REQUIRED",
+    "professional_qualification": "HUMAN_REQUIRED",
+    "registration_or_licence_reference": "HUMAN_REQUIRED",
+    "years_of_relevant_practice": "HUMAN_REQUIRED"
+  },
+  "schema_version": "pgx-wave05-reviewer-response/1",
+  "severity_vocabulary": [
+    "BLOCKING",
+    "MAJOR",
+    "MINOR",
+    "OBSERVATION"
+  ],
+  "signature": {
+    "date": "HUMAN_REQUIRED",
+    "signature_method": "HUMAN_REQUIRED",
+    "signed_name": "HUMAN_REQUIRED"
+  },
+  "state": "TEMPLATE_NOT_A_RESPONSE",
+  "unsafe_or_misleading_outputs": "HUMAN_REQUIRED"
+}

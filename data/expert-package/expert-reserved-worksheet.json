@@ -1,0 +1,320 @@
+{
+  "answer_field_definitions": [
+    {
+      "field": "reviewer_expected_attention",
+      "prompt": "What attention level, if any, do you consider correct for each drug in this request - before you look at what the software returned?"
+    },
+    {
+      "field": "reviewer_expected_refusals",
+      "prompt": "Which parts of this request should be refused rather than answered, and under what reason?"
+    },
+    {
+      "field": "reviewer_rationale",
+      "prompt": "Why. Cite the guideline or evidence you are relying on."
+    },
+    {
+      "field": "reviewer_answer_to_the_question",
+      "prompt": "The product question asked above, answered in your own words."
+    },
+    {
+      "field": "reviewer_unsafe_output_note",
+      "prompt": "If any part of the software's output on this case could mislead a clinician, describe it here."
+    }
+  ],
+  "blind_first_note": "Fill in reviewer_expected_attention, reviewer_expected_refusals and reviewer_rationale BEFORE running the case in the software. That ordering is the only thing that makes the answer evidence rather than agreement.",
+  "case_count": 12,
+  "cases": [
+    {
+      "case_id": "PGX-VAL-W4-EXP-01-TWO-DRUGS-ONE-GENE",
+      "product_question": "two drugs sharing one gene, in opposite directions - clopidogrel needs activation and omeprazole is cleared. Is reporting them separately, with no interaction claim, the right product behaviour?",
+      "request": {
+        "care_setting": "ACS_OR_PCI",
+        "medications": [
+          "DRUG:clopidogrel",
+          "DRUG:omeprazole"
+        ],
+        "mode": "VALIDATION",
+        "phenotypes": {
+          "GENE:CYP2C19": "POOR"
+        }
+      },
+      "reviewer_answer": {
+        "reviewer_answer_to_the_question": "HUMAN_REQUIRED",
+        "reviewer_expected_attention": "HUMAN_REQUIRED",
+        "reviewer_expected_refusals": "HUMAN_REQUIRED",
+        "reviewer_rationale": "HUMAN_REQUIRED",
+        "reviewer_unsafe_output_note": "HUMAN_REQUIRED"
+      },
+      "title": "two drugs one gene"
+    },
+    {
+      "case_id": "PGX-VAL-W4-EXP-02-TWO-DRUGS-ONE-GENE-NORMAL",
+      "product_question": "the same pair on a normal metabolizer: is the difference between the two answers legible to a clinician reading the output?",
+      "request": {
+        "care_setting": "ACS_OR_PCI",
+        "medications": [
+          "DRUG:clopidogrel",
+          "DRUG:omeprazole"
+        ],
+        "mode": "VALIDATION",
+        "phenotypes": {
+          "GENE:CYP2C19": "NORMAL"
+        }
+      },
+      "reviewer_answer": {
+        "reviewer_answer_to_the_question": "HUMAN_REQUIRED",
+        "reviewer_expected_attention": "HUMAN_REQUIRED",
+        "reviewer_expected_refusals": "HUMAN_REQUIRED",
+        "reviewer_rationale": "HUMAN_REQUIRED",
+        "reviewer_unsafe_output_note": "HUMAN_REQUIRED"
+      },
+      "title": "two drugs one gene normal"
+    },
+    {
+      "case_id": "PGX-VAL-W4-EXP-03-ALL-FOUR-DRUGS",
+      "product_question": "the whole first-release scope at once, with both genes poor. Is the aggregate presentation honest about which answers are findings and which are refusals?",
+      "request": {
+        "care_setting": "ACS_OR_PCI",
+        "medications": [
+          "DRUG:amitriptyline",
+          "DRUG:clopidogrel",
+          "DRUG:codeine",
+          "DRUG:omeprazole"
+        ],
+        "mode": "VALIDATION",
+        "phenotypes": {
+          "GENE:CYP2C19": "POOR",
+          "GENE:CYP2D6": "POOR"
+        }
+      },
+      "reviewer_answer": {
+        "reviewer_answer_to_the_question": "HUMAN_REQUIRED",
+        "reviewer_expected_attention": "HUMAN_REQUIRED",
+        "reviewer_expected_refusals": "HUMAN_REQUIRED",
+        "reviewer_rationale": "HUMAN_REQUIRED",
+        "reviewer_unsafe_output_note": "HUMAN_REQUIRED"
+      },
+      "title": "all four drugs"
+    },
+    {
+      "case_id": "PGX-VAL-W4-EXP-04-ALL-FOUR-DRUGS-MIXED",
+      "product_question": "the same four drugs with mixed phenotypes: does the highest attention level dominating the summary hide the drugs that were refused?",
+      "request": {
+        "care_setting": "ACS_OR_PCI",
+        "medications": [
+          "DRUG:amitriptyline",
+          "DRUG:clopidogrel",
+          "DRUG:codeine",
+          "DRUG:omeprazole"
+        ],
+        "mode": "VALIDATION",
+        "phenotypes": {
+          "GENE:CYP2C19": "ULTRARAPID",
+          "GENE:CYP2D6": "INTERMEDIATE"
+        }
+      },
+      "reviewer_answer": {
+        "reviewer_answer_to_the_question": "HUMAN_REQUIRED",
+        "reviewer_expected_attention": "HUMAN_REQUIRED",
+        "reviewer_expected_refusals": "HUMAN_REQUIRED",
+        "reviewer_rationale": "HUMAN_REQUIRED",
+        "reviewer_unsafe_output_note": "HUMAN_REQUIRED"
+      },
+      "title": "all four drugs mixed"
+    },
+    {
+      "case_id": "PGX-VAL-W4-EXP-05-COVERED-AND-OUT-OF-SCOPE",
+      "product_question": "one covered drug and one out of scope: is the partial answer presented so that a reader cannot mistake it for a whole one?",
+      "request": {
+        "care_setting": null,
+        "medications": [
+          "DRUG:codeine",
+          "DRUG:warfarin"
+        ],
+        "mode": "VALIDATION",
+        "phenotypes": {
+          "GENE:CYP2D6": "POOR"
+        }
+      },
+      "reviewer_answer": {
+        "reviewer_answer_to_the_question": "HUMAN_REQUIRED",
+        "reviewer_expected_attention": "HUMAN_REQUIRED",
+        "reviewer_expected_refusals": "HUMAN_REQUIRED",
+        "reviewer_rationale": "HUMAN_REQUIRED",
+        "reviewer_unsafe_output_note": "HUMAN_REQUIRED"
+      },
+      "title": "covered and out of scope"
+    },
+    {
+      "case_id": "PGX-VAL-W4-EXP-06-COVERED-AND-TWO-OUT-OF-SCOPE",
+      "product_question": "one covered drug and two out of scope, on a phenotype the guideline treats as a toxicity risk: does the refusal noise obscure the finding?",
+      "request": {
+        "care_setting": null,
+        "medications": [
+          "DRUG:codeine",
+          "DRUG:tamoxifen",
+          "DRUG:warfarin"
+        ],
+        "mode": "VALIDATION",
+        "phenotypes": {
+          "GENE:CYP2D6": "ULTRARAPID"
+        }
+      },
+      "reviewer_answer": {
+        "reviewer_answer_to_the_question": "HUMAN_REQUIRED",
+        "reviewer_expected_attention": "HUMAN_REQUIRED",
+        "reviewer_expected_refusals": "HUMAN_REQUIRED",
+        "reviewer_rationale": "HUMAN_REQUIRED",
+        "reviewer_unsafe_output_note": "HUMAN_REQUIRED"
+      },
+      "title": "covered and two out of scope"
+    },
+    {
+      "case_id": "PGX-VAL-W4-EXP-07-EXTRA-GENE-OBSERVED",
+      "product_question": "an observation is supplied for a gene codeine's axis does not name. It is ignored. Should the output say so, rather than silently using only what it needed?",
+      "request": {
+        "care_setting": null,
+        "medications": [
+          "DRUG:codeine"
+        ],
+        "mode": "VALIDATION",
+        "phenotypes": {
+          "GENE:CYP2C19": "POOR",
+          "GENE:CYP2D6": "NORMAL"
+        }
+      },
+      "reviewer_answer": {
+        "reviewer_answer_to_the_question": "HUMAN_REQUIRED",
+        "reviewer_expected_attention": "HUMAN_REQUIRED",
+        "reviewer_expected_refusals": "HUMAN_REQUIRED",
+        "reviewer_rationale": "HUMAN_REQUIRED",
+        "reviewer_unsafe_output_note": "HUMAN_REQUIRED"
+      },
+      "title": "extra gene observed"
+    },
+    {
+      "case_id": "PGX-VAL-W4-EXP-08-EXTRA-GENE-OBSERVED-CLOPIDOGREL",
+      "product_question": "as above, where the ignored observation is one a clinician might expect to matter. Is silence the right behaviour?",
+      "request": {
+        "care_setting": "ACS_OR_PCI",
+        "medications": [
+          "DRUG:clopidogrel"
+        ],
+        "mode": "VALIDATION",
+        "phenotypes": {
+          "GENE:CYP2C19": "INTERMEDIATE",
+          "GENE:CYP2D6": "POOR"
+        }
+      },
+      "reviewer_answer": {
+        "reviewer_answer_to_the_question": "HUMAN_REQUIRED",
+        "reviewer_expected_attention": "HUMAN_REQUIRED",
+        "reviewer_expected_refusals": "HUMAN_REQUIRED",
+        "reviewer_rationale": "HUMAN_REQUIRED",
+        "reviewer_unsafe_output_note": "HUMAN_REQUIRED"
+      },
+      "title": "extra gene observed clopidogrel"
+    },
+    {
+      "case_id": "PGX-VAL-W4-EXP-09-AMITRIPTYLINE-WITH-A-SECOND-DRUG",
+      "product_question": "a joint two-gene drug beside a single-gene one, on the cell where combining single-gene readings would have given a different answer from the guideline's joint table. Is the joint answer the right one, and is it distinguishable in the output from the single-gene one beside it?",
+      "request": {
+        "care_setting": null,
+        "medications": [
+          "DRUG:amitriptyline",
+          "DRUG:codeine"
+        ],
+        "mode": "VALIDATION",
+        "phenotypes": {
+          "GENE:CYP2C19": "INTERMEDIATE",
+          "GENE:CYP2D6": "INTERMEDIATE"
+        }
+      },
+      "reviewer_answer": {
+        "reviewer_answer_to_the_question": "HUMAN_REQUIRED",
+        "reviewer_expected_attention": "HUMAN_REQUIRED",
+        "reviewer_expected_refusals": "HUMAN_REQUIRED",
+        "reviewer_rationale": "HUMAN_REQUIRED",
+        "reviewer_unsafe_output_note": "HUMAN_REQUIRED"
+      },
+      "title": "amitriptyline with a second drug"
+    },
+    {
+      "case_id": "PGX-VAL-W4-EXP-10-IRRELEVANT-CARE-SETTING",
+      "product_question": "a care setting is supplied for two drugs that do not require one. It is ignored. Should the release refuse an irrelevant qualifier instead?",
+      "request": {
+        "care_setting": "ACS_OR_PCI",
+        "medications": [
+          "DRUG:amitriptyline",
+          "DRUG:omeprazole"
+        ],
+        "mode": "VALIDATION",
+        "phenotypes": {
+          "GENE:CYP2C19": "NORMAL",
+          "GENE:CYP2D6": "NORMAL"
+        }
+      },
+      "reviewer_answer": {
+        "reviewer_answer_to_the_question": "HUMAN_REQUIRED",
+        "reviewer_expected_attention": "HUMAN_REQUIRED",
+        "reviewer_expected_refusals": "HUMAN_REQUIRED",
+        "reviewer_rationale": "HUMAN_REQUIRED",
+        "reviewer_unsafe_output_note": "HUMAN_REQUIRED"
+      },
+      "title": "irrelevant care setting"
+    },
+    {
+      "case_id": "PGX-VAL-W4-EXP-11-NO-ACTIVE-ATTENTION-BESIDE-A-REFUSAL",
+      "product_question": "one drug reports NO_ACTIVE_ATTENTION and the other refuses for want of a care setting. Are the two distinguishable enough in the product's own output that a clinician will not read the refusal as reassurance?",
+      "request": {
+        "care_setting": null,
+        "medications": [
+          "DRUG:codeine",
+          "DRUG:clopidogrel"
+        ],
+        "mode": "VALIDATION",
+        "phenotypes": {
+          "GENE:CYP2C19": "NORMAL",
+          "GENE:CYP2D6": "NORMAL"
+        }
+      },
+      "reviewer_answer": {
+        "reviewer_answer_to_the_question": "HUMAN_REQUIRED",
+        "reviewer_expected_attention": "HUMAN_REQUIRED",
+        "reviewer_expected_refusals": "HUMAN_REQUIRED",
+        "reviewer_rationale": "HUMAN_REQUIRED",
+        "reviewer_unsafe_output_note": "HUMAN_REQUIRED"
+      },
+      "title": "no active attention beside a refusal"
+    },
+    {
+      "case_id": "PGX-VAL-W4-EXP-12-EVERY-AXIS-REFUSED",
+      "product_question": "nothing can be answered: one drug lacks its care setting, the other is out of scope, and the only observation is on an unsupported phenotype of an unrelated gene. Is a wholly empty result presented as clearly not an assessment?",
+      "request": {
+        "care_setting": null,
+        "medications": [
+          "DRUG:clopidogrel",
+          "DRUG:warfarin"
+        ],
+        "mode": "VALIDATION",
+        "phenotypes": {
+          "GENE:CYP2D6": "RAPID"
+        }
+      },
+      "reviewer_answer": {
+        "reviewer_answer_to_the_question": "HUMAN_REQUIRED",
+        "reviewer_expected_attention": "HUMAN_REQUIRED",
+        "reviewer_expected_refusals": "HUMAN_REQUIRED",
+        "reviewer_rationale": "HUMAN_REQUIRED",
+        "reviewer_unsafe_output_note": "HUMAN_REQUIRED"
+      },
+      "title": "every axis refused"
+    }
+  ],
+  "catalogue_sha256": "sha256:333220aa0982974194aefea4d019fbebca334864457d5fbe933afbdd59218fb8",
+  "no_expected_answers_note": "This worksheet has no field for a pre-written expected answer, and the catalogue it was generated from records none. Nothing in this repository has an opinion about what the right answer is.",
+  "release_manifest_hash": "sha256:0cd22a88f086a2d408e3ac4da0738eba5233f500ab277ccbf4033a8c14581d01",
+  "release_public_id": "PGX-CANDIDATE-REL-20260906-001",
+  "schema_version": "pgx-wave05-reviewer-worksheet/1",
+  "status": "PRE-EXPERT / NOT FINAL"
+}
