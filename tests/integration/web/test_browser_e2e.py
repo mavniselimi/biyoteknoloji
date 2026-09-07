@@ -88,6 +88,20 @@ WAVE04_CAPTURE_DIR = os.path.join(
         os.path.abspath(__file__))))),
     "data", "web", "wave-04-browser")
 
+#: The third. Wave 4B's sixteen-step flow writes here, beside
+#: ``jury-flow.json``, which names every step it walked.
+#: ``test_every_wave04b_capture_is_named_by_its_own_step`` holds the two to
+#: each other, so this exemption buys no more than the last one did.
+#:
+#: Registered late, and that is the finding: Wave 4B committed sixteen images
+#: into a directory the stray check did not know about, and the check went on
+#: passing everywhere it could not run. This suite needs fastapi and starlette,
+#: which the host that ran Wave 4B's own tests does not have.
+WAVE04B_CAPTURE_DIR = os.path.join(
+    os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(
+        os.path.abspath(__file__))))),
+    "data", "closure", "wave-04b-browser")
+
 
 def _skip_reason() -> str:
     """Name the prerequisite that is missing, not just 'blocked'."""
@@ -156,7 +170,8 @@ class TestTheBrowserRuntimeIsReportedHonestly(unittest.TestCase):
         root = os.path.dirname(os.path.dirname(os.path.dirname(
             os.path.dirname(os.path.abspath(__file__)))))
         allowed = {os.path.abspath(SCREENSHOT_DIR),
-                   os.path.abspath(WAVE04_CAPTURE_DIR)}
+                   os.path.abspath(WAVE04_CAPTURE_DIR),
+                   os.path.abspath(WAVE04B_CAPTURE_DIR)}
         strays = []
         for directory in ("docs", "data", "tests"):
             for base, dirs, files in os.walk(os.path.join(root, directory)):
@@ -190,6 +205,29 @@ class TestTheBrowserRuntimeIsReportedHonestly(unittest.TestCase):
             document = _json.load(handle)
         named = {page["screenshot"] for page in document["pages"]}
         present = {name for name in os.listdir(WAVE04_CAPTURE_DIR)
+                   if name.lower().endswith((".png", ".jpg", ".jpeg",
+                                             ".webp"))}
+        self.assertEqual(present, named)
+
+    def test_every_wave04b_capture_is_named_by_its_own_step(self):
+        """The third directory, closed from the other side like the second.
+
+        ``jury-flow.json`` records one step per page walked, and each step's
+        screenshot is that step's name. The set of images on disk must equal
+        the set of step names exactly: an image no step produced, and a step
+        with no image, both fail here.
+        """
+        import io as _io
+        import json as _json
+
+        if not os.path.isdir(WAVE04B_CAPTURE_DIR):
+            self.skipTest("no Wave 4B capture directory in this checkout")
+        record = os.path.join(WAVE04B_CAPTURE_DIR, "jury-flow.json")
+        self.assertTrue(os.path.isfile(record), record)
+        with _io.open(record, encoding="utf-8") as handle:
+            document = _json.load(handle)
+        named = {"%s.png" % step["name"] for step in document["steps"]}
+        present = {name for name in os.listdir(WAVE04B_CAPTURE_DIR)
                    if name.lower().endswith((".png", ".jpg", ".jpeg",
                                              ".webp"))}
         self.assertEqual(present, named)
