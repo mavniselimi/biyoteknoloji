@@ -1,0 +1,286 @@
+{
+  "artifact_count": 58,
+  "artifacts": [
+    {
+      "path": "data/candidate-rulesets/PGX-CANDIDATE-RULESET-WAVE03B/checksums.sha256",
+      "sha256": "sha256:0551b6f9ea055694fca22066c7d657b3b21ad826062ef2b988c772265f4cbeda"
+    },
+    {
+      "path": "data/candidate-rulesets/PGX-CANDIDATE-RULESET-WAVE03B/manifest.json",
+      "sha256": "sha256:8fd1d0c7eee375095334a083a46073e155534067c589b5ff004240234eb75772"
+    },
+    {
+      "path": "data/candidate-rulesets/PGX-CANDIDATE-RULESET-WAVE03B/provenance.json",
+      "sha256": "sha256:0cdee317dc886b9a22f237bc28438b6a6dae0a4f0d7e020372871d434104daf2"
+    },
+    {
+      "path": "data/candidate-rulesets/PGX-CANDIDATE-RULESET-WAVE03B/rules.ndjson",
+      "sha256": "sha256:bf3f37416550ad7803b0688e155fa6a4cf1e3e46a781aa4886215eb24f052f72"
+    },
+    {
+      "path": "data/canonical/PGX-DATA-20260906-001/checksums.sha256",
+      "sha256": "sha256:4924ce95ac40796f7731e581670d9d58c6489235bba30c78be49c53e07ddbf38"
+    },
+    {
+      "path": "data/canonical/PGX-DATA-20260906-001/dq-report.json",
+      "sha256": "sha256:ad4352cd2edc86e6dd0ee9b9d48bbcf2edfd54cb6718332255f4a805edbdf09c"
+    },
+    {
+      "path": "data/canonical/PGX-DATA-20260906-001/drugs.ndjson",
+      "sha256": "sha256:2b39196dcd2f9e6c5875fb011dd670eec57dc171250054c72bf2cbccd41514f3"
+    },
+    {
+      "path": "data/canonical/PGX-DATA-20260906-001/duplicate-groups.ndjson",
+      "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data/canonical/PGX-DATA-20260906-001/entity-membership.ndjson",
+      "sha256": "sha256:cf1f6790e99d2a50b461d0814ca82139fbbba42cf2505ae2e78b70912e5840c6"
+    },
+    {
+      "path": "data/canonical/PGX-DATA-20260906-001/genes.ndjson",
+      "sha256": "sha256:b017bb0ac39aa907f17220a7caaa07e82e579bc40613caac22c5175441761592"
+    },
+    {
+      "path": "data/canonical/PGX-DATA-20260906-001/identity-allocation.json",
+      "sha256": "sha256:62374259dbcebf46479eb6ed3c86da604345d6759b19d40942b2f83af238aed4"
+    },
+    {
+      "path": "data/canonical/PGX-DATA-20260906-001/manifest.json",
+      "sha256": "sha256:857ce009a0e197fc9d79b13d197da4f6a1ac0d4a5e299fb4da0ae61c0c3e427d"
+    },
+    {
+      "path": "data/canonical/PGX-DATA-20260906-001/provenance.ndjson",
+      "sha256": "sha256:20d94ca3511c126bca8f0c667817e7d2926b165eb1080a44674d6daee29f5f56"
+    },
+    {
+      "path": "data/canonical/PGX-DATA-20260906-001/resolution-queue.ndjson",
+      "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data/canonical/dataset-quality-decisions.ndjson",
+      "sha256": "sha256:6362cb01563db920bfddf5862dac2eed0d9b8754e0e26099c932f6cb29ceb9be"
+    },
+    {
+      "path": "data/closure/h01-source-policy-decision.json",
+      "sha256": "sha256:f0d40aa155dd09b992069e9284202615573dde2a8ea0501f10ea25ce5c80ff55"
+    },
+    {
+      "path": "data/closure/wave-03b-integration-manifest.json",
+      "sha256": "sha256:abcdb6e4d0ef8eb2817cdff5646fb3444b7f30fe8d034f917d83e5efd7d69b87"
+    },
+    {
+      "path": "data/closure/wave-04-benchmark/access-ledger.json",
+      "sha256": "sha256:1944b6741fa5d0ca0ee266f18912c3927789263c95c909922eda4d5c7ea5ea36"
+    },
+    {
+      "path": "data/closure/wave-04-benchmark/disagreements.json",
+      "sha256": "sha256:37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "data/closure/wave-04-benchmark/metrics.json",
+      "sha256": "sha256:6180aaf5c02c56cf4e36c40454965590a99edd60e29d87eb45471bce1ea7d47d"
+    },
+    {
+      "path": "data/closure/wave-04-benchmark/per-case-results.json",
+      "sha256": "sha256:195c14ff53966c05d87dd8f4a884cbe547391587c976c187b3a1fcf735252be4"
+    },
+    {
+      "path": "data/closure/wave-04-benchmark/run-manifest.json",
+      "sha256": "sha256:f17938bdaded6f8b524b553e9ec96d8dc32d0763822d883aa4bf31ccf8344c70"
+    },
+    {
+      "path": "data/closure/wave-04-catalogue/checksums.sha256",
+      "sha256": "sha256:eab54eaf5c1b1202fde75b3bc117ce8b610987b7126d8d64a3f6c27ebf36a9da"
+    },
+    {
+      "path": "data/closure/wave-04-catalogue/development.json",
+      "sha256": "sha256:79d7dc04f34fa5307c008b134bb47c93a250494fd4d9250486b0678be09f19a4"
+    },
+    {
+      "path": "data/closure/wave-04-catalogue/expert-reserved.json",
+      "sha256": "sha256:333220aa0982974194aefea4d019fbebca334864457d5fbe933afbdd59218fb8"
+    },
+    {
+      "path": "data/closure/wave-04-catalogue/internal-holdout.json",
+      "sha256": "sha256:a00f4e5f7f82d7df35f93e541f40a5eb42e2722d96b73b2cc32d77875c388ed9"
+    },
+    {
+      "path": "data/closure/wave-04-catalogue/manifest.json",
+      "sha256": "sha256:f133a56e1d0d111c239a2c51b0030f34eb68c43fe89fc14d3febc2aee12d7251"
+    },
+    {
+      "path": "data/closure/wave-04-catalogue/separation-audit.json",
+      "sha256": "sha256:306134c7b41f34b5e3d7ddd67e98cfcc27e6adb6da756ba99e61cf439fb576e6"
+    },
+    {
+      "path": "data/closure/wave-04-execution-manifest.json",
+      "sha256": "sha256:7c1e4667816d5ff2731865276688c07c8ac77419bfb9c24f66d1dae99baa6270"
+    },
+    {
+      "path": "data/closure/wave-04-operational-evidence.json",
+      "sha256": "sha256:ae1890c9e3f7b8b29089c09b8e0e888515ecfbeaa7a6a09067b6bf1e8c1a4675"
+    },
+    {
+      "path": "data/closure/wave-04-performance.json",
+      "sha256": "sha256:3d89be1029914edfb5bec265efd22d1bf87abd3c31a2d58a32a99c9619600f08"
+    },
+    {
+      "path": "data/closure/wave-04b-browser/01-landing.png",
+      "sha256": "sha256:b703d7fb2c68c1be355ae8980710760a8e483599fff89cbcd8fba07dd8dc1748"
+    },
+    {
+      "path": "data/closure/wave-04b-browser/02-anonymous-denied.png",
+      "sha256": "sha256:7c008b31ab40c6210c53db1268f3babecdd6e7ecdfea65ad00e2445465c9dc99"
+    },
+    {
+      "path": "data/closure/wave-04b-browser/03-not-found.png",
+      "sha256": "sha256:3e0c8f8c05a9f2a5d1bcbf8f5252e66f2d986d84f5dfdfd87f0aff5368abe803"
+    },
+    {
+      "path": "data/closure/wave-04b-browser/04-login-form.png",
+      "sha256": "sha256:9eb54fbd7ecb2d16fcb5836c60bd5c2a787f97222105a9d8042b6300cf4bcb17"
+    },
+    {
+      "path": "data/closure/wave-04b-browser/05-login-refused.png",
+      "sha256": "sha256:134aa0acfa1945fc0c0fcd46f02b4903ef79b4f7fa576b89aef0435279f5f71f"
+    },
+    {
+      "path": "data/closure/wave-04b-browser/06-logged-in.png",
+      "sha256": "sha256:82d545f48bf039d67bfdd4f389015be3358b055d9bbe6400192da26d86198b57"
+    },
+    {
+      "path": "data/closure/wave-04b-browser/07-case-catalogue.png",
+      "sha256": "sha256:054674472fd5493f235bfceafbb41311e76af87a4c17260ca21d2807de193dd7"
+    },
+    {
+      "path": "data/closure/wave-04b-browser/08-case-input.png",
+      "sha256": "sha256:68bdf214659a444838d0052edf9f3c06f62fa36663288603590da8ed13b5b72f"
+    },
+    {
+      "path": "data/closure/wave-04b-browser/09-clopidogrel-refused.png",
+      "sha256": "sha256:6f50f3f45fdb2c243660b0a5805942c4c2ba2839f79443eb98dcd7d387a2a64f"
+    },
+    {
+      "path": "data/closure/wave-04b-browser/10-clopidogrel-assessed.png",
+      "sha256": "sha256:0f81531e587fcaecdedd3903db866e6731c78e5eabf74192ae954231bde787a6"
+    },
+    {
+      "path": "data/closure/wave-04b-browser/11-amitriptyline-joint.png",
+      "sha256": "sha256:131e528202f4869bbd4feaed9ae3b6ed55daf18b1c30a34b1c8b039079898870"
+    },
+    {
+      "path": "data/closure/wave-04b-browser/12-amitriptyline-missing-gene.png",
+      "sha256": "sha256:8b7f600b4fdf9b5f0ca69d2ff1b2122957a37ae0298d79267c0b2ac6f5af16ca"
+    },
+    {
+      "path": "data/closure/wave-04b-browser/13-validation.png",
+      "sha256": "sha256:9d9392fc63d23ab88d78edaeca17c0450ea9771a9f90febfb8f5862fd9e2d2f8"
+    },
+    {
+      "path": "data/closure/wave-04b-browser/14-system.png",
+      "sha256": "sha256:1281e062b3b1b67ad93518ef83712df9d39ccf58b749db164ce51bca5458f824"
+    },
+    {
+      "path": "data/closure/wave-04b-browser/15-logged-out.png",
+      "sha256": "sha256:595981f6359f9695b323a8a9f4138a09a8a983a4857c5b4602af7523683fe97c"
+    },
+    {
+      "path": "data/closure/wave-04b-browser/16-post-logout-denied.png",
+      "sha256": "sha256:2fa83cf9ee23c834f2fe81ad2898c52ef62314d05b69158752bac30b2beb5e4b"
+    },
+    {
+      "path": "data/closure/wave-04b-browser/jury-flow.json",
+      "sha256": "sha256:75684e246ca8787c4e0bf4df00597d25fa37dcabc7a07e6950aea369018ef8ac"
+    },
+    {
+      "path": "data/closure/wave-04b-runtime-product-manifest.json",
+      "sha256": "sha256:d37c716c794732d5e523fca414f58c882ddadc2112ea818e89608af22d1b66e2"
+    },
+    {
+      "path": "data/raw/cpic-guideline-capture/PGX-DATA-20260906-001/checksums.sha256",
+      "sha256": "sha256:8a914f40703a8d6ea37ec86cb611e7ceb8f071b943a93d01a67617d7c71bb301"
+    },
+    {
+      "path": "data/raw/cpic-guideline-capture/PGX-DATA-20260906-001/manifest.json",
+      "sha256": "sha256:1f6d6ba61cdb0d907a169304043d9ed6408e98648612d371be997310effc5785"
+    },
+    {
+      "path": "data/raw/cpic-guideline-capture/PGX-DATA-20260906-001/requests.ndjson",
+      "sha256": "sha256:c37ba13b6b7ae274a2445a61e6ed6a27b454ba4ec77a4b67c111079336b785a1"
+    },
+    {
+      "path": "data/raw/cpic-guideline-capture/PGX-DATA-20260906-001/responses/capture_axes.json",
+      "sha256": "sha256:8e96a40f3d59699d5d68dbd5694fa806a9c90608bc5231fb2967709771fda57f"
+    },
+    {
+      "path": "data/raw/cpic-guideline-capture/PGX-DATA-20260906-001/responses/capture_chemicals.json",
+      "sha256": "sha256:c89389649575f268c020fdde5fb8a77710007e39593544ddd5f6383f97c9aec7"
+    },
+    {
+      "path": "data/raw/cpic-guideline-capture/PGX-DATA-20260906-001/responses/capture_genes.json",
+      "sha256": "sha256:e080870907ca758a9679317cccd963f810d1e4c5b2cf64ab696761d0199d4fc7"
+    },
+    {
+      "path": "data/raw/cpic-guideline-capture/PGX-DATA-20260906-001/responses/capture_recommendation_rows.json",
+      "sha256": "sha256:6bfe6d6958eaeef756c64fbc457734626444ae0bce26b9a7c30b3772fb2bf8f1"
+    },
+    {
+      "path": "data/releases/PGX-CANDIDATE-REL-20260906-001/manifest.json",
+      "sha256": "sha256:536fd5c83902737cb6059e9c9ad6c5bb2ed7b1ae1c7e7cb70b3458526e46f461"
+    },
+    {
+      "path": "data/releases/active-candidate-release.json",
+      "sha256": "sha256:29cf016e104e03c95544fc049502d309f062a8a42feebda63f01bc519adb59e6"
+    }
+  ],
+  "authority_state": "PROJECT_TEAM_PROVISIONAL",
+  "benchmark": {
+    "expert_reserved_payloads_read": 0,
+    "failed_case_count": 0,
+    "scored_case_count": 55,
+    "unsafe_false_reassurance_count": 0
+  },
+  "claim_boundary_is_approved": false,
+  "claim_boundary_status": "PROJECT_TEAM_PROVISIONAL / PENDING EXTERNAL EXPERT REVIEW",
+  "combined_hash": "sha256:0f444d6018ebaab026ba11a1bd14388d6d94162fdd306346a222f0c5997f1184",
+  "commit": "6422568123fd491940a7d2f837a22e5d01decbb2",
+  "dataset_public_id": "PGX-DATA-20260906-001",
+  "demonstrated_commit": "0ff8871",
+  "demonstrated_commit_note": "The WP-C14 demonstration ran against the tree at 0ff8871. The commit above may be later; anything after 0ff8871 that is not listed in this record's artifacts did not change what was demonstrated, and anything that did would change a hash here.",
+  "frozen_for": "WP-C12 external expert evaluation",
+  "release_manifest_hash": "sha256:0cd22a88f086a2d408e3ac4da0738eba5233f500ab277ccbf4033a8c14581d01",
+  "release_public_id": "PGX-CANDIDATE-REL-20260906-001",
+  "review_state": "PENDING_EXTERNAL_EXPERT_REVIEW",
+  "ruleset_content_hash": "sha256:29ca1949b33522f81f745b5b51e61b75913ad4e8584c852bfe2b96cc0fc7c71a",
+  "ruleset_key": "PGX-CANDIDATE-RULESET-WAVE03B",
+  "schema_version": "pgx-wave05-frozen-candidate-version/1",
+  "status": "PRE-EXPERT / NOT FINAL",
+  "validation_catalogue": {
+    "case_total": 67,
+    "development_count": 34,
+    "expert_reserved_carry_no_expected_answer": true,
+    "expert_reserved_count": 12,
+    "internal_holdout_count": 21
+  },
+  "what_this_record_is_not": [
+    "It is not an approval, and freezing a version approves nothing.",
+    "No external expert has seen any of this.",
+    "The twelve expert-reserved cases remain sealed and carry no expected answers; this record hashes them without opening them.",
+    "The candidate source policy is still PENDING_REVIEW and the ordinary DQ gate still fails.",
+    "The candidate DQ decision keeps permits_transition = false.",
+    "The candidate release is not registered in the WP-13 governed release registry."
+  ],
+  "work_package_verdicts": [
+    {
+      "subject": "product surface and demo UX closure",
+      "verdict": "PASS",
+      "work_package": "WP-C14A"
+    },
+    {
+      "subject": "representative candidate demonstration",
+      "verdict": "PASS",
+      "work_package": "WP-C14"
+    }
+  ]
+}
