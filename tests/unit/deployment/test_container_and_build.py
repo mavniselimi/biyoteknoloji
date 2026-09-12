@@ -324,6 +324,15 @@ class TestAwsComposeTopology(unittest.TestCase):
         self.assertIn("python -m pgx.application.deploy_cli", deploy)
         self.assertIn("--root /app migrate", deploy)
 
+    def test_current_caddy_supports_public_ip_certificates(self):
+        self.assertIn("image: caddy:2.11.4-alpine", self.text)
+
+    def test_deployment_accepts_a_static_ipv4_address(self):
+        deploy = _read("deploy/aws/deploy.sh")
+        self.assertIn("is_ipv4()", deploy)
+        self.assertIn("is_dns_name()", deploy)
+        self.assertIn("static IP or DNS name", deploy)
+
 
 class TestAwsCaddyIngress(unittest.TestCase):
     def test_public_hostname_enables_automatic_https(self):
@@ -335,6 +344,9 @@ class TestAwsCaddyIngress(unittest.TestCase):
         self.assertNotIn("auto_https off", directives)
         self.assertNotIn("tls internal", directives)
         self.assertIn("reverse_proxy app:8000", directives)
+        self.assertIn("profile shortlived", directives)
+        self.assertIn("disable_tlsalpn_challenge", directives)
+        self.assertIn("acme-v02.api.letsencrypt.org", directives)
 
 
 class TestAwsFirewallScripts(unittest.TestCase):

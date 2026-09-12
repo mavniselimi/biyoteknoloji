@@ -4,6 +4,9 @@ This directory publishes the PGx candidate demonstration from one AWS host.
 Caddy is the only public container: it listens on **80/tcp** and **443/tcp**,
 redirects HTTP to HTTPS, and automatically obtains and renews the certificate.
 The application and PostgreSQL ports are private to the Compose network.
+No domain is required: Caddy requests a short-lived, publicly trusted Let's
+Encrypt certificate for the Lightsail static IPv4 address. A DNS name remains
+supported when one is available.
 
 The deployed release is explicitly `CANDIDATE`. It is a research/prototype
 demonstration and is not externally reviewed, clinically validated, or a
@@ -14,11 +17,11 @@ governed production release.
 1. Create an Ubuntu 24.04 Lightsail instance with at least 2 vCPU, 4 GiB RAM,
    and 20 GiB disk. Attach a Lightsail static IP so the address does not
    change.
-2. In Route 53 or your DNS provider, point the chosen hostname's `A` record to
-   that static IP. DNS must resolve before Caddy can obtain a certificate.
-3. Under the instance's **Networking > IPv4 Firewall**, add HTTP/TCP 80 and
+2. Under the instance's **Networking > IPv4 Firewall**, add HTTP/TCP 80 and
    HTTPS/TCP 443 for all IPv4 addresses. Restrict SSH 22 to your own IP when
    you do not need the Lightsail browser SSH client.
+3. A domain is optional. If you have one, point its DNS `A` record to the
+   static IP before deployment. Otherwise use the static IP directly.
 
 With an authenticated AWS CLI, the two Lightsail rules can instead be added
 with:
@@ -52,15 +55,23 @@ group. Then initialize deployment-local configuration and secrets:
 nano deploy/aws/.env
 ```
 
-Replace `pgx.example.com` with the DNS hostname. `init` generates a random
-PostgreSQL password and writes the three secret files with mode `0600`. These
-files and `deploy/aws/.env` are ignored by Git and excluded from Docker builds.
+Replace the example with the Lightsail static public IPv4 address (no
+`https://`, port, or path):
+
+```dotenv
+DOMAIN=18.194.123.45
+```
+
+You may put a DNS hostname there instead if you later add one. `init` generates
+a random PostgreSQL password and writes the three secret files with mode
+`0600`. These files and `deploy/aws/.env` are ignored by Git and excluded from
+Docker builds.
 It also makes only the explicitly mounted, non-secret candidate runtime inputs
 readable by the image's unprivileged UID; `check` rejects unreadable inputs.
 
 ## 3. Publish
 
-Once DNS resolves to the EC2 Elastic IP:
+Once the static IP is attached (and optional DNS resolves to it):
 
 ```bash
 ./deploy/aws/deploy.sh check
@@ -78,8 +89,8 @@ written only to `.deploy-out/aws/demo-credentials.txt` with restrictive file
 permissions. Read it on the AWS host, sign in, then remove that file when it
 is no longer needed.
 
-Open `https://YOUR_DOMAIN/`. Certificate issuance can take a minute after the
-first start; inspect it with:
+Open `https://YOUR_STATIC_IP/` (or the configured DNS name). Certificate
+issuance can take a minute after the first start; inspect it with:
 
 ```bash
 ./deploy/aws/deploy.sh logs

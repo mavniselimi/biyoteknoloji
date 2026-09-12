@@ -60,8 +60,8 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
-      - uses: actions/checkout@0000000000000000000000000000000000000000 # v4.2.2 - UNRESOLVED
-      - uses: actions/setup-python@0000000000000000000000000000000000000000 # v5.3.0 - UNRESOLVED
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - uses: actions/setup-python@0b93645e9fea7318ecaed2b359559ac225c90a2b # v5.3.0
         with:
           python-version: ${{ env.PGX_PYTHON_VERSION }}
       - name: There is an authorized holdout set to regress against
@@ -95,11 +95,11 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 45
     steps:
-      - uses: actions/checkout@0000000000000000000000000000000000000000 # v4.2.2 - UNRESOLVED
-      - uses: actions/setup-python@0000000000000000000000000000000000000000 # v5.3.0 - UNRESOLVED
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - uses: actions/setup-python@0b93645e9fea7318ecaed2b359559ac225c90a2b # v5.3.0
         with:
           python-version: ${{ env.PGX_PYTHON_VERSION }}
-      - uses: astral-sh/setup-uv@0000000000000000000000000000000000000000 # v5.1.0 - UNRESOLVED
+      - uses: astral-sh/setup-uv@887a942a15af3a7626099df99e897a18d9e5ab3a # v5.1.0
         with:
           enable-cache: true
           cache-dependency-glob: uv.lock
@@ -135,7 +135,7 @@ jobs:
 
       - name: Upload the build provenance
         if: always()
-        uses: actions/upload-artifact@0000000000000000000000000000000000000000 # v4.4.3 - UNRESOLVED
+        uses: actions/upload-artifact@b4b15b8c7c6ac21ea08fcf65892d2ee8f75cf882 # v4.4.3
         with:
           name: wp24-build-provenance
           # The generated directory only. No secret, no certificate, no
@@ -149,8 +149,8 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
-      - uses: actions/checkout@0000000000000000000000000000000000000000 # v4.2.2 - UNRESOLVED
-      - uses: actions/setup-python@0000000000000000000000000000000000000000 # v5.3.0 - UNRESOLVED
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - uses: actions/setup-python@0b93645e9fea7318ecaed2b359559ac225c90a2b # v5.3.0
         with:
           python-version: ${{ env.PGX_PYTHON_VERSION }}
 
@@ -189,7 +189,7 @@ jobs:
 
       - name: Upload the supply-chain reports
         if: always()
-        uses: actions/upload-artifact@0000000000000000000000000000000000000000 # v4.4.3 - UNRESOLVED
+        uses: actions/upload-artifact@b4b15b8c7c6ac21ea08fcf65892d2ee8f75cf882 # v4.4.3
         with:
           name: wp24-supply-chain
           path: |
@@ -208,8 +208,8 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
-      - uses: actions/checkout@0000000000000000000000000000000000000000 # v4.2.2 - UNRESOLVED
-      - uses: actions/setup-python@0000000000000000000000000000000000000000 # v5.3.0 - UNRESOLVED
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - uses: actions/setup-python@0b93645e9fea7318ecaed2b359559ac225c90a2b # v5.3.0
         with:
           python-version: ${{ env.PGX_PYTHON_VERSION }}
       - name: Aggregate every gate
@@ -220,7 +220,7 @@ jobs:
             release-validation
       - name: Upload the release validation
         if: always()
-        uses: actions/upload-artifact@0000000000000000000000000000000000000000 # v4.4.3 - UNRESOLVED
+        uses: actions/upload-artifact@b4b15b8c7c6ac21ea08fcf65892d2ee8f75cf882 # v4.4.3
         with:
           name: wp24-release-validation
           path: |

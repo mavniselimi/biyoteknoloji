@@ -95,10 +95,10 @@ services:
     stop_grace_period: 30s
 
   proxy:
-    image: caddy:2.8-alpine
+    image: caddy:2.11.4-alpine
     restart: unless-stopped
     environment:
-      DOMAIN: ${DOMAIN:?Set DOMAIN in deploy/aws/.env}
+      DOMAIN: ${DOMAIN:?Set DOMAIN to the static IP or DNS name}
     depends_on:
       app:
         condition: service_healthy

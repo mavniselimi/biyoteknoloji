@@ -58,23 +58,42 @@ require_tools() {
   }
 }
 
+is_ipv4() {
+  local address="$1"
+  local first second third fourth octet
+  [[ "${address}" =~ ^([0-9]{1,3}\.){3}[0-9]{1,3}$ ]] || return 1
+  IFS='.' read -r first second third fourth <<< "${address}"
+  for octet in "${first}" "${second}" "${third}" "${fourth}"; do
+    [[ "${octet}" == "0" || "${octet}" != 0* ]] || return 1
+    ((10#${octet} <= 255)) || return 1
+  done
+}
+
+is_dns_name() {
+  local address="$1"
+  [[ "${address}" =~ ^([A-Za-z0-9]([A-Za-z0-9-]{0,61}[A-Za-z0-9])?\.)+[A-Za-z]{2,63}$ ]]
+}
+
 require_configuration() {
   [[ -f "${env_file}" ]] || {
     printf '%s\n' \
       "ERROR: ${env_file} is missing." \
-      "Run '$0 init', then set DOMAIN before deploying." >&2
+      "Run '$0 init', then set DOMAIN to the static IP or DNS name." >&2
     return 1
   }
 
   local domain
   domain="$(read_env_value DOMAIN || true)"
-  if [[ ! "${domain}" =~ ^([A-Za-z0-9]([A-Za-z0-9-]{0,61}[A-Za-z0-9])?\.)+[A-Za-z]{2,63}$ ]]; then
+  if ! is_ipv4 "${domain}" && ! is_dns_name "${domain}"; then
     printf '%s\n' \
-      "ERROR: DOMAIN must be a DNS hostname without a scheme or path." >&2
+      "ERROR: DOMAIN must be a public IPv4 address or DNS hostname." \
+      "Do not include https://, a port, or a path." >&2
     return 1
   fi
-  if [[ "${domain}" == "pgx.example.com" ]]; then
-    printf '%s\n' "ERROR: replace the example DOMAIN before deploying." >&2
+  if [[ "${domain}" == "pgx.example.com" \
+      || "${domain}" == "203.0.113.10" ]]; then
+    printf '%s\n' \
+      "ERROR: replace the example DOMAIN with the Lightsail static IP or DNS name." >&2
     return 1
   fi
 
@@ -149,7 +168,8 @@ init() {
   prepare_runtime_inputs
   if [[ ! -f "${env_file}" ]]; then
     cp "${script_dir}/.env.example" "${env_file}"
-    printf 'Created %s; edit DOMAIN before deployment.\n' "${env_file}"
+    printf 'Created %s; set DOMAIN to the static IP or DNS name.\n' \
+      "${env_file}"
   else
     printf 'Kept existing %s.\n' "${env_file}"
   fi

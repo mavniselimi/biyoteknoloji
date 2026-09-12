@@ -1,12 +1,20 @@
-# Public AWS ingress.  A real DNS name is supplied through DOMAIN.
-# Caddy obtains and renews the public certificate automatically and creates
-# the HTTP -> HTTPS redirect, so no certificate or private key is stored in
-# this repository or copied into the application image.
+# Public AWS ingress. A DNS name or public IPv4 address is supplied through
+# DOMAIN. Let's Encrypt IP certificates use its short-lived certificate
+# profile and HTTP-01 validation. Caddy renews them automatically and creates
+# the HTTP -> HTTPS redirect, so no key is stored in this repository.
 {
 	admin off
 }
 
 {$DOMAIN} {
+	tls {
+		issuer acme https://acme-v02.api.letsencrypt.org/directory {
+			profile shortlived
+			# HTTP-01 works for both DNS names and IPv4 address certificates.
+			disable_tlsalpn_challenge
+		}
+	}
+
 	encode zstd gzip
 
 	header {

@@ -95,11 +95,11 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - uses: actions/checkout@0000000000000000000000000000000000000000 # v4.2.2 - UNRESOLVED
-      - uses: actions/setup-python@0000000000000000000000000000000000000000 # v5.3.0 - UNRESOLVED
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - uses: actions/setup-python@0b93645e9fea7318ecaed2b359559ac225c90a2b # v5.3.0
         with:
           python-version: ${{ env.PGX_PYTHON_VERSION }}
-      - uses: astral-sh/setup-uv@0000000000000000000000000000000000000000 # v5.1.0 - UNRESOLVED
+      - uses: astral-sh/setup-uv@887a942a15af3a7626099df99e897a18d9e5ab3a # v5.1.0
         with:
           # The cache key includes the lockfile digest. A cache keyed on
           # anything coarser serves a dependency set from a different lock.
@@ -116,11 +116,11 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - uses: actions/checkout@0000000000000000000000000000000000000000 # v4.2.2 - UNRESOLVED
-      - uses: actions/setup-python@0000000000000000000000000000000000000000 # v5.3.0 - UNRESOLVED
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - uses: actions/setup-python@0b93645e9fea7318ecaed2b359559ac225c90a2b # v5.3.0
         with:
           python-version: ${{ env.PGX_PYTHON_VERSION }}
-      - uses: astral-sh/setup-uv@0000000000000000000000000000000000000000 # v5.1.0 - UNRESOLVED
+      - uses: astral-sh/setup-uv@887a942a15af3a7626099df99e897a18d9e5ab3a # v5.1.0
         with:
           enable-cache: true
           cache-dependency-glob: uv.lock
@@ -133,11 +133,11 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
-      - uses: actions/checkout@0000000000000000000000000000000000000000 # v4.2.2 - UNRESOLVED
-      - uses: actions/setup-python@0000000000000000000000000000000000000000 # v5.3.0 - UNRESOLVED
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - uses: actions/setup-python@0b93645e9fea7318ecaed2b359559ac225c90a2b # v5.3.0
         with:
           python-version: ${{ env.PGX_PYTHON_VERSION }}
-      - uses: astral-sh/setup-uv@0000000000000000000000000000000000000000 # v5.1.0 - UNRESOLVED
+      - uses: astral-sh/setup-uv@887a942a15af3a7626099df99e897a18d9e5ab3a # v5.1.0
         with:
           enable-cache: true
           cache-dependency-glob: uv.lock
@@ -151,11 +151,11 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
-      - uses: actions/checkout@0000000000000000000000000000000000000000 # v4.2.2 - UNRESOLVED
-      - uses: actions/setup-python@0000000000000000000000000000000000000000 # v5.3.0 - UNRESOLVED
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - uses: actions/setup-python@0b93645e9fea7318ecaed2b359559ac225c90a2b # v5.3.0
         with:
           python-version: ${{ env.PGX_PYTHON_VERSION }}
-      - uses: astral-sh/setup-uv@0000000000000000000000000000000000000000 # v5.1.0 - UNRESOLVED
+      - uses: astral-sh/setup-uv@887a942a15af3a7626099df99e897a18d9e5ab3a # v5.1.0
         with:
           enable-cache: true
           cache-dependency-glob: uv.lock
@@ -171,7 +171,7 @@ jobs:
         run: uv run pgx-verify run --profile fast --format json
       - name: Upload the verification report
         if: always()
-        uses: actions/upload-artifact@0000000000000000000000000000000000000000 # v4.4.3 - UNRESOLVED
+        uses: actions/upload-artifact@b4b15b8c7c6ac21ea08fcf65892d2ee8f75cf882 # v4.4.3
         with:
           name: wp19-verification
           path: |
@@ -211,11 +211,11 @@ jobs:
       DATABASE_URL: >-
         postgresql+psycopg://pgx_ci:pgx_ci_ephemeral@localhost:55432/pgx_ci_test
     steps:
-      - uses: actions/checkout@0000000000000000000000000000000000000000 # v4.2.2 - UNRESOLVED
-      - uses: actions/setup-python@0000000000000000000000000000000000000000 # v5.3.0 - UNRESOLVED
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - uses: actions/setup-python@0b93645e9fea7318ecaed2b359559ac225c90a2b # v5.3.0
         with:
           python-version: ${{ env.PGX_PYTHON_VERSION }}
-      - uses: astral-sh/setup-uv@0000000000000000000000000000000000000000 # v5.1.0 - UNRESOLVED
+      - uses: astral-sh/setup-uv@887a942a15af3a7626099df99e897a18d9e5ab3a # v5.1.0
         with:
           enable-cache: true
           cache-dependency-glob: uv.lock
@@ -261,11 +261,11 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
-      - uses: actions/checkout@0000000000000000000000000000000000000000 # v4.2.2 - UNRESOLVED
-      - uses: actions/setup-python@0000000000000000000000000000000000000000 # v5.3.0 - UNRESOLVED
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - uses: actions/setup-python@0b93645e9fea7318ecaed2b359559ac225c90a2b # v5.3.0
         with:
           python-version: ${{ env.PGX_PYTHON_VERSION }}
-      - uses: astral-sh/setup-uv@0000000000000000000000000000000000000000 # v5.1.0 - UNRESOLVED
+      - uses: astral-sh/setup-uv@887a942a15af3a7626099df99e897a18d9e5ab3a # v5.1.0
         with:
           enable-cache: true
           cache-dependency-glob: uv.lock
@@ -274,7 +274,7 @@ jobs:
         run: uv run pgx-verify run --profile runtime --format json
       - name: Upload the API contract evidence
         if: always()
-        uses: actions/upload-artifact@0000000000000000000000000000000000000000 # v4.4.3 - UNRESOLVED
+        uses: actions/upload-artifact@b4b15b8c7c6ac21ea08fcf65892d2ee8f75cf882 # v4.4.3
         with:
           name: wp16-api-contract
           path: |
@@ -289,11 +289,11 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
-      - uses: actions/checkout@0000000000000000000000000000000000000000 # v4.2.2 - UNRESOLVED
-      - uses: actions/setup-python@0000000000000000000000000000000000000000 # v5.3.0 - UNRESOLVED
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - uses: actions/setup-python@0b93645e9fea7318ecaed2b359559ac225c90a2b # v5.3.0
         with:
           python-version: ${{ env.PGX_PYTHON_VERSION }}
-      - uses: astral-sh/setup-uv@0000000000000000000000000000000000000000 # v5.1.0 - UNRESOLVED
+      - uses: astral-sh/setup-uv@887a942a15af3a7626099df99e897a18d9e5ab3a # v5.1.0
         with:
           enable-cache: true
           cache-dependency-glob: uv.lock
@@ -309,8 +309,8 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
-      - uses: actions/checkout@0000000000000000000000000000000000000000 # v4.2.2 - UNRESOLVED
-      - uses: actions/setup-python@0000000000000000000000000000000000000000 # v5.3.0 - UNRESOLVED
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - uses: actions/setup-python@0b93645e9fea7318ecaed2b359559ac225c90a2b # v5.3.0
         with:
           python-version: ${{ env.PGX_PYTHON_VERSION }}
       # No uv, no install. pgx/safety is standard library by construction and
@@ -324,7 +324,7 @@ jobs:
         run: python3 -m pgx.application.safety_cli check --format json
       - name: Upload the safety report
         if: always()
-        uses: actions/upload-artifact@0000000000000000000000000000000000000000 # v4.4.3 - UNRESOLVED
+        uses: actions/upload-artifact@b4b15b8c7c6ac21ea08fcf65892d2ee8f75cf882 # v4.4.3
         with:
           name: wp20-safety
           path: |

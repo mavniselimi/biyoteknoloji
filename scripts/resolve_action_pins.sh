@@ -80,7 +80,9 @@ for workflow in .github/workflows/*.yml; do
         fi
         echo "resolved    ${repo}@${tag} -> ${sha}"
         changes=$((changes + 1))
-        sed -i.bak "s|${repo}@${PLACEHOLDER}|${repo}@${sha}|g" \
+        sed -i.bak \
+            -e "s|${repo}@${PLACEHOLDER}|${repo}@${sha}|g" \
+            -e '/uses:/ s| - UNRESOLVED$||' \
             "$tmp/$(basename "$workflow")"
         rm -f "$tmp/$(basename "$workflow").bak"
     done < "$workflow"
