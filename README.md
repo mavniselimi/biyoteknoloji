@@ -89,10 +89,9 @@ construction rather than by convention:
 - PostgreSQL 16 (the schema uses JSONB, `TIMESTAMPTZ`, and named constraints)
 - [uv](https://docs.astral.sh/uv/) for dependency management
 
-> The package has **not** been built or installed in this environment: there
-> is no reachable package index, so there is no `uv.lock`, no wheel, and the
-> console scripts below have never run as installed entry points. Their
-> targets are verified statically instead.
+Dependencies are resolved in `uv.lock`. Container builds use
+`uv sync --frozen`, so a changed `pyproject.toml` cannot silently produce a
+different dependency set.
 
 ## Getting started
 
@@ -224,6 +223,10 @@ WP-04) that predate the pack. They are preserved unchanged and are not pack
 members.
 
 ## Deployment (WP-24)
+
+For a public single-host AWS EC2 deployment with automatic HTTPS on ports 80
+and 443, use [`deploy/aws/README.md`](deploy/aws/README.md). The AWS topology
+keeps both the application port and PostgreSQL off the public host interface.
 
 One documented command. Every subcommand exits `0` only for work that ran and
 held, `1` for a failure, `2` for blocked / not executed / stale, and `3` for a

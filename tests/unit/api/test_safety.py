@@ -216,6 +216,21 @@ class TestTransportHardening(unittest.TestCase):
         self.assertNotIn("postgresql://", repr(settings))
         self.assertNotIn("hunter2", json.dumps(dict(settings.public_summary())))
 
+    def test_a_database_secret_file_counts_as_configured(self):
+        """The production compose topology mounts the DSN as a secret file.
+
+        Settings record only the presence of the path.  Reading the secret
+        and validating the DSN belongs to deployment composition, so the
+        value can never leak into this object or its public summary.
+        """
+        settings = load_settings({
+            "DATABASE_URL_FILE": "/run/secrets/database_url",
+        })
+        self.assertTrue(settings.database_url_configured)
+        self.assertNotIn("/run/secrets", repr(settings))
+        self.assertNotIn("/run/secrets", json.dumps(
+            dict(settings.public_summary())))
+
     def test_the_security_headers_are_conservative(self):
         path = os.path.join(API_DIR, "middleware.py")
         module = tree(path)

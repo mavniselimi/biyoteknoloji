@@ -323,7 +323,13 @@ def load_settings(env: Optional[Mapping[str, str]] = None) -> ApiSettings:
                                 LIMITS["max_body_bytes"]),
         readiness_timeout_seconds=_decimal(source, "READINESS_TIMEOUT_SECONDS",
                                            2.0),
-        database_url_configured=bool((source.get("DATABASE_URL") or "").strip()),
+        # Production deployments use the file form so the DSN never appears
+        # in ``docker inspect``.  Readiness only needs to know that a source
+        # was configured; the deployment composition is responsible for
+        # opening and validating the file without exposing its contents.
+        database_url_configured=bool(
+            (source.get("DATABASE_URL") or "").strip()
+            or (source.get("DATABASE_URL_FILE") or "").strip()),
         evidence_build_path=_bounded_path(source, "EVIDENCE_BUILD_PATH"),
         expected_migration_head=(
             (source.get(_ENV_PREFIX + "MIGRATION_HEAD") or "").strip() or None),

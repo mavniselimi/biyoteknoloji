@@ -51,6 +51,20 @@ class TestTheDockerfile(unittest.TestCase):
     def test_the_runtime_stage_runs_as_a_non_root_user(self):
         self.assertIn("USER 10001:10001", self.text)
 
+    def test_checkout_file_modes_cannot_hide_code_from_runtime_user(self):
+        """COPY preserves source modes, including owner-only 0600 files."""
+        normalise = self.text.index("RUN chmod -R a=rX /app /opt/venv")
+        drop_privileges = self.text.index("USER 10001:10001")
+        self.assertLess(normalise, drop_privileges)
+
+    def test_the_virtual_environment_is_not_relocated_between_stages(self):
+        """Console-script shebangs contain the absolute builder path."""
+        self.assertIn("UV_PROJECT_ENVIRONMENT=/opt/venv", self.text)
+        self.assertIn(
+            "COPY --from=builder --chown=root:root /opt/venv /opt/venv",
+            self.text)
+        self.assertIn('PATH="/opt/venv/bin:$PATH"', self.text)
+
     def test_the_runtime_stage_contains_no_compiler(self):
         """A compiler in a runtime image is a tool an attacker who gets a
         shell no longer has to bring."""
@@ -131,6 +145,12 @@ class TestTheDockerfile(unittest.TestCase):
         pyproject.toml. A build that silently re-resolved would produce an
         image the lockfile does not describe."""
         self.assertIn("uv sync --frozen", self.text)
+
+    def test_development_dependencies_do_not_enter_the_runtime_image(self):
+        sync_steps = [line for line in self.text.splitlines()
+                      if line.startswith("RUN uv sync")]
+        self.assertEqual(len(sync_steps), 2)
+        self.assertTrue(all("--no-dev" in line for line in sync_steps))
 
     def test_no_secret_or_credential_appears(self):
         lowered = self.text.lower()
@@ -258,6 +278,80 @@ class TestTheComposeTopology(unittest.TestCase):
             if not line.strip().startswith("#"))
         self.assertNotIn("tls internal", directives)
         self.assertIn("auto_https off", directives)
+
+
+class TestAwsComposeTopology(unittest.TestCase):
+    """Static guarantees for the single-host AWS deployment."""
+
+    def setUp(self):
+        self.text = _read("deploy/aws/docker-compose.yml")
+
+    def test_only_the_proxy_publishes_ports(self):
+        app = self.text.split("  app:", 1)[1].split("  postgres:", 1)[0]
+        postgres = self.text.split("  postgres:", 1)[1].split(
+            "  proxy:", 1)[0]
+        proxy = self.text.split("  proxy:", 1)[1].split("  ops:", 1)[0]
+        self.assertNotIn("ports:", app)
+        self.assertNotIn("ports:", postgres)
+        self.assertIn('"80:80"', proxy)
+        self.assertIn('"443:443"', proxy)
+
+    def test_production_security_and_secret_files_are_enabled(self):
+        for expected in (
+                "PGX_API_ENV: PRODUCTION",
+                "PGX_API_AUTH_MODE: SESSION",
+                "DATABASE_URL_FILE: /run/secrets/database_url",
+                "POSTGRES_PASSWORD_FILE: /run/secrets/postgres_password",
+                "read_only: true",
+                "no-new-privileges:true"):
+            with self.subTest(expected=expected):
+                self.assertIn(expected, self.text)
+
+    def test_the_candidate_track_is_named_and_read_only(self):
+        self.assertIn("PGX_RUNTIME_TRACK: CANDIDATE", self.text)
+        self.assertIn("PGX_CANDIDATE_REPO_ROOT: /app", self.text)
+        for path in ("data/releases", "data/candidate-rulesets",
+                     "dataset-quality-decisions.ndjson"):
+            with self.subTest(path=path):
+                self.assertIn(path, self.text)
+        self.assertGreaterEqual(self.text.count(":ro"), 3)
+
+    def test_migrations_are_an_explicit_operation(self):
+        for line in self.text.splitlines():
+            if line.lstrip().startswith(("command:", "entrypoint:")):
+                self.assertNotIn("alembic", line)
+        deploy = _read("deploy/aws/deploy.sh")
+        self.assertIn("python -m pgx.application.deploy_cli", deploy)
+        self.assertIn("--root /app migrate", deploy)
+
+
+class TestAwsCaddyIngress(unittest.TestCase):
+    def test_public_hostname_enables_automatic_https(self):
+        text = _read("deploy/aws/Caddyfile")
+        directives = "\n".join(
+            line for line in text.splitlines()
+            if not line.lstrip().startswith("#"))
+        self.assertIn("{$DOMAIN}", directives)
+        self.assertNotIn("auto_https off", directives)
+        self.assertNotIn("tls internal", directives)
+        self.assertIn("reverse_proxy app:8000", directives)
+
+
+class TestAwsFirewallScripts(unittest.TestCase):
+    def test_lightsail_script_opens_only_the_two_web_ports(self):
+        text = _read("deploy/aws/open-lightsail-ports.sh")
+        self.assertIn("aws lightsail open-instance-public-ports", text)
+        self.assertIn("open_port 80 HTTP", text)
+        self.assertIn("open_port 443 HTTPS", text)
+        self.assertNotIn("open_port 22", text)
+
+    def test_ec2_and_lightsail_use_separate_aws_apis(self):
+        ec2 = _read("deploy/aws/open-ports.sh")
+        lightsail = _read("deploy/aws/open-lightsail-ports.sh")
+        self.assertIn("aws ec2 authorize-security-group-ingress", ec2)
+        self.assertNotIn("aws lightsail", ec2)
+        self.assertIn("aws lightsail open-instance-public-ports", lightsail)
+        self.assertNotIn("aws ec2", lightsail)
 
 
 class TestRuntimeAssets(unittest.TestCase):

@@ -55,6 +55,7 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
     PIP_NO_CACHE_DIR=1 \
     PIP_DISABLE_PIP_VERSION_CHECK=1 \
+    UV_PROJECT_ENVIRONMENT=/opt/venv \
     SOURCE_DATE_EPOCH=1735689600
 
 # Build dependencies for the two packages that may need to compile:
@@ -81,7 +82,7 @@ WORKDIR /src
 # the provenance document would then pin a lockfile hash that says nothing
 # about what is installed.
 COPY pyproject.toml uv.lock README.md ./
-RUN uv sync --frozen --no-install-project --extra web
+RUN uv sync --frozen --no-install-project --extra web --no-dev
 
 # The project itself, installed into the same environment.
 COPY pgx ./pgx
@@ -90,14 +91,14 @@ COPY migrations ./migrations
 COPY alembic.ini ./alembic.ini
 COPY config ./config
 COPY schemas ./schemas
-RUN uv sync --frozen --extra web
+RUN uv sync --frozen --extra web --no-dev --no-editable
 
 # Argon2 must be importable in the image that will hash passwords. Checked
 # here, at build time, rather than discovered by a readiness probe in
 # production: the WP-23 handoff is explicit that a build which cannot hash a
 # password must fail rather than fall back, and this is where that fails.
-RUN /src/.venv/bin/python -c "import argon2; print('argon2', argon2.__version__)"
-RUN /src/.venv/bin/python -c "import psycopg; print('psycopg', psycopg.__version__)"
+RUN /opt/venv/bin/python -c "import argon2; print('argon2', argon2.__version__)"
+RUN /opt/venv/bin/python -c "import psycopg; print('psycopg', psycopg.__version__)"
 
 # ---------------------------------------------------------------------------
 # Stage 2 - runtime
@@ -106,7 +107,7 @@ FROM python:3.11.9-slim-bookworm AS runtime
 
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
-    PATH="/app/.venv/bin:$PATH" \
+    PATH="/opt/venv/bin:$PATH" \
     PGX_API_ENV=STAGING \
     PGX_API_AUTH_MODE=UNCONFIGURED
 
@@ -122,7 +123,7 @@ RUN apt-get update \
 
 WORKDIR /app
 
-COPY --from=builder --chown=root:root /src/.venv /app/.venv
+COPY --from=builder --chown=root:root /opt/venv /opt/venv
 COPY --chown=root:root pgx /app/pgx
 COPY --chown=root:root apps /app/apps
 COPY --chown=root:root migrations /app/migrations
@@ -141,6 +142,14 @@ COPY --chown=root:root data/safety /app/data/safety
 COPY --chown=root:root data/security /app/data/security
 COPY --chown=root:root data/validation /app/data/validation
 COPY --chown=root:root data/verification /app/data/verification
+
+# Source checkouts can carry owner-only modes from the machine that produced
+# them.  COPY preserves those modes; after changing to uid 10001 that would
+# leave an otherwise valid module unreadable.  Normalise the immutable runtime
+# tree here: readable/traversable by the service account, writable by nobody.
+# ``X`` preserves executable bits only on files that already need them while
+# leaving every directory traversable.
+RUN chmod -R a=rX /app /opt/venv
 
 # Owned by root, run as pgx: the application can read its code and its sealed
 # artifacts and can modify neither. A container that cannot rewrite its own

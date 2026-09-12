@@ -1,0 +1,152 @@
+# Single-host AWS EC2 production topology.
+#
+# Only Caddy is published on the host.  The FastAPI application and PostgreSQL
+# stay on the private Compose network, so ports 8000 and 5432 cannot bypass the
+# TLS terminator even if the EC2 security group is later made too permissive.
+
+name: pgx_aws
+
+x-app-common: &app-common
+  build:
+    context: ../..
+    dockerfile: Dockerfile
+    target: runtime
+  image: ${PGX_IMAGE:-pgx-platform:aws}
+  environment:
+    DATABASE_URL_FILE: /run/secrets/database_url
+    PGX_API_ENV: PRODUCTION
+    PGX_API_AUTH_MODE: SESSION
+    PGX_API_DOCS_ENABLED: "false"
+    PGX_API_MIGRATION_HEAD: 0012_wave03b_candidate_capture
+    PGX_API_READINESS_TIMEOUT_SECONDS: "2.0"
+    # This repository currently has a provisional candidate release, not an
+    # externally approved governed release.  Serving CANDIDATE keeps that
+    # status visible in the UI and prevents it being presented as approved.
+    PGX_RUNTIME_TRACK: CANDIDATE
+    PGX_CANDIDATE_REPO_ROOT: /app
+  secrets:
+    - database_url
+  # Candidate runtime inputs are explicit read-only mounts.  The broad raw,
+  # evidence, holdout and legacy datasets never enter the application image.
+  volumes:
+    - ../../data/releases:/app/data/releases:ro
+    - ../../data/candidate-rulesets:/app/data/candidate-rulesets:ro
+    - ../../data/canonical/dataset-quality-decisions.ndjson:/app/data/canonical/dataset-quality-decisions.ndjson:ro
+  deploy:
+    resources:
+      limits:
+        cpus: "2.0"
+        memory: 1g
+        pids: 256
+      reservations:
+        memory: 256m
+  security_opt:
+    - no-new-privileges:true
+  cap_drop:
+    - ALL
+  read_only: true
+  tmpfs:
+    - /tmp:size=64m,mode=1777
+
+services:
+  app:
+    <<: *app-common
+    restart: unless-stopped
+    expose:
+      - "8000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    stop_grace_period: 25s
+    healthcheck:
+      test:
+        - CMD
+        - python
+        - -c
+        - "import urllib.request,sys; sys.exit(0 if urllib.request.urlopen('http://127.0.0.1:8000/health/live', timeout=2).status == 200 else 1)"
+      interval: 15s
+      timeout: 3s
+      retries: 3
+      start_period: 15s
+
+  postgres:
+    image: postgres:16.13-bookworm
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER_FILE: /run/secrets/postgres_user
+      POSTGRES_PASSWORD_FILE: /run/secrets/postgres_password
+      POSTGRES_DB: pgx_production
+      POSTGRES_INITDB_ARGS: "--encoding=UTF8 --locale=C"
+    secrets:
+      - postgres_user
+      - postgres_password
+    expose:
+      - "5432"
+    volumes:
+      - pgx_postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - pg_isready -U "$$(cat /run/secrets/postgres_user)" -d pgx_production
+      interval: 5s
+      timeout: 5s
+      retries: 20
+      start_period: 15s
+    stop_grace_period: 30s
+
+  proxy:
+    image: caddy:2.8-alpine
+    restart: unless-stopped
+    environment:
+      DOMAIN: ${DOMAIN:?Set DOMAIN in deploy/aws/.env}
+    depends_on:
+      app:
+        condition: service_healthy
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    cap_drop:
+      - ALL
+    cap_add:
+      - NET_BIND_SERVICE
+    security_opt:
+      - no-new-privileges:true
+    read_only: true
+    tmpfs:
+      - /tmp:size=32m,mode=1777
+
+  # Explicit one-shot operations.  This profile is never started by `up`.
+  # Migrations and account creation therefore cannot race during app startup.
+  ops:
+    <<: *app-common
+    profiles: ["ops"]
+    restart: "no"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - ../../data/releases:/app/data/releases:ro
+      - ../../data/candidate-rulesets:/app/data/candidate-rulesets:ro
+      - ../../data/canonical/dataset-quality-decisions.ndjson:/app/data/canonical/dataset-quality-decisions.ndjson:ro
+      - ../../scripts/bootstrap_demo_environment.py:/app/bootstrap_demo_environment.py:ro
+      - ../../.deploy-out/aws:/run/pgx-credentials
+    read_only: true
+    tmpfs:
+      - /tmp:size=128m,mode=1777
+
+secrets:
+  database_url:
+    file: ../secrets/database_url
+  postgres_user:
+    file: ../secrets/postgres_user
+  postgres_password:
+    file: ../secrets/postgres_password
+
+volumes:
+  pgx_postgres_data:
+  caddy_data:
+  caddy_config:

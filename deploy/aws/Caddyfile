@@ -1,0 +1,32 @@
+# Public AWS ingress.  A real DNS name is supplied through DOMAIN.
+# Caddy obtains and renews the public certificate automatically and creates
+# the HTTP -> HTTPS redirect, so no certificate or private key is stored in
+# this repository or copied into the application image.
+{
+	admin off
+}
+
+{$DOMAIN} {
+	encode zstd gzip
+
+	header {
+		Strict-Transport-Security "max-age=31536000; includeSubDomains"
+		X-Content-Type-Options "nosniff"
+		X-Frame-Options "DENY"
+		Referrer-Policy "no-referrer"
+		-Server
+	}
+
+	log {
+		output stdout
+		format json
+	}
+
+	reverse_proxy app:8000 {
+		# Caddy supplies X-Forwarded-Proto and X-Forwarded-For by default.
+		transport http {
+			dial_timeout 5s
+			response_header_timeout 30s
+		}
+	}
+}
