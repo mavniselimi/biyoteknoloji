@@ -64,10 +64,12 @@ DOMAIN=18.194.123.45
 
 You may put a DNS hostname there instead if you later add one. `init` generates
 a random PostgreSQL password and writes the three secret files with mode
-`0600`. These files and `deploy/aws/.env` are ignored by Git and excluded from
-Docker builds.
+`0600` (the application DSN is group-readable at `0640`). These files and
+`deploy/aws/.env` are ignored by Git and excluded from Docker builds.
 It also makes only the explicitly mounted, non-secret candidate runtime inputs
 readable by the image's unprivileged UID; `check` rejects unreadable inputs.
+On Linux, `deploy.sh` grants the container only the current user's primary
+group so the DSN never needs to become world-readable.
 
 ## 3. Publish
 

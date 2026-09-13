@@ -24,11 +24,21 @@ usage() {
 }
 
 compose() {
-  docker compose \
+  # Local Compose implements file-backed secrets as bind mounts. Preserve a
+  # restrictive 0640 mode and grant the unprivileged application process the
+  # host user's primary group so it can read only the database URL secret.
+  PGX_SECRET_GID="$(id -g)" docker compose \
     --env-file "${env_file}" \
     --project-name "${project_name}" \
     --file "${compose_file}" \
     "$@"
+}
+
+prepare_secret_permissions() {
+  local database_url_file="${secrets_dir}/database_url"
+  [[ -f "${database_url_file}" ]] || return 0
+  chgrp "$(id -g)" "${database_url_file}"
+  chmod 640 "${database_url_file}"
 }
 
 read_env_value() {
@@ -177,8 +187,10 @@ init() {
   if [[ -e "${secrets_dir}/postgres_user" \
       || -e "${secrets_dir}/postgres_password" \
       || -e "${secrets_dir}/database_url" ]]; then
+    prepare_secret_permissions
     printf '%s\n' \
-      "Kept existing database secret files; init never overwrites them."
+      "Kept existing database secret files; init never overwrites them." \
+      "Prepared the database URL for the container's restricted host group."
     return 0
   fi
 
@@ -195,14 +207,17 @@ init() {
     "postgresql+psycopg://${database_user}:${database_password}@postgres:5432/pgx_production" \
     > "${secrets_dir}/database_url"
   chmod 600 "${secrets_dir}/postgres_user" \
-    "${secrets_dir}/postgres_password" \
-    "${secrets_dir}/database_url"
-  printf '%s\n' "Created random database credentials with mode 0600."
+    "${secrets_dir}/postgres_password"
+  prepare_secret_permissions
+  printf '%s\n' \
+    "Created random database credentials." \
+    "PostgreSQL inputs use 0600; the app DSN uses restricted group-read 0640."
 }
 
 check() {
   require_tools
   require_configuration
+  prepare_secret_permissions
   require_runtime_inputs
   compose config --quiet
   printf '%s\n' "AWS Compose configuration is valid."

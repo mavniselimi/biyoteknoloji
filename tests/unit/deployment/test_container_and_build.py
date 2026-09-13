@@ -307,6 +307,14 @@ class TestAwsComposeTopology(unittest.TestCase):
             with self.subTest(expected=expected):
                 self.assertIn(expected, self.text)
 
+    def test_linux_file_secret_is_shared_by_restricted_group(self):
+        self.assertIn("group_add:", self.text)
+        self.assertIn("PGX_SECRET_GID", self.text)
+        deploy = _read("deploy/aws/deploy.sh")
+        self.assertIn('PGX_SECRET_GID="$(id -g)" docker compose', deploy)
+        self.assertIn('chmod 640 "${database_url_file}"', deploy)
+        self.assertNotIn('chmod 644 "${database_url_file}"', deploy)
+
     def test_the_candidate_track_is_named_and_read_only(self):
         self.assertIn("PGX_RUNTIME_TRACK: CANDIDATE", self.text)
         self.assertIn("PGX_CANDIDATE_REPO_ROOT: /app", self.text)

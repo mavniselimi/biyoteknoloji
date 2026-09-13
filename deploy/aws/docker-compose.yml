@@ -26,6 +26,10 @@ x-app-common: &app-common
     PGX_CANDIDATE_REPO_ROOT: /app
   secrets:
     - database_url
+  # File-backed Compose secrets retain host ownership on Linux. deploy.sh
+  # supplies the host user's primary GID, while the image remains UID 10001.
+  group_add:
+    - "${PGX_SECRET_GID:?Set automatically by deploy/aws/deploy.sh}"
   # Candidate runtime inputs are explicit read-only mounts.  The broad raw,
   # evidence, holdout and legacy datasets never enter the application image.
   volumes:
