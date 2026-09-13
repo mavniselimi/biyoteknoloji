@@ -4,6 +4,9 @@
 # the HTTP -> HTTPS redirect, so no key is stored in this repository.
 {
 	admin off
+	# TLS clients commonly omit SNI when connecting to a literal IP address.
+	# Select the configured IP certificate for those connections as well.
+	default_sni {$DOMAIN}
 }
 
 {$DOMAIN} {

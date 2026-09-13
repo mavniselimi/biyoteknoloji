@@ -6,7 +6,9 @@ redirects HTTP to HTTPS, and automatically obtains and renews the certificate.
 The application and PostgreSQL ports are private to the Compose network.
 No domain is required: Caddy requests a short-lived, publicly trusted Let's
 Encrypt certificate for the Lightsail static IPv4 address. A DNS name remains
-supported when one is available.
+supported when one is available. The configured address is also used as
+Caddy's default TLS server name so clients that omit SNI for literal-IP
+connections still receive the correct certificate.
 
 The deployed release is explicitly `CANDIDATE`. It is a research/prototype
 demonstration and is not externally reviewed, clinically validated, or a

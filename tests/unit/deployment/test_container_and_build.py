@@ -349,6 +349,7 @@ class TestAwsCaddyIngress(unittest.TestCase):
             line for line in text.splitlines()
             if not line.lstrip().startswith("#"))
         self.assertIn("{$DOMAIN}", directives)
+        self.assertIn("default_sni {$DOMAIN}", directives)
         self.assertNotIn("auto_https off", directives)
         self.assertNotIn("tls internal", directives)
         self.assertIn("reverse_proxy app:8000", directives)
